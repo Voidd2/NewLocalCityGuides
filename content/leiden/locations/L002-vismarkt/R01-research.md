@@ -7,6 +7,14 @@ Status: **R01 COMPLETE** → `L002-R02` next
 
 ---
 
+> ⚠️ **`R02` ROUND 1 PARTLY RESOLVED THE SUPERLATIVES** — `docs/qa/R02-verification-round-1.md`.
+> "Leiden's oldest bridge" and "the only fixed Rhine crossing between Utrecht and the North Sea,
+> with the Sint Jansbrug" are **supported by two independent sources** but still need an
+> **institutional** one before publication (DEC-013). **"Nearly 900 years of market" remains
+> unsourced — do not use.** New and better: **the surrounding villages were required to
+> contribute to the bridge's upkeep**, and the Sint Jansbrug crosses the Oude Rijn **less than
+> 100 m north**.
+
 ## 1. THE SHORT ANSWER
 
 A place that smelled so bad, for so long, that the city built a fountain and ran a pipe

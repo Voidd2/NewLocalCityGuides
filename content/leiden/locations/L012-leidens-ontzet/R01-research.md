@@ -8,6 +8,15 @@ Status: **R01 COMPLETE** → `L012-R02` next
 
 ---
 
+> ⚠️ **`R02` ROUND 1 HAS CLOSED THIS FILE'S KEY QUESTION** — `docs/qa/R02-verification-round-1.md`.
+> There are **two traditions, not one**. The **thanksgiving service has been held in the
+> Pieterskerk every 3 October since 1574** — unbroken, and **inside an existing MVP stop
+> (L006)**. The **herring and white bread distribution dates from 1886**, at De Waag. The
+> **3 October Vereeniging was founded on 13 May 1886**, prompted by the **1884 unveiling of a
+> statue of Van der Werf**, on the initiative of a teacher named **N. Brouwer**.
+> So the commemoration is continuous since 1574; the food ritual is a Victorian invention on
+> top of it. §4 below is right that 1886 matters — but the 312-year hole it describes is closed.
+
 ## 1. THE SHORT ANSWER
 
 The siege ended, the relief fleet handed out herring and white bread, and Leiden has been

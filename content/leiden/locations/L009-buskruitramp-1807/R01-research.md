@@ -7,6 +7,14 @@ Status: **R01 COMPLETE** → `L009-R02` next
 
 ---
 
+> ⚠️ **`R02` ROUND 1 HAS RESOLVED THE FIGURES** — `docs/qa/R02-verification-round-1.md`.
+> **Death toll: 151** (publish this; "about 160" is a loose rounding). **37,000 pounds =
+> 17,760 kg** — the unit note in §3 is confirmed. Route: **Haarlem to Delft**.
+> **Two of the dead are now named: Professor Adriaan Kluit (1735–1807) and Professor Jean
+> Luzac (1746–1807).** Eyewitnesses described **a bucket of peeled potatoes on deck** and the
+> smell of fried fish from an open hatch. **Only thirteen fragments of the ship were ever
+> found.** ⚠️ **Who was aboard remains unresolved — name nobody.**
+
 ## 1. THE SHORT ANSWER
 
 A boat full of gunpowder was moored in the middle of a university city, and somebody fried fish.

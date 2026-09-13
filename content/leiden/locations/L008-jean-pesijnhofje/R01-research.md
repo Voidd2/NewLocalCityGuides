@@ -7,7 +7,27 @@ Status: **R01 COMPLETE** → `L008-R02` next
 
 ---
 
-## 1. ⚠️ THE CORRECTION THAT CHANGES THIS LOCATION
+## 0. ⚠️ THIS FILE'S OWN CORRECTION WAS PARTLY WRONG — read `R02` first
+
+`R02` round 1 established the fuller record and it differs from §1 below:
+
+> The hofje was founded by **Jean Pesijn *and* Marie de Lannoy together**, set out in their
+> **testaments of July and October 1655**. Their **only daughter, also named Marie, did die of
+> the plague**, and her death is why the October testament confirmed the decision. The houses
+> were **built in 1683** and **first occupied in 1686**. It was for **elderly married couples**
+> of the Walloon community, housed free and supported, with ***preuven*** — fixed annual or
+> weekly distributions of money and goods.
+
+So: the discovery pass's plague-daughter story was **true**; §1's claim that it was "attached to
+the wrong person" was an over-correction built on one partial source. Marie de Lannoy is still a
+named woman in the MVP, but as **co-author of a will**, not as a widow acting alone.
+
+**§1 below is kept as written, not quietly rewritten, because the sequence of errors is itself
+the lesson: `R02` may not be skipped anywhere on the grounds that `R01` already checked.**
+
+---
+
+## 1. ⚠️ THE CORRECTION THAT CHANGES THIS LOCATION *(superseded — see §0)*
 
 The candidate entry (`C041`) said Jean Pesijn founded the hofje after his daughter died of
 plague. **The better sources say something different and more significant.**

@@ -130,22 +130,24 @@ written for any location until its `R02` passes.**
 | | Location | R01 | R02 |
 |---|---|:-:|:-:|
 | L001 | De Burcht | ✅ | — |
-| L002 | Vismarkt | ✅ | — |
+| L002 | Vismarkt | ✅ | 🔄 |
 | L003 | Koornbrug | ✅ | — |
 | L004 | De Blauwe Steen | ✅ | — |
 | L005 | Gravensteen | ✅ | — |
 | L006 | Pieterskerk | ✅ | — |
 | L007 | Pilgrims' quarter | ✅ | — |
-| L008 | Jean Pesijnhofje | ✅ | — |
-| L009 | Buskruitramp 1807 | ✅ | — |
+| L008 | Jean Pesijnhofje | ✅ | 🔄 |
+| L009 | Buskruitramp 1807 | ✅ | 🔄 |
 | L010 | Hortus Botanicus | ✅ | — |
 | L011 | Weddesteeg | ✅ | — |
-| L012 | Leidens Ontzet | ✅ | — |
+| L012 | Leidens Ontzet | ✅ | 🔄 |
 | L013 | Wevershuis | ✅ | — |
 | L014 | Cleveringa 1940 | ✅ | — |
 
-| L001-R02 … L014-R02 | Source verification per location (master §8) | `READY` | — | R01 ✔ | per-claim `SourceRecord`s |
-| LDN-ROUTE-001 | Derive route candidates from L001–L014 | `READY` | — | LDN-MVP-001 ✔ | `content/leiden/routes/` |
+| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | `docs/qa/R02-verification-round-1.md` — round 1 done for L002, L008, L009, L012 |
+| LDN-ROUTE-001 | Route proposals from L001–L014 | `DONE` | Claude | — | `content/leiden/routes/leiden-route-proposals.md` — 6 routes proposed |
+| R03-SHARED | Shared city-wide reconstruction references | `STARTED` | Claude | L011-R01 | `docs/research/leiden-reconstruction-references.md` |
+| LDN-ROUTE-002 | Recompute routes from real coordinates; resolve the RT005 question | `BLOCKED` | — | ENG-GEO-001 | `content/leiden/routes/` |
 
 **Hard rule reminder:** there is **no** flagship, hero or main location, and there will not be
 one — not even now that L001–L014 exist. IDs follow walking order (master §5).
@@ -272,6 +274,10 @@ These block real work. Nothing should be guessed here (master §38).
 | ~~Q8~~ | ~~Approve the 14-location MVP~~ | — | ✅ **DECIDED 2026-09-13** — user delegated the call to Claude; approved as proposed → **DEC-014**, locations `L001`–`L014` |
 | ~~Q9~~ | ~~The WWII slot's binding content condition~~ | — | ✅ **APPROVED by the user** → **DEC-016**. Binding on all later agents |
 | Q10 | **Migration to Leiden since 1960 (C065)** — needs oral history, not archives. Scope, budget, and who tells it? | C065, release 2 | Worth doing properly or not at all. Not an MVP blocker |
+| Q11 | **The 1856 execution (L005)** — how much detail belongs in a tourist app about a named murdered 18-year-old? | L005 copy | Name both, state it plainly, do not narrate the killing, no reconstruction. Full reasoning in `L005-R01` §7 |
+| Q12 | **"Leiden Essentials" (RT005) drops all three reserved slots** — the same bias the coverage analysis corrected, reappearing at the route layer | route design | **Option C**: add L012, anchored at De Waag, which already sits between two stops on the route. Nearly free |
+| Q13 | **L012's anchor is De Waag (C008)** — a candidate deliberately left out of the MVP. It does not add a stop; it gives an unanchored one an address | L012 | Accept. Reasoning in `L012-R01` §3 |
+| Q14 | **Archive licensing** — Rijksmuseum 1807 prints (L009) and Erfgoed Leiden's Rembrandt VR (L011). Master §38 flagged this; it is now concrete | L009, L011 video | Start the Erfgoed Leiden conversation early — it is probably a partnership, not a licence fee |
 
 ---
 
