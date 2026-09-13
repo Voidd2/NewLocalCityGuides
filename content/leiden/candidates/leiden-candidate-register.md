@@ -1,12 +1,14 @@
 # LEIDEN — CANDIDATE LOCATION REGISTER
 
-Task ID: `LDN-DISC-001`
+Task IDs: `LDN-DISC-001` (first pass) · `LDN-DISC-002` (gap pass) · `LDN-VERIFY-001` (verification)
 Phase: **1A — Candidate discovery**
 Agent: Claude (Role A — City Discovery Researcher)
-Date: 2026-09-13
-Status: **DISCOVERY PASS COMPLETE** — not scored, not selected, nothing is flagship
-Candidates: **52**
-Target from master §5: 30–60 ✔
+Date: 2026-09-13 · last revised 2026-09-13 after verification
+Status: **DISCOVERY + GAP PASS COMPLETE, VERIFICATION PASS COMPLETE** — not scored, not selected, nothing is flagship
+Candidates: **60**
+Target from master §5: 30–60 ✔ (at the top of the range)
+
+Verification log: `docs/qa/LDN-VERIFY-001-verification-log.md`
 
 ---
 
@@ -113,17 +115,17 @@ Accordingly:
 ### LDN-C005 — Gravensteen
 - **Type:** Former comital prison and court building
 - **Locator:** Pieterskerkhof, opposite the Pieterskerk · **Coordinates:** TBD
-- **Era(s):** 13th c. origins · later court and prison use · now university
+- **Era(s):** early 13th c. origins · **1463** execution site · 1556 cell block · 1598 tuchthuis · 1655 spin- and rasphuis · 1672 vierschaar · **1856** last execution · university use until 2024
 - **Theme:** Justice, punishment, public spectacle, power
-- **Event/person/process:** Held as a count's stronghold, later Leiden's prison and place of judgement; executions were public events staged for an audience.
-- **What physically happened here:** People were held, tried, displayed and punished here, in full view of the churchyard crowd.
-- **Visible today:** YES — building survives, now in university use
-- **Accessibility:** PARTIAL — exterior public, interior restricted
-- **Source leads:** Erfgoed Leiden judicial archives (schepenbank / court records); Rijksmonument register; Leiden University property history
+- **Event/person/process:** Built in the early 13th century as a private refuge tower of the counts of Holland, later a prison for both the counts and the city. In the High Middle Ages the counts held a court here with a residence, a chapel (which became the Pieterskerk) and an orchard. In **1463** the carrying out of death sentences was moved from the **Blauwe Steen** on the Breestraat (see C054) to the square in front of the Gravensteen, where spectators watched from the columned gallery. Expanded in **1556** with a cell block that is still intact; a *tuchthuis* (workhouse) followed in **1598**, a *spin- en rasphuis* in **1655**, and a new *vierschaar* (courthouse) in **1672**. The last execution in Leiden took place in **1856** on the Pieterskerkhof, when **Adrianus Blom** was hanged for the murder of eighteen-year-old **Maria van Velsen**.
+- **What physically happened here:** People were held, tried, displayed and killed here, in front of an audience that had a purpose-built place to stand and watch.
+- **Visible today:** YES — building survives, including the 1556 cell block
+- **Accessibility:** PARTIAL — exterior public; the university vacated the building in 2024, so interior access must be re-checked
+- **Source leads:** *Holland Historisch Tijdschrift* article on the Gravensteen; Erfgoed Leiden judicial archives (schepenbank / court records); Pieterskerk (which now presents the Gravensteen); Rijksmonument register
 - **Story (est.):** 5 · **Video (est.):** 5
-- **Confidence:** `MEDIUM` — the *function* is well documented; specific cases must come from court records
-- **Route value:** High — 30 seconds from C003 · **Overlap:** C003
-- **Notes:** Darkest and most human story in the medieval cluster. Requires care: master §11 forbids unsourced legend presented as fact. Do not repeat execution anecdotes without an archival record.
+- **Confidence:** `HIGH` — verified in `LDN-VERIFY-001`, incl. the 1463 move and the 1856 last execution
+- **Route value:** High — 30 seconds from C003 · **Overlap:** C003, C054
+- **Notes:** Darkest and most human story in the medieval cluster, and now the best-documented. The **columned gallery for spectators** is a real, still-visible object — a rare case where "look at where people stood to watch" is verifiable. Master §11 still applies: do not repeat undocumented execution anecdotes. The named 1856 case is documented and datable; treat other cases the same way or leave them out.
 
 ### LDN-C006 — Breestraat
 - **Type:** Historic main street
@@ -143,17 +145,17 @@ Accordingly:
 ### LDN-C007 — Stadhuis van Leiden
 - **Type:** City hall
 - **Locator:** Breestraat 92 · **Coordinates:** TBD
-- **Era(s):** 16th c. Renaissance façade · **1929 fire** · rebuilt 1930s
+- **Era(s):** façade **1597** · **fire 12 February 1929** · rebuilt 1934–1948
 - **Theme:** Civic government; destruction and reconstruction
-- **Event/person/process:** A celebrated Renaissance façade fronted the city hall; a major fire in 1929 destroyed much of the building, and what stands today is substantially a reconstruction behind a surviving front.
-- **What physically happened here:** Four centuries of civic decisions, and one night that erased most of them.
-- **Visible today:** PARTIAL — façade survives, interior is 20th c.
+- **Event/person/process:** The Breestraat façade of **1597** is by **Lieven de Key**, in Obernkirchener sandstone, and is regarded as the **longest Renaissance façade in the Netherlands**. The city hall burned down on **12 February 1929**; everything had to be rebuilt except that façade, which was reconstructed in the old style using the surviving remains. In July **1934** the municipal council commissioned **Cornelis Jonke Blaauw** (1885–1947) to design the new city hall: the building came into use in **1940**, the council chamber in **1945**, the citizens' hall in **1948**.
+- **What physically happened here:** Four centuries of civic decisions, and one night in February that erased almost all of them — followed by nineteen years of putting the building back.
+- **Visible today:** PARTIAL — façade survives (rebuilt from its own remains), interior is 20th c.
 - **Accessibility:** PARTIAL
-- **Source leads:** Erfgoed Leiden photographic collection (the 1929 fire is heavily photographed); municipal archives; Rijksmonument register
+- **Source leads:** Erfgoed Leiden (*Verhalen: Stadhuisgevel*, and the photographic collection — the 1929 fire is heavily photographed); RCE monument register entry 519571; Nieuwe Instituut archive on the rebuilding; municipal archives
 - **Story (est.):** 4 · **Video (est.):** 5
-- **Confidence:** `MEDIUM` — fire year and extent must be confirmed from municipal/press archive
-- **Route value:** High · **Overlap:** C006, C019 (3 October ceremonies)
-- **Notes:** Rare case where genuine archival *photographs* of the disaster exist — a true Then-vs-Now (master §13) with no reconstruction needed.
+- **Confidence:** `HIGH` — verified in `LDN-VERIFY-001`
+- **Route value:** High · **Overlap:** C006, C016 (3 October ceremonies), C054
+- **Notes:** Rare case where genuine archival *photographs* of the disaster exist — a true Then-vs-Now (master §13) with no reconstruction needed. The subtle, excellent detail for visitors: the façade you are looking at is **both** 1597 and a 1930s rebuild of itself.
 
 ### LDN-C008 — De Waag (weigh house)
 - **Type:** Municipal weigh house
@@ -188,17 +190,17 @@ Accordingly:
 ### LDN-C010 — Koornbrug
 - **Type:** Roofed bridge / grain exchange
 - **Locator:** Over the Nieuwe Rijn, Burgsteeg end · **Coordinates:** TBD
-- **Era(s):** Bridge medieval; roof structure 18th c. (confirm)
+- **Era(s):** name from **1443** (first grain market here) · present three-arched stone bridge **1642** · **roofs 1824** · rijksmonument 1968 · roofs restored 1978
 - **Theme:** Grain, bread, the logistics of feeding a city
-- **Event/person/process:** Grain was traded on the bridge; the colonnaded roof kept it dry, the floor openings ventilated it, and storage sat beneath the cover.
+- **Event/person/process:** The bridge takes its name from **1443**, when the grain market was first held here. An earlier bridge was replaced in **1642** by the present three-arched bridge with dressed stone fronts. The **double roofing was added in 1824**, in neoclassical style, to the design of **Salomon van der Paauw**, Leiden's city architect, to keep the goods dry. Grain was stored under the roof; the **holes in the ceiling are ventilation**. The roofing carries **Leiden's city arms — the crossed keys — surrounded by ears of grain.**
 - **What physically happened here:** A bridge was turned into a piece of commercial machinery — an unusually clever, very visible piece of design.
-- **Visible today:** YES — the roof survives and is unmistakable
+- **Visible today:** YES — the roofs survive and are unmistakable
 - **Accessibility:** YES
-- **Source leads:** Erfgoed Leiden; Rijksmonument register; grain-trade ordinances
+- **Source leads:** Erfgoed Leiden (*Verhalen: Koornbrug*); RCE monument register (listed 1968); Sleutelstad coverage of the 2024–25 bicentenary restoration; municipal grain-trade ordinances
 - **Story (est.):** 4 · **Video (est.):** 4
-- **Confidence:** `MEDIUM` — dating of the roof needs confirmation
-- **Route value:** Very high · **Overlap:** C008, C009
-- **Notes:** A structure whose *function explains its shape* is the ideal "look around you" object: point at the ceiling holes and the story is self-evident.
+- **Confidence:** `HIGH` — verified in `LDN-VERIFY-001`
+- **Route value:** Very high · **Overlap:** C008, C009, C052
+- **Notes:** **Correction from the discovery pass:** the roofs are **19th-century (1824), not 18th**. The bridge is 1642 and the *name* goes back to 1443 — three different dates that are easy to blur into one and must not be. A structure whose function explains its shape is the ideal "look around you" object: the ventilation holes and the keys-and-grain-ears coat of arms are both verifiable, specific things to point at.
 
 ### LDN-C011 — Morspoort
 - **Type:** City gate (surviving)
@@ -350,17 +352,17 @@ Accordingly:
 ### LDN-C020 — Oude Sterrewacht (Old Observatory)
 - **Type:** Observatory
 - **Locator:** Sterrenwachtlaan, beside the Hortus · **Coordinates:** TBD
-- **Era(s):** rooftop observatory from **1633** · purpose-built observatory completed **1861**
+- **Era(s):** observatory from **1633** (on the Academy building roof) · present building **1861** · in use as the observatory until **1974**
 - **Theme:** Looking outward; the industrialisation of observation
-- **Event/person/process:** The university observed from the Academy building roof as early as 1633; the Oude Sterrewacht was completed in 1861 as the world's first purpose-built university observatory (claim to verify).
-- **What physically happened here:** Nightly, methodical measurement of the sky, from a flat, foggy, light-polluted country.
-- **Visible today:** YES
-- **Accessibility:** PARTIAL — guided access; confirm
-- **Source leads:** Leiden University history dossier; Leiden Observatory archives; Rijksmonument register
+- **Event/person/process:** The university observed from the Academy building roof as early as **1633**. The present building, designed by architect **Henri Camp** and built under the direction of astronomer **Frederik Kaiser**, came into use in **1861** on ground ceded by the Hortus, on the corner of a former bastion at the Witte Singel. It housed Leiden Observatory until **1974**.
+- **What physically happened here:** Nightly, methodical measurement of the sky, from a flat, foggy country — and a campaign by one determined astronomer to get a real building for it.
+- **Visible today:** YES — national monument
+- **Accessibility:** PARTIAL — guided access; confirm current provision
+- **Source leads:** Leiden University *Oude Sterrewacht* pages (*Geschiedenis*); Leiden Observatory archives; RCE monument register
 - **Story (est.):** 4 · **Video (est.):** 4
-- **Confidence:** `HIGH` (1633 and 1861) / `LOW` (the "world's first" superlative — do not publish unverified)
+- **Confidence:** `HIGH` (1633, 1861, 1974, Camp, Kaiser) · **superlative: DISPUTED**
 - **Route value:** High — adjacent to C019 · **Overlap:** C019
-- **Notes:** Superlatives are exactly where this project loses credibility. Either source it properly or drop the claim.
+- **Notes:** **Superlative resolved in `LDN-VERIFY-001`: do not write "the world's first".** Leiden University itself describes it as the *oldest existing university observatory in the world* (founded 1633, in this building since 1861); other sources rank it second-oldest after the Vatican Observatory (1578). Because reputable sources disagree, the product should say what is not in dispute — *"the observatory has been running since 1633; this building has housed it since 1861"* — which is more impressive than the contested claim anyway. **Frederik Kaiser is the story here**: the man who argued Leiden into building it. Type G (person-centred) candidate.
 
 ### LDN-C021 — Kamerlingh Onnes Laboratory
 - **Type:** Physics laboratory (now university/other use)
@@ -440,17 +442,17 @@ Accordingly:
 ### LDN-C026 — Bibliotheca Thysiana
 - **Type:** Purpose-built 17th-century library
 - **Locator:** Rapenburg 25 · **Coordinates:** TBD
-- **Era(s):** 1655
+- **Era(s):** founded by testament **1653** · building **1655**
 - **Theme:** Knowledge as a bequest; the physical form of a private library
-- **Event/person/process:** Built in **1655** to house the library of Johannes Thysius, and said to be the only surviving purpose-built 17th-century library building in the Netherlands still on its original site (claim to verify).
+- **Event/person/process:** Founded by the will of the young jurist **Joannes Thysius (1622–1653)**, who died at 31 and left **20,000 guilders** for a public library with a custodian's dwelling. The building went up in **1655** on the west side of the Rapenburg at the corner with the Groenhazengracht; the design is attributed to Leiden city architect **Arent van 's-Gravensande** — the same architect as the Lakenhal (C032) and the Marekerk (C044). The collection is roughly **2,500 books** plus thousands of pamphlets.
 - **What physically happened here:** A young man's book collection was given to the public and given a building of its own — an idea barely a century old at the time.
-- **Visible today:** YES — exterior
+- **Visible today:** YES — exterior; the interior survives in its original state
 - **Accessibility:** LOW — interior access very limited
-- **Source leads:** Bibliotheca Thysiana foundation; Leiden University Libraries; Rijksmonument register
+- **Source leads:** Leiden University Libraries (Bibliotheca Thysiana location page); Vereniging Hendrick de Keyser; RCE / Open Monumentendag; Rijksmonument register
 - **Story (est.):** 4 · **Video (est.):** 3
-- **Confidence:** `MEDIUM` (existence/date) / `LOW` (the uniqueness claim)
-- **Route value:** High (Rapenburg) · **Overlap:** C023, C033
-- **Notes:** Limited access caps its value as a *stop* but makes it ideal as an exterior "look up" micro-story within a Rapenburg walk.
+- **Confidence:** `HIGH` — **superlative VERIFIED and now safe to use, in this exact wording:** the only 17th-century library in the Netherlands preserved in its original housing, and the only surviving Dutch 17th-century building designed as a public library.
+- **Route value:** High (Rapenburg) · **Overlap:** C023, C032, C033, C044
+- **Notes:** Limited access caps its value as a *stop* but makes it ideal as an exterior "look up" micro-story within a Rapenburg walk. He was **31 when he died** — the human hook is the age, not the architecture.
 
 ### LDN-C027 — Naturalis Biodiversity Center
 - **Type:** Natural history museum and research institute
@@ -470,17 +472,17 @@ Accordingly:
 ### LDN-C028 — Pesthuis
 - **Type:** Former plague hospital
 - **Locator:** Near the Bio Science Park / Naturalis complex · **Coordinates:** TBD
-- **Era(s):** mid-17th c. (c. 1657–1661)
-- **Theme:** Epidemic, isolation, fear
-- **Event/person/process:** Built as an isolation hospital for plague victims, deliberately sited outside the city.
-- **What physically happened here:** The sick were removed from the city and held apart from it. The building's isolation *is* the story.
-- **Visible today:** YES — the building survives
-- **Accessibility:** PARTIAL — depends on current use; verify
-- **Source leads:** Erfgoed Leiden; Rijksmonument register; municipal health/plague records
+- **Era(s):** plague epidemic **1655** · building approved **1657** · relief **1660** · completed **1661** · Naturalis entrance from **1998**
+- **Theme:** Epidemic, isolation, fear — and a building that was never needed
+- **Event/person/process:** When plague broke out in **1655**, Leiden still had no permanent pest house. The city council approved construction in **1657**; the plan was drawn by city carpenter **Huybert Cornelisz. van Duyvenvlucht**, probably following the Amsterdam example. The building is square, with eight large halls around an inner courtyard, and a moat splitting that courtyard so the men's and women's sections were separated. The relief above the entrance gate is signed by **Rombout Verhulst** and dated **1660**; it shows **the plague as a fury with a wolf**. The building was completed in **1661** — and **never served as a pest house**, because by then the epidemic was ending. From the opening of Naturalis on **7 April 1998** it served as that museum's entrance building; the state put the complex up for sale in 2019.
+- **What physically happened here:** Almost nothing. The city spent four years building a place to put the dying, and the dying stopped coming.
+- **Visible today:** YES — the building survives, rijksmonument
+- **Accessibility:** PARTIAL — current use and public access are in flux since the 2019 sale; **verify before publishing any visiting information**
+- **Source leads:** Erfgoed Leiden (*Vondst van de week*: Leiden's first pest house); Rijksmonumenten register entry 25439; Rijksvastgoedbedrijf 2019 sale announcement; pesthuisleiden.nl; municipal health/plague records
 - **Story (est.):** 5 · **Video (est.):** 4
-- **Confidence:** `LOW` — dates and current status must be verified before any use
-- **Route value:** Low — outside the core · **Overlap:** C027, C037
-- **Notes:** Powerful, dark, under-told, and post-2020 it lands differently. Geographically awkward. Verify first.
+- **Confidence:** `HIGH` — raised from `LOW` in `LDN-VERIFY-001`. Current status remains `MEDIUM`.
+- **Route value:** Low — outside the core · **Overlap:** C027, C037, C012 (Verhulst also carved the Zijlpoort)
+- **Notes:** **The verification pass completely changed this story.** It is not "a plague hospital" — it is *a plague hospital that arrived too late to be used*, which is far stranger and more memorable. The Verhulst relief of plague-as-a-fury-with-a-wolf is a specific, dated, still-visible object: a first-rate "look above the entrance" item that also links this candidate to the Zijlpoort (C012) through the same sculptor.
 
 ---
 
@@ -658,17 +660,19 @@ Accordingly:
 ### LDN-C040 — Leiden's hofjes (almshouse courtyards)
 - **Type:** Almshouse courtyards — a citywide network
 - **Locator:** ~35 hofjes across the centre; cluster around Kloksteeg/Pieterskerk · **Coordinates:** TBD
-- **Era(s):** **1492** (St. Annahofje) onward; mainly 16th–17th c.
+- **Era(s):** **1467** (Jeruzalemhof, the oldest) onward; mainly 16th–17th c.
 - **Theme:** Charity, old age, and hidden interior worlds
-- **Event/person/process:** Leiden's centre holds around **35 hofjes**. They arose mainly in the 16th and 17th centuries as commerce and industry swelled the city and the burden of poor relief grew with it. The **St. Annahofje** (also called the Aalmoeshuis), founded **1492**, is the oldest; **Groot Sionshofje** is the second oldest.
+- **Event/person/process:** Leiden's centre holds **35 hofjes**. They arose mainly in the 16th and 17th centuries as commerce and industry swelled the city and the burden of poor relief grew with it. The four oldest are **Jeruzalemhof (1467)**, **Groot Sionshof (1480)**, **Sint Stevenshof (1487)** and the **Sint Anna Aalmoeshuis (1492)**. The Sint Annahofje was founded on the yard behind the house of the recently deceased Leiden brewer Willem Claesz on the Hooigracht, by **Willem Willemsz and Clemense Willemsdr**; it housed **13 women** and is the only Leiden hofje that still has its own chapel.
 - **What physically happened here:** Elderly poor people were given housing on charitable terms, inside quiet gardens hidden behind street doors.
 - **Visible today:** YES — many survive and several are visitable
 - **Accessibility:** PARTIAL — private homes; etiquette and opening hours vary and must be stated accurately
-- **Source leads:** geschiedenisvanleiden.nl hofje series; Erfgoed Leiden; individual hofje foundations; Rijksmonument register
+- **Source leads:** Erfgoed Leiden (*Verhalen: Sint Annahofje of Anna Aalmoeshuis*); geschiedenisvanleiden.nl hofje series; aalmoeshuis.nl; individual hofje foundations; Rijksmonumenten register entry 25131
 - **Story (est.):** 5 · **Video (est.):** 4
-- **Confidence:** `HIGH` (count, origins, St. Annahofje 1492) / `MEDIUM` (per-hofje details)
-- **Route value:** Very high — a natural themed route on its own · **Overlap:** C041, C042
-- **Notes:** Leiden is arguably the hofje capital of the Netherlands — a genuinely distinctive claim. **Access sensitivity is a hard requirement:** people live here. Any "look around you" instruction must respect that, and the product must not send crowds through someone's front garden.
+- **Confidence:** `HIGH` (35 hofjes; the four oldest and their dates; St. Anna's founders and chapel) / `MEDIUM` (per-hofje details)
+- **Route value:** Very high — a natural themed route on its own · **Overlap:** C041, C042, C057
+- **Notes:** **Correction from the discovery pass: the Sint Annahofje (1492) is NOT the oldest.** The discovery pass repeated a claim found in general sources; the Jeruzalemhof of **1467** predates it by 25 years. This is exactly the kind of confident, widely-repeated error the verification pass exists to catch — and a warning that "oldest" claims in tourism copy are usually wrong.
+  **Clemense Willemsdr**, co-founder of the Sint Annahofje in 1492, is one of the few **named Leiden women** to surface in this register at all (see C059) — worth following into the archives.
+  **Access sensitivity is a hard requirement:** people live here. Any "look around you" instruction must respect that, and the product must not send crowds through someone's front garden.
 
 ### LDN-C041 — Jean Pesijnhofje
 - **Type:** Almshouse courtyard
@@ -722,17 +726,18 @@ Accordingly:
 ### LDN-C044 — Marekerk
 - **Type:** Church (centrally planned, Protestant)
 - **Locator:** Lange Mare · **Coordinates:** TBD
-- **Era(s):** mid-17th c. (c. 1649 onward)
+- **Era(s):** built **1639–1649** · sandstone Lange Mare façade after **1657** · organ moved here **1733**
 - **Theme:** A building designed for a new kind of worship
-- **Event/person/process:** Built as a purpose-designed Protestant church — an octagonal, centrally planned space organised around preaching rather than an altar, a deliberate break from the medieval churches the Reformation inherited.
-- **What physically happened here:** For the first time in Leiden, a congregation's building was shaped by its *theology* instead of adapted to it.
+- **Event/person/process:** Construction began in **1639** and finished in **1649**. The design, in Dutch classicist style, is by **Arent van 's-Gravesande** — architect of the Lakenhal (C032) and the Bibliotheca Thysiana (C026) — with construction overseen by his teacher **Jacob van Campen**. It is **one of the first churches in the Netherlands designed for Protestant worship**: the octagonal central plan exists so the **pulpit can stand in the middle** with the pews arranged around it. The sandstone façade with the main entrance on the Lange Mare is later, after 1657. The organ, made around **1560** by **Pieter Jansz. de Swart** for the **Pieterskerk**, was moved here in **1733** by organ builder Rudolf Garrels, who rebuilt and enlarged it.
+- **What physically happened here:** For the first time in Leiden, a congregation's building was shaped by its *theology* instead of adapted to it. The room is a diagram of what its builders thought worship was.
 - **Visible today:** YES
 - **Accessibility:** PARTIAL — limited opening; verify
-- **Source leads:** Rijksmonument register; Erfgoed Leiden building history; Marekerk foundation; Dutch architectural history literature
+- **Source leads:** marekerk.nl / marekerk.com (*De kerk*); Geschiedenis van Zuid-Holland (*De Marekerk in Leiden*); RCE monument register; Dutch architectural history literature on Van 's-Gravesande and Van Campen
 - **Story (est.):** 4 · **Video (est.):** 3
-- **Confidence:** `LOW` — the date and any "first in the Netherlands" claim must be verified before publication
-- **Route value:** Medium-high · **Overlap:** C003, C004
+- **Confidence:** `HIGH` — raised from `LOW` in `LDN-VERIFY-001`. **Superlative corrected: write "one of the first", never "the first".**
+- **Route value:** Medium-high · **Overlap:** C003, C004, C026, C032
 - **Notes:** The comparison with C003/C004 is the story: three churches, three completely different ideas of what a church is for. That contrast is worth more than any of them alone.
+  Two cross-links the verification pass uncovered: **Arent van 's-Gravesande** built this, the Lakenhal and the Thysiana — one architect, three candidate locations, a ready-made route thread. And the **organ physically moved from the Pieterskerk (C003) to here in 1733** — an object that connects two stops, which is unusually good material for a route that wants continuity rather than a list.
 
 ### LDN-C045 — Steenschuur and the gunpowder disaster of 1807
 - **Type:** Canal / disaster site
@@ -860,82 +865,227 @@ Accordingly:
 
 ---
 
+# CLUSTER H — GAP-CLOSING CANDIDATES (`LDN-DISC-002`) (8)
+
+> Added 2026-09-13 by the second discovery pass, to close the seven gaps documented at the
+> end of the first pass. Same rules apply: nothing here is selected, scored or verified
+> beyond one cross-check.
+
+### LDN-C053 — Castellum Matilo / Park Matilo
+- **Type:** Roman fort site, now an archaeological park
+- **Locator:** Roomburg district, east of the centre · **Coordinates:** TBD
+- **Era(s):** Roman period · park opened after a 2009 council decision
+- **Theme:** Leiden before Leiden; the northern edge of the Roman Empire
+- **Event/person/process:** **Castellum Matilo** was a fort on the **Limes**, the Roman Empire's northern frontier, at the strategic crossing of the **Rhine** and the **Canal of Corbulo** — a waterway the Romans dug to link the Rhine and the Meuse. It held roughly **500 soldiers** and is probably one of the best-preserved castellums in the Netherlands. The park keeps the Roman remains buried while making them legible above ground: an earthen bank traces the castellum's perimeter, six replica watchtowers give views over the area, and there is a Roman herb garden. It is a designated archaeological monument.
+- **What physically happened here:** For generations this was the edge of the known world, garrisoned by men from all over the empire, at a junction two Roman engineers chose for exactly the same reason the medieval city later chose the Burcht: the water.
+- **Visible today:** PARTIAL — nothing Roman is exposed; the park *represents* what is underneath
+- **Accessibility:** YES — public park, level paths
+- **Source leads:** parkmatilo.nl (*Het verhaal van Matilo*); RCE practice-example publication on Park Matilo; Erfgoed Leiden publication *Matilo – Rodenburg – Roomburg*; Romeinse Limes Nederland; Rijksmuseum van Oudheden
+- **Story (est.):** 5 · **Video (est.):** 5
+- **Confidence:** `HIGH`
+- **Route value:** Low for a centre walk — outside the historic core · **Overlap:** C001, C002
+- **Notes:** **Closes gap 1 (Roman Leiden).** Pairs beautifully with C001/C002: the Romans and the medieval counts independently picked the same water junction to fortify. That is the kind of thousand-year rhyme this product exists to show. Honest caveat: the site is a reconstruction-by-landscape, so a Type A video here reconstructs *from archaeology*, not from a surviving building — which must be labelled clearly under master §13.
+
+### LDN-C054 — De Blauwe Steen
+- **Type:** Stone marker set in the roadway
+- **Locator:** Breestraat, at the junction with Pieterskerkchoorsteeg and Maarsmansteeg · **Coordinates:** TBD
+- **Era(s):** known in justice administration by **1321** · execution site until **1463** · present to this day
+- **Theme:** The exact centre of the medieval city, and the exact spot where you were sentenced
+- **Event/person/process:** A smooth hexagonal blue slate stone (from Belgium) set into the street. It marks the symbolic centre point of the four **vierendelen** — the quarters into which medieval Leiden was divided before the first expansion of **1294**. From the 14th century it functioned as a place of justice: the accused stood on or by the stone to hear sentence, proclaimed publicly from the **Roepstoel**, a platform on the town hall façade. It is documented as part of the city's justice administration by **1321**. In **1463** the carrying out of death sentences moved to the square before the Gravensteen (C005). One reading holds that blue signified civil authority, red ecclesiastical, white feudal.
+- **What physically happened here:** People stood on this stone and were told, out loud, in front of their neighbours, what was going to happen to them.
+- **Visible today:** YES — the stone is in the street and people walk over it all day without noticing
+- **Accessibility:** YES — but it is in a road; the "look down" instruction must be written safely
+- **Source leads:** geschiedenisvanleiden.nl (*Breestraat – De Blauwe Steen*, and *'t Gerecht – de lokale rechtspraak in de 17e eeuw*); Erfgoed Leiden; de Leidse Canon; municipal judicial archives
+- **Story (est.):** 5 · **Video (est.):** 4
+- **Confidence:** `HIGH` (centre of the vierendelen; justice function; 1321; 1463) / `MEDIUM` (the blue/red/white colour symbolism — present it as a reading, not a fact)
+- **Route value:** Very high — dead centre of the city, on the Breestraat spine · **Overlap:** C005, C006, C007
+- **Notes:** **Closes gap 6 (justice and punishment)** and is one of the best candidates in the whole register for master §12's "look around you": a specific object, underfoot, that thousands of people cross daily without knowing. Small, free, always accessible, and it reframes the entire street. The pairing C054 → C005 (sentenced here, executed there, after 1463) is a complete two-stop narrative.
+
+### LDN-C055 — Heilige Geest- of Arme Wees- en Kinderhuis
+- **Type:** Former orphanage
+- **Locator:** Hooglandse Kerkgracht · **Coordinates:** TBD
+- **Era(s):** first mentioned **1316** · orphanage by the late 16th c. · moved here **1583** · main building **1656** · extension **1773/4**
+- **Theme:** What a city did with its children
+- **Event/person/process:** The Heilige Geest appears in writing in **1316** as an institution for poor relief; by the late 16th century it was almost exclusively an orphanage. A **1577** decision reorganised poor and orphan care and handed the building to the *Heilig Geestmeesters*; in **1583** the institution moved to the Hooglandse Kerkgracht, where the number of children reached about **900 by 1672**. Children received shelter, food, medical care and schooling in reading, writing and arithmetic; **boys were then trained as craftsmen, while girls generally stayed in the institution**, working in the sewing room or the household.
+- **What physically happened here:** Hundreds of children at a time were housed, fed, taught, and then sorted by sex into two different futures.
+- **Visible today:** YES — rijksmonument
+- **Accessibility:** PARTIAL — verify current use and access
+- **Source leads:** Erfgoed Leiden (*Inneemboek Heilige Geest of Weeshuis Leiden 1668–1680* — an actual intake register); Geschiedenis van Zuid-Holland (*Geschiedenis van het Weeshuis*); Rijksmonumenten register entry 24895; Historiek (*Brieven aan het Heilige Geest Weeshuis*)
+- **Story (est.):** 5 · **Video (est.):** 4
+- **Confidence:** `HIGH`
+- **Route value:** High — central, beside C004 · **Overlap:** C004, C036, C057, C039
+- **Notes:** **Closes part of gap 5 (orphanages and care).** The **intake register 1668–1680** in Erfgoed Leiden is a named, datable primary source listing real children — the single best lead in the register for master §9's "are specific historical people documented?". The girls-stay/boys-leave detail is verified, concrete and quietly devastating; it also links straight to C057.
+
+### LDN-C056 — Museum Het Leids Wevershuis
+- **Type:** Weaver's house museum
+- **Locator:** Middelstegracht 143 (verify) · **Coordinates:** TBD
+- **Era(s):** 17th c. house · textile-period interpretation
+- **Theme:** The cloth industry at the scale of one family and one room
+- **Event/person/process:** A restored weaver's house presenting the working and living conditions of Leiden's textile workers, including the Pilgrims' place in the Leiden textile world of 1609–1620.
+- **What physically happened here:** A family lived in the same room as the loom that fed them.
+- **Visible today:** YES
+- **Accessibility:** LOW — small historic house; verify
+- **Source leads:** wevershuis.nl (incl. *Pilgrims in de Leidse textielwereld, 1609–1620*); Museum De Lakenhal; Erfgoed Leiden
+- **Story (est.):** 5 · **Video (est.):** 4
+- **Confidence:** `MEDIUM`
+- **Route value:** High · **Overlap:** C036, C037, C042, C057
+- **Notes:** **This is the physical anchor C036 was missing.** The discovery pass flagged the cloth industry as Leiden's biggest untold story with nowhere to stand; this is somewhere to stand. It also connects the Pilgrims (C042) to the textile industry that actually employed them — which is the honest version of that story. As with C043, its second value is as an `R03` **reconstruction reference**: a surviving interior of the right type.
+
+### LDN-C057 — Spinsters and factory children: who actually made the cloth
+- **Type:** Social/labour history (needs a vantage — C056 or C032 are the candidates)
+- **Locator:** Former textile quarters; vantage TBD · **Coordinates:** TBD
+- **Era(s):** 17th c. through the **1889** and **1890** labour laws
+- **Theme:** The people the Golden Age was built on
+- **Event/person/process:** **Thousands of women** spun yarn for the woollen cloth that left Leiden via Amsterdam for markets worldwide; spinning was almost always badly paid and low status. In the 17th century **orphanage children already worked long days in the Leiden wool industry**. Around **1860, roughly forty per cent** of the people working in Leiden's textile factories were **under sixteen**, a large share of them under twelve — women and children being cheaper, and their small hands useful in the spinning mills. Wages were below subsistence, so every member of a family worked. The first Dutch law restricting women's and children's labour came in **1889**, followed by the Labour Act of **1890**.
+- **What physically happened here:** The wealth that built the Rapenburg was produced by women and children working to exhaustion a few streets away.
+- **Visible today:** PARTIAL — in the buildings, not in any monument
+- **Accessibility:** Depends on vantage
+- **Source leads:** *De Leidse fabriekskinderen* (Utrecht University repository); *De draad in eigen handen: vrouwen en loonarbeid in de Nederlandse textielnijverheid, 1581–1810*; Geschiedenis van Zuid-Holland on child labour; Historische Vereniging Oud Leiden — Dirk van Eck working group; Museum Het Leids Wevershuis
+- **Story (est.):** 5 · **Video (est.):** 4
+- **Confidence:** `HIGH` (the 1860 figure, the orphan labour, the 1889/1890 laws) / `MEDIUM` (Leiden-specific wage data)
+- **Route value:** High if anchored at C056 or C032 · **Overlap:** C036, C039, C055, C056
+- **Notes:** **Closes gap 4 (women's history) in its most important form** — not "a famous woman" but the tens of thousands of women whose work *was* the city's economy. The 40%-under-sixteen figure is specific, sourced and shocking; the orphanage link to C055 is direct and documented. This is the counterweight the Golden Age cluster needs, and it is an argument for including C056 or C032 in the MVP on substance rather than on charm.
+
+### LDN-C058 — The forgotten bombardments, 10–11 December 1944
+- **Type:** Bombing sites / memorial
+- **Locator:** Residential areas near Leiden's stations; memorial stone in Leiden Noord · **Coordinates:** TBD
+- **Era(s):** **10 and 11 December 1944**
+- **Theme:** Killed by your own side, then written out of the record
+- **Event/person/process:** On 10 and 11 December 1944 **RAF** aircraft bombed Leiden. The intended targets were the **railway and the stations** — German **V2 rockets** were being moved over these tracks towards The Hague, with Leiden's main station and the halt known as **'t Spoortje** used for transshipment. The bombs missed and struck **residential areas** near the stations. **At least 60 people were killed** (other counts give **63**), more than a hundred were wounded, and hundreds of Leiden residents lost their homes. In death notices the cause was not given as a bombing but described as **a fatal accident** — it seemed improper to blame the Allies, who were the liberators. The episode was largely forgotten until recent research and commemoration, including Rob van den Nieuwendijk's book *De Vergeten Bombardementen* (2008) and a municipal memorial gathering.
+- **What physically happened here:** Ordinary streets were destroyed by the side everyone was waiting for, and the city agreed, quietly, not to say so.
+- **Visible today:** PARTIAL — rebuilt streets; a memorial stone in Leiden Noord
+- **Accessibility:** YES
+- **Source leads:** Erfgoed Leiden (*Vondst van de week: Bombardementen op Leiden*; *Gedenksteen slachtoffers bombardement Leiden Noord*); leiden4045.nl (*Bombardementen en beschietingen*); Netwerk Oorlogsbronnen; Rob van den Nieuwendijk, *De Vergeten Bombardementen* (2008); Sleutelstad and Omroep West coverage of the commemoration
+- **Story (est.):** 5 · **Video (est.):** 2
+- **Confidence:** `HIGH` (dates, targets, V2 context, casualty range, the "fatal accident" framing) / `MEDIUM` (exact figures — sources differ between 60 and 63; say so rather than picking one)
+- **Route value:** Medium — near the station, so a natural first or last stop for arrivals · **Overlap:** C047, C048
+- **Notes:** **Closes gap 2.** The first discovery pass deliberately excluded this rather than guess at it; it is now sourced. The *forgetting* is the story — a city that could not grieve publicly because of who dropped the bombs. **Like C047 and C048, this should not receive AI-generated reconstruction imagery** (DEC-011 extends here): real dead people, named, within living memory of their families. Archival photographs, the memorial stone, and the documents. The casualty discrepancy must be presented honestly as a discrepancy — master §5 `R05` uncertainty register.
+
+### LDN-C059 — The Leiden women's movement
+- **Type:** Social movement / associated addresses
+- **Locator:** University quarter; specific addresses TBD · **Coordinates:** TBD
+- **Era(s):** **1860–1990**, first wave from the later 19th c.
+- **Theme:** Who was allowed to think, and who had to marry one instead
+- **Event/person/process:** Research on the Leiden women's movement covers **1860–1990**. In the first feminist wave the people involved in Leiden were **mainly the wives of male professors**, because there were as yet almost no female students. One of the first Leiden feminists was **Aletta Lorentz-Kaiser (1858–1931)**, married to the physicist **Hendrik Lorentz**, Nobel laureate and professor at Leiden from **1878**.
+- **What physically happened here:** In a city that had been teaching men for three centuries, the first organised women's politics was run out of the households of the men who taught.
+- **Visible today:** PARTIAL — houses stand; nothing marks them yet
+- **Accessibility:** YES (street level)
+- **Source leads:** Leiden University research on the Leiden women's movement (2023 publication on the role of professors' wives, students and alumnae); Huygens ING *Digitaal Vrouwenlexicon van Nederland*; Atria (Institute on gender equality and women's history); Erfgoed Leiden
+- **Story (est.):** 4 · **Video (est.):** 2
+- **Confidence:** `MEDIUM` — the framing and Lorentz-Kaiser are sourced; individual addresses and events are not yet
+- **Route value:** Medium — depends entirely on finding real addresses · **Overlap:** C017, C018, C040, C057
+- **Notes:** **Closes gap 4's second half.** Two negative findings worth recording so nobody repeats them: **Aletta Jacobs** was Groningen, not Leiden, and **Anna Maria van Schurman** — the first female student in the Netherlands, admitted in **1636** — was **Utrecht**, where she attended lectures from behind a curtain. Neither belongs to Leiden and neither may be borrowed for it. The honest Leiden story is smaller and more interesting: a movement that had to start in the drawing rooms of the professoriate because the lecture halls were shut. **Research priority: find Leiden women documented in their own right** — the Huygens women's lexicon and the 1668–1680 orphanage intake register (C055) are the two best places to look, along with Clemense Willemsdr (C040).
+
+### LDN-C060 — Post-war Leiden: demolition, urban renewal and the Bio Science Park
+- **Type:** Districts / process
+- **Locator:** Inner-city renewal areas; Leeuwenhoek area west of the city · **Coordinates:** TBD
+- **Era(s):** **1957** polder purchase · **1970** Gorlaeus building · **1974** council · **1984** Bio Science Park · 2000 onward
+- **Theme:** The city that nearly demolished itself, and what it built instead
+- **Event/person/process:** Leiden was in trouble in the 1960s: extensive demolition in the city centre, factory complexes emptying or failing. The **1974** election produced a fully progressive council, and with state secretary **Jan Schaefer** Leiden became a national pioneer of large-scale **stadsvernieuwing**, with **Cees Waal** as its figurehead. From the mid-1970s the policy changed: small-scale intervention, housing first, and minimal disruption to existing social and urban structures, instead of centre redevelopment and mass housebuilding. In parallel, the university had bought **polderland in 1957**; the first students moved into the Gorlaeus building — known as *'the saucer'* — in **1970**; the **Leiden Bio Science Park** officially opened in **1984** in the Leeuwenhoek area west of the city, and remained quiet until around **2000**.
+- **What physically happened here:** The medieval centre you are walking through was very nearly cleared, and the decision not to clear it was made in the 1970s, by name, by people who can be named.
+- **Visible today:** YES — in what was kept, and in what was replaced
+- **Accessibility:** YES
+- **Source leads:** Historiek (*Van krotopruiming naar stadsvernieuwing*); Leiden University (*Bio Science Park: van lege polder tot hip stadsdeel*); Stichting Historische Publicaties Holland-Rijnland on the Bio Science Park's history; Gemeente Leiden; Erfgoed Leiden
+- **Story (est.):** 4 · **Video (est.):** 3
+- **Confidence:** `HIGH` (1957, 1970, 1974, 1984, Schaefer, Waal) / `MEDIUM` (which specific buildings were lost or saved)
+- **Route value:** Medium — but unusually valuable as a **closing stop** on any route · **Overlap:** C038, C027, C039
+- **Notes:** **Closes gap 3 (post-war and modern Leiden).** This is the answer to the question a good route should end on: *why is any of this still here?* Not because it survived by luck, but because of a specific fight in the 1970s. It also honestly frames C038 (the Meelfabriek) as part of a pattern rather than a one-off. **Still missing and worth a third pass: migration to Leiden since 1960.** This entry does not cover it and should not pretend to.
+
+---
+
 # SUMMARY AND HANDOVER
 
 ## Coverage check against master §1C
 
 | Required theme | Covered by | Status |
 |---|---|---|
-| Medieval Leiden | C001–C012 | Strong |
+| Medieval Leiden | C001–C012, C054 | Strong |
 | Siege / Relief of Leiden | C013–C018 | Strong |
 | Rembrandt / art | C029–C035 | Strong |
-| University | C017, C018, C046 | Strong |
-| Science | C019–C022, C027 | Strong |
+| University | C017, C018, C046, C059 | Strong |
+| Science | C019–C022, C027, C060 | Strong |
 | Trade | C002, C008, C010, C050, C052 | Strong |
 | Markets | C009, C051, C052 | Strong |
-| Textiles | C032, C036, C037, C039 | Strong |
-| Water | C002, C033, C049, C050 | Strong |
+| Textiles | C032, C036, C037, C039, C056, C057 | Strong |
+| Water | C002, C033, C049, C050, C053 | Strong |
 | Religion | C003, C004, C040, C041, C044, C047 | Strong |
-| Architecture | C012, C018, C032, C044, C049 | Adequate |
-| Disaster | C007, C014, C028, C045 | Strong |
-| Social history | C036–C043, C051 | Strong |
-| WWII | C046, C047, C048 | Adequate — see gaps |
-| Hidden everyday stories | C009, C010, C039, C051, C052 | Adequate |
+| Architecture | C012, C018, C026, C032, C044, C049 | Strong |
+| Disaster | C007, C014, C028, C045, C058 | Strong |
+| Social history | C036–C043, C051, C055, C057, C059 | Strong |
+| WWII | C046, C047, C048, C058 | Strong |
+| Hidden everyday stories | C009, C010, C039, C051, C052, C054 | Strong |
+| *(added)* Roman Leiden | C053 | Adequate |
+| *(added)* Post-war / modern Leiden | C060 | Adequate |
+| *(added)* Justice and punishment | C005, C054 | Adequate |
+| *(added)* Care: orphans, poor, sick | C022, C028, C040, C041, C055 | Strong |
+| *(added)* Women's history | C040, C055, C057, C059 | Adequate — see gaps |
 
-**Assessment:** Leiden's history is represented broadly enough to proceed to scoring. The
-Golden Age does not dominate. Three clusters (medieval origins, textiles/labour, science)
-are strong enough that an MVP could avoid the siege story entirely — which is exactly the
-freedom master §1C was written to protect.
+**Assessment:** Leiden's history is now represented broadly and deeply enough to proceed to
+scoring. The Golden Age does not dominate. Four clusters (medieval origins, textiles/labour,
+science, and care/social history) are each strong enough to carry an MVP on their own — which
+is exactly the freedom master §1C was written to protect.
 
-## Known gaps — what this pass did NOT find
+## Cross-links found during verification — useful for route design
 
-State these plainly rather than pretending the register is complete.
+These emerged from checking facts, not from looking for them, and they are worth more than
+any single candidate because they turn a list of stops into a thread:
 
-1. **Roman Leiden.** The Rhine mouth region has significant Roman-period archaeology, but
-   nothing in the city centre was established as a defensible visitor location in this pass.
-   Needs an archaeology-specific search (RMO, RCE, Erfgoed Leiden excavation reports).
-2. **The 1944 bombing of Leiden.** An Allied bombing of Leiden in late 1944 is part of the
-   city's WWII memory, but neither the date, the target, the area hit nor the casualty
-   figures could be confirmed in this pass. **Deliberately excluded rather than guessed.**
-   High priority for `LDN-VERIFY-001`.
-3. **Post-war and modern Leiden.** Reconstruction, 1960s–70s urban renewal, student
-   housing, the Bio Science Park, migration since 1960. Currently near-absent, and the
-   register is weaker for it.
-4. **Women's history.** Present only implicitly (textile labour, hofjes, the plague-dead
-   daughter of C041). No candidate is *about* a documented Leiden woman. This is a real
-   gap and it should be closed before MVP selection, not after.
-5. **Guilds, hospitals, orphanages.** Named in master §5 as targets; only partially reached
-   (C022, C028, C040). The Heilige Geest weeshuis and the guild system deserve their own pass.
-6. **Justice and public punishment.** Only C005. The city's judicial archives almost
-   certainly support more.
-7. **Coordinates.** None. By design — `ENG-GEO-001`.
+| Thread | Connects |
+|---|---|
+| Architect **Arent van 's-Gravesande** | C032 Lakenhal · C026 Bibliotheca Thysiana · C044 Marekerk |
+| Sculptor **Rombout Verhulst** | C012 Zijlpoort · C028 Pesthuis |
+| One **organ**, moved in 1733 | C003 Pieterskerk → C044 Marekerk |
+| **Sentenced, then executed** (after 1463) | C054 Blauwe Steen → C005 Gravensteen |
+| **Orphans worked in the wool industry** | C055 Weeshuis → C057 spinsters and factory children → C036 cloth industry |
+| **The same water junction, twice fortified** | C053 Roman Matilo · C001/C002 the Burcht and the Rhine fork |
+| **Refuge city** | C037 Southern Netherlands weavers · C041 Jean Pesijn · C042 Pilgrims · C056 Wevershuis |
+
+## Known gaps — what these passes did NOT find
+
+State them plainly rather than pretending the register is complete.
+
+1. **Migration to Leiden since 1960.** Not covered. C060 explicitly does not pretend to cover
+   it. This is now the single largest remaining gap and needs its own pass.
+2. **Leiden women documented in their own right.** C057 covers women's *labour* well and C059
+   covers the movement, but the register still contains almost no named Leiden woman with her
+   own story. Leads: **Clemense Willemsdr** (C040, 1492), the **1668–1680 orphanage intake
+   register** (C055), and the Huygens *Digitaal Vrouwenlexicon*. Note the two false trails
+   ruled out in C059: Aletta Jacobs was Groningen, Anna Maria van Schurman was Utrecht.
+3. **Guilds.** Named in master §5; still not reached. Care institutions are now covered
+   (C055), guilds are not.
+4. **Coordinates.** None. By design — `ENG-GEO-001`.
+5. **A defensible viewpoint** for five strong stories: C013, C015, C036, C037, C039.
+   C036 is now partly solved by C056; the others are not.
 
 ## Risk flags carried forward
 
 | Flag | Candidates | Action |
 |---|---|---|
-| Unverified superlative ("first", "only", "oldest") | C020, C026, C040, C044 | Source it or delete the word — `LDN-VERIFY-001` |
-| Legend presented as history | C014, C016, C017 | Separate documented fact from tradition per master §11 |
-| Story is strong but has no place to stand | C013, C015, C036, C037, C039 | Find a defensible viewpoint or convert to an in-route narration |
-| Access restricted or private | C018, C026, C040, C041, C043, C046 | Confirm access before any "look around you" instruction (master §12) |
-| Ethically unsuitable for AI reconstruction | C047, C048 | Archival material only — no generated imagery of persecution |
-| Outside walkable core | C013, C027, C028, C038 | Weigh against route design in `LDN-SCORE-001` |
-| Content changes by day/time | C052, and all museums | Schema must support time-conditional practical info |
+| Unverified superlative | **RESOLVED** for C020, C026, C040, C044 — see the verification log | C020: never write "world's first". C026: verified, safe. C040: 1467 is the oldest, not 1492. C044: "one of the first", never "the first". |
+| Legend presented as history | C014, C016, C017, C054 (colour symbolism) | Separate documented fact from tradition per master §11 |
+| Story is strong but has no place to stand | C013, C015, C037, C039, C057, C059 | Find a defensible viewpoint or convert to in-route narration |
+| Access restricted, private, or in flux | C018, C026, C028, C040, C041, C043, C046, C055, C056 | Confirm access before any "look around you" instruction (master §12). C028's status changed with the 2019 sale; C005 changed when the university left in 2024. |
+| Ethically unsuitable for AI reconstruction | C047, C048, **C058** | Archival material only — DEC-011, now extended to C058 |
+| Sources disagree on the figures | C058 (60 vs 63 dead) | Present the discrepancy, never pick one silently — master §5 `R05` |
+| Outside walkable core | C013, C027, C028, C038, C053, C058, C060 | Weigh against route design in `LDN-SCORE-001` |
+| Content changes by day/time | C052, and all museums | Schema must support time-conditional practical info — **flagged to Codex** |
 
 ## Gate A check (master §27)
 
-Every one of the 52 candidates has: a place, a stated reason for relevance, at least one
-credible source lead, and an articulated story potential. **Gate A: PASSED.**
+All **60** candidates have: a place, a stated reason for relevance, at least one credible
+source lead, and an articulated story potential. **Gate A: PASSED.**
 
 ## Recommended next tasks, in order
 
-1. **`LDN-VERIFY-001`** — resolve every `LOW` confidence entry and every superlative.
-   Do this *before* scoring: scoring unverified claims produces confident nonsense.
-2. **`LDN-DISC-002`** (new) — a second discovery pass targeting the seven gaps above,
-   especially women's history, modern Leiden, and the 1944 bombing.
-3. **`ENG-GEO-001`** — Codex resolves coordinates from PDOK/BAG.
-4. **`LDN-SCORE-001`** — score all candidates on master §5's 15 criteria; assign Tier A/B/C.
-5. **`LDN-COVERAGE-001`** → **`LDN-MVP-001`**.
+1. **`ENG-GEO-001`** — Codex resolves coordinates from PDOK/BAG. Unblocked now.
+2. **`LDN-DISC-003`** (new) — third discovery pass for the two remaining gaps: **migration
+   since 1960** and **named Leiden women**, plus guilds.
+3. **`LDN-SCORE-001`** — score all 60 on master §5's 15 criteria; assign Tier A/B/C.
+4. **`LDN-COVERAGE-001`** → **`LDN-MVP-001`**.
+
+`LDN-VERIFY-001` is complete for the claims it targeted. Candidates C013, C015 and C035 remain
+`LOW`: verification was attempted and did not resolve them, which is recorded rather than
+papered over. They must not be selected for the MVP until they are resolved.
 
 ## What must NOT be assumed from this file
 
@@ -943,6 +1093,8 @@ credible source lead, and an articulated story potential. **Gate A: PASSED.**
 - That Pieterskerk or De Waag are the lead locations because they appear in the wireframe
   or because master §36 names them. The wireframe is a mock-up; §36 names De Waag only as a
   warning.
-- That `HIGH` confidence means publication-ready. It means the core claim survived one
-  cross-check. Visitor-facing copy requires `R01` + `R02`.
+- That `HIGH` confidence means publication-ready. It means the core claim survived
+  cross-checking. Visitor-facing copy requires `R01` + `R02`.
 - That the estimated story/video numbers are scores. They are not.
+- That a superlative is safe because it appears in tourism copy. The verification pass found
+  a widely-repeated "oldest hofje" claim to be wrong by 25 years.
