@@ -243,11 +243,34 @@ No final video script before `R01`+`R02` pass for that location.
 > Your branch pattern is `codex/<topic>`. Never push to `main` or to a `claude/*` branch.
 >
 > Claude's work is on PR #1. Read it before you start.
+>
+> ## ⚡ UPDATE FOR CODEX — 2026-09-13, after your PR #2
+>
+> **Your DEC-009 is reviewed and approved** → `docs/qa/REVIEW-DEC-009-tech-stack.md`. It is good
+> work: it refuses to hardcode a location, it picked up the C052 time-conditional requirement,
+> and its architecture boundaries keep a wrong call cheap to reverse.
+>
+> **You are waiting for approval you already have.** Your ADR says "PROPOSED — USER APPROVAL
+> REQUIRED" and that nothing should be treated as locked. The user answered board Q1 with
+> "I approve" **before you started** — master §37 records DEC-009 as **pre-approved by
+> delegation**. Mark it approved-by-delegation, add the note master §37 asks for (cheap to
+> reverse now, expensive later), and **go to `FND-005`.**
+>
+> **Before you write the schema, read §4 of the review.** Four requirements the ADR predates:
+> `allowsAIReconstruction` is a **location-level** field, not just video metadata; a fact must be
+> publishable **as a range** (the 1807 toll is 151 against a widely repeated ~160); three
+> locations have **no surviving building** and one has no structure at all; and a location can be
+> closed **with a signposted alternative** (the Koornbrug closure had a stated period, a
+> temporary reopening in the middle, and three named diversions).
+>
+> **Your `content/cities/leiden/…` path is better than master §22's** and is raised with the
+> user as **Q15** rather than treated as a lane violation. Don't move Claude's research files;
+> the migration belongs in your promotion step.
 
 | ID | Task | Status | Owner | Depends on | Output |
 |---|---|---|---|---|---|
-| FND-002 | Write the stack decision record and **build on it** — pre-approved, do not wait | ✅ **`READY — GO`** | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` |
-| FND-005 | Executable content schema from master §21 + `locations.json` | `READY` | **Codex** | FND-002 | `src/types/`, validation |
+| FND-002 | Stack decision record | ✅ **`DONE`** | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` — PR #2. **Reviewed by Claude: APPROVE** → `docs/qa/REVIEW-DEC-009-tech-stack.md` |
+| FND-005 | Executable content schema from master §21 + `locations.json` | ✅ **`READY — GO`** | **Codex** | FND-002 ✔ | `src/types/`, validation. **Read the review's §4 first — four requirements the ADR predates** |
 | ENG-GEO-001 | Geocode all **60** candidates from PDOK/BAG | `READY` | **Codex** | LDN-DISC-001 | updated register |
 | ENG-SKEL-001 | App skeleton + navigation shell per wireframe | `READY` | **Codex** | FND-002 | `src/app/` |
 | ENG-MAP-001 | Map foundation (layers, markers, clustering, filters) | `READY` | **Codex** | ENG-GEO-001 | map feature |
@@ -278,6 +301,8 @@ These block real work. Nothing should be guessed here (master §38).
 | Q12 | **"Leiden Essentials" (RT005) drops all three reserved slots** — the same bias the coverage analysis corrected, reappearing at the route layer | route design | **Option C**: add L012, anchored at De Waag, which already sits between two stops on the route. Nearly free |
 | Q13 | **L012's anchor is De Waag (C008)** — a candidate deliberately left out of the MVP. It does not add a stop; it gives an unanchored one an address | L012 | Accept. Reasoning in `L012-R01` §3 |
 | Q14 | **Archive licensing** — Rijksmuseum 1807 prints (L009) and Erfgoed Leiden's Rembrandt VR (L011). Master §38 flagged this; it is now concrete | L009, L011 video | Start the Erfgoed Leiden conversation early — it is probably a partnership, not a licence fee |
+| Q15 | **Amend master §22's content structure?** Codex proposes `content/cities/leiden/…` instead of `content/leiden/…`, which makes multi-city structural rather than aspirational | `FND-005` | **Adopt it.** Codex owns `content/cities/**` (validated production records); Claude keeps the research inputs where they are. Reasoning in `docs/qa/REVIEW-DEC-009-tech-stack.md` §3 |
+| Q16 | **Two vendors (Vercel + Cloudflare Stream)** at this stage — two accounts, two bills | hosting | Defensible and well argued by Codex. Worth your eyes before spend is authorised |
 
 ---
 
