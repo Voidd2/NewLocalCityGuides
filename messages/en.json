@@ -1,0 +1,12 @@
+{
+  "nav": { "home": "Home", "cities": "Cities", "about": "About" },
+  "home": {
+    "hero": {
+      "headline": "Stand where history happened",
+      "subline": "Free audio walking tour of Leiden. Stories that start as you arrive.",
+      "cta": "Explore Leiden"
+    },
+    "comingSoon": { "title": "More cities coming soon", "description": "Sign up for early access." }
+  },
+  "city": { "startTour": "Start tour", "routes": "Routes", "locations": "Locations", "map": "Map" }
+}

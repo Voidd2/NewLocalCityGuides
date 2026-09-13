@@ -1,0 +1,12 @@
+{
+  "nav": { "home": "Home", "cities": "Steden", "about": "Over ons" },
+  "home": {
+    "hero": {
+      "headline": "Sta waar geschiedenis gebeurde",
+      "subline": "Gratis audio wandeltour door Leiden. Verhalen die starten zodra je aankomt.",
+      "cta": "Verken Leiden"
+    },
+    "comingSoon": { "title": "Meer steden komen eraan", "description": "Meld je aan voor vroege toegang." }
+  },
+  "city": { "startTour": "Start tour", "routes": "Routes", "locations": "Locaties", "map": "Kaart" }
+}
