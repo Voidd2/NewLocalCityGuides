@@ -1,0 +1,26 @@
+{
+  "name": "yourlocalcityguide",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test",
+    "content:validate": "tsx scripts/content.ts validate",
+    "content:import": "tsx scripts/content.ts import"
+  },
+  "dependencies": {
+    "yaml": "2.9.1",
+    "zod": "4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.4",
+    "tsx": "4.23.13",
+    "typescript": "7.0.2",
+    "vitest": "5.0.0"
+  }
+}
