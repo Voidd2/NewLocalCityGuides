@@ -1,12 +1,16 @@
 # LEIDEN — CANDIDATE LOCATION REGISTER
 
-Task IDs: `LDN-DISC-001` (first pass) · `LDN-DISC-002` (gap pass) · `LDN-VERIFY-001` (verification)
+Task IDs: `LDN-DISC-001` (first pass) · `LDN-DISC-002` (gap pass) · `LDN-DISC-003` (third pass) · `LDN-VERIFY-001` (verification)
 Phase: **1A — Candidate discovery**
 Agent: Claude (Role A — City Discovery Researcher)
 Date: 2026-09-13 · last revised 2026-09-13 after verification
 Status: **DISCOVERY + GAP PASS COMPLETE, VERIFICATION PASS COMPLETE** — not scored, not selected, nothing is flagship
-Candidates: **60**
-Target from master §5: 30–60 ✔ (at the top of the range)
+Candidates: **65**
+Target from master §5: 30–60 ✔ — deliberately exceeded. That figure is a floor for breadth
+("do not stop after 10 locations"), not a cap; the last five exist to close named gaps.
+
+⚠️ **Scoring note:** `LDN-SCORE-001` scored the first **60**. Candidates **C061–C065 are not
+yet scored** and are therefore not tiered and not eligible for the MVP proposal.
 
 Verification log: `docs/qa/LDN-VERIFY-001-verification-log.md`
 
@@ -993,6 +997,91 @@ Accordingly:
 
 ---
 
+# CLUSTER I — THIRD PASS: WOMEN, GUILDS, MIGRATION (`LDN-DISC-003`) (5)
+
+> Added 2026-09-13 to close the three gaps that survived `LDN-DISC-002`.
+> **Note:** the register now holds 65 candidates, above master §5's "30–60" figure. That figure
+> is a **floor for breadth**, not a cap — §5 says "do not stop after 10 locations". Exceeding it
+> to close a named gap is the intent of the rule, not a breach of it.
+
+### LDN-C061 — The first women at Leiden University
+- **Type:** Institution / event (within a working university building)
+- **Locator:** Academiegebouw, Rapenburg 73, and the Oude UB · **Coordinates:** TBD
+- **Era(s):** **1873** (refused) · **1878** (first enrolled) · **1929** (first female professor)
+- **Theme:** Three centuries of teaching men, and what happened when women arrived
+- **Event/person/process:** In **1873** the gynaecologist **Abraham Simon Thomas** refused two advanced **Russian** women students entry to his lectures; they were the first women to study at Leiden and were gone within a few weeks. In **1878** **Maria Slothouwer**, a minister's daughter, became the first woman to enrol at Leiden University. She studied Letteren, worked briefly, and gave up her career on marrying. **Sophia Antoniadis** became Leiden's first female professor — of Modern Greek — in **1929**, 354 years after the university was founded.
+- **What physically happened here:** Women were turned away at the lecture-room door, then admitted, then expected to leave again when they married.
+- **Visible today:** YES — the buildings stand and are in use
+- **Accessibility:** PARTIAL — working university buildings
+- **Source leads:** A.H. Huussen jr., *De eerste vrouwelijke studenten aan de universiteit te Leiden 1878–1900*; Leiden University (*Leiden Classics: Universiteit Leiden worstelde met eerste studentes*; the *Herstory: Leiden's Leading Ladies* exhibition in the Oude UB); the Leidse hoogleraren database (all Leiden professors since 1575); university archives
+- **Story (est.):** 5 · **Video (est.):** 3
+- **Confidence:** `HIGH` (1873 refusal, Slothouwer 1878, Antoniadis 1929)
+- **Route value:** Very high — same building as C017, C018, C046, beside C019 · **Overlap:** C018, C046, C059
+- **Notes:** **Closes the "named Leiden women" gap.** Three named women, three dated events, one address — exactly what C059 lacked. The **1873** detail is the sharper story than 1878: the first women to study at Leiden were Russian, were refused by a named professor, and vanished. It also sets up a devastating, verifiable contrast with C018's Zweetkamertje, where doctoral candidates have signed the wall since long before any of them could be a woman. **Note the false trail:** Johanna Westerdijk, the first female professor in the Netherlands (1917), was at **Utrecht** — like Jacobs and Van Schurman, not a Leiden story.
+
+### LDN-C062 — Maeijken Joosten, 1606
+- **Type:** Court case / vanished event (needs a vantage: the Gravensteen or the Blauwe Steen)
+- **Locator:** Vantage TBD — the justice sites C005 / C054 · **Coordinates:** TBD
+- **Era(s):** **1606**
+- **Theme:** Love, disguise, and what the city did about it
+- **Event/person/process:** **Maeijken Joosten**, in love with a Leiden woman named **Bertelmina Wale**, lived as a man under the name **Abraham Joosten**. In **March 1606** the two entered into betrothal. The deception was discovered; Maeijken was **flogged and banished** from Leiden and its surroundings.
+- **What physically happened here:** Two women tried to marry each other in 1606, and the city punished one of them in public and sent her away.
+- **Visible today:** NO — the event left no building
+- **Accessibility:** Depends on vantage
+- **Source leads:** leidsevrouwen.nl (*Leidse Vrouwen op de Kaart*); Erfgoed Leiden judicial archives — a flogging and banishment produces a **court record**, which is where this must be verified; Leiden University early-modern gender scholarship
+- **Story (est.):** 5 · **Video (est.):** 2
+- **Confidence:** `MEDIUM` — the account is specific and comes from a serious institutional project, but the primary court record has not been consulted. **Must reach the archival record before publication.**
+- **Route value:** Medium — no place of its own; attaches to C005 or C054 · **Overlap:** C005, C054, C061
+- **Notes:** One of the most striking single stories found in any pass, and it belongs to a group otherwise entirely absent from this register. It also fits the existing justice pair (C054 → C005) without needing a stop of its own. **Handle with care:** a real person, punished, whose story is being retold for an audience — tell it as the record tells it, without romanticising the punishment or inventing her feelings. No AI reconstruction of the flogging.
+
+### LDN-C063 — "Goeie Mie" (Maria Swanenburg)
+- **Type:** Criminal case / working-class district
+- **Locator:** 19th-century working-class Leiden; specific addresses TBD · **Coordinates:** TBD
+- **Era(s):** later 19th c.
+- **Theme:** Poverty, insurance, and a crime the city has never quite stopped telling
+- **Event/person/process:** A Leiden woman known as **Goeie Mie** — "Good Mie" — is one of the city's most notorious historical figures, named in institutional lists of noted Leiden women. **This entry deliberately carries no details.**
+- **What physically happened here:** To be established from the court record and press archive. Not from memory, and not from the many popular retellings.
+- **Visible today:** UNKNOWN
+- **Accessibility:** UNKNOWN
+- **Source leads:** leidsevrouwen.nl; Erfgoed Leiden judicial archives and 19th-c. newspaper collection; Historische Vereniging Oud Leiden
+- **Story (est.):** 5 · **Video (est.):** 2
+- **Confidence:** `LOW` — **name and significance only.** Everything else must come from the archive.
+- **Route value:** Unknown until located · **Overlap:** C039, C061
+- **Notes:** Recorded because the *gap* it fills is real and because a genuinely famous Leiden woman should not be missing from the register. Recorded **without detail on purpose**: this is exactly the kind of story that circulates in lurid, unsourced versions, and master §11 forbids presenting legend as fact. It is also the only candidate here whose subject is a perpetrator rather than a victim or a builder, which raises an editorial question the product should answer deliberately rather than by accident. **Do not write a word of visitor-facing copy about this until `R01` and `R02` are complete.**
+
+### LDN-C064 — The carpenters' and masons' guild house, 1615
+- **Type:** Vanished guild house / street site
+- **Locator:** South side of the Oude Vest, between the Mare and the Jan Vossensteeg — present-day no. 87 · **Coordinates:** TBD
+- **Era(s):** **1615**
+- **Theme:** The trade you were born into, and the household you joined to learn it
+- **Event/person/process:** The guild house of the Leiden carpenters', stonemasons' and masons' guild, named for **Saint Joseph**, came into use in **1615**. Its façade carried a frieze of Saint Joseph flanked by **four crowned workmen**, with the date 1615. A guild was a community for living as much as working: taking up an apprenticeship meant entering not only the master's **workshop** but his **household**.
+- **What physically happened here:** Men met, ate together, drank from the guild cup, kept their chest and their archive, and decided who was allowed to practise a trade in this city.
+- **Visible today:** NO — the guild house is gone; the site is identifiable
+- **Accessibility:** YES (street)
+- **Source leads:** Erfgoed Leiden (*Verhalen: Gildehuis Timmerlieden, Steenhouwers en Metselaars*); *Van Gilde tot ROC. Geschiedenis van het vakonderwijs in de stad Leiden* (Leiden University scholarly publications); municipal guild archives
+- **Story (est.):** 4 · **Video (est.):** 4
+- **Confidence:** `MEDIUM` — the 1615 guild house and its frieze are documented; the exact present-day address needs confirming
+- **Route value:** Medium — near C034 and C044 · **Overlap:** C036, C055
+- **Notes:** **Closes the guilds gap**, which master §5 named and both earlier passes missed. Like C006, it is a **vanished-structure** story: stand where nothing remains and be shown what stood there — and here there is a specific, describable façade to reconstruct. The apprenticeship-into-the-household detail is the human hook: you did not get a job, you got a family.
+
+### LDN-C065 — Migration to Leiden since 1960
+- **Type:** Social/demographic process — **NOT YET LOCATED**
+- **Locator:** **Unknown.** No Leiden-specific site established. · **Coordinates:** TBD
+- **Era(s):** 1960s onward
+- **Theme:** The most recent chapter, and the one the register cannot yet tell
+- **Event/person/process:** The national frame is well documented: recruitment of Moroccan and Turkish workers from the 1960s, a Dutch–Moroccan recruitment treaty in **1969** that was broken by **1973**, and growth thereafter mainly through family reunification — with families housed in working-class districts assigned by the government. **What none of this establishes is what happened in Leiden**: which industries recruited, which districts, which community organisations, which buildings.
+- **What physically happened here:** **Not established.** This entry does not claim to know.
+- **Visible today:** UNKNOWN
+- **Accessibility:** UNKNOWN
+- **Source leads:** Erfgoed Leiden (municipal records, population registers, local press); Historische Vereniging Oud Leiden — Dirk van Eck working group and its *wittevlekkenlijst* of under-researched subjects; Leiden mosque and community organisations; oral history — **this is a subject where living people are the primary source**
+- **Story (est.):** 5 (potential) · **Video (est.):** 2
+- **Confidence:** `LOW` — **placeholder. Nothing here is a Leiden fact.**
+- **Route value:** Unknown · **Overlap:** C037 (Leiden as a refuge city), C039, C060
+- **Notes:** **The gap is NOT closed.** National-level sources are easy to find and are not good enough: applying them to Leiden would be exactly the kind of plausible invention master §0.9 forbids. This entry exists so the gap stays visible instead of quietly disappearing from the list.
+  Two things make it worth the effort. First, it completes the register's strongest through-line: Leiden as a city repeatedly rebuilt by people who arrived from elsewhere — Southern Netherlandish weavers (C037), Walloons (C041), English religious refugees (C042) — which stops in 1620 unless this is told. Second, it is the one subject here where the right method is **talking to people**, not reading archives, and that needs the user's decision on scope, budget and, above all, on who gets to tell it. **Flagged to the user as an open question.**
+
+---
+
 # SUMMARY AND HANDOVER
 
 ## Coverage check against master §1C
@@ -1044,18 +1133,23 @@ any single candidate because they turn a list of stops into a thread:
 
 State them plainly rather than pretending the register is complete.
 
-1. **Migration to Leiden since 1960.** Not covered. C060 explicitly does not pretend to cover
-   it. This is now the single largest remaining gap and needs its own pass.
-2. **Leiden women documented in their own right.** C057 covers women's *labour* well and C059
-   covers the movement, but the register still contains almost no named Leiden woman with her
-   own story. Leads: **Clemense Willemsdr** (C040, 1492), the **1668–1680 orphanage intake
-   register** (C055), and the Huygens *Digitaal Vrouwenlexicon*. Note the two false trails
-   ruled out in C059: Aletta Jacobs was Groningen, Anna Maria van Schurman was Utrecht.
-3. **Guilds.** Named in master §5; still not reached. Care institutions are now covered
-   (C055), guilds are not.
+1. **Migration to Leiden since 1960 — STILL OPEN.** `LDN-DISC-003` looked and found only
+   national-level material. C065 is a **placeholder that deliberately asserts no Leiden
+   facts**. This remains the largest gap in the register and the one that breaks its strongest
+   through-line — Leiden as a city repeatedly rebuilt by arrivals — at 1620. It needs oral
+   history, not archives, and therefore a decision from the user about scope and about who
+   tells it.
+2. ~~Leiden women documented in their own right~~ — **CLOSED by `LDN-DISC-003`**: C061 (Maria
+   Slothouwer 1878, the Russian students refused in 1873, Sophia Antoniadis 1929), C062
+   (Maeijken Joosten, 1606), C063 (Goeie Mie, recorded without detail pending the archive).
+   Three false trails are now on record: Aletta Jacobs (Groningen), Anna Maria van Schurman
+   (Utrecht), Johanna Westerdijk (Utrecht).
+3. ~~Guilds~~ — **CLOSED by `LDN-DISC-003`**: C064, the 1615 carpenters' and masons' guild house.
 4. **Coordinates.** None. By design — `ENG-GEO-001`.
-5. **A defensible viewpoint** for five strong stories: C013, C015, C036, C037, C039.
-   C036 is now partly solved by C056; the others are not.
+5. **A defensible viewpoint** for several strong stories: C013, C015, C037, C039, C062, C063.
+   C036 is now solved by C056; the others are not.
+6. **C061–C065 are unscored.** `LDN-SCORE-001` covered C001–C060. A scoring top-up is needed
+   before any of the five can be considered for the MVP.
 
 ## Risk flags carried forward
 
@@ -1078,10 +1172,12 @@ source lead, and an articulated story potential. **Gate A: PASSED.**
 ## Recommended next tasks, in order
 
 1. **`ENG-GEO-001`** — Codex resolves coordinates from PDOK/BAG. Unblocked now.
-2. **`LDN-DISC-003`** (new) — third discovery pass for the two remaining gaps: **migration
-   since 1960** and **named Leiden women**, plus guilds.
-3. **`LDN-SCORE-001`** — score all 60 on master §5's 15 criteria; assign Tier A/B/C.
-4. **`LDN-COVERAGE-001`** → **`LDN-MVP-001`**.
+2. ~~`LDN-DISC-003`~~ ✔ — closed the women's and guild gaps; migration stays open as C065.
+3. ~~`LDN-SCORE-001`~~ ✔ — C001–C060 scored and tiered → `leiden-candidate-scores.md`.
+4. ~~`LDN-COVERAGE-001`~~ ✔ → `docs/research/leiden-theme-coverage.md`.
+5. **`LDN-MVP-001`** — **PROPOSED, awaiting user approval** → `content/leiden/locations/MVP-PROPOSAL.md`.
+6. **`LDN-SCORE-002`** (new) — score C061–C065 and re-check whether any belongs in the MVP.
+   C061 in particular sits in the same building as three proposed stops.
 
 `LDN-VERIFY-001` is complete for the claims it targeted. Candidates C013, C015 and C035 remain
 `LOW`: verification was attempted and did not resolve them, which is recorded rather than

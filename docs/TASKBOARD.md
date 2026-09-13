@@ -80,17 +80,19 @@ FND-001  repo + master in Git                 DONE
    ├── FND-002  lock tech stack                NEEDS USER  ◀── blocks all Codex code
    └── FND-005  lock content schema            BLOCKED by FND-002   (Codex)
    │
-LDN-DISC-001  candidate register (30–60)       DONE   (Claude)
+LDN-DISC-001  candidate register             DONE   52 candidates
+LDN-DISC-002  gap pass                       DONE   → 60
+LDN-DISC-003  women, guilds, migration       DONE   → 65 (migration still open)
    │
-LDN-VERIFY-001  source verification pass       READY  (Claude)
+LDN-VERIFY-001  verification pass             DONE   1 claim false, 1 overstated, 1 disputed
    │
-LDN-SCORE-001  score every candidate           READY  (Claude)
+LDN-SCORE-001  score C001–C060                DONE   Tier A 19 / B 34 / C 7
    │
-LDN-COVERAGE-001  theme coverage check         BLOCKED
+LDN-COVERAGE-001  theme coverage check        DONE   Tier A alone fails §1C
    │
-LDN-MVP-001  select 8–15 production locations  BLOCKED
+LDN-MVP-001  select 8–15 locations        ⚠ NEEDS USER — 14 PROPOSED
    │
-L0xx-R01…  deep research per location          BLOCKED
+L0xx-R01…  deep research per location          BLOCKED on that approval
    │
 L0xx-C01…  stories        L0xx-V01…  videos    BLOCKED
 ```
@@ -110,11 +112,12 @@ never against specific historical content. See §3.
 | LDN-SRC-001 | Build source-lead register + institution list | `DONE` | Claude | — | `content/leiden/sources/leiden-source-leads.md` |
 | LDN-VERIFY-001 | Raise every `LOW` confidence candidate to `MEDIUM+` or drop it; resolve unsourced superlatives | `DONE` | Claude | LDN-DISC-001 | `docs/qa/LDN-VERIFY-001-verification-log.md` — 1 false claim, 1 overstated, 1 disputed, 1 verified; C013/C015/C035 stay `LOW`, barred from MVP |
 | LDN-DISC-002 | Second discovery pass for the 7 documented gaps | `DONE` | Claude | LDN-DISC-001 | register now **60 candidates** (C053–C060) |
-| LDN-DISC-003 | Third pass: migration to Leiden since 1960, named Leiden women, guilds | `READY` | — | LDN-DISC-002 | extended register |
+| LDN-DISC-003 | Third pass: migration since 1960, named Leiden women, guilds | `DONE` | Claude | LDN-DISC-002 | C061–C065. Women ✔ guilds ✔ — **migration still open**, C065 is a placeholder asserting no Leiden facts |
 | LDN-SCORE-001 | Score all 60 candidates on the 15 criteria (master §5 Phase 1B) | `DONE` | Claude | LDN-VERIFY-001 ✔ | `leiden-candidate-scores.md` — Tier A **19**, B **34**, C **7**. Gate B passed. |
-| LDN-COVERAGE-001 | Theme coverage analysis (master §1C) **+ decide how to handle the three scoring biases** | `READY` | — | LDN-SCORE-001 ✔ | `docs/research/leiden-theme-coverage.md` |
-| LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | `BLOCKED` | — | LDN-COVERAGE-001 | `content/leiden/locations/` + master decision |
-| LDN-ROUTE-001 | Derive route candidates from the selected MVP set | `BLOCKED` | — | LDN-MVP-001 | `content/leiden/routes/` |
+| LDN-COVERAGE-001 | Theme coverage analysis + resolve the three scoring biases | `DONE` | Claude | LDN-SCORE-001 ✔ | `docs/research/leiden-theme-coverage.md` — Tier A alone fails §1C on Siege and WWII |
+| LDN-SCORE-002 | Score C061–C065 (not covered by LDN-SCORE-001) | `READY` | — | LDN-DISC-003 | scores appended |
+| LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | ⚠️ **`NEEDS USER`** | Claude | LDN-COVERAGE-001 ✔ | **`content/leiden/locations/MVP-PROPOSAL.md` — 14 locations proposed, awaiting approval.** No L-IDs assigned; `R01` must not start |
+| LDN-ROUTE-001 | Derive route candidates from the selected MVP set | `BLOCKED` | — | LDN-MVP-001 **approval** | `content/leiden/routes/` |
 
 **Hard rule reminder:** no location is `flagship`, `hero` or `main` until LDN-MVP-001 is DONE.
 No final video script before `R01`+`R02` pass for that location.
@@ -205,6 +208,9 @@ These block real work. Nothing should be guessed here (master §38).
 | Q5 | Is the wireframe's visual identity (navy + warm sand, serif wordmark) locked? | design system | Treat as locked-by-default; say so if not |
 | Q6 | Budget/tooling for AI video generation? | all `V0x` tasks | Not needed until after LDN-MVP-001 — safe to defer |
 | Q7 | **Weighted scoring?** The unweighted 15-criterion sum puts **no Siege candidate in Tier A**, drops Leiden's whole WWII story to Tier B/C, and buries the textile/labour stories | `LDN-MVP-001` | **Option C**: keep the scores honest and let `LDN-COVERAGE-001` reserve MVP slots for under-ranked themes. Full reasoning in `leiden-candidate-scores.md` §4 |
+| Q8 | ⚠️ **Approve the proposed 14-location MVP?** Everything downstream — research, stories, video, photography, routes — is spent on this list | all production work | Approve as proposed; it covers all fifteen §1C themes. Read `MVP-PROPOSAL.md` §1 and §3 |
+| Q9 | **The WWII slot's binding content condition** — L014 must carry the dismissals and the deportations, not a standalone hero story | L014 | Accept it. A WWII slot that produces only a hero narrative would be worse than none |
+| Q10 | **Migration to Leiden since 1960 (C065)** — needs oral history, not archives. Scope, budget, and who tells it? | C065, release 2 | Worth doing properly or not at all. Not an MVP blocker |
 
 ---
 
@@ -228,4 +234,7 @@ From master §27. A task is not `DONE` until its gate passes.
 - **2026-09-13** — Collaboration protocol written (FND-006) ahead of parallel work.
   PR #1 opened. Verification pass done (LDN-VERIFY-001): one superlative false, one
   overstated, one disputed, one verified; C028's story changed completely. Gap pass done
-  (LDN-DISC-002): register now **60 candidates**. Scoring (LDN-SCORE-001) started.
+  (LDN-DISC-002): register to **60**. Third pass done (LDN-DISC-003): **65**; women's and
+  guild gaps closed, migration explicitly left open. Scoring done (LDN-SCORE-001): Tier A 19,
+  B 34, C 7. Coverage done (LDN-COVERAGE-001): Tier A alone fails §1C on the Siege and WWII.
+  **MVP proposed (LDN-MVP-001): 14 locations, awaiting user approval — Q8.**

@@ -32,7 +32,11 @@ dates and leads — never as final evidence when better sources exist.
 | **Oorlogsbronnen.nl / NIOD** | National WWII sources; Erfgoed Leiden is a listed contributing organisation | C046–C048 | 2–3 |
 | **Canon van Nederland** — canonvannederland.nl | *Leids Laken: textiel voor Europa* | C036 — good framing, then go to the Lakenhal for evidence | 4 |
 | **DBNL** — dbnl.org | *De geschiedenis van de Leidsche lakenindustrie*, De Gids vol. 104 | C036 | 3 |
-| **PDOK / BAG** | Authoritative Dutch geodata | `ENG-GEO-001` — coordinates for all 52 candidates | 2 |
+| **Leidse Vrouwen op de Kaart** — leidsevrouwen.nl | A joint project of Historische Vereniging Oud Leiden, Leiden University, Erfgoed Leiden, Museum De Lakenhal and the city of Leiden, mapping Leiden women | **The single best lead for the women's-history gap** — and an obvious partner rather than a source to copy. C061, C062, C063 | 2–3 |
+| **Museum De Lakenhal — *Strijdbare vrouwen*** | Leiden women's history strand | C057, C059, C061 | 2 |
+| **Huygens ING — *Digitaal Vrouwenlexicon van Nederland*** | Biographies of Dutch women | C059, C061–C063 | 3 |
+| **Leidse hoogleraren database** (hoogleraren.universiteitleiden.nl) | Every Leiden professor since 1575 | C021, C046, C061 | 2 |
+| **PDOK / BAG** | Authoritative Dutch geodata | `ENG-GEO-001` — coordinates for all 65 candidates | 2 |
 
 ## 2. SOURCES USED FOR CROSS-CHECKING IN THIS PASS
 

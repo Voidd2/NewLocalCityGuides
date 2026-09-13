@@ -5,6 +5,89 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 002
+
+**Agent:** Claude (Opus)
+**Role:** A — City Discovery Researcher · B — Historical Researcher · G — Quality Reviewer
+**Date:** 2026-09-13
+**Task IDs:** `FND-006`, `LDN-VERIFY-001`, `LDN-DISC-002`, `LDN-DISC-003`, `LDN-SCORE-001`, `LDN-COVERAGE-001`, `LDN-MVP-001` (proposed)
+**Status:** DONE, except `LDN-MVP-001` which is **PROPOSED — NEEDS USER**
+**Branch:** `claude/affectionate-rubin-t48oom` · **PR:** #1
+
+### Completed
+- `FND-006` — `docs/COLLABORATION-PROTOCOL.md`: binding rules for Claude and Codex working
+  simultaneously. Push cadence, always-open PR, read-before-you-write, file-ownership lanes,
+  and a six-part definition of DONE (now master §27 Gate 0).
+- `LDN-VERIFY-001` — every `LOW` entry and every superlative checked. **One claim was plainly
+  false, one overstated, one disputed between reputable sources, one verified.** C028's story
+  changed completely. C005, C007 and C010 rose to `HIGH` with substantial new detail.
+  C013, C015 and C035 stay `LOW` and are barred from the MVP.
+- `LDN-DISC-002` — 52 → 60 candidates, closing five of seven documented gaps.
+- `LDN-DISC-003` — 60 → 65. Women's-history and guild gaps closed. **Migration since 1960
+  deliberately left open.**
+- `LDN-SCORE-001` — all 60 scored on the fifteen §5 criteria. Tier A 19, B 34, C 7.
+  Gate B passed. Every row's arithmetic and tier machine-verified.
+- `LDN-COVERAGE-001` — Tier A alone **fails master §1C**: no Siege, no WWII, textiles as a
+  building only. Resolved by reserving three MVP slots visibly.
+- `LDN-MVP-001` — 14 locations **proposed**, all fifteen themes covered. **Not locked.**
+
+### Files changed
+`docs/COLLABORATION-PROTOCOL.md` · `docs/qa/LDN-VERIFY-001-verification-log.md` ·
+`docs/research/leiden-theme-coverage.md` · `content/leiden/candidates/leiden-candidate-scores.md` ·
+`content/leiden/locations/MVP-PROPOSAL.md` (all new) ·
+`content/leiden/candidates/leiden-candidate-register.md` · `content/leiden/sources/leiden-source-leads.md` ·
+`docs/TASKBOARD.md` · `YOURLOCALCITYGUIDE_MASTER_V1.md` (→ v1.4) · `README.md`
+
+### Facts added
+Thirteen new candidates (C053–C065) and substantial verified detail on nine existing ones.
+Among the verified additions: Castellum Matilo on the Limes at the Rhine/Corbulo junction;
+the Blauwe Steen as the centre of the four medieval quarters and a place of sentencing by
+1321, with executions moving to the Gravensteen in 1463 and the last Leiden execution in
+1856; the Heilige Geest orphanage from 1316, ~900 children by 1672, boys apprenticed out and
+girls kept in; ~40% of Leiden textile workers under sixteen around 1860; the RAF bombardments
+of 10–11 December 1944 recorded in obituaries as "a fatal accident"; the Pesthuis completed
+1661 and never used; Maria Slothouwer (1878), the Russian students refused in 1873, and
+Sophia Antoniadis (1929); Maeijken Joosten, flogged and banished in 1606; the 1615 carpenters'
+and masons' guild house.
+
+### Sources added
+Four institutions, led by **leidsevrouwen.nl (Leidse Vrouwen op de Kaart)** — a joint project
+of Oud Leiden, Leiden University, Erfgoed Leiden, Museum De Lakenhal and the city. It is the
+answer to the women's-history gap and is a **partner**, not a source to copy from.
+
+### Decisions made
+- DEC-013 (new, LOCKED): no unverified superlative in visitor-facing content.
+- DEC-011 extended to C058.
+- Coverage bias resolved by **Option C** — reserve MVP slots visibly rather than re-weight
+  the rubric after seeing the results. Re-weighting then would be motivated reasoning.
+- The MVP's WWII slot carries a **binding content condition**, written into the proposal.
+
+### Uncertainty / risks
+- **C065 (migration since 1960) asserts no Leiden facts on purpose.** Only national material
+  was found. The gap is open and visible.
+- C063 (Goeie Mie) is recorded as a name and nothing else, pending the court record.
+- C062 rests on an institutional project, not yet on the primary court record.
+- C061–C065 are **unscored** and therefore not MVP-eligible (`LDN-SCORE-002`).
+- Access has changed at C005 (university left in 2024) and C028 (state sale, 2019).
+
+### What must NOT be assumed
+- That the MVP is decided. **It is proposed.** No L-IDs exist; `R01` must not start.
+- That the top of the ranking is the right MVP. Coverage proved it is not.
+- That a superlative found in tourism copy is true. Four of the first five were not.
+- That Aletta Jacobs, Anna Maria van Schurman or Johanna Westerdijk are Leiden stories.
+  None of them is.
+
+### Recommended next task
+**User:** approve or amend the MVP proposal (board Q8, Q9). It blocks the whole research track.
+**Codex:** `FND-002` (tech stack — still the top engineering blocker) and `ENG-GEO-001`
+(geocode 65 candidates). Both unblocked today.
+**Claude, once approved:** `R01` per location; `LDN-SCORE-002` and `LDN-ROUTE-001` alongside.
+
+### Master file updated
+YES — v1.4
+
+---
+
 ## HANDOFF 001
 
 **Agent:** Claude (Opus)

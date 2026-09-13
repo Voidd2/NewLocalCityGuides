@@ -16,7 +16,9 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 | `docs/handoffs/HANDOFF-LOG.md` | Every completed task's handoff (§25). No handoff = task incomplete. | shared |
 | `docs/ux/wireframe-inventory.md` | The user's wireframe mapped onto the `W##` codes in §19, with gaps and conflicts | Role E |
 | `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
-| `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 60 candidate locations.** Nothing is selected. | Role A |
+| `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 65 candidate locations.** Nothing is selected. | Role A |
+| `docs/research/leiden-theme-coverage.md` | Phase 1C: what an MVP taken off the ranking would never get to say | Role A/G |
+| `content/leiden/locations/MVP-PROPOSAL.md` | ⚠️ **Phase 1D: 14 locations PROPOSED, awaiting the user.** Not locked. | Role A |
 | `content/leiden/candidates/leiden-candidate-scores.md` | **Phase 1B: all 60 scored, Tier A/B/C assigned.** Still no MVP. | Role A |
 | `docs/qa/LDN-VERIFY-001-verification-log.md` | What was checked, what was wrong, what stays unresolved | Role B/G |
 | `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
@@ -523,6 +525,10 @@ Do not call anything "flagship" yet.
 ---
 
 ## PHASE 1C — Story coverage analysis
+Status: **COMPLETE (2026-09-13)** → `docs/research/leiden-theme-coverage.md`.
+Finding: an MVP taken off the ranking would contain **no Siege and no WWII** — two themes this
+section names explicitly. Resolved by reserving three MVP slots, visibly, rather than by
+re-weighting the rubric after seeing the results.
 
 Before choosing the MVP, check if Leiden's history is represented broadly.
 
@@ -548,6 +554,9 @@ Avoid an MVP consisting of ten locations that all tell essentially the same Gold
 ---
 
 ## PHASE 1D — MVP location selection
+Status: ⚠️ **PROPOSED, NOT DECIDED (2026-09-13)** → `content/leiden/locations/MVP-PROPOSAL.md`
+14 locations: 10 from Tier A, plus reserved slots for the Siege, textile labour, and WWII.
+All fifteen §1C themes covered. **Awaiting the user (board Q8, Q9).**
 
 Only now select the first production locations.
 
@@ -1977,14 +1986,19 @@ Current project phase:
 **PHASE 0 — FOUNDATION (engineering side) running alongside PHASE 1 — CITY DISCOVERY (research side)**
 
 Current research state:
-**NO location has been approved as the main or flagship location.** Discovery, the gap pass
-and verification are complete: **60 candidates** are registered and verified to Gate A.
-Scoring (`LDN-SCORE-001`) is in progress.
+**NO location has been approved as the main or flagship location.** Discovery (three passes),
+verification, scoring and coverage are all complete: **65 candidates** registered, C001–C060
+scored and tiered, Gate A and Gate B passed.
+
+⚠️ **PHASE 1 IS FINISHED EXCEPT FOR ONE DECISION.** A 14-location MVP is **proposed** in
+`content/leiden/locations/MVP-PROPOSAL.md` and is waiting on the user (board Q8, Q9). Until
+that is approved: **no L-IDs are assigned and `R01` deep research must not start.**
 
 Current content state:
-Phase 1A COMPLETE and VERIFIED. **Phase 1B (scoring) COMPLETE** — Tier A 19, Tier B 34,
-Tier C 7; Gate B passed for all 60. No location has an L-ID. No story, fun fact, Look Around
-item or video script exists, and none may be written yet.
+Phase 1A COMPLETE and VERIFIED. Phase 1B COMPLETE — Tier A 19, Tier B 34, Tier C 7.
+Phase 1C COMPLETE. Phase 1D PROPOSED, not decided. C061–C065 are unscored (`LDN-SCORE-002`).
+No location has an L-ID. No story, fun fact, Look Around item or video script exists, and none
+may be written yet.
 
 **The scoring produced one result the user must decide on (board Q7):** not a single Tier A
 candidate is primarily about the **Siege and Relief of Leiden**, and the city's entire WWII
@@ -2010,9 +2024,11 @@ Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unbl
 
 1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
 2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
-3. Claude: ~~verification~~ ✔, ~~gap pass~~ ✔, ~~scoring~~ ✔ done.
-4. Next: coverage (`LDN-COVERAGE-001`), which must also resolve the three scoring biases,
-   then select (`LDN-MVP-001`). `LDN-DISC-003` runs alongside and blocks neither.
+3. Claude: ~~verification~~ ✔, ~~gap passes~~ ✔, ~~scoring~~ ✔, ~~coverage~~ ✔ done.
+4. **User: approve or amend the MVP proposal (Q8, Q9).** This is now the research track's
+   only blocker — everything downstream waits on it.
+5. Then: `R01` deep research per approved location → `R02` verification → stories → videos,
+   and `LDN-ROUTE-001` for routes.
 5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
@@ -2126,6 +2142,17 @@ Still open from v1.0:
 ---
 
 # 39. CHANGELOG
+
+## v1.4 — 2026-09-13 (Claude)
+- `LDN-DISC-003` complete: 65 candidates. Women's-history and guild gaps **closed**
+  (C061–C064). Migration since 1960 **deliberately left open** as C065, a placeholder that
+  asserts no Leiden facts, because only national-level sources were found and applying them
+  to Leiden would be invention.
+- `LDN-COVERAGE-001` complete. Phase 1C marked COMPLETE.
+- `LDN-MVP-001` **proposed**: 14 locations, awaiting user approval. Phase 1D marked PROPOSED.
+- Three more false trails on record: Jacobs (Groningen), Van Schurman (Utrecht),
+  Westerdijk (Utrecht). None is a Leiden story.
+- New tasks: `LDN-SCORE-002` (score C061–C065).
 
 ## v1.3 — 2026-09-13 (Claude)
 - `LDN-SCORE-001` complete: all 60 candidates scored on the fifteen §5 criteria.
