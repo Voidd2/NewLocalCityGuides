@@ -5,6 +5,61 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 004
+
+**Agent:** Claude (Opus) · **Role:** B — Historical Researcher (+ A, C, E, G)
+**Date:** 2026-09-13 · **Branch:** `claude/affectionate-rubin-t48oom` · **PR:** #1
+**Task IDs:** `L001-R01` … `L014-R01` (all DONE), `L002/L008/L009/L012-R02` (round 1),
+`LDN-ROUTE-001` (DONE), `R03-SHARED` (started)
+
+### Completed
+- **`R01` for all fourteen locations.** Each answers master §9, carries a source trail, has an
+  `R05` register separating verified / probable / legend, a *Look Around You* audit, and a
+  `V01` analysis with no concept chosen.
+- **`R02` round 1** on the four blocking conflicts.
+- **`LDN-ROUTE-001`** — six routes, built on connections the research found.
+- **`R03-SHARED`** — city-wide reconstruction references and a §16 "must not show" draft.
+
+### Facts added — the findings that changed plans
+- **L001 → L002 are joined by a 17th-century pipe.** A horse mill pumped water 150 m uphill into
+  a cellar on the Burcht; a ten-metre drop then sent it back under the Nieuwe Rijn to the 1693
+  Visfontein, built because fishmongers complained the canal water was filthy.
+- **L004 → L005 is the condemned's walk**, down the Diefsteeg. The street between two stops is
+  the content.
+- **L007 and L008 are the same ground.**
+- **L012 has an address after all** — De Waag — and **two traditions**: the Pieterskerk
+  thanksgiving service, unbroken since **1574**, and the food distribution, from **1886**.
+- **L013 has a wall listing every resident since 1561.** Best physical object in the project.
+- **L011 is largely researched already** by Erfgoed Leiden, who published their method.
+- **L009:** 151 dead, two of them named professors; a bucket of peeled potatoes on deck; only
+  thirteen fragments of the ship ever found.
+
+### Decisions made
+None locked. Four questions raised for the user (Q11–Q14).
+
+### Uncertainty / risks
+- **An `R01` correction was itself wrong** (L008). Left visible rather than rewritten.
+- **Nobody may be named as aboard the 1807 ship.** Unresolved.
+- Access unresolved at L005, L006, L008, L010, L013, L014.
+- Every route distance is an estimate, not a measurement. **Unpublishable until `ENG-GEO-001`.**
+- The §16 "must not show" draft is **not yet sourced claim by claim**.
+
+### What must NOT be assumed
+- That `R01` being done means copy may be written. It does not — `R02` must pass.
+- That `R01` is trustworthy because it corrected discovery. It over-corrected once already.
+- That the Burcht siege stories are history. The sources call them rumour and legend.
+
+### Recommended next task
+**Claude:** `R02` round 2 — most of it ends at Erfgoed Leiden's archive. Then `LDN-SCORE-002`.
+**Codex:** still `FND-002` → `FND-005` → `ENG-GEO-001`. **`ENG-GEO-001` now also unblocks
+`LDN-ROUTE-002`.**
+**User:** Q11–Q14.
+
+### Master file updated
+YES — v1.6
+
+---
+
 ## HANDOFF 003
 
 **Agent:** Claude (Opus)

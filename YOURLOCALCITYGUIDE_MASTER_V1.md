@@ -21,6 +21,10 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 | `content/leiden/locations/README.md` | ✅ **Phase 1D: the 14 APPROVED production locations, L001–L014.** Authoritative. | Role A |
 | `content/leiden/locations/locations.json` | Machine-readable seed for Codex. All content fields null **on purpose**. | shared |
 | `content/leiden/locations/MVP-PROPOSAL.md` | The full argument behind that selection | Role A |
+| `content/leiden/locations/L0xx-*/R01-research.md` | **Deep research, all 14 locations.** Each with a source trail and an `R05` uncertainty register | Role B |
+| `docs/qa/R02-verification-round-1.md` | Source verification: what `R01` got wrong | Role B/G |
+| `docs/research/leiden-reconstruction-references.md` | **City-wide** reconstruction sources and the §16 "must not show" draft | Role B/D |
+| `content/leiden/routes/leiden-route-proposals.md` | Six proposed routes, built on connections the research found | Role A/C/E |
 | `content/leiden/candidates/leiden-candidate-scores.md` | **Phase 1B: all 60 scored, Tier A/B/C assigned.** Still no MVP. | Role A |
 | `docs/qa/LDN-VERIFY-001-verification-log.md` | What was checked, what was wrong, what stays unresolved | Role B/G |
 | `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
@@ -1998,8 +2002,16 @@ none of the fourteen has been researched, and `R01` starts now.
 
 Current content state:
 Phases 1A–1D all COMPLETE. C061–C065 remain unscored (`LDN-SCORE-002`) and are not in the MVP.
+
+**`R01` deep research is COMPLETE for all fourteen locations.** Each has a source trail, an
+`R05` uncertainty register separating verified from probable from legend, a *Look Around You*
+audit, and a `V01` video opportunity analysis with **no concept selected**.
+
+**`R02` source verification is IN PROGRESS** — round 1 done for L002, L008, L009, L012.
+
 **No story, fun fact, Look Around item, timeline or video script exists yet, and none may be
-written until that location's `R01` and `R02` have passed.** Selection is not research.
+written until that location's `R02` has passed.** Selection is not research, and `R01` is not
+verification — round 1 of `R02` found that an `R01` correction was itself wrong.
 
 **The scoring produced one result the user must decide on (board Q7):** not a single Tier A
 candidate is primarily about the **Siege and Relief of Leiden**, and the city's entire WWII
@@ -2043,8 +2055,12 @@ DO NOT:
   cross-check passed, nothing more;
 - generate AI reconstruction imagery for candidates C047, C048 or **C058** (persecution,
   resistance, and the 1944 bombardment victims) — archival material only;
-- write a superlative — "oldest", "first", "only" — that the verification log has not
-  cleared. Four of five checked were wrong, overstated or disputed;
+- write a superlative — "oldest", "first", "only" — that a verification log has not cleared.
+  Four of the first five checked were wrong, overstated or disputed;
+- skip `R02` for a location because `R01` "already checked". Round 1 of `R02` found an `R01`
+  correction that was itself an over-correction built on a single partial source;
+- repeat the Burcht siege stories (sheltering on the hill; a secret passage from the well).
+  The sources call them a rumour and a legend. Master §11 applies;
 - select C013, C015 or C035 for the MVP. They are unresolved `LOW` and barred.
 
 # 37. DECISION LOG
@@ -2175,6 +2191,16 @@ Still open from v1.0:
 ---
 
 # 39. CHANGELOG
+
+## v1.6 — 2026-09-13 (Claude)
+- **`R01` deep research complete for all fourteen locations.**
+- `R02` round 1 complete for four locations — including a correction to an `R01` correction.
+- `LDN-ROUTE-001`: six routes proposed, built on connections found in the research rather than
+  designed from scratch.
+- New shared asset: `docs/research/leiden-reconstruction-references.md`, holding the city-wide
+  cartographic sources and a first draft of the §16 "must not show" list.
+- Four new user questions on the board (Q11–Q14): the 1856 execution's tone, the Essentials
+  route dropping all three reserved slots, L012's anchoring at De Waag, and archive licensing.
 
 ## v1.5 — 2026-09-13 (Claude)
 - **PHASE 1 COMPLETE.** `LDN-MVP-001` approved: the Leiden MVP is **L001–L014**.
