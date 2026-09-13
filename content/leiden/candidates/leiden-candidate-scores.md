@@ -237,3 +237,61 @@ assessment, and a route-value assessment. **Gate B: PASSED for all 60.**
    how to handle the three biases in §4.
 2. **`LDN-MVP-001`** — select 8–15, assign L-IDs.
 3. `LDN-DISC-003` and `ENG-GEO-001` run in parallel and do not block either.
+4. ~~`LDN-SCORE-002`~~ ✔ — C061–C065 scored. See the appendix below.
+
+---
+
+# APPENDIX — `LDN-SCORE-002`: CANDIDATES C061–C065
+
+Task ID: `LDN-SCORE-002` · Date: 2026-09-13 · Agent: Claude
+Scope: the five candidates added by `LDN-DISC-003`, which `LDN-SCORE-001` did not cover.
+Method: identical to §0 — the same fifteen criteria, unweighted, same discipline.
+
+| ID | Candidate | Hist | Story | Vis | Src | Seen | Foot | Geo | Conn | Uniq | Mob | Look | Then | Acc | Fam | Intl | **TOTAL** | Tier |
+|---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| C061 | The first women at Leiden University | 4 | 5 | 3 | 4 | 5 | 4 | 5 | 5 | 4 | 4 | 3 | 3 | 3 | 3 | 4 | **59** | B |
+| C064 | Carpenters' and masons' guild house, 1615 | 4 | 4 | 4 | 3 | 1 | 3 | 4 | 3 | 3 | 3 | 2 | 4 | 4 | 3 | 3 | **48** | C |
+| C062 | Maeijken Joosten, 1606 | 3 | 5 | 2 | 3 | 1 | 3 | 4 | 4 | 5 | 4 | 1 | 1 | 4 | 1 | 4 | **45** | C |
+| C063 | 'Goeie Mie' | 3 | 5 | 2 | 2 | 1 | 2 | 2 | 2 | 5 | 4 | 1 | 2 | 2 | 1 | 3 | **37** | C |
+| C065 | Migration to Leiden since 1960 | 5 | 5 | 2 | 1 | 1 | 1 | 1 | 2 | 4 | 3 | 1 | 3 | 2 | 2 | 4 | **37** | C |
+
+**Result: no candidate reaches Tier A. None enters the MVP.** Revised totals across all 65:
+**Tier A 19 · Tier B 35 · Tier C 11.**
+
+## What the scores say
+
+**C061 (59) is a strong Tier B and the obvious release-two addition.** It sits in the
+**Academy Building**, alongside L010, L014 and candidates C017, C018 — the densest site in the
+register. It costs almost no walking and it is the only one of the five with a building, an
+address and institutional sources. Route **RT006** ("One building, four centuries") already
+includes it.
+
+**C064 (48)** is held down almost entirely by `Seen` = 1. The guild house is gone. Its
+compensation is a **described façade** — St Joseph flanked by four crowned workmen, dated 1615 —
+which makes it an unusually good *reconstruction* subject for a location with nothing to see.
+
+## ⚠️ READ THIS BEFORE TREATING THESE SCORES AS A VERDICT
+
+`LDN-SCORE-001` §4 documented three systematic biases in this rubric. **Three of these five
+candidates are suppressed by exactly those biases**, and it would be dishonest to score them and
+move on as if the numbers were neutral.
+
+| Candidate | Score | What actually holds it down |
+|---|---|---|
+| **C062 Maeijken Joosten** (45) | Story **5**, Uniqueness **5** | `Seen` 1, `Look` 1, `Then` 1 — a court case leaves no building. `Vis` 2 because reconstructing a flogging is not something this project should do. `Fam` 1 because it is genuinely unsuitable for children. **Everything suppressing it is a property of the medium, not of the history** |
+| **C063 "Goeie Mie"** (37) | Story **5**, Uniqueness **5** | `Src` 2 — because `LDN-DISC-003` deliberately recorded a name and nothing else, pending the court record. **The score is low because the research was honest**, and it will move once the archive is read |
+| **C065 Migration since 1960** (37) | Hist **5**, Story **5** (both *potential*) | `Src` 1, `Seen` 1, `Foot` 1, `Geo` 1 — **because nothing about Leiden is known yet.** This is a score for an empty file, not for a subject |
+
+**C065's score must not be read as a judgement on the subject.** It is a measurement of how little
+research exists. Scoring it at all is arguably wrong, and it is recorded here only so the gap
+stays visible on the same page as everything else rather than quietly dropping off the list.
+
+**C062 is the one to watch.** It is the register's most striking single human story — two women
+who tried to marry in 1606 — and it ranks 57th of 65 because it has no building. That is the
+rubric working exactly as `LDN-SCORE-001` §4 predicted, and it is the argument for the reserved-slot
+mechanism being kept, not retired, when the MVP is next revisited.
+
+## Next
+- `C063` and `C065` are **blocked on archive and oral-history work**, not on scoring.
+- `C061` should be **re-examined at the first MVP revision** — it is cheap, central, and it adds
+  three named women to a product that currently has one.

@@ -118,7 +118,7 @@ never against specific historical content. See §3.
 | LDN-DISC-003 | Third pass: migration since 1960, named Leiden women, guilds | `DONE` | Claude | LDN-DISC-002 | C061–C065. Women ✔ guilds ✔ — **migration still open**, C065 is a placeholder asserting no Leiden facts |
 | LDN-SCORE-001 | Score all 60 candidates on the 15 criteria (master §5 Phase 1B) | `DONE` | Claude | LDN-VERIFY-001 ✔ | `leiden-candidate-scores.md` — Tier A **19**, B **34**, C **7**. Gate B passed. |
 | LDN-COVERAGE-001 | Theme coverage analysis + resolve the three scoring biases | `DONE` | Claude | LDN-SCORE-001 ✔ | `docs/research/leiden-theme-coverage.md` — Tier A alone fails §1C on Siege and WWII |
-| LDN-SCORE-002 | Score C061–C065 (not covered by LDN-SCORE-001) | `READY` | — | LDN-DISC-003 | scores appended |
+| LDN-SCORE-002 | Score C061–C065 | ✅ **`DONE`** | Claude | LDN-DISC-003 | appendix in `leiden-candidate-scores.md` — **none reaches Tier A**; totals now A 19 / B 35 / C 11 |
 | LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | ✅ **`DONE`** | Claude | LDN-COVERAGE-001 ✔ | **APPROVED: L001–L014** → `content/leiden/locations/README.md` + `locations.json` |
 | L001-R01 … L014-R01 | Deep research, one per location (master §8) | ✅ **`DONE`** | Claude | LDN-MVP-001 ✔ | `content/leiden/locations/L0xx-*/R01-research.md` — **all 14** |
 
