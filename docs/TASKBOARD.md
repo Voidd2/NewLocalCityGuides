@@ -305,6 +305,7 @@ These block real work. Nothing should be guessed here (master §38).
 | Q16 | **Two vendors (Vercel + Cloudflare Stream)** at this stage — two accounts, two bills | hosting | Defensible and well argued by Codex. Worth your eyes before spend is authorised |
 | Q17 | ⚠️ **Visitor volume at the Jean Pesijnhofje (L008).** People live there. "Most residents don't mind" describes today's numbers, not a stream of app users | L008 | **Consult the foundation before launch, not after complaints.** The gate-only instruction already works; this is about how many people we send |
 | Q18 | **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five remaining research blockers end at their archive | R02 round 4 | Treat it as an opportunity: the contact task and the site visit are now the same trip |
+| Q19 | ⚠️ **The Hortus (L010) is closed on 3 October — the one day L012 is extraordinary.** The proposed Essentials route contains L010 and not L012 | routes, schema | The app needs a **date-aware route variant**, not just date-aware hours. On 3 October the right route is a different route. Also strengthens Q12 |
 
 ---
 

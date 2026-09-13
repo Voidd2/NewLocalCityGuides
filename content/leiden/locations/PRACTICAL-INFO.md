@@ -28,15 +28,15 @@ worse than one that says "check before you go".
 | **L003** | Koornbrug | Free | Always open | ✅ Level, open, **covered — the only rain shelter in the MVP** | ✅ **Reopened 14 May 2026.** Heavy traffic now diverted to the Visbrug |
 | **L004** | De Blauwe Steen | Free | Always open | ✅ Level — ⚠️ **but the stone is in a roadway.** Instruction must direct viewing from the pavement | |
 | **L005** | Gravensteen | ⚠️ Square free; tour price unverified | ✅ **Pieterskerk guided tours several times weekly, since summer 2025.** Rijnland reading room open to visitors | ⚠️ Square level; interior unverified | ⚠️ **Current use is explicitly temporary.** Erfgoed Leiden is housed here during its own renovation |
-| **L006** | Pieterskerk | ⚠️ Ticketed — price unverified | ⚠️ Unverified. **Closes for events** | ⚠️ Reported largely accessible — unverified | |
+| **L006** | Pieterskerk | ✅ **€6** adults & 12+; **under 12 free**; **Museumkaart €3** | ✅ **Tue–Sun 11:00–18:00.** Closed 25 Dec & 1 Jan. ⚠️ **Call ahead — frequent events.** 071-512 43 19 (Mon–Fri 10:00–17:00) | ✅ **Accessible, with accessible toilet.** Ramp or lift platform to the choir. ⚠️ **The 17th-c. Kerkmeesterskamer is up three stairs and is NOT wheelchair accessible.** Assistance and guide dogs welcome, on lead | |
 | **L007** | Pilgrims' quarter | Free | Always open | ✅ Street level | Nothing survives above ground |
 | **L008** | Jean Pesijnhofje | Free | ⚠️ **No published hours.** Door generally open ✅ | ✅ **Gate only.** View from the entrance; do not enter further; keep quiet | ⚠️ **People live here.** See §3 |
 | **L009** | Buskruitramp, Steenschuur | Free | Always open | ✅ Street level | Rebuilt street; the park is the void |
-| **L010** | Hortus Botanicus | ⚠️ Ticketed — price unverified | ⚠️ Unverified. **Strongly seasonal** | ⚠️ Reported largely accessible — unverified | A February and a May visit differ completely |
+| **L010** | Hortus Botanicus | ✅ **€14** at the door, **€13.50** online; **0–3 free**, **4–18 €6**; LU students free. ✅ **A companion for a visitor who cannot move independently is free** | ✅ **21 Mar–20 Sep: daily 09:00–18:00. 21 Sep–20 Mar: daily 10:00–17:00.** ⚠️ **CLOSED 3 OCTOBER** and 25 Dec–1 Jan | ✅ Largely accessible; **free wheelchairs at the entrance**. ⚠️ **Not reachable by wheelchair/scooter:** the tropical terrace, the tropical-greenhouse walkway, the Victoria greenhouse, the Winter Garden walkway | A February and a May visit differ completely |
 | **L011** | Weddesteeg | Free | Always open | ✅ Street level | Birth house gone |
 | **L012** | Leidens Ontzet (at De Waag) | Free | Always open outside | ✅ Street level | ⚠️ **Radically different on 3 October** — reveille and distribution. ⚠️ Waag interior access unverified |
 | **L013** | Het Leids Wevershuis | ✅ **Free** | ✅ **Tue–Sun, 13:00–16:00** | ⚠️ See §2 — **poor wheelchair access, stated honestly** | Middelstegracht 143, 2312 TV |
-| **L014** | Cleveringa / Academiegebouw | ⚠️ Unverified | ⚠️ Unverified | ⚠️ **Working university building.** Groot Auditorium access unconfirmed | **Do not promise the room** |
+| **L014** | Cleveringa / Academiegebouw | ⚠️ Tour price unverified | ✅ **Student-led guided tours, Mondays and Tuesdays, 1 hour**, through spaces "normally not accessible". ⚠️ Appear to be **summer** tours — confirm whether year-round | ⚠️ **Explicitly NOT suitable for people with physical disabilities** — small spaces, many stairs. **Less suitable for under-10s** | Mainly a ceremonial building (graduations, inaugural lectures). ⚠️ Whether the tour includes the **Groot Auditorium** is unconfirmed — **do not promise the room** |
 
 ---
 
@@ -96,15 +96,38 @@ one is the difference between a product that sends someone to a locked door and 
 
 ---
 
-## 5. `R02` ROUND 4 — THE ⚠️ LIST
+## 5. ⚠️ A ROUTE CONFLICT THE RESEARCH JUST CREATED — 3 OCTOBER
 
-1. **L006 Pieterskerk** — hours, ticket price, event closures, real accessibility.
-2. **L010 Hortus** — hours, price, accessibility, and what each season actually shows.
-3. **L014 Academiegebouw** — can the Groot Auditorium be visited at all?
-4. **L005** — tour price, booking, what it covers, whether the **1556 cells** are on it.
-5. **L001** — park closing times; step count to the mound.
-6. **L012** — Waag interior access; what 3 October actually looks like for a visitor.
-7. **L002** — how long the Visfontein stays wrapped.
+> **The Hortus (L010) is closed on 3 October.**
+> **3 October is the one day L012 is extraordinary** — the reveille and the distribution of
+> herring and white bread at De Waag.
 
-Most of these are a phone call or a visit, not archive work. Several are the same trip as the
-Erfgoed Leiden visit (board Q18).
+So on Leiden's biggest day, the MVP's **highest-scoring location (L010, 72) is shut**, and the
+proposed **"Leiden Essentials" route (RT005) contains L010 but not L012**.
+
+A visitor who comes to Leiden specifically for Leidens Ontzet and opens this app would be
+routed to a locked gate and told nothing about the festival happening around them.
+
+**This is not a content problem, it is a product problem**, and it has two consequences:
+1. **It strengthens board Q12** — the recommendation to add L012 to RT005 is no longer just about
+   thematic coverage. On 3 October it is the difference between the app working and not.
+2. **The app needs a date-aware route variant**, not merely date-aware opening hours. On
+   3 October the *right* route is a different route. **Flagged to Codex.**
+
+Almost certainly other closures cluster on that date too — `R02` round 4 should check every
+location against 3 October specifically.
+
+---
+
+## 6. `R02` ROUND 4 — THE REMAINING ⚠️ LIST
+
+1. **L005** — tour price, booking, what it covers, whether the **1556 cells** are on it.
+2. **L014** — are the tours **year-round or summer only**, and do they include the
+   **Groot Auditorium**? Tour price.
+3. **L001** — park closing times; step count to the mound.
+4. **L012** — Waag interior access; what 3 October actually looks like for a visitor.
+5. **L002** — how long the Visfontein stays wrapped.
+6. **Every location against 3 October** — see §5.
+
+Most are a phone call or a visit, not archive work. Several are the same trip as the Erfgoed
+Leiden visit (board Q18).
