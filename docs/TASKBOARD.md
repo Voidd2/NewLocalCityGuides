@@ -120,7 +120,28 @@ never against specific historical content. See §3.
 | LDN-COVERAGE-001 | Theme coverage analysis + resolve the three scoring biases | `DONE` | Claude | LDN-SCORE-001 ✔ | `docs/research/leiden-theme-coverage.md` — Tier A alone fails §1C on Siege and WWII |
 | LDN-SCORE-002 | Score C061–C065 (not covered by LDN-SCORE-001) | `READY` | — | LDN-DISC-003 | scores appended |
 | LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | ✅ **`DONE`** | Claude | LDN-COVERAGE-001 ✔ | **APPROVED: L001–L014** → `content/leiden/locations/README.md` + `locations.json` |
-| L001-R01 … L014-R01 | Deep research, one per location (master §8) | `READY` | — | LDN-MVP-001 ✔ | `content/leiden/locations/L0xx-*/` |
+| L001-R01 … L014-R01 | Deep research, one per location (master §8) | `IN PROGRESS` | **Claude** | LDN-MVP-001 ✔ | `content/leiden/locations/L0xx-*/R01-research.md` |
+
+**`R01` progress** — Claude is working through these in walking order. Each is done when it
+answers master §9 in full, carries a source trail, and has an `R05` uncertainty register.
+
+| | Location | R01 | R02 |
+|---|---|:-:|:-:|
+| L001 | De Burcht | ⏳ | — |
+| L002 | Vismarkt | — | — |
+| L003 | Koornbrug | — | — |
+| L004 | De Blauwe Steen | — | — |
+| L005 | Gravensteen | — | — |
+| L006 | Pieterskerk | — | — |
+| L007 | Pilgrims' quarter | — | — |
+| L008 | Jean Pesijnhofje | — | — |
+| L009 | Buskruitramp 1807 | — | — |
+| L010 | Hortus Botanicus | — | — |
+| L011 | Weddesteeg | — | — |
+| L012 | Leidens Ontzet | — | — |
+| L013 | Wevershuis | — | — |
+| L014 | Cleveringa 1940 | — | — |
+
 | L0xx-R02 | Source verification per location | `BLOCKED` | — | that location's R01 | per-claim `SourceRecord`s |
 | LDN-ROUTE-001 | Derive route candidates from L001–L014 | `READY` | — | LDN-MVP-001 ✔ | `content/leiden/routes/` |
 
