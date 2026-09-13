@@ -111,8 +111,8 @@ never against specific historical content. See §3.
 | LDN-VERIFY-001 | Raise every `LOW` confidence candidate to `MEDIUM+` or drop it; resolve unsourced superlatives | `DONE` | Claude | LDN-DISC-001 | `docs/qa/LDN-VERIFY-001-verification-log.md` — 1 false claim, 1 overstated, 1 disputed, 1 verified; C013/C015/C035 stay `LOW`, barred from MVP |
 | LDN-DISC-002 | Second discovery pass for the 7 documented gaps | `DONE` | Claude | LDN-DISC-001 | register now **60 candidates** (C053–C060) |
 | LDN-DISC-003 | Third pass: migration to Leiden since 1960, named Leiden women, guilds | `READY` | — | LDN-DISC-002 | extended register |
-| LDN-SCORE-001 | Score all 60 candidates on the 15 criteria (master §5 Phase 1B) | `IN PROGRESS` | **Claude** | LDN-VERIFY-001 ✔ | `content/leiden/candidates/leiden-candidate-scores.md` + Tier A/B/C |
-| LDN-COVERAGE-001 | Theme coverage analysis (master §1C) | `BLOCKED` | — | LDN-SCORE-001 | `docs/research/leiden-theme-coverage.md` |
+| LDN-SCORE-001 | Score all 60 candidates on the 15 criteria (master §5 Phase 1B) | `DONE` | Claude | LDN-VERIFY-001 ✔ | `leiden-candidate-scores.md` — Tier A **19**, B **34**, C **7**. Gate B passed. |
+| LDN-COVERAGE-001 | Theme coverage analysis (master §1C) **+ decide how to handle the three scoring biases** | `READY` | — | LDN-SCORE-001 ✔ | `docs/research/leiden-theme-coverage.md` |
 | LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | `BLOCKED` | — | LDN-COVERAGE-001 | `content/leiden/locations/` + master decision |
 | LDN-ROUTE-001 | Derive route candidates from the selected MVP set | `BLOCKED` | — | LDN-MVP-001 | `content/leiden/routes/` |
 
@@ -204,6 +204,7 @@ These block real work. Nothing should be guessed here (master §38).
 | Q4 | Wireframe shows 4 languages (NL/EN/DE/FR); master §30 locks NL+EN first | ENG-I18N-001 | Build for 4, ship content for NL+EN, hide DE/FR until translated |
 | Q5 | Is the wireframe's visual identity (navy + warm sand, serif wordmark) locked? | design system | Treat as locked-by-default; say so if not |
 | Q6 | Budget/tooling for AI video generation? | all `V0x` tasks | Not needed until after LDN-MVP-001 — safe to defer |
+| Q7 | **Weighted scoring?** The unweighted 15-criterion sum puts **no Siege candidate in Tier A**, drops Leiden's whole WWII story to Tier B/C, and buries the textile/labour stories | `LDN-MVP-001` | **Option C**: keep the scores honest and let `LDN-COVERAGE-001` reserve MVP slots for under-ranked themes. Full reasoning in `leiden-candidate-scores.md` §4 |
 
 ---
 

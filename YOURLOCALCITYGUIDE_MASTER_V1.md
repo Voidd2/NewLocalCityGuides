@@ -17,6 +17,7 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 | `docs/ux/wireframe-inventory.md` | The user's wireframe mapped onto the `W##` codes in §19, with gaps and conflicts | Role E |
 | `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
 | `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 60 candidate locations.** Nothing is selected. | Role A |
+| `content/leiden/candidates/leiden-candidate-scores.md` | **Phase 1B: all 60 scored, Tier A/B/C assigned.** Still no MVP. | Role A |
 | `docs/qa/LDN-VERIFY-001-verification-log.md` | What was checked, what was wrong, what stays unresolved | Role B/G |
 | `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
 | `docs/decisions/` | Decision records (`DEC-0xx`). A decision is not LOCKED until the user approves it. | shared |
@@ -480,6 +481,7 @@ women documented in their own right**.
 ---
 
 ## PHASE 1B — Candidate scoring
+Status: **COMPLETE (2026-09-13)** → `content/leiden/candidates/leiden-candidate-scores.md`
 
 Every discovered candidate receives a score from 1–5 for:
 
@@ -1980,8 +1982,15 @@ and verification are complete: **60 candidates** are registered and verified to 
 Scoring (`LDN-SCORE-001`) is in progress.
 
 Current content state:
-Phase 1A COMPLETE and VERIFIED. Phase 1B (scoring) IN PROGRESS. No location has an L-ID. No
-story, fun fact, Look Around item or video script exists, and none may be written yet.
+Phase 1A COMPLETE and VERIFIED. **Phase 1B (scoring) COMPLETE** — Tier A 19, Tier B 34,
+Tier C 7; Gate B passed for all 60. No location has an L-ID. No story, fun fact, Look Around
+item or video script exists, and none may be written yet.
+
+**The scoring produced one result the user must decide on (board Q7):** not a single Tier A
+candidate is primarily about the **Siege and Relief of Leiden**, and the city's entire WWII
+experience falls to Tier B/C — because the unweighted rubric rewards visible, central,
+filmable places, and those stories are none of those things. Selecting the MVP on rank alone
+would omit the story Leiden is most famous for. See `leiden-candidate-scores.md` §4.
 
 Current engineering state:
 Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unblocked today:
@@ -2001,8 +2010,9 @@ Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unbl
 
 1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
 2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
-3. Claude: ~~verification~~ ✔ and ~~gap pass~~ ✔ done. Scoring (`LDN-SCORE-001`) in progress.
-4. Then coverage (`LDN-COVERAGE-001`) → select (`LDN-MVP-001`). `LDN-DISC-003` runs alongside.
+3. Claude: ~~verification~~ ✔, ~~gap pass~~ ✔, ~~scoring~~ ✔ done.
+4. Next: coverage (`LDN-COVERAGE-001`), which must also resolve the three scoring biases,
+   then select (`LDN-MVP-001`). `LDN-DISC-003` runs alongside and blocks neither.
 5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
@@ -2116,6 +2126,13 @@ Still open from v1.0:
 ---
 
 # 39. CHANGELOG
+
+## v1.3 — 2026-09-13 (Claude)
+- `LDN-SCORE-001` complete: all 60 candidates scored on the fifteen §5 criteria.
+  Tier A 19, Tier B 34, Tier C 7. Gate B passed.
+- Recorded the three systematic biases in the unweighted rubric, and the finding that no
+  Tier A candidate is about the Siege. Raised as board Q7 rather than silently corrected.
+- Phase 1B marked COMPLETE in §5 and §36.
 
 ## v1.2 — 2026-09-13 (Claude)
 - `LDN-VERIFY-001` complete — see `docs/qa/LDN-VERIFY-001-verification-log.md`.
