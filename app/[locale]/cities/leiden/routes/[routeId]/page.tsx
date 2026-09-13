@@ -15,7 +15,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Script from 'next/script';
-import { ArrowLeft, Clock, MapPin, Navigation, CheckCircle, Circle, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock, MapPin, Navigation, ChevronRight } from 'lucide-react';
 import { loadRoute, loadLocations } from '@/content/loader';
 import type { RouteRecord, LocationRecord } from '@/content/schema';
 
@@ -169,7 +169,7 @@ export default async function RouteDetailPage({ params }: Props) {
               {[
                 { Icon: MapPin, label: `${(route.distanceMetres / 1000).toFixed(1)} km` },
                 { Icon: Clock, label: `${route.walkMinutes} min` },
-                { Icon: Circle, label: loc === 'nl' ? `${stops.length} stops` : `${stops.length} stops` },
+                { Icon: MapPin, label: `${stops.length} stops` },
               ].map(({ Icon, label }) => (
                 <span key={label} className="inline-flex items-center gap-1.5 text-sm bg-white/80 border border-gray-200 px-3 py-1.5 rounded-full text-gray-700">
                   <Icon className="w-3.5 h-3.5" /> {label}
@@ -282,7 +282,7 @@ export default async function RouteDetailPage({ params }: Props) {
                 <>
                   <li>• Draag comfortabele schoenen — de route heeft klinkerbestrating.</li>
                   <li>• De Hortus heeft een entreeprijs (€10). Neem het bewaren voor het einde.</li>
-                  <li>• Stop 2 (Pieterskerk) is 's maandags gesloten.</li>
+                  <li>• Stop 2 (Pieterskerk) is &apos;s maandags gesloten.</li>
                   <li>• Beste tijd: ochtend voor minder drukte bij de Burcht.</li>
                 </>
               ) : (

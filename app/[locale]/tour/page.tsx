@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { MapPin, Navigation, CheckCircle, Circle, Loader2, Film, Headphones, FileText } from 'lucide-react';
+import { MapPin, Navigation, CheckCircle, Loader2, Film, Headphones, FileText } from 'lucide-react';
 import { useGeolocation } from '@/features/tour/useGeolocation';
 import { useProximity } from '@/features/tour/useProximity';
 import LocationVideoModal from '@/features/tour/LocationVideoModal';
@@ -78,16 +78,19 @@ export default function TourPage() {
 
   const [visited, setVisited] = useState<Set<string>>(new Set());
   const [modalStop, setModalStop] = useState<ModalStop | null>(null);
-  const [autoOpened, setAutoOpened] = useState<Set<string>>(new Set());
+  // Use ref for autoOpened so updates don't trigger re-renders or effect loops
+  const autoOpenedRef = useRef<Set<string>>(new Set());
 
   // Auto-open modal when arriving at a new stop
   useEffect(() => {
     if (nearby.length === 0) return;
     const nearest = nearby[0];
-    if (!autoOpened.has(nearest.id)) {
+    if (!autoOpenedRef.current.has(nearest.id)) {
       const stop = LEIDEN_STOPS.find((s) => s.id === nearest.id);
       if (stop) {
-        setAutoOpened((prev) => new Set([...prev, nearest.id]));
+        autoOpenedRef.current = new Set([...autoOpenedRef.current, nearest.id]);
+        // GPS-triggered state update — useEffect is correct here (external system sync)
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setModalStop({
           id: stop.id,
           name: stop.name,
@@ -100,7 +103,7 @@ export default function TourPage() {
         });
       }
     }
-  }, [nearby, autoOpened]);
+  }, [nearby]);
 
   const markVisited = useCallback((id: string) => {
     setVisited((prev) => new Set([...prev, id]));

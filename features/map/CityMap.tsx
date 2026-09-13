@@ -5,6 +5,7 @@
  * Client-only (uses browser APIs). Import dynamically with ssr:false.
  */
 import { useEffect, useRef } from 'react';
+import 'maplibre-gl/dist/maplibre-gl.css';
 import type { MapConfig } from './types';
 
 const THEME_COLORS: Record<string, string> = {
@@ -34,7 +35,6 @@ export default function CityMap({ config, className = '', onMarkerClick }: Props
     async function init() {
       // Dynamic import keeps maplibre-gl out of the server bundle
       const maplibre = await import('maplibre-gl');
-      await import('maplibre-gl/dist/maplibre-gl.css');
 
       if (cancelled || !containerRef.current) return;
 
