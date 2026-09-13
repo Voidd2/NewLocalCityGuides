@@ -108,7 +108,8 @@ never against specific historical content. See §3.
 | FND-004 | Extract wireframe inventory from `docs/ux/wireframe-website-v1.png` | `DONE` | Claude | — | `docs/ux/wireframe-inventory.md` |
 | LDN-DISC-001 | Build broad Leiden Candidate Location Register (30–60) | `DONE` | Claude | — | `content/leiden/candidates/leiden-candidate-register.md` |
 | LDN-SRC-001 | Build source-lead register + institution list | `DONE` | Claude | — | `content/leiden/sources/leiden-source-leads.md` |
-| LDN-VERIFY-001 | Raise every `LOW` confidence candidate to `MEDIUM+` or drop it | `READY` | — | LDN-DISC-001 | updated register |
+| LDN-VERIFY-001 | Raise every `LOW` confidence candidate to `MEDIUM+` or drop it; resolve unsourced superlatives | `IN PROGRESS` | **Claude** | LDN-DISC-001 | updated register + `docs/qa/` verification log |
+| LDN-DISC-002 | Second discovery pass for the 7 documented gaps (women's history, modern Leiden, 1944 bombing, Roman Leiden, guilds/care, justice) | `IN PROGRESS` | **Claude** | LDN-DISC-001 | extended register |
 | LDN-SCORE-001 | Score all candidates on the 15 criteria (master §5 Phase 1B) | `READY` | — | LDN-DISC-001 | `content/leiden/candidates/leiden-candidate-scores.md` + Tier A/B/C |
 | LDN-COVERAGE-001 | Theme coverage analysis (master §1C) | `BLOCKED` | — | LDN-SCORE-001 | `docs/research/leiden-theme-coverage.md` |
 | LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | `BLOCKED` | — | LDN-COVERAGE-001 | `content/leiden/locations/` + master decision |
