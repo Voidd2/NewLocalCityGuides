@@ -16,7 +16,8 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 | `docs/handoffs/HANDOFF-LOG.md` | Every completed task's handoff (§25). No handoff = task incomplete. | shared |
 | `docs/ux/wireframe-inventory.md` | The user's wireframe mapped onto the `W##` codes in §19, with gaps and conflicts | Role E |
 | `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
-| `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 52 candidate locations.** Nothing is selected. | Role A |
+| `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 60 candidate locations.** Nothing is selected. | Role A |
+| `docs/qa/LDN-VERIFY-001-verification-log.md` | What was checked, what was wrong, what stays unresolved | Role B/G |
 | `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
 | `docs/decisions/` | Decision records (`DEC-0xx`). A decision is not LOCKED until the user approves it. | shared |
 
@@ -460,12 +461,21 @@ Initial target:
 
 The purpose is to avoid prematurely building around only the most obvious attractions.
 
-### STATUS — Phase 1A: COMPLETE (2026-09-13)
-Delivered: `content/leiden/candidates/leiden-candidate-register.md` — **52 candidates**
-across 7 thematic clusters. Gate A passed for all 52.
-Seven coverage gaps are documented at the end of that file and must be closed by
-`LDN-DISC-002` before MVP selection. The most serious is the absence of any candidate about
-a documented Leiden woman.
+### STATUS — Phase 1A: COMPLETE, VERIFIED (2026-09-13)
+Delivered: `content/leiden/candidates/leiden-candidate-register.md` — **60 candidates**
+across 8 thematic clusters. Gate A passed for all 60.
+
+`LDN-DISC-002` closed five of the seven gaps: Roman Leiden (C053), justice (C054), care and
+orphanages (C055), the 1944 bombardments (C058), post-war Leiden (C060), and women's history
+in its most substantial form — women's labour (C057) and the Leiden women's movement (C059).
+
+`LDN-VERIFY-001` checked every `LOW` entry and every superlative. Of five superlatives: one
+verified, one overstated, one disputed between reputable sources, one **plainly false**
+(the "oldest hofje" claim, wrong by 25 years). C013, C015 and C035 remain `LOW` and are
+**barred from MVP selection** until resolved. Full log: `docs/qa/LDN-VERIFY-001-verification-log.md`.
+
+Two gaps remain, for `LDN-DISC-003`: **migration to Leiden since 1960**, and **named Leiden
+women documented in their own right**.
 
 ---
 
@@ -1965,12 +1975,13 @@ Current project phase:
 **PHASE 0 — FOUNDATION (engineering side) running alongside PHASE 1 — CITY DISCOVERY (research side)**
 
 Current research state:
-**NO location has been approved as the main or flagship location.** The citywide discovery
-pass is complete: 52 candidates are registered, scored by nobody, tiered as nothing.
+**NO location has been approved as the main or flagship location.** Discovery, the gap pass
+and verification are complete: **60 candidates** are registered and verified to Gate A.
+Scoring (`LDN-SCORE-001`) is in progress.
 
 Current content state:
-Phase 1A COMPLETE. Phase 1B (scoring) not started. No location has an L-ID. No story, fun
-fact, Look Around item or video script exists, and none may be written yet.
+Phase 1A COMPLETE and VERIFIED. Phase 1B (scoring) IN PROGRESS. No location has an L-ID. No
+story, fun fact, Look Around item or video script exists, and none may be written yet.
 
 Current engineering state:
 Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unblocked today:
@@ -1990,8 +2001,8 @@ Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unbl
 
 1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
 2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
-3. Claude: verification pass (`LDN-VERIFY-001`), then the gap pass (`LDN-DISC-002`).
-4. Then score (`LDN-SCORE-001`) → coverage (`LDN-COVERAGE-001`) → select (`LDN-MVP-001`).
+3. Claude: ~~verification~~ ✔ and ~~gap pass~~ ✔ done. Scoring (`LDN-SCORE-001`) in progress.
+4. Then coverage (`LDN-COVERAGE-001`) → select (`LDN-MVP-001`). `LDN-DISC-003` runs alongside.
 5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
@@ -2002,8 +2013,11 @@ DO NOT:
 - code a location-specific architecture;
 - treat a `HIGH` confidence flag in the register as permission to publish. It means one
   cross-check passed, nothing more;
-- generate AI reconstruction imagery for candidates C047 or C048 (persecution and
-  resistance) — archival material only.
+- generate AI reconstruction imagery for candidates C047, C048 or **C058** (persecution,
+  resistance, and the 1944 bombardment victims) — archival material only;
+- write a superlative — "oldest", "first", "only" — that the verification log has not
+  cleared. Four of five checked were wrong, overstated or disputed;
+- select C013, C015 or C035 for the MVP. They are unresolved `LOW` and barred.
 
 # 37. DECISION LOG
 
@@ -2049,10 +2063,18 @@ source (PDOK/BAG) or left `TBD`.
 Status: LOCKED — proposed by Claude 2026-09-13, follows directly from §3 "never invent".
 
 ## DEC-011
-Candidates covering persecution, deportation and resistance (currently C047, C048) receive
-**no AI-generated reconstruction imagery**. Archival photographs, documents, named
-individuals and place only.
+Candidates covering persecution, deportation, resistance and civilian bombing deaths
+(currently C047, C048, C058) receive **no AI-generated reconstruction imagery**. Archival
+photographs, documents, named individuals and place only.
 Status: LOCKED — proposed by Claude 2026-09-13, follows from §3 (accuracy over spectacle) and §16.
+
+## DEC-013
+No superlative — "oldest", "first", "only", "largest" — may appear in visitor-facing content
+unless it has been cleared in `docs/qa/LDN-VERIFY-001-verification-log.md` or an equivalent
+verification record, with the exact permitted wording. Where reputable sources disagree, the
+product states the undisputed facts instead of picking a side.
+Status: LOCKED — proposed by Claude 2026-09-13. Of the first five superlatives checked, one
+was verified, one overstated, one disputed and one plainly false.
 
 ## DEC-012
 `docs/TASKBOARD.md` is the operational task list. This master file holds status, decisions
@@ -2094,6 +2116,15 @@ Still open from v1.0:
 ---
 
 # 39. CHANGELOG
+
+## v1.2 — 2026-09-13 (Claude)
+- `LDN-VERIFY-001` complete — see `docs/qa/LDN-VERIFY-001-verification-log.md`.
+- `LDN-DISC-002` complete — register extended from 52 to **60** candidates, closing five
+  of the seven documented gaps.
+- Added DEC-013: no unverified superlatives in visitor-facing content.
+- Extended DEC-011 to C058 (the 1944 bombardment victims).
+- Added `FND-006` (collaboration protocol) and the parallel-work rules in §4, §26 and §27.
+- Two gaps remain for `LDN-DISC-003`: migration since 1960, and named Leiden women.
 
 ## v1.1 — 2026-09-13 (Claude)
 - Added the "WHERE THINGS LIVE" index at the top of the file.

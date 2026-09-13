@@ -108,9 +108,10 @@ never against specific historical content. See §3.
 | FND-004 | Extract wireframe inventory from `docs/ux/wireframe-website-v1.png` | `DONE` | Claude | — | `docs/ux/wireframe-inventory.md` |
 | LDN-DISC-001 | Build broad Leiden Candidate Location Register (30–60) | `DONE` | Claude | — | `content/leiden/candidates/leiden-candidate-register.md` |
 | LDN-SRC-001 | Build source-lead register + institution list | `DONE` | Claude | — | `content/leiden/sources/leiden-source-leads.md` |
-| LDN-VERIFY-001 | Raise every `LOW` confidence candidate to `MEDIUM+` or drop it; resolve unsourced superlatives | `IN PROGRESS` | **Claude** | LDN-DISC-001 | updated register + `docs/qa/` verification log |
-| LDN-DISC-002 | Second discovery pass for the 7 documented gaps (women's history, modern Leiden, 1944 bombing, Roman Leiden, guilds/care, justice) | `IN PROGRESS` | **Claude** | LDN-DISC-001 | extended register |
-| LDN-SCORE-001 | Score all candidates on the 15 criteria (master §5 Phase 1B) | `READY` | — | LDN-DISC-001 | `content/leiden/candidates/leiden-candidate-scores.md` + Tier A/B/C |
+| LDN-VERIFY-001 | Raise every `LOW` confidence candidate to `MEDIUM+` or drop it; resolve unsourced superlatives | `DONE` | Claude | LDN-DISC-001 | `docs/qa/LDN-VERIFY-001-verification-log.md` — 1 false claim, 1 overstated, 1 disputed, 1 verified; C013/C015/C035 stay `LOW`, barred from MVP |
+| LDN-DISC-002 | Second discovery pass for the 7 documented gaps | `DONE` | Claude | LDN-DISC-001 | register now **60 candidates** (C053–C060) |
+| LDN-DISC-003 | Third pass: migration to Leiden since 1960, named Leiden women, guilds | `READY` | — | LDN-DISC-002 | extended register |
+| LDN-SCORE-001 | Score all 60 candidates on the 15 criteria (master §5 Phase 1B) | `IN PROGRESS` | **Claude** | LDN-VERIFY-001 ✔ | `content/leiden/candidates/leiden-candidate-scores.md` + Tier A/B/C |
 | LDN-COVERAGE-001 | Theme coverage analysis (master §1C) | `BLOCKED` | — | LDN-SCORE-001 | `docs/research/leiden-theme-coverage.md` |
 | LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | `BLOCKED` | — | LDN-COVERAGE-001 | `content/leiden/locations/` + master decision |
 | LDN-ROUTE-001 | Derive route candidates from the selected MVP set | `BLOCKED` | — | LDN-MVP-001 | `content/leiden/routes/` |
@@ -125,7 +126,7 @@ No final video script before `R01`+`R02` pass for that location.
 > **MESSAGE TO CODEX / CHATGPT — READ THIS BEFORE WRITING ANY CODE.**
 >
 > Claude has completed the citywide discovery pass (`LDN-DISC-001`). There are now
-> 52 candidate locations in `content/leiden/candidates/leiden-candidate-register.md`.
+> **60** candidate locations in `content/leiden/candidates/leiden-candidate-register.md`.
 > **None of them is selected yet.** Do not build screens, routes or seed data around
 > Pieterskerk, De Waag, De Burcht or any other specific place — the MVP set does not
 > exist yet and will be decided in `LDN-MVP-001`.
@@ -181,7 +182,7 @@ No final video script before `R01`+`R02` pass for that location.
 |---|---|---|---|---|---|
 | FND-002 | Propose + lock technical stack | `NEEDS USER` | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` |
 | FND-005 | Executable content schema from master §21 | `BLOCKED` | **Codex** | FND-002 | `src/types/`, validation |
-| ENG-GEO-001 | Geocode all candidates from PDOK/BAG | `READY` | **Codex** | LDN-DISC-001 | updated register |
+| ENG-GEO-001 | Geocode all **60** candidates from PDOK/BAG | `READY` | **Codex** | LDN-DISC-001 | updated register |
 | ENG-SKEL-001 | App skeleton + navigation shell per wireframe | `BLOCKED` | **Codex** | FND-002 | `src/app/` |
 | ENG-MAP-001 | Map foundation (layers, markers, clustering, filters) | `BLOCKED` | **Codex** | FND-002, ENG-GEO-001 | map feature |
 | ENG-LOC-001 | Location page template (W20–W30) | `BLOCKED` | **Codex** | FND-005 | location feature |
@@ -223,3 +224,7 @@ From master §27. A task is not `DONE` until its gate passes.
   extracted (FND-004). Candidate register delivered with 52 candidates (LDN-DISC-001).
   Source-lead register delivered (LDN-SRC-001). Codex brief written. FND-002 raised as
   the top blocker.
+- **2026-09-13** — Collaboration protocol written (FND-006) ahead of parallel work.
+  PR #1 opened. Verification pass done (LDN-VERIFY-001): one superlative false, one
+  overstated, one disputed, one verified; C028's story changed completely. Gap pass done
+  (LDN-DISC-002): register now **60 candidates**. Scoring (LDN-SCORE-001) started.
