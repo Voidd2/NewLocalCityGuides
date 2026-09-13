@@ -1,9 +1,23 @@
 # YOURLOCALCITYGUIDE — MASTER PROJECT OPERATING SYSTEM
-Version: 1.0
-Project status: FOUNDATION / CITY DISCOVERY
+Version: 1.1
+Last updated: 2026-09-13
+Project status: FOUNDATION / CITY DISCOVERY — Phase 1A discovery pass COMPLETE
 Primary city: Leiden, Netherlands
-Repository status: Not yet linked to domain or production hosting
+Repository status: In Git. Not yet linked to domain or production hosting.
 Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI agent or human contributor.
+
+## WHERE THINGS LIVE (read this with §22 and §23)
+
+| File | What it is | Owner |
+|---|---|---|
+| `YOURLOCALCITYGUIDE_MASTER_V1.md` | This file. Vision, locked decisions, rules, phases, status. **Wins every conflict.** | shared |
+| `docs/TASKBOARD.md` | **The operational view: who is doing what, right now, and what is blocked.** Start here after reading this file. | shared |
+| `docs/handoffs/HANDOFF-LOG.md` | Every completed task's handoff (§25). No handoff = task incomplete. | shared |
+| `docs/ux/wireframe-inventory.md` | The user's wireframe mapped onto the `W##` codes in §19, with gaps and conflicts | Role E |
+| `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
+| `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 52 candidate locations.** Nothing is selected. | Role A |
+| `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
+| `docs/decisions/` | Decision records (`DEC-0xx`). A decision is not LOCKED until the user approves it. | shared |
 
 ---
 
@@ -317,21 +331,27 @@ Required:
 - [x] Shared master file system
 - [x] Agent roles
 - [x] No arbitrary flagship location rule
-- [ ] Repository initialized
-- [ ] Tech stack locked
-- [ ] Content schema locked
-- [ ] Design principles locked
-- [ ] Wireframe inventory approved
-- [ ] Research source policy approved
-- [ ] Task board initialized
+- [x] Repository initialized (`FND-001`)
+- [x] Repository structure built per §22 (`FND-003`)
+- [x] Task board initialized — `docs/TASKBOARD.md` (`FND-003`)
+- [x] Wireframe inventory extracted — `docs/ux/wireframe-inventory.md` (`FND-004`)
+- [x] Source lead register built — `content/leiden/sources/leiden-source-leads.md` (`LDN-SRC-001`)
+- [ ] Tech stack locked — `FND-002`, **assigned to Codex, top blocker**
+- [ ] Content schema locked — `FND-005`, blocked by `FND-002`
+- [ ] Design principles locked — awaiting user confirmation of the identity read in the wireframe inventory
+- [ ] Wireframe inventory **approved by user** (extracted, not yet approved)
+- [ ] Research source policy approved by user
 
 Exit criteria:
 Claude and Codex can work without guessing the workflow.
 
+Remaining blockers to leaving Phase 0: `FND-002` (Codex) and the user decisions listed in
+`docs/TASKBOARD.md` §4.
+
 ---
 
 ## PHASE 1 — LEIDEN CITY DISCOVERY
-Status: NEXT
+Status: IN PROGRESS — 1A complete, 1B not started
 IMPORTANT: NO DEEP VIDEO PRODUCTION YET.
 
 Goal:
@@ -413,6 +433,13 @@ Initial target:
 30–60 candidate places/stories.
 
 The purpose is to avoid prematurely building around only the most obvious attractions.
+
+### STATUS — Phase 1A: COMPLETE (2026-09-13)
+Delivered: `content/leiden/candidates/leiden-candidate-register.md` — **52 candidates**
+across 7 thematic clusters. Gate A passed for all 52.
+Seven coverage gaps are documented at the end of that file and must be closed by
+`LDN-DISC-002` before MVP selection. The most serious is the absence of any candidate about
+a documented Leiden woman.
 
 ---
 
@@ -1687,20 +1714,66 @@ This number may change after discovery.
 
 # 33. FIRST REQUIRED TASKS
 
+> The authoritative, continuously updated task list is **`docs/TASKBOARD.md`**.
+> This section holds the headline status only. If the two disagree, the task board is
+> more current — and whoever notices must fix this section.
+
 ## Task FND-001
 Initialize GitHub repository and add this file.
 
-Status: NOT STARTED
+Status: **DONE**
+
+## Task FND-003
+Build repository structure (§22), task board and handoff log.
+
+Status: **DONE** — 2026-09-13, Claude
+
+## Task FND-004
+Extract the wireframe inventory from the user's wireframe.
+
+Status: **DONE** — 2026-09-13, Claude → `docs/ux/wireframe-inventory.md`
+Awaiting user approval of the reading and of the visual identity.
 
 ## Task FND-002
 Lock technical stack.
 
-Status: NOT STARTED
+Status: **NEEDS USER / ASSIGNED TO CODEX**
+Codex writes `docs/decisions/DEC-009-tech-stack.md` with a recommendation and trade-offs;
+the user approves. **This is the project's top blocker** — all engineering waits on it.
+Per §3, Codex may not self-approve a locked decision.
+
+## Task LDN-SRC-001
+Build the Leiden source lead register.
+
+Status: **DONE** — 2026-09-13, Claude → `content/leiden/sources/leiden-source-leads.md`
 
 ## Task LDN-DISC-001
 Build full Leiden Candidate Location Register.
 
-Status: NEXT
+Status: **DONE** — 2026-09-13, Claude
+Output: `content/leiden/candidates/leiden-candidate-register.md` — 52 candidates, Gate A passed.
+
+## Task LDN-VERIFY-001
+Resolve every `LOW` confidence entry and every unverified superlative in the register.
+
+Depends on: LDN-DISC-001
+Status: **READY** — must run **before** scoring. Scoring unverified claims produces
+confident nonsense.
+
+## Task LDN-DISC-002
+Second discovery pass targeting the seven gaps documented in the register
+(Roman Leiden; the 1944 bombing; post-war and modern Leiden; **women's history**; guilds,
+hospitals and orphanages; justice and punishment; and any location lacking a viewpoint).
+
+Depends on: LDN-DISC-001
+Status: **READY**
+
+## Task ENG-GEO-001
+Resolve coordinates for all 52 candidates from PDOK/BAG. Coordinates were deliberately not
+invented during discovery.
+
+Depends on: LDN-DISC-001
+Status: **READY** — assigned to Codex
 
 Agent:
 ROLE A — City Discovery Researcher
@@ -1720,12 +1793,12 @@ or structured equivalent.
 Update this master file when done.
 
 ## Task LDN-SCORE-001
-Score all candidate locations.
+Score all candidate locations on the 15 criteria in §5 Phase 1B; assign Tier A/B/C.
 
 Depends on:
-LDN-DISC-001
+LDN-DISC-001 (done), LDN-VERIFY-001 (recommended first)
 
-Status: BLOCKED
+Status: **READY** — but do `LDN-VERIFY-001` first
 
 ## Task LDN-COVERAGE-001
 Check story/theme coverage.
@@ -1825,32 +1898,51 @@ Do not let engineering force the historical research into a poor structure.
 
 # 36. CURRENT STATUS
 
+Updated: 2026-09-13 · by Claude · after `FND-003`, `FND-004`, `LDN-DISC-001`, `LDN-SRC-001`
+
 Current project phase:
-PHASE 0 — FOUNDATION
+**PHASE 0 — FOUNDATION (engineering side) running alongside PHASE 1 — CITY DISCOVERY (research side)**
 
 Current research state:
-NO location has been approved as the main or flagship location.
+**NO location has been approved as the main or flagship location.** The citywide discovery
+pass is complete: 52 candidates are registered, scored by nobody, tiered as nothing.
 
 Current content state:
-Citywide Leiden discovery has NOT yet been completed.
+Phase 1A COMPLETE. Phase 1B (scoring) not started. No location has an L-ID. No story, fun
+fact, Look Around item or video script exists, and none may be written yet.
 
-Current priority:
-1. Put this file in shared Git repository.
-2. Begin `LDN-DISC-001`.
-3. Discover 30–60 candidate Leiden places/stories.
-4. Score candidates.
-5. Check historical/theme coverage.
-6. Select first 8–15 production locations.
-7. Only then start deep location research.
-8. Only after research verification create final stories and videos.
+Current engineering state:
+Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unblocked today:
+`ENG-GEO-001` (geocoding) and the `FND-002` proposal itself.
+
+## What is blocking the project right now
+
+1. **`FND-002` — the tech stack is not locked.** Every engineering task waits on it.
+   Assigned to Codex; needs the user's approval, not Codex's.
+2. **User decisions** — six of them, listed in `docs/TASKBOARD.md` §4. The video-length
+   conflict (wireframe 1:28 vs. §10's 20–45s) and the missing AI-reconstruction disclosure
+   are the two that change the product, not just the plan.
+3. **`LDN-VERIFY-001`** — the register contains `LOW` confidence entries and unsourced
+   superlatives that must not travel any further downstream.
+
+## Immediate priority order
+
+1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
+2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
+3. Claude: verification pass (`LDN-VERIFY-001`), then the gap pass (`LDN-DISC-002`).
+4. Then score (`LDN-SCORE-001`) → coverage (`LDN-COVERAGE-001`) → select (`LDN-MVP-001`).
+5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
-- start building the whole experience around De Waag;
-- produce ten polished De Waag videos;
+- start building the whole experience around De Waag, or around Pieterskerk because it
+  appears in the wireframe mock-up;
+- produce ten polished videos about any one place;
 - assume the obvious tourist attractions are automatically the best locations;
-- code a location-specific architecture.
-
----
+- code a location-specific architecture;
+- treat a `HIGH` confidence flag in the register as permission to publish. It means one
+  cross-check passed, nothing more;
+- generate AI reconstruction imagery for candidates C047 or C048 (persecution and
+  resistance) — archival material only.
 
 # 37. DECISION LOG
 
@@ -1886,12 +1978,44 @@ Status: LOCKED
 Claude/Codex share project state through Git + this master file.
 Status: LOCKED
 
+## DEC-009
+Technical stack.
+Status: **OPEN** — Codex to propose in `docs/decisions/DEC-009-tech-stack.md`, user to approve.
+
+## DEC-010
+Coordinates are never estimated or invented. They are resolved from an authoritative Dutch
+source (PDOK/BAG) or left `TBD`.
+Status: LOCKED — proposed by Claude 2026-09-13, follows directly from §3 "never invent".
+
+## DEC-011
+Candidates covering persecution, deportation and resistance (currently C047, C048) receive
+**no AI-generated reconstruction imagery**. Archival photographs, documents, named
+individuals and place only.
+Status: LOCKED — proposed by Claude 2026-09-13, follows from §3 (accuracy over spectacle) and §16.
+
+## DEC-012
+`docs/TASKBOARD.md` is the operational task list. This master file holds status, decisions
+and rules; the board holds assignments and blockers. Neither may contradict the other, and
+this file wins if they do.
+Status: LOCKED — proposed by Claude 2026-09-13, implements §23.
+
 ---
 
 # 38. OPEN QUESTIONS
 
 These are unresolved and must not be guessed silently.
+Those now formally raised with the user are tracked in `docs/TASKBOARD.md` §4.
 
+Raised by the wireframe reading (`FND-004`) and needing a decision:
+- **Video length** — the wireframe shows 1:28; §10 Layer 2 specifies 20–45 seconds. Which wins?
+- **AI disclosure** — §15 mandates an on-screen reconstruction label; the wireframe has none.
+  This is not optional under §3 and must be added to the design.
+- **Languages** — the wireframe offers NL/EN/DE/FR; §30 locks NL+EN first.
+- **Map filters** — the wireframe's `Food` and `Nature` chips are commercial/non-historical.
+  §31 requires commercial content to be clearly separated from historical content.
+- **Look Around You is missing from the wireframe** entirely, despite §12 calling it central.
+
+Still open from v1.0:
 - Exact technical stack?
 - MapLibre vs Leaflet?
 - Content stored as Markdown, JSON, TypeScript or CMS later?
@@ -1909,6 +2033,18 @@ These are unresolved and must not be guessed silently.
 ---
 
 # 39. CHANGELOG
+
+## v1.1 — 2026-09-13 (Claude)
+- Added the "WHERE THINGS LIVE" index at the top of the file.
+- Marked `FND-001`, `FND-003`, `FND-004`, `LDN-SRC-001` and `LDN-DISC-001` DONE.
+- Recorded Phase 1A as COMPLETE: 52 Leiden candidates registered, Gate A passed.
+- Added tasks `LDN-VERIFY-001`, `LDN-DISC-002`, `ENG-GEO-001`.
+- Reassigned `FND-002` to Codex and named it the project's top blocker.
+- Rewrote §36 CURRENT STATUS with what is actually blocking the project.
+- Added decisions DEC-009 (open), DEC-010 (no invented coordinates), DEC-011 (no AI
+  reconstruction of persecution), DEC-012 (task board is the operational list).
+- Added the wireframe-derived open questions to §38.
+- Moved the wireframe artefact into `docs/ux/` and built the §22 repository structure.
 
 ## v1.0
 - Rebuilt master file from the ground up.
