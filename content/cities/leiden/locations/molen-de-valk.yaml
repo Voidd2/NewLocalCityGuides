@@ -28,8 +28,8 @@ content:
       It is the only remaining city grain mill and is fully set up as a museum:
       you can climb all six floors, from the miller's dwelling to the cap, and see how a miller's family lived.
   lookAround:
-    nl: Kijk omhoog: als de wieken draaien, kun je horen hoe de maalstenen werken.
-    en: Look up: when the sails turn you can hear the millstones at work.
+    nl: "Kijk omhoog: als de wieken draaien, kun je horen hoe de maalstenen werken."
+    en: "Look up: when the sails turn you can hear the millstones at work."
   thenVsNow:
     nl: Maalde tot 1964 actief graan. Sindsdien museum.
     en: Actively ground grain until 1964. Museum since then.
@@ -39,4 +39,5 @@ content:
     - nl: De molen heeft een entree van €5 voor volwassenen (gratis voor Leidse pashouders).
       en: Entry is €5 for adults (free for Leiden pass holders).
 sourceIds: [molendevalk-museum, wikipedia-molen-de-valk]
+mediaType: text
 imageUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Leiden_Molen_De_Valk_06.jpg/1280px-Leiden_Molen_De_Valk_06.jpg

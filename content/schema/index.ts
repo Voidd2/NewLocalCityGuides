@@ -17,11 +17,25 @@ export const LocationSchema = z.object({
     funFacts: z.array(LocalizedText).max(5).optional(),
   }),
   sourceIds: z.array(z.string()).min(1),
-  /** video = YouTube/MP4, audio = MP3, text = no media */
   mediaType: z.enum(['video', 'audio', 'text']).default('text'),
   videoUrl: z.string().url().optional(),
   audioUrl: z.string().url().optional(),
   imageUrl: z.string().url().optional(),
+});
+
+export const RouteSchema = z.object({
+  id: SlugId, cityId: z.string(),
+  theme: z.enum(['HISTORY','HIDDEN_GEM','FOOD','SCENIC','CULTURE']),
+  status: z.enum(['draft','review','published']),
+  title: LocalizedText, description: LocalizedText,
+  walkMinutes: z.number().int().positive(),
+  distanceMetres: z.number().int().positive(),
+  stops: z.array(z.object({
+    locationId: z.string(),
+    order: z.number().int().positive(),
+    instruction: LocalizedText.optional(),
+  })).min(1),
+  coverImageUrl: z.string().url().optional(),
 });
 
 export const CitySchema = z.object({
@@ -39,5 +53,6 @@ export const SourceSchema = z.object({
 });
 
 export type LocationRecord = z.infer<typeof LocationSchema>;
+export type RouteRecord = z.infer<typeof RouteSchema>;
 export type CityRecord = z.infer<typeof CitySchema>;
 export type SourceRecord = z.infer<typeof SourceSchema>;

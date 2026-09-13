@@ -1,0 +1,44 @@
+id: historisch-leiden
+cityId: leiden
+theme: HISTORY
+status: published
+title:
+  nl: Historisch Leiden
+  en: Historic Leiden
+description:
+  nl: >
+    Loop langs de plekken die Leiden groot hebben gemaakt: het middeleeuwse kasteel,
+    de gotische kerk met 30.000 graven, de molen die 200 jaar graan maalde en de
+    botanische tuin die de Nederlandse tulpenhandel begon. Verhalen die starten zodra je aankomt.
+  en: >
+    Walk through the places that made Leiden great: the medieval castle,
+    the Gothic church with 30,000 graves, the mill that ground grain for 200 years, and the
+    botanical garden that started the Dutch tulip trade. Stories that begin as you arrive.
+walkMinutes: 90
+distanceMetres: 2100
+stops:
+  - locationId: burcht-van-leiden
+    order: 1
+    instruction:
+      nl: Begin bij de ingang aan de Burgsteeg. Klim de heuvel op voor het beste uitzicht.
+      en: Start at the entrance on Burgsteeg. Climb the mound for the best view.
+  - locationId: pieterskerk
+    order: 2
+    instruction:
+      nl: Loop via de Pieterskerkgracht (200m). Let op de grafstenen in de vloer.
+      en: Walk via Pieterskerkgracht (200m). Notice the grave slabs in the floor.
+  - locationId: rijksmuseum-van-oudheden
+    order: 3
+    instruction:
+      nl: Volg het Rapenburg naar nummer 28 (350m). De tempel staat centraal in het museum.
+      en: Follow Rapenburg to number 28 (350m). The temple stands in the centre.
+  - locationId: molen-de-valk
+    order: 4
+    instruction:
+      nl: Neem de Binnenvestgracht richting de Valk (600m). De molen is van ver zichtbaar.
+      en: Take Binnenvestgracht towards De Valk (600m). The windmill is visible from afar.
+  - locationId: hortus-botanicus
+    order: 5
+    instruction:
+      nl: Eindig aan het Rapenburg 73 (500m). Zoek de Clusius-tuin met de historische tulp.
+      en: End at Rapenburg 73 (500m). Find the Clusius garden with the historic tulip.
