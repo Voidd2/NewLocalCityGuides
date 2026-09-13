@@ -374,8 +374,8 @@ Required:
 - [x] Task board initialized — `docs/TASKBOARD.md` (`FND-003`)
 - [x] Wireframe inventory extracted — `docs/ux/wireframe-inventory.md` (`FND-004`)
 - [x] Source lead register built — `content/leiden/sources/leiden-source-leads.md` (`LDN-SRC-001`)
-- [ ] Tech stack locked — `FND-002`, **assigned to Codex, top blocker**
-- [ ] Content schema locked — `FND-005`, blocked by `FND-002`
+- [x] Tech stack recorded — `FND-002`, approved by delegation (DEC-009), PR #2 merged
+- [x] Executable content schema — `FND-005`, 88 tests and independent Role G review passed; no real content published
 - [ ] Design principles locked — awaiting user confirmation of the identity read in the wireframe inventory
 - [ ] Wireframe inventory **approved by user** (extracted, not yet approved)
 - [ ] Research source policy approved by user
@@ -383,8 +383,8 @@ Required:
 Exit criteria:
 Claude and Codex can work without guessing the workflow.
 
-Remaining blockers to leaving Phase 0: `FND-002` (Codex) and the user decisions listed in
-`docs/TASKBOARD.md` §4.
+Remaining Phase 0 decisions are listed in `docs/TASKBOARD.md` §4. The stack and
+executable schema no longer block engineering.
 
 ---
 
@@ -1827,10 +1827,17 @@ Awaiting user approval of the reading and of the visual identity.
 ## Task FND-002
 Lock technical stack.
 
-Status: **NEEDS USER / ASSIGNED TO CODEX**
-Codex writes `docs/decisions/DEC-009-tech-stack.md` with a recommendation and trade-offs;
-the user approves. **This is the project's top blocker** — all engineering waits on it.
-Per §3, Codex may not self-approve a locked decision.
+Status: **DONE — APPROVED BY DELEGATION** (user, board Q1; Claude reviewed PR #2).
+`docs/decisions/DEC-009-tech-stack.md` records the decision and trade-offs. PR #2 is
+merged; the obsolete pending-approval text is corrected by FND-005.
+
+## Task FND-005
+Executable content schema, validation, and read-only selection-seed import.
+
+Status: **DONE** — Codex, 2026-09-13. TypeScript and 88 tests pass; independent
+Role G review: APPROVE. See `docs/engineering/content-schema.md` and
+`docs/engineering/review-fnd005.md`. All fourteen seed locations stay drafts;
+Q15's production-directory migration and all historical publication remain open.
 
 ## Task LDN-SRC-001
 Build the Leiden source lead register.
@@ -2016,8 +2023,11 @@ hours and honest accessibility line are sourced, and L008's gate-only etiquette 
 ⚠️ **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five of the remaining
 research blockers end at their archive. The contact task and the site visit are now one trip.
 
-⚠️ **`main` still contains only the two original uploaded files.** Neither Claude's PR #1 nor
-Codex's PR #2 has been merged, so **until the user merges, both branches are the project.**
+**Engineering integration:** PR #2 is merged into `main` (`34499ed`). FND-005 carries
+forward shared control files from Claude's pushed `77ae70a` so assignments remain
+visible, and adds the executable schema. Claude's research files remain on PR #1;
+this engineering task does not merge that PR or alter its research. Read both the
+current `main` and Claude's latest PR for the complete project state.
 
 **No story, fun fact, Look Around item, timeline or video script exists yet, and none may be
 written until that location's `R02` has passed.** Selection is not research, and `R01` is not
@@ -2030,8 +2040,17 @@ filmable places, and those stories are none of those things. Selecting the MVP o
 would omit the story Leiden is most famous for. See `leiden-candidate-scores.md` §4.
 
 Current engineering state:
-Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unblocked today:
-`ENG-GEO-001` (geocoding) and the `FND-002` proposal itself.
+`FND-002` and `FND-005` are complete. The schema validates identities, source trails,
+translations, media restrictions, temporal practical information and publication
+readiness. The importer preserves the fourteen location seeds as drafts with
+unknown coordinates. Node 24 tooling and CI run TypeScript plus 88 tests.
+Independent Role G review approved after three findings and two smaller gaps
+were fixed. No UI, geocoding, real content publication or deployment is included.
+Next: `ENG-GEO-001`, then `ENG-SKEL-001`.
+
+The user explicitly authorized Codex on 2026-09-13 to merge completed Codex work
+into `main` by default after checks and independent review. This standing
+authorization is recorded in the collaboration protocol and task board.
 
 ## What is blocking the project right now
 
@@ -2046,13 +2065,13 @@ Open items that are not blockers:
 
 ## Immediate priority order
 
-1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
+1. Codex: geocode the register (`ENG-GEO-001`); stack and schema are complete.
 2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
 3. Claude: ~~verification~~ ✔, ~~gap passes~~ ✔, ~~scoring~~ ✔, ~~coverage~~ ✔, ~~MVP~~ ✔ done.
 4. **Claude now:** `R01` deep research, location by location, then `R02` source verification.
    Stories only after `R02` passes. Videos only after stories. `LDN-ROUTE-001` alongside.
-5. **Codex now:** `FND-002` (stack — pre-approved, see DEC-009), `FND-005` (schema),
-   `ENG-GEO-001` (geocode 65 candidates), then the app skeleton.
+5. **Codex next:** `ENG-GEO-001` (geocode 65 candidates), then the app skeleton;
+   build against `src/domain/content.ts` through the whole-bundle validator.
 5. Only then: deep location research, then stories, then videos.
 
 DO NOT:

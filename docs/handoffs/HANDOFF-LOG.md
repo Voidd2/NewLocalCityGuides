@@ -5,6 +5,52 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF — FND-005 (Codex)
+
+**Agent:** Codex · **Role:** F — Engineer · **Date:** 2026-09-13
+**Task:** FND-005 (plus FND-002 approval wording) · **Status:** DONE
+**Branch:** `codex/content-schema` · **PR:** #3
+
+### Completed
+- Strict executable schema and inferred types for the content model, source/claim
+  links, temporal practical information, media and date-aware route variants.
+- Whole-bundle reference validation and explicit research/review/publication gates.
+- Read-only seed importer and strict YAML/JSON CLI with overwrite protection.
+- TypeScript + 88 tests passed. Separate Role G review approved after fixes;
+  evidence in `docs/engineering/review-fnd005.md`.
+- Actual seed at Claude commit `77ae70a`: all 14 locations imported as drafts,
+  null content/coordinates preserved, L014 AI restriction preserved.
+- DEC-009's status now reflects the existing Q1 delegation; no new approval invented.
+
+### Files changed
+`src/domain/`, `src/content/`, `scripts/content.ts`, tests, package/lock/config/CI,
+`docs/engineering/`, DEC-009, and the shared control files.
+
+### Facts and sources added
+None. Tests use synthetic content. Claude's research and seed remain unchanged.
+
+### Decisions made
+Recorded the user's standing instruction to merge completed Codex PRs into `main`
+after checks and independent review. Existing DEC-009 supplies YAML/Zod; no
+content-directory migration or actual route selection is performed.
+
+### Uncertainty / risks
+Shared control files were taken from Claude's pushed `77ae70a`; research itself
+remains on PR #1. Reconcile shared sections when that PR lands, preserving both
+agents' updates. Live scheduling, geocoding and UI enforcement are follow-up work.
+
+### What must NOT be assumed
+FND-005 completion is not historical publication approval, production content,
+completed location QA, a final route, live hosting, or vendor spending permission.
+
+### Recommended next task
+`ENG-GEO-001`, then `ENG-SKEL-001`. Q15 remains open for production content layout.
+
+### Master file updated
+YES — engineering sections §5, §33 and §36; taskboard and protocol also updated.
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer

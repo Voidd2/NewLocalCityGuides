@@ -77,8 +77,8 @@ FND-001  repo + master in Git                 DONE
    │
    ├── FND-003  repo structure + taskboard     DONE   (Claude)
    ├── FND-004  wireframe inventory            DONE   (Claude)
-   ├── FND-002  tech stack                     READY — PRE-APPROVED (Codex)
-   ├── FND-005  content schema                  READY  (Codex)
+   ├── FND-002  tech stack                     DONE — APPROVED BY DELEGATION (Codex)
+   ├── FND-005  content schema                  DONE — 88 checks + independent review (Codex)
    └── FND-006  collaboration protocol          DONE
    │
 LDN-DISC-001  candidate register             DONE   52 candidates
@@ -270,7 +270,7 @@ No final video script before `R01`+`R02` pass for that location.
 | ID | Task | Status | Owner | Depends on | Output |
 |---|---|---|---|---|---|
 | FND-002 | Stack decision record | ✅ **`DONE`** | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` — PR #2. **Reviewed by Claude: APPROVE** → `docs/qa/REVIEW-DEC-009-tech-stack.md` |
-| FND-005 | Executable content schema from master §21 + `locations.json` | `IN PROGRESS` | **Codex** | FND-002 ✔ | `codex/content-schema`: strict schema, source/reference checks, draft/publication gates and read-only seed importer; review requirements included |
+| FND-005 | Executable content schema from master §21 + `locations.json` | `DONE` | **Codex** | FND-002 ✔ | `src/domain/content.ts`, `src/content/`, CLI + 88 tests. Role G: APPROVE. See `docs/engineering/content-schema.md` and `review-fnd005.md`; no real content published |
 | ENG-GEO-001 | Geocode all **60** candidates from PDOK/BAG | `READY` | **Codex** | LDN-DISC-001 | updated register |
 | ENG-SKEL-001 | App skeleton + navigation shell per wireframe | `READY` | **Codex** | FND-002 | `src/app/` |
 | ENG-MAP-001 | Map foundation (layers, markers, clustering, filters) | `READY` | **Codex** | ENG-GEO-001 | map feature |
@@ -285,8 +285,8 @@ No final video script before `R01`+`R02` pass for that location.
 
 ### Codex coordination — 2026-09-13
 
-- `FND-005` is claimed on `codex/content-schema`. Shared control files are carried forward from Claude's pushed commit `77ae70a`; research files remain on PR #1 and are not merged by this work.
-- PR #2 is merged into `main` (`34499ed`). DEC-009's approval wording will be reconciled with the already recorded Q1 delegation.
+- `FND-005` is complete on `codex/content-schema`: 88 tests, TypeScript, real 14-location seed import and independent Role G review pass. Shared control files are carried forward from Claude's pushed commit `77ae70a`; research files remain on PR #1 and are not merged by this work.
+- PR #2 is merged into `main` (`34499ed`). DEC-009's approval wording is reconciled with the already recorded Q1 delegation.
 - The user has explicitly authorized Codex to merge its completed work into `main` by default after checks and independent review. No further per-PR confirmation is needed. Claude's open PR is outside this authorization.
 - `FND-005` owns `src/**`, tests, package/configuration and engineering documentation. The importer reads `locations.json` without editing it. No research files or production content paths will be moved; Q15 stays open for the eventual content-layout migration.
 - YAML/Zod follows DEC-009's existing delegated decision; Q2 is covered for this implementation. Date-aware route variants are supported as a schema capability; Q19's actual route choices remain editorial decisions.
@@ -296,7 +296,7 @@ These block real work. Nothing should be guessed here (master §38).
 | # | Question | Blocks | Claude's recommendation |
 |---|---|---|---|
 | ~~Q1~~ | ~~Approve the tech stack~~ | — | ✅ **PRE-APPROVED BY DELEGATION** → **DEC-009**. Codex writes the record and builds on it without waiting. Revocable by the user at any time |
-| Q2 | Content format: Markdown+frontmatter, JSON, or TS modules? | FND-005 | Markdown + frontmatter for stories, JSON for map/geo data — researchers can edit prose, engineers get typed data |
+| ~~Q2~~ | ~~Content format~~ | — | Covered by delegated DEC-009: YAML records with schema-designated Markdown; JSON seed input remains supported. This does not approve Q15's directory migration |
 | Q3 | Primary homepage CTA — the wireframe (2.1) shows three equal buttons: *Explore near me* / *Choose a route* / *Open map* | ENG-SKEL-001 | Keep all three, but make *Explore near me* visually primary and make it degrade to "Popular nearby" when GPS is denied |
 | Q4 | Wireframe shows 4 languages (NL/EN/DE/FR); master §30 locks NL+EN first | ENG-I18N-001 | Build for 4, ship content for NL+EN, hide DE/FR until translated |
 | Q5 | Is the wireframe's visual identity (navy + warm sand, serif wordmark) locked? | design system | Treat as locked-by-default; say so if not |
@@ -309,7 +309,7 @@ These block real work. Nothing should be guessed here (master §38).
 | Q12 | **"Leiden Essentials" (RT005) drops all three reserved slots** — the same bias the coverage analysis corrected, reappearing at the route layer | route design | **Option C**: add L012, anchored at De Waag, which already sits between two stops on the route. Nearly free |
 | Q13 | **L012's anchor is De Waag (C008)** — a candidate deliberately left out of the MVP. It does not add a stop; it gives an unanchored one an address | L012 | Accept. Reasoning in `L012-R01` §3 |
 | Q14 | **Archive licensing** — Rijksmuseum 1807 prints (L009) and Erfgoed Leiden's Rembrandt VR (L011). Master §38 flagged this; it is now concrete | L009, L011 video | Start the Erfgoed Leiden conversation early — it is probably a partnership, not a licence fee |
-| Q15 | **Amend master §22's content structure?** Codex proposes `content/cities/leiden/…` instead of `content/leiden/…`, which makes multi-city structural rather than aspirational | `FND-005` | **Adopt it.** Codex owns `content/cities/**` (validated production records); Claude keeps the research inputs where they are. Reasoning in `docs/qa/REVIEW-DEC-009-tech-stack.md` §3 |
+| Q15 | **Amend master §22's content structure?** Codex proposes `content/cities/leiden/…` instead of `content/leiden/…`, which makes multi-city structural rather than aspirational | Production content-directory migration (schema/importer complete without it) | **Adopt it.** Codex owns `content/cities/**` (validated production records); Claude keeps the research inputs where they are. Reasoning in `docs/qa/REVIEW-DEC-009-tech-stack.md` §3 |
 | Q16 | **Two vendors (Vercel + Cloudflare Stream)** at this stage — two accounts, two bills | hosting | Defensible and well argued by Codex. Worth your eyes before spend is authorised |
 | Q17 | ⚠️ **Visitor volume at the Jean Pesijnhofje (L008).** People live there. "Most residents don't mind" describes today's numbers, not a stream of app users | L008 | **Consult the foundation before launch, not after complaints.** The gate-only instruction already works; this is about how many people we send |
 | Q18 | **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five remaining research blockers end at their archive | R02 round 4 | Treat it as an opportunity: the contact task and the site visit are now the same trip |
