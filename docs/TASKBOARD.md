@@ -286,6 +286,7 @@ No final video script before `R01`+`R02` pass for that location.
 ### Codex coordination — 2026-09-13
 
 - `FND-005` is complete on `codex/content-schema`: 88 tests, TypeScript, real 14-location seed import and independent Role G review pass. Shared control files are carried forward from Claude's pushed commit `77ae70a`; research files remain on PR #1 and are not merged by this work.
+- Integration PR: #4 replaces closed PR #3. Concurrent `main` changes through `a749af5` (including `CHATGPT_TASKS.md` and `CLAUDE_TAKEN.md`) are preserved. Their new role split differs from this session's engineering assignment; the user has been asked which split to use for subsequent tasks. This already authorized FND-005 delivery follows the user's explicit standing merge instruction.
 - PR #2 is merged into `main` (`34499ed`). DEC-009's approval wording is reconciled with the already recorded Q1 delegation.
 - The user has explicitly authorized Codex to merge its completed work into `main` by default after checks and independent review. No further per-PR confirmation is needed. Claude's open PR is outside this authorization.
 - `FND-005` owns `src/**`, tests, package/configuration and engineering documentation. The importer reads `locations.json` without editing it. No research files or production content paths will be moved; Q15 stays open for the eventual content-layout migration.

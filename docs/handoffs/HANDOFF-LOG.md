@@ -9,7 +9,7 @@ No handoff = task incomplete.
 
 **Agent:** Codex · **Role:** F — Engineer · **Date:** 2026-09-13
 **Task:** FND-005 (plus FND-002 approval wording) · **Status:** DONE
-**Branch:** `codex/content-schema` · **PR:** #3
+**Branch:** `codex/content-schema` · **PR:** #4 (replaces closed #3)
 
 ### Completed
 - Strict executable schema and inferred types for the content model, source/claim
@@ -38,6 +38,9 @@ content-directory migration or actual route selection is performed.
 Shared control files were taken from Claude's pushed `77ae70a`; research itself
 remains on PR #1. Reconcile shared sections when that PR lands, preserving both
 agents' updates. Live scheduling, geocoding and UI enforcement are follow-up work.
+Concurrent `main` task files through `a749af5` are preserved. They describe a new
+role split that conflicts with this session's assignment; the user was asked to
+choose the split for subsequent tasks. No task-file content was overwritten.
 
 ### What must NOT be assumed
 FND-005 completion is not historical publication approval, production content,
