@@ -1,0 +1,44 @@
+id: hortus-botanicus
+cityId: leiden
+coordinates:
+  lng: 4.4987
+  lat: 52.1607
+themes: [HISTORY, SCENIC, HIDDEN_GEM]
+status: published
+accessType: paid
+visitMinutes: 60
+openingHours: "Ma-Zo 10:00-18:00 (zomer), 10:00-16:00 (winter)"
+address: "Rapenburg 73, 2311 GJ Leiden"
+content:
+  title:
+    nl: Hortus Botanicus Leiden
+    en: Hortus Botanicus Leiden
+  subtitle:
+    nl: Oudste botanische tuin van Nederland, opgericht in 1590
+    en: Oldest botanical garden in the Netherlands, founded in 1590
+  story:
+    nl: >
+      De Hortus Botanicus Leiden werd in 1590 opgericht door de Leidse Universiteit als kruidentuin voor medische studenten.
+      De eerste directeur was Carolus Clusius, die hier de eerste tulp in Nederland introduceerde in 1593 —
+      het begin van de Nederlandse tulpenhandel.
+      De tuin heeft een reconstructie van de originele Renaissance-tuin van Clusius,
+      inclusief zijn persoonlijke tulp en andere exotische planten die hij uit Wenen meenam.
+    en: >
+      The Hortus Botanicus Leiden was founded in 1590 by Leiden University as a herb garden for medical students.
+      The first director was Carolus Clusius, who introduced the first tulip in the Netherlands here in 1593 —
+      the beginning of the Dutch tulip trade.
+      The garden features a reconstruction of Clusius's original Renaissance garden,
+      including his personal tulip and other exotic plants he brought from Vienna.
+  lookAround:
+    nl: De Clusius-tuin in het midden is vrijwel identiek aan de tuin van 1594. Zelfs de rozenstruiken zijn historische variëteiten.
+    en: The Clusius garden in the centre is nearly identical to the 1594 garden. Even the rose bushes are historic varieties.
+  thenVsNow:
+    nl: Was 16e eeuwse apotheek voor studenten. Nu publiek toegankelijke tuin met 10.000+ plantensoorten.
+    en: Was a 16th-century pharmacy for students. Now a public garden with 10,000+ plant species.
+  funFacts:
+    - nl: Clusius bracht zijn persoonlijke tulpenbollen mee van het Habsburgse hof in Wenen.
+      en: Clusius brought his personal tulip bulbs from the Habsburg court in Vienna.
+    - nl: De 400-jarige roos in de tuin is een van de oudste gecultiveerde rozen van Europa.
+      en: The 400-year-old rose in the garden is one of the oldest cultivated roses in Europe.
+sourceIds: [hortus-leiden-official, wikipedia-hortus-leiden]
+imageUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Leiden_Hortus_Botanicus.jpg/1280px-Leiden_Hortus_Botanicus.jpg

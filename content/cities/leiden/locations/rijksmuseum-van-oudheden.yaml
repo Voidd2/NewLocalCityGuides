@@ -1,0 +1,44 @@
+id: rijksmuseum-van-oudheden
+cityId: leiden
+coordinates:
+  lng: 4.4924
+  lat: 52.1596
+themes: [HISTORY, CULTURE]
+status: published
+accessType: paid
+visitMinutes: 90
+openingHours: "Di-Zo 10:00-17:00, Ma gesloten"
+address: "Rapenburg 28, 2311 EW Leiden"
+content:
+  title:
+    nl: Rijksmuseum van Oudheden
+    en: National Museum of Antiquities
+  subtitle:
+    nl: Nationaal museum voor archeologie — thuisbasis van de Tempel van Taffeh
+    en: National museum of archaeology — home of the Temple of Taffeh
+  story:
+    nl: >
+      Het Rijksmuseum van Oudheden (RMO) is het nationale museum voor archeologie in Nederland, opgericht in 1818.
+      Het bezit meer dan 88.000 objecten uit Egypte, Griekenland, Rome en het vroegmiddeleeuwse Nederland.
+      Het pronkstuk is de Tempel van Taffeh: een complete Egyptische tempel uit circa 15 v.Chr.,
+      geschonken door Egypte aan Nederland als dank voor hulp bij de reddingsoperatie van Nubische monumenten.
+      De tempel staat midden in het museum en is daglicht-verlicht via het glazen dak.
+    en: >
+      The National Museum of Antiquities (RMO) is the national museum for archaeology in the Netherlands, founded in 1818.
+      It holds more than 88,000 objects from Egypt, Greece, Rome and early medieval Netherlands.
+      The showpiece is the Temple of Taffeh: a complete Egyptian temple from around 15 BC,
+      donated by Egypt to the Netherlands as thanks for helping to save Nubian monuments from the Aswan reservoir.
+      The temple stands in the centre of the museum, lit by natural daylight through a glass roof.
+  lookAround:
+    nl: De tempel heeft echte hiërogliefen. Zoek het cartouche van keizer Augustus bovenaan de pilaren.
+    en: The temple has real hieroglyphs. Find the cartouche of Emperor Augustus at the top of the pillars.
+  thenVsNow:
+    nl: Opgericht door König Willem I in 1818. De collectie groeide dankzij Nederlandse Egyptologen in de 19e eeuw.
+    en: Founded by King William I in 1818. The collection grew thanks to Dutch Egyptologists in the 19th century.
+  funFacts:
+    - nl: De Tempel van Taffeh weegt meer dan 2.000 ton en is steen voor steen herbouwd in Leiden.
+      en: The Temple of Taffeh weighs more than 2,000 tonnes and was rebuilt stone by stone in Leiden.
+    - nl: Leiden heeft de grootste Egyptologische faculteit van Nederland.
+      en: Leiden has the largest Egyptology faculty in the Netherlands.
+sourceIds: [rmo-official, wikipedia-rmo]
+imageUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Museum_van_oudheden.jpg/1280px-Museum_van_oudheden.jpg

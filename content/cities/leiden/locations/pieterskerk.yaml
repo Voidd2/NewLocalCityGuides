@@ -1,0 +1,44 @@
+id: pieterskerk
+cityId: leiden
+coordinates:
+  lng: 4.4910
+  lat: 52.1588
+themes: [HISTORY, CULTURE]
+status: published
+accessType: free_with_paid_interior
+visitMinutes: 30
+openingHours: "Ma-Za 11:00-17:00, Zo gesloten"
+address: "Pieterskerkhof 1a, 2311 SR Leiden"
+content:
+  title:
+    nl: Pieterskerk
+    en: St. Peter's Church
+  subtitle:
+    nl: Gothische kerk met 700 jaar Leidse geschiedenis
+    en: Gothic church with 700 years of Leiden history
+  story:
+    nl: >
+      De Pieterskerk, gewijd in 1121 en in de huidige gotische stijl gebouwd tussen de 14e en 16e eeuw,
+      is het oudste monument van Leiden. Onder de vloer liggen meer dan 30.000 mensen begraven,
+      waaronder de schilder Jan Steen en predikant John Robinson — de leider van de Pilgrimvaders
+      die vanuit Leiden naar Amerika vertrokken in 1620.
+      De kerk is nu een evenementenlocatie maar behoudt zijn architectonisch karakter volledig.
+    en: >
+      St. Peter's Church, consecrated in 1121 and rebuilt in its current Gothic style between the 14th and 16th centuries,
+      is Leiden's oldest monument. More than 30,000 people are buried under its floor,
+      including painter Jan Steen and reverend John Robinson — the leader of the Pilgrim Fathers
+      who departed from Leiden to America in 1620.
+      The church is now an event venue but retains its full architectural character.
+  lookAround:
+    nl: Let op de grafstenen in de vloer — elke plaat dekt een graf.
+    en: Notice the grave slabs in the floor — every slab covers a grave.
+  thenVsNow:
+    nl: Was 500 jaar de hartslag van Leiden. Nu trouwlocatie en concert podium.
+    en: Was the heartbeat of Leiden for 500 years. Now a wedding and concert venue.
+  funFacts:
+    - nl: De kerk heeft meer dan 3.000 grafstenen in de vloer.
+      en: The church has more than 3,000 grave slabs in its floor.
+    - nl: John Robinson is begraven in de kerk, niet in Amerika — hij stierf in Leiden in 1625 voor vertrek.
+      en: John Robinson is buried here, not in America — he died in Leiden in 1625 before departure.
+sourceIds: [wikipedia-pieterskerk, erfgoed-leiden-pieterskerk]
+imageUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Leiden_Pieterskerk_gezien_vanuit_het_Pieterskerkchoorsteeg.jpg/1280px-Leiden_Pieterskerk_gezien_vanuit_het_Pieterskerkchoorsteeg.jpg

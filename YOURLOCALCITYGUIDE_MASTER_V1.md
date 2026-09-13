@@ -1,0 +1,1929 @@
+# YOURLOCALCITYGUIDE — MASTER PROJECT OPERATING SYSTEM
+Version: 1.0
+Project status: FOUNDATION / CITY DISCOVERY
+Primary city: Leiden, Netherlands
+Repository status: Not yet linked to domain or production hosting
+Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI agent or human contributor.
+
+---
+
+# 0. ABSOLUTE RULE: READ THIS FIRST
+
+This project must never be built from random ideas, isolated chats, or unsourced historical claims.
+
+This file is the CENTRAL OPERATING SYSTEM of YourLocalCityGuide.
+
+Every agent must:
+1. Read this file before starting any task.
+2. Read CURRENT STATUS.
+3. Read LOCKED DECISIONS.
+4. Read the active task and its dependencies.
+5. Work only from verified project state.
+6. Update this file after every meaningful task.
+7. Leave a clear handoff for the next agent.
+8. Never silently overwrite another agent's work.
+9. Never invent historical facts.
+10. Never choose a "main location" before the citywide discovery phase is complete.
+11. Never write a final historical video before historical research and source verification are complete.
+12. Never mark a task DONE because it "looks good". DONE means all required checks passed.
+
+If there is a conflict between:
+- a chat message,
+- a code comment,
+- an agent assumption,
+- an old note,
+- this file,
+
+THIS FILE WINS unless the user explicitly changes a decision.
+
+---
+
+# 1. PROJECT VISION
+
+## Product name
+YourLocalCityGuide
+
+## First city
+Leiden
+
+## Long-term product
+A mobile-first city discovery platform that lets visitors physically explore a city and experience its history, stories and local context exactly where those stories happened.
+
+The platform combines:
+- interactive map;
+- GPS / nearby discovery;
+- curated routes;
+- historical storytelling;
+- short cinematic historical AI reconstructions;
+- voice-over;
+- fun facts;
+- "look around you" physical details;
+- then-versus-now comparisons;
+- practical city information;
+- future local business discovery;
+- future multi-city expansion.
+
+## Core promise
+"Stand where history happened. See the story come alive."
+
+## Product principle
+The city itself is part of the interface.
+
+The visitor should regularly be told:
+- look above you;
+- look across the canal;
+- turn around;
+- notice this stone;
+- compare this building;
+- walk 120 metres;
+- imagine this street in another century.
+
+The website must connect digital content to the physical environment.
+
+---
+
+# 2. WHAT THIS PRODUCT IS NOT
+
+YourLocalCityGuide is NOT:
+- a generic tourist information website;
+- a Wikipedia clone;
+- only an audio tour;
+- only an AI chatbot;
+- only a map;
+- only a historical video library;
+- only a Rembrandt tour;
+- a single fixed walking route;
+- a native app that must be installed;
+- a project where one location is arbitrarily chosen as the centre of Leiden.
+
+No location is automatically the flagship.
+
+A flagship location may emerge later based on:
+- historical significance;
+- visual reconstruction potential;
+- tourist foot traffic;
+- source quality;
+- narrative quality;
+- geographic usefulness;
+- route connectivity;
+- uniqueness;
+- production feasibility.
+
+---
+
+# 3. LOCKED DECISIONS
+
+These decisions may only be changed with explicit user approval.
+
+- City #1 = Leiden.
+- Mobile-first.
+- Web app / PWA first.
+- No mandatory app installation.
+- No mandatory account for normal use.
+- Visitors can explore freely on a map.
+- Visitors can also choose curated routes.
+- GPS may suggest nearby places.
+- GPS is optional; the site must still work without permission.
+- Historical videos are pre-produced, not generated live.
+- AI-generated historical content must be labelled appropriately.
+- Historical accuracy is more important than visual spectacle.
+- The system must support multiple cities later.
+- English and Dutch must be supported early.
+- All historical content must be structurally stored, not scattered randomly in UI code.
+- Research comes before storytelling.
+- Storytelling comes before final video production.
+- No location is labelled "main", "hero" or "flagship" before Phase 1 scoring.
+- Every location has a source trail.
+- Every final historical claim must be traceable to evidence.
+- Every reconstruction assumption must be documented separately from verified facts.
+
+---
+
+# 4. AGENT OPERATING MODEL
+
+Claude, Codex and other agents may work on the same repository, but they must not behave as independent projects.
+
+## Shared state
+All agents share:
+- this master file;
+- the Git repository;
+- the content model;
+- task IDs;
+- source records;
+- decision log;
+- status fields;
+- handoffs.
+
+## Recommended roles
+
+### ROLE A — City Discovery Researcher
+Best suited to Claude or another research-capable agent.
+
+Purpose:
+Find ALL relevant candidate places in Leiden before deep-diving.
+
+Responsibilities:
+- citywide historical inventory;
+- landmarks;
+- streets;
+- squares;
+- bridges;
+- canals;
+- churches;
+- university locations;
+- industrial heritage;
+- war history;
+- disasters;
+- hidden stories;
+- markets;
+- famous people;
+- archaeology;
+- social history;
+- architecture;
+- trade;
+- water;
+- science;
+- art;
+- migration;
+- religion;
+- government;
+- everyday life.
+
+Output:
+Candidate Location Register.
+
+### ROLE B — Historical Researcher
+Purpose:
+Deeply research one selected location.
+
+Responsibilities:
+- primary sources;
+- official archives;
+- academic sources;
+- timelines;
+- facts;
+- disputed claims;
+- historic maps;
+- paintings;
+- photos;
+- people;
+- events;
+- physical environment;
+- reconstruction constraints.
+
+### ROLE C — Story Architect
+Purpose:
+Turn verified research into an excellent visitor experience.
+
+Responsibilities:
+- hooks;
+- short story;
+- extended story;
+- fun facts;
+- "look around you";
+- visitor interaction;
+- story arc;
+- route relevance;
+- emotional pacing.
+
+### ROLE D — Historical Video Director
+Purpose:
+Translate verified research into cinematic reconstruction.
+
+Responsibilities:
+- choose period/event;
+- script;
+- shot list;
+- camera position;
+- visual references;
+- character actions;
+- costumes;
+- architecture;
+- props;
+- soundscape;
+- narration;
+- continuity;
+- historical constraints;
+- AI generation prompts.
+
+### ROLE E — Product / UX Designer
+Purpose:
+Design the experience across map, routes and place pages.
+
+Responsibilities:
+- wireframes;
+- information hierarchy;
+- navigation;
+- route progress;
+- location discovery;
+- mobile interaction;
+- accessibility;
+- failure states;
+- GPS permission flow.
+
+### ROLE F — Engineer
+Best suited to Codex.
+
+Responsibilities:
+- application architecture;
+- components;
+- content schema;
+- map;
+- geolocation;
+- routes;
+- video player;
+- analytics;
+- language system;
+- performance;
+- tests;
+- deployment config;
+- developer tooling.
+
+### ROLE G — Quality Reviewer
+Purpose:
+Challenge completed work.
+
+Checks:
+- historical accuracy;
+- source quality;
+- duplicated content;
+- weak storytelling;
+- accessibility;
+- mobile UX;
+- technical regressions;
+- broken route logic;
+- unsupported claims;
+- inconsistent tone.
+
+---
+
+# 5. PROJECT PHASES
+
+The project must progress in this order.
+
+---
+
+## PHASE 0 — FOUNDATION
+Status: IN PROGRESS
+
+Goal:
+Create a stable system before producing content or code at scale.
+
+Required:
+- [x] Product concept
+- [x] Leiden first
+- [x] Map + route model
+- [x] Location storytelling concept
+- [x] Shared master file system
+- [x] Agent roles
+- [x] No arbitrary flagship location rule
+- [ ] Repository initialized
+- [ ] Tech stack locked
+- [ ] Content schema locked
+- [ ] Design principles locked
+- [ ] Wireframe inventory approved
+- [ ] Research source policy approved
+- [ ] Task board initialized
+
+Exit criteria:
+Claude and Codex can work without guessing the workflow.
+
+---
+
+## PHASE 1 — LEIDEN CITY DISCOVERY
+Status: NEXT
+IMPORTANT: NO DEEP VIDEO PRODUCTION YET.
+
+Goal:
+Build the most complete practical inventory possible of places and stories in Leiden that could deserve a location experience.
+
+### Phase 1A — Candidate discovery
+Research Leiden broadly.
+
+Do not start with only famous tourist attractions.
+
+Search for:
+- major landmarks;
+- hidden history;
+- streets with specific stories;
+- unusual architecture;
+- historical businesses;
+- old gates;
+- bridges;
+- canals;
+- market areas;
+- university history;
+- science;
+- famous residents;
+- artists;
+- wars;
+- sieges;
+- religious conflict;
+- disasters;
+- fires;
+- explosions;
+- epidemics;
+- industry;
+- textiles;
+- migration;
+- working-class history;
+- elite history;
+- public punishment / justice;
+- trade;
+- shipping;
+- guilds;
+- hospitals;
+- orphanages;
+- almshouses;
+- archaeology;
+- medieval city development;
+- Golden Age;
+- 19th century;
+- WWII;
+- resistance;
+- post-war development;
+- modern cultural stories when historically relevant.
+
+### Required output
+Create a Candidate Location Register with at least these fields:
+
+- Candidate ID
+- Name
+- Coordinates if known
+- Type
+- Era(s)
+- Main historical theme
+- Known event/person/process
+- Tourist relevance
+- Visual reconstruction potential
+- Physical visibility today
+- Existing source quality
+- Route connectivity
+- Estimated story strength
+- Estimated video strength
+- Accessibility
+- Potential overlap with other locations
+- Research confidence
+- Notes
+
+### Minimum discovery target
+Do not stop after 10 locations.
+
+Initial target:
+30–60 candidate places/stories.
+
+The purpose is to avoid prematurely building around only the most obvious attractions.
+
+---
+
+## PHASE 1B — Candidate scoring
+
+Every discovered candidate receives a score from 1–5 for:
+
+1. Historical significance
+2. Story quality
+3. Visual reconstruction potential
+4. Source quality
+5. Physical place still visible
+6. Tourist footfall potential
+7. Geographic usefulness
+8. Route connectivity
+9. Uniqueness
+10. Mobile storytelling potential
+11. "Look around you" potential
+12. Then-vs-now potential
+13. Accessibility
+14. Family friendliness
+15. International visitor appeal
+
+Weighted scoring may later be introduced.
+
+### Output
+Create:
+- Tier A locations
+- Tier B locations
+- Tier C locations
+
+Tier A:
+strong MVP candidates
+
+Tier B:
+good future content
+
+Tier C:
+interesting archive / future expansion
+
+Do not call anything "flagship" yet.
+
+---
+
+## PHASE 1C — Story coverage analysis
+
+Before choosing the MVP, check if Leiden's history is represented broadly.
+
+Required theme coverage review:
+- medieval Leiden
+- Siege / Relief of Leiden
+- Rembrandt / art
+- university
+- science
+- trade
+- markets
+- textiles
+- water
+- religion
+- architecture
+- disaster
+- social history
+- WWII
+- hidden everyday stories
+
+Avoid an MVP consisting of ten locations that all tell essentially the same Golden Age story.
+
+---
+
+## PHASE 1D — MVP location selection
+
+Only now select the first production locations.
+
+Initial target:
+8–15 locations.
+
+Selection must optimize:
+- story variety;
+- geographical walkability;
+- tourist usefulness;
+- video feasibility;
+- source quality;
+- production cost;
+- route design.
+
+After this selection, assign official IDs:
+L001, L002, L003...
+
+IMPORTANT:
+IDs follow selection order or internal registry order.
+They do NOT imply importance.
+
+---
+
+# 6. SOURCE POLICY
+
+Historical reliability is a product feature.
+
+## Preferred sources
+
+Level 1 — PRIMARY
+- archival documents
+- historic maps
+- historic paintings
+- contemporary drawings
+- contemporary newspapers
+- government records
+- original letters
+- photographs
+
+Level 2 — OFFICIAL HERITAGE
+- Erfgoed Leiden
+- Museum De Lakenhal
+- Leiden municipality
+- Rijksmuseum
+- RCE
+- National Archives
+- university archives
+- official monument registers
+
+Level 3 — ACADEMIC
+- peer-reviewed research
+- university publications
+- scholarly books
+- theses where appropriate
+
+Level 4 — TRUSTED SECONDARY
+- reputable historical organizations
+- well-sourced cultural publications
+- established reference works
+
+Level 5 — DISCOVERY ONLY
+- travel blogs
+- general commercial tourism sites
+- social media
+- unsourced articles
+
+Level 5 may lead to a story, but may not be the sole support for important historical claims.
+
+## Wikipedia rule
+Wikipedia may be used to:
+- discover names;
+- discover dates;
+- discover source leads.
+
+Wikipedia may NOT be the final evidence source for key claims when better sources exist.
+
+---
+
+# 7. CANDIDATE LOCATION REGISTER TEMPLATE
+
+For every candidate:
+
+## Candidate
+Candidate ID:
+Name:
+Alternative names:
+Coordinates:
+Address:
+Place type:
+Visible today: YES / PARTIAL / NO
+Publicly accessible: YES / PARTIAL / NO
+
+## History summary
+Era(s):
+Main theme:
+Known historical events:
+Known people:
+Known processes:
+What physically happened here:
+
+## Story potential
+Core possible hook:
+What makes it surprising:
+What could a visitor physically notice:
+Potential emotional angle:
+Potential "day in the life":
+Potential major event:
+Potential process explanation:
+
+## Media potential
+Historic maps:
+Paintings:
+Drawings:
+Photos:
+Film:
+3D references:
+Current photography needed:
+
+## Video potential
+Score 1–5:
+Possible target year(s):
+Possible scene:
+Major uncertainty:
+
+## Route value
+Nearby candidates:
+Natural route themes:
+Walking usefulness:
+
+## Sources
+List source records.
+
+## Score
+Historical significance:
+Story:
+Visual:
+Sources:
+Visibility:
+Footfall:
+Connectivity:
+Uniqueness:
+Mobile:
+Look-around:
+Then-now:
+Accessibility:
+International appeal:
+TOTAL:
+
+## Decision
+Tier:
+Reason:
+Next action:
+
+---
+
+# 8. SELECTED LOCATION DEEP RESEARCH PIPELINE
+
+Once a candidate is selected for production, it receives an L-ID.
+
+Example only:
+L00X — [Location Name]
+
+Every selected location must go through these work packages.
+
+### R01 — Historical research
+Deep factual investigation.
+
+### R02 — Source verification
+Challenge important claims.
+
+### R03 — Visual reconstruction research
+Determine:
+- street shape;
+- buildings;
+- water;
+- surfaces;
+- vehicles;
+- ships;
+- clothing;
+- signage;
+- objects;
+- vegetation;
+- weather context if relevant.
+
+### R04 — Human activity research
+What did people actually DO there?
+
+### R05 — Uncertainty register
+Separate:
+- verified;
+- probable;
+- plausible;
+- unknown;
+- disputed.
+
+### C01 — Core visitor story
+Short and powerful.
+
+### C02 — Extended story
+For visitors who want more.
+
+### C03 — Fun facts
+Minimum 3, ideally 5+ candidates.
+
+### C04 — Look Around You
+Physical observations.
+
+### C05 — Timeline
+3–8 milestones.
+
+### C06 — Then vs Now
+Historical comparison.
+
+### C07 — FAQ / visitor questions
+Possible questions:
+- What was this used for?
+- Who lived here?
+- Is this original?
+- Why does it look like this?
+- What happened next?
+
+### V01 — Video opportunity analysis
+Before choosing one video, generate multiple concepts.
+
+### V02 — Video concept selection
+Select strongest historically defensible concept.
+
+### V03 — Storyboard
+Shot-by-shot.
+
+### V04 — Narration
+Voice-over.
+
+### V05 — Historical constraints
+Things AI must get right.
+
+### V06 — Negative constraints
+Things AI must NOT show.
+
+### V07 — Generation prompt pack
+Tool-agnostic prompts and references.
+
+### V08 — Subtitle text
+Short readable subtitles.
+
+### UX01 — Location page content structure
+How content appears on phone.
+
+### MAP01 — Map metadata
+Coordinates, time, tags, accessibility.
+
+### RT01 — Route connections
+Which routes include it and why.
+
+### Q01 — Historical QA
+### Q02 — Story QA
+### Q03 — Video QA
+### Q04 — Mobile QA
+### Q05 — Source QA
+
+Location status may only become PRODUCTION READY after all required work packages pass.
+
+---
+
+# 9. WHAT RESEARCH MUST ANSWER FOR EVERY LOCATION
+
+Agents must not research only dates and architect names.
+
+They must answer:
+
+## Place
+- What was this place?
+- When was it created?
+- What changed over time?
+- Which parts survive?
+- What no longer exists?
+
+## People
+- Who came here?
+- Who worked here?
+- Who lived here?
+- Who controlled it?
+- Who benefited?
+- Who suffered?
+- Are specific historical people documented?
+
+## Action
+- What physically happened here?
+- At what times of day?
+- What did workers do?
+- What tools were used?
+- How did goods/people move?
+- What sounds were normal?
+- What smells were plausible?
+- What would a visitor have noticed?
+
+## Environment
+- What did the street look like?
+- Was there water?
+- Were buildings different?
+- What materials were visible?
+- What transport existed?
+- What signs/lighting existed?
+- What was the likely crowd density?
+
+## Narrative
+- What is the one story someone will remember?
+- Is there conflict?
+- Is there transformation?
+- Is there a human perspective?
+- Is there an unexpected detail?
+
+## Physical connection
+- What can a visitor still see?
+- Where should they stand?
+- Which direction should they look?
+- Can current geometry be matched to historical references?
+
+## Video
+- What exactly should be shown?
+- What is visually meaningful?
+- What should NOT be invented?
+- What is the strongest transition from present to past?
+
+---
+
+# 10. STORY SYSTEM
+
+Each location should support layered storytelling.
+
+## Layer 1 — Instant hook
+Maximum 12 words.
+
+Purpose:
+Stop the scroll.
+
+Example structure:
+"You are standing where..."
+"Three centuries ago..."
+"This quiet square once..."
+"Look at the water..."
+
+## Layer 2 — 20–45 second experience
+Video + narration.
+
+Purpose:
+Immediate historical payoff.
+
+## Layer 3 — 100–180 word story
+Short reading.
+
+## Layer 4 — Deeper detail
+Optional:
+- timeline;
+- people;
+- event;
+- process;
+- archival image;
+- FAQ.
+
+## Layer 5 — physical interaction
+"Look around you."
+
+## Layer 6 — continue
+Nearby place or route.
+
+---
+
+# 11. FUN FACT SYSTEM
+
+Fun facts must not be random trivia.
+
+A good fun fact is:
+- surprising;
+- memorable;
+- relevant to the place;
+- sourced;
+- not already obvious from the main story.
+
+Each fun fact record:
+- fact ID;
+- claim;
+- short explanation;
+- source;
+- certainty;
+- whether visible physically;
+- whether suitable for children;
+- whether suitable for social sharing.
+
+Avoid:
+- generic dates;
+- unsourced legends presented as fact;
+- repeated facts from the main story.
+
+---
+
+# 12. "LOOK AROUND YOU" SYSTEM
+
+This feature is central.
+
+For every location research:
+- architectural details;
+- inscriptions;
+- statues;
+- reliefs;
+- stones;
+- windows;
+- bridges;
+- waterlines;
+- sightlines;
+- street shape;
+- old walls;
+- surviving objects.
+
+Each item must include:
+- instruction;
+- direction;
+- target object;
+- explanation;
+- historical relevance;
+- accessibility note;
+- confidence.
+
+Example:
+"Look above the entrance."
+Only use this if the relevant object is definitely visible from the visitor position.
+
+---
+
+# 13. THEN VS NOW SYSTEM
+
+Possible implementations:
+- image slider;
+- fade transition;
+- matched camera angle;
+- historic overlay;
+- side-by-side.
+
+Required:
+- historical source;
+- date;
+- current photo;
+- approximate viewpoint;
+- caption;
+- known changes.
+
+Do not fake a "then" image if it is presented as archival.
+AI reconstruction must be labelled as reconstruction.
+
+---
+
+# 14. HISTORICAL VIDEO SYSTEM
+
+Videos are a signature feature, but not every location necessarily needs the same type.
+
+## Candidate video types
+
+### Type A — Present-to-past transformation
+Same camera position:
+today → historical period.
+
+### Type B — How it worked
+Visual process:
+arrival → action → result.
+
+### Type C — Day in the life
+Follow a plausible documented type of person.
+
+### Type D — Major event
+Reconstruct a specific historical event.
+
+### Type E — Before / After
+Show a destroyed, rebuilt or transformed place.
+
+### Type F — Hidden layer
+Reveal what no longer exists.
+
+### Type G — Person-centered
+A documented historical person at the place.
+
+## Before selecting a video
+The agent must propose 2–5 concepts.
+
+For each:
+- historical defensibility;
+- visual impact;
+- source availability;
+- emotional value;
+- production difficulty;
+- risk of hallucination;
+- mobile suitability.
+
+Then select the best.
+
+---
+
+# 15. VIDEO SCRIPT TEMPLATE
+
+## Video ID
+Location:
+Video type:
+Target period:
+Target length:
+Language base:
+Aspect strategy:
+Historical confidence:
+
+## One-sentence concept
+
+## Visitor starting position
+
+## Scene 1
+Time:
+Visual:
+Camera:
+People:
+Action:
+Architecture:
+Props:
+Sound:
+Narration:
+Source(s):
+Uncertainty:
+
+Repeat per scene.
+
+## Ending
+- return to present?
+- freeze on historic detail?
+- ask visitor to look somewhere?
+- suggest next place?
+
+## On-screen disclosure
+"AI historical reconstruction based on historical and archival sources."
+
+---
+
+# 16. VIDEO HISTORICAL CONSTRAINT PACK
+
+Every video gets:
+
+## Must show
+Verified required elements.
+
+## May show
+Plausible elements supported by era research.
+
+## Must not show
+Anachronisms or unsupported details.
+
+Examples:
+- modern road markings;
+- electric lighting;
+- modern windows;
+- wrong ship type;
+- wrong clothing;
+- modern street furniture;
+- inaccurate church tower;
+- cars;
+- asphalt;
+- plastic;
+- wrong flags;
+- historically impossible crowd composition.
+
+This is essential for AI generation quality.
+
+---
+
+# 17. ROUTE SYSTEM
+
+The platform must support BOTH:
+
+1. Curated routes
+2. Free map exploration
+
+Neither is secondary.
+
+## Free exploration
+User opens map:
+- current location;
+- nearby history;
+- categories;
+- distance;
+- estimated experience length;
+- visited status.
+
+## Curated routes
+Routes are stories, not only stop lists.
+
+Possible categories:
+- Leiden Essentials
+- Leiden Through Time
+- Siege & Relief
+- Rembrandt & Art
+- University & Science
+- Trade, Markets & Water
+- Hidden Leiden
+- Disasters & Rebuilding
+- Family route
+- Quick 30-minute route
+
+These are examples only.
+Final routes must be based on Phase 1 location discovery.
+
+## Route research requirements
+For every route:
+- story arc;
+- stop order;
+- walking logic;
+- distance;
+- duration;
+- accessibility;
+- start/end convenience;
+- thematic consistency;
+- narrative progression;
+- poor-weather feasibility;
+- optional shortcuts.
+
+---
+
+# 18. MAP EXPERIENCE
+
+Required map abilities:
+- show user location;
+- nearby locations;
+- selected route;
+- visited locations;
+- categories;
+- time period;
+- walking distance;
+- preview cards;
+- optional filters;
+- open place page;
+- resume route.
+
+Do not overload the map.
+
+Mobile user must understand:
+"Where am I?"
+"What is nearby?"
+"Why should I go there?"
+"How long will it take?"
+
+---
+
+# 19. REQUIRED PAGE INVENTORY / WIREFRAME SYSTEM
+
+Before code is finalized, wireframes should exist for:
+
+## Entry / onboarding
+W01 — Splash / loading
+W02 — Language choice
+W03 — Location permission
+W04 — Short product introduction
+
+## Main discovery
+W10 — Leiden home
+W11 — Explore near me
+W12 — Map
+W13 — Location list
+W14 — Search
+W15 — Filters
+
+## Location experience
+W20 — Location hero
+W21 — Historical video
+W22 — Short story
+W23 — Extended story
+W24 — Fun facts
+W25 — Look Around You
+W26 — Then vs Now
+W27 — Timeline
+W28 — Practical information
+W29 — Nearby places
+W30 — Location completion / continue
+
+## Routes
+W40 — All routes
+W41 — Route detail
+W42 — Start route
+W43 — Route navigation
+W44 — Route stop
+W45 — Route progress
+W46 — Route completion
+
+## Saved / progress
+W50 — Saved locations
+W51 — Visited history
+W52 — Route progress
+
+## City
+W60 — About Leiden
+W61 — Practical city information
+W62 — How it works
+
+## Utility
+W70 — No GPS state
+W71 — Offline / bad connection
+W72 — Video failed
+W73 — Empty search
+W74 — 404
+W75 — Language fallback
+W76 — Accessibility options
+
+## Later / optional
+W80 — Local recommendations
+W81 — Partner listing
+W82 — Premium route
+W83 — Purchase/pass
+W84 — AI Q&A historical guide
+
+Do not build all optional pages in MVP.
+
+---
+
+# 20. UX PRINCIPLES
+
+- mobile-first;
+- cinematic but fast;
+- minimal clutter;
+- strong hierarchy;
+- one obvious primary action;
+- large tap targets;
+- tourist-friendly;
+- no account walls;
+- content visible even when GPS denied;
+- videos never block the entire experience;
+- subtitle support;
+- slow connection fallback;
+- map must not feel like a developer demo;
+- avoid generic tourism-template design;
+- no endless walls of text;
+- physical environment should regularly become part of UX.
+
+---
+
+# 21. CONTENT DATA MODEL
+
+Conceptual model only; implementation may evolve.
+
+```ts
+type City = {
+  id: string;
+  slug: string;
+  name: string;
+  center: Coordinates;
+  languages: string[];
+  locationIds: string[];
+  routeIds: string[];
+};
+
+type CandidateLocation = {
+  candidateId: string;
+  name: string;
+  coordinates?: Coordinates;
+  themes: string[];
+  eras: string[];
+  summary: string;
+  scores: CandidateScore;
+  sources: SourceRecord[];
+  tier?: "A" | "B" | "C";
+  decisionNotes?: string;
+};
+
+type Location = {
+  id: string;
+  cityId: string;
+  slug: string;
+  name: string;
+  coordinates: Coordinates;
+  address?: string;
+  eras: string[];
+  categories: string[];
+  durationMinutes: number;
+
+  hook: LocalizedText;
+  shortStory: LocalizedText;
+  extendedStory?: LocalizedText;
+  whyItMatters?: LocalizedText;
+
+  funFacts: FunFact[];
+  lookAround: LookAroundItem[];
+  timeline: TimelineItem[];
+  thenVsNow?: ThenVsNow[];
+  videos: HistoricalVideo[];
+
+  practicalInfo?: PracticalInfo;
+  routeIds: string[];
+  nearbyLocationIds: string[];
+
+  sources: SourceRecord[];
+  uncertainty: UncertaintyRecord[];
+  status: LocationStatus;
+};
+
+type SourceRecord = {
+  id: string;
+  title: string;
+  institution?: string;
+  url?: string;
+  sourceType:
+    | "PRIMARY"
+    | "OFFICIAL"
+    | "ACADEMIC"
+    | "SECONDARY"
+    | "DISCOVERY_ONLY";
+  claimsSupported: string[];
+  notes?: string;
+};
+
+type HistoricalVideo = {
+  id: string;
+  type: string;
+  period: string;
+  concept: string;
+  script: string;
+  scenes: VideoScene[];
+  sources: string[];
+  mustShow: string[];
+  mayShow: string[];
+  mustNotShow: string[];
+  disclosure: string;
+};
+```
+
+---
+
+# 22. REPOSITORY STRUCTURE — RECOMMENDED
+
+```text
+yourlocalcityguide/
+│
+├── YOURLOCALCITYGUIDE_MASTER.md
+├── README.md
+├── package.json
+│
+├── docs/
+│   ├── research/
+│   ├── ux/
+│   ├── decisions/
+│   └── qa/
+│
+├── content/
+│   └── leiden/
+│       ├── candidates/
+│       ├── locations/
+│       ├── routes/
+│       └── sources/
+│
+├── public/
+│   ├── images/
+│   ├── video/
+│   ├── audio/
+│   └── archive-references/
+│
+└── src/
+    ├── app/
+    ├── components/
+    ├── features/
+    ├── lib/
+    ├── styles/
+    └── types/
+```
+
+IMPORTANT:
+This master file remains the management source of truth.
+Large research bodies may live in structured files under `/content` or `/docs`, but the master file must always contain status, decisions and references to them.
+
+---
+
+# 23. ONE FILE VS MANY FILES RULE
+
+The user wants Claude and Codex to "work from one file".
+
+Interpretation:
+- ONE master control file = this file.
+- NOT all code and research literally dumped into one physical file.
+
+Why:
+A single giant file containing all source code, every video script and every historical source would become unstable and difficult to merge.
+
+Correct architecture:
+- this file = central brain;
+- research/content files = detailed records;
+- code = normal project structure;
+- Git = version history;
+- every task updates this file with status and links/paths.
+
+Agents MUST NOT create hidden project state that exists only in chat.
+
+---
+
+# 24. TASK ID SYSTEM
+
+## Foundation
+FND-001 etc.
+
+## City discovery
+LDN-DISC-001
+
+## Candidate research
+CAN-[ID]-R01
+
+## Selected location
+L001-R01
+L001-C01
+L001-V01
+etc.
+
+## Routes
+RT001-R01
+RT001-C01
+RT001-UX01
+
+## UX
+UX-W10
+UX-W20
+
+## Engineering
+ENG-MAP-001
+ENG-LOC-001
+ENG-VIDEO-001
+
+## QA
+QA-HIST-001
+QA-MOBILE-001
+
+Task IDs must appear in:
+- commits;
+- master updates;
+- handoffs;
+- issue names if GitHub Issues are used.
+
+---
+
+# 25. AGENT HANDOFF FORMAT
+
+At the end of EVERY meaningful task, append/update:
+
+## HANDOFF
+Agent:
+Role:
+Date:
+Task ID:
+Status:
+
+### Completed
+- ...
+
+### Files changed
+- ...
+
+### Facts added
+- ...
+
+### Sources added
+- ...
+
+### Decisions made
+- ...
+
+### Uncertainty / risks
+- ...
+
+### What must NOT be assumed
+- ...
+
+### Recommended next task
+- ...
+
+### Master file updated
+YES / NO
+
+No handoff = task incomplete.
+
+---
+
+# 26. GIT WORKFLOW
+
+Before work:
+```bash
+git pull
+```
+
+After work:
+```bash
+git add .
+git commit -m "[TASK-ID] Clear description"
+git push
+```
+
+Examples:
+```text
+[LDN-DISC-001] Build Leiden candidate location inventory
+[CAN-023-R01] Research candidate Pieterskerk
+[L004-R02] Verify historical sources
+[L004-V03] Create historical video storyboard
+[ENG-MAP-001] Build map foundation
+```
+
+If simultaneous work creates conflict:
+use branches.
+
+Examples:
+```text
+claude/leiden-discovery
+claude/location-research-l004
+codex/map-engine
+codex/location-template
+```
+
+---
+
+# 27. QUALITY GATES
+
+## Gate A — Candidate discovered
+Must have:
+- place;
+- why relevant;
+- at least one credible source lead;
+- basic story potential.
+
+## Gate B — Candidate shortlisted
+Must have:
+- score;
+- source quality assessment;
+- video potential;
+- route value.
+
+## Gate C — Location research complete
+Must have:
+- source trail;
+- uncertainty register;
+- physical activity;
+- environment;
+- people;
+- visual references.
+
+## Gate D — Story ready
+Must have:
+- hook;
+- short story;
+- fun facts;
+- look around;
+- timeline.
+
+## Gate E — Video ready
+Must have:
+- selected concept;
+- storyboard;
+- narration;
+- constraints;
+- references.
+
+## Gate F — Production ready
+Must pass:
+- historical QA;
+- copy QA;
+- UX QA;
+- mobile QA;
+- performance QA.
+
+---
+
+# 28. ANALYTICS PLAN
+
+Eventually track:
+
+Acquisition:
+- QR source;
+- direct;
+- search;
+- partner.
+
+Discovery:
+- map opened;
+- near-me opened;
+- route viewed;
+- search used.
+
+Location:
+- page viewed;
+- video started;
+- 25%;
+- 50%;
+- 75%;
+- 100%;
+- fun fact opened;
+- look-around used;
+- then-now used;
+- next location clicked.
+
+Route:
+- started;
+- stop reached;
+- stopped;
+- resumed;
+- completed.
+
+Technical:
+- GPS accepted;
+- GPS denied;
+- video failure;
+- slow connection fallback.
+
+No invasive tracking is required for MVP.
+
+---
+
+# 29. PERFORMANCE RULES
+
+Tourists may have:
+- roaming;
+- weak signal;
+- old phones;
+- low battery.
+
+Therefore:
+- fast first paint;
+- no autoplay giant video before consent/interaction;
+- lazy-load heavy assets;
+- compressed video;
+- poster images;
+- basic story accessible without video;
+- map load optimized;
+- graceful GPS failure;
+- offline-like caching considered later;
+- avoid excessive JavaScript.
+
+---
+
+# 30. LANGUAGE RULES
+
+Canonical historical facts should be language-neutral in research.
+
+Visitor-facing languages:
+Initial:
+- English
+- Dutch
+
+Later:
+- German
+- French
+- Spanish
+
+Translation rules:
+- do not translate proper names incorrectly;
+- do not create historical contradictions between languages;
+- voice-over scripts may be localized;
+- user-facing tone may differ slightly;
+- all language versions point to the same factual source base.
+
+---
+
+# 31. LOCAL BUSINESS / MONETIZATION — LATER
+
+Not part of initial historical research.
+
+Future possibilities:
+- nearby cafés;
+- traditional food;
+- museums;
+- canal cruises;
+- shops;
+- hotels;
+- partner routes;
+- premium passes.
+
+Critical rule:
+Paid placement must never corrupt historical ranking or factual content.
+
+Commercial recommendations must be clearly distinguished from historical content.
+
+---
+
+# 32. MVP DEFINITION — NOT YET FINAL
+
+Do NOT finalize MVP location list before Phase 1.
+
+Likely MVP functional scope:
+- Leiden home;
+- map;
+- nearby;
+- location pages;
+- historical videos;
+- stories;
+- fun facts;
+- look-around;
+- then-now;
+- routes;
+- English/Dutch;
+- QR attribution;
+- analytics.
+
+Likely first content scope:
+8–15 locations.
+
+This number may change after discovery.
+
+---
+
+# 33. FIRST REQUIRED TASKS
+
+## Task FND-001
+Initialize GitHub repository and add this file.
+
+Status: NOT STARTED
+
+## Task FND-002
+Lock technical stack.
+
+Status: NOT STARTED
+
+## Task LDN-DISC-001
+Build full Leiden Candidate Location Register.
+
+Status: NEXT
+
+Agent:
+ROLE A — City Discovery Researcher
+
+Instructions:
+Research Leiden broadly.
+Do not start by deep-diving De Waag or any other single place.
+Do not stop after famous attractions.
+Find 30–60 viable historical locations/stories.
+Add initial source leads.
+Score only after discovery pass is complete.
+
+Output:
+`content/leiden/candidates/leiden-candidate-register.md`
+or structured equivalent.
+
+Update this master file when done.
+
+## Task LDN-SCORE-001
+Score all candidate locations.
+
+Depends on:
+LDN-DISC-001
+
+Status: BLOCKED
+
+## Task LDN-COVERAGE-001
+Check story/theme coverage.
+
+Depends on:
+LDN-SCORE-001
+
+Status: BLOCKED
+
+## Task LDN-MVP-001
+Select first production locations.
+
+Depends on:
+LDN-COVERAGE-001
+
+Status: BLOCKED
+
+Only after LDN-MVP-001:
+start deep location research.
+
+---
+
+# 34. CLAUDE START INSTRUCTION
+
+Use this exact operating logic:
+
+You are working on YourLocalCityGuide.
+
+Before doing anything:
+1. Read `YOURLOCALCITYGUIDE_MASTER.md` completely.
+2. Follow CURRENT STATUS.
+3. Do not select a flagship location.
+4. Do not start final scripts/videos before city discovery and selection are complete.
+5. Never invent history.
+6. Store detailed work in structured project files.
+7. Update the master file after meaningful work.
+8. Leave a handoff.
+
+Your first major research task is:
+`LDN-DISC-001 — Build a broad Candidate Location Register for Leiden.`
+
+Research the city as a whole.
+
+Target:
+30–60 candidate locations or historically meaningful physical places.
+
+Cover:
+major attractions AND hidden history.
+
+Do not only collect names.
+For each candidate, record:
+- historical theme;
+- event/person/process;
+- era;
+- why it matters;
+- what happened physically there;
+- surviving visual connection;
+- source leads;
+- story potential;
+- possible video potential;
+- route value.
+
+Do not yet write final videos.
+
+---
+
+# 35. CODEX START INSTRUCTION
+
+You are the lead engineer for YourLocalCityGuide.
+
+Before writing code:
+1. Read `YOURLOCALCITYGUIDE_MASTER.md`.
+2. Respect all locked decisions.
+3. Do not hardcode historical content randomly in components.
+4. Build around structured city/location/route content.
+5. Do not assume a flagship location.
+6. Do not implement speculative features that are not needed.
+7. Update the master file and leave a handoff.
+
+Initial engineering work should support:
+- many candidate locations;
+- selected production locations;
+- many cities later;
+- map;
+- routes;
+- video;
+- structured research references;
+- multiple languages;
+- QR attribution;
+- analytics;
+- GPS fallback;
+- fast mobile performance.
+
+Do not let engineering force the historical research into a poor structure.
+
+---
+
+# 36. CURRENT STATUS
+
+Current project phase:
+PHASE 0 — FOUNDATION
+
+Current research state:
+NO location has been approved as the main or flagship location.
+
+Current content state:
+Citywide Leiden discovery has NOT yet been completed.
+
+Current priority:
+1. Put this file in shared Git repository.
+2. Begin `LDN-DISC-001`.
+3. Discover 30–60 candidate Leiden places/stories.
+4. Score candidates.
+5. Check historical/theme coverage.
+6. Select first 8–15 production locations.
+7. Only then start deep location research.
+8. Only after research verification create final stories and videos.
+
+DO NOT:
+- start building the whole experience around De Waag;
+- produce ten polished De Waag videos;
+- assume the obvious tourist attractions are automatically the best locations;
+- code a location-specific architecture.
+
+---
+
+# 37. DECISION LOG
+
+## DEC-001
+Leiden is the first city.
+Status: LOCKED
+
+## DEC-002
+Mobile-first web/PWA before native apps.
+Status: LOCKED
+
+## DEC-003
+Map exploration and curated routes both matter.
+Status: LOCKED
+
+## DEC-004
+Historical videos are pre-produced.
+Status: LOCKED
+
+## DEC-005
+Historical accuracy beats spectacle.
+Status: LOCKED
+
+## DEC-006
+No single location is preselected as flagship.
+Status: LOCKED
+
+## DEC-007
+Citywide discovery must happen before MVP location selection.
+Status: LOCKED
+
+## DEC-008
+Claude/Codex share project state through Git + this master file.
+Status: LOCKED
+
+---
+
+# 38. OPEN QUESTIONS
+
+These are unresolved and must not be guessed silently.
+
+- Exact technical stack?
+- MapLibre vs Leaflet?
+- Content stored as Markdown, JSON, TypeScript or CMS later?
+- Final visual identity?
+- Primary homepage CTA: near me, routes, or map?
+- Exact onboarding length?
+- Which route types emerge after research?
+- Which video tool(s) will be used?
+- Which archive image licenses allow reuse?
+- Which locations require permission for filming/photography?
+- Which accessibility features are MVP?
+- Which local institutions should be approached later?
+- Exact monetization model?
+
+---
+
+# 39. CHANGELOG
+
+## v1.0
+- Rebuilt master file from the ground up.
+- Removed De Waag as assumed flagship.
+- Added mandatory citywide discovery phase.
+- Added 30–60 candidate target.
+- Added candidate scoring system.
+- Added theme coverage review.
+- Added strict location deep-research pipeline.
+- Added historical video concept selection process.
+- Added fun fact and Look Around systems.
+- Added Then vs Now system.
+- Added wireframe/page inventory.
+- Added source policy.
+- Added quality gates.
+- Added role separation for Claude and Codex.
+- Added Git workflow and task IDs.
+- Added explicit rule that no final videos are written before research verification.

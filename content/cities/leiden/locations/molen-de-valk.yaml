@@ -1,0 +1,42 @@
+id: molen-de-valk
+cityId: leiden
+coordinates:
+  lng: 4.4894
+  lat: 52.1572
+themes: [HISTORY, CULTURE]
+status: published
+accessType: paid
+visitMinutes: 45
+openingHours: "Di-Za 10:00-17:00, Zo 13:00-17:00, Ma gesloten"
+address: "Binnenvestgracht 1, 2312 BJ Leiden"
+content:
+  title:
+    nl: Molen De Valk
+    en: De Valk Windmill
+  subtitle:
+    nl: Leidse stadskorenmolen uit 1743 — nu museum
+    en: Leiden city grain mill from 1743 — now a museum
+  story:
+    nl: >
+      Molen De Valk (De Valk = De Valk/Valk = Falcon in Dutch) staat op de restanten van een middeleeuws bastion.
+      Gebouwd in 1743, was het een van de zeven molens die Leiden ooit had voor het malen van graan.
+      Het is de enige overgebleven stadskorenmolen en volledig ingericht als museum:
+      je kunt alle zes verdiepingen beklimmen, van molenaarswoning tot kap, en zien hoe een molenaarsgezin leefde.
+    en: >
+      De Valk windmill stands on the remains of a medieval bastion.
+      Built in 1743, it was one of seven windmills Leiden once had for grinding grain.
+      It is the only remaining city grain mill and is fully set up as a museum:
+      you can climb all six floors, from the miller's dwelling to the cap, and see how a miller's family lived.
+  lookAround:
+    nl: Kijk omhoog: als de wieken draaien, kun je horen hoe de maalstenen werken.
+    en: Look up: when the sails turn you can hear the millstones at work.
+  thenVsNow:
+    nl: Maalde tot 1964 actief graan. Sindsdien museum.
+    en: Actively ground grain until 1964. Museum since then.
+  funFacts:
+    - nl: De wieken zijn elk 27 meter lang.
+      en: Each sail is 27 metres long.
+    - nl: De molen heeft een entree van €5 voor volwassenen (gratis voor Leidse pashouders).
+      en: Entry is €5 for adults (free for Leiden pass holders).
+sourceIds: [molendevalk-museum, wikipedia-molen-de-valk]
+imageUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Leiden_Molen_De_Valk_06.jpg/1280px-Leiden_Molen_De_Valk_06.jpg

@@ -1,0 +1,50 @@
+sources:
+  - id: wikipedia-burcht-leiden
+    title: "Burcht van Leiden — Wikipedia"
+    url: https://nl.wikipedia.org/wiki/Burcht_van_Leiden
+    type: wikipedia
+
+  - id: erfgoed-leiden-burcht
+    title: "Burcht van Leiden — Erfgoed Leiden"
+    url: https://www.erfgoedleiden.nl/collecties/gebouwen/archeologie/burcht
+    type: archive
+
+  - id: wikipedia-pieterskerk
+    title: "Pieterskerk (Leiden) — Wikipedia"
+    url: https://nl.wikipedia.org/wiki/Pieterskerk_(Leiden)
+    type: wikipedia
+
+  - id: erfgoed-leiden-pieterskerk
+    title: "Pieterskerk — Erfgoed Leiden"
+    url: https://www.erfgoedleiden.nl/collecties/gebouwen/kerkgebouwen/pieterskerk
+    type: archive
+
+  - id: molendevalk-museum
+    title: "Molen De Valk — Officiële website"
+    url: https://www.molendevalk.nl
+    type: official
+
+  - id: wikipedia-molen-de-valk
+    title: "Molen De Valk — Wikipedia"
+    url: https://nl.wikipedia.org/wiki/Molen_De_Valk
+    type: wikipedia
+
+  - id: hortus-leiden-official
+    title: "Hortus Botanicus Leiden — Officiële website"
+    url: https://www.hortusleiden.nl
+    type: official
+
+  - id: wikipedia-hortus-leiden
+    title: "Hortus Botanicus Leiden — Wikipedia"
+    url: https://nl.wikipedia.org/wiki/Hortus_botanicus_Leiden
+    type: wikipedia
+
+  - id: rmo-official
+    title: "Rijksmuseum van Oudheden — Officiële website"
+    url: https://www.rmo.nl
+    type: official
+
+  - id: wikipedia-rmo
+    title: "Rijksmuseum van Oudheden — Wikipedia"
+    url: https://nl.wikipedia.org/wiki/Rijksmuseum_van_Oudheden
+    type: wikipedia

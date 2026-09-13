@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "home": "Home",
+    "cities": "Cities",
+    "about": "About",
+    "pricing": "Pricing"
+  },
+  "home": {
+    "hero": {
+      "headline": "Stand where history happened",
+      "subline": "Free audio walking tour of Leiden. Stories that start as you arrive.",
+      "cta": "Explore Leiden"
+    },
+    "comingSoon": {
+      "title": "More cities coming soon",
+      "description": "Sign up for early access to Amsterdam, Rotterdam and Utrecht."
+    }
+  },
+  "city": {
+    "startTour": "Start tour",
+    "routes": "Routes",
+    "locations": "Locations",
+    "map": "Map"
+  },
+  "about": {
+    "title": "About YourLocalCityGuide",
+    "mission": "Our mission"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "free": "Free",
+    "cityPass": "City Pass",
+    "multiCity": "Multi-City"
+  },
+  "auth": {
+    "signin": "Sign in",
+    "signup": "Sign up",
+    "continueWithGoogle": "Continue with Google"
+  }
+}

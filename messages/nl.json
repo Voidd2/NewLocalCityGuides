@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "home": "Home",
+    "cities": "Steden",
+    "about": "Over ons",
+    "pricing": "Prijzen"
+  },
+  "home": {
+    "hero": {
+      "headline": "Sta waar geschiedenis gebeurde",
+      "subline": "Gratis audio wandeltour door Leiden. Verhalen die starten zodra je aankomt.",
+      "cta": "Verken Leiden"
+    },
+    "comingSoon": {
+      "title": "Meer steden komen eraan",
+      "description": "Meld je aan voor vroege toegang tot Amsterdam, Rotterdam en Utrecht."
+    }
+  },
+  "city": {
+    "startTour": "Start tour",
+    "routes": "Routes",
+    "locations": "Locaties",
+    "map": "Kaart"
+  },
+  "about": {
+    "title": "Over YourLocalCityGuide",
+    "mission": "Onze missie"
+  },
+  "pricing": {
+    "title": "Prijzen",
+    "free": "Gratis",
+    "cityPass": "City Pass",
+    "multiCity": "Multi-City"
+  },
+  "auth": {
+    "signin": "Inloggen",
+    "signup": "Aanmelden",
+    "continueWithGoogle": "Doorgaan met Google"
+  }
+}

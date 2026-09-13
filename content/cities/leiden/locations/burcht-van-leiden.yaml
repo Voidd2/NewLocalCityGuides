@@ -1,0 +1,42 @@
+id: burcht-van-leiden
+cityId: leiden
+coordinates:
+  lng: 4.4921
+  lat: 52.1601
+themes: [HISTORY, SCENIC]
+status: published
+accessType: free
+visitMinutes: 20
+openingHours: "Altijd open (buitenkant)"
+address: "Burgsteeg 14, 2312 JS Leiden"
+content:
+  title:
+    nl: Burcht van Leiden
+    en: Leiden Citadel
+  subtitle:
+    nl: Middeleeuws bolwerk boven de stad
+    en: Medieval stronghold above the city
+  story:
+    nl: >
+      De Burcht is een ringvormige stenen versterking gebouwd op een kunstmatige heuvel (motte) uit de 11e eeuw.
+      Vanuit de top heb je een uniek panorama over Leiden en de Oude en Nieuwe Rijn.
+      Tijdens het Leidse Ontzet in 1574 — toen Spaanse troepen de stad belegerd hielden — diende de Burcht als laatste toevluchtsoord voor de bevolking.
+      De heuvel zelf is nog ouder dan de stenen muur en wordt al vermeld in bronnen uit 1150.
+    en: >
+      The Burcht is a circular stone fortification built on an artificial mound (motte) from the 11th century.
+      From the top you get a unique panorama over Leiden and the Old and New Rhine rivers.
+      During the Relief of Leiden in 1574 — when Spanish troops besieged the city — the Burcht served as the last refuge for the population.
+      The mound itself is older than the stone wall and is mentioned in sources from 1150.
+  lookAround:
+    nl: Kijk naar het noorden voor de Pieterskerk, naar het zuiden voor De Valk molen.
+    en: Look north for the Pieterskerk church, south for the De Valk windmill.
+  thenVsNow:
+    nl: In de middeleeuwen stond hier de grafelijke burcht. Nu picknick-plek voor Leidenaars.
+    en: In the Middle Ages this was the count's castle. Now a picnic spot for Leiden locals.
+  funFacts:
+    - nl: De heuvel is 12 meter hoog en volledig door mensenhanden opgeworpen.
+      en: The mound is 12 metres high and entirely man-made.
+    - nl: Leiden had ooit twee kastelen — het tweede, de Gravensteen, staat er niet meer.
+      en: Leiden once had two castles — the second, the Gravensteen, no longer stands.
+sourceIds: [erfgoed-leiden-burcht, wikipedia-burcht-leiden]
+imageUrl: https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Leiden_burcht.jpg/1280px-Leiden_burcht.jpg
