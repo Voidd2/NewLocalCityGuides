@@ -133,7 +133,7 @@ written for any location until its `R02` passes.**
 | L002 | Vismarkt | ✅ | 🔄 |
 | L003 | Koornbrug | ✅ | 🔄 |
 | L004 | De Blauwe Steen | ✅ | — |
-| L005 | Gravensteen | ✅ | — |
+| L005 | Gravensteen | ✅ | 🔄 |
 | L006 | Pieterskerk | ✅ | 🔄 |
 | L007 | Pilgrims' quarter | ✅ | — |
 | L008 | Jean Pesijnhofje | ✅ | 🔄 |
@@ -141,10 +141,10 @@ written for any location until its `R02` passes.**
 | L010 | Hortus Botanicus | ✅ | 🔄 |
 | L011 | Weddesteeg | ✅ | — |
 | L012 | Leidens Ontzet | ✅ | 🔄 |
-| L013 | Wevershuis | ✅ | — |
+| L013 | Wevershuis | ✅ | 🔄 |
 | L014 | Cleveringa 1940 | ✅ | — |
 
-| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | rounds 1–2 done: L001, L002, L003, L006, L008, L009, L010, L012 → `docs/qa/R02-verification-round-{1,2}.md` |
+| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | rounds 1–3 done: L001, L002, L003, L005, L006, L008, L009, L010, L012, L013 → `docs/qa/R02-verification-round-{1,2,3}.md` |
 | LDN-ROUTE-001 | Route proposals from L001–L014 | `DONE` | Claude | — | `content/leiden/routes/leiden-route-proposals.md` — 6 routes proposed |
 | R03-SHARED | Shared city-wide reconstruction references | `STARTED` | Claude | L011-R01 | `docs/research/leiden-reconstruction-references.md` |
 | LDN-ROUTE-002 | Recompute routes from real coordinates; resolve the RT005 question | `BLOCKED` | — | ENG-GEO-001 | `content/leiden/routes/` |
@@ -303,6 +303,8 @@ These block real work. Nothing should be guessed here (master §38).
 | Q14 | **Archive licensing** — Rijksmuseum 1807 prints (L009) and Erfgoed Leiden's Rembrandt VR (L011). Master §38 flagged this; it is now concrete | L009, L011 video | Start the Erfgoed Leiden conversation early — it is probably a partnership, not a licence fee |
 | Q15 | **Amend master §22's content structure?** Codex proposes `content/cities/leiden/…` instead of `content/leiden/…`, which makes multi-city structural rather than aspirational | `FND-005` | **Adopt it.** Codex owns `content/cities/**` (validated production records); Claude keeps the research inputs where they are. Reasoning in `docs/qa/REVIEW-DEC-009-tech-stack.md` §3 |
 | Q16 | **Two vendors (Vercel + Cloudflare Stream)** at this stage — two accounts, two bills | hosting | Defensible and well argued by Codex. Worth your eyes before spend is authorised |
+| Q17 | ⚠️ **Visitor volume at the Jean Pesijnhofje (L008).** People live there. "Most residents don't mind" describes today's numbers, not a stream of app users | L008 | **Consult the foundation before launch, not after complaints.** The gate-only instruction already works; this is about how many people we send |
+| Q18 | **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five remaining research blockers end at their archive | R02 round 4 | Treat it as an opportunity: the contact task and the site visit are now the same trip |
 
 ---
 

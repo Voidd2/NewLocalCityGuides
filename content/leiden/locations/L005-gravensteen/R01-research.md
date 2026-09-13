@@ -7,6 +7,16 @@ Status: **R01 COMPLETE** → `L005-R02` next
 
 ---
 
+> ⭐ **`R02` ROUND 3 — THE INTERIOR IS ACCESSIBLE, AND §6's ACCESS NOTE IS OUT OF DATE.**
+> **Pieterskerk Leiden has run guided tours of the Gravensteen several times a week since summer
+> 2025** — "a place you don't normally just enter". The **Hoogheemraadschap van Rijnland** reading
+> room is also open. So L005 is **not** exterior-only, and the **1556 cell block** is worth asking
+> about.
+> **And: Erfgoed Leiden en Omstreken has temporarily moved into this building** while its
+> Boisotkade premises are renovated. The project's most important source institution is currently
+> housed inside an MVP location.
+> ⚠️ All of this is **explicitly temporary**. Re-check before launch; do not present it as settled.
+
 ## 1. THE SHORT ANSWER
 
 A building where the counts of Holland lived, that became a prison, that acquired a gallery so

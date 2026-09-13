@@ -7,6 +7,18 @@ Status: **R01 COMPLETE** → `L008-R02` next
 
 ---
 
+> ✅ **`R02` ROUND 3 — THE ACCESS QUESTION IS SETTLED, AND §6 WAS RIGHT.**
+> It remains **an inhabited hofje**. The **large entrance door is open and you can walk in**;
+> **most residents don't mind people looking, but privacy must be respected**; the sources say
+> **"best to stay at the entrance and view the hofje from there"** and **"don't make too much
+> noise — these are real places of rest in the city; keep it that way."** No published opening
+> hours; contact the foundation.
+> **The instruction is therefore: stand at the gate, look in, keep your voice down, go no
+> further.** That is not a reduced experience — the 1683 gate building, its central chimney and
+> the regents' chamber above it are all visible from exactly there.
+> ⚠️ **Volume is the risk this product creates.** "Most residents don't mind" describes today's
+> numbers. Consult the foundation **before** launch.
+
 ## 0. ⚠️ THIS FILE'S OWN CORRECTION WAS PARTLY WRONG — read `R02` first
 
 `R02` round 1 established the fuller record and it differs from §1 below:

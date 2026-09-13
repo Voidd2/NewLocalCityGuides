@@ -16,6 +16,13 @@ Status: **R01 COMPLETE** → `L003-R02` next
 > Karnemelksbrug. **The end date has passed, so it is probably finished — and this project does
 > not publish "probably". Confirm before L003 goes live.**
 
+> ✅ **`R02` ROUND 3 — THE BRIDGE IS OPEN.** Reopened **Wednesday 14 May 2026** after ~6 months.
+> What looked like routine maintenance became an extensive restoration: the **pillars and
+> foundation were significantly worse than the municipality had realised** and specialists were
+> brought in. **Heavy traffic is now permanently barred** and diverted to the **Visbrug (L002)**.
+> **L003 is unblocked.** New usable beat: the 1824 canopy nearly outlived its own foundations and
+> nobody knew until they opened it up.
+
 ## 1. THE SHORT ANSWER
 
 Someone looked at a bridge and thought: *this should also be a warehouse.* Then built it.

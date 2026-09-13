@@ -8,6 +8,15 @@ Status: **R01 COMPLETE** → `L013-R02` next
 
 ---
 
+> ✅ **`R02` ROUND 3 — HOURS, PRICE AND ACCESSIBILITY CONFIRMED.**
+> **Tuesday–Sunday, 13:00–16:00. Free.** Middelstegracht 143, 2312 TV Leiden.
+> **Accessibility, in the museum's own words:** wheelchair accessible **but not entirely** —
+> a **narrow hallway** and **high thresholds** between rooms; **only someone with a narrow
+> wheelchair and an accompanying person can view the ground floor**. The app must carry this
+> close to verbatim, not flatten it to an icon.
+> Two route consequences: any route containing L013 is an **afternoon** route, Tue–Sun; and it is
+> **free**, which removes friction `LDN-SCORE-001` assumed it had.
+
 ## 1. THE SHORT ANSWER
 
 A weaver's house from about 1560 that survived because its last occupant never repaired
