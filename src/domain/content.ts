@@ -417,7 +417,9 @@ export const citySchema = z.strictObject({
   slug,
   name: text,
   center: coordinatesSchema.nullable(),
-  languages: z.array(languageSchema).min(1).refine(value => new Set(value).size === value.length, { message: "City languages must be unique" }),
+  languages: z.array(languageSchema).min(1)
+    .refine(value => new Set(value).size === value.length, { message: "City languages must be unique" })
+    .refine(value => value.includes("nl") && value.includes("en"), { message: "The project's required city languages are NL and EN" }),
   locationIds: ids,
   routeIds: ids,
 });

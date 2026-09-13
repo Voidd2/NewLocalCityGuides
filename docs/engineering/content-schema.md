@@ -50,7 +50,9 @@ structured citation, not proof that engineering has independently verified it.
 Visitor narrative fields use a `ContentBlock`: `text` holds `nl`, `en`, and optional
 `de`/`fr`; `claimIds` identifies the shared factual basis. Null translations are
 allowed in drafts. A published record must contain every language configured by
-its city, including the referenced claim text. There is no silent fallback.
+its city, including the referenced claim text. NL and EN remain required by the
+project; city configuration can add DE/FR but cannot silently remove NL/EN.
+There is no silent fallback.
 Markdown remains text at ingestion; the future renderer must sanitize supported
 markup rather than execute HTML or content as code.
 
@@ -63,7 +65,7 @@ to publish. A published location requires:
 - a named and dated publication review;
 - `PRODUCTION_READY`, completed R01, R02 and C01;
 - sourced visitor coordinates, a distinct story subject and explicit survival state;
-- a positive experience duration, hook, short story, fun facts, Look Around You and
+- a positive experience duration, hook, short story, at least three fun facts, Look Around You and
   3–8 timeline milestones;
 - recorded passes for historical, copy, UX, mobile and performance QA;
 - non-draft claim verification and evidence beyond discovery-only sources;
@@ -77,7 +79,9 @@ research/editorial workflow and the project's review gates.
 Media retains archival/current/reconstruction identity. A false location-level
 `allowsAIReconstruction` rejects every reconstruction, including nested comparison
 images and video posters. Reconstructions require disclosure. Published videos
-also require delivery metadata, a poster, transcript and captions for city languages.
+also require completed V01, a sourced scene list, delivery metadata, a poster,
+transcript and captions for city languages. Practical and media sources must
+belong to the location's own source trail.
 The eventual UI must preserve those labels and flags; validation does not implement
 a video player. Published routes cannot include unpublished stops, including in
 date-specific variants.
@@ -107,7 +111,7 @@ belong to subsequent engineering/editorial tasks, with Q19's route choices open.
 Objects reject unknown keys and numeric strings are not coerced to numbers. The
 YAML loader uses YAML 1.2 core, rejects duplicate keys, aliases, merge keys, custom
 tags and multiple documents. Errors identify the affected field or reference.
-JSON is also supported. Canonical draft YAML round-trips without changing nulls,
+JSON is also supported with duplicate-key rejection. Canonical draft YAML round-trips without changing nulls,
 booleans or editorial strings.
 
 Tests use explicitly synthetic content only. Checks cover seed preservation,

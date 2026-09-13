@@ -158,6 +158,11 @@ export function validateContent(input: unknown): ContentBundle {
       }
     }
     visit(location, path, (node, nodePath) => {
+      if (Array.isArray(node.sourceIds)) {
+        for (const id of node.sourceIds) {
+          if (typeof id === 'string' && !location.sources.includes(id)) fail(`${nodePath}.sourceIds`, `${id} is missing from this location's source trail`);
+        }
+      }
       if (Array.isArray(node.claimIds)) {
         for (const id of node.claimIds) {
           if (typeof id === 'string' && claims.has(id) && claims.get(id)?.locationId !== location.id) {
@@ -185,14 +190,15 @@ export function validateContent(input: unknown): ContentBundle {
       if (!location.hook || !location.shortStory) fail(path, 'Publishing requires a hook and short story');
       if (!location.sources.length) fail(`${path}.sources`, 'Publishing requires a source trail');
       if (!location.durationMinutes) fail(`${path}.durationMinutes`, 'Publishing requires a positive experience duration');
-      if (!location.funFacts.length || !location.lookAround.length || location.timeline.length < 3 || location.timeline.length > 8) {
-        fail(path, 'Publishing requires fun facts, Look Around You and 3–8 timeline milestones (Gate D)');
+      if (location.funFacts.length < 3 || !location.lookAround.length || location.timeline.length < 3 || location.timeline.length > 8) {
+        fail(path, 'Publishing requires at least 3 fun facts, Look Around You and 3–8 timeline milestones (Gate D)');
       }
       if (!location.qualityChecks || Object.values(location.qualityChecks).some(value => value !== 'passed')) {
         fail(`${path}.qualityChecks`, 'Publishing requires recorded historical, copy, UX, mobile and performance QA (Gate F)');
       }
       location.videos.forEach((video, j) => {
         const videoPath = `${path}.videos[${j}]`;
+        if (location.researchStatus.V01 !== 'DONE' || !video.scenes.length) fail(videoPath, 'Published video requires completed V01 and a sourced scene list');
         if (!video.provider || !video.poster || !video.transcript) fail(videoPath, 'Published videos require delivery, a poster and a transcript');
         for (const language of city?.languages ?? []) {
           if (!video.captions.some(caption => caption.language === language)) fail(`${videoPath}.captions`, `Missing ${language} subtitles`);

@@ -83,6 +83,10 @@ describe('publication gates', () => {
     const bundle = publishedBundle(); bundle.cities[0]!.languages.push('de');
     expect(() => validateContent(bundle)).toThrow('.de');
   });
+  it('cannot lower the locked NL+EN publication requirement through city configuration', () => {
+    const bundle = publishedBundle(); bundle.cities[0]!.languages = ['nl'];
+    expect(() => validateContent(bundle)).toThrow('NL and EN');
+  });
   it('requires exact claim references for visitor prose', () => {
     const bundle = publishedBundle(); bundle.locations[0]!.shortStory!.claimIds = [];
     expect(() => validateContent(bundle)).toThrow('specific claim references');
@@ -106,6 +110,19 @@ describe('publication gates', () => {
     expect(() => validateContent(bundle)).toThrow('cannot be published');
     bundle.locations[0]!.publication.status = 'draft';
     expect(() => validateContent(bundle)).not.toThrow();
+  });
+  it('requires practical and media evidence in the location source trail', () => {
+    const bundle = publishedBundle(); bundle.locations[0]!.practicalInfo = practical();
+    bundle.sources.push({ ...bundle.sources[0]!, id: 'UNRELATED', claimsSupported: [] });
+    bundle.locations[0]!.practicalInfo.hours.verification.sourceIds = ['UNRELATED'];
+    expect(() => validateContent(bundle)).toThrow('source trail');
+    bundle.locations[0]!.practicalInfo = null;
+    const clip = video(); clip.poster!.sourceIds = ['UNRELATED']; bundle.locations[0]!.videos = [clip];
+    expect(() => validateContent(bundle)).toThrow('source trail');
+  });
+  it('enforces the minimum three fun facts', () => {
+    const bundle = publishedBundle(); bundle.locations[0]!.funFacts.length = 1;
+    expect(() => validateContent(bundle)).toThrow('at least 3 fun facts');
   });
   it('rejects duplicate IDs in content arrays', () => {
     const bundle = publishedBundle(); bundle.locations[0]!.timeline.push(structuredClone(bundle.locations[0]!.timeline[0]!));
@@ -134,6 +151,12 @@ describe('media restrictions', () => {
     expect(() => validateContent(bundle)).toThrow('subtitles');
     bundle.locations[0]!.videos[0]!.provider = null;
     expect(() => validateContent(bundle)).toThrow('delivery');
+  });
+  it('cannot publish video before V01 or without a sourced scene list', () => {
+    const bundle = publishedBundle(); bundle.locations[0]!.videos = [video()]; bundle.locations[0]!.researchStatus.V01 = 'NOT_STARTED';
+    expect(() => validateContent(bundle)).toThrow('V01');
+    bundle.locations[0]!.researchStatus.V01 = 'DONE'; bundle.locations[0]!.videos[0]!.scenes = [];
+    expect(() => validateContent(bundle)).toThrow('scene list');
   });
 });
 

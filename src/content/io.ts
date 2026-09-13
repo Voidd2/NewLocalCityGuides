@@ -15,10 +15,12 @@ const coreTags = new Set([
 
 /** Parse one JSON or YAML 1.2 core document without resolving aliases or tags. */
 export function parseContentText(text: string, format: ContentFormat): unknown {
-  if (format === 'json') return JSON.parse(text) as unknown;
+  // JSON.parse checks JSON grammar, but loses duplicate keys. Validate the
+  // original syntax tree too, before returning any parsed value.
+  const jsonValue: unknown = format === 'json' ? JSON.parse(text) : undefined;
   const document = parseDocument(text, {
     version: '1.2',
-    schema: 'core',
+    schema: format === 'json' ? 'json' : 'core',
     strict: true,
     uniqueKeys: true,
     customTags: [],
@@ -27,7 +29,7 @@ export function parseContentText(text: string, format: ContentFormat): unknown {
   });
   const problems = [...document.errors, ...document.warnings];
   if (problems.length > 0) {
-    throw new Error(`Invalid YAML:\n${problems.map((problem) => problem.message).join('\n')}`);
+    throw new Error(`Invalid ${format.toUpperCase()}:\n${problems.map((problem) => problem.message).join('\n')}`);
   }
   if (document.directives?.yaml.version !== '1.2') {
     throw new Error('Only YAML 1.2 is supported.');
@@ -44,7 +46,7 @@ export function parseContentText(text: string, format: ContentFormat): unknown {
       if (node.key.value === '<<') throw new Error('YAML merge keys are not supported.');
     }
   });
-  return document.toJS({ maxAliasCount: 0 }) as unknown;
+  return format === 'json' ? jsonValue : document.toJS({ maxAliasCount: 0 }) as unknown;
 }
 
 export function contentFormatForPath(filePath: string): ContentFormat {

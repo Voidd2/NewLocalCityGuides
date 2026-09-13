@@ -39,7 +39,7 @@ export function publishedBundle(): ContentBundle {
   Object.assign(location, {
     status: 'PRODUCTION_READY',
     publication: { status: 'published', reviewedBy: 'SYNTHETIC TEST REVIEWER', reviewedAt: '2000-01-01' },
-    researchStatus: { R01: 'DONE', R02: 'DONE', C01: 'DONE', V01: 'NOT_STARTED' },
+    researchStatus: { R01: 'DONE', R02: 'DONE', C01: 'DONE', V01: 'DONE' },
     qualityChecks: { historical: 'passed', copy: 'passed', ux: 'passed', mobile: 'passed', performance: 'passed' },
     place: { kind: 'viewpoint', survival: 'not_applicable', subject: { ...translated } },
     coordinates: { longitude: 0, latitude: 0, provenance: { provider: 'PDOK', url: 'https://example.invalid/test-coordinate', checkedAt: '2000-01-01' } },
@@ -58,7 +58,7 @@ export function image(type: ImageAsset['type'] = 'current'): ImageAsset {
 }
 export function video(): HistoricalVideo {
   return { id: 'TEST-VIDEO', type: 'current', period: { ...translated }, concept: block(), script: block(),
-    scenes: [], sourceIds: ['TEST-SOURCE'], claimIds: ['TEST-CLAIM'], mustShow: [], mayShow: [], mustNotShow: [], disclosure: null,
+    scenes: [{ id: 'TEST-SCENE', description: block(), narration: block(), claimIds: ['TEST-CLAIM'], sourceIds: ['TEST-SOURCE'], uncertainty: null }], sourceIds: ['TEST-SOURCE'], claimIds: ['TEST-CLAIM'], mustShow: [], mayShow: [], mustNotShow: [], disclosure: null,
     durationSeconds: 30, poster: image(), captions: ['nl', 'en'].map(language => ({ language: language as 'nl' | 'en', url: 'https://example.invalid/captions.vtt' })),
     transcript: block(), provider: { kind: 'file', url: 'https://example.invalid/video.mp4' } };
 }

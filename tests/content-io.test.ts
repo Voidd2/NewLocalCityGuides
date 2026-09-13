@@ -57,6 +57,14 @@ describe('content input formats', () => {
     expect(() => parseContentText('{broken', 'json')).toThrow();
   });
 
+  it.each([
+    '{"allowsAIReconstruction":false,"allowsAIReconstruction":true}',
+    '{"nested":{"same":1,"same":2}}',
+    '{"same":1,"sa\\u006de":2}',
+  ])('rejects duplicate JSON keys before they can overwrite restrictions', source => {
+    expect(() => parseContentText(source, 'json')).toThrow('unique');
+  });
+
   it('chooses supported file formats explicitly', () => {
     expect(contentFormatForPath('test.JSON')).toBe('json');
     expect(contentFormatForPath('test.yml')).toBe('yaml');
