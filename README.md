@@ -10,12 +10,26 @@ First city: **Leiden**.
 
 1. **`YOURLOCALCITYGUIDE_MASTER_V1.md`** — the single source of truth. Vision, locked
    decisions, phases, rules, quality gates. **It wins every conflict.**
-2. **`docs/TASKBOARD.md`** — who is doing what right now, and what is blocked. Pick a task
+2. **`docs/COLLABORATION-PROTOCOL.md`** — **Claude and Codex work here at the same time.**
+   Push often, always keep a PR open, read before you write, stay in your lane. Binding.
+3. **`docs/TASKBOARD.md`** — who is doing what right now, and what is blocked. Pick a task
    that is `READY` and assigned to your role.
-3. **`docs/handoffs/HANDOFF-LOG.md`** — what the previous agent actually did.
+4. **`docs/handoffs/HANDOFF-LOG.md`** — what the previous agent actually did.
 
-Then do the work, update the board, append a handoff, and update master §36.
-**No handoff = the task is not done.**
+Then do the work, update the board, append a handoff, update master §36, update your PR,
+and **push**. **No handoff = the task is not done. Not pushed = it does not exist.**
+
+## Working in parallel — the short version
+
+Two agents, two sessions, no shared chat. GitHub is the only shared reality.
+
+- **Push** after every completed task, every 30–60 minutes of work, and always before
+  ending a session. Unfinished work gets pushed too, marked `[WIP]`.
+- **Always keep a pull request open** — draft while in progress — with a description that
+  is kept current. That PR is how the other agent reads your work.
+- **Claim your task on the board and push the claim before you start working.**
+- **Lanes:** Claude owns `content/**`, `docs/research|ux|qa/**`. Codex owns `src/**`,
+  configs, `public/**`. Shared files are edited section-by-section, never reformatted.
 
 ## Current state (2026-09-13)
 

@@ -12,6 +12,7 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 |---|---|---|
 | `YOURLOCALCITYGUIDE_MASTER_V1.md` | This file. Vision, locked decisions, rules, phases, status. **Wins every conflict.** | shared |
 | `docs/TASKBOARD.md` | **The operational view: who is doing what, right now, and what is blocked.** Start here after reading this file. | shared |
+| `docs/COLLABORATION-PROTOCOL.md` | **How Claude and Codex work simultaneously: push cadence, always-open PR, file ownership.** BINDING. | shared |
 | `docs/handoffs/HANDOFF-LOG.md` | Every completed task's handoff (§25). No handoff = task incomplete. | shared |
 | `docs/ux/wireframe-inventory.md` | The user's wireframe mapped onto the `W##` codes in §19, with gaps and conflicts | Role E |
 | `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
@@ -156,6 +157,31 @@ These decisions may only be changed with explicit user approval.
 # 4. AGENT OPERATING MODEL
 
 Claude, Codex and other agents may work on the same repository, but they must not behave as independent projects.
+
+## Working simultaneously — READ `docs/COLLABORATION-PROTOCOL.md`
+
+Claude and Codex now work on this repository **at the same time**, in separate sessions
+that cannot see each other. Neither can read the other's chat. The only shared reality is
+**what has been pushed to GitHub**.
+
+Therefore, binding on every agent:
+
+1. **Push often.** After every completed task, after every meaningful chunk of work
+   (roughly every 30–60 minutes), and always before ending a session. Never end a turn with
+   uncommitted work. Work that is not pushed does not exist.
+2. **Always keep a pull request open.** Open it — as a draft if unfinished — as soon as your
+   branch has its first commit. Its description is a live status document, updated on every
+   meaningful push. Never work on a branch with no PR.
+3. **Read before you write.** `git fetch origin`, then master §36 → `docs/TASKBOARD.md` →
+   `docs/handoffs/HANDOFF-LOG.md` → the other agent's open PR.
+4. **Claim your task on the board and push that claim immediately**, before doing the work.
+5. **Stay in your lane.** File ownership is defined in the protocol: Claude owns
+   `content/**`, `docs/research/**`, `docs/ux/**`, `docs/qa/**`; Codex owns `src/**`,
+   configs, `public/**`. Shared files are edited section-by-section, never reformatted
+   wholesale.
+
+The full rules, including the work cycle and the one sanctioned cross-boundary edit, are in
+`docs/COLLABORATION-PROTOCOL.md`.
 
 ## Shared state
 All agents share:
@@ -1490,17 +1516,41 @@ No handoff = task incomplete.
 
 # 26. GIT WORKFLOW
 
+**Full rules: `docs/COLLABORATION-PROTOCOL.md`. This section is the summary.**
+
+Because Claude and Codex work at the same time and cannot see each other's sessions,
+GitHub is the only shared reality. Push frequently, and always keep a PR open.
+
 Before work:
 ```bash
-git pull
+git fetch origin
+git merge origin/main
+# then read: master §36 → docs/TASKBOARD.md → HANDOFF-LOG → the other agent's open PR
 ```
 
-After work:
+Claim your task on the board and push that claim **before** starting:
 ```bash
-git add .
-git commit -m "[TASK-ID] Clear description"
-git push
+git add docs/TASKBOARD.md
+git commit -m "[TASK-ID] Claim task on board"
+git push -u origin <your-branch>
 ```
+
+During work — push every meaningful chunk, at least every 30–60 minutes:
+```bash
+git add -A
+git commit -m "[TASK-ID] Clear description"
+git push -u origin <your-branch>
+```
+
+Unfinished work is pushed too, marked `[WIP]`. A visible half-finished thing beats an
+invisible finished thing.
+
+Always keep a pull request open for your branch — draft while in progress — and keep its
+description current. The PR is how the other agent and the user read your work without
+asking you.
+
+Never end a session with uncommitted work. Never push to `main` or to the other agent's
+branch. Never merge your own PR unless the user says so.
 
 Examples:
 ```text
@@ -1525,6 +1575,17 @@ codex/location-template
 ---
 
 # 27. QUALITY GATES
+
+## Gate 0 — What "DONE" means for any task
+A task is DONE only when **all six** are true:
+1. its quality gate below passes;
+2. the output is committed **and pushed**;
+3. `docs/TASKBOARD.md` says DONE;
+4. a handoff exists in `docs/handoffs/HANDOFF-LOG.md` (§25);
+5. §36 CURRENT STATUS reflects the new state;
+6. the pull request description is current.
+
+Missing any one of them means the other agent is working from a false picture of the project.
 
 ## Gate A — Candidate discovered
 Must have:

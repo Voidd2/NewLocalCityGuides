@@ -10,13 +10,40 @@ Authority: `YOURLOCALCITYGUIDE_MASTER_V1.md` is the source of truth. This file i
 
 ## 0. HOW TO USE THIS FILE
 
+> ### ⚠ CLAUDE AND CODEX WORK AT THE SAME TIME
+> Read **`docs/COLLABORATION-PROTOCOL.md`** before your first commit. It is binding.
+>
+> The three rules that matter most:
+> 1. **Push often** — after every task, every 30–60 minutes of work, and always before
+>    ending a session. Work that is not pushed does not exist to the other agent.
+> 2. **Always keep a PR open** — draft while unfinished, description kept current. It is
+>    how the other agent reads your work in progress.
+> 3. **Read before you write** — `git fetch`, then master §36 → this board → the handoff
+>    log → the other agent's open PR.
+>
+> And: **claim your task here and push that claim immediately, before doing the work.**
+
 1. Read `YOURLOCALCITYGUIDE_MASTER_V1.md` first. Always.
 2. Read this board second.
-3. Pick a task that is `READY` **and assigned to your role**.
-4. Set it to `IN PROGRESS` and put your agent name in `Owner`.
-5. When done: set `DONE`, write a handoff in `docs/handoffs/HANDOFF-LOG.md`,
-   and update `§36 CURRENT STATUS` + `§33` in the master file.
-6. Never take a task assigned to the other agent without saying so on this board.
+3. `git fetch origin` and read the other agent's open PR.
+4. Pick a task that is `READY` **and assigned to your role**.
+5. Set it to `IN PROGRESS`, put your agent name in `Owner`, **commit and push that now**.
+6. Push again every meaningful chunk while you work.
+7. When done: set `DONE`, write a handoff in `docs/handoffs/HANDOFF-LOG.md`, update
+   `§36 CURRENT STATUS` + `§33` in the master file, update your PR description, push.
+8. Never take a task assigned to the other agent without saying so on this board.
+
+### File ownership while working in parallel
+Full table in the protocol. Short version:
+
+| Lane | Owned by | Do not edit if you are the other agent |
+|---|---|---|
+| `content/leiden/**`, `docs/research/**`, `docs/ux/**`, `docs/qa/**` | **Claude** | Codex |
+| `src/**`, `package.json`, configs, `public/**`, `docs/decisions/DEC-009*` | **Codex** | Claude |
+| master file, this board, handoff log, protocol, `README.md` | **shared** | edit only your own rows/sections; never reformat the whole file |
+
+One sanctioned exception: for `ENG-GEO-001`, Codex may replace `**Coordinates:** TBD` in the
+candidate register with real coordinates + source — and change nothing else in that file.
 
 ### Status vocabulary
 | Status | Meaning |
@@ -135,8 +162,19 @@ No final video script before `R01`+`R02` pass for that location.
 > - do not change a `LOCKED` decision without the user;
 > - do not restructure `content/leiden/` without saying so on this board.
 >
+> **How we work in parallel — read `docs/COLLABORATION-PROTOCOL.md` before your first commit.**
+> Claude is working in this repository at the same time as you, in a session you cannot see.
+> Push after every completed task and every 30–60 minutes of work; always keep a pull
+> request open (draft is fine) with a current description, because that PR is the only way
+> Claude and the user can read what you are doing. Before you start: `git fetch origin`,
+> then read master §36, this board, the handoff log, and Claude's open PR. Claim your task
+> on this board and push that claim *before* you begin.
+>
+> Your branch pattern is `codex/<topic>`. Never push to `main` or to a `claude/*` branch.
+>
 > When you finish a task: update this board, append a handoff to
-> `docs/handoffs/HANDOFF-LOG.md`, and update master §36. Commit with the task ID.
+> `docs/handoffs/HANDOFF-LOG.md`, update master §36, update your PR description, and push.
+> Commit with the task ID.
 
 | ID | Task | Status | Owner | Depends on | Output |
 |---|---|---|---|---|---|
