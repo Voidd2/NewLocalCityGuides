@@ -5,6 +5,56 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 005
+
+**Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer
+**Date:** 2026-09-13 · **Branch:** `claude/affectionate-rubin-t48oom` · **PR:** #1
+**Task IDs:** `R02` rounds 2–3, `LDN-SCORE-002`, `LDN-ROUTE-001`, `R03-SHARED`, review of `FND-002`
+
+### Completed
+- **`R02` rounds 2 and 3** — ten of fourteen locations advanced; all four **access** blockers closed.
+- **`LDN-SCORE-002`** — C061–C065 scored. None reaches Tier A. Totals: A 19 / B 35 / C 11.
+- **Reviewed Codex's `DEC-009`** (PR #2) as Role G: **approve**, plus a status correction and four
+  schema requirements. Commented on PR #2 so Codex sees it.
+
+### Facts added
+- **The Koornbrug reopened 14 May 2026.** Its pillars and foundation were far worse than the
+  municipality knew. L003 unblocked.
+- **The Gravensteen has weekly guided tours** (Pieterskerk, since summer 2025) — L005 is not
+  exterior-only. **And Erfgoed Leiden is temporarily housed in it.**
+- **L013: Tue–Sun 13:00–16:00, free**, with a precise accessibility statement that must be
+  carried close to verbatim.
+- **L008: gate-only etiquette confirmed** by the sources, matching `R01`'s instinct.
+- Round 2: the **tulip theft is dated to the night of 1596–97**, and the thief sold the bulbs to
+  farmers in what is still called the **Bollenstreek**; the Burcht water system is dated
+  **1692/93**; and there was **a warning nine days before** the Pieterskerk tower fell.
+
+### Decisions made
+None locked. Four questions raised (Q15–Q18).
+
+### Uncertainty / risks
+- ⚠️ **Nobody may be named as aboard the 1807 ship.** Still unresolved.
+- ⚠️ **Visitor volume at L008** is a risk *this product creates*. Consult the foundation before launch.
+- ⚠️ **L005's current arrangement is explicitly temporary.** Do not present it as settled.
+- Four superlatives still need institutional sourcing before publication.
+- **`main` is still two commits of uploaded files.** Neither PR has merged.
+
+### What must NOT be assumed
+- That `R02` is done. Ten of fourteen have been *advanced*; none is complete. No per-claim
+  `SourceRecord`s exist yet, so **no copy may be written for any location.**
+- That the access findings are permanent. L005's is temporary by design; L003's diversion is new.
+
+### Recommended next task
+**Claude:** consolidate practical info across all fourteen; then `R02` round 4, which is now a
+contact task at Erfgoed Leiden.
+**Codex:** mark `DEC-009` approved-by-delegation and go to `FND-005` — read the review's §4 first.
+**User:** Q15–Q18, and **merge the two PRs** so `main` stops being empty.
+
+### Master file updated
+YES — v1.7
+
+---
+
 ## HANDOFF 004
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher (+ A, C, E, G)

@@ -22,7 +22,9 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 | `content/leiden/locations/locations.json` | Machine-readable seed for Codex. All content fields null **on purpose**. | shared |
 | `content/leiden/locations/MVP-PROPOSAL.md` | The full argument behind that selection | Role A |
 | `content/leiden/locations/L0xx-*/R01-research.md` | **Deep research, all 14 locations.** Each with a source trail and an `R05` uncertainty register | Role B |
-| `docs/qa/R02-verification-round-1.md` | Source verification: what `R01` got wrong | Role B/G |
+| `docs/qa/R02-verification-round-{1,2,3}.md` | Source verification: what `R01` got wrong, and what is actually open | Role B/G |
+| `docs/qa/REVIEW-DEC-009-tech-stack.md` | Claude's Role G review of Codex's stack decision | Role G |
+| `docs/decisions/DEC-009-tech-stack.md` | **Codex's stack ADR** — on PR #2, reviewed and approved | Role F |
 | `docs/research/leiden-reconstruction-references.md` | **City-wide** reconstruction sources and the §16 "must not show" draft | Role B/D |
 | `content/leiden/routes/leiden-route-proposals.md` | Six proposed routes, built on connections the research found | Role A/C/E |
 | `content/leiden/candidates/leiden-candidate-scores.md` | **Phase 1B: all 60 scored, Tier A/B/C assigned.** Still no MVP. | Role A |
@@ -2007,7 +2009,15 @@ Phases 1A–1D all COMPLETE. C061–C065 remain unscored (`LDN-SCORE-002`) and a
 `R05` uncertainty register separating verified from probable from legend, a *Look Around You*
 audit, and a `V01` video opportunity analysis with **no concept selected**.
 
-**`R02` source verification is IN PROGRESS** — round 1 done for L002, L008, L009, L012.
+**`R02` source verification is IN PROGRESS** — rounds 1–3 done, covering ten of the fourteen.
+Round 3 closed the **access** blockers: L003 is open again, L005 has weekly guided tours, L013's
+hours and honest accessibility line are sourced, and L008's gate-only etiquette is settled.
+
+⚠️ **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five of the remaining
+research blockers end at their archive. The contact task and the site visit are now one trip.
+
+⚠️ **`main` still contains only the two original uploaded files.** Neither Claude's PR #1 nor
+Codex's PR #2 has been merged, so **until the user merges, both branches are the project.**
 
 **No story, fun fact, Look Around item, timeline or video script exists yet, and none may be
 written until that location's `R02` has passed.** Selection is not research, and `R01` is not
@@ -2191,6 +2201,14 @@ Still open from v1.0:
 ---
 
 # 39. CHANGELOG
+
+## v1.7 — 2026-09-13 (Claude)
+- `R02` rounds 2 and 3 complete. Access blockers closed for L003, L005, L008, L013.
+- `LDN-SCORE-002`: C061–C065 scored; none reaches Tier A. Totals now A 19 / B 35 / C 11.
+- Codex delivered `DEC-009` (PR #2); reviewed by Claude as Role G — **approve**, with a status
+  correction (it was already pre-approved) and four schema requirements the ADR predates.
+- New board questions Q15–Q18: amend §22's content path, two vendors, visitor volume at L008,
+  and the Erfgoed-Leiden-in-the-Gravensteen opportunity.
 
 ## v1.6 — 2026-09-13 (Claude)
 - **`R01` deep research complete for all fourteen locations.**
