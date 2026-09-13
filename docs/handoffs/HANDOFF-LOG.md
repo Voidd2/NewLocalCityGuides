@@ -5,6 +5,75 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 003
+
+**Agent:** Claude (Opus)
+**Role:** A — City Discovery Researcher
+**Date:** 2026-09-13
+**Task IDs:** `LDN-MVP-001` (approved and closed)
+**Status:** DONE — **PHASE 1 COMPLETE**
+**Branch:** `claude/affectionate-rubin-t48oom` · **PR:** #1
+
+### Completed
+The user answered the four blocking questions. All four are now locked decisions:
+
+| Question | Answer | Decision |
+|---|---|---|
+| Q8 — approve the MVP? | *"I don't know what you mean, you may decide"* — **delegated to Claude** | **DEC-014** — approved as proposed: `L001`–`L014` |
+| Q9 — L014's binding content condition? | **Approved** | **DEC-016** |
+| Q7 — weighted scoring? | **Approved: Option C** | **DEC-015** |
+| Q1 — tech stack? | **Pre-approved by delegation** | **DEC-009** — Codex records and builds without a second round |
+
+Acting on the delegation in Q8, the MVP proposal was approved **as proposed** — no
+amendments. The user did not understand the question, which is a reason to explain it and
+decide, not a reason to treat the delegation as a blank cheque: the selection stands on the
+argument already written in `MVP-PROPOSAL.md`, which anyone can now read and overturn.
+
+### Files changed
+- `content/leiden/locations/README.md` — **new, authoritative.** The fourteen approved
+  locations, the binding condition on L014, and the five rules that apply to all of them.
+- `content/leiden/locations/locations.json` — **new.** Machine-readable seed for Codex.
+  Every content field `null`, every coordinate `null`, `allowsAIReconstruction: false` on L014.
+- `YOURLOCALCITYGUIDE_MASTER_V1.md` → **v1.5**. Phase 1D marked COMPLETE, §36 rewritten,
+  DEC-009 updated, DEC-014/015/016 added.
+- `docs/TASKBOARD.md` — Codex brief **rewritten as a start-here document**; nine engineering
+  tasks moved from `BLOCKED` to `READY`; Q1/Q7/Q8/Q9 closed; `R01` rows opened.
+
+### Decisions made
+- **DEC-014** (LOCKED) — the Leiden MVP is L001–L014. Adding or removing one needs the user.
+- **DEC-015** (LOCKED) — Option C: unweighted scores stand; coverage reserves slots visibly.
+- **DEC-016** (LOCKED) — L014's content condition. May not be softened by a later agent.
+- **DEC-009** (pre-approved by delegation) — Codex writes the stack record and builds on it
+  without waiting, and must state in the record that the choice is cheap to reverse now and
+  expensive later.
+
+### Uncertainty / risks
+- **The user delegated Q8 without understanding it.** The decision is therefore explained in
+  plain language in chat and fully argued in `MVP-PROPOSAL.md` §1 and §3. It is reversible:
+  changing the list costs nothing until `R01` work accumulates, and a lot afterwards.
+- **DEC-009 is a blanket pre-approval of a decision that does not exist yet.** Codex is
+  instructed to flag reversibility in the record so the user gets a real chance to object.
+- Selection is not research. Nothing about these fourteen has been verified beyond Gate A/B.
+- C061–C065 remain unscored and are not in the MVP.
+- The wireframe still lacks the §15 AI disclosure and any *Look Around You* screen.
+
+### What must NOT be assumed
+- That any of L001–L014 is the flagship. **There is none and there will not be one.**
+  IDs follow walking order (master §5).
+- That a location being selected means it is researched. None is.
+- That `locations.json`'s empty fields may be filled with plausible placeholder history.
+  They may not — obviously-fake tokens only.
+
+### Recommended next task
+**Claude:** `L001-R01` and onward — deep research per location, then `R02`. Stories only after
+`R02`. `LDN-ROUTE-001` alongside.
+**Codex:** `FND-002` → `FND-005` → `ENG-GEO-001` → `ENG-SKEL-001`.
+
+### Master file updated
+YES — v1.5
+
+---
+
 ## HANDOFF 002
 
 **Agent:** Claude (Opus)

@@ -18,7 +18,9 @@ Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI
 | `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
 | `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 65 candidate locations.** Nothing is selected. | Role A |
 | `docs/research/leiden-theme-coverage.md` | Phase 1C: what an MVP taken off the ranking would never get to say | Role A/G |
-| `content/leiden/locations/MVP-PROPOSAL.md` | ⚠️ **Phase 1D: 14 locations PROPOSED, awaiting the user.** Not locked. | Role A |
+| `content/leiden/locations/README.md` | ✅ **Phase 1D: the 14 APPROVED production locations, L001–L014.** Authoritative. | Role A |
+| `content/leiden/locations/locations.json` | Machine-readable seed for Codex. All content fields null **on purpose**. | shared |
+| `content/leiden/locations/MVP-PROPOSAL.md` | The full argument behind that selection | Role A |
 | `content/leiden/candidates/leiden-candidate-scores.md` | **Phase 1B: all 60 scored, Tier A/B/C assigned.** Still no MVP. | Role A |
 | `docs/qa/LDN-VERIFY-001-verification-log.md` | What was checked, what was wrong, what stays unresolved | Role B/G |
 | `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
@@ -554,9 +556,9 @@ Avoid an MVP consisting of ten locations that all tell essentially the same Gold
 ---
 
 ## PHASE 1D — MVP location selection
-Status: ⚠️ **PROPOSED, NOT DECIDED (2026-09-13)** → `content/leiden/locations/MVP-PROPOSAL.md`
-14 locations: 10 from Tier A, plus reserved slots for the Siege, textile labour, and WWII.
-All fifteen §1C themes covered. **Awaiting the user (board Q8, Q9).**
+Status: ✅ **APPROVED AND LOCKED (2026-09-13)** → `content/leiden/locations/README.md`
+**L001–L014.** 10 from Tier A, plus reserved slots for the Siege (L012), textile labour (L013)
+and WWII (L014). All fifteen §1C themes covered. **PHASE 1 IS COMPLETE.**
 
 Only now select the first production locations.
 
@@ -1986,19 +1988,18 @@ Current project phase:
 **PHASE 0 — FOUNDATION (engineering side) running alongside PHASE 1 — CITY DISCOVERY (research side)**
 
 Current research state:
-**NO location has been approved as the main or flagship location.** Discovery (three passes),
-verification, scoring and coverage are all complete: **65 candidates** registered, C001–C060
-scored and tiered, Gate A and Gate B passed.
+**PHASE 1 IS COMPLETE.** Three discovery passes, verification, scoring, coverage analysis and
+MVP selection are all done: 65 candidates registered, C001–C060 scored and tiered, Gate A and
+Gate B passed, and **fourteen production locations approved as L001–L014**.
 
-⚠️ **PHASE 1 IS FINISHED EXCEPT FOR ONE DECISION.** A 14-location MVP is **proposed** in
-`content/leiden/locations/MVP-PROPOSAL.md` and is waiting on the user (board Q8, Q9). Until
-that is approved: **no L-IDs are assigned and `R01` deep research must not start.**
+**There is still no flagship, hero or main location, and there will not be one.** L-IDs follow
+the walking order of the loop and do not imply importance (§5). Selection is not research:
+none of the fourteen has been researched, and `R01` starts now.
 
 Current content state:
-Phase 1A COMPLETE and VERIFIED. Phase 1B COMPLETE — Tier A 19, Tier B 34, Tier C 7.
-Phase 1C COMPLETE. Phase 1D PROPOSED, not decided. C061–C065 are unscored (`LDN-SCORE-002`).
-No location has an L-ID. No story, fun fact, Look Around item or video script exists, and none
-may be written yet.
+Phases 1A–1D all COMPLETE. C061–C065 remain unscored (`LDN-SCORE-002`) and are not in the MVP.
+**No story, fun fact, Look Around item, timeline or video script exists yet, and none may be
+written until that location's `R01` and `R02` have passed.** Selection is not research.
 
 **The scoring produced one result the user must decide on (board Q7):** not a single Tier A
 candidate is primarily about the **Siege and Relief of Leiden**, and the city's entire WWII
@@ -2012,23 +2013,24 @@ Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unbl
 
 ## What is blocking the project right now
 
-1. **`FND-002` — the tech stack is not locked.** Every engineering task waits on it.
-   Assigned to Codex; needs the user's approval, not Codex's.
-2. **User decisions** — six of them, listed in `docs/TASKBOARD.md` §4. The video-length
-   conflict (wireframe 1:28 vs. §10's 20–45s) and the missing AI-reconstruction disclosure
-   are the two that change the product, not just the plan.
-3. **`LDN-VERIFY-001`** — the register contains `LOW` confidence entries and unsourced
-   superlatives that must not travel any further downstream.
+**Nothing blocks either track.** Both agents have unblocked work, and they are working in
+parallel — see `docs/COLLABORATION-PROTOCOL.md`.
+
+Open items that are not blockers:
+1. The video-length conflict (wireframe 1:28 vs. §10's 20–45s) and the missing
+   AI-reconstruction disclosure (§15). Both affect the design; neither stops work today.
+2. `C065` — migration to Leiden since 1960 is a known, visible gap, not an MVP blocker.
+3. `LDN-SCORE-002` — C061–C065 are unscored.
 
 ## Immediate priority order
 
 1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
 2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
-3. Claude: ~~verification~~ ✔, ~~gap passes~~ ✔, ~~scoring~~ ✔, ~~coverage~~ ✔ done.
-4. **User: approve or amend the MVP proposal (Q8, Q9).** This is now the research track's
-   only blocker — everything downstream waits on it.
-5. Then: `R01` deep research per approved location → `R02` verification → stories → videos,
-   and `LDN-ROUTE-001` for routes.
+3. Claude: ~~verification~~ ✔, ~~gap passes~~ ✔, ~~scoring~~ ✔, ~~coverage~~ ✔, ~~MVP~~ ✔ done.
+4. **Claude now:** `R01` deep research, location by location, then `R02` source verification.
+   Stories only after `R02` passes. Videos only after stories. `LDN-ROUTE-001` alongside.
+5. **Codex now:** `FND-002` (stack — pre-approved, see DEC-009), `FND-005` (schema),
+   `ENG-GEO-001` (geocode 65 candidates), then the app skeleton.
 5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
@@ -2081,7 +2083,38 @@ Status: LOCKED
 
 ## DEC-009
 Technical stack.
-Status: **OPEN** — Codex to propose in `docs/decisions/DEC-009-tech-stack.md`, user to approve.
+Status: **PRE-APPROVED BY DELEGATION (user, 2026-09-13, board Q1).**
+The user approved the stack in advance rather than waiting for a proposal. Therefore:
+Codex **still writes** `docs/decisions/DEC-009-tech-stack.md` with the recommendation and the
+trade-offs — so the choice is recorded, explicable and reversible — but **does not wait for a
+second round of approval** before building on it.
+This delegation is revocable by the user at any time. Codex must flag in the decision record
+that the choice is cheap to reverse now and expensive later, so the user has a real chance to
+object while objecting is still cheap.
+
+## DEC-014
+The Leiden MVP is **L001–L014**, as listed in `content/leiden/locations/README.md`.
+Status: **LOCKED — user-approved 2026-09-13 (board Q8, decision delegated to Claude).**
+Ten locations from Tier A, plus three slots reserved by `LDN-COVERAGE-001` for themes the
+scoring rubric systematically suppressed: the Siege (L012), textile labour (L013) and WWII
+(L014). All fifteen §1C themes are covered. IDs follow walking order and do not imply
+importance. Adding or removing a location requires the user.
+
+## DEC-015
+The scoring approach is **Option C**: the unweighted fifteen-criterion scores stand exactly as
+scored, and `LDN-COVERAGE-001` is the corrective that reserves MVP slots for under-ranked
+themes.
+Status: **LOCKED — user-approved 2026-09-13 (board Q7).**
+Rationale: re-weighting a rubric after seeing which candidates it disadvantaged is motivated
+reasoning dressed as method. Reserving slots is the same intervention made visibly.
+
+## DEC-016
+L014 (Cleveringa, 1940) carries a **binding content condition**: its research and stories must
+carry the dismissal of Jewish staff, the registration measures of October 1940 and January
+1941, and what happened to Leiden's Jewish residents. It must not be a standalone story about
+one brave professor. Per DEC-011 it receives no AI reconstruction imagery.
+Status: **LOCKED — user-approved 2026-09-13 (board Q9).**
+This may not be softened by a later agent or copywriter.
 
 ## DEC-010
 Coordinates are never estimated or invented. They are resolved from an authoritative Dutch
@@ -2142,6 +2175,15 @@ Still open from v1.0:
 ---
 
 # 39. CHANGELOG
+
+## v1.5 — 2026-09-13 (Claude)
+- **PHASE 1 COMPLETE.** `LDN-MVP-001` approved: the Leiden MVP is **L001–L014**.
+- Four decisions locked on user approval: DEC-014 (the MVP), DEC-015 (Option C scoring),
+  DEC-016 (L014's binding content condition), and DEC-009 pre-approved by delegation.
+- Added `content/leiden/locations/README.md` (authoritative) and `locations.json` (the seed
+  Codex builds against, with every content field null on purpose).
+- §36 rewritten: nothing blocks either track; both agents have unblocked work.
+- `R01` deep research is now unblocked and is the research track's next task.
 
 ## v1.4 — 2026-09-13 (Claude)
 - `LDN-DISC-003` complete: 65 candidates. Women's-history and guild gaps **closed**

@@ -35,11 +35,15 @@ Two agents, two sessions, no shared chat. GitHub is the only shared reality.
 
 | | |
 |---|---|
-| Phase | 1A discovery **complete**; 1B scoring not started |
-| Candidates registered | **52** |
-| Locations selected | **0** — and nothing is "flagship" until `LDN-MVP-001` |
-| Code written | none — blocked on `FND-002` (tech stack) |
-| Top blocker | **`FND-002`** — Codex proposes the stack, the user approves it |
+| Phase | **Phase 1 COMPLETE** — discovery, verification, scoring, coverage, selection |
+| Candidates registered | **65** |
+| Locations selected | **14** — `L001`–`L014`, approved and locked (DEC-014) |
+| Locations researched | **0** — selection is not research; `R01` starts now |
+| Code written | none yet — Codex is unblocked and starting |
+| Blockers | **none on either track** |
+
+There is **no flagship, hero or main location**, and there will not be one. The L-IDs follow
+the walking order of the loop and do not imply importance (master §5).
 
 ## Repository map
 

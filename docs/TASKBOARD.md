@@ -77,8 +77,9 @@ FND-001  repo + master in Git                 DONE
    │
    ├── FND-003  repo structure + taskboard     DONE   (Claude)
    ├── FND-004  wireframe inventory            DONE   (Claude)
-   ├── FND-002  lock tech stack                NEEDS USER  ◀── blocks all Codex code
-   └── FND-005  lock content schema            BLOCKED by FND-002   (Codex)
+   ├── FND-002  tech stack                     READY — PRE-APPROVED (Codex)
+   ├── FND-005  content schema                  READY  (Codex)
+   └── FND-006  collaboration protocol          DONE
    │
 LDN-DISC-001  candidate register             DONE   52 candidates
 LDN-DISC-002  gap pass                       DONE   → 60
@@ -90,11 +91,13 @@ LDN-SCORE-001  score C001–C060                DONE   Tier A 19 / B 34 / C 7
    │
 LDN-COVERAGE-001  theme coverage check        DONE   Tier A alone fails §1C
    │
-LDN-MVP-001  select 8–15 locations        ⚠ NEEDS USER — 14 PROPOSED
+LDN-MVP-001  select production locations    DONE   ✅ APPROVED — L001–L014
    │
-L0xx-R01…  deep research per location          BLOCKED on that approval
+L0xx-R01…  deep research per location         READY  ◀── Claude starts here
    │
-L0xx-C01…  stories        L0xx-V01…  videos    BLOCKED
+L0xx-R02…  source verification                 BLOCKED on each R01
+   │
+L0xx-C01…  stories        L0xx-V01…  videos    BLOCKED on R02
 ```
 
 **Engineering can run in parallel** with research — but only against the *schema*,
@@ -116,82 +119,117 @@ never against specific historical content. See §3.
 | LDN-SCORE-001 | Score all 60 candidates on the 15 criteria (master §5 Phase 1B) | `DONE` | Claude | LDN-VERIFY-001 ✔ | `leiden-candidate-scores.md` — Tier A **19**, B **34**, C **7**. Gate B passed. |
 | LDN-COVERAGE-001 | Theme coverage analysis + resolve the three scoring biases | `DONE` | Claude | LDN-SCORE-001 ✔ | `docs/research/leiden-theme-coverage.md` — Tier A alone fails §1C on Siege and WWII |
 | LDN-SCORE-002 | Score C061–C065 (not covered by LDN-SCORE-001) | `READY` | — | LDN-DISC-003 | scores appended |
-| LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | ⚠️ **`NEEDS USER`** | Claude | LDN-COVERAGE-001 ✔ | **`content/leiden/locations/MVP-PROPOSAL.md` — 14 locations proposed, awaiting approval.** No L-IDs assigned; `R01` must not start |
-| LDN-ROUTE-001 | Derive route candidates from the selected MVP set | `BLOCKED` | — | LDN-MVP-001 **approval** | `content/leiden/routes/` |
+| LDN-MVP-001 | Select first 8–15 production locations, assign L-IDs | ✅ **`DONE`** | Claude | LDN-COVERAGE-001 ✔ | **APPROVED: L001–L014** → `content/leiden/locations/README.md` + `locations.json` |
+| L001-R01 … L014-R01 | Deep research, one per location (master §8) | `READY` | — | LDN-MVP-001 ✔ | `content/leiden/locations/L0xx-*/` |
+| L0xx-R02 | Source verification per location | `BLOCKED` | — | that location's R01 | per-claim `SourceRecord`s |
+| LDN-ROUTE-001 | Derive route candidates from L001–L014 | `READY` | — | LDN-MVP-001 ✔ | `content/leiden/routes/` |
 
-**Hard rule reminder:** no location is `flagship`, `hero` or `main` until LDN-MVP-001 is DONE.
+**Hard rule reminder:** there is **no** flagship, hero or main location, and there will not be
+one — not even now that L001–L014 exist. IDs follow walking order (master §5).
 No final video script before `R01`+`R02` pass for that location.
 
 ---
 
 ## 3. CODEX — ENGINEERING TRACK
 
-> **MESSAGE TO CODEX / CHATGPT — READ THIS BEFORE WRITING ANY CODE.**
+> # ⚡ MESSAGE TO CODEX / CHATGPT — START HERE
 >
-> Claude has completed the citywide discovery pass (`LDN-DISC-001`). There are now
-> **60** candidate locations in `content/leiden/candidates/leiden-candidate-register.md`.
-> **None of them is selected yet.** Do not build screens, routes or seed data around
-> Pieterskerk, De Waag, De Burcht or any other specific place — the MVP set does not
-> exist yet and will be decided in `LDN-MVP-001`.
+> **You are unblocked. Everything you were waiting on has been decided. Start building.**
 >
-> What you *can* do right now, and what actually unblocks the project:
+> ## First, read these four things (20 minutes, not optional)
+> 1. `YOURLOCALCITYGUIDE_MASTER_V1.md` — especially §3 locked decisions, §21 content model,
+>    §35 your start instruction, §36 current status, §37 decision log.
+> 2. `docs/COLLABORATION-PROTOCOL.md` — **Claude is working in this repo at the same time as
+>    you, in a session you cannot see.** Push often, always keep a PR open, read before you
+>    write, stay in your lane.
+> 3. `content/leiden/locations/README.md` — the fourteen approved locations.
+> 4. `docs/ux/wireframe-inventory.md` — the wireframe mapped to master §19's `W##` codes.
 >
-> 1. **FND-002 — propose and lock the tech stack.** This is the single biggest blocker.
->    The master file (§38) leaves it open on purpose. Write a short decision record in
->    `docs/decisions/DEC-009-tech-stack.md` with a recommendation and the trade-offs for:
->    framework (Next.js App Router vs. Astro vs. SvelteKit), map library (MapLibre GL JS
->    vs. Leaflet — note master §38 asks this explicitly), content format (Markdown +
->    frontmatter vs. JSON vs. TypeScript modules vs. a CMS later), i18n approach,
->    hosting, and video delivery. Then ask the user to approve. **Do not self-approve a
->    LOCKED decision** — master §3 requires explicit user approval.
-> 2. **FND-005 — turn master §21 into a real, versioned schema.** The conceptual TS types
->    in §21 are the contract. Make them executable (`src/types/` + runtime validation,
->    e.g. Zod) and make them support: many candidates, few selected locations, multiple
->    cities, multiple languages, per-claim source records, and an uncertainty register.
->    The `CandidateLocation` type must be able to round-trip the register Claude wrote —
->    read that file first and make sure every field it uses has a home in the schema.
-> 3. **ENG-GEO-001 — geocoding.** Claude deliberately did **not** invent coordinates.
->    Every candidate has `Coordinates: TBD`. Resolve them from an authoritative Dutch
->    source (PDOK Locatieserver / BAG), not by guessing, and write them back into the
->    register. This is a genuinely useful, unblocked task.
-> 4. **ENG-SKEL-001 — app skeleton against the wireframe.** `docs/ux/wireframe-inventory.md`
->    maps the user's wireframe to the `W##` page codes in master §19. Build the *shell*:
->    routing, layout, bottom tab bar, language switch, GPS permission flow with a working
->    denied-state, and empty/loading/error states. Use placeholder content that is
->    obviously fake (`LOREM_LOCATION_A`), never real historical text.
+> ## What changed — the two things that were blocking you
 >
-> What you must **not** do:
+> **1. The tech stack is pre-approved (DEC-009).** The user approved it in advance rather than
+> waiting for a proposal. So: **write `docs/decisions/DEC-009-tech-stack.md`** with your
+> recommendation and the trade-offs — framework, map library (MapLibre vs Leaflet, master §38
+> asks explicitly), content format, i18n, hosting, video delivery — and then **build on it
+> without waiting for a second approval.** Record it properly anyway: the choice must be
+> explicable and reversible. Say plainly in the record that it is cheap to reverse now and
+> expensive later, so the user can object while objecting is still cheap.
+>
+> **2. The MVP is locked (DEC-014): fourteen locations, `L001`–`L014`.** They are in
+> `content/leiden/locations/locations.json` — real IDs, real slugs, real themes.
+>
+> ## ⚠️ The thing that will bite you if you skip it
+>
+> **Every content field in `locations.json` is `null` on purpose.** `hook`, `shortStory`,
+> `funFacts`, `lookAround`, `timeline`, `thenVsNow`, `videos` — all empty. These locations are
+> **selected, not researched.** Claude's deep research (`R01`) starts now and will fill them.
+>
+> **Do not put plausible-looking history in there to make the UI look good.** Use tokens that
+> are obviously fake — `LOREM_LOCATION_A`, `«hook not yet researched»`. Inventing history is
+> the one thing this project forbids above all others (master §0.9, §3). A screenshot with
+> invented Leiden facts in it is a bug, not a demo.
+>
+> ## Requirements the research produced — these are schema constraints, not nice-to-haves
+>
+> 1. **Time-conditional practical info is mandatory.** `L013` has opening hours, and candidate
+>    C052 (a market) only exists on market days. A visitor must never be sent to something that
+>    is closed or not happening. `PracticalInfo` needs opening hours, days, and a closed-state.
+> 2. **`allowsAIReconstruction` is a real field and it is `false` for `L014`.** Per DEC-011,
+>    persecution, resistance and civilian bombing deaths get archival material only. The video
+>    component must respect this flag, not just document it.
+> 3. **`L012` has no building at all.** It is a tradition, not an address. The model must
+>    support a location whose coordinates are a viewpoint rather than a structure.
+> 4. **Coordinates are `null` everywhere, deliberately (DEC-010).** `ENG-GEO-001` resolves them
+>    from PDOK/BAG. Never estimate one.
+> 5. **Every claim needs a `SourceRecord`** (master §21) naming the institution, document and
+>    the specific claim it supports. Build for that from the start; retrofitting is miserable.
+> 6. **Multi-city, multi-language from day one.** Leiden is city #1, not the only city.
+>    NL + EN ship first (§30); the wireframe shows DE + FR, so build for four and hide two.
+>
+> ## Two mandatory design items the wireframe is missing
+>
+> - **The AI-reconstruction disclosure.** Master §15 requires an on-screen
+>   *"AI historical reconstruction based on historical and archival sources"* label. The
+>   wireframe's video screen has none. Not optional under §3.
+> - **Look Around You.** Master §12 calls it *central to the product*, and the wireframe omits
+>   it entirely. It is the single biggest gap in the design. Flag it; do not quietly skip it.
+>
+> ## Your task order
+>
+> `FND-002` (write the record, then build) → `FND-005` (schema, incl. the six constraints above)
+> → `ENG-GEO-001` (geocode — genuinely useful and completely independent) → `ENG-SKEL-001`
+> (shell, fake content) → the rest.
+>
+> ## What you must not do
+>
 > - do not hardcode historical content in components (master §35.3);
-> - do not pick a flagship location (master §3);
-> - do not write historical copy — that is Claude's Role C, and it must be sourced;
+> - do not write historical copy — that is Claude's Role C and it must be sourced;
+> - do not call any location the flagship, hero or main one. IDs follow walking order and do
+>   not imply importance (master §5). There is no flagship and there will not be one;
 > - do not change a `LOCKED` decision without the user;
-> - do not restructure `content/leiden/` without saying so on this board.
+> - do not edit `content/leiden/**` except the one sanctioned edit: writing coordinates into
+>   the candidate register for `ENG-GEO-001`, and nothing else in that file;
+> - do not restructure `content/leiden/` without saying so on this board first.
 >
-> **How we work in parallel — read `docs/COLLABORATION-PROTOCOL.md` before your first commit.**
-> Claude is working in this repository at the same time as you, in a session you cannot see.
-> Push after every completed task and every 30–60 minutes of work; always keep a pull
-> request open (draft is fine) with a current description, because that PR is the only way
-> Claude and the user can read what you are doing. Before you start: `git fetch origin`,
-> then read master §36, this board, the handoff log, and Claude's open PR. Claim your task
-> on this board and push that claim *before* you begin.
+> ## Every time you finish a chunk
 >
+> Update this board → append a handoff to `docs/handoffs/HANDOFF-LOG.md` → update master §36 if
+> the project state changed → update your PR description → **push**. Commit with the task ID.
 > Your branch pattern is `codex/<topic>`. Never push to `main` or to a `claude/*` branch.
 >
-> When you finish a task: update this board, append a handoff to
-> `docs/handoffs/HANDOFF-LOG.md`, update master §36, update your PR description, and push.
-> Commit with the task ID.
+> Claude's work is on PR #1. Read it before you start.
 
 | ID | Task | Status | Owner | Depends on | Output |
 |---|---|---|---|---|---|
-| FND-002 | Propose + lock technical stack | `NEEDS USER` | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` |
-| FND-005 | Executable content schema from master §21 | `BLOCKED` | **Codex** | FND-002 | `src/types/`, validation |
+| FND-002 | Write the stack decision record and **build on it** — pre-approved, do not wait | ✅ **`READY — GO`** | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` |
+| FND-005 | Executable content schema from master §21 + `locations.json` | `READY` | **Codex** | FND-002 | `src/types/`, validation |
 | ENG-GEO-001 | Geocode all **60** candidates from PDOK/BAG | `READY` | **Codex** | LDN-DISC-001 | updated register |
-| ENG-SKEL-001 | App skeleton + navigation shell per wireframe | `BLOCKED` | **Codex** | FND-002 | `src/app/` |
-| ENG-MAP-001 | Map foundation (layers, markers, clustering, filters) | `BLOCKED` | **Codex** | FND-002, ENG-GEO-001 | map feature |
-| ENG-LOC-001 | Location page template (W20–W30) | `BLOCKED` | **Codex** | FND-005 | location feature |
-| ENG-VIDEO-001 | Video player + poster + fallback + subtitles | `BLOCKED` | **Codex** | FND-002 | video feature |
-| ENG-I18N-001 | NL/EN language system | `BLOCKED` | **Codex** | FND-002 | i18n |
-| ENG-GPS-001 | Geolocation + full no-GPS fallback (W70) | `BLOCKED` | **Codex** | ENG-SKEL-001 | feature |
+| ENG-SKEL-001 | App skeleton + navigation shell per wireframe | `READY` | **Codex** | FND-002 | `src/app/` |
+| ENG-MAP-001 | Map foundation (layers, markers, clustering, filters) | `READY` | **Codex** | ENG-GEO-001 | map feature |
+| ENG-LOC-001 | Location page template (W20–W30), fake content only | `READY` | **Codex** | FND-005 | location feature |
+| ENG-VIDEO-001 | Video player + poster + fallback + subtitles + **the §15 AI disclosure** | `READY` | **Codex** | FND-002 | video feature |
+| ENG-I18N-001 | NL/EN language system | `READY` | **Codex** | FND-002 | i18n |
+| ENG-GPS-001 | Geolocation + full no-GPS fallback (W70) | `READY` | **Codex** | ENG-SKEL-001 | feature |
 
 ---
 
@@ -201,15 +239,15 @@ These block real work. Nothing should be guessed here (master §38).
 
 | # | Question | Blocks | Claude's recommendation |
 |---|---|---|---|
-| Q1 | Approve the tech stack once Codex proposes it (FND-002) | all engineering | Let Codex write DEC-009, you approve |
+| ~~Q1~~ | ~~Approve the tech stack~~ | — | ✅ **PRE-APPROVED BY DELEGATION** → **DEC-009**. Codex writes the record and builds on it without waiting. Revocable by the user at any time |
 | Q2 | Content format: Markdown+frontmatter, JSON, or TS modules? | FND-005 | Markdown + frontmatter for stories, JSON for map/geo data — researchers can edit prose, engineers get typed data |
 | Q3 | Primary homepage CTA — the wireframe (2.1) shows three equal buttons: *Explore near me* / *Choose a route* / *Open map* | ENG-SKEL-001 | Keep all three, but make *Explore near me* visually primary and make it degrade to "Popular nearby" when GPS is denied |
 | Q4 | Wireframe shows 4 languages (NL/EN/DE/FR); master §30 locks NL+EN first | ENG-I18N-001 | Build for 4, ship content for NL+EN, hide DE/FR until translated |
 | Q5 | Is the wireframe's visual identity (navy + warm sand, serif wordmark) locked? | design system | Treat as locked-by-default; say so if not |
 | Q6 | Budget/tooling for AI video generation? | all `V0x` tasks | Not needed until after LDN-MVP-001 — safe to defer |
-| Q7 | **Weighted scoring?** The unweighted 15-criterion sum puts **no Siege candidate in Tier A**, drops Leiden's whole WWII story to Tier B/C, and buries the textile/labour stories | `LDN-MVP-001` | **Option C**: keep the scores honest and let `LDN-COVERAGE-001` reserve MVP slots for under-ranked themes. Full reasoning in `leiden-candidate-scores.md` §4 |
-| Q8 | ⚠️ **Approve the proposed 14-location MVP?** Everything downstream — research, stories, video, photography, routes — is spent on this list | all production work | Approve as proposed; it covers all fifteen §1C themes. Read `MVP-PROPOSAL.md` §1 and §3 |
-| Q9 | **The WWII slot's binding content condition** — L014 must carry the dismissals and the deportations, not a standalone hero story | L014 | Accept it. A WWII slot that produces only a hero narrative would be worse than none |
+| ~~Q7~~ | ~~Weighted scoring?~~ | — | ✅ **APPROVED by the user: Option C** → **DEC-015**. Scores stand as scored; coverage reserves slots visibly |
+| ~~Q8~~ | ~~Approve the 14-location MVP~~ | — | ✅ **DECIDED 2026-09-13** — user delegated the call to Claude; approved as proposed → **DEC-014**, locations `L001`–`L014` |
+| ~~Q9~~ | ~~The WWII slot's binding content condition~~ | — | ✅ **APPROVED by the user** → **DEC-016**. Binding on all later agents |
 | Q10 | **Migration to Leiden since 1960 (C065)** — needs oral history, not archives. Scope, budget, and who tells it? | C065, release 2 | Worth doing properly or not at all. Not an MVP blocker |
 
 ---
@@ -237,4 +275,6 @@ From master §27. A task is not `DONE` until its gate passes.
   (LDN-DISC-002): register to **60**. Third pass done (LDN-DISC-003): **65**; women's and
   guild gaps closed, migration explicitly left open. Scoring done (LDN-SCORE-001): Tier A 19,
   B 34, C 7. Coverage done (LDN-COVERAGE-001): Tier A alone fails §1C on the Siege and WWII.
-  **MVP proposed (LDN-MVP-001): 14 locations, awaiting user approval — Q8.**
+  **MVP APPROVED (LDN-MVP-001): L001–L014, locked as DEC-014.** User also approved Q7
+  (Option C scoring → DEC-015), Q9 (L014's binding condition → DEC-016) and pre-approved the
+  tech stack by delegation (Q1 → DEC-009). **Phase 1 complete. Both tracks unblocked.**
