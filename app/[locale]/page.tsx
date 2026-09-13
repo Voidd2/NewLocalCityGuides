@@ -1,8 +1,7 @@
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { MapPin, Headphones, Route, Clock } from 'lucide-react';
+import { MapPin, Map, Navigation, Play, BookOpen, ChevronDown, ArrowRight } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
 interface Props { params: Promise<{ locale: string }> }
 
@@ -12,135 +11,260 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t('headline'), description: t('subline') };
 }
 
-export default function HomePage() {
-  const t = useTranslations('home');
-
-  const cities = [
-    {
-      slug: 'leiden',
-      name: 'Leiden',
-      country: 'Nederland',
-      description: 'Geboortestad van Rembrandt, thuis van de Pilgrimvaders.',
-      locations: 5,
-      status: 'early_access',
-    },
-    {
-      slug: 'amsterdam',
-      name: 'Amsterdam',
-      country: 'Nederland',
-      description: 'De grachtenstad. Rijksmuseum, Anne Frank, meer.',
-      locations: 0,
-      status: 'announced',
-    },
-    {
-      slug: 'rotterdam',
-      name: 'Rotterdam',
-      country: 'Nederland',
-      description: 'Moderne architectuur, Markthal, Erasmusbrug.',
-      locations: 0,
-      status: 'announced',
-    },
-  ];
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
 
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="pt-20 pb-20 px-4 text-center max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 bg-amber-50 text-amber-700 text-sm font-medium px-3 py-1 rounded-full mb-6">
-          <MapPin className="w-3.5 h-3.5" /> Leiden · Nederland
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">{t('hero.headline')}</h1>
-        <p className="text-lg text-gray-600 mb-8 max-w-xl mx-auto">{t('hero.subline')}</p>
-        <Link
-          href="/nl/cities/leiden"
-          className="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors"
-        >
-          <Headphones className="w-4 h-4" /> {t('hero.cta')}
-        </Link>
-      </section>
+    <div className="min-h-screen bg-[#0F0E0D]">
 
-      {/* Feature cards */}
-      <section className="max-w-4xl mx-auto px-4 pb-20 grid md:grid-cols-3 gap-6">
-        {([
-          { Icon: MapPin, title: 'GPS gestuurd', desc: 'Audio start automatisch als je aankomt bij een locatie.' },
-          { Icon: Headphones, title: 'Echte verhalen', desc: 'Geverifieerde historische feiten — geen Wikipedia copy.' },
-          { Icon: Route, title: 'Jouw tempo', desc: 'Loop in je eigen tempo, sla stops over, ga terug.' },
-        ] as const).map(({ Icon, title, desc }) => (
-          <div key={title} className="bg-gray-50 rounded-2xl p-6">
-            <Icon className="w-6 h-6 mb-3" />
-            <h3 className="font-semibold mb-1">{title}</h3>
-            <p className="text-sm text-gray-600">{desc}</p>
+      {/* ── Hero ── */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+        {/* Background image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Leiden_Rapenburg.jpg/1280px-Leiden_Rapenburg.jpg"
+          alt="Leiden Rapenburg"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+
+        {/* Content */}
+        <div className="relative z-10 px-4 max-w-3xl mx-auto">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-[#C9A46B]/20 border border-[#C9A46B]/30 text-[#C9A46B] text-xs font-semibold px-4 py-1.5 rounded-full mb-8 tracking-wider">
+            <MapPin className="w-3.5 h-3.5" />
+            Leiden &middot; Nederland &middot; Early Access
           </div>
-        ))}
+
+          {/* City name */}
+          <h1 className="text-6xl md:text-8xl font-black tracking-widest text-[#F5F0E8] uppercase mb-4">
+            LEIDEN
+          </h1>
+
+          {/* Italic subtitle */}
+          <p className="text-xl md:text-2xl italic text-[#C9A46B] mb-3 font-medium">
+            More than a city. A story.
+          </p>
+
+          {/* Tagline */}
+          <p className="text-xs tracking-[0.3em] text-[#8B7D6B] uppercase mb-12">
+            Real Places. Real Stories.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href={`/${locale}/cities/leiden`}
+              className="inline-flex items-center gap-2 bg-[#C9A46B] text-[#0F0E0D] px-6 py-3 rounded-full font-semibold hover:bg-[#D4B47E] transition-colors text-sm"
+            >
+              <Navigation className="w-4 h-4" />
+              Start wandeltour
+            </Link>
+            <Link
+              href={`/${locale}/cities/leiden/routes`}
+              className="inline-flex items-center gap-2 border border-[rgba(255,255,255,0.25)] text-[#F5F0E8] px-6 py-3 rounded-full font-semibold hover:border-[rgba(255,255,255,0.5)] transition-colors text-sm"
+            >
+              Bekijk routes
+            </Link>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#8B7D6B] animate-bounce">
+          <ChevronDown className="w-6 h-6" />
+        </div>
       </section>
 
-      {/* Available cities */}
-      <section className="max-w-4xl mx-auto px-4 pb-20">
-        <h2 className="text-2xl font-bold mb-6">Beschikbare steden</h2>
-        <div className="grid sm:grid-cols-3 gap-6">
-          {cities.map((city) => (
-            <div
-              key={city.slug}
-              className={`rounded-2xl border overflow-hidden ${
-                city.status === 'announced' ? 'opacity-60' : ''
-              }`}
+      {/* ── What would you like to do? ── */}
+      <section className="bg-[#0F0E0D] py-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#8B7D6B] mb-3">Aan de slag</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F5F0E8] mb-10">
+            What would you like to do?
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {/* Card 1 */}
+            <Link
+              href={`/${locale}/cities/leiden`}
+              className="group bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 hover:border-[#C9A46B]/30 hover:bg-[#252118] transition-all"
             >
-              {/* Placeholder image */}
-              <div className="h-32 bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
-                <MapPin className="w-8 h-8 text-amber-400" />
-              </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-bold text-gray-900">{city.name}</h3>
-                  {city.status === 'early_access' ? (
-                    <span className="text-xs bg-green-100 text-green-800 font-medium px-2 py-0.5 rounded-full">Early access</span>
-                  ) : (
-                    <span className="text-xs bg-gray-100 text-gray-500 font-medium px-2 py-0.5 rounded-full">Binnenkort</span>
-                  )}
+              <div className="text-2xl mb-4">📍</div>
+              <h3 className="font-bold text-[#F5F0E8] mb-2">Explore near me</h3>
+              <p className="text-sm text-[#8B7D6B] mb-4 leading-relaxed">Ontdek wat er om je heen is</p>
+              <span className="text-[#C9A46B] text-sm font-medium group-hover:translate-x-1 inline-block transition-transform">
+                Verkennen →
+              </span>
+            </Link>
+
+            {/* Card 2 */}
+            <Link
+              href={`/${locale}/cities/leiden/routes`}
+              className="group bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 hover:border-[#C9A46B]/30 hover:bg-[#252118] transition-all"
+            >
+              <div className="text-2xl mb-4">🗺️</div>
+              <h3 className="font-bold text-[#F5F0E8] mb-2">Kies een route</h3>
+              <p className="text-sm text-[#8B7D6B] mb-4 leading-relaxed">Volg een verhaal door de stad</p>
+              <span className="text-[#C9A46B] text-sm font-medium group-hover:translate-x-1 inline-block transition-transform">
+                Routes bekijken →
+              </span>
+            </Link>
+
+            {/* Card 3 */}
+            <Link
+              href={`/${locale}/cities/leiden`}
+              className="group bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-2xl p-6 hover:border-[#C9A46B]/30 hover:bg-[#252118] transition-all"
+            >
+              <div className="text-2xl mb-4">🎯</div>
+              <h3 className="font-bold text-[#F5F0E8] mb-2">Open kaart</h3>
+              <p className="text-sm text-[#8B7D6B] mb-4 leading-relaxed">Verken vrijelijk</p>
+              <span className="text-[#C9A46B] text-sm font-medium group-hover:translate-x-1 inline-block transition-transform">
+                Kaart openen →
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Hoe het werkt ── */}
+      <section className="py-20 px-4 border-t border-[rgba(255,255,255,0.06)]">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#8B7D6B] mb-3">Simpel</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F5F0E8] mb-12">Hoe het werkt</h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                num: '01',
+                icon: <MapPin className="w-5 h-5" />,
+                title: 'Kom aan bij een locatie',
+                desc: 'GPS detecteert automatisch wanneer je bij een historische plek aankomt.',
+              },
+              {
+                num: '02',
+                icon: <Play className="w-5 h-5" />,
+                title: 'Video start automatisch',
+                desc: 'Een korte video onthult het verhaal achter de locatie — zoals het was in 1650.',
+              },
+              {
+                num: '03',
+                icon: <BookOpen className="w-5 h-5" />,
+                title: 'Lees het verhaal',
+                desc: 'Verdiep je in het volledige verhaal, weetjes en historische feiten.',
+              },
+            ].map(({ num, icon, title, desc }) => (
+              <div key={num} className="relative">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-bold tracking-widest text-[#C9A46B]">{num}</span>
+                  <div className="w-px h-4 bg-[rgba(255,255,255,0.1)]" />
+                  <div className="text-[#C9A46B]">{icon}</div>
                 </div>
-                <p className="text-xs text-gray-500 mb-2">{city.country}</p>
-                <p className="text-sm text-gray-600 mb-3">{city.description}</p>
-                {city.locations > 0 && (
-                  <p className="text-xs text-gray-400 flex items-center gap-1 mb-3">
-                    <Clock className="w-3 h-3" /> {city.locations} locaties
-                  </p>
-                )}
-                {city.status === 'early_access' ? (
-                  <Link
-                    href={`/nl/cities/${city.slug}`}
-                    className="block text-center text-sm bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-700 transition-colors"
-                  >
-                    Bekijk Leiden →
-                  </Link>
-                ) : (
-                  <span className="block text-center text-sm bg-gray-100 text-gray-400 px-4 py-2 rounded-full cursor-not-allowed">
-                    Binnenkort beschikbaar
-                  </span>
-                )}
+                <h3 className="font-bold text-[#F5F0E8] mb-2">{title}</h3>
+                <p className="text-sm text-[#8B7D6B] leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Available cities ── */}
+      <section className="py-20 px-4 border-t border-[rgba(255,255,255,0.06)]">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#8B7D6B] mb-3">Beschikbaar</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#F5F0E8] mb-10">Steden</h2>
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            {/* Leiden — active */}
+            <div className="relative rounded-2xl overflow-hidden group">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Leiden_Rapenburg.jpg/640px-Leiden_Rapenburg.jpg"
+                alt="Leiden"
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-xs tracking-widest text-[#C9A46B] font-semibold mb-0.5">5 locaties &middot; Early Access</p>
+                <h3 className="text-xl font-black text-white tracking-wider mb-3">LEIDEN</h3>
+                <Link
+                  href={`/${locale}/cities/leiden`}
+                  className="inline-flex items-center gap-1.5 bg-[#C9A46B] text-[#0F0E0D] text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-[#D4B47E] transition-colors"
+                >
+                  Verken <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
-          ))}
+
+            {/* Amsterdam — coming soon */}
+            <div className="relative rounded-2xl overflow-hidden bg-[#1C1916] border border-[rgba(255,255,255,0.06)]">
+              <div className="h-48 bg-[#1C1916] flex items-center justify-center">
+                <Map className="w-10 h-10 text-[#2A2520]" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-xs tracking-widest text-[#5A4E42] font-semibold mb-0.5">Binnenkort</p>
+                <h3 className="text-xl font-black text-[#5A4E42] tracking-wider">AMSTERDAM</h3>
+              </div>
+            </div>
+
+            {/* Rotterdam — coming soon */}
+            <div className="relative rounded-2xl overflow-hidden bg-[#1C1916] border border-[rgba(255,255,255,0.06)]">
+              <div className="h-48 bg-[#1C1916] flex items-center justify-center">
+                <Map className="w-10 h-10 text-[#2A2520]" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="text-xs tracking-widest text-[#5A4E42] font-semibold mb-0.5">Binnenkort</p>
+                <h3 className="text-xl font-black text-[#5A4E42] tracking-wider">ROTTERDAM</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Coming soon / email */}
-      <section className="bg-gray-50 border-t py-16 px-4 text-center">
-        <h2 className="font-semibold mb-2">{t('comingSoon.title')}</h2>
-        <p className="text-sm text-gray-600 mb-6">{t('comingSoon.description')}</p>
-        <form className="flex gap-2 max-w-sm mx-auto">
-          <input
-            type="email"
-            placeholder="jouw@email.nl"
-            className="flex-1 px-4 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+      {/* ── Banner ── */}
+      <section className="relative py-24 px-4 overflow-hidden border-t border-[rgba(255,255,255,0.06)]">
+        <div className="absolute inset-0 opacity-10">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Leiden_Rapenburg.jpg/1280px-Leiden_Rapenburg.jpg"
+            alt=""
+            className="w-full h-full object-cover object-right"
           />
-          <button
-            type="submit"
-            className="bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition-colors"
-          >
-            Aanmelden
-          </button>
-        </form>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0F0E0D] via-[#0F0E0D]/80 to-transparent" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <p className="text-3xl md:text-5xl font-black tracking-[0.15em] text-[#F5F0E8] uppercase">
+            Discover &middot; Explore &middot; Experience
+          </p>
+        </div>
       </section>
+
+      {/* ── Newsletter CTA ── */}
+      <section className="py-20 px-4 border-t border-[rgba(255,255,255,0.06)]">
+        <div className="max-w-md mx-auto text-center">
+          <p className="text-xs tracking-[0.25em] uppercase text-[#8B7D6B] mb-3">Early Access</p>
+          <h2 className="text-2xl font-bold text-[#F5F0E8] mb-3">
+            Meld je aan voor vroege toegang
+          </h2>
+          <p className="text-sm text-[#8B7D6B] mb-8 leading-relaxed">
+            Ontvang updates zodra nieuwe steden en routes beschikbaar zijn.
+          </p>
+          <form className="flex gap-2">
+            <input
+              type="email"
+              placeholder="jouw@email.nl"
+              className="flex-1 px-4 py-3 bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-xl text-sm text-[#F5F0E8] placeholder-[#5A4E42] focus:outline-none focus:border-[#C9A46B]/50"
+            />
+            <button
+              type="submit"
+              className="bg-[#C9A46B] text-[#0F0E0D] px-5 py-3 rounded-xl text-sm font-semibold hover:bg-[#D4B47E] transition-colors whitespace-nowrap"
+            >
+              Aanmelden
+            </button>
+          </form>
+        </div>
+      </section>
+
     </div>
   );
 }

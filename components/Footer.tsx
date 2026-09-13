@@ -1,55 +1,86 @@
 import Link from 'next/link';
-import { MapPin } from 'lucide-react';
+import { MapPin, Instagram, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111] text-white mt-16">
+    <footer className="bg-[#0A0908] border-t border-[rgba(255,255,255,0.08)] mt-16">
       <div className="max-w-5xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
-        {/* Col 1: Logo + tagline */}
+        {/* Col 1: Logo + tagline + socials */}
         <div>
-          <div className="flex items-center gap-2 font-semibold text-lg mb-3">
-            <MapPin className="w-4 h-4 text-amber-400" />
-            YourLocalCityGuide
+          <div className="flex items-start gap-2 mb-4">
+            <MapPin className="w-4 h-4 text-[#C9A46B] mt-0.5 shrink-0" />
+            <div>
+              <span className="block font-bold text-[#F5F0E8] text-sm leading-tight">YourLocalCityGuide</span>
+              <span className="block text-[10px] tracking-widest text-[#5A4E42] uppercase">Real Places. Real Stories.</span>
+            </div>
           </div>
-          <p className="text-sm text-gray-400 mb-4">
+          <p className="text-sm text-[#8B7D6B] mb-5 leading-relaxed">
             Sta waar geschiedenis gebeurde. Echte verhalen, geverifieerde feiten, geen toeristenkitsch.
           </p>
-          <p className="text-xs text-gray-600">© 2026 YourLocalCityGuide</p>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-[#8B7D6B] hover:text-[#C9A46B] hover:border-[#C9A46B]/40 transition-all"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-[#8B7D6B] hover:text-[#C9A46B] hover:border-[#C9A46B]/40 transition-all"
+            >
+              <span className="text-xs font-bold">f</span>
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-[#8B7D6B] hover:text-[#C9A46B] hover:border-[#C9A46B]/40 transition-all"
+            >
+              <Youtube className="w-4 h-4" />
+            </a>
+          </div>
         </div>
 
         {/* Col 2: Links */}
         <div>
-          <h3 className="text-sm font-semibold mb-4 text-gray-300">Navigatie</h3>
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li><Link href="/nl/cities" className="hover:text-white transition-colors">Steden</Link></li>
-            <li><Link href="/nl/about" className="hover:text-white transition-colors">Over ons</Link></li>
-            <li><Link href="/nl/pricing" className="hover:text-white transition-colors">Prijzen</Link></li>
-            <li><Link href="/nl/privacy" className="hover:text-white transition-colors">Privacy</Link></li>
+          <h3 className="text-xs font-semibold tracking-widest uppercase text-[#5A4E42] mb-4">Navigatie</h3>
+          <ul className="space-y-3 text-sm text-[#8B7D6B]">
+            <li><Link href="/nl/cities" className="hover:text-[#F5F0E8] transition-colors">Steden</Link></li>
+            <li><Link href="/nl/cities/leiden/routes" className="hover:text-[#F5F0E8] transition-colors">Routes</Link></li>
+            <li><Link href="/nl/about" className="hover:text-[#F5F0E8] transition-colors">Over ons</Link></li>
+            <li><Link href="/nl/pricing" className="hover:text-[#F5F0E8] transition-colors">Pricing</Link></li>
+            <li><Link href="/nl/privacy" className="hover:text-[#F5F0E8] transition-colors">Privacy</Link></li>
           </ul>
         </div>
 
         {/* Col 3: Newsletter */}
         <div>
-          <h3 className="text-sm font-semibold mb-4 text-gray-300">Blijf op de hoogte</h3>
-          <p className="text-sm text-gray-400 mb-3">Ontvang updates over nieuwe steden en routes.</p>
-          <form className="flex gap-2">
+          <h3 className="text-xs font-semibold tracking-widest uppercase text-[#5A4E42] mb-4">Nieuwsbrief</h3>
+          <p className="text-sm text-[#8B7D6B] mb-4 leading-relaxed">
+            Ontvang updates over nieuwe steden en routes als eerste.
+          </p>
+          <form className="space-y-2">
             <input
               type="email"
               placeholder="jouw@email.nl"
-              className="flex-1 px-3 py-2 bg-white/10 border border-white/10 rounded-full text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-amber-400"
+              className="w-full px-4 py-2.5 bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-xl text-sm text-[#F5F0E8] placeholder-[#5A4E42] focus:outline-none focus:border-[#C9A46B]/50"
             />
             <button
               type="submit"
-              className="bg-amber-400 text-gray-900 px-3 py-2 rounded-full text-sm font-medium hover:bg-amber-300 transition-colors"
+              className="w-full bg-[#C9A46B] text-[#0F0E0D] px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#D4B47E] transition-colors"
             >
-              OK
+              Aanmelden
             </button>
           </form>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-4 text-center text-xs text-gray-600">
-        Gemaakt met ❤️ in Leiden
+      <div className="border-t border-[rgba(255,255,255,0.06)] py-4 text-center text-xs text-[#5A4E42]">
+        &copy; 2026 YourLocalCityGuide &middot; Gemaakt in Leiden
       </div>
     </footer>
   );

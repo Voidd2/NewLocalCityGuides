@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/lib/i18n/routing';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import BottomNav from '@/components/BottomNav';
 import '../globals.css';
 
 export const metadata: Metadata = {
@@ -29,11 +30,14 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <body className="min-h-screen bg-white text-gray-900 antialiased">
+      <body className="min-h-screen bg-[#0F0E0D] text-[#F5F0E8] antialiased pb-20 md:pb-0">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>{children}</main>
-          <Footer />
+          <div className="hidden md:block">
+            <Footer />
+          </div>
+          <BottomNav />
         </NextIntlClientProvider>
       </body>
     </html>
