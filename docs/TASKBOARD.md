@@ -129,22 +129,22 @@ written for any location until its `R02` passes.**
 
 | | Location | R01 | R02 |
 |---|---|:-:|:-:|
-| L001 | De Burcht | ✅ | — |
+| L001 | De Burcht | ✅ | 🔄 |
 | L002 | Vismarkt | ✅ | 🔄 |
-| L003 | Koornbrug | ✅ | — |
+| L003 | Koornbrug | ✅ | 🔄 |
 | L004 | De Blauwe Steen | ✅ | — |
 | L005 | Gravensteen | ✅ | — |
-| L006 | Pieterskerk | ✅ | — |
+| L006 | Pieterskerk | ✅ | 🔄 |
 | L007 | Pilgrims' quarter | ✅ | — |
 | L008 | Jean Pesijnhofje | ✅ | 🔄 |
 | L009 | Buskruitramp 1807 | ✅ | 🔄 |
-| L010 | Hortus Botanicus | ✅ | — |
+| L010 | Hortus Botanicus | ✅ | 🔄 |
 | L011 | Weddesteeg | ✅ | — |
 | L012 | Leidens Ontzet | ✅ | 🔄 |
 | L013 | Wevershuis | ✅ | — |
 | L014 | Cleveringa 1940 | ✅ | — |
 
-| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | `docs/qa/R02-verification-round-1.md` — round 1 done for L002, L008, L009, L012 |
+| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | rounds 1–2 done: L001, L002, L003, L006, L008, L009, L010, L012 → `docs/qa/R02-verification-round-{1,2}.md` |
 | LDN-ROUTE-001 | Route proposals from L001–L014 | `DONE` | Claude | — | `content/leiden/routes/leiden-route-proposals.md` — 6 routes proposed |
 | R03-SHARED | Shared city-wide reconstruction references | `STARTED` | Claude | L011-R01 | `docs/research/leiden-reconstruction-references.md` |
 | LDN-ROUTE-002 | Recompute routes from real coordinates; resolve the RT005 question | `BLOCKED` | — | ENG-GEO-001 | `content/leiden/routes/` |

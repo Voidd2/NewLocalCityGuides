@@ -8,6 +8,14 @@ Status: **R01 COMPLETE** → `L003-R02` next
 
 ---
 
+> ⚠️ **`R02` ROUND 2 — RESTORATION DATES, FROM THE MUNICIPALITY** — `docs/qa/R02-verification-round-2.md`.
+> Preparatory work from **3 November 2025**, foundation repairs from **10 November 2025**,
+> expected **"tot en met vrijdag 24 april 2026"**. The bridge was **fully closed to through
+> traffic**, with a temporary reopening to pedestrians and cyclists from **28 November 2025
+> 17:00 to 12 January 2026**, and diversions via the Visbrug, Sint Sebastiaanbrug and
+> Karnemelksbrug. **The end date has passed, so it is probably finished — and this project does
+> not publish "probably". Confirm before L003 goes live.**
+
 ## 1. THE SHORT ANSWER
 
 Someone looked at a bridge and thought: *this should also be a warehouse.* Then built it.

@@ -7,6 +7,15 @@ Status: **R01 COMPLETE** → `L010-R02` next
 
 ---
 
+> ⚠️ **`R02` ROUND 2 RESOLVED BOTH OPEN QUESTIONS** — `docs/qa/R02-verification-round-2.md`.
+> **The Suleyman claim is real but indirect:** **Ogier Ghiselin de Busbecq**, Habsburg ambassador
+> at Suleyman's court, sent bulbs to his European network **in the 1560s**; Clusius received them
+> **in Vienna** and brought his collection to Leiden in **1593**.
+> **The theft is documented and dated.** Clusius **refused to sell** — he regarded the tulips as
+> scientific objects. **In the night of 1596 to 1597 his bulbs were stolen**, and the thief sold
+> them to farmers in the region north of Leiden — **still called the Bollenstreek today**.
+> Institutional sourcing still required before publication (DEC-013).
+
 ## 1. THE SHORT ANSWER
 
 A garden 35 by 40 metres, planted in a single season in 1594, holding over a thousand kinds of

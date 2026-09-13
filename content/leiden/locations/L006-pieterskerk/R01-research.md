@@ -7,6 +7,12 @@ Status: **R01 COMPLETE** → `L006-R02` next
 
 ---
 
+> ⚠️ **`R02` ROUND 2: THERE WAS A WARNING** — `docs/qa/R02-verification-round-2.md`.
+> **On 25 February 1512, during a sermon, the congregation was startled by large pieces of stone
+> falling with thunderous force.** The tower came down **nine days later**, in the night of
+> **4–5 March**. One account places the collapse **during a severe storm**; **the cause remains
+> unestablished** and must not be stated as if it were. No contemporary chronicle found yet.
+
 ## 1. THE SHORT ANSWER
 
 A church with no tower, because the tower fell down one night in 1512 and the city could not

@@ -10,6 +10,15 @@ Status: **R01 COMPLETE** → `L001-R02` (source verification) is next
 
 ---
 
+> ⚠️ **`R02` ROUND 2 DATED THE WATER SYSTEM** — `docs/qa/R02-verification-round-2.md`.
+> **1692/93:** a fountain was realised on the Vismarkt and water reservoirs were laid out on the
+> Burchtheuvel to supply it, drawing from the **Burchtgrachtje**, filtered by a large **water
+> cellar in the foot of the hill**. This matches the Visfontein's own 1693 date — **one project,
+> not two.** The §4 entry is no longer "probable".
+> Also confirmed: **shortly after the 1651 purchase a house was demolished** to open the new
+> Nieuwstraat access for the sandstone gate. Erfgoed Leiden has a *Waterkelders ontdekt* find
+> report — the primary lead.
+
 ## 1. WHAT THIS PLACE WAS — the short answer
 
 An artificial hill, built by hand, at the fork of the Rhine, because whoever held that fork
