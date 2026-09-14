@@ -93,14 +93,30 @@ Claude kan alvast doen:
 | Item | Status |
 |---|---|
 | Repository | NewLocalCityGuides — klaar |
-| Master plan | v1.0 aanwezig |
+| Master plan | v1.0 aanwezig op deze branch — **zie let op hieronder** |
 | Tech stack | PROPOSED — nog niet goedgekeurd |
-| Locatie discovery | Bezig bij ChatGPT |
-| Code | Nog niet gestart |
+| Locatie discovery | Zie let op hieronder — waarschijnlijk al gedaan, elders |
+| Code | Next.js app-skeleton + dark-theme redesign staan al op deze branch |
 | Deployment | Nog niet bepaald |
+
+### ⚠️ Let op — gevonden op 2026-09-14
+
+Deze regels ("discovery loopt nog bij ChatGPT", "code nog niet gestart") kloppen niet meer en
+zijn dat op deze branch ook nooit geweest sinds de Next.js-scaffold er al staat. Belangrijker:
+er bleek een **volledig losstaande, niet-gemergde geschiedenis** te bestaan (branch
+`claude/affectionate-rubin-t48oom`, 26 commits, andere Git-root dan `main`) waarin de
+citywide discovery, scoring, MVP-selectie (L001–L014) en het grootste deel van het diepe
+onderzoek + bronverificatie **al gedaan zijn**, los van deze code-branch.
+
+Die inhoud is als platte kopie geïmporteerd in
+`research/leiden-2026-09-13-archive/` — lees `research/leiden-2026-09-13-archive/INDEX.md`
+voor wat erin zit en welke beslissingen de gebruiker nog moet nemen voordat dit in de site
+verwerkt wordt (twee tegenstrijdige master files, een tier-scoring-gat rond het Beleg en
+Ontzet van Leiden, en 4 van de 14 locaties waarvan de bronverificatie nog niet af is). Er is
+nog **niets** aan de live content (`content/cities/leiden/**`) veranderd.
 
 ---
 
 *Bijgewerkt door: Claude*
-*Datum: 2026-09-13*
-*Versie: 1.0*
+*Datum: 2026-09-14*
+*Versie: 1.1*
