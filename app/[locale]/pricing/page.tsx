@@ -21,7 +21,7 @@ const PLANS = [
       'Geen account nodig',
     ],
     cta: 'Gratis starten',
-    ctaHref: '/nl/cities/leiden',
+    ctaHref: 'cities/leiden',
     ctaDisabled: false,
     ctaNote: null,
   },
@@ -81,13 +81,19 @@ const FAQ = [
   },
 ];
 
-export default function PricingPage() {
+interface Props {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function PricingPage({ params }: Props) {
+  const { locale } = await params;
+
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-[#0F0E0D] pt-20">
       {/* Hero */}
-      <section className="bg-gray-50 border-b py-12 px-4 text-center">
-        <h1 className="text-3xl font-bold mb-3">Eenvoudige prijzen</h1>
-        <p className="text-gray-600 max-w-xl mx-auto">
+      <section className="bg-[#1C1916] border-b border-[rgba(255,255,255,0.08)] py-12 px-4 text-center">
+        <h1 className="text-3xl font-black text-[#F5F0E8] mb-3">Eenvoudige prijzen</h1>
+        <p className="text-[#8B7D6B] max-w-xl mx-auto">
           Begin gratis. Upgrade wanneer je meer wilt ontdekken.
         </p>
       </section>
@@ -98,32 +104,32 @@ export default function PricingPage() {
           {PLANS.map((plan) => (
             <div
               key={plan.id}
-              className={`rounded-2xl border p-6 relative ${
+              className={`rounded-2xl border bg-[#1C1916] p-6 relative ${
                 plan.recommended
-                  ? 'border-amber-400 shadow-lg shadow-amber-100'
-                  : 'border-gray-200'
+                  ? 'border-[#C9A46B]/60 shadow-lg shadow-[#C9A46B]/5'
+                  : 'border-[rgba(255,255,255,0.08)]'
               }`}
             >
               {plan.recommended && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 bg-amber-400 text-amber-900 text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="inline-flex items-center gap-1 bg-[#C9A46B] text-[#0F0E0D] text-xs font-bold px-3 py-1 rounded-full">
                     <Star className="w-3 h-3" /> Aanbevolen
                   </span>
                 </div>
               )}
 
-              <h2 className="font-bold text-lg mb-1">{plan.name}</h2>
+              <h2 className="font-bold text-lg text-[#F5F0E8] mb-1">{plan.name}</h2>
               <div className="mb-4">
-                <span className="text-3xl font-bold">{plan.price}</span>
+                <span className="text-3xl font-bold text-[#F5F0E8]">{plan.price}</span>
                 {plan.period && (
-                  <span className="text-gray-500 text-sm ml-1">/ {plan.period}</span>
+                  <span className="text-[#5A4E42] text-sm ml-1">/ {plan.period}</span>
                 )}
               </div>
 
               <ul className="space-y-2.5 mb-6">
                 {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-gray-700">
-                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+                  <li key={f} className="flex items-start gap-2 text-sm text-[#D8CFC3]">
+                    <CheckCircle className="w-4 h-4 text-[#4A7C59] shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}
@@ -131,8 +137,8 @@ export default function PricingPage() {
 
               {plan.ctaHref && !plan.ctaDisabled ? (
                 <Link
-                  href={plan.ctaHref}
-                  className="block text-center text-sm font-medium bg-gray-900 text-white px-4 py-2.5 rounded-full hover:bg-gray-700 transition-colors"
+                  href={`/${locale}/${plan.ctaHref}`}
+                  className="block text-center text-sm font-bold bg-[#C9A46B] text-[#0F0E0D] px-4 py-2.5 rounded-full hover:bg-[#D4B47E] transition-colors"
                 >
                   {plan.cta}
                 </Link>
@@ -141,15 +147,15 @@ export default function PricingPage() {
                   <span
                     className={`block text-center text-sm font-medium px-4 py-2.5 rounded-full cursor-not-allowed ${
                       plan.recommended
-                        ? 'bg-amber-100 text-amber-600'
-                        : 'bg-gray-100 text-gray-400'
+                        ? 'bg-[#C9A46B]/15 text-[#C9A46B]'
+                        : 'bg-[rgba(255,255,255,0.06)] text-[#5A4E42]'
                     }`}
                     title={plan.ctaNote ?? undefined}
                   >
                     {plan.cta}
                   </span>
                   {plan.ctaNote && (
-                    <p className="text-xs text-gray-400 text-center mt-2">{plan.ctaNote}</p>
+                    <p className="text-xs text-[#5A4E42] text-center mt-2">{plan.ctaNote}</p>
                   )}
                 </div>
               )}
@@ -159,12 +165,12 @@ export default function PricingPage() {
 
         {/* FAQ */}
         <section>
-          <h2 className="text-2xl font-bold mb-6 text-center">Veelgestelde vragen</h2>
+          <h2 className="text-2xl font-bold text-[#F5F0E8] mb-6 text-center">Veelgestelde vragen</h2>
           <div className="space-y-4 max-w-2xl mx-auto">
             {FAQ.map(({ q, a }) => (
-              <div key={q} className="border border-gray-200 rounded-xl p-5">
-                <h3 className="font-semibold text-gray-900 mb-2">{q}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{a}</p>
+              <div key={q} className="border border-[rgba(255,255,255,0.08)] bg-[#1C1916] rounded-xl p-5">
+                <h3 className="font-semibold text-[#F5F0E8] mb-2">{q}</h3>
+                <p className="text-sm text-[#8B7D6B] leading-relaxed">{a}</p>
               </div>
             ))}
           </div>

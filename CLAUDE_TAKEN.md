@@ -19,38 +19,64 @@ Claude is de **hoofd-engineer en projectleider**. Claude:
 
 ## ACTIEVE TAKEN VOOR CLAUDE
 
-### FASE 0 — Wachten op research (NU)
-**Status: ACTIEF**
+### FASE 0 — Wachten op research
+**Status: GROTENDEELS AFGEROND (code vooruitgelopen op formele goedkeuring, zie opmerking hieronder)**
 
-ChatGPT is bezig met LDN-DISC-001 (locatie discovery).
-Claude wacht hierop voordat code begint.
-
-Claude kan alvast doen:
-- [ ] Tech stack besluit DEC-009 met gebruiker doorspreken en goedkeuren of aanpassen
-- [ ] Repository structuur opzetten in NewLocalCityGuides
-- [ ] `content/` mapstructuur aanmaken (YAML schema ontwerpen)
-- [ ] `src/domain/` types definiëren (Location, Route, Stop, etc.)
+- [x] Repository structuur opzetten in NewLocalCityGuides
+- [x] `content/` mapstructuur aanmaken (YAML schema ontwerpen)
+- [x] `src/domain/` (hier: `domain/types.ts`) types definiëren (Location, Route, Stop, etc.)
+- [ ] Tech stack besluit DEC-009 met gebruiker doorspreken en formeel goedkeuren of aanpassen
+      — **let op:** DEC-009 staat nog op `PROPOSED — USER APPROVAL REQUIRED`, maar de
+      implementatie (Next.js, MapLibre, Zod, next-intl) volgt de voorgestelde stack al
+      volledig. Dit bestand liep dus achter op de werkelijke voortgang; nu bijgewerkt.
+      Formele gebruikersgoedkeuring van DEC-009 is nog niet vastgelegd.
 
 ---
 
-### FASE 1 — Na goedkeuring tech stack (DEC-009)
-**Status: GEBLOKKEERD op gebruikersgoedkeuring**
+### FASE 1 — Applicatie-fundament
+**Status: GROTENDEELS AFGEROND**
 
-- [ ] Next.js project scaffolden in NewLocalCityGuides
-- [ ] MapLibre integreren (achter adapter)
-- [ ] Zod schema's schrijven voor content validatie
-- [ ] next-intl opzetten (NL + EN routes)
-- [ ] Basislay-out: navbar, footer, stad-pagina
+- [x] Next.js project scaffolden in NewLocalCityGuides
+- [x] MapLibre integreren (achter adapter — `features/map/`)
+- [x] Zod schema's schrijven voor content validatie (`content/schema/`)
+- [x] next-intl opzetten (NL + EN routes)
+- [x] Basislay-out: navbar, footer, stad-pagina
+- [x] Dark wireframe-faithful redesign (amber accent, `#0F0E0D` bg) doorgevoerd over
+      alle pagina's — was eerst alleen toegepast op home/stad/route/locatie-detail,
+      nu ook op cities-overzicht, prijzen, over-ons, account, inloggen en de tour-flow
+- [x] Homepage "early access" nieuwsbrief-CTA gekoppeld aan `/api/newsletter`
+      (stond los, deed voorheen niets bij submit)
 
 ---
 
 ### FASE 2 — Na LDN-DISC-001 (ChatGPT research klaar)
 **Status: GEBLOKKEERD op ChatGPT output**
 
-- [ ] ChatGPT locaties beoordelen en valideren
-- [ ] Goede kandidaten omzetten naar YAML content records
-- [ ] Kaart tonen met kandidaat-locaties
-- [ ] Route-pagina bouwen
+ChatGPT/Codex heeft LDN-DISC-001 nog niet als leverbaar in `research/` gezet
+(map bevat alleen `.gitkeep`). Er staan wel al 5 handmatig/eerder aangeleverde
+Leiden-locaties in `content/cities/leiden/locations/` met bronvermelding
+(Wikipedia, Erfgoed Leiden) — dit is geen vervanging van de citywide discovery.
+
+- [ ] ChatGPT locaties beoordelen en valideren (wacht op LDN-DISC-001 in `research/`)
+- [x] Bestaande kandidaten omgezet naar gevalideerde YAML content records (5 stuks)
+- [x] Kaart tonen met locaties (MapLibre, `features/map/`)
+- [x] Route-pagina bouwen (`cities/leiden/routes`)
+
+---
+
+### BEKENDE OPEN PUNTEN (niet-blokkerend, voor volgende sessie)
+
+- `app/api/newsletter/route.ts` schrijft naar een lokaal JSON-bestand via `fs`.
+  Dat werkt in `next dev`/`next start`, maar Vercel's serverless functions hebben
+  een read-only filesystem buiten `/tmp` — in productie op Vercel (de DEC-009
+  hosting-keuze) gaat dit vermoedelijk stuk of verliest data tussen deploys.
+  Vervangen door een echte opslag (bv. een database of e-maillijst-provider) is
+  een vendor/architectuurkeuze en dus expliciet iets voor gebruikersgoedkeuring.
+- Geen PWA-manifest/iconen aanwezig (DEC-009 §3 noemt dit als vereist voor de
+  eerste implementatie).
+- `app/[locale]/cities/[slug]/page.tsx` is voor `slug=leiden` onbereikbare code
+  (de statische route `cities/leiden/page.tsx` wint) — nu wel herstijld/becommentarieerd,
+  maar op termijn opschoning overwegen.
 
 ---
 
@@ -94,13 +120,14 @@ Claude kan alvast doen:
 |---|---|
 | Repository | NewLocalCityGuides — klaar |
 | Master plan | v1.0 aanwezig |
-| Tech stack | PROPOSED — nog niet goedgekeurd |
-| Locatie discovery | Bezig bij ChatGPT |
-| Code | Nog niet gestart |
-| Deployment | Nog niet bepaald |
+| Tech stack (DEC-009) | Geïmplementeerd, formele gebruikersgoedkeuring nog niet vastgelegd |
+| Locatie discovery (LDN-DISC-001) | Nog niet geleverd in `research/` — blokkeert Fase 2 |
+| Code | Next.js app functioneel: home, steden, Leiden stad/routes/locaties, GPS-tour, account/auth/pricing/about (allen nu in dark-theme huisstijl) |
+| Lint/typecheck/build | Groen (`npm run lint`, `tsc --noEmit`, `next build`) |
+| Deployment | Nog niet bepaald — zie open punt over `/api/newsletter` + Vercel read-only fs |
 
 ---
 
 *Bijgewerkt door: Claude*
-*Datum: 2026-09-13*
-*Versie: 1.0*
+*Datum: 2026-09-15*
+*Versie: 1.1*

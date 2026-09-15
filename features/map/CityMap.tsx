@@ -6,6 +6,7 @@
  */
 import { useEffect, useRef } from 'react';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import type { Map as MapLibreMap } from 'maplibre-gl';
 import type { MapConfig } from './types';
 
 const THEME_COLORS: Record<string, string> = {
@@ -24,12 +25,12 @@ interface Props {
 
 export default function CityMap({ config, className = '', onMarkerClick }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<any>(null);
+  const mapRef = useRef<MapLibreMap | null>(null);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
-    let map: any;
+    let map: MapLibreMap;
     let cancelled = false;
 
     async function init() {
@@ -72,7 +73,7 @@ export default function CityMap({ config, className = '', onMarkerClick }: Props
           `;
           el.appendChild(dot);
 
-          const m = new maplibre.Marker({ element: el, anchor: 'bottom-left' })
+          new maplibre.Marker({ element: el, anchor: 'bottom-left' })
             .setLngLat([marker.lng, marker.lat])
             .addTo(map);
 

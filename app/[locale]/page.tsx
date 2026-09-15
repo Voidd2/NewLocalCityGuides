@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin, Map, Navigation, Play, BookOpen, ChevronDown, ArrowRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import NewsletterForm from '@/components/NewsletterForm';
 
 interface Props { params: Promise<{ locale: string }> }
 
@@ -249,19 +250,7 @@ export default async function HomePage({ params }: Props) {
           <p className="text-sm text-[#8B7D6B] mb-8 leading-relaxed">
             Ontvang updates zodra nieuwe steden en routes beschikbaar zijn.
           </p>
-          <form className="flex gap-2">
-            <input
-              type="email"
-              placeholder="jouw@email.nl"
-              className="flex-1 px-4 py-3 bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-xl text-sm text-[#F5F0E8] placeholder-[#5A4E42] focus:outline-none focus:border-[#C9A46B]/50"
-            />
-            <button
-              type="submit"
-              className="bg-[#C9A46B] text-[#0F0E0D] px-5 py-3 rounded-xl text-sm font-semibold hover:bg-[#D4B47E] transition-colors whitespace-nowrap"
-            >
-              Aanmelden
-            </button>
-          </form>
+          <NewsletterForm locale={locale} variant="dark" />
         </div>
       </section>
 

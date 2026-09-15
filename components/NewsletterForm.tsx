@@ -31,18 +31,18 @@ export default function NewsletterForm({ locale, className = '', variant = 'ligh
 
   if (state === 'success') {
     return (
-      <p className={`text-sm font-medium text-green-600 ${className}`}>
+      <p className={`text-sm font-medium ${variant === 'dark' ? 'text-[#7FB08A]' : 'text-green-600'} ${className}`}>
         ✓ {loc === 'nl' ? 'Je staat op de lijst!' : "You're on the list!"}
       </p>
     );
   }
 
   const inputClass = variant === 'dark'
-    ? 'flex-1 px-4 py-2 rounded-full text-sm bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/40'
+    ? 'flex-1 px-4 py-2 rounded-full text-sm bg-[#1C1916] border border-[rgba(255,255,255,0.08)] text-[#F5F0E8] placeholder-[#5A4E42] focus:outline-none focus:border-[#C9A46B]/50'
     : 'flex-1 px-4 py-2 border border-gray-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 bg-white';
 
   const btnClass = variant === 'dark'
-    ? 'bg-amber-400 text-gray-900 px-4 py-2 rounded-full text-sm font-medium hover:bg-amber-300 transition-colors disabled:opacity-60'
+    ? 'bg-[#C9A46B] text-[#0F0E0D] px-4 py-2 rounded-full text-sm font-bold hover:bg-[#D4B47E] transition-colors disabled:opacity-60'
     : 'bg-gray-900 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition-colors disabled:opacity-60';
 
   return (
@@ -61,7 +61,7 @@ export default function NewsletterForm({ locale, className = '', variant = 'ligh
           : loc === 'nl' ? 'Aanmelden' : 'Sign up'}
       </button>
       {state === 'error' && (
-        <span className="text-xs text-red-500 self-center">
+        <span className={`text-xs self-center ${variant === 'dark' ? 'text-red-400' : 'text-red-500'}`}>
           {loc === 'nl' ? 'Probeer opnieuw' : 'Try again'}
         </span>
       )}

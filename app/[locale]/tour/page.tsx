@@ -128,23 +128,23 @@ export default function TourPage() {
   // ── GPS permission screen ──
   if (status === 'idle' || status === 'unsupported') {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#0F0E0D] pt-20 flex items-center justify-center px-4">
         <div className="max-w-sm text-center">
-          <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-5">
-            <Navigation className="w-8 h-8 text-amber-600" />
+          <div className="w-16 h-16 rounded-full bg-[#C9A46B]/15 flex items-center justify-center mx-auto mb-5">
+            <Navigation className="w-8 h-8 text-[#C9A46B]" />
           </div>
-          <h1 className="text-2xl font-bold mb-2">GPS wandeltour</h1>
-          <p className="text-gray-600 text-sm mb-2 leading-relaxed">
-            Loop door Leiden en krijg automatisch een <strong>video</strong> te zien zodra je bij een locatie aankomt.
+          <h1 className="text-2xl font-bold text-[#F5F0E8] mb-2">GPS wandeltour</h1>
+          <p className="text-[#8B7D6B] text-sm mb-2 leading-relaxed">
+            Loop door Leiden en krijg automatisch een <strong className="text-[#F5F0E8]">video</strong> te zien zodra je bij een locatie aankomt.
           </p>
-          <p className="text-xs text-gray-400 mb-6">Je locatie wordt nooit opgeslagen of gedeeld.</p>
+          <p className="text-xs text-[#5A4E42] mb-6">Je locatie wordt nooit opgeslagen of gedeeld.</p>
 
           {status === 'unsupported' ? (
-            <p className="text-red-600 text-sm bg-red-50 rounded-xl p-3">GPS is niet beschikbaar in deze browser.</p>
+            <p className="text-red-300 text-sm bg-red-950/40 border border-red-900/50 rounded-xl p-3">GPS is niet beschikbaar in deze browser.</p>
           ) : (
             <button
               onClick={start}
-              className="bg-gray-900 text-white px-6 py-3 rounded-full font-medium hover:bg-gray-700 transition-colors w-full"
+              className="bg-[#C9A46B] text-[#0F0E0D] px-6 py-3 rounded-full font-bold hover:bg-[#D4B47E] transition-colors w-full"
             >
               GPS inschakelen en starten
             </button>
@@ -155,9 +155,9 @@ export default function TourPage() {
             {LEIDEN_STOPS.map((s) => {
               const Icon = MEDIA_ICONS[s.mediaType];
               return (
-                <div key={s.id} className="flex items-center gap-3 text-sm text-gray-600">
-                  <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
-                    <Icon className="w-3.5 h-3.5 text-gray-500" />
+                <div key={s.id} className="flex items-center gap-3 text-sm text-[#8B7D6B]">
+                  <div className="w-7 h-7 rounded-full bg-[#1C1916] border border-[rgba(255,255,255,0.08)] flex items-center justify-center shrink-0">
+                    <Icon className="w-3.5 h-3.5 text-[#8B7D6B]" />
                   </div>
                   <span>{s.name}</span>
                 </div>
@@ -166,7 +166,7 @@ export default function TourPage() {
           </div>
 
           <div className="mt-6">
-            <Link href={`/${locale}/cities/leiden`} className="text-sm text-gray-400 hover:text-gray-900">
+            <Link href={`/${locale}/cities/leiden`} className="text-sm text-[#5A4E42] hover:text-[#F5F0E8] transition-colors">
               ← Terug naar Leiden
             </Link>
           </div>
@@ -177,15 +177,15 @@ export default function TourPage() {
 
   // ── Active tour ──
   return (
-    <div className="min-h-screen pt-14">
+    <div className="min-h-screen bg-[#0F0E0D] pt-14">
       {/* GPS status bar */}
-      <div className="bg-gray-900 text-white px-4 py-2 flex items-center justify-between text-xs sticky top-14 z-40">
+      <div className="bg-[#1C1916] border-b border-[rgba(255,255,255,0.08)] text-[#F5F0E8] px-4 py-2 flex items-center justify-between text-xs sticky top-14 z-40">
         <div className="flex items-center gap-2">
           {status === 'watching' ? (
             <span className="flex items-center gap-1.5 text-green-400">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               GPS actief
-              {position && <span className="text-gray-400 ml-1">±{Math.round(position.accuracy)}m</span>}
+              {position && <span className="text-[#8B7D6B] ml-1">±{Math.round(position.accuracy)}m</span>}
             </span>
           ) : (
             <span className="flex items-center gap-1.5 text-yellow-400">
@@ -193,7 +193,7 @@ export default function TourPage() {
             </span>
           )}
         </div>
-        <Link href={`/${locale}/cities/leiden`} className="text-gray-400 hover:text-white transition-colors">
+        <Link href={`/${locale}/cities/leiden`} className="text-[#8B7D6B] hover:text-[#F5F0E8] transition-colors">
           Tour stoppen ✕
         </Link>
       </div>
@@ -201,13 +201,13 @@ export default function TourPage() {
       <div className="max-w-lg mx-auto px-4 py-6">
         {/* Progress */}
         <div className="mb-6">
-          <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
-            <span className="font-medium text-gray-900">Historisch Leiden</span>
+          <div className="flex items-center justify-between text-xs text-[#8B7D6B] mb-2">
+            <span className="font-medium text-[#F5F0E8]">Historisch Leiden</span>
             <span>{visited.size}/{LEIDEN_STOPS.length} bezocht</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-1.5">
+          <div className="w-full bg-[#252118] rounded-full h-1.5">
             <div
-              className="bg-amber-500 h-1.5 rounded-full transition-all duration-500"
+              className="bg-[#C9A46B] h-1.5 rounded-full transition-all duration-500"
               style={{ width: `${(visited.size / LEIDEN_STOPS.length) * 100}%` }}
             />
           </div>
@@ -227,24 +227,24 @@ export default function TourPage() {
                 onClick={() => openStop(stop.id)}
                 className={`w-full text-left rounded-2xl border p-4 transition-all ${
                   isNearby
-                    ? 'border-amber-400 bg-amber-50 shadow-sm ring-1 ring-amber-200'
+                    ? 'border-[#C9A46B]/60 bg-[#C9A46B]/10 shadow-sm ring-1 ring-[#C9A46B]/30'
                     : isVisited
-                    ? 'border-green-200 bg-green-50'
-                    : 'border-gray-200 bg-white hover:border-gray-300'
+                    ? 'border-[#4A7C59]/40 bg-[#4A7C59]/10'
+                    : 'border-[rgba(255,255,255,0.08)] bg-[#1C1916] hover:border-[rgba(255,255,255,0.16)] hover:bg-[#252118]'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   {/* Status icon */}
                   <div className="shrink-0">
                     {isVisited ? (
-                      <CheckCircle className="w-6 h-6 text-green-500" />
+                      <CheckCircle className="w-6 h-6 text-[#4A7C59]" />
                     ) : isNearby ? (
-                      <div className="w-6 h-6 rounded-full bg-amber-400 flex items-center justify-center">
-                        <span className="text-xs font-bold text-amber-900">{stop.order}</span>
+                      <div className="w-6 h-6 rounded-full bg-[#C9A46B] flex items-center justify-center">
+                        <span className="text-xs font-bold text-[#0F0E0D]">{stop.order}</span>
                       </div>
                     ) : (
-                      <div className="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center">
-                        <span className="text-xs text-gray-400">{stop.order}</span>
+                      <div className="w-6 h-6 rounded-full border-2 border-[rgba(255,255,255,0.15)] flex items-center justify-center">
+                        <span className="text-xs text-[#5A4E42]">{stop.order}</span>
                       </div>
                     )}
                   </div>
@@ -253,24 +253,24 @@ export default function TourPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <p className={`font-semibold text-sm truncate ${
-                        isNearby ? 'text-amber-900' : isVisited ? 'text-green-900' : 'text-gray-900'
+                        isNearby ? 'text-[#C9A46B]' : 'text-[#F5F0E8]'
                       }`}>
                         {stop.name}
                       </p>
                       {isNearby && (
-                        <span className="text-xs bg-amber-500 text-white font-medium px-2 py-0.5 rounded-full shrink-0">
+                        <span className="text-xs bg-[#C9A46B] text-[#0F0E0D] font-bold px-2 py-0.5 rounded-full shrink-0">
                           Dichtbij!
                         </span>
                       )}
                     </div>
 
                     <div className="flex items-center gap-3 mt-0.5">
-                      <span className="flex items-center gap-1 text-xs text-gray-400">
+                      <span className="flex items-center gap-1 text-xs text-[#8B7D6B]">
                         <MediaIcon className="w-3 h-3" />
                         {stop.mediaType === 'video' ? 'Video' : stop.mediaType === 'audio' ? 'Audio' : 'Tekst'}
                       </span>
                       {position && (
-                        <span className="flex items-center gap-1 text-xs text-gray-400">
+                        <span className="flex items-center gap-1 text-xs text-[#8B7D6B]">
                           <MapPin className="w-3 h-3" />
                           {nearbyStop
                             ? fmtDist(nearbyStop.distanceMetres)
@@ -284,12 +284,12 @@ export default function TourPage() {
                   </div>
 
                   {/* Chevron hint */}
-                  <span className="text-gray-300 text-lg shrink-0">›</span>
+                  <span className="text-[#5A4E42] text-lg shrink-0">›</span>
                 </div>
 
                 {/* Nearby prompt */}
                 {isNearby && !isVisited && (
-                  <div className="mt-2 ml-9 flex items-center gap-1.5 text-xs text-amber-700 font-medium">
+                  <div className="mt-2 ml-9 flex items-center gap-1.5 text-xs text-[#C9A46B] font-medium">
                     <Film className="w-3.5 h-3.5" />
                     Tik om de video te bekijken
                   </div>
@@ -300,17 +300,17 @@ export default function TourPage() {
         </div>
 
         {error && (
-          <div className="mt-4 bg-red-50 border border-red-200 rounded-xl p-3 text-sm text-red-700">
+          <div className="mt-4 bg-red-950/40 border border-red-900/50 rounded-xl p-3 text-sm text-red-300">
             {error}
           </div>
         )}
 
         {visited.size === LEIDEN_STOPS.length && (
-          <div className="mt-6 bg-green-50 border border-green-200 rounded-2xl p-5 text-center">
+          <div className="mt-6 bg-[#1C1916] border border-[rgba(255,255,255,0.08)] rounded-2xl p-5 text-center">
             <div className="text-3xl mb-2">🎉</div>
-            <h3 className="font-bold text-green-900 mb-1">Tour voltooid!</h3>
-            <p className="text-sm text-green-700 mb-4">Je hebt alle {LEIDEN_STOPS.length} locaties van Historisch Leiden bezocht.</p>
-            <Link href={`/${locale}/cities/leiden`} className="inline-flex items-center gap-2 bg-green-700 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-green-800 transition-colors">
+            <h3 className="font-bold text-[#F5F0E8] mb-1">Tour voltooid!</h3>
+            <p className="text-sm text-[#8B7D6B] mb-4">Je hebt alle {LEIDEN_STOPS.length} locaties van Historisch Leiden bezocht.</p>
+            <Link href={`/${locale}/cities/leiden`} className="inline-flex items-center gap-2 bg-[#C9A46B] text-[#0F0E0D] px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#D4B47E] transition-colors">
               ← Terug naar Leiden
             </Link>
           </div>

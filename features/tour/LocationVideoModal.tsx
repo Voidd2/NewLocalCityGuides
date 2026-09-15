@@ -107,31 +107,31 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
 
       {/* Sheet */}
-      <div className="relative z-10 bg-white rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div className="relative z-10 bg-[#1C1916] rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto border-t border-[rgba(255,255,255,0.08)]">
         {/* Drag handle */}
         <div className="flex justify-center pt-3 pb-1">
-          <div className="w-10 h-1 bg-gray-300 rounded-full" />
+          <div className="w-10 h-1 bg-[rgba(255,255,255,0.15)] rounded-full" />
         </div>
 
         {/* Header */}
         <div className="flex items-start justify-between px-5 pt-3 pb-4">
           <div className="flex-1 min-w-0 pr-3">
             <div className="flex items-center gap-2 mb-1">
-              <span className="inline-flex items-center gap-1 text-xs font-medium bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">
+              <span className="inline-flex items-center gap-1 text-xs font-medium bg-[#C9A46B]/15 text-[#C9A46B] px-2 py-0.5 rounded-full">
                 <MediaIcon className="w-3 h-3" />
                 {MEDIA_LABELS[stop.mediaType]}
               </span>
               {stop.distanceMetres <= 50 && (
-                <span className="text-xs font-medium text-green-700 bg-green-100 px-2 py-0.5 rounded-full">
+                <span className="text-xs font-medium text-[#4A7C59] bg-[#4A7C59]/15 px-2 py-0.5 rounded-full">
                   📍 Je bent hier
                 </span>
               )}
             </div>
-            <h2 className="text-xl font-bold text-gray-900 leading-tight">{stop.name}</h2>
-            <p className="text-sm text-gray-500 mt-0.5">{stop.subtitle}</p>
+            <h2 className="text-xl font-bold text-[#F5F0E8] leading-tight">{stop.name}</h2>
+            <p className="text-sm text-[#8B7D6B] mt-0.5">{stop.subtitle}</p>
           </div>
-          <button onClick={onClose} className="shrink-0 p-2 rounded-full hover:bg-gray-100 transition-colors">
-            <X className="w-5 h-5 text-gray-500" />
+          <button onClick={onClose} className="shrink-0 p-2 rounded-full hover:bg-[#252118] transition-colors">
+            <X className="w-5 h-5 text-[#8B7D6B]" />
           </button>
         </div>
 
@@ -172,27 +172,27 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
           <div className="px-5 mb-5">
             {/* Thumbnail */}
             {stop.imageUrl && (
-              <div className="h-40 rounded-2xl overflow-hidden mb-4 bg-gray-100">
+              <div className="h-40 rounded-2xl overflow-hidden mb-4 bg-[#252118]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={stop.imageUrl} alt={stop.name} className="w-full h-full object-cover" />
               </div>
             )}
             {/* Controls */}
-            <div className="bg-gray-900 rounded-2xl p-4 text-white">
+            <div className="bg-[#0F0E0D] rounded-2xl p-4 text-[#F5F0E8]">
               {/* Progress bar */}
               <div
-                className="h-1.5 bg-gray-700 rounded-full mb-3 cursor-pointer"
+                className="h-1.5 bg-[#252118] rounded-full mb-3 cursor-pointer"
                 onClick={seekAudio}
               >
                 <div
-                  className="h-full bg-amber-400 rounded-full transition-all"
+                  className="h-full bg-[#C9A46B] rounded-full transition-all"
                   style={{ width: `${audioProgress * 100}%` }}
                 />
               </div>
               <div className="flex items-center gap-3">
                 <button
                   onClick={toggleAudio}
-                  className="w-10 h-10 rounded-full bg-amber-400 text-gray-900 flex items-center justify-center hover:bg-amber-300 transition-colors"
+                  className="w-10 h-10 rounded-full bg-[#C9A46B] text-[#0F0E0D] flex items-center justify-center hover:bg-[#D4B47E] transition-colors"
                 >
                   {audioPlaying
                     ? <Pause className="w-4 h-4" />
@@ -200,9 +200,9 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
                 </button>
                 <div className="flex-1">
                   <p className="text-sm font-medium">{stop.name}</p>
-                  <p className="text-xs text-gray-400">{fmt(audioTime)} / {fmt(audioDuration)}</p>
+                  <p className="text-xs text-[#8B7D6B]">{fmt(audioTime)} / {fmt(audioDuration)}</p>
                 </div>
-                <Volume2 className="w-4 h-4 text-gray-400" />
+                <Volume2 className="w-4 h-4 text-[#8B7D6B]" />
               </div>
             </div>
           </div>
@@ -211,7 +211,7 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
         {/* ── TEXT-ONLY (no media) ── */}
         {stop.mediaType === 'text' && stop.imageUrl && (
           <div className="px-5 mb-4">
-            <div className="h-48 rounded-2xl overflow-hidden bg-gray-100">
+            <div className="h-48 rounded-2xl overflow-hidden bg-[#252118]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={stop.imageUrl} alt={stop.name} className="w-full h-full object-cover" />
             </div>
@@ -220,7 +220,7 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
 
         {/* Story text */}
         <div className="px-5 pb-3">
-          <p className="text-sm text-gray-700 leading-relaxed">{stop.story}</p>
+          <p className="text-sm text-[#D8CFC3] leading-relaxed">{stop.story}</p>
         </div>
 
         {/* CTA */}
@@ -228,10 +228,10 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
           <button
             onClick={() => { onMarkVisited(stop.id); onClose(); }}
             disabled={isVisited}
-            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full font-medium text-sm transition-colors ${
+            className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-full font-bold text-sm transition-colors ${
               isVisited
-                ? 'bg-green-100 text-green-700 cursor-default'
-                : 'bg-gray-900 text-white hover:bg-gray-700'
+                ? 'bg-[#4A7C59]/15 text-[#4A7C59] cursor-default'
+                : 'bg-[#C9A46B] text-[#0F0E0D] hover:bg-[#D4B47E]'
             }`}
           >
             <CheckCircle className="w-4 h-4" />
@@ -239,7 +239,7 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
           </button>
           <button
             onClick={onClose}
-            className="px-5 py-3 rounded-full font-medium text-sm border border-gray-200 text-gray-600 hover:border-gray-400 transition-colors flex items-center gap-1"
+            className="px-5 py-3 rounded-full font-medium text-sm border border-[rgba(255,255,255,0.1)] text-[#8B7D6B] hover:border-[rgba(255,255,255,0.25)] hover:text-[#F5F0E8] transition-colors flex items-center gap-1"
           >
             <ChevronDown className="w-4 h-4" /> Sluit
           </button>
