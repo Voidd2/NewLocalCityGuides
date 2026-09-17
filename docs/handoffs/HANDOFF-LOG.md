@@ -5,7 +5,7 @@ No handoff = task incomplete.
 
 ---
 
-## HANDOFF 006
+## HANDOFF 007
 
 **Agent:** Codex · **Role:** Research support
 **Date:** 2026-09-17 · **Branch:** `codex/practical-info-mvp` · **PR:** #9
