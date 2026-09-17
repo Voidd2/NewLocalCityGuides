@@ -5,6 +5,37 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF — R02 ROUND 4 CONTACT PREPARATION (Codex)
+
+**Agent:** Codex · **Role:** Research · **Date:** 2026-09-17
+**Task:** R02 round 4 · **Status:** CONTACT PACK READY; BLOCKED ON SENDER/RESPONSE
+**Branch:** `codex/r02-round4-contact` · **PR:** #7
+
+### Completed
+- Audited the seven claim groups delegated in Claude's 2026-09-17 handoff against R01 and
+  R02 rounds 1–3.
+- Split them into eighteen traceable claim IDs with explicit evidence requirements.
+- Prepared a concise Dutch request to Erfgoed Leiden plus a SourceRecord response template.
+- Preserved all restrictions: no visitor copy, no unsupported superlatives, nobody named
+  aboard the 1807 ship, and DEC-016 remains binding for L014.
+
+### Files changed
+`research/r02-round4-erfgoed-leiden-contact-pack.md`, task board, master status and this handoff.
+
+### Blocker
+The request needs a real sender name and e-mail address. After sending, the task remains open
+until Erfgoed Leiden supplies source-specific answers. No sender details were invented.
+
+### Recommended next task
+Send the prepared request from an identified project address, then map every response to the
+claim IDs before changing any verification status. While waiting, continue an independent
+medium-priority research task.
+
+### Master file updated
+YES — §36 now records the contact pack and blocker. Task board also updated.
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer

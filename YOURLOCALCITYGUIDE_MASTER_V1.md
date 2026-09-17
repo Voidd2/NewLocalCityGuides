@@ -2013,6 +2013,10 @@ audit, and a `V01` video opportunity analysis with **no concept selected**.
 Round 3 closed the **access** blockers: L003 is open again, L005 has weekly guided tours, L013's
 hours and honest accessibility line are sourced, and L008's gate-only etiquette is settled.
 
+Update 2026-09-17: PR #7 contains the round-4 claim matrix and a send-ready request to
+Erfgoed Leiden for seven locations. No open claim was promoted. Sending awaits real sender
+details; completion then depends on a source-specific institutional response.
+
 ⚠️ **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five of the remaining
 research blockers end at their archive. The contact task and the site visit are now one trip.
 
