@@ -144,7 +144,7 @@ written for any location until its `R02` passes.**
 | L013 | Wevershuis | ✅ | 🔄 |
 | L014 | Cleveringa 1940 | ✅ | — |
 
-| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | rounds 1–3 done: L001, L002, L003, L005, L006, L008, L009, L010, L012, L013 → `docs/qa/R02-verification-round-{1,2,3}.md` |
+| L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude + Codex** | R01 ✔ | rounds 1–3 done; Codex preparing round-4 Erfgoed Leiden contact pack per Claude's 2026-09-17 handoff |
 | LDN-ROUTE-001 | Route proposals from L001–L014 | `DONE` | Claude | — | `content/leiden/routes/leiden-route-proposals.md` — 6 routes proposed |
 | R03-SHARED | Shared city-wide reconstruction references | `STARTED` | Claude | L011-R01 | `docs/research/leiden-reconstruction-references.md` |
 | LDN-ROUTE-002 | Recompute routes from real coordinates; resolve the RT005 question | `BLOCKED` | — | ENG-GEO-001 | `content/leiden/routes/` |
