@@ -98,6 +98,9 @@ export function Header() {
             <Link href="/routes" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">{t("nav.routes")}</Link>
             <Link href="/about" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Over ons</Link>
             <Link href="/pricing" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Prijzen</Link>
+            <Link href="/map" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Kaart</Link>
+            <hr className="my-2 border-gray-100" />
+            <Link href="/login" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-orange-500 font-medium hover:bg-orange-50">Inloggen</Link>
           </nav>
         </div>
       )}

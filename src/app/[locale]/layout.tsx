@@ -14,8 +14,56 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "YourLocalCityGuide",
-  description: "Real places. Real stories.",
+  title: {
+    default: "YourLocalCityGuide - Ontdek Leiden op jouw tempo",
+    template: "%s | YourLocalCityGuide",
+  },
+  description:
+    "Ontdek de verborgen verhalen van Leiden. Zelfgeleide stadstours met interactieve video's, verborgen parels en lokale geheimen. Vanaf 5,99 per persoon.",
+  keywords: [
+    "Leiden",
+    "stadstour",
+    "city guide",
+    "zelfgeleide tour",
+    "interactieve video",
+    "verborgen parels",
+    "hidden gems",
+    "Leiden wandeling",
+    "Leiden fietstour",
+    "Pilgrim Fathers Leiden",
+    "Pieterskerk",
+    "De Burcht",
+    "Leidens Ontzet",
+    "Rembrandt Leiden",
+    "Stadtfuhrer Leiden",
+    "Leiden Sehenswurdigkeiten",
+  ],
+  openGraph: {
+    title: "YourLocalCityGuide - Ontdek Leiden",
+    description:
+      "Zelfgeleide stadstours met interactieve video's en verborgen parels. Op jouw tempo, in je eigen taal.",
+    type: "website",
+    siteName: "YourLocalCityGuide",
+    locale: "nl_NL",
+    alternateLocale: ["en_US", "de_DE"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "YourLocalCityGuide - Ontdek Leiden",
+    description:
+      "Zelfgeleide stadstours met interactieve video's en verborgen parels. Vanaf 5,99 per persoon.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    languages: {
+      nl: "/nl",
+      en: "/en",
+      de: "/de",
+    },
+  },
 };
 
 export default async function LocaleLayout({
