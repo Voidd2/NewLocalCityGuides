@@ -5,6 +5,35 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 010
+
+**Agent:** Codex · **Role:** Market research
+**Date:** 2026-09-17 · **Branch:** `codex/competitor-pricing` · **PR:** #12
+**Task ID:** `COMPETITOR-PRICING-001` · **Status:** REVIEW
+
+### Completed
+- Compared izi.TRAVEL, GPSmyCity and Vidi Guides on consumer pricing, catalogue scale, content,
+  navigation, languages and current store-rating evidence.
+- Benchmarked five Leiden alternatives and three Dutch museum audio-guide models.
+- Mapped price anchors and proposed tests at EUR 5.99/6.99 for one route and EUR 12.99/14.99 for
+  a complete Leiden pass, with a free full-stop preview and no launch subscription.
+
+### Decisions and cautions
+- The price points are test hypotheses, not a locked commercial decision.
+- izi.TRAVEL's older free-platform wording conflicts with current consumer-store subscriptions,
+  ads and purchases. Obtain a written current offer before using it as a paid distribution channel.
+- Ratings are dated, storefront-specific snapshots; small samples and company-wide scores are
+  labelled and must not be advertised as product-level proof.
+
+### Recommended next action
+Run five to eight moderated purchase tests comparing a free preview, one route, the complete Leiden
+pass and a live guide. Validate the product promise before testing fine price differences.
+
+### Master file updated
+YES — scoped status note only
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer

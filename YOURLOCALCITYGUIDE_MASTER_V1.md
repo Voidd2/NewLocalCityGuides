@@ -1998,6 +1998,11 @@ Current research state:
 MVP selection are all done: 65 candidates registered, C001–C060 scored and tiered, Gate A and
 Gate B passed, and **fourteen production locations approved as L001–L014**.
 
+**2026-09-17 Codex update:** `COMPETITOR-PRICING-001` is in `REVIEW`. Current global tour apps,
+Leiden guided and self-guided alternatives, and Dutch museum audio guides are compared in
+`research/competitor-pricing.md`. Proposed test points are EUR 5.99/6.99 for one route and EUR
+12.99/14.99 for a Leiden pass; these are research hypotheses, not approved product prices.
+
 **There is still no flagship, hero or main location, and there will not be one.** L-IDs follow
 the walking order of the loop and do not imply importance (§5). Selection is not research:
 none of the fourteen has been researched, and `R01` starts now.
