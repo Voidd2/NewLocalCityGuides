@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "YourLocalCityGuide - Ontdek Leiden",
+    "description": "Ontdek de verborgen verhalen van Leiden. Wandel op je eigen tempo door eeuwen geschiedenis, met interactieve video's en lokale geheimen."
+  },
+  "nav": {
+    "home": "Home",
+    "map": "Kaart",
+    "routes": "Routes",
+    "saved": "Opgeslagen",
+    "more": "Meer"
+  },
+  "header": {
+    "tagline": "REAL PLACES. REAL STORIES.",
+    "subtitle": "Meer dan een stad. Een verhaal."
+  },
+  "home": {
+    "heroTitle": "Ontdek Leiden",
+    "heroSubtitle": "op jouw tempo",
+    "heroDescription": "Loop door dezelfde straten, hoor de verhalen en ontdek Leiden zoals nooit tevoren.",
+    "getStarted": "Aan de slag",
+    "exploreNearMe": "Ontdek dichtbij",
+    "exploreNearMeDesc": "Bekijk wat er om je heen is",
+    "chooseRoute": "Kies een route",
+    "chooseRouteDesc": "Volg een verhaal",
+    "openMap": "Open kaart",
+    "openMapDesc": "Verken vrij",
+    "pricePerPerson": "per persoon",
+    "priceCompare": "Een stadsgids kost al snel {price} per persoon",
+    "withApp": "Met YourLocalCityGuide",
+    "features": {
+      "videos": "Interactieve video's",
+      "videosDesc": "Zie hoe het er vroeger uitzag",
+      "gems": "Verborgen parels",
+      "gemsDesc": "Lokale plekken die je nergens vindt",
+      "kids": "Kindvriendelijk",
+      "kidsDesc": "Leuk en leerzaam voor het hele gezin",
+      "pace": "Eigen tempo",
+      "paceDesc": "Stop wanneer je wilt, zo lang als je wilt",
+      "together": "Solo of samen",
+      "togetherDesc": "Perfect voor koppels, gezinnen en groepen"
+    },
+    "popularRoutes": "Populaire routes",
+    "viewAllRoutes": "Bekijk alle routes",
+    "moreCities": "Meer steden volgen snel!",
+    "moreCitiesDesc": "We werken hard aan nieuwe steden. Wil je als eerste weten wanneer jouw stad erbij is?"
+  },
+  "routes": {
+    "title": "Routes",
+    "subtitle": "Themaroutes door de stad",
+    "locations": "locaties",
+    "hours": "uur",
+    "walking": "Wandelen",
+    "cycling": "Fietsen",
+    "startRoute": "Start route",
+    "popular": "Populair",
+    "customRoute": "Maak je eigen route",
+    "customRouteDesc": "Kies je eigen stops en wij plannen de slimste volgorde",
+    "showRoute": "Toon route",
+    "overview": "Overzicht",
+    "routeAndStops": "Route & stops",
+    "videos": "Video's",
+    "reviews": "Reviews"
+  },
+  "location": {
+    "startExperience": "Start de ervaring",
+    "imHere": "Ik ben er",
+    "watchVideo": "Bekijk video",
+    "readStory": "Lees het verhaal",
+    "thenAndNow": "Toen & Nu",
+    "practicalInfo": "Praktische info",
+    "address": "Adres",
+    "openingHours": "Openingstijden",
+    "duration": "Duur ervaring",
+    "accessibility": "Toegankelijkheid",
+    "showOnMap": "Toon op kaart",
+    "inTheArea": "In de buurt",
+    "minutes": "minuten"
+  },
+  "about": {
+    "title": "Over YourLocalCityGuide",
+    "whyTitle": "Waarom geen stadsgids?",
+    "whyPoint1": "Een stadsgids kost al snel {price} per persoon",
+    "whyPoint2": "Je kunt niet stoppen wanneer jij dat wilt",
+    "whyPoint3": "Geen tijd om echt rond te kijken",
+    "whyPoint4": "Grote groepen, weinig persoonlijke aandacht",
+    "withAppTitle": "Met de app doe je het op jouw manier",
+    "withAppPoint1": "Lees, luister en bekijk alles in je eigen taal",
+    "withAppPoint2": "Stop waar je wilt, zo lang als je wilt",
+    "withAppPoint3": "Perfect voor kinderen - leuk, leerzaam en geen grote groepen",
+    "withAppPoint4": "Ontdek verborgen parels die geen gids je laat zien",
+    "viewPricing": "Bekijk prijzen"
+  },
+  "pricing": {
+    "title": "Kies je pakket",
+    "cityPackage": "Stadspakket Leiden",
+    "perPerson": "per persoon",
+    "includes": "Inbegrepen",
+    "allLocations": "Alle {count} locaties",
+    "allRoutes": "Alle routes",
+    "interactiveVideos": "Interactieve video's",
+    "offlineAccess": "Offline toegang",
+    "customRoutes": "Eigen routes maken",
+    "buyNow": "Koop nu",
+    "persons": "personen",
+    "extraDevice": "Extra apparaat",
+    "total": "Totaal"
+  },
+  "footer": {
+    "mission": "Onze missie",
+    "contact": "Contact",
+    "collaborate": "Samenwerken",
+    "privacy": "Privacy",
+    "terms": "Gebruiksvoorwaarden"
+  },
+  "common": {
+    "learnMore": "Meer weten",
+    "back": "Terug",
+    "next": "Volgende",
+    "close": "Sluiten",
+    "free": "Gratis",
+    "city": "Leiden"
+  }
+}
