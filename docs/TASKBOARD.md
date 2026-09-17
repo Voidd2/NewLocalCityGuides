@@ -271,7 +271,7 @@ No final video script before `R01`+`R02` pass for that location.
 |---|---|---|---|---|---|
 | FND-002 | Stack decision record | ✅ **`DONE`** | **Codex** | — | `docs/decisions/DEC-009-tech-stack.md` — PR #2. **Reviewed by Claude: APPROVE** → `docs/qa/REVIEW-DEC-009-tech-stack.md` |
 | FND-005 | Executable content schema from master §21 + `locations.json` | ✅ **`READY — GO`** | **Codex** | FND-002 ✔ | `src/types/`, validation. **Read the review's §4 first — four requirements the ADR predates** |
-| ENG-GEO-001 | Geocode the **14 MVP locations** from PDOK/BAG per the 2026-09-17 Claude handoff | `IN PROGRESS` | **Codex** | LDN-DISC-001 | `research/eng-geo-001-mvp-coordinates.json` |
+| ENG-GEO-001 | Geocode the **14 MVP locations** from PDOK/BAG per the 2026-09-17 Claude handoff | **DONE — PR #6** | **Codex** | LDN-DISC-001 | `research/eng-geo-001-mvp-coordinates.json` — 11 matched, L003/L004/L009 remain `null` |
 | ENG-SKEL-001 | App skeleton + navigation shell per wireframe | `READY` | **Codex** | FND-002 | `src/app/` |
 | ENG-MAP-001 | Map foundation (layers, markers, clustering, filters) | `READY` | **Codex** | ENG-GEO-001 | map feature |
 | ENG-LOC-001 | Location page template (W20–W30), fake content only | `READY` | **Codex** | FND-005 | location feature |

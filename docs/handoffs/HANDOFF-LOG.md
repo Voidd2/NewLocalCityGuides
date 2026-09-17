@@ -5,6 +5,46 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF — ENG-GEO-001 (Codex)
+
+**Agent:** Codex · **Role:** Research · **Date:** 2026-09-17
+**Task:** ENG-GEO-001 · **Status:** DONE, READY FOR REVIEW
+**Branch:** `codex/eng-geo-001` · **PR:** #6
+
+### Completed
+- Re-ran all fourteen locations from Claude's 2026-09-17 handoff against PDOK
+  Locatieserver and retained the exact query and object identifiers.
+- Delivered eleven reproducible reference points: seven BAG address centroids and four
+  registered street centroids.
+- Left L003 Koornbrug, L004 Blauwe Steen and L009 Van der Werffpark as `null` because
+  no matching object was returned. No substitute point was estimated.
+- Corrected the L013 input address from Middelweg 45 to the museum's published address,
+  Middelstegracht 143, and verified that address against BAG.
+
+### Files changed
+`research/eng-geo-001-mvp-coordinates.json`,
+`research/eng-geo-001-method.md`, this handoff, the task board and master status.
+
+### Facts and sources added
+- Every non-null record includes its PDOK query URL, PDOK object ID and, for address
+  records, the BAG number-designation ID.
+- Official address sources were recorded for L001 and L013.
+
+### Uncertainty / risks
+- A BAG address centroid is not a surveyed entrance. A street centroid is not a safe
+  pedestrian stopping point.
+- L003, L004 and L009 require a different official dataset or a documented field point.
+- Route distances and directions remain blocked on field-checkable navigation points.
+
+### Recommended next task
+Prepare the R02 round-4 evidence request and claim matrix. Sending an external message still
+requires the user's explicit authorization.
+
+### Master file updated
+YES — ENG-GEO-001 scope/status and §36 current status. Task board also updated.
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer

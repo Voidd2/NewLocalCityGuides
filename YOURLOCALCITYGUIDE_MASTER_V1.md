@@ -1859,11 +1859,12 @@ Depends on: LDN-DISC-001
 Status: **READY**
 
 ## Task ENG-GEO-001
-Resolve coordinates for all 52 candidates from PDOK/BAG. Coordinates were deliberately not
-invented during discovery.
+Resolve coordinates for the fourteen MVP locations from PDOK/BAG, as narrowed by Claude's
+2026-09-17 research handoff. Coordinates were deliberately not invented during discovery.
 
 Depends on: LDN-DISC-001
-Status: **READY** — assigned to Codex
+Status: **DONE IN PR #6** — eleven official address/street references found; L003, L004 and
+L009 remain `null` because PDOK returned no matching object.
 
 Agent:
 ROLE A — City Discovery Researcher
@@ -2030,8 +2031,11 @@ filmable places, and those stories are none of those things. Selecting the MVP o
 would omit the story Leiden is most famous for. See `leiden-candidate-scores.md` §4.
 
 Current engineering state:
-Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unblocked today:
-`ENG-GEO-001` (geocoding) and the `FND-002` proposal itself.
+`FND-002` is merged and the application scaffold is present on `main`. `FND-005`
+remains in PR #4. The narrowed MVP deliverable for `ENG-GEO-001` is complete in PR #6.
+Eleven of fourteen records have a directly reproducible PDOK address/street reference.
+L003, L004 and L009 remain `null`; no substitute coordinates were estimated. Street
+centroids still require a field check before they can be used for turn-by-turn directions.
 
 ## What is blocking the project right now
 
@@ -2046,13 +2050,14 @@ Open items that are not blockers:
 
 ## Immediate priority order
 
-1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
+1. Codex: `FND-002` and the narrowed `ENG-GEO-001` MVP lookup are complete; continue with
+   the next unblocked research task from `docs/RESEARCH-TASKS-CHATGPT.md`.
 2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
 3. Claude: ~~verification~~ ✔, ~~gap passes~~ ✔, ~~scoring~~ ✔, ~~coverage~~ ✔, ~~MVP~~ ✔ done.
 4. **Claude now:** `R01` deep research, location by location, then `R02` source verification.
    Stories only after `R02` passes. Videos only after stories. `LDN-ROUTE-001` alongside.
-5. **Codex now:** `FND-002` (stack — pre-approved, see DEC-009), `FND-005` (schema),
-   `ENG-GEO-001` (geocode 65 candidates), then the app skeleton.
+5. **Codex now:** hand off `ENG-GEO-001` for review, then continue with the next unblocked
+   research task from Claude's 2026-09-17 list.
 5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
