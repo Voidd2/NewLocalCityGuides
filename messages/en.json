@@ -1,40 +1,124 @@
 {
+  "meta": {
+    "title": "YourLocalCityGuide - Discover Leiden",
+    "description": "Discover the hidden stories of Leiden. Walk at your own pace through centuries of history, with interactive videos and local secrets."
+  },
   "nav": {
     "home": "Home",
-    "cities": "Cities",
-    "about": "About",
-    "pricing": "Pricing"
+    "map": "Map",
+    "routes": "Routes",
+    "saved": "Saved",
+    "more": "More"
+  },
+  "header": {
+    "tagline": "REAL PLACES. REAL STORIES.",
+    "subtitle": "More than a city. A story."
   },
   "home": {
-    "hero": {
-      "headline": "Stand where history happened",
-      "subline": "Free audio walking tour of Leiden. Stories that start as you arrive.",
-      "cta": "Explore Leiden"
+    "heroTitle": "Discover Leiden",
+    "heroSubtitle": "at your own pace",
+    "heroDescription": "Walk the same streets, hear the stories and discover Leiden like never before.",
+    "getStarted": "Get started",
+    "exploreNearMe": "Explore near me",
+    "exploreNearMeDesc": "See what's around you",
+    "chooseRoute": "Choose a route",
+    "chooseRouteDesc": "Follow a story",
+    "openMap": "Open map",
+    "openMapDesc": "Explore freely",
+    "pricePerPerson": "per person",
+    "priceCompare": "A city tour guide costs around {price} per person",
+    "withApp": "With YourLocalCityGuide",
+    "features": {
+      "videos": "Interactive videos",
+      "videosDesc": "See how it looked in the past",
+      "gems": "Hidden gems",
+      "gemsDesc": "Local spots you won't find anywhere",
+      "kids": "Kid-friendly",
+      "kidsDesc": "Fun and educational for the whole family",
+      "pace": "Your own pace",
+      "paceDesc": "Stop whenever you want, for as long as you want",
+      "together": "Solo or together",
+      "togetherDesc": "Perfect for couples, families and groups"
     },
-    "comingSoon": {
-      "title": "More cities coming soon",
-      "description": "Sign up for early access to Amsterdam, Rotterdam and Utrecht."
-    }
+    "popularRoutes": "Popular routes",
+    "viewAllRoutes": "View all routes",
+    "moreCities": "More cities coming soon!",
+    "moreCitiesDesc": "We're working hard on new cities. Want to be the first to know when your city is added?"
   },
-  "city": {
-    "startTour": "Start tour",
-    "routes": "Routes",
-    "locations": "Locations",
-    "map": "Map"
+  "routes": {
+    "title": "Routes",
+    "subtitle": "Themed routes through the city",
+    "locations": "locations",
+    "hours": "hours",
+    "walking": "Walking",
+    "cycling": "Cycling",
+    "startRoute": "Start route",
+    "popular": "Popular",
+    "customRoute": "Build your own route",
+    "customRouteDesc": "Pick your stops and we'll plan the smartest order",
+    "showRoute": "Show route",
+    "overview": "Overview",
+    "routeAndStops": "Route & stops",
+    "videos": "Videos",
+    "reviews": "Reviews"
+  },
+  "location": {
+    "startExperience": "Start experience",
+    "imHere": "I'm here",
+    "watchVideo": "Watch video",
+    "readStory": "Read the story",
+    "thenAndNow": "Then & Now",
+    "practicalInfo": "Practical info",
+    "address": "Address",
+    "openingHours": "Opening hours",
+    "duration": "Experience duration",
+    "accessibility": "Accessibility",
+    "showOnMap": "Show on map",
+    "inTheArea": "In the area",
+    "minutes": "minutes"
   },
   "about": {
     "title": "About YourLocalCityGuide",
-    "mission": "Our mission"
+    "whyTitle": "Why not a tour guide?",
+    "whyPoint1": "A tour guide costs around {price} per person",
+    "whyPoint2": "You can't stop when you want to",
+    "whyPoint3": "No time to really look around",
+    "whyPoint4": "Large groups, little personal attention",
+    "withAppTitle": "With the app, you do it your way",
+    "withAppPoint1": "Read, listen and watch everything in your own language",
+    "withAppPoint2": "Stop wherever you want, for as long as you want",
+    "withAppPoint3": "Perfect for children - fun, educational, no big groups",
+    "withAppPoint4": "Discover hidden gems no guide will show you",
+    "viewPricing": "View pricing"
   },
   "pricing": {
-    "title": "Pricing",
-    "free": "Free",
-    "cityPass": "City Pass",
-    "multiCity": "Multi-City"
+    "title": "Choose your package",
+    "cityPackage": "Leiden City Package",
+    "perPerson": "per person",
+    "includes": "Included",
+    "allLocations": "All {count} locations",
+    "allRoutes": "All routes",
+    "interactiveVideos": "Interactive videos",
+    "offlineAccess": "Offline access",
+    "customRoutes": "Create custom routes",
+    "buyNow": "Buy now",
+    "persons": "persons",
+    "extraDevice": "Extra device",
+    "total": "Total"
   },
-  "auth": {
-    "signin": "Sign in",
-    "signup": "Sign up",
-    "continueWithGoogle": "Continue with Google"
+  "footer": {
+    "mission": "Our mission",
+    "contact": "Contact",
+    "collaborate": "Collaborate",
+    "privacy": "Privacy",
+    "terms": "Terms of use"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "free": "Free",
+    "city": "Leiden"
   }
 }

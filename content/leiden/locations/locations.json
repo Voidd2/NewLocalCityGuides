@@ -1,0 +1,665 @@
+{
+  "_README": "Seed data for the approved Leiden MVP. ALL content fields are null or empty ON PURPOSE: these locations are SELECTED, not RESEARCHED. Do not populate hook, shortStory, funFacts, lookAround, timeline, thenVsNow or videos with placeholder or invented text - use obviously-fake tokens in the UI instead. Coordinates are null per DEC-010 and are resolved by ENG-GEO-001 from PDOK/BAG. Authoritative prose version: README.md in this folder.",
+  "_task": "LDN-MVP-001",
+  "_status": "APPROVED 2026-09-13",
+  "_rules": [
+    "DEC-010 - coordinates are never estimated; PDOK/BAG or null.",
+    "DEC-011 - allowsAIReconstruction:false means archival material only. Never override.",
+    "DEC-013 - no superlative in visitor-facing content unless cleared in docs/qa/LDN-VERIFY-001-verification-log.md.",
+    "L012 has no building. L013 has opening hours. The schema must handle both.",
+    "IDs follow walking order and do NOT imply importance (master section 5)."
+  ],
+  "city": {
+    "id": "leiden",
+    "name": "Leiden",
+    "languages": [
+      "nl",
+      "en"
+    ],
+    "center": null
+  },
+  "locations": [
+    {
+      "id": "L001",
+      "cityId": "leiden",
+      "slug": "de-burcht",
+      "name": "De Burcht van Leiden",
+      "fromCandidate": "C001",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "9th-10th c.",
+        "c. 1150",
+        "13th c.",
+        "19th-20th c."
+      ],
+      "categories": [
+        "origins",
+        "fortification",
+        "water"
+      ],
+      "mainTheme": "Origins of the city; comital power; water geography",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "absorbs": [
+          "C002"
+        ],
+        "lookAroundSeed": "The Oude Rijn / Nieuwe Rijn fork is visible from the ring wall."
+      }
+    },
+    {
+      "id": "L002",
+      "cityId": "leiden",
+      "slug": "vismarkt",
+      "name": "Vismarkt",
+      "fromCandidate": "C009",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "medieval",
+        "20th c."
+      ],
+      "categories": [
+        "everyday-life",
+        "trade",
+        "market"
+      ],
+      "mainTheme": "Everyday work, food, and the vanished sensory character of a pre-modern city",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {}
+    },
+    {
+      "id": "L003",
+      "cityId": "leiden",
+      "slug": "koornbrug",
+      "name": "Koornbrug",
+      "fromCandidate": "C010",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1443",
+        "1642",
+        "1824"
+      ],
+      "categories": [
+        "trade",
+        "grain",
+        "architecture"
+      ],
+      "mainTheme": "Grain, bread, and the logistics of feeding a city",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "warning": "Three distinct dates: name 1443, bridge 1642, roofs 1824. Do not blur them.",
+        "lookAroundSeed": "Ventilation holes in the ceiling; Leiden's crossed keys wreathed in ears of grain."
+      }
+    },
+    {
+      "id": "L004",
+      "cityId": "leiden",
+      "slug": "blauwe-steen",
+      "name": "De Blauwe Steen",
+      "fromCandidate": "C054",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1321",
+        "1294",
+        "14th c.",
+        "1463"
+      ],
+      "categories": [
+        "medieval",
+        "justice",
+        "hidden"
+      ],
+      "mainTheme": "The centre of the medieval city, and the spot where sentence was passed",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "pairsWith": "L005",
+        "warning": "The stone is set in a roadway. Any Look Around You instruction must be written safely."
+      }
+    },
+    {
+      "id": "L005",
+      "cityId": "leiden",
+      "slug": "gravensteen",
+      "name": "Gravensteen",
+      "fromCandidate": "C005",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "early 13th c.",
+        "1463",
+        "1556",
+        "1856"
+      ],
+      "categories": [
+        "justice",
+        "punishment",
+        "power"
+      ],
+      "mainTheme": "Justice, punishment and public spectacle",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "pairsWith": "L004",
+        "accessNote": "The university vacated the building in 2024. Interior access must be re-checked."
+      }
+    },
+    {
+      "id": "L006",
+      "cityId": "leiden",
+      "slug": "pieterskerk",
+      "name": "Pieterskerk",
+      "fromCandidate": "C003",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "14th-15th c.",
+        "1512",
+        "17th c."
+      ],
+      "categories": [
+        "religion",
+        "burial",
+        "memory"
+      ],
+      "mainTheme": "Religion, burial and civic memory",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {}
+    },
+    {
+      "id": "L007",
+      "cityId": "leiden",
+      "slug": "pilgrims-quarter",
+      "name": "The Pilgrims' quarter and the Engelse Poort",
+      "fromCandidate": "C042",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1609-1620",
+        "1625"
+      ],
+      "categories": [
+        "migration",
+        "refuge",
+        "religion",
+        "international"
+      ],
+      "mainTheme": "Eleven years in Leiden before the Mayflower",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "warning": "They lived here eleven years and most never left. Do not retell this as a stopover. Handle the colonial aftermath honestly."
+      }
+    },
+    {
+      "id": "L008",
+      "cityId": "leiden",
+      "slug": "jean-pesijnhofje",
+      "name": "Jean Pesijnhofje",
+      "fromCandidate": "C041",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1683",
+        "1686"
+      ],
+      "categories": [
+        "charity",
+        "refuge",
+        "social-history"
+      ],
+      "mainTheme": "Grief turned into charity; the Walloon community; the Pilgrim connection",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "carriesTheme": "C040 — Leiden's 35 hofjes",
+        "accessNote": "Residents' homes. Access etiquette is a hard requirement, not a nicety."
+      }
+    },
+    {
+      "id": "L009",
+      "cityId": "leiden",
+      "slug": "buskruitramp-1807",
+      "name": "De buskruitramp, Steenschuur 1807",
+      "fromCandidate": "C045",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "12 January 1807"
+      ],
+      "categories": [
+        "disaster",
+        "catastrophe"
+      ],
+      "mainTheme": "A city centre erased in one second",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "thenVsNow": "Contemporary prints of the ruins exist (Rijksmuseum). Use real archival images; no reconstruction needed."
+      }
+    },
+    {
+      "id": "L010",
+      "cityId": "leiden",
+      "slug": "hortus-botanicus",
+      "name": "Hortus Botanicus Leiden",
+      "fromCandidate": "C019",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1590",
+        "1593",
+        "1709-1730"
+      ],
+      "categories": [
+        "science",
+        "botany",
+        "empire",
+        "family"
+      ],
+      "mainTheme": "Plants as science, empire and money",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {}
+    },
+    {
+      "id": "L011",
+      "cityId": "leiden",
+      "slug": "weddesteeg",
+      "name": "Weddesteeg — Rembrandt's birthplace site",
+      "fromCandidate": "C029",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1606",
+        "1851"
+      ],
+      "categories": [
+        "art",
+        "rembrandt"
+      ],
+      "mainTheme": "Origins of a painter; the ordinariness of genius",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "partnerLead": "Erfgoed Leiden has already built a VR reconstruction of the birth house."
+      }
+    },
+    {
+      "id": "L012",
+      "cityId": "leiden",
+      "slug": "leidens-ontzet",
+      "name": "Leidens Ontzet — herring and white bread",
+      "fromCandidate": "C016",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1574",
+        "annual"
+      ],
+      "categories": [
+        "siege",
+        "tradition",
+        "food",
+        "family"
+      ],
+      "mainTheme": "How a city turned starvation into a celebration it still holds",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "reservedSlot": "Siege and Relief — reserved by LDN-COVERAGE-001",
+        "warning": "HAS NO BUILDING. Carried by narration and a living tradition. The hutspot origin is partly legend and must be labelled as tradition, not fact."
+      }
+    },
+    {
+      "id": "L013",
+      "cityId": "leiden",
+      "slug": "wevershuis",
+      "name": "Museum Het Leids Wevershuis",
+      "fromCandidate": "C056",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "17th c."
+      ],
+      "categories": [
+        "textiles",
+        "labour",
+        "women",
+        "children"
+      ],
+      "mainTheme": "The cloth industry at the scale of one family and one room",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": true,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "reservedSlot": "Textile labour and women's work — reserved by LDN-COVERAGE-001",
+        "carriesContent": "C057 — the spinsters, and ~40% of Leiden textile workers under sixteen around 1860"
+      }
+    },
+    {
+      "id": "L014",
+      "cityId": "leiden",
+      "slug": "cleveringa-1940",
+      "name": "Cleveringa's protest, 26 November 1940",
+      "fromCandidate": "C046",
+      "coordinates": null,
+      "address": null,
+      "eras": [
+        "1940"
+      ],
+      "categories": [
+        "wwii",
+        "university",
+        "resistance"
+      ],
+      "mainTheme": "One man, one lecture, one decision",
+      "durationMinutes": null,
+      "hook": null,
+      "shortStory": null,
+      "extendedStory": null,
+      "whyItMatters": null,
+      "funFacts": [],
+      "lookAround": [],
+      "timeline": [],
+      "thenVsNow": [],
+      "videos": [],
+      "practicalInfo": null,
+      "routeIds": [],
+      "nearbyLocationIds": [],
+      "sources": [],
+      "uncertainty": [],
+      "allowsAIReconstruction": false,
+      "status": "SELECTED_NOT_RESEARCHED",
+      "researchStatus": {
+        "R01": "NOT_STARTED",
+        "R02": "NOT_STARTED",
+        "C01": "BLOCKED",
+        "V01": "BLOCKED"
+      },
+      "productionNotes": {
+        "reservedSlot": "WWII — reserved by LDN-COVERAGE-001",
+        "bindingCondition": "MUST carry the substance of C047: the dismissal of Jewish staff, the registration measures of October 1940 and January 1941, and what happened to Leiden's Jewish residents. MUST NOT be a standalone story about one brave professor. User-approved (board Q9)."
+      }
+    }
+  ]
+}

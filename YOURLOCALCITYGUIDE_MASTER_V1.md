@@ -1,9 +1,36 @@
 # YOURLOCALCITYGUIDE — MASTER PROJECT OPERATING SYSTEM
-Version: 1.0
-Project status: FOUNDATION / CITY DISCOVERY
+Version: 1.1
+Last updated: 2026-09-13
+Project status: FOUNDATION / CITY DISCOVERY — Phase 1A discovery pass COMPLETE
 Primary city: Leiden, Netherlands
-Repository status: Not yet linked to domain or production hosting
+Repository status: In Git. Not yet linked to domain or production hosting.
 Purpose of this file: SINGLE SOURCE OF TRUTH for Claude, Codex and any future AI agent or human contributor.
+
+## WHERE THINGS LIVE (read this with §22 and §23)
+
+| File | What it is | Owner |
+|---|---|---|
+| `YOURLOCALCITYGUIDE_MASTER_V1.md` | This file. Vision, locked decisions, rules, phases, status. **Wins every conflict.** | shared |
+| `docs/TASKBOARD.md` | **The operational view: who is doing what, right now, and what is blocked.** Start here after reading this file. | shared |
+| `docs/COLLABORATION-PROTOCOL.md` | **How Claude and Codex work simultaneously: push cadence, always-open PR, file ownership.** BINDING. | shared |
+| `docs/handoffs/HANDOFF-LOG.md` | Every completed task's handoff (§25). No handoff = task incomplete. | shared |
+| `docs/ux/wireframe-inventory.md` | The user's wireframe mapped onto the `W##` codes in §19, with gaps and conflicts | Role E |
+| `docs/ux/wireframe-website-v1.png` | The user's original wireframe artefact | user |
+| `content/leiden/candidates/leiden-candidate-register.md` | **The Phase 1A output: 65 candidate locations.** Nothing is selected. | Role A |
+| `docs/research/leiden-theme-coverage.md` | Phase 1C: what an MVP taken off the ranking would never get to say | Role A/G |
+| `content/leiden/locations/README.md` | ✅ **Phase 1D: the 14 APPROVED production locations, L001–L014.** Authoritative. | Role A |
+| `content/leiden/locations/locations.json` | Machine-readable seed for Codex. All content fields null **on purpose**. | shared |
+| `content/leiden/locations/MVP-PROPOSAL.md` | The full argument behind that selection | Role A |
+| `content/leiden/locations/L0xx-*/R01-research.md` | **Deep research, all 14 locations.** Each with a source trail and an `R05` uncertainty register | Role B |
+| `docs/qa/R02-verification-round-{1,2,3}.md` | Source verification: what `R01` got wrong, and what is actually open | Role B/G |
+| `docs/qa/REVIEW-DEC-009-tech-stack.md` | Claude's Role G review of Codex's stack decision | Role G |
+| `docs/decisions/DEC-009-tech-stack.md` | **Codex's stack ADR** — on PR #2, reviewed and approved | Role F |
+| `docs/research/leiden-reconstruction-references.md` | **City-wide** reconstruction sources and the §16 "must not show" draft | Role B/D |
+| `content/leiden/routes/leiden-route-proposals.md` | Six proposed routes, built on connections the research found | Role A/C/E |
+| `content/leiden/candidates/leiden-candidate-scores.md` | **Phase 1B: all 60 scored, Tier A/B/C assigned.** Still no MVP. | Role A |
+| `docs/qa/LDN-VERIFY-001-verification-log.md` | What was checked, what was wrong, what stays unresolved | Role B/G |
+| `content/leiden/sources/leiden-source-leads.md` | Institutions and source leads, ranked by the §6 policy | Role A/B |
+| `docs/decisions/` | Decision records (`DEC-0xx`). A decision is not LOCKED until the user approves it. | shared |
 
 ---
 
@@ -142,6 +169,31 @@ These decisions may only be changed with explicit user approval.
 # 4. AGENT OPERATING MODEL
 
 Claude, Codex and other agents may work on the same repository, but they must not behave as independent projects.
+
+## Working simultaneously — READ `docs/COLLABORATION-PROTOCOL.md`
+
+Claude and Codex now work on this repository **at the same time**, in separate sessions
+that cannot see each other. Neither can read the other's chat. The only shared reality is
+**what has been pushed to GitHub**.
+
+Therefore, binding on every agent:
+
+1. **Push often.** After every completed task, after every meaningful chunk of work
+   (roughly every 30–60 minutes), and always before ending a session. Never end a turn with
+   uncommitted work. Work that is not pushed does not exist.
+2. **Always keep a pull request open.** Open it — as a draft if unfinished — as soon as your
+   branch has its first commit. Its description is a live status document, updated on every
+   meaningful push. Never work on a branch with no PR.
+3. **Read before you write.** `git fetch origin`, then master §36 → `docs/TASKBOARD.md` →
+   `docs/handoffs/HANDOFF-LOG.md` → the other agent's open PR.
+4. **Claim your task on the board and push that claim immediately**, before doing the work.
+5. **Stay in your lane.** File ownership is defined in the protocol: Claude owns
+   `content/**`, `docs/research/**`, `docs/ux/**`, `docs/qa/**`; Codex owns `src/**`,
+   configs, `public/**`. Shared files are edited section-by-section, never reformatted
+   wholesale.
+
+The full rules, including the work cycle and the one sanctioned cross-boundary edit, are in
+`docs/COLLABORATION-PROTOCOL.md`.
 
 ## Shared state
 All agents share:
@@ -317,21 +369,27 @@ Required:
 - [x] Shared master file system
 - [x] Agent roles
 - [x] No arbitrary flagship location rule
-- [ ] Repository initialized
-- [ ] Tech stack locked
-- [ ] Content schema locked
-- [ ] Design principles locked
-- [ ] Wireframe inventory approved
-- [ ] Research source policy approved
-- [ ] Task board initialized
+- [x] Repository initialized (`FND-001`)
+- [x] Repository structure built per §22 (`FND-003`)
+- [x] Task board initialized — `docs/TASKBOARD.md` (`FND-003`)
+- [x] Wireframe inventory extracted — `docs/ux/wireframe-inventory.md` (`FND-004`)
+- [x] Source lead register built — `content/leiden/sources/leiden-source-leads.md` (`LDN-SRC-001`)
+- [ ] Tech stack locked — `FND-002`, **assigned to Codex, top blocker**
+- [ ] Content schema locked — `FND-005`, blocked by `FND-002`
+- [ ] Design principles locked — awaiting user confirmation of the identity read in the wireframe inventory
+- [ ] Wireframe inventory **approved by user** (extracted, not yet approved)
+- [ ] Research source policy approved by user
 
 Exit criteria:
 Claude and Codex can work without guessing the workflow.
 
+Remaining blockers to leaving Phase 0: `FND-002` (Codex) and the user decisions listed in
+`docs/TASKBOARD.md` §4.
+
 ---
 
 ## PHASE 1 — LEIDEN CITY DISCOVERY
-Status: NEXT
+Status: IN PROGRESS — 1A complete, 1B not started
 IMPORTANT: NO DEEP VIDEO PRODUCTION YET.
 
 Goal:
@@ -414,9 +472,26 @@ Initial target:
 
 The purpose is to avoid prematurely building around only the most obvious attractions.
 
+### STATUS — Phase 1A: COMPLETE, VERIFIED (2026-09-13)
+Delivered: `content/leiden/candidates/leiden-candidate-register.md` — **60 candidates**
+across 8 thematic clusters. Gate A passed for all 60.
+
+`LDN-DISC-002` closed five of the seven gaps: Roman Leiden (C053), justice (C054), care and
+orphanages (C055), the 1944 bombardments (C058), post-war Leiden (C060), and women's history
+in its most substantial form — women's labour (C057) and the Leiden women's movement (C059).
+
+`LDN-VERIFY-001` checked every `LOW` entry and every superlative. Of five superlatives: one
+verified, one overstated, one disputed between reputable sources, one **plainly false**
+(the "oldest hofje" claim, wrong by 25 years). C013, C015 and C035 remain `LOW` and are
+**barred from MVP selection** until resolved. Full log: `docs/qa/LDN-VERIFY-001-verification-log.md`.
+
+Two gaps remain, for `LDN-DISC-003`: **migration to Leiden since 1960**, and **named Leiden
+women documented in their own right**.
+
 ---
 
 ## PHASE 1B — Candidate scoring
+Status: **COMPLETE (2026-09-13)** → `content/leiden/candidates/leiden-candidate-scores.md`
 
 Every discovered candidate receives a score from 1–5 for:
 
@@ -458,6 +533,10 @@ Do not call anything "flagship" yet.
 ---
 
 ## PHASE 1C — Story coverage analysis
+Status: **COMPLETE (2026-09-13)** → `docs/research/leiden-theme-coverage.md`.
+Finding: an MVP taken off the ranking would contain **no Siege and no WWII** — two themes this
+section names explicitly. Resolved by reserving three MVP slots, visibly, rather than by
+re-weighting the rubric after seeing the results.
 
 Before choosing the MVP, check if Leiden's history is represented broadly.
 
@@ -483,6 +562,9 @@ Avoid an MVP consisting of ten locations that all tell essentially the same Gold
 ---
 
 ## PHASE 1D — MVP location selection
+Status: ✅ **APPROVED AND LOCKED (2026-09-13)** → `content/leiden/locations/README.md`
+**L001–L014.** 10 from Tier A, plus reserved slots for the Siege (L012), textile labour (L013)
+and WWII (L014). All fifteen §1C themes covered. **PHASE 1 IS COMPLETE.**
 
 Only now select the first production locations.
 
@@ -1463,17 +1545,41 @@ No handoff = task incomplete.
 
 # 26. GIT WORKFLOW
 
+**Full rules: `docs/COLLABORATION-PROTOCOL.md`. This section is the summary.**
+
+Because Claude and Codex work at the same time and cannot see each other's sessions,
+GitHub is the only shared reality. Push frequently, and always keep a PR open.
+
 Before work:
 ```bash
-git pull
+git fetch origin
+git merge origin/main
+# then read: master §36 → docs/TASKBOARD.md → HANDOFF-LOG → the other agent's open PR
 ```
 
-After work:
+Claim your task on the board and push that claim **before** starting:
 ```bash
-git add .
-git commit -m "[TASK-ID] Clear description"
-git push
+git add docs/TASKBOARD.md
+git commit -m "[TASK-ID] Claim task on board"
+git push -u origin <your-branch>
 ```
+
+During work — push every meaningful chunk, at least every 30–60 minutes:
+```bash
+git add -A
+git commit -m "[TASK-ID] Clear description"
+git push -u origin <your-branch>
+```
+
+Unfinished work is pushed too, marked `[WIP]`. A visible half-finished thing beats an
+invisible finished thing.
+
+Always keep a pull request open for your branch — draft while in progress — and keep its
+description current. The PR is how the other agent and the user read your work without
+asking you.
+
+Never end a session with uncommitted work. Never push to `main` or to the other agent's
+branch. Never merge your own PR unless the user says so.
 
 Examples:
 ```text
@@ -1498,6 +1604,17 @@ codex/location-template
 ---
 
 # 27. QUALITY GATES
+
+## Gate 0 — What "DONE" means for any task
+A task is DONE only when **all six** are true:
+1. its quality gate below passes;
+2. the output is committed **and pushed**;
+3. `docs/TASKBOARD.md` says DONE;
+4. a handoff exists in `docs/handoffs/HANDOFF-LOG.md` (§25);
+5. §36 CURRENT STATUS reflects the new state;
+6. the pull request description is current.
+
+Missing any one of them means the other agent is working from a false picture of the project.
 
 ## Gate A — Candidate discovered
 Must have:
@@ -1687,20 +1804,66 @@ This number may change after discovery.
 
 # 33. FIRST REQUIRED TASKS
 
+> The authoritative, continuously updated task list is **`docs/TASKBOARD.md`**.
+> This section holds the headline status only. If the two disagree, the task board is
+> more current — and whoever notices must fix this section.
+
 ## Task FND-001
 Initialize GitHub repository and add this file.
 
-Status: NOT STARTED
+Status: **DONE**
+
+## Task FND-003
+Build repository structure (§22), task board and handoff log.
+
+Status: **DONE** — 2026-09-13, Claude
+
+## Task FND-004
+Extract the wireframe inventory from the user's wireframe.
+
+Status: **DONE** — 2026-09-13, Claude → `docs/ux/wireframe-inventory.md`
+Awaiting user approval of the reading and of the visual identity.
 
 ## Task FND-002
 Lock technical stack.
 
-Status: NOT STARTED
+Status: **NEEDS USER / ASSIGNED TO CODEX**
+Codex writes `docs/decisions/DEC-009-tech-stack.md` with a recommendation and trade-offs;
+the user approves. **This is the project's top blocker** — all engineering waits on it.
+Per §3, Codex may not self-approve a locked decision.
+
+## Task LDN-SRC-001
+Build the Leiden source lead register.
+
+Status: **DONE** — 2026-09-13, Claude → `content/leiden/sources/leiden-source-leads.md`
 
 ## Task LDN-DISC-001
 Build full Leiden Candidate Location Register.
 
-Status: NEXT
+Status: **DONE** — 2026-09-13, Claude
+Output: `content/leiden/candidates/leiden-candidate-register.md` — 52 candidates, Gate A passed.
+
+## Task LDN-VERIFY-001
+Resolve every `LOW` confidence entry and every unverified superlative in the register.
+
+Depends on: LDN-DISC-001
+Status: **READY** — must run **before** scoring. Scoring unverified claims produces
+confident nonsense.
+
+## Task LDN-DISC-002
+Second discovery pass targeting the seven gaps documented in the register
+(Roman Leiden; the 1944 bombing; post-war and modern Leiden; **women's history**; guilds,
+hospitals and orphanages; justice and punishment; and any location lacking a viewpoint).
+
+Depends on: LDN-DISC-001
+Status: **READY**
+
+## Task ENG-GEO-001
+Resolve coordinates for all 52 candidates from PDOK/BAG. Coordinates were deliberately not
+invented during discovery.
+
+Depends on: LDN-DISC-001
+Status: **READY** — assigned to Codex
 
 Agent:
 ROLE A — City Discovery Researcher
@@ -1720,12 +1883,12 @@ or structured equivalent.
 Update this master file when done.
 
 ## Task LDN-SCORE-001
-Score all candidate locations.
+Score all candidate locations on the 15 criteria in §5 Phase 1B; assign Tier A/B/C.
 
 Depends on:
-LDN-DISC-001
+LDN-DISC-001 (done), LDN-VERIFY-001 (recommended first)
 
-Status: BLOCKED
+Status: **READY** — but do `LDN-VERIFY-001` first
 
 ## Task LDN-COVERAGE-001
 Check story/theme coverage.
@@ -1825,32 +1988,90 @@ Do not let engineering force the historical research into a poor structure.
 
 # 36. CURRENT STATUS
 
+Updated: 2026-09-13 · by Claude · after `FND-003`, `FND-004`, `LDN-DISC-001`, `LDN-SRC-001`
+
 Current project phase:
-PHASE 0 — FOUNDATION
+**PHASE 0 — FOUNDATION (engineering side) running alongside PHASE 1 — CITY DISCOVERY (research side)**
 
 Current research state:
-NO location has been approved as the main or flagship location.
+**PHASE 1 IS COMPLETE.** Three discovery passes, verification, scoring, coverage analysis and
+MVP selection are all done: 65 candidates registered, C001–C060 scored and tiered, Gate A and
+Gate B passed, and **fourteen production locations approved as L001–L014**.
+
+**There is still no flagship, hero or main location, and there will not be one.** L-IDs follow
+the walking order of the loop and do not imply importance (§5). Selection is not research:
+none of the fourteen has been researched, and `R01` starts now.
 
 Current content state:
-Citywide Leiden discovery has NOT yet been completed.
+Phases 1A–1D all COMPLETE. C061–C065 remain unscored (`LDN-SCORE-002`) and are not in the MVP.
 
-Current priority:
-1. Put this file in shared Git repository.
-2. Begin `LDN-DISC-001`.
-3. Discover 30–60 candidate Leiden places/stories.
-4. Score candidates.
-5. Check historical/theme coverage.
-6. Select first 8–15 production locations.
-7. Only then start deep location research.
-8. Only after research verification create final stories and videos.
+**`R01` deep research is COMPLETE for all fourteen locations.** Each has a source trail, an
+`R05` uncertainty register separating verified from probable from legend, a *Look Around You*
+audit, and a `V01` video opportunity analysis with **no concept selected**.
+
+**`R02` source verification is IN PROGRESS** — rounds 1–3 done, covering ten of the fourteen.
+Round 3 closed the **access** blockers: L003 is open again, L005 has weekly guided tours, L013's
+hours and honest accessibility line are sourced, and L008's gate-only etiquette is settled.
+
+⚠️ **Erfgoed Leiden is temporarily housed inside the Gravensteen (L005).** Five of the remaining
+research blockers end at their archive. The contact task and the site visit are now one trip.
+
+⚠️ **`main` still contains only the two original uploaded files.** Neither Claude's PR #1 nor
+Codex's PR #2 has been merged, so **until the user merges, both branches are the project.**
+
+**No story, fun fact, Look Around item, timeline or video script exists yet, and none may be
+written until that location's `R02` has passed.** Selection is not research, and `R01` is not
+verification — round 1 of `R02` found that an `R01` correction was itself wrong.
+
+**The scoring produced one result the user must decide on (board Q7):** not a single Tier A
+candidate is primarily about the **Siege and Relief of Leiden**, and the city's entire WWII
+experience falls to Tier B/C — because the unweighted rubric rewards visible, central,
+filmable places, and those stories are none of those things. Selecting the MVP on rank alone
+would omit the story Leiden is most famous for. See `leiden-candidate-scores.md` §4.
+
+Current engineering state:
+Nothing built. Blocked on `FND-002` (tech stack). Two engineering tasks are unblocked today:
+`ENG-GEO-001` (geocoding) and the `FND-002` proposal itself.
+
+## What is blocking the project right now
+
+**Nothing blocks either track.** Both agents have unblocked work, and they are working in
+parallel — see `docs/COLLABORATION-PROTOCOL.md`.
+
+Open items that are not blockers:
+1. The video-length conflict (wireframe 1:28 vs. §10's 20–45s) and the missing
+   AI-reconstruction disclosure (§15). Both affect the design; neither stops work today.
+2. `C065` — migration to Leiden since 1960 is a known, visible gap, not an MVP blocker.
+3. `LDN-SCORE-002` — C061–C065 are unscored.
+
+## Immediate priority order
+
+1. Codex: propose the tech stack (`FND-002`); geocode the register (`ENG-GEO-001`).
+2. User: answer the six open questions in `docs/TASKBOARD.md` §4.
+3. Claude: ~~verification~~ ✔, ~~gap passes~~ ✔, ~~scoring~~ ✔, ~~coverage~~ ✔, ~~MVP~~ ✔ done.
+4. **Claude now:** `R01` deep research, location by location, then `R02` source verification.
+   Stories only after `R02` passes. Videos only after stories. `LDN-ROUTE-001` alongside.
+5. **Codex now:** `FND-002` (stack — pre-approved, see DEC-009), `FND-005` (schema),
+   `ENG-GEO-001` (geocode 65 candidates), then the app skeleton.
+5. Only then: deep location research, then stories, then videos.
 
 DO NOT:
-- start building the whole experience around De Waag;
-- produce ten polished De Waag videos;
+- start building the whole experience around De Waag, or around Pieterskerk because it
+  appears in the wireframe mock-up;
+- produce ten polished videos about any one place;
 - assume the obvious tourist attractions are automatically the best locations;
-- code a location-specific architecture.
-
----
+- code a location-specific architecture;
+- treat a `HIGH` confidence flag in the register as permission to publish. It means one
+  cross-check passed, nothing more;
+- generate AI reconstruction imagery for candidates C047, C048 or **C058** (persecution,
+  resistance, and the 1944 bombardment victims) — archival material only;
+- write a superlative — "oldest", "first", "only" — that a verification log has not cleared.
+  Four of the first five checked were wrong, overstated or disputed;
+- skip `R02` for a location because `R01` "already checked". Round 1 of `R02` found an `R01`
+  correction that was itself an over-correction built on a single partial source;
+- repeat the Burcht siege stories (sheltering on the hill; a secret passage from the well).
+  The sources call them a rumour and a legend. Master §11 applies;
+- select C013, C015 or C035 for the MVP. They are unresolved `LOW` and barred.
 
 # 37. DECISION LOG
 
@@ -1886,12 +2107,83 @@ Status: LOCKED
 Claude/Codex share project state through Git + this master file.
 Status: LOCKED
 
+## DEC-009
+Technical stack.
+Status: **PRE-APPROVED BY DELEGATION (user, 2026-09-13, board Q1).**
+The user approved the stack in advance rather than waiting for a proposal. Therefore:
+Codex **still writes** `docs/decisions/DEC-009-tech-stack.md` with the recommendation and the
+trade-offs — so the choice is recorded, explicable and reversible — but **does not wait for a
+second round of approval** before building on it.
+This delegation is revocable by the user at any time. Codex must flag in the decision record
+that the choice is cheap to reverse now and expensive later, so the user has a real chance to
+object while objecting is still cheap.
+
+## DEC-014
+The Leiden MVP is **L001–L014**, as listed in `content/leiden/locations/README.md`.
+Status: **LOCKED — user-approved 2026-09-13 (board Q8, decision delegated to Claude).**
+Ten locations from Tier A, plus three slots reserved by `LDN-COVERAGE-001` for themes the
+scoring rubric systematically suppressed: the Siege (L012), textile labour (L013) and WWII
+(L014). All fifteen §1C themes are covered. IDs follow walking order and do not imply
+importance. Adding or removing a location requires the user.
+
+## DEC-015
+The scoring approach is **Option C**: the unweighted fifteen-criterion scores stand exactly as
+scored, and `LDN-COVERAGE-001` is the corrective that reserves MVP slots for under-ranked
+themes.
+Status: **LOCKED — user-approved 2026-09-13 (board Q7).**
+Rationale: re-weighting a rubric after seeing which candidates it disadvantaged is motivated
+reasoning dressed as method. Reserving slots is the same intervention made visibly.
+
+## DEC-016
+L014 (Cleveringa, 1940) carries a **binding content condition**: its research and stories must
+carry the dismissal of Jewish staff, the registration measures of October 1940 and January
+1941, and what happened to Leiden's Jewish residents. It must not be a standalone story about
+one brave professor. Per DEC-011 it receives no AI reconstruction imagery.
+Status: **LOCKED — user-approved 2026-09-13 (board Q9).**
+This may not be softened by a later agent or copywriter.
+
+## DEC-010
+Coordinates are never estimated or invented. They are resolved from an authoritative Dutch
+source (PDOK/BAG) or left `TBD`.
+Status: LOCKED — proposed by Claude 2026-09-13, follows directly from §3 "never invent".
+
+## DEC-011
+Candidates covering persecution, deportation, resistance and civilian bombing deaths
+(currently C047, C048, C058) receive **no AI-generated reconstruction imagery**. Archival
+photographs, documents, named individuals and place only.
+Status: LOCKED — proposed by Claude 2026-09-13, follows from §3 (accuracy over spectacle) and §16.
+
+## DEC-013
+No superlative — "oldest", "first", "only", "largest" — may appear in visitor-facing content
+unless it has been cleared in `docs/qa/LDN-VERIFY-001-verification-log.md` or an equivalent
+verification record, with the exact permitted wording. Where reputable sources disagree, the
+product states the undisputed facts instead of picking a side.
+Status: LOCKED — proposed by Claude 2026-09-13. Of the first five superlatives checked, one
+was verified, one overstated, one disputed and one plainly false.
+
+## DEC-012
+`docs/TASKBOARD.md` is the operational task list. This master file holds status, decisions
+and rules; the board holds assignments and blockers. Neither may contradict the other, and
+this file wins if they do.
+Status: LOCKED — proposed by Claude 2026-09-13, implements §23.
+
 ---
 
 # 38. OPEN QUESTIONS
 
 These are unresolved and must not be guessed silently.
+Those now formally raised with the user are tracked in `docs/TASKBOARD.md` §4.
 
+Raised by the wireframe reading (`FND-004`) and needing a decision:
+- **Video length** — the wireframe shows 1:28; §10 Layer 2 specifies 20–45 seconds. Which wins?
+- **AI disclosure** — §15 mandates an on-screen reconstruction label; the wireframe has none.
+  This is not optional under §3 and must be added to the design.
+- **Languages** — the wireframe offers NL/EN/DE/FR; §30 locks NL+EN first.
+- **Map filters** — the wireframe's `Food` and `Nature` chips are commercial/non-historical.
+  §31 requires commercial content to be clearly separated from historical content.
+- **Look Around You is missing from the wireframe** entirely, despite §12 calling it central.
+
+Still open from v1.0:
 - Exact technical stack?
 - MapLibre vs Leaflet?
 - Content stored as Markdown, JSON, TypeScript or CMS later?
@@ -1909,6 +2201,72 @@ These are unresolved and must not be guessed silently.
 ---
 
 # 39. CHANGELOG
+
+## v1.7 — 2026-09-13 (Claude)
+- `R02` rounds 2 and 3 complete. Access blockers closed for L003, L005, L008, L013.
+- `LDN-SCORE-002`: C061–C065 scored; none reaches Tier A. Totals now A 19 / B 35 / C 11.
+- Codex delivered `DEC-009` (PR #2); reviewed by Claude as Role G — **approve**, with a status
+  correction (it was already pre-approved) and four schema requirements the ADR predates.
+- New board questions Q15–Q18: amend §22's content path, two vendors, visitor volume at L008,
+  and the Erfgoed-Leiden-in-the-Gravensteen opportunity.
+
+## v1.6 — 2026-09-13 (Claude)
+- **`R01` deep research complete for all fourteen locations.**
+- `R02` round 1 complete for four locations — including a correction to an `R01` correction.
+- `LDN-ROUTE-001`: six routes proposed, built on connections found in the research rather than
+  designed from scratch.
+- New shared asset: `docs/research/leiden-reconstruction-references.md`, holding the city-wide
+  cartographic sources and a first draft of the §16 "must not show" list.
+- Four new user questions on the board (Q11–Q14): the 1856 execution's tone, the Essentials
+  route dropping all three reserved slots, L012's anchoring at De Waag, and archive licensing.
+
+## v1.5 — 2026-09-13 (Claude)
+- **PHASE 1 COMPLETE.** `LDN-MVP-001` approved: the Leiden MVP is **L001–L014**.
+- Four decisions locked on user approval: DEC-014 (the MVP), DEC-015 (Option C scoring),
+  DEC-016 (L014's binding content condition), and DEC-009 pre-approved by delegation.
+- Added `content/leiden/locations/README.md` (authoritative) and `locations.json` (the seed
+  Codex builds against, with every content field null on purpose).
+- §36 rewritten: nothing blocks either track; both agents have unblocked work.
+- `R01` deep research is now unblocked and is the research track's next task.
+
+## v1.4 — 2026-09-13 (Claude)
+- `LDN-DISC-003` complete: 65 candidates. Women's-history and guild gaps **closed**
+  (C061–C064). Migration since 1960 **deliberately left open** as C065, a placeholder that
+  asserts no Leiden facts, because only national-level sources were found and applying them
+  to Leiden would be invention.
+- `LDN-COVERAGE-001` complete. Phase 1C marked COMPLETE.
+- `LDN-MVP-001` **proposed**: 14 locations, awaiting user approval. Phase 1D marked PROPOSED.
+- Three more false trails on record: Jacobs (Groningen), Van Schurman (Utrecht),
+  Westerdijk (Utrecht). None is a Leiden story.
+- New tasks: `LDN-SCORE-002` (score C061–C065).
+
+## v1.3 — 2026-09-13 (Claude)
+- `LDN-SCORE-001` complete: all 60 candidates scored on the fifteen §5 criteria.
+  Tier A 19, Tier B 34, Tier C 7. Gate B passed.
+- Recorded the three systematic biases in the unweighted rubric, and the finding that no
+  Tier A candidate is about the Siege. Raised as board Q7 rather than silently corrected.
+- Phase 1B marked COMPLETE in §5 and §36.
+
+## v1.2 — 2026-09-13 (Claude)
+- `LDN-VERIFY-001` complete — see `docs/qa/LDN-VERIFY-001-verification-log.md`.
+- `LDN-DISC-002` complete — register extended from 52 to **60** candidates, closing five
+  of the seven documented gaps.
+- Added DEC-013: no unverified superlatives in visitor-facing content.
+- Extended DEC-011 to C058 (the 1944 bombardment victims).
+- Added `FND-006` (collaboration protocol) and the parallel-work rules in §4, §26 and §27.
+- Two gaps remain for `LDN-DISC-003`: migration since 1960, and named Leiden women.
+
+## v1.1 — 2026-09-13 (Claude)
+- Added the "WHERE THINGS LIVE" index at the top of the file.
+- Marked `FND-001`, `FND-003`, `FND-004`, `LDN-SRC-001` and `LDN-DISC-001` DONE.
+- Recorded Phase 1A as COMPLETE: 52 Leiden candidates registered, Gate A passed.
+- Added tasks `LDN-VERIFY-001`, `LDN-DISC-002`, `ENG-GEO-001`.
+- Reassigned `FND-002` to Codex and named it the project's top blocker.
+- Rewrote §36 CURRENT STATUS with what is actually blocking the project.
+- Added decisions DEC-009 (open), DEC-010 (no invented coordinates), DEC-011 (no AI
+  reconstruction of persecution), DEC-012 (task board is the operational list).
+- Added the wireframe-derived open questions to §38.
+- Moved the wireframe artefact into `docs/ux/` and built the §22 repository structure.
 
 ## v1.0
 - Rebuilt master file from the ground up.

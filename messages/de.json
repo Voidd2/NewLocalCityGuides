@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "YourLocalCityGuide - Entdecke Leiden",
+    "description": "Entdecke die verborgenen Geschichten von Leiden. Spaziere in deinem eigenen Tempo durch Jahrhunderte der Geschichte, mit interaktiven Videos und lokalen Geheimnissen."
+  },
+  "nav": {
+    "home": "Home",
+    "map": "Karte",
+    "routes": "Routen",
+    "saved": "Gespeichert",
+    "more": "Mehr"
+  },
+  "header": {
+    "tagline": "REAL PLACES. REAL STORIES.",
+    "subtitle": "Mehr als eine Stadt. Eine Geschichte."
+  },
+  "home": {
+    "heroTitle": "Entdecke Leiden",
+    "heroSubtitle": "in deinem Tempo",
+    "heroDescription": "Geh durch dieselben Strassen, hore die Geschichten und entdecke Leiden wie nie zuvor.",
+    "getStarted": "Los geht's",
+    "exploreNearMe": "In der Nahe entdecken",
+    "exploreNearMeDesc": "Schau was um dich herum ist",
+    "chooseRoute": "Wahle eine Route",
+    "chooseRouteDesc": "Folge einer Geschichte",
+    "openMap": "Karte offnen",
+    "openMapDesc": "Frei erkunden",
+    "pricePerPerson": "pro Person",
+    "priceCompare": "Ein Stadtfuhrer kostet schnell {price} pro Person",
+    "withApp": "Mit YourLocalCityGuide",
+    "features": {
+      "videos": "Interaktive Videos",
+      "videosDesc": "Sieh wie es fruher aussah",
+      "gems": "Versteckte Juwelen",
+      "gemsDesc": "Lokale Orte die du nirgendwo findest",
+      "kids": "Kinderfreundlich",
+      "kidsDesc": "Spass und lehrreich fur die ganze Familie",
+      "pace": "Eigenes Tempo",
+      "paceDesc": "Halte an wann du willst, so lange du willst",
+      "together": "Solo oder zusammen",
+      "togetherDesc": "Perfekt fur Paare, Familien und Gruppen"
+    },
+    "popularRoutes": "Beliebte Routen",
+    "viewAllRoutes": "Alle Routen ansehen",
+    "moreCities": "Weitere Stadte folgen bald!",
+    "moreCitiesDesc": "Wir arbeiten an neuen Stadten. Mochtest du als Erster erfahren, wann deine Stadt dabei ist?"
+  },
+  "routes": {
+    "title": "Routen",
+    "subtitle": "Themenrouten durch die Stadt",
+    "locations": "Standorte",
+    "hours": "Stunden",
+    "walking": "Zu Fuss",
+    "cycling": "Radfahren",
+    "startRoute": "Route starten",
+    "popular": "Beliebt",
+    "customRoute": "Eigene Route erstellen",
+    "customRouteDesc": "Wahle deine Stops und wir planen die beste Reihenfolge",
+    "showRoute": "Route anzeigen",
+    "overview": "Ubersicht",
+    "routeAndStops": "Route & Stops",
+    "videos": "Videos",
+    "reviews": "Bewertungen"
+  },
+  "location": {
+    "startExperience": "Erlebnis starten",
+    "imHere": "Ich bin da",
+    "watchVideo": "Video ansehen",
+    "readStory": "Geschichte lesen",
+    "thenAndNow": "Damals & Heute",
+    "practicalInfo": "Praktische Infos",
+    "address": "Adresse",
+    "openingHours": "Offnungszeiten",
+    "duration": "Erlebnisdauer",
+    "accessibility": "Barrierefreiheit",
+    "showOnMap": "Auf Karte zeigen",
+    "inTheArea": "In der Nahe",
+    "minutes": "Minuten"
+  },
+  "about": {
+    "title": "Uber YourLocalCityGuide",
+    "whyTitle": "Warum kein Stadtfuhrer?",
+    "whyPoint1": "Ein Stadtfuhrer kostet schnell {price} pro Person",
+    "whyPoint2": "Du kannst nicht anhalten wann du willst",
+    "whyPoint3": "Keine Zeit um wirklich umzuschauen",
+    "whyPoint4": "Grosse Gruppen, wenig personliche Aufmerksamkeit",
+    "withAppTitle": "Mit der App machst du es auf deine Art",
+    "withAppPoint1": "Lies, hore und sieh alles in deiner eigenen Sprache",
+    "withAppPoint2": "Halte an wo du willst, so lange du willst",
+    "withAppPoint3": "Perfekt fur Kinder - Spass, lehrreich und keine grossen Gruppen",
+    "withAppPoint4": "Entdecke versteckte Juwelen die kein Fuhrer dir zeigt",
+    "viewPricing": "Preise ansehen"
+  },
+  "pricing": {
+    "title": "Wahle dein Paket",
+    "cityPackage": "Stadtpaket Leiden",
+    "perPerson": "pro Person",
+    "includes": "Enthalten",
+    "allLocations": "Alle {count} Standorte",
+    "allRoutes": "Alle Routen",
+    "interactiveVideos": "Interaktive Videos",
+    "offlineAccess": "Offline-Zugang",
+    "customRoutes": "Eigene Routen erstellen",
+    "buyNow": "Jetzt kaufen",
+    "persons": "Personen",
+    "extraDevice": "Zusatzgerat",
+    "total": "Gesamt"
+  },
+  "footer": {
+    "mission": "Unsere Mission",
+    "contact": "Kontakt",
+    "collaborate": "Zusammenarbeiten",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "back": "Zuruck",
+    "next": "Weiter",
+    "close": "Schliessen",
+    "free": "Kostenlos",
+    "city": "Leiden"
+  }
+}
