@@ -1998,6 +1998,11 @@ Current research state:
 MVP selection are all done: 65 candidates registered, C001–C060 scored and tiered, Gate A and
 Gate B passed, and **fourteen production locations approved as L001–L014**.
 
+**2026-09-17 Codex update:** `RESEARCH-LEGAL-001` is in `REVIEW`. The source-backed launch
+checklist is in `research/legal-gdpr-requirements.md`; entity/product classification, vendor
+choices, VAT treatment and final NL/DE legal copy remain implementation gates, not research
+gaps.
+
 **There is still no flagship, hero or main location, and there will not be one.** L-IDs follow
 the walking order of the loop and do not imply importance (§5). Selection is not research:
 none of the fourteen has been researched, and `R01` starts now.

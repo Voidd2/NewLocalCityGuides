@@ -147,7 +147,7 @@ written for any location until its `R02` passes.**
 | L001-R02 … L014-R02 | Source verification per location (master §8) | `IN PROGRESS` | **Claude** | R01 ✔ | rounds 1–3 done: L001, L002, L003, L005, L006, L008, L009, L010, L012, L013 → `docs/qa/R02-verification-round-{1,2,3}.md` |
 | LDN-ROUTE-001 | Route proposals from L001–L014 | `DONE` | Claude | — | `content/leiden/routes/leiden-route-proposals.md` — 6 routes proposed |
 | R03-SHARED | Shared city-wide reconstruction references | `STARTED` | Claude | L011-R01 | `docs/research/leiden-reconstruction-references.md` |
-| RESEARCH-LEGAL-001 | Dutch/EU/German commercial-site, privacy, cookie, consumer and VAT requirements | `IN PROGRESS` | **Codex** | — | `research/legal-gdpr-requirements.md` |
+| RESEARCH-LEGAL-001 | Dutch/EU/German commercial-site, privacy, cookie, consumer and VAT requirements | `REVIEW` | **Codex** | — | `research/legal-gdpr-requirements.md` — source-backed launch gates, data map and implementation checklist delivered |
 | LDN-ROUTE-002 | Recompute routes from real coordinates; resolve the RT005 question | `BLOCKED` | — | ENG-GEO-001 | `content/leiden/routes/` |
 
 **Hard rule reminder:** there is **no** flagship, hero or main location, and there will not be

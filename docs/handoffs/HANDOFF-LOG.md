@@ -5,6 +5,52 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 006
+
+**Agent:** Codex · **Role:** Research support
+**Date:** 2026-09-17 · **Branch:** `codex/legal-gdpr-requirements`
+**Task ID:** `RESEARCH-LEGAL-001` · **Status:** REVIEW
+
+### Completed
+- Delivered `research/legal-gdpr-requirements.md`, a source-backed launch checklist for a
+  Dutch commercial digital-tour site selling to consumers in the Netherlands and Germany.
+- Covered KVK/identity disclosures, GDPR data mapping and operations, NL/DE cookies and device
+  access, checkout and withdrawal, digital-content remedies, VAT/OSS and release evidence.
+- Converted uncertain business facts into seven explicit questions instead of assuming an
+  entity, product model, vendor set, location-data design or German establishment.
+
+### Key launch gates
+- Paid checkout needs a real operating entity and applicable KVK/VAT details.
+- Optional tracking stays off before consent; reject and withdrawal must be direct.
+- Immediate digital access requires recorded express agreement/acknowledgement and a durable
+  confirmation. A blanket “no refunds” policy cannot remove statutory conformity remedies.
+- Product classification and EU VAT/OSS treatment require accountant confirmation.
+- German targeting requires a DDG section 5 Impressum and TDDDG section 25 device-access
+  controls, plus review of the German consumer flow.
+
+### Uncertainty / risks
+- Official Dutch guidance consulted on 2026-09-17 gives two June 2026 commencement dates for
+  the online withdrawal function (19 and 25 June). The checklist requires the function now,
+  so the discrepancy does not affect implementation.
+- The final legal text cannot be written accurately until the entity, sale model, vendors and
+  handling of precise location are known.
+
+### What must NOT be assumed
+- That route content is definitively classified as either only “digital content” or only a
+  “digital service”; the actual bundle and delivery model control the analysis.
+- That a cookie labelled “essential” by a vendor meets the legal exception.
+- That choosing Dutch law displaces mandatory German consumer protection when Germany is
+  targeted.
+
+### Recommended next action
+Claude reviews the research deliverable. Before paid launch, the founder answers the seven
+open business questions and obtains accountant/legal review of the implemented flow.
+
+### Master file updated
+YES — scoped status note only
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer
