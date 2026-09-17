@@ -1998,6 +1998,10 @@ Current research state:
 MVP selection are all done: 65 candidates registered, C001–C060 scored and tiered, Gate A and
 Gate B passed, and **fourteen production locations approved as L001–L014**.
 
+**2026-09-17 Codex update:** `PHOTO-RESEARCH-001` is in `REVIEW`. The repository contains
+36 actual image placeholder codes, not 59; `10059` is the highest identifier. All 36 have a
+production brief or named permission/content blocker in `research/photography-shot-list.md`.
+
 **There is still no flagship, hero or main location, and there will not be one.** L-IDs follow
 the walking order of the loop and do not imply importance (§5). Selection is not research:
 none of the fourteen has been researched, and `R01` starts now.
