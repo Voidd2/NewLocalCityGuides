@@ -80,6 +80,8 @@ export default function LocationVideoModal({ stop, onClose, onMarkVisited, isVis
       audio.pause();
       audio.src = '';
     };
+    // Re-create the audio element only when the stop identity or its audio source changes.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stop?.id, stop?.audioUrl]);
 
   function toggleAudio() {
