@@ -120,5 +120,17 @@
     "close": "Sluiten",
     "free": "Gratis",
     "city": "Leiden"
+  },
+  "notFound": {
+    "title": "Deze plek bestaat niet (nog)",
+    "description": "De pagina die je zoekt is verdwenen, verplaatst, of nog nooit ontdekt. Misschien vind je hem terug via een van onze routes.",
+    "cta": "Terug naar home",
+    "routesCta": "Bekijk alle routes"
+  },
+  "errorPage": {
+    "title": "Er ging iets mis",
+    "description": "Er is een onverwachte fout opgetreden. Probeer het nog eens, of ga terug naar home.",
+    "retry": "Probeer opnieuw",
+    "cta": "Terug naar home"
   }
 }

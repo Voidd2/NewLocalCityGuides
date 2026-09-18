@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
@@ -13,22 +13,36 @@ interface User {
   city: string;
 }
 
+function subscribeToUser() {
+  return () => {};
+}
+
+function getUserSnapshot(): User | null {
+  try {
+    const stored = localStorage.getItem("ylcg_user");
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
+}
+
+function getServerUserSnapshot(): User | null {
+  return null;
+}
+
 export function Dashboard() {
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
+  const user = useSyncExternalStore(
+    subscribeToUser,
+    getUserSnapshot,
+    getServerUserSnapshot,
+  );
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("ylcg_user");
-      if (!stored) {
-        router.push("/login");
-        return;
-      }
-      setUser(JSON.parse(stored));
-    } catch {
+    if (user === null) {
       router.push("/login");
     }
-  }, [router]);
+  }, [user, router]);
 
   function handleLogout() {
     localStorage.removeItem("ylcg_user");

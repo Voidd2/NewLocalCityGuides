@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 
 const steps = [
   { num: 1, label: "Kies je pakket" },
@@ -11,7 +10,6 @@ const steps = [
 ];
 
 export function PricingPage() {
-  const t = useTranslations("pricing");
   const [persons, setPersons] = useState(2);
   const [extraDevices, setExtraDevices] = useState(0);
   const pricePerPerson = 5.99;

@@ -120,5 +120,17 @@
     "close": "Close",
     "free": "Free",
     "city": "Leiden"
+  },
+  "notFound": {
+    "title": "This place doesn't exist (yet)",
+    "description": "The page you're looking for has vanished, moved, or was never discovered. You might find it through one of our routes.",
+    "cta": "Back to home",
+    "routesCta": "Browse all routes"
+  },
+  "errorPage": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Try again, or head back to home.",
+    "retry": "Try again",
+    "cta": "Back to home"
   }
 }
