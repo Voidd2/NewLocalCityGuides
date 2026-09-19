@@ -120,5 +120,15 @@
     "close": "Close",
     "free": "Free",
     "city": "Leiden"
+  },
+  "errors": {
+    "notFoundTitle": "This page doesn't exist",
+    "notFoundDescription": "We couldn't find the page you're looking for. The link may have expired, or the page may have moved.",
+    "notFoundCta": "Back to home",
+    "notFoundSecondaryCta": "Browse all routes",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "An unexpected error occurred. Try again, or go back to home.",
+    "errorRetry": "Try again",
+    "errorHome": "Back to home"
   }
 }

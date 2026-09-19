@@ -120,5 +120,15 @@
     "close": "Schliessen",
     "free": "Kostenlos",
     "city": "Leiden"
+  },
+  "errors": {
+    "notFoundTitle": "Diese Seite existiert nicht",
+    "notFoundDescription": "Wir konnten die gesuchte Seite nicht finden. Der Link ist moeglicherweise abgelaufen oder die Seite wurde verschoben.",
+    "notFoundCta": "Zurueck zur Startseite",
+    "notFoundSecondaryCta": "Alle Routen ansehen",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorDescription": "Es ist ein unerwarteter Fehler aufgetreten. Versuche es erneut oder gehe zurueck zur Startseite.",
+    "errorRetry": "Erneut versuchen",
+    "errorHome": "Zurueck zur Startseite"
   }
 }
