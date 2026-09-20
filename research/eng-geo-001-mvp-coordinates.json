@@ -1,0 +1,115 @@
+{
+  "L001": {
+    "lat": 52.15933149,
+    "lng": 4.49323054,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Van der Sterrepad 5, 2312EK Leiden",
+    "pdokId": "adr-92b94b3c10cefa03ff3f403aa60a0f00",
+    "bagNumberDesignationId": "0546200000012795",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Van%20der%20Sterrepad%205%20Leiden&fq=woonplaatsnaam:Leiden&rows=8"
+  },
+  "L002": {
+    "lat": 52.15843642,
+    "lng": 4.49125384,
+    "source": "PDOK Locatieserver (BAG/NWB)",
+    "accuracy": "street_centroid",
+    "matchedObject": "Vismarkt, Leiden",
+    "pdokId": "weg-d242b04d4ca5b03e581cf5042bc600fe",
+    "bagNumberDesignationId": null,
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Vismarkt%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L003": null,
+  "L004": null,
+  "L005": {
+    "lat": 52.15788734,
+    "lng": 4.48695086,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Pieterskerkhof 6, 2311SR Leiden",
+    "pdokId": "adr-02791bbeac6ff5a4ad4cc9103684b418",
+    "bagNumberDesignationId": "0546200000065009",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Pieterskerkhof%206%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L006": {
+    "lat": 52.15790077,
+    "lng": 4.48789854,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Kloksteeg 16, 2311SL Leiden",
+    "pdokId": "adr-fd87d213b6acfdafca32c4ff0af4b36d",
+    "bagNumberDesignationId": "0546200000064367",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Kloksteeg%2016%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L007": {
+    "lat": 52.15815791,
+    "lng": 4.48871123,
+    "source": "PDOK Locatieserver (BAG/NWB)",
+    "accuracy": "street_centroid",
+    "matchedObject": "William Brewstersteeg, Leiden",
+    "pdokId": "weg-3ef7feed85f3ee02b6f2ad94fad18bef",
+    "bagNumberDesignationId": null,
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=William%20Brewstersteeg%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L008": {
+    "lat": 52.15719445,
+    "lng": 4.48728146,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Kloksteeg 21, 2311SK Leiden",
+    "pdokId": "adr-1317e79e3f35e94a6a071e5073159823",
+    "bagNumberDesignationId": "0546200000055190",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Kloksteeg%2021%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L009": null,
+  "L010": {
+    "lat": 52.15693308,
+    "lng": 4.48558943,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Rapenburg 73, 2311GJ Leiden",
+    "pdokId": "adr-6d8b311effa3a824a3b3df11a5861d8c",
+    "bagNumberDesignationId": "0546200000008478",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Rapenburg%2073%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L011": {
+    "lat": 52.16047891,
+    "lng": 4.48227048,
+    "source": "PDOK Locatieserver (BAG/NWB)",
+    "accuracy": "street_centroid",
+    "matchedObject": "Weddesteeg, Leiden",
+    "pdokId": "weg-2e589286cefa114abdc050f9d086e565",
+    "bagNumberDesignationId": null,
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Weddesteeg%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L012": {
+    "lat": 52.15794454,
+    "lng": 4.49108851,
+    "source": "PDOK Locatieserver (BAG/NWB)",
+    "accuracy": "street_centroid",
+    "matchedObject": "Stadhuisplein, Leiden",
+    "pdokId": "weg-39b9f8b56a861ab67a39b51f23b64168",
+    "bagNumberDesignationId": null,
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Stadhuisplein%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  },
+  "L013": {
+    "lat": 52.1599378,
+    "lng": 4.49830394,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Middelstegracht 143, 2312TV Leiden",
+    "pdokId": "adr-bf609632c4bae5b740f7e529368c4f04",
+    "bagNumberDesignationId": "0546200000016296",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Middelstegracht%20143%20Leiden&fq=woonplaatsnaam:Leiden&rows=8"
+  },
+  "L014": {
+    "lat": 52.15693308,
+    "lng": 4.48558943,
+    "source": "PDOK Locatieserver (BAG)",
+    "accuracy": "building_address_centroid",
+    "matchedObject": "Rapenburg 73, 2311GJ Leiden",
+    "pdokId": "adr-6d8b311effa3a824a3b3df11a5861d8c",
+    "bagNumberDesignationId": "0546200000008478",
+    "queryUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Academiegebouw%20Rapenburg%2073%20Leiden&fq=woonplaatsnaam:Leiden&rows=10"
+  }
+}
