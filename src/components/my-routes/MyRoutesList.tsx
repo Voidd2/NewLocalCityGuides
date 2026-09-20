@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
 import { getSavedRoutes, deleteSavedRoute, type SavedRoute } from "@/lib/saved-routes";
 import { getLocationById } from "@/data/locations";
+import { routes as standardRoutes } from "@/data/routes";
 
 export function MyRoutesList() {
   const [routes, setRoutes] = useState<SavedRoute[]>([]);
@@ -65,8 +66,12 @@ export function MyRoutesList() {
             const total = route.locationIds.length;
             const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
 
+            const matchedRoute = standardRoutes.find(
+              (sr) => sr.title === route.name || sr.locationIds.join(",") === route.locationIds.join(",")
+            );
+
             return (
-              <div key={route.id} className="bg-white rounded-xl border border-gray-200 p-4">
+              <div key={route.id} className="bg-white rounded-2xl border border-gray-200 p-4 hover-lift shadow-sm">
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <h3 className="font-bold text-navy-800 text-sm">{route.name}</h3>
@@ -86,7 +91,7 @@ export function MyRoutesList() {
 
                 <div className="w-full bg-gray-100 rounded-full h-1.5 mb-3">
                   <div
-                    className="bg-orange-500 h-1.5 rounded-full transition-all"
+                    className="bg-gradient-to-r from-orange-500 to-orange-400 h-1.5 rounded-full transition-all"
                     style={{ width: `${pct}%` }}
                   />
                 </div>
@@ -106,12 +111,22 @@ export function MyRoutesList() {
                   )}
                 </div>
 
-                <Link
-                  href={`/my-routes/${route.id}`}
-                  className="block w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-center text-sm transition-colors"
-                >
-                  {progress > 0 && progress < total ? "Ga verder" : progress === total && total > 0 ? "Bekijk route" : "Start route"}
-                </Link>
+                <div className="flex gap-2">
+                  {matchedRoute && (
+                    <Link
+                      href={`/routes/${matchedRoute.slug}`}
+                      className="flex-1 border-2 border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold py-2.5 rounded-full text-center text-sm transition-colors"
+                    >
+                      Route info
+                    </Link>
+                  )}
+                  <Link
+                    href={`/my-routes/${route.id}`}
+                    className={`${matchedRoute ? "flex-1" : "w-full"} bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-center text-sm transition-colors`}
+                  >
+                    {progress > 0 && progress < total ? "Ga verder" : progress === total && total > 0 ? "Bekijk route" : "Start route"}
+                  </Link>
+                </div>
               </div>
             );
           })}

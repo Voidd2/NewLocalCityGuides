@@ -21,6 +21,8 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const isHomePage = pathname === "/" || pathname === "/dashboard";
+  const showSolid = !isHomePage || scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -42,15 +44,26 @@ export function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled || menuOpen
+          showSolid || menuOpen
             ? "bg-navy-900/95 backdrop-blur-xl shadow-lg shadow-black/10"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+          {!isHomePage && (
+            <button
+              onClick={() => window.history.back()}
+              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors mr-1 shrink-0"
+              aria-label="Terug"
+            >
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-white">
+                <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
           <Link href={hasPaid ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
             <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
-              scrolled ? "bg-orange-500 shadow-lg shadow-orange-500/30" : "bg-white/15 backdrop-blur-sm"
+              showSolid ? "bg-orange-500 shadow-lg shadow-orange-500/30" : "bg-white/15 backdrop-blur-sm"
             }`}>
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -62,7 +75,7 @@ export function Header() {
                 YourLocal<span className="text-orange-500">City</span>Guide
               </span>
               <span className={`text-[9px] tracking-[0.2em] uppercase transition-opacity duration-300 ${
-                scrolled ? "text-white/50" : "text-white/70"
+                showSolid ? "text-white/50" : "text-white/70"
               }`}>
                 Wandelen &middot; Ontdekken &middot; Beleven
               </span>
@@ -74,7 +87,7 @@ export function Header() {
               <button
                 onClick={() => { setLangOpen(!langOpen); setMenuOpen(false); }}
                 className={`text-xs font-semibold px-2.5 py-1.5 rounded-full transition-all duration-300 ${
-                  scrolled
+                  showSolid
                     ? "border border-white/20 text-white/80 hover:bg-white/10"
                     : "border border-white/30 text-white hover:bg-white/15"
                 }`}

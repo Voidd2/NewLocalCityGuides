@@ -35,7 +35,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
     );
   }
 
-  const content = (
+  return (
     <div>
       <div className="max-w-7xl mx-auto px-4 pt-4 pb-2">
         <Link href="/routes" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-navy-800 mb-4">
