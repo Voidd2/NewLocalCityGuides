@@ -6,6 +6,8 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { locations, type LocationData } from "@/data/locations";
 import { saveRoute } from "@/lib/saved-routes";
 
+const MUST_SEE_IDS = ["L001", "L006", "L003", "L010"];
+
 function optimizeOrder(selected: LocationData[]): LocationData[] {
   if (selected.length <= 2) return selected;
 
@@ -32,6 +34,7 @@ function LocationCard({
   isSelected,
   order,
   isExpanded,
+  isMustSee,
   onToggleSelect,
   onToggleExpand,
 }: {
@@ -39,6 +42,7 @@ function LocationCard({
   isSelected: boolean;
   order: number | null;
   isExpanded: boolean;
+  isMustSee: boolean;
   onToggleSelect: () => void;
   onToggleExpand: () => void;
 }) {
@@ -59,7 +63,12 @@ function LocationCard({
         </div>
 
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-navy-800 text-sm truncate">{loc.name}</h3>
+          <div className="flex items-center gap-1.5">
+            <h3 className="font-semibold text-navy-800 text-sm truncate">{loc.name}</h3>
+            {isMustSee && (
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-orange-500 text-white uppercase shrink-0">Must see</span>
+            )}
+          </div>
           <span className="text-[10px] text-orange-500 font-medium">{loc.mainTheme}</span>
         </div>
 
@@ -225,6 +234,7 @@ export function CustomRouteBuilder() {
                     isSelected={isSelected}
                     order={order}
                     isExpanded={expandedId === loc.id}
+                    isMustSee={MUST_SEE_IDS.includes(loc.id)}
                     onToggleSelect={() => toggle(loc.id)}
                     onToggleExpand={() => toggleExpand(loc.id)}
                   />

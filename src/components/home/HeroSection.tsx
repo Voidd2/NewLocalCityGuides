@@ -38,51 +38,83 @@ export function HeroSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 max-w-md mx-auto w-full">
-          <Link
-            href="/routes"
-            className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
-          >
-            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-                <path d="M4 4v16" strokeLinecap="round" />
-                <path d="M20 4v16" strokeLinecap="round" />
-              </svg>
-            </div>
-            <span className="text-white text-xs font-semibold text-center leading-tight">Bekijk routes</span>
-            <span className="text-white/50 text-[10px] text-center">Volg een verhaal</span>
-          </Link>
+        {hasPaid ? (
+          <div className="grid grid-cols-3 gap-3 max-w-md mx-auto w-full">
+            <Link
+              href="/routes"
+              className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6" />
+                  <path d="M4 4v16" strokeLinecap="round" />
+                  <path d="M20 4v16" strokeLinecap="round" />
+                </svg>
+              </div>
+              <span className="text-white text-xs font-semibold text-center leading-tight">Alle routes</span>
+              <span className="text-white/50 text-[10px] text-center">Kies een route</span>
+            </Link>
 
-          <Link
-            href={hasPaid ? "/routes/custom" : "/pricing"}
-            className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
-          >
-            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-            </div>
-            <span className="text-white text-xs font-semibold text-center leading-tight">Eigen route</span>
-            <span className="text-white/50 text-[10px] text-center">Stel zelf samen</span>
-          </Link>
+            <Link
+              href="/my-routes"
+              className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+              </div>
+              <span className="text-white text-xs font-semibold text-center leading-tight">Mijn routes</span>
+              <span className="text-white/50 text-[10px] text-center">Ga verder</span>
+            </Link>
 
-          <Link
-            href={hasPaid ? "/map" : "/pricing"}
-            className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
-          >
-            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-                <line x1="8" y1="2" x2="8" y2="18" />
-                <line x1="16" y1="6" x2="16" y2="22" />
-              </svg>
-            </div>
-            <span className="text-white text-xs font-semibold text-center leading-tight">Open kaart</span>
-            <span className="text-white/50 text-[10px] text-center">{hasPaid ? "Verken vrij" : "Na aankoop"}</span>
-          </Link>
-        </div>
+            <Link
+              href="/map"
+              className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                  <line x1="8" y1="2" x2="8" y2="18" />
+                  <line x1="16" y1="6" x2="16" y2="22" />
+                </svg>
+              </div>
+              <span className="text-white text-xs font-semibold text-center leading-tight">Kaart</span>
+              <span className="text-white/50 text-[10px] text-center">Verken vrij</span>
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 max-w-sm mx-auto w-full">
+            <Link
+              href="/routes"
+              className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M9 18l6-6-6-6" />
+                  <path d="M4 4v16" strokeLinecap="round" />
+                  <path d="M20 4v16" strokeLinecap="round" />
+                </svg>
+              </div>
+              <span className="text-white text-xs font-semibold text-center leading-tight">Bekijk routes</span>
+              <span className="text-white/50 text-[10px] text-center">Volg een verhaal</span>
+            </Link>
+
+            <Link
+              href="/pricing"
+              className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                </svg>
+              </div>
+              <span className="text-white text-xs font-semibold text-center leading-tight">Bekijk prijzen</span>
+              <span className="text-white/50 text-[10px] text-center">Vanaf 5,99</span>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
