@@ -150,40 +150,153 @@ export function RouteDetail({ route }: { route: RouteData }) {
             <div>
               <p className="text-sm text-gray-700 leading-relaxed mb-6">{route.description}</p>
 
-              <div className="mb-8">
-                <h3 className="text-sm font-bold text-navy-800 mb-3">Video preview - Stop 3: Pieterskerk</h3>
-                <div className="relative bg-gray-200 rounded-xl overflow-hidden aspect-video">
-                  <img
-                    src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
-                    alt="Pieterskerk interactieve video preview"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-navy-800/30">
-                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-navy-800 ml-1">
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
+              {hasPaid ? (
+                <div className="mb-8">
+                  <div className="relative rounded-2xl overflow-hidden bg-navy-900 mb-6">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-transparent to-navy-900/80" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,107,0,0.15),transparent_50%)]" />
+
+                    <div className="relative px-5 pt-8 pb-6 text-center">
+                      <div className="inline-flex items-center gap-1.5 bg-orange-500/20 border border-orange-500/30 rounded-full px-3 py-1 mb-4">
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-orange-400">
+                          <polygon points="10 1 12.5 7.5 19 7.5 14 12 16 19 10 15 4 19 6 12 1 7.5 7.5 7.5" />
+                        </svg>
+                        <span className="text-[10px] font-semibold text-orange-300 uppercase tracking-wider">Jouw route preview</span>
+                      </div>
+                      <h3 className="text-xl font-extrabold text-white mb-2 leading-tight">
+                        Ontdek Leiden zoals je het<br />
+                        <span className="text-orange-400">nog nooit hebt gezien</span>
+                      </h3>
+                      <p className="text-white/50 text-xs max-w-[280px] mx-auto">
+                        {route.stops} locaties vol verhalen, verborgen plekken en eeuwen geschiedenis
+                      </p>
+                    </div>
+
+                    <div className="relative px-4 pb-6">
+                      <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
+                        {routeLocations.map((loc, i) => (
+                          <div
+                            key={loc!.id}
+                            className="relative w-[200px] shrink-0 rounded-xl overflow-hidden snap-start group"
+                          >
+                            <div className="aspect-[3/4] bg-gray-800">
+                              {loc!.image ? (
+                                <img
+                                  src={loc!.image}
+                                  alt={loc!.name}
+                                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center">
+                                  <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-white/20" stroke="currentColor" strokeWidth="1.5">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                    <circle cx="12" cy="9" r="2.5" />
+                                  </svg>
+                                </div>
+                              )}
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                            <div className="absolute top-3 left-3">
+                              <span className="w-6 h-6 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shadow-lg">
+                                {i + 1}
+                              </span>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 p-3">
+                              <h4 className="text-white font-bold text-sm leading-tight mb-0.5">{loc!.name}</h4>
+                              <p className="text-white/60 text-[10px] leading-snug line-clamp-2">{loc!.shortDescription}</p>
+                              {loc!.mainTheme && (
+                                <span className="inline-block mt-1.5 text-[9px] font-semibold text-orange-300 bg-orange-500/20 px-2 py-0.5 rounded-full">
+                                  {loc!.mainTheme}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="relative px-5 pb-8">
+                      <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
+                        <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center shrink-0">
+                          <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-orange-400" stroke="currentColor" strokeWidth="2">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                          </svg>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white text-sm font-semibold">Klaar om te starten?</p>
+                          <p className="text-white/40 text-[11px]">Ervaar elk verhaal op locatie met video en audio</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">
-                    2:38
-                  </div>
-                  <div className="absolute bottom-3 right-3 bg-orange-500 text-white text-xs px-3 py-1.5 rounded-lg">
-                    <p className="font-semibold text-[11px]">&quot;Meer dan een stad.</p>
-                    <p className="text-[10px]">Een verhaal!&quot;</p>
-                  </div>
-                </div>
 
-                <div className="mt-3 bg-orange-50 border border-orange-100 rounded-xl p-4 flex gap-3">
-                  <div className="w-10 h-10 rounded-full bg-orange-200 shrink-0 overflow-hidden">
-                    {/* 10035 - review avatar foto */}
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-700 italic">&quot;Super leuke tour! De video&apos;s maken de geschiedenis levend. Onze kinderen vonden het geweldig!&quot;</p>
-                    <p className="text-xs text-gray-500 mt-1">- Familie de Jong</p>
+                  <div className="grid grid-cols-3 gap-3 mb-6">
+                    <div className="bg-orange-50 rounded-xl p-3 text-center">
+                      <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-1.5">
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-orange-500">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <p className="text-xs font-bold text-navy-800">{route.duration || "60-90 min"}</p>
+                      <p className="text-[10px] text-gray-400">looptijd</p>
+                    </div>
+                    <div className="bg-orange-50 rounded-xl p-3 text-center">
+                      <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-1.5">
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-orange-500">
+                          <path d="M3.505 2.365A41.369 41.369 0 019 2c1.863 0 3.697.124 5.495.365 1.247.167 2.18 1.108 2.435 2.268a4.45 4.45 0 00-.577-.069 43.141 43.141 0 00-4.706 0C9.229 4.696 7.5 6.727 7.5 8.998v2.24c0 1.413.67 2.735 1.76 3.562l-2.98 2.98A.75.75 0 015 17.25v-3.443c-.501-.048-1-.106-1.495-.172C2.033 13.438 1 12.162 1 10.72V5.28c0-1.441 1.033-2.717 2.505-2.914z" />
+                          <path d="M14 6c.762 0 1.52.02 2.272.062 1.014.056 1.728.914 1.728 1.936v2.722c0 1.022-.714 1.88-1.728 1.936a25.86 25.86 0 01-.272.014v2.58a.75.75 0 01-1.28.53l-2.72-2.72V8c0-1.104.896-2 2-2z" />
+                        </svg>
+                      </div>
+                      <p className="text-xs font-bold text-navy-800">{route.stops} video&apos;s</p>
+                      <p className="text-[10px] text-gray-400">op locatie</p>
+                    </div>
+                    <div className="bg-orange-50 rounded-xl p-3 text-center">
+                      <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-1.5">
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-orange-500">
+                          <path d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003z" />
+                        </svg>
+                      </div>
+                      <p className="text-xs font-bold text-navy-800">Op jouw tempo</p>
+                      <p className="text-[10px] text-gray-400">geen haast</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                <div className="mb-8">
+                  <h3 className="text-sm font-bold text-navy-800 mb-3">Video preview - Stop 3: Pieterskerk</h3>
+                  <div className="relative bg-gray-200 rounded-xl overflow-hidden aspect-video">
+                    <img
+                      src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
+                      alt="Pieterskerk interactieve video preview"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-navy-800/30">
+                      <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-navy-800 ml-1">
+                          <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="absolute bottom-3 left-3 bg-black/60 text-white text-xs px-2 py-1 rounded">
+                      2:38
+                    </div>
+                    <div className="absolute bottom-3 right-3 bg-orange-500 text-white text-xs px-3 py-1.5 rounded-lg">
+                      <p className="font-semibold text-[11px]">&quot;Meer dan een stad.</p>
+                      <p className="text-[10px]">Een verhaal!&quot;</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 bg-orange-50 border border-orange-100 rounded-xl p-4 flex gap-3">
+                    <div className="w-10 h-10 rounded-full bg-orange-200 shrink-0 overflow-hidden">
+                      {/* 10035 - review avatar foto */}
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-700 italic">&quot;Super leuke tour! De video&apos;s maken de geschiedenis levend. Onze kinderen vonden het geweldig!&quot;</p>
+                      <p className="text-xs text-gray-500 mt-1">- Familie de Jong</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
