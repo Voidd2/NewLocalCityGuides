@@ -7,8 +7,8 @@
     "home": "Home",
     "map": "Karte",
     "routes": "Routen",
-    "saved": "Gespeichert",
-    "more": "Mehr"
+    "account": "Konto",
+    "about": "Info"
   },
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
@@ -42,8 +42,8 @@
     },
     "popularRoutes": "Beliebte Routen",
     "viewAllRoutes": "Alle Routen ansehen",
-    "moreCities": "Weitere Stadte folgen bald!",
-    "moreCitiesDesc": "Wir arbeiten an neuen Stadten. Mochtest du als Erster erfahren, wann deine Stadt dabei ist?"
+    "moreCities": "Entdecke mehr von den Niederlanden",
+    "moreCitiesDesc": "Nach Leiden kannst du bald auch andere wunderschone niederlandische Stadte entdecken. Jede mit einzigartigen Routen, Geschichten und versteckten Juwelen."
   },
   "routes": {
     "title": "Routen",

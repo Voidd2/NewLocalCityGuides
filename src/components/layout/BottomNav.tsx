@@ -36,22 +36,22 @@ const navItems = [
     ),
   },
   {
-    key: "saved",
-    href: "/saved",
+    key: "account",
+    href: "/dashboard",
     icon: (active: boolean) => (
       <svg viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 0 : 1.5}>
-        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
       </svg>
     ),
   },
   {
-    key: "more",
-    href: "/more",
+    key: "about",
+    href: "/about",
     icon: (active: boolean) => (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 2.5 : 1.5}>
-        <circle cx="12" cy="12" r="1" />
-        <circle cx="12" cy="5" r="1" />
-        <circle cx="12" cy="19" r="1" />
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" strokeLinecap="round" />
+        <circle cx="12" cy="8" r="0.5" fill="currentColor" />
       </svg>
     ),
   },

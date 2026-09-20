@@ -7,8 +7,8 @@
     "home": "Home",
     "map": "Kaart",
     "routes": "Routes",
-    "saved": "Opgeslagen",
-    "more": "Meer"
+    "account": "Account",
+    "about": "Over"
   },
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
@@ -42,8 +42,8 @@
     },
     "popularRoutes": "Populaire routes",
     "viewAllRoutes": "Bekijk alle routes",
-    "moreCities": "Meer steden volgen snel!",
-    "moreCitiesDesc": "We werken hard aan nieuwe steden. Wil je als eerste weten wanneer jouw stad erbij is?"
+    "moreCities": "Ontdek meer van Nederland",
+    "moreCitiesDesc": "Na Leiden kun je binnenkort ook andere prachtige Nederlandse steden ontdekken. Elke stad met unieke routes, verhalen en verborgen parels."
   },
   "routes": {
     "title": "Routes",

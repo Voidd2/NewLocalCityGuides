@@ -7,8 +7,8 @@
     "home": "Home",
     "map": "Map",
     "routes": "Routes",
-    "saved": "Saved",
-    "more": "More"
+    "account": "Account",
+    "about": "About"
   },
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
@@ -42,8 +42,8 @@
     },
     "popularRoutes": "Popular routes",
     "viewAllRoutes": "View all routes",
-    "moreCities": "More cities coming soon!",
-    "moreCitiesDesc": "We're working hard on new cities. Want to be the first to know when your city is added?"
+    "moreCities": "Discover more of the Netherlands",
+    "moreCitiesDesc": "After Leiden, you'll soon be able to explore more beautiful Dutch cities. Each with unique routes, stories and hidden gems."
   },
   "routes": {
     "title": "Routes",

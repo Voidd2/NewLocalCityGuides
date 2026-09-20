@@ -72,7 +72,7 @@ export function Dashboard() {
 
           <h2 className="text-lg font-bold text-navy-800 mb-4">Jouw routes</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
-            {routes.map((route) => (
+            {routes.slice(0, 2).map((route) => (
               <Link
                 key={route.id}
                 href={`/routes/${route.slug}`}

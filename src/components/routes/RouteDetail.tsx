@@ -1,22 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { RouteData } from "@/data/routes";
 import { getLocationById } from "@/data/locations";
 
-const tabs = ["overview", "routeAndStops", "videos", "reviews"] as const;
+const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
+
+function useHasPaid(): boolean {
+  const [hasPaid, setHasPaid] = useState(false);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("ylcg_user");
+      if (raw) {
+        const user = JSON.parse(raw);
+        if (user?.hasPaid === true) {
+          setHasPaid(true);
+        }
+      }
+    } catch {
+      // ignore parse errors
+    }
+  }, []);
+
+  return hasPaid;
+}
+
+const tabLabels: Record<(typeof tabs)[number], string> = {
+  overview: "Overzicht",
+  routeAndStops: "Route & stops",
+  beginRoute: "Begin route",
+  reviews: "Reviews",
+};
 
 export function RouteDetail({ route }: { route: RouteData }) {
   const t = useTranslations("routes");
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("overview");
+  const hasPaid = useHasPaid();
 
   const routeLocations = route.locationIds
     .map(getLocationById)
     .filter(Boolean);
 
-  return (
+  const content = (
     <div>
       <div className="max-w-7xl mx-auto px-4 pt-4 pb-2">
         <Link href="/routes" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-navy-800 mb-4">
@@ -55,14 +83,6 @@ export function RouteDetail({ route }: { route: RouteData }) {
             </div>
 
             <div className="flex items-center gap-6 mt-5 text-center">
-              <div>
-                <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mx-auto text-white/60" stroke="currentColor" strokeWidth="1.5">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                <p className="text-xs mt-1">{route.duration} uur</p>
-                <p className="text-[10px] text-white/50">duur</p>
-              </div>
               <div>
                 <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mx-auto text-white/60" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
@@ -126,7 +146,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                     : "border-transparent text-gray-500 hover:text-gray-700"
                 }`}
               >
-                {t(tab)}
+                {tabLabels[tab]}
               </button>
             ))}
           </nav>
@@ -173,14 +193,17 @@ export function RouteDetail({ route }: { route: RouteData }) {
           {activeTab === "routeAndStops" && (
             <div>
               <h3 className="text-sm font-bold text-navy-800 mb-4">Route op de kaart</h3>
-              <div className="bg-gray-100 rounded-xl h-64 mb-6 flex items-center justify-center text-gray-400 text-sm">
-                {/* Map placeholder - MapLibre will be integrated here */}
-                Kaart wordt geladen...
+              <div className="bg-gray-100 rounded-xl h-64 mb-6 flex flex-col items-center justify-center text-center px-4">
+                <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-300 mb-2" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+                <p className="text-sm font-medium text-gray-500">Bekijk alle stops op de kaart</p>
+                <p className="text-xs text-gray-400 mt-1">Beschikbaar na aankoop</p>
               </div>
 
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-bold text-navy-800">Alle {route.stops} stops</h3>
-                <button className="text-xs text-orange-500 font-semibold">Bekijk alle {route.stops} stops</button>
               </div>
 
               <ol className="space-y-3">
@@ -211,9 +234,9 @@ export function RouteDetail({ route }: { route: RouteData }) {
             </div>
           )}
 
-          {activeTab === "videos" && (
+          {activeTab === "beginRoute" && (
             <div>
-              <p className="text-sm text-gray-500 mb-4">Interactieve video&apos;s op elke locatie. Video&apos;s starten niet automatisch - druk op &quot;Ik ben er&quot; als je op locatie bent.</p>
+              <p className="text-sm text-gray-500 mb-4">Bij elke locatie kun je de video bekijken, het transcript lezen en meer informatie ontdekken. Druk op &quot;Ik ben er&quot; als je op locatie bent.</p>
               <div className="grid grid-cols-2 gap-3">
                 {routeLocations.slice(0, 6).map((loc) => (
                   <div key={loc!.id} className="bg-gray-100 rounded-xl overflow-hidden">
@@ -308,11 +331,41 @@ export function RouteDetail({ route }: { route: RouteData }) {
               href="/pricing"
               className="ml-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
             >
-              Kies Leiden
+              Bekijk prijzen
             </Link>
           </div>
         </div>
       </section>
     </div>
   );
+
+  if (!hasPaid) {
+    return (
+      <div className="relative">
+        <div className="blur-[6px] pointer-events-none select-none">
+          {content}
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 text-center shadow-xl max-w-sm mx-4">
+            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-navy-800 mx-auto mb-3" stroke="currentColor" strokeWidth="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0110 0v4" />
+            </svg>
+            <h2 className="text-lg font-bold text-navy-800 mb-2">Ontdek deze route</h2>
+            <p className="text-sm text-gray-600 mb-4">
+              Krijg toegang tot alle routes, interactieve video&apos;s en meer met het Leiden pakket.
+            </p>
+            <Link
+              href="/pricing"
+              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+            >
+              Bekijk de prijzen
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return content;
 }

@@ -50,7 +50,7 @@ export function HeroSection() {
               href="/pricing"
               className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-navy-800 font-semibold px-6 py-3 rounded-full transition-colors text-sm"
             >
-              Kies Leiden
+              Ontdek Leiden
             </Link>
           </div>
         </div>
