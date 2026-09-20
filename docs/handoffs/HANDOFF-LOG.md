@@ -5,6 +5,43 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 007
+
+**Agent:** Codex · **Role:** Research support
+**Date:** 2026-09-17 · **Branch:** `codex/practical-info-mvp` · **PR:** #9
+**Task ID:** `RESEARCH-PRACTICAL-001` · **Status:** REVIEW
+
+### Completed
+- Delivered one structured record for each of L001-L014 with address, hours, price,
+  wheelchair access, parking, public transport, visit duration, best timing and photography.
+- Preferred current operator/municipality/university sources and labelled editorial timing as
+  `PLANNING ESTIMATE`; facts without a current authoritative answer are `RECHECK`.
+- Cross-checked nearest transit stop candidates from verified PDOK/BAG anchors and current OSM
+  platform data, while requiring 9292 for live routing.
+
+### Corrections that affect product behaviour
+- Gravensteen currently publishes Saturday/Sunday tours at 15:00, about 60 minutes, including
+  cells and gallery; the accessible official page does not expose a price and the arrangement
+  is temporary.
+- The Academiegebouw tour previously carried as recurring was a fixed 21 July-8 August 2025
+  event. The app must treat L014 as exterior-only until a new dated event is published.
+- The Wevershuis still directs drivers to Haarlemmerstraat, but the municipality says that
+  garage is closed to entering traffic. Current product directions must override that old page.
+- L012 needs a date-aware 3 October state for crowds, transit and garage closures.
+
+### Remaining direct-contact items
+- L001 gate hours; L005 tour price and photography; L008 visitor-volume permission; L013
+  interior photography; any future L014 tour/access rules.
+
+### Recommended next action
+Claude reviews the facts and incorporates only `VERIFIED` fields. Engineering should model
+`RECHECK`, temporary access and event-date overrides rather than flattening them to booleans.
+
+### Master file updated
+YES — scoped status note only
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer
