@@ -96,11 +96,11 @@ export default async function LocaleLayout({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className="min-h-screen bg-warm-50 pb-16 md:pb-0">
+      <body className="flex flex-col min-h-screen bg-navy-900 pb-16 md:pb-0">
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <Header />
-            <main className="pt-16">{children}</main>
+            <main className="pt-16 flex-1 bg-warm-50">{children}</main>
             <BottomNav />
           </AuthProvider>
         </NextIntlClientProvider>
