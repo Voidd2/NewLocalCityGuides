@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import type { RouteData } from "@/data/routes";
 import { getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
+import { saveRoute, getSavedRoutes } from "@/lib/saved-routes";
 
 const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
 
@@ -18,6 +19,7 @@ const tabLabels: Record<(typeof tabs)[number], string> = {
 
 export function RouteDetail({ route }: { route: RouteData }) {
   const t = useTranslations("routes");
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("overview");
   const { hasPaid, isLoading } = useAuth();
 
@@ -190,11 +192,11 @@ export function RouteDetail({ route }: { route: RouteData }) {
               <h3 className="text-sm font-bold text-navy-800 mb-4">Route op de kaart</h3>
               <div className="bg-gray-100 rounded-xl h-64 mb-6 flex flex-col items-center justify-center text-center px-4">
                 <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-300 mb-2" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                  <circle cx="12" cy="9" r="2.5" />
+                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                  <line x1="8" y1="2" x2="8" y2="18" />
+                  <line x1="16" y1="6" x2="16" y2="22" />
                 </svg>
-                <p className="text-sm font-medium text-gray-500">Bekijk alle stops op de kaart</p>
-                <p className="text-xs text-gray-400 mt-1">Beschikbaar na aankoop</p>
+                <p className="text-sm font-medium text-gray-500">Kaart wordt geladen...</p>
               </div>
 
               <div className="flex items-center justify-between mb-4">
@@ -233,28 +235,66 @@ export function RouteDetail({ route }: { route: RouteData }) {
 
           {activeTab === "beginRoute" && (
             <div>
-              <p className="text-sm text-gray-500 mb-4">Bij elke locatie kun je de video bekijken, het transcript lezen en meer informatie ontdekken. Druk op &quot;Ik ben er&quot; als je op locatie bent.</p>
-              <div className="grid grid-cols-2 gap-3">
-                {routeLocations.slice(0, 6).map((loc) => (
-                  <div key={loc!.id} className="bg-gray-100 rounded-xl overflow-hidden">
-                    <div className="aspect-video bg-gray-200 relative">
+              <p className="text-sm text-gray-600 mb-4">
+                Start deze route en loop hem op je eigen tempo. Bij elke locatie druk je op &quot;Ik ben aangekomen!&quot; om de video en het volledige verhaal te ontgrendelen.
+              </p>
+
+              <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
+                <h4 className="font-bold text-navy-800 text-sm mb-2">Hoe werkt het?</h4>
+                <ol className="space-y-2 text-xs text-gray-600">
+                  <li className="flex items-start gap-2">
+                    <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
+                    Klik op &quot;Start route&quot; om de route op te slaan in Mijn routes
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
+                    Loop naar de eerste locatie en druk op &quot;Ik ben aangekomen!&quot;
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
+                    Bekijk de video en lees het verhaal op elke locatie
+                  </li>
+                </ol>
+              </div>
+
+              <div className="space-y-2 mb-6">
+                {routeLocations.map((loc, i) => (
+                  <div key={loc!.id} className="flex items-center gap-3 bg-white rounded-xl border border-gray-200 p-3">
+                    <span className="w-7 h-7 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center shrink-0">
+                      {i + 1}
+                    </span>
+                    <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                       {loc!.image && (
                         <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
                       )}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center">
-                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-navy-800 ml-0.5">
-                            <polygon points="5 3 19 12 5 21 5 3" />
-                          </svg>
-                        </div>
-                      </div>
                     </div>
-                    <div className="p-2">
-                      <p className="text-xs font-medium text-navy-800 truncate">{loc!.name}</p>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-navy-800 text-sm truncate">{loc!.name}</h4>
+                      <span className="text-[10px] text-orange-500 font-medium">{loc!.mainTheme}</span>
                     </div>
                   </div>
                 ))}
               </div>
+
+              <button
+                onClick={() => {
+                  const existing = getSavedRoutes().find(
+                    (sr) => sr.name === route.title && sr.locationIds.join(",") === route.locationIds.join(",")
+                  );
+                  if (existing) {
+                    router.push(`/my-routes/${existing.id}`);
+                  } else {
+                    const saved = saveRoute(route.title, route.locationIds);
+                    router.push(`/my-routes/${saved.id}`);
+                  }
+                }}
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3.5 rounded-full text-sm transition-colors flex items-center justify-center gap-2"
+              >
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
+                </svg>
+                Start deze route
+              </button>
             </div>
           )}
 
@@ -340,6 +380,4 @@ export function RouteDetail({ route }: { route: RouteData }) {
       )}
     </div>
   );
-
-  return content;
 }
