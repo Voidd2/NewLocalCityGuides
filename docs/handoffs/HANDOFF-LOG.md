@@ -5,6 +5,37 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 008
+
+**Agent:** Codex · **Role:** Research / production support
+**Date:** 2026-09-17 · **Branch:** `codex/photography-shot-list` · **PR:** #10
+**Task ID:** `PHOTO-RESEARCH-001` · **Status:** REVIEW
+
+### Completed
+- Audited placeholder use in `src/**` and `docs/TODO-WEBSITE.md`: 36 unique codes exist.
+  The task's “59” was inferred from the highest suffix, `10059`; 23 numbers in the range are unused.
+- Delivered a specific stand point, timing/season, composition, style, technical and permission
+  brief for every actual code, including product screenshots and other-city tiles.
+- Added asset/release standards, shoot sequencing and acceptance gates.
+
+### Safety and accuracy constraints carried into production
+- Jean Pesijnhofje stays gate-only unless the foundation/residents explicitly approve a courtyard
+  shoot. L014 receives no AI reconstruction. Sensitive sites/events are documentary, not spectacle.
+- The review avatar must belong to a real consenting reviewer; no stock identity may be paired
+  with a fabricated quote.
+- The four hidden-gem assets remain blocked on verified operating businesses and proprietor/
+  resident permission. The brief does not invent businesses to satisfy placeholders.
+
+### Recommended next action
+Claude reviews editorial fit. The producer secures permissions before scheduling private
+interiors, residents, event reportage or identifiable models. Engineering should validate every
+crop in its actual component before final export.
+
+### Master file updated
+YES — scoped status note only
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer
