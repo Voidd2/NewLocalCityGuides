@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 import { useState } from "react";
+import { useAuth } from "@/lib/auth-context";
 import type { Locale } from "@/i18n/config";
 
 const localeLabels: Record<Locale, string> = {
@@ -16,6 +17,7 @@ export function Header() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const { isLoggedIn, isLoading } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
 
@@ -69,38 +71,44 @@ export function Header() {
             </div>
 
             <button
-              className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
-              aria-label="Search"
-            >
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.35-4.35" />
-              </svg>
-            </button>
-
-            <button
               onClick={() => { setMenuOpen(!menuOpen); setLangOpen(false); }}
               className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
               aria-label="Menu"
             >
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
-                <path d="M3 12h18M3 6h18M3 18h18" />
-              </svg>
+              {menuOpen ? (
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="bg-white shadow-lg border-b border-gray-100 md:hidden">
+        <div className="bg-white shadow-lg border-b border-gray-100">
           <nav className="max-w-7xl mx-auto px-4 py-4 space-y-1">
             <Link href="/" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">{t("nav.home")}</Link>
-            <Link href="/routes" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">{t("nav.routes")}</Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Over ons</Link>
-            <Link href="/pricing" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Prijzen</Link>
             <Link href="/map" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Kaart</Link>
+            <Link href="/routes" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">{t("nav.routes")}</Link>
+            <Link href="/about" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Over Leiden</Link>
+            <Link href="/pricing" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-navy-800 font-medium hover:bg-orange-50">Prijzen</Link>
             <hr className="my-2 border-gray-100" />
-            <Link href="/login" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-orange-500 font-medium hover:bg-orange-50">Inloggen</Link>
+            {!isLoading && (
+              isLoggedIn ? (
+                <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-orange-500 font-semibold hover:bg-orange-50">
+                  Mijn account
+                </Link>
+              ) : (
+                <Link href="/login" onClick={() => setMenuOpen(false)} className="block px-3 py-2.5 rounded-lg text-orange-500 font-semibold hover:bg-orange-50">
+                  Inloggen
+                </Link>
+              )
+            )}
           </nav>
         </div>
       )}
