@@ -107,7 +107,11 @@ export function MapPage() {
                 className="block bg-white rounded-xl shadow-lg p-4 mx-auto max-w-sm"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden" />
+                  <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                    {filtered[0].image && (
+                      <img src={filtered[0].image} alt={filtered[0].name} className="w-full h-full object-cover" />
+                    )}
+                  </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-bold text-navy-800 text-sm">{filtered[0].name}</h3>
                     <p className="text-xs text-gray-500 line-clamp-1">{filtered[0].shortDescription}</p>
@@ -157,7 +161,11 @@ export function MapPage() {
                 href={`/locations/${loc.slug}`}
                 className="flex items-center gap-3 bg-white rounded-xl border border-gray-100 p-3 hover:shadow-md transition-shadow"
               >
-                <div className="w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden" />
+                <div className="w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
+                  {loc.image && (
+                    <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                  )}
+                </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-navy-800 text-sm">{loc.name}</h3>
                   <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{loc.shortDescription}</p>

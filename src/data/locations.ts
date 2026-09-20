@@ -5,7 +5,7 @@ export interface LocationData {
   shortDescription: string;
   mainTheme: string;
   categories: string[];
-  image: string;
+  image: string | null;
 }
 
 export const locations: LocationData[] = [
@@ -16,7 +16,7 @@ export const locations: LocationData[] = [
     shortDescription: "De oudste kern van Leiden, een middeleeuwse motteheuvel waar het allemaal begon.",
     mainTheme: "Origins of the city",
     categories: ["origins", "fortification"],
-    image: "10020 - foto van De Burcht motteheuvel met trappen",
+    image: "/images/locations/10020-de-burcht-leiden.jpg",
   },
   {
     id: "L002",
@@ -25,7 +25,7 @@ export const locations: LocationData[] = [
     shortDescription: "Waar Leiden eeuwenlang zijn vis kocht en verkocht. Nu een levendig plein.",
     mainTheme: "Everyday work and food",
     categories: ["trade", "market"],
-    image: "10021 - foto van Vismarkt plein Leiden",
+    image: "/images/locations/10021-vismarkt-leiden.jpg",
   },
   {
     id: "L003",
@@ -34,7 +34,7 @@ export const locations: LocationData[] = [
     shortDescription: "De enige overdekte brug van Nederland, waar eeuwenlang graan werd verhandeld.",
     mainTheme: "Grain and trade",
     categories: ["trade", "architecture"],
-    image: "10022 - foto van Koornbrug met overdekte galerij",
+    image: "/images/locations/10022-koornbrug-leiden.jpg",
   },
   {
     id: "L004",
@@ -43,7 +43,7 @@ export const locations: LocationData[] = [
     shortDescription: "Een onopvallende steen in het wegdek die het centrum van het middeleeuwse Leiden markeert.",
     mainTheme: "Medieval justice",
     categories: ["medieval", "justice"],
-    image: "10023 - foto van De Blauwe Steen in het wegdek",
+    image: null,
   },
   {
     id: "L005",
@@ -52,7 +52,7 @@ export const locations: LocationData[] = [
     shortDescription: "Van grafelijke gevangenis tot universiteitsgebouw. Eeuwen van macht en recht.",
     mainTheme: "Justice and punishment",
     categories: ["justice", "power"],
-    image: "10024 - foto van Gravensteen gevel",
+    image: "/images/locations/10024-gravensteen-leiden.jpg",
   },
   {
     id: "L006",
@@ -61,7 +61,7 @@ export const locations: LocationData[] = [
     shortDescription: "Vijf eeuwen Leidse geschiedenis onder een dak. Hier liggen Pilgrims en professoren.",
     mainTheme: "Religion and civic memory",
     categories: ["religion", "burial"],
-    image: "10025 - foto van Pieterskerk interieur of exterieur",
+    image: "/images/locations/10025-pieterskerk-leiden.jpg",
   },
   {
     id: "L007",
@@ -70,7 +70,7 @@ export const locations: LocationData[] = [
     shortDescription: "Hier woonden de Pilgrim Fathers elf jaar voordat ze naar Amerika vertrokken.",
     mainTheme: "The Pilgrims' eleven years in Leiden",
     categories: ["migration", "religion"],
-    image: "10026 - foto van Engelse Poort / William Brewster steeg",
+    image: null,
   },
   {
     id: "L008",
@@ -79,7 +79,7 @@ export const locations: LocationData[] = [
     shortDescription: "Een van Leidens 35 hofjes. Gesticht uit verdriet, gebouwd op liefdadigheid.",
     mainTheme: "Charity and community",
     categories: ["charity", "social-history"],
-    image: "10027 - foto van Jean Pesijnhofje binnenplaats",
+    image: "/images/locations/10027-jean-pesijnhofje.jpg",
   },
   {
     id: "L009",
@@ -88,7 +88,7 @@ export const locations: LocationData[] = [
     shortDescription: "Op 12 januari 1807 explodeerde een kruitschip. 151 doden, een hele wijk verwoest.",
     mainTheme: "A city centre erased in one second",
     categories: ["disaster"],
-    image: "10028 - foto van Van der Werffpark (locatie explosie)",
+    image: null,
   },
   {
     id: "L010",
@@ -97,7 +97,7 @@ export const locations: LocationData[] = [
     shortDescription: "De oudste botanische tuin van Nederland. Hier begon de Nederlandse tulpenhandel.",
     mainTheme: "Plants, science and empire",
     categories: ["science", "botany"],
-    image: "10029 - foto van Hortus Botanicus Leiden tuin",
+    image: "/images/locations/10029-hortus-botanicus-leiden.jpg",
   },
   {
     id: "L011",
@@ -106,7 +106,7 @@ export const locations: LocationData[] = [
     shortDescription: "Hier werd Rembrandt van Rijn geboren in 1606. Het huis is er niet meer.",
     mainTheme: "Origins of a painter",
     categories: ["art", "rembrandt"],
-    image: "10030 - foto van Weddesteeg met Rembrandt muurschildering",
+    image: null,
   },
   {
     id: "L012",
@@ -115,7 +115,7 @@ export const locations: LocationData[] = [
     shortDescription: "Op 3 oktober 1574 werd Leiden bevrijd van de Spaanse belegering. Dat viert de stad nog steeds.",
     mainTheme: "Starvation turned into celebration",
     categories: ["siege", "tradition"],
-    image: "10031 - foto van 3 Oktober festiviteiten of haring en wittebrood",
+    image: null,
   },
   {
     id: "L013",
@@ -124,7 +124,7 @@ export const locations: LocationData[] = [
     shortDescription: "Stap binnen in het leven van een weversgezin uit de Gouden Eeuw.",
     mainTheme: "Cloth industry at family scale",
     categories: ["textiles", "labour"],
-    image: "10032 - foto van Wevershuis interieur met weefgetouw",
+    image: null,
   },
   {
     id: "L014",
@@ -133,7 +133,7 @@ export const locations: LocationData[] = [
     shortDescription: "Op 26 november 1940 sprak professor Cleveringa zich uit tegen het ontslag van Joodse collega's.",
     mainTheme: "One man, one lecture, one decision",
     categories: ["wwii", "resistance"],
-    image: "10033 - foto van Academiegebouw Leiden",
+    image: "/images/locations/10033-academiegebouw-leiden.jpg",
   },
 ];
 

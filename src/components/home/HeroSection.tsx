@@ -8,15 +8,12 @@ export function HeroSection() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* 10001 - hero foto van Leiden binnenstad, grachten met historische gebouwen */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/20 to-navy-900/80" />
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "linear-gradient(to bottom, rgba(15,29,54,0.35) 0%, rgba(15,29,54,0.15) 40%, rgba(15,29,54,0.75) 100%)",
-        }}
+      <img
+        src="/images/heroes/10001-leiden-canal-historic-buildings.jpg"
+        alt="Leiden binnenstad met grachten en historische gebouwen"
+        className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-navy-800/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/20 to-navy-900/80" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 pt-10 pb-8 flex flex-col min-h-[400px] md:min-h-[480px]">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-lg mx-auto">

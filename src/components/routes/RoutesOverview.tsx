@@ -20,8 +20,12 @@ export function RoutesOverview() {
   return (
     <div>
       <section className="relative overflow-hidden">
-        {/* 10008 - hero foto van Leiden grachten panorama voor tours pagina */}
-        <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-8 pb-12">
+        <img
+          src="/images/heroes/10008-leiden-canal-panorama.jpg"
+          alt="Leiden grachten panorama"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="relative bg-gradient-to-b from-navy-800/80 to-navy-900/90 text-white px-4 py-8 pb-12">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Jouw Leiden pakket</h1>
             <p className="text-white/70 text-sm mb-6">
@@ -57,7 +61,9 @@ export function RoutesOverview() {
             const card = (
               <div className="group flex flex-col bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="relative h-40 bg-gray-200">
-                  {/* {route.image} */}
+                  {route.image && (
+                    <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   {route.popular && (
                     <span className="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">

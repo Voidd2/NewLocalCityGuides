@@ -30,7 +30,9 @@ export function PopularRoutes() {
               className="flex items-center gap-4 bg-white rounded-xl border border-gray-100 p-3 hover:shadow-md transition-shadow"
             >
               <div className="w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
-                {/* {route.image} */}
+                {route.image && (
+                  <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">

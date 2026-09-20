@@ -35,7 +35,9 @@ export function LocationExperience({ location }: { location: LocationData }) {
       {state === "preview" && (
         <div>
           <div className="relative h-72 md:h-96 bg-gray-200">
-            {/* {location.image} */}
+            {location.image && (
+              <img src={location.image} alt={location.name} className="w-full h-full object-cover" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <div className="flex items-center gap-2 mb-2">

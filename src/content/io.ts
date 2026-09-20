@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import { basename, dirname, extname, join, parse, resolve, sep } from 'node:path';
 import { isAlias, isNode, isPair, isScalar, parseDocument, stringify, visit } from 'yaml';

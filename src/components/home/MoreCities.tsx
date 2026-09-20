@@ -3,10 +3,10 @@
 import { useTranslations } from "next-intl";
 
 const upcomingCities = [
-  { name: "Delft", image: "10010 - foto van Delft centrum met Nieuwe Kerk" },
-  { name: "Utrecht", image: "10011 - foto van Oudegracht Utrecht" },
-  { name: "Amsterdam", image: "10012 - foto van Amsterdam grachten" },
-  { name: "Den Haag", image: "10013 - foto van Binnenhof Den Haag" },
+  { name: "Delft", image: null },
+  { name: "Utrecht", image: "/images/future-cities/10011-utrecht-oudegracht.jpg" },
+  { name: "Amsterdam", image: "/images/future-cities/10012-amsterdam-canals.jpg" },
+  { name: "Den Haag", image: null },
 ];
 
 export function MoreCities() {
@@ -27,8 +27,11 @@ export function MoreCities() {
               {upcomingCities.map((city) => (
                 <div key={city.name} className="shrink-0">
                   <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white/10 overflow-hidden">
-                    {/* {city.image} */}
-                    <div className="w-full h-full bg-white/5" />
+                    {city.image ? (
+                      <img src={city.image} alt={city.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full bg-white/5" />
+                    )}
                   </div>
                   <p className="text-xs text-center mt-1.5 text-white/80">{city.name}</p>
                 </div>

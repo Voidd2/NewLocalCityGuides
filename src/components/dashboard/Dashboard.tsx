@@ -65,8 +65,10 @@ export function Dashboard() {
                 href={`/routes/${route.slug}`}
                 className="bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md transition-shadow flex items-center gap-4"
               >
-                <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0">
-                  {/* {route.image} */}
+                <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                  {route.image && (
+                    <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-navy-800 text-sm">{route.title}</h3>
@@ -96,7 +98,11 @@ export function Dashboard() {
                 href={`/locations/${loc.slug}`}
                 className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <div className="h-24 bg-gray-200" />
+                <div className="h-24 bg-gray-200 overflow-hidden">
+                  {loc.image && (
+                    <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                  )}
+                </div>
                 <div className="p-3">
                   <h4 className="font-semibold text-navy-800 text-xs leading-tight">{loc.name}</h4>
                   <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">{loc.shortDescription}</p>

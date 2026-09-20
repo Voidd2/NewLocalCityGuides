@@ -11,7 +11,7 @@ export interface RouteData {
   tags: string[];
   popular: boolean;
   kidFriendly: boolean;
-  image: string;
+  image: string | null;
   locationIds: string[];
 }
 
@@ -29,7 +29,7 @@ export const routes: RouteData[] = [
     tags: ["Centrum", "Winkelen", "Markt"],
     popular: true,
     kidFriendly: true,
-    image: "10002 - foto van historische gracht Leiden met Pieterskerk op achtergrond",
+    image: "/images/routes/10002-leiden-canal-pieterskerk.jpg",
     locationIds: ["L001", "L002", "L003", "L004", "L005", "L006", "L007", "L008", "L011", "L012"],
   },
   {
@@ -45,7 +45,7 @@ export const routes: RouteData[] = [
     tags: ["Fietsen", "Natuur", "Buiten het centrum"],
     popular: false,
     kidFriendly: true,
-    image: "10004 - foto van fietser langs Leidse singel met bomen",
+    image: "/images/routes/10004-leiden-singel-cyclist.jpg",
     locationIds: ["L010", "L009", "L011", "L013", "L014", "L001", "L002", "L006"],
   },
 ];

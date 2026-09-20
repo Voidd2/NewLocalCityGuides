@@ -45,8 +45,10 @@ export function RouteDetail({ route }: { route: RouteData }) {
       </div>
 
       <section className="relative overflow-hidden">
-        {/* {route.image} */}
-        <div className="bg-gradient-to-b from-navy-800/90 to-navy-900/95 text-white px-4 py-8">
+        {route.image && (
+          <img src={route.image} alt={route.title} className="absolute inset-0 w-full h-full object-cover" />
+        )}
+        <div className="relative bg-gradient-to-b from-navy-800/90 to-navy-900/95 text-white px-4 py-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-start justify-between mb-2">
               <div>
@@ -149,7 +151,11 @@ export function RouteDetail({ route }: { route: RouteData }) {
               <div className="mb-8">
                 <h3 className="text-sm font-bold text-navy-800 mb-3">Video preview - Stop 3: Pieterskerk</h3>
                 <div className="relative bg-gray-200 rounded-xl overflow-hidden aspect-video">
-                  {/* 10034 - video thumbnail van Pieterskerk interactieve video */}
+                  <img
+                    src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
+                    alt="Pieterskerk interactieve video preview"
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute inset-0 flex items-center justify-center bg-navy-800/30">
                     <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
                       <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-navy-800 ml-1">
@@ -213,7 +219,9 @@ export function RouteDetail({ route }: { route: RouteData }) {
                           <p className="text-xs text-gray-500 mt-0.5">{loc!.shortDescription}</p>
                         </div>
                         <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-                          {/* {loc!.image} */}
+                          {loc!.image && (
+                            <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
+                          )}
                         </div>
                       </div>
                     </div>
@@ -230,6 +238,9 @@ export function RouteDetail({ route }: { route: RouteData }) {
                 {routeLocations.slice(0, 6).map((loc) => (
                   <div key={loc!.id} className="bg-gray-100 rounded-xl overflow-hidden">
                     <div className="aspect-video bg-gray-200 relative">
+                      {loc!.image && (
+                        <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
+                      )}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-10 h-10 rounded-full bg-white/80 flex items-center justify-center">
                           <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-navy-800 ml-0.5">
