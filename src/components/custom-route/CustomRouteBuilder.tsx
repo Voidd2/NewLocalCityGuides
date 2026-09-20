@@ -48,125 +48,145 @@ function LocationCard({
 }) {
   return (
     <div
-      className={`rounded-xl border transition-all overflow-hidden ${
-        isSelected ? "border-orange-500 bg-orange-50" : "border-gray-200 bg-white"
+      className={`rounded-2xl border-2 transition-all overflow-hidden hover-lift ${
+        isSelected
+          ? "border-orange-500 bg-orange-50/50 shadow-md shadow-orange-500/10"
+          : "border-gray-100 bg-white shadow-sm"
       }`}
     >
-      <button
-        onClick={onToggleExpand}
-        className="w-full flex items-center gap-3 p-3 text-left"
-      >
-        <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-          {loc.image && (
-            <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+      <div className="relative aspect-[16/10] bg-gray-200 overflow-hidden group">
+        {loc.image ? (
+          <img
+            src={loc.image}
+            alt={loc.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </div>
+        )}
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+        <div className="absolute top-3 left-3 flex items-center gap-1.5">
+          {isMustSee && (
+            <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-orange-500 text-white uppercase tracking-wide shadow-lg">
+              Must see
+            </span>
+          )}
+          {isSelected && order !== null && (
+            <span className="w-7 h-7 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center shadow-lg ring-2 ring-white/50">
+              {order}
+            </span>
           )}
         </div>
 
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5">
-            <h3 className="font-semibold text-navy-800 text-sm truncate">{loc.name}</h3>
-            {isMustSee && (
-              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-orange-500 text-white uppercase shrink-0">Must see</span>
-            )}
-          </div>
-          <span className="text-[10px] text-orange-500 font-medium">{loc.mainTheme}</span>
-        </div>
-
-        <svg
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className={`w-4 h-4 text-gray-400 shrink-0 transition-transform ${isExpanded ? "rotate-180" : ""}`}
-        >
-          <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-        </svg>
-      </button>
-
-      {isExpanded && (
-        <div className="px-3 pb-3">
-          {loc.image && (
-            <div className="relative rounded-lg overflow-hidden mb-3 aspect-video bg-gray-200">
-              <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-2 left-2 right-2 flex items-center gap-2">
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
-                  {loc.mainTheme}
-                </span>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
-                  30-60 min
-                </span>
-              </div>
-            </div>
-          )}
-
-          <p className="text-xs text-gray-600 mb-3 leading-relaxed">{loc.shortDescription}</p>
-
-          <div className="flex items-center gap-2 mb-3">
-            <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2 py-1">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-orange-500">
-                <polygon points="5 3 19 12 5 21 5 3" />
-              </svg>
-              <span className="text-[10px] font-medium text-gray-600">Video</span>
-            </div>
-            <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2 py-1">
-              <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 text-navy-800" stroke="currentColor" strokeWidth="2">
-                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-              </svg>
-              <span className="text-[10px] font-medium text-gray-600">Verhaal</span>
-            </div>
-            {loc.categories.map((cat) => (
-              <span key={cat} className="text-[10px] font-medium px-2 py-1 rounded-lg bg-orange-50 text-orange-600 border border-orange-100">
-                {cat}
-              </span>
-            ))}
-          </div>
-
+        <div className="absolute top-3 right-3">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onToggleSelect();
             }}
-            className={`w-full py-2.5 rounded-full text-sm font-semibold transition-colors ${
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all shadow-lg ${
               isSelected
-                ? "bg-white border border-orange-500 text-orange-500 hover:bg-orange-50"
-                : "bg-orange-500 hover:bg-orange-600 text-white"
+                ? "bg-orange-500 text-white scale-110"
+                : "bg-white/90 backdrop-blur-sm text-gray-600 hover:bg-white hover:text-orange-500 hover:scale-110"
             }`}
           >
             {isSelected ? (
-              <span className="flex items-center justify-center gap-1.5">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                </svg>
-                Toegevoegd (stop {order})
-              </span>
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+              </svg>
             ) : (
-              <span className="flex items-center justify-center gap-1.5">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                </svg>
-                Toevoegen aan route
-              </span>
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+              </svg>
             )}
           </button>
         </div>
-      )}
 
-      {!isExpanded && (
-        <div className="px-3 pb-3 flex items-center justify-between">
-          <p className="text-xs text-gray-500 truncate flex-1 mr-2">{loc.shortDescription}</p>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onToggleSelect();
-            }}
-            className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-sm font-bold transition-colors ${
-              isSelected ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-400 hover:bg-orange-100 hover:text-orange-500"
-            }`}
-          >
-            {order ?? "+"}
-          </button>
+        <div className="absolute bottom-3 left-3 right-3">
+          <h3 className="font-bold text-white text-base leading-tight drop-shadow-lg">{loc.name}</h3>
+          <span className="text-[11px] text-orange-300 font-medium">{loc.mainTheme}</span>
         </div>
-      )}
+      </div>
+
+      <div className="px-4 pt-3 pb-3">
+        <p className={`text-sm text-gray-600 leading-relaxed ${isExpanded ? "" : "line-clamp-2"}`}>
+          {loc.shortDescription}
+        </p>
+
+        <button
+          onClick={onToggleExpand}
+          className="flex items-center gap-1 text-xs font-medium text-orange-500 hover:text-orange-600 mt-1.5 transition-colors"
+        >
+          {isExpanded ? "Minder lezen" : "Meer over deze plek"}
+          <svg
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className={`w-3.5 h-3.5 transition-transform ${isExpanded ? "rotate-180" : ""}`}
+          >
+            <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+          </svg>
+        </button>
+
+        {isExpanded && (
+          <div className="mt-3 pt-3 border-t border-gray-100">
+            <div className="flex items-center gap-2 mb-3 flex-wrap">
+              <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2.5 py-1.5">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-orange-500">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+                <span className="text-[11px] font-medium text-gray-600">Video</span>
+              </div>
+              <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2.5 py-1.5">
+                <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 text-navy-800" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                </svg>
+                <span className="text-[11px] font-medium text-gray-600">Verhaal</span>
+              </div>
+              {loc.categories.map((cat) => (
+                <span key={cat} className="text-[11px] font-medium px-2.5 py-1.5 rounded-lg bg-orange-50 text-orange-600 border border-orange-100 capitalize">
+                  {cat}
+                </span>
+              ))}
+            </div>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggleSelect();
+              }}
+              className={`w-full py-3 rounded-xl text-sm font-semibold transition-all ${
+                isSelected
+                  ? "bg-white border-2 border-orange-500 text-orange-500 hover:bg-orange-50"
+                  : "bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/20"
+              }`}
+            >
+              {isSelected ? (
+                <span className="flex items-center justify-center gap-1.5">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                  </svg>
+                  Toegevoegd aan route (stop {order})
+                </span>
+              ) : (
+                <span className="flex items-center justify-center gap-1.5">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                    <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                  </svg>
+                  Toevoegen aan mijn route
+                </span>
+              )}
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -201,6 +221,13 @@ export function CustomRouteBuilder() {
     router.push(`/my-routes/${saved.id}`);
   };
 
+  const handleStartNow = () => {
+    if (orderedRoute.length < 2) return;
+    const name = routeName.trim() || `Mijn route (${orderedRoute.length} stops)`;
+    const saved = saveRoute(name, orderedRoute.map((l) => l.id));
+    router.push(`/my-routes/${saved.id}`);
+  };
+
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 pt-4 pb-2">
@@ -213,16 +240,23 @@ export function CustomRouteBuilder() {
       </div>
 
       <section className="max-w-7xl mx-auto px-4 py-4">
-        <h1 className="text-2xl font-bold text-navy-800 mb-1">{t("customRoute")}</h1>
-        <p className="text-sm text-gray-500 mb-2">{t("customRouteDesc")}</p>
-        <p className="text-xs text-gray-400 mb-6">Tik op een locatie om meer te lezen. Voeg toe aan je route met de + knop.</p>
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold text-navy-800 mb-1">{t("customRoute")}</h1>
+          <p className="text-sm text-gray-500">{t("customRouteDesc")}</p>
+        </div>
 
-        <div className="grid md:grid-cols-[1fr,360px] gap-8">
+        <div className="grid md:grid-cols-[1fr,340px] gap-8">
           <div>
-            <h2 className="text-sm font-bold text-navy-800 mb-3">
-              Kies je stops ({selected.length} gekozen)
-            </h2>
-            <div className="space-y-2">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-base font-bold text-navy-800">
+                Alle locaties
+                <span className="text-sm font-normal text-gray-400 ml-2">
+                  {selected.length > 0 && `${selected.length} gekozen`}
+                </span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {locations.map((loc) => {
                 const isSelected = selected.includes(loc.id);
                 const order = isSelected ? orderedRoute.findIndex((l) => l.id === loc.id) + 1 : null;
@@ -244,43 +278,54 @@ export function CustomRouteBuilder() {
           </div>
 
           <div className="md:sticky md:top-20 self-start">
-            <div className="bg-white rounded-2xl border border-gray-200 p-5">
-              <h3 className="font-bold text-navy-800 mb-3">Jouw route</h3>
+            <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+              <h3 className="font-bold text-navy-800 text-lg mb-1">Jouw route</h3>
+              <p className="text-xs text-gray-400 mb-4">
+                {orderedRoute.length === 0
+                  ? "Kies locaties om je route samen te stellen"
+                  : `${orderedRoute.length} stops - slimste volgorde berekend`
+                }
+              </p>
 
               {orderedRoute.length === 0 ? (
-                <div className="py-8 text-center">
-                  <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-200 mx-auto mb-2" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                    <circle cx="12" cy="9" r="2.5" />
-                  </svg>
-                  <p className="text-sm text-gray-400">
-                    Kies minimaal 2 locaties om je route te bewaren
-                  </p>
+                <div className="py-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mx-auto mb-3">
+                    <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-orange-300" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-1">Nog geen locaties gekozen</p>
+                  <p className="text-xs text-gray-300">Kies minimaal 2 locaties</p>
                 </div>
               ) : (
                 <>
-                  <ol className="space-y-2 mb-4">
+                  <ol className="space-y-1.5 mb-4">
                     {orderedRoute.map((loc, i) => (
-                      <li key={loc.id} className="flex items-center gap-2">
+                      <li key={loc.id} className="flex items-center gap-2.5 group">
                         <div className="flex flex-col items-center">
-                          <span className="w-6 h-6 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center shrink-0">
+                          <span className="w-6 h-6 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0">
                             {i + 1}
                           </span>
                           {i < orderedRoute.length - 1 && (
-                            <div className="w-0.5 h-3 bg-orange-200 mt-0.5" />
+                            <div className="w-0.5 h-2.5 bg-orange-200 mt-0.5" />
                           )}
                         </div>
                         <div className="flex items-center gap-2 flex-1 min-w-0">
-                          {loc.image && (
-                            <div className="w-8 h-8 rounded-md bg-gray-200 shrink-0 overflow-hidden">
+                          <div className="w-8 h-8 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                            {loc.image ? (
                               <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
-                            </div>
-                          )}
+                            ) : (
+                              <div className="w-full h-full bg-navy-800 flex items-center justify-center">
+                                <span className="text-[9px] text-white/40 font-bold">{i + 1}</span>
+                              </div>
+                            )}
+                          </div>
                           <span className="text-sm text-navy-800 truncate">{loc.name}</span>
                         </div>
                         <button
                           onClick={() => toggle(loc.id)}
-                          className="text-gray-300 hover:text-red-400 shrink-0"
+                          className="text-gray-200 hover:text-red-400 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity"
                         >
                           <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                             <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
@@ -290,11 +335,11 @@ export function CustomRouteBuilder() {
                     ))}
                   </ol>
 
-                  <div className="flex items-center gap-3 text-xs text-gray-400 mb-4 bg-gray-50 rounded-lg p-2.5">
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-blue-400 shrink-0">
+                  <div className="flex items-center gap-2 text-[11px] text-gray-400 mb-4 bg-gray-50 rounded-lg p-2.5">
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-blue-400 shrink-0">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
                     </svg>
-                    We hebben de slimste volgorde berekend zodat je zo min mogelijk heen en weer loopt.
+                    Slimste volgorde berekend
                   </div>
 
                   <input
@@ -306,18 +351,29 @@ export function CustomRouteBuilder() {
                   />
 
                   {orderedRoute.length >= 2 ? (
-                    <button
-                      onClick={handleSave}
-                      className="block w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-center transition-colors text-sm"
-                    >
-                      Bewaar route
-                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 inline-block ml-1">
-                        <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                      </svg>
-                    </button>
+                    <div className="space-y-2">
+                      <button
+                        onClick={handleStartNow}
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-center transition-all text-sm shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 flex items-center justify-center gap-2"
+                      >
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                          <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
+                        </svg>
+                        Start route nu
+                      </button>
+                      <button
+                        onClick={handleSave}
+                        className="w-full border-2 border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold py-3 rounded-full text-center transition-colors text-sm flex items-center justify-center gap-2"
+                      >
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                          <path d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" />
+                        </svg>
+                        Bewaar voor later
+                      </button>
+                    </div>
                   ) : (
-                    <p className="text-xs text-orange-500 text-center font-medium">
-                      Kies nog minimaal {2 - orderedRoute.length} locatie{orderedRoute.length === 0 ? "s" : ""}
+                    <p className="text-xs text-orange-500 text-center font-medium py-2">
+                      Kies nog {2 - orderedRoute.length} locatie{orderedRoute.length === 0 ? "s" : ""}
                     </p>
                   )}
                 </>
@@ -326,6 +382,26 @@ export function CustomRouteBuilder() {
           </div>
         </div>
       </section>
+
+      {selected.length > 0 && (
+        <div className="md:hidden fixed bottom-16 left-0 right-0 z-30 px-4 pb-3 pt-2 bg-gradient-to-t from-warm-50 via-warm-50 to-transparent">
+          {orderedRoute.length >= 2 ? (
+            <button
+              onClick={handleStartNow}
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3.5 rounded-full text-center transition-all text-sm shadow-xl shadow-orange-500/30 flex items-center justify-center gap-2"
+            >
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
+              </svg>
+              Start route nu ({orderedRoute.length} stops)
+            </button>
+          ) : (
+            <div className="bg-white/90 backdrop-blur-sm rounded-full py-3 text-center text-sm font-medium text-orange-500 border border-orange-200 shadow-lg">
+              {selected.length} gekozen - kies nog {2 - orderedRoute.length}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
