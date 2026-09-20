@@ -1,16 +1,17 @@
 # DEC-009 — Technical stack
 
 - **Task:** FND-002
-- **Status:** PROPOSED — USER APPROVAL REQUIRED
+- **Status:** APPROVED BY DELEGATION — user, 2026-09-13, board Q1
 - **Date:** 2026-09-13
 - **Owner:** Codex / engineering
 - **Decision scope:** application framework, map, content storage, internationalization,
   hosting, and video delivery
 
-> This document is a recommendation, not an approved or locked decision. In
-> accordance with master §3, only the user can approve it. No implementation
-> should treat the choices below as locked until the status is changed to
-> `APPROVED` following explicit user approval.
+> The user pre-approved this decision by delegation in board Q1, as recorded in
+> master §37. Claude reviewed the record on PR #2 and confirmed that authorization.
+> Engineering may build on it without requesting the same approval again.
+> This choice is cheap to reverse now and becomes more expensive as implementation
+> grows; the user can object or revoke the delegation at any time.
 
 ## 1. Context and constraints
 
@@ -25,10 +26,10 @@ The stack must support the project's already locked product constraints:
 - fast first paint on old phones and weak or roaming connections;
 - no architecture based on a presumed flagship or MVP location.
 
-The discovery pass has produced candidates but no MVP locations have been
-selected. Consequently, this decision defines generic platform capabilities
-only. It makes no content-selection decision and must not be used to hardcode
-Pieterskerk, De Waag, De Burcht, or any other candidate.
+The approved MVP is L001–L014 under DEC-014, recorded on Claude's PR #1. Selection
+does not approve historical content. This decision defines generic platform
+capabilities and must not be used to hardcode Pieterskerk, De Waag, De Burcht,
+or any other location into application components.
 
 ## 2. Proposed decision at a glance
 
@@ -270,7 +271,7 @@ Required controls:
 - **Self-hosted container:** maximum control, but patching, monitoring, rollbacks,
   TLS, and scaling are unnecessary operational load for the MVP.
 
-Before approval, pricing, data-processing terms, EU requirements, bandwidth, and
+Before vendor activation or spending, pricing, data-processing terms, EU requirements, bandwidth, and
 expected traffic must be checked against current vendor terms. No cost claim is
 locked into this ADR.
 
@@ -346,9 +347,11 @@ to be substituted without rewriting historical records.
 | Stale service-worker content | Do not add runtime caching until cache ownership, versioning, and invalidation are tested |
 | Basemap terms or token leakage | Select provider separately, restrict public tokens by origin where supported, and test attribution |
 
-## 11. Approval gates and consequences
+## 11. Implementation checks and consequences
 
-Before the user approves DEC-009, engineering should confirm:
+The delegated stack decision is approved. Before vendor activation, production
+spending, or declaring the relevant implementation production-ready, engineering
+must still confirm:
 
 1. whether Vercel and Cloudflare accounts/vendors are acceptable;
 2. the expected launch traffic and media volume for a cost check;
@@ -359,17 +362,20 @@ Before the user approves DEC-009, engineering should confirm:
 6. that Dutch/English locale routing and untranslated-draft behavior match the
    intended editorial workflow.
 
-If approved, follow-up work should record exact package/runtime versions in the
+Follow-up work must record exact package/runtime versions in the
 repository, create small time-boxed spikes for map and content validation, and
 then scaffold the app. Approval does **not** select locations, approve historical
 copy, approve a basemap license, or authorize production vendor spend.
 
 ## 12. User decision
 
-- [ ] Approve as written
+- [x] Approve by delegation (board Q1, recorded in master §37)
 - [ ] Approve with changes (record them below)
 - [ ] Reject and request another option
 
-**User decision/date:** _Pending_
+**User decision/date:** Approved by delegation, 2026-09-13. This corrects the
+outdated pending wording; it does not claim a new user decision.
 
-**Requested changes:** _None recorded_
+**Requested changes:** Claude's PR #2 review requests the approval-status correction
+and carries four additional schema requirements into FND-005. Vendor spending,
+historical publication and the Q15 content-directory migration remain separate.
