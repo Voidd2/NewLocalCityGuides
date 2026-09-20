@@ -8,6 +8,7 @@ import { locales } from "@/i18n/config";
 import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { AuthProvider } from "@/lib/auth-context";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -97,9 +98,11 @@ export default async function LocaleLayout({
       </head>
       <body className="min-h-screen bg-warm-50 pb-16 md:pb-0">
         <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main>{children}</main>
-          <BottomNav />
+          <AuthProvider>
+            <Header />
+            <main>{children}</main>
+            <BottomNav />
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

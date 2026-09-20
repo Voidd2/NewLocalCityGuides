@@ -1,33 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
-
-function useHasPaid(): boolean {
-  const [hasPaid, setHasPaid] = useState(false);
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("ylcg_user");
-      if (raw) {
-        const user = JSON.parse(raw);
-        if (user?.hasPaid === true) {
-          setHasPaid(true);
-        }
-      }
-    } catch {
-      // ignore parse errors
-    }
-  }, []);
-
-  return hasPaid;
-}
+import { useAuth } from "@/lib/auth-context";
 
 export function RoutesOverview() {
   const t = useTranslations("routes");
-  const hasPaid = useHasPaid();
+  const { hasPaid, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[40vh]">
+        <div className="animate-pulse text-gray-400">Laden...</div>
+      </div>
+    );
+  }
 
   return (
     <div>

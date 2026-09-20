@@ -1,32 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { RouteData } from "@/data/routes";
 import { getLocationById } from "@/data/locations";
+import { useAuth } from "@/lib/auth-context";
 
 const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
-
-function useHasPaid(): boolean {
-  const [hasPaid, setHasPaid] = useState(false);
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("ylcg_user");
-      if (raw) {
-        const user = JSON.parse(raw);
-        if (user?.hasPaid === true) {
-          setHasPaid(true);
-        }
-      }
-    } catch {
-      // ignore parse errors
-    }
-  }, []);
-
-  return hasPaid;
-}
 
 const tabLabels: Record<(typeof tabs)[number], string> = {
   overview: "Overzicht",
@@ -38,11 +19,19 @@ const tabLabels: Record<(typeof tabs)[number], string> = {
 export function RouteDetail({ route }: { route: RouteData }) {
   const t = useTranslations("routes");
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("overview");
-  const hasPaid = useHasPaid();
+  const { hasPaid, isLoading } = useAuth();
 
   const routeLocations = route.locationIds
     .map(getLocationById)
     .filter(Boolean);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[40vh]">
+        <div className="animate-pulse text-gray-400">Laden...</div>
+      </div>
+    );
+  }
 
   const content = (
     <div>

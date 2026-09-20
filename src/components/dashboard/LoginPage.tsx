@@ -3,43 +3,27 @@
 import { useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { TEST_CREDENTIALS } from "@/lib/auth";
+import { useAuth } from "@/lib/auth-context";
 
 export function LoginPage() {
   const router = useRouter();
+  const { login, isLoggedIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showCredentials, setShowCredentials] = useState(false);
 
+  if (isLoggedIn) {
+    router.push("/dashboard");
+    return null;
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (
-      email === TEST_CREDENTIALS.paid.email &&
-      password === TEST_CREDENTIALS.paid.password
-    ) {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("ylcg_user", JSON.stringify({
-          email,
-          name: "Test Gebruiker",
-          hasPaid: true,
-          city: "leiden",
-        }));
-      }
-      router.push("/dashboard");
-    } else if (
-      email === TEST_CREDENTIALS.free.email &&
-      password === TEST_CREDENTIALS.free.password
-    ) {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("ylcg_user", JSON.stringify({
-          email,
-          name: "Gratis Gebruiker",
-          hasPaid: false,
-          city: "leiden",
-        }));
-      }
+    const result = login(email, password);
+    if (result) {
       router.push("/dashboard");
     } else {
       setError("Onjuiste inloggegevens. Gebruik het testaccount hieronder.");

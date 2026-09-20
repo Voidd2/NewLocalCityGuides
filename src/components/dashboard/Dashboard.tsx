@@ -1,41 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
 import { locations } from "@/data/locations";
-
-interface User {
-  email: string;
-  name: string;
-  hasPaid: boolean;
-  city: string;
-}
+import { useAuth } from "@/lib/auth-context";
 
 export function Dashboard() {
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
+  const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("ylcg_user");
-      if (!stored) {
-        router.push("/login");
-        return;
-      }
-      setUser(JSON.parse(stored));
-    } catch {
+    if (!isLoading && !isLoggedIn) {
       router.push("/login");
     }
-  }, [router]);
+  }, [isLoading, isLoggedIn, router]);
 
   function handleLogout() {
-    localStorage.removeItem("ylcg_user");
+    logout();
     router.push("/");
   }
 
-  if (!user) {
+  if (isLoading || !user) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="animate-pulse text-gray-400">Laden...</div>
@@ -58,7 +45,7 @@ export function Dashboard() {
         </button>
       </div>
 
-      {user.hasPaid ? (
+      {hasPaid ? (
         <>
           <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-center gap-3">
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-green-600 shrink-0">
@@ -84,7 +71,7 @@ export function Dashboard() {
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-navy-800 text-sm">{route.title}</h3>
                   <p className="text-xs text-gray-500">{route.subtitle}</p>
-                  <p className="text-xs text-gray-400 mt-1">{route.stops} stops - {route.duration} uur</p>
+                  <p className="text-xs text-gray-400 mt-1">{route.stops} stops - {route.distance}</p>
                 </div>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-500 shrink-0">
                   <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />

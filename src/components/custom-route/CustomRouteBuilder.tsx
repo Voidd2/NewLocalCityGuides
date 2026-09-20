@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { locations, type LocationData } from "@/data/locations";
+import { useAuth } from "@/lib/auth-context";
 
 function optimizeOrder(selected: LocationData[]): LocationData[] {
   if (selected.length <= 2) return selected;
@@ -28,6 +29,7 @@ function optimizeOrder(selected: LocationData[]): LocationData[] {
 
 export function CustomRouteBuilder() {
   const t = useTranslations("routes");
+  const { hasPaid, isLoading } = useAuth();
   const [selected, setSelected] = useState<string[]>([]);
 
   const toggle = useCallback((id: string) => {
@@ -45,6 +47,37 @@ export function CustomRouteBuilder() {
   const mapsUrl = orderedRoute.length >= 2
     ? `https://www.google.com/maps/dir/${orderedRoute.map((l) => encodeURIComponent(l.name + ", Leiden")).join("/")}`
     : null;
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[40vh]">
+        <div className="animate-pulse text-gray-400">Laden...</div>
+      </div>
+    );
+  }
+
+  if (!hasPaid) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center max-w-md mx-auto">
+          <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-navy-800 mx-auto mb-3" stroke="currentColor" strokeWidth="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0110 0v4" />
+          </svg>
+          <h2 className="text-lg font-bold text-navy-800 mb-2">Maak je eigen route</h2>
+          <p className="text-sm text-gray-600 mb-4">
+            Koop het Leiden pakket om je eigen route samen te stellen met al onze locaties.
+          </p>
+          <Link
+            href="/pricing"
+            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          >
+            Bekijk de prijzen
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
