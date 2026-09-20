@@ -39,7 +39,7 @@ Date: 2026-09-17
 - [ ] **PWA support**: Service worker, offline capability, app manifest
 - [ ] **Favicon and app icons**: Replace default Next.js favicon with brand icon
 - [ ] **Loading states**: Skeleton loaders for routes, locations, map
-- [ ] **Error pages**: Custom 404 and 500 pages matching design language
+- [x] **Error pages**: Custom 404 page matching design language (localized NL/EN/DE, plus root fallback)
 - [ ] **Cookie consent**: GDPR-compliant cookie banner (NL/DE especially)
 
 ## Todo - Backend
@@ -63,10 +63,10 @@ Date: 2026-09-17
 
 ## Todo - SEO & Marketing
 
-- [ ] **Sitemap.xml**: Auto-generated from routes
-- [ ] **robots.txt**: Proper crawl directives
-- [ ] **Structured data**: JSON-LD for TouristAttraction, City, Route
-- [ ] **Page-level SEO titles**: Unique titles per page per language (currently using default)
+- [x] **Sitemap.xml**: Auto-generated from routes and locations, all 3 locales with hreflang alternates
+- [x] **robots.txt**: Auto-generated, disallows /dashboard and /login, points to sitemap
+- [x] **Structured data**: JSON-LD (TouristTrip for routes, TouristAttraction + City for locations)
+- [x] **Page-level SEO titles**: Route and location detail pages now have unique generateMetadata
 - [ ] **Internal linking**: Cross-link routes, locations, about page
 - [ ] **Blog/content pages**: SEO landing pages for "Leiden wandeling", "Leiden bezienswaardigheden", etc.
 - [ ] **Analytics**: Google Analytics 4 or Plausible

@@ -21,7 +21,7 @@ export function RoutesOverview() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-between">
               <div>
                 <p className="text-sm">Leiden pakket vanaf <span className="font-bold text-orange-400">&euro;5,99 p.p.</span></p>
-                <p className="text-xs text-white/60 mt-0.5">Toegang tot alle routes in Leiden, inclusief maak-je-eigen-route, interactieve video's en meer.</p>
+                <p className="text-xs text-white/60 mt-0.5">Toegang tot alle routes in Leiden, inclusief maak-je-eigen-route, interactieve video&apos;s en meer.</p>
               </div>
               <Link
                 href="/pricing"

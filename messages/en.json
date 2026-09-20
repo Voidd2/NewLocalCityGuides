@@ -106,6 +106,12 @@
     "extraDevice": "Extra device",
     "total": "Total"
   },
+  "notFound": {
+    "title": "This page doesn't exist",
+    "description": "The page you're looking for has moved, been removed, or never existed. Maybe you'll find it through the links below.",
+    "backHome": "Back to home",
+    "viewRoutes": "View all routes"
+  },
   "footer": {
     "mission": "Our mission",
     "contact": "Contact",

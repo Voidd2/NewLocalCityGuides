@@ -106,6 +106,12 @@
     "extraDevice": "Zusatzgerat",
     "total": "Gesamt"
   },
+  "notFound": {
+    "title": "Diese Seite existiert nicht",
+    "description": "Die gesuchte Seite wurde verschoben, entfernt oder hat nie existiert. Vielleicht findest du sie über die untenstehenden Links.",
+    "backHome": "Zurück zur Startseite",
+    "viewRoutes": "Alle Routen ansehen"
+  },
   "footer": {
     "mission": "Unsere Mission",
     "contact": "Kontakt",

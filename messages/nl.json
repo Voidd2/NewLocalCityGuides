@@ -106,6 +106,12 @@
     "extraDevice": "Extra apparaat",
     "total": "Totaal"
   },
+  "notFound": {
+    "title": "Deze pagina bestaat niet",
+    "description": "De pagina die je zoekt is verplaatst, verwijderd of heeft nooit bestaan. Misschien vind je hem wel via onderstaande links.",
+    "backHome": "Terug naar home",
+    "viewRoutes": "Bekijk alle routes"
+  },
   "footer": {
     "mission": "Onze missie",
     "contact": "Contact",
