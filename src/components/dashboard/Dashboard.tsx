@@ -91,13 +91,12 @@ export function Dashboard() {
           <h2 className="text-lg font-bold text-navy-800 mb-4">Alle locaties</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
             {locations.map((loc) => (
-              <div
+              <Link
                 key={loc.id}
-                className="bg-white rounded-xl border border-gray-200 overflow-hidden"
+                href={`/locations/${loc.slug}`}
+                className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <div className="h-24 bg-gray-200">
-                  {/* {loc.image} */}
-                </div>
+                <div className="h-24 bg-gray-200" />
                 <div className="p-3">
                   <h4 className="font-semibold text-navy-800 text-xs leading-tight">{loc.name}</h4>
                   <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">{loc.shortDescription}</p>
@@ -110,7 +109,7 @@ export function Dashboard() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </>
