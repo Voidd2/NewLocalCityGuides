@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 
 const features = [
   {
@@ -57,17 +58,19 @@ export function FeaturesBar() {
 
   return (
     <section className="bg-white border-y border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 py-5">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex justify-between overflow-x-auto gap-4 md:gap-8">
-          {features.map((f) => (
-            <div key={f.key} className="flex flex-col items-center gap-1.5 min-w-[72px] text-center">
-              <div className="text-navy-800">
-                {f.icon}
+          {features.map((f, i) => (
+            <AnimateOnScroll key={f.key} delay={i * 80} animation="fade-up">
+              <div className="flex flex-col items-center gap-2 min-w-[72px] text-center group cursor-default">
+                <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-navy-800 group-hover:bg-orange-100 group-hover:text-orange-600 group-hover:scale-110 transition-all duration-300">
+                  {f.icon}
+                </div>
+                <span className="text-[11px] md:text-xs text-gray-600 font-medium leading-tight whitespace-nowrap">
+                  {t(f.key)}
+                </span>
               </div>
-              <span className="text-[11px] md:text-xs text-gray-600 font-medium leading-tight whitespace-nowrap">
-                {t(f.key)}
-              </span>
-            </div>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>

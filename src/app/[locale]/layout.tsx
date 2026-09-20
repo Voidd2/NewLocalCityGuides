@@ -100,7 +100,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <Header />
-            <main>{children}</main>
+            <main className="pt-16">{children}</main>
             <BottomNav />
           </AuthProvider>
         </NextIntlClientProvider>
