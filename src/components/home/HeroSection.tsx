@@ -7,7 +7,7 @@ export function HeroSection() {
   const t = useTranslations("home");
 
   return (
-    <section className="relative min-h-[520px] md:min-h-[600px] overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* 10001 - hero foto van Leiden binnenstad, grachten met historische gebouwen */}
       <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/20 to-navy-900/80" />
       <div
@@ -18,48 +18,71 @@ export function HeroSection() {
       />
       <div className="absolute inset-0 bg-navy-800/30" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 pt-8 pb-12 flex flex-col min-h-[520px] md:min-h-[600px]">
-        <div className="mb-4">
-          <span className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-            Leiden
-          </span>
-        </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 pt-10 pb-8 flex flex-col min-h-[400px] md:min-h-[480px]">
+        <div className="flex-1 flex flex-col items-center justify-center text-center max-w-lg mx-auto">
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
+            <svg viewBox="0 0 24 24" fill="none" className="w-9 h-9 text-white" stroke="currentColor" strokeWidth="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </div>
 
-        <div className="flex-1 flex flex-col justify-center max-w-lg">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4">
-            {t("heroTitle")}
-            <br />
-            <span className="text-orange-500">{t("heroSubtitle")}</span>
+          <p className="text-white/60 text-xs tracking-[0.25em] uppercase mb-2">YourLocalCityGuide</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-2">
+            LEIDEN
           </h1>
-
-          <p className="text-white/90 text-base md:text-lg leading-relaxed mb-6 max-w-md">
+          <p className="text-hand text-orange-300 text-lg md:text-xl -rotate-1 mb-6">
+            More than a city. A story.
+          </p>
+          <p className="text-white/80 text-sm mb-8">
             {t("heroDescription")}
           </p>
+        </div>
 
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/routes"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition-colors text-sm"
-            >
-              {t("heroTitle") === "Ontdek Leiden" ? "Bekijk tours" : t("heroTitle") === "Discover Leiden" ? "View tours" : "Touren ansehen"}
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+        <div className="grid grid-cols-3 gap-3 max-w-md mx-auto w-full">
+          <Link
+            href="/map"
+            className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+          >
+            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                <circle cx="12" cy="9" r="2.5" />
               </svg>
-            </Link>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-navy-800 font-semibold px-6 py-3 rounded-full transition-colors text-sm"
-            >
-              Ontdek Leiden
-            </Link>
-          </div>
-        </div>
+            </div>
+            <span className="text-white text-xs font-semibold text-center leading-tight">Explore near me</span>
+            <span className="text-white/50 text-[10px] text-center">See what&apos;s around you</span>
+          </Link>
 
-        <div className="hidden md:block absolute right-8 top-1/3 text-hand text-white/80 text-xl -rotate-6 max-w-[180px] leading-snug">
-          Echte verhalen.<br />Op echte plekken.
-        </div>
-        <div className="hidden md:block absolute right-12 top-16 text-hand text-orange-300 text-lg rotate-3">
-          Alle routes inbegrepen!
+          <Link
+            href="/routes"
+            className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+          >
+            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                <path d="M9 18l6-6-6-6" />
+                <path d="M4 4v16" strokeLinecap="round" />
+                <path d="M20 4v16" strokeLinecap="round" />
+              </svg>
+            </div>
+            <span className="text-white text-xs font-semibold text-center leading-tight">Choose a route</span>
+            <span className="text-white/50 text-[10px] text-center">Follow a story</span>
+          </Link>
+
+          <Link
+            href="/map"
+            className="flex flex-col items-center gap-2 bg-white/15 backdrop-blur-sm rounded-xl p-4 hover:bg-white/25 transition-colors"
+          >
+            <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                <line x1="8" y1="2" x2="8" y2="18" />
+                <line x1="16" y1="6" x2="16" y2="22" />
+              </svg>
+            </div>
+            <span className="text-white text-xs font-semibold text-center leading-tight">Open map</span>
+            <span className="text-white/50 text-[10px] text-center">Explore freely</span>
+          </Link>
         </div>
       </div>
     </section>
