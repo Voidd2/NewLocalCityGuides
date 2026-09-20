@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locations } from "@/data/locations";
 import { LocationExperience } from "@/components/location/LocationExperience";
+import { PaywallGuard } from "@/components/auth/PaywallGuard";
 import { Footer } from "@/components/layout/Footer";
 
 export function generateStaticParams() {
@@ -21,7 +22,9 @@ export default async function LocationPage({
 
   return (
     <>
-      <LocationExperience location={location} />
+      <PaywallGuard>
+        <LocationExperience location={location} />
+      </PaywallGuard>
       <Footer />
     </>
   );

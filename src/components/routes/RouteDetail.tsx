@@ -302,70 +302,44 @@ export function RouteDetail({ route }: { route: RouteData }) {
         </div>
       </section>
 
-      <section className="bg-orange-50 border-t border-orange-100">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <h3 className="text-sm font-bold text-navy-800 mb-1">Inbegrepen in het Leiden pakket</h3>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-600 mt-3 mb-4">
-            {[
-              "Alle routes in Leiden",
-              "Interactieve video's op locatie",
-              "Maak je eigen route",
-              "Verborgen parels en lokale tips",
-              "Op eigen tempo",
-              "Levenslange toegang",
-              "Leuk met kinderen",
-              "Regelmatig nieuwe routes",
-            ].map((item) => (
-              <span key={item} className="flex items-center gap-1">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-600">
-                  <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                </svg>
-                {item}
-              </span>
-            ))}
+      {!hasPaid && (
+        <section className="bg-orange-50 border-t border-orange-100">
+          <div className="max-w-7xl mx-auto px-4 py-8">
+            <h3 className="text-sm font-bold text-navy-800 mb-1">Inbegrepen in het Leiden pakket</h3>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-600 mt-3 mb-4">
+              {[
+                "Alle routes in Leiden",
+                "Interactieve video's op locatie",
+                "Maak je eigen route",
+                "Verborgen parels en lokale tips",
+                "Op eigen tempo",
+                "Levenslange toegang",
+                "Leuk met kinderen",
+                "Regelmatig nieuwe routes",
+              ].map((item) => (
+                <span key={item} className="flex items-center gap-1">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-600">
+                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="text-3xl font-extrabold text-orange-500">&euro;5,99</span>
+              <span className="text-sm text-gray-500">per persoon</span>
+              <Link
+                href="/pricing"
+                className="ml-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+              >
+                Bekijk prijzen
+              </Link>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-3xl font-extrabold text-orange-500">&euro;5,99</span>
-            <span className="text-sm text-gray-500">per persoon</span>
-            <Link
-              href="/pricing"
-              className="ml-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-            >
-              Bekijk prijzen
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
-
-  if (!hasPaid) {
-    return (
-      <div className="relative">
-        <div className="blur-[6px] pointer-events-none select-none">
-          {content}
-        </div>
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 text-center shadow-xl max-w-sm mx-4">
-            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-navy-800 mx-auto mb-3" stroke="currentColor" strokeWidth="1.5">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0110 0v4" />
-            </svg>
-            <h2 className="text-lg font-bold text-navy-800 mb-2">Ontdek deze route</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Krijg toegang tot alle routes, interactieve video&apos;s en meer met het Leiden pakket.
-            </p>
-            <Link
-              href="/pricing"
-              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-            >
-              Bekijk de prijzen
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return content;
 }

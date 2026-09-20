@@ -32,22 +32,35 @@ export function RoutesOverview() {
               Een pakket. Alle routes. Eindeloos ontdekken.
             </p>
 
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-between">
-              <div>
-                <p className="text-sm">Leiden pakket vanaf <span className="font-bold text-orange-400">&euro;5,99 p.p.</span></p>
-                <p className="text-xs text-white/60 mt-0.5">Toegang tot alle routes in Leiden, inclusief maak-je-eigen-route, interactieve video&apos;s en meer.</p>
+            {!hasPaid ? (
+              <>
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm">Leiden pakket vanaf <span className="font-bold text-orange-400">&euro;5,99 p.p.</span></p>
+                    <p className="text-xs text-white/60 mt-0.5">Toegang tot alle routes in Leiden, inclusief maak-je-eigen-route, interactieve video&apos;s en meer.</p>
+                  </div>
+                  <Link
+                    href="/pricing"
+                    className="shrink-0 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
+                  >
+                    Bekijk prijzen
+                  </Link>
+                </div>
+                <p className="text-hand text-orange-300 text-lg mt-4 -rotate-1">
+                  Alle routes inbegrepen!
+                </p>
+              </>
+            ) : (
+              <div className="bg-green-500/20 backdrop-blur-sm rounded-xl p-4 flex items-center gap-3">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-green-400 shrink-0">
+                  <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                </svg>
+                <div>
+                  <p className="text-sm font-medium">Leiden pakket actief</p>
+                  <p className="text-xs text-white/60 mt-0.5">Je hebt volledige toegang tot alle routes en locaties.</p>
+                </div>
               </div>
-              <Link
-                href="/pricing"
-                className="shrink-0 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
-              >
-                Bekijk prijzen
-              </Link>
-            </div>
-
-            <p className="text-hand text-orange-300 text-lg mt-4 -rotate-1">
-              Alle routes inbegrepen!
-            </p>
+            )}
           </div>
         </div>
       </section>
@@ -153,34 +166,36 @@ export function RoutesOverview() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 py-6">
-        <Link
-          href="/routes/custom"
-          className="block"
-        >
-          <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-1">
-                <h3 className="font-bold text-navy-800">Maak je eigen route</h3>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase">Inbegrepen</span>
+      {hasPaid && (
+        <section className="max-w-7xl mx-auto px-4 py-6">
+          <Link
+            href="/routes/custom"
+            className="block"
+          >
+            <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
               </div>
-              <p className="text-sm text-gray-600">{t("customRouteDesc")}</p>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <h3 className="font-bold text-navy-800">Maak je eigen route</h3>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase">Inbegrepen</span>
+                </div>
+                <p className="text-sm text-gray-600">{t("customRouteDesc")}</p>
+              </div>
+              <span className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-3 rounded-full transition-colors text-sm shrink-0">
+                Start met samenstellen
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                </svg>
+              </span>
             </div>
-            <span className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-3 rounded-full transition-colors text-sm shrink-0">
-              Start met samenstellen
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-              </svg>
-            </span>
-          </div>
-        </Link>
-      </section>
+          </Link>
+        </section>
+      )}
 
       <section className="bg-navy-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">

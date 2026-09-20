@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routes } from "@/data/routes";
 import { RouteDetail } from "@/components/routes/RouteDetail";
+import { PaywallGuard } from "@/components/auth/PaywallGuard";
 import { Footer } from "@/components/layout/Footer";
 
 export function generateStaticParams() {
@@ -21,7 +22,9 @@ export default async function RouteDetailPage({
 
   return (
     <>
-      <RouteDetail route={route} />
+      <PaywallGuard>
+        <RouteDetail route={route} />
+      </PaywallGuard>
       <Footer />
     </>
   );

@@ -1,12 +1,12 @@
 import { setRequestLocale } from "next-intl/server";
-import { CustomRouteBuilder } from "@/components/custom-route/CustomRouteBuilder";
+import { SavedRouteWalker } from "@/components/my-routes/SavedRouteWalker";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
 import { Footer } from "@/components/layout/Footer";
 
-export default async function CustomRoutePage({
+export default async function SavedRoutePage({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string; id: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -14,7 +14,7 @@ export default async function CustomRoutePage({
   return (
     <>
       <PaywallGuard>
-        <CustomRouteBuilder />
+        <SavedRouteWalker />
       </PaywallGuard>
       <Footer />
     </>

@@ -2,9 +2,9 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { locations, type LocationData } from "@/data/locations";
-import { useAuth } from "@/lib/auth-context";
+import { saveRoute } from "@/lib/saved-routes";
 
 function optimizeOrder(selected: LocationData[]): LocationData[] {
   if (selected.length <= 2) return selected;
@@ -164,9 +164,10 @@ function LocationCard({
 
 export function CustomRouteBuilder() {
   const t = useTranslations("routes");
-  const { hasPaid, isLoading } = useAuth();
+  const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [routeName, setRouteName] = useState("");
 
   const toggle = useCallback((id: string) => {
     setSelected((prev) =>
@@ -184,40 +185,12 @@ export function CustomRouteBuilder() {
 
   const orderedRoute = optimizeOrder(selectedLocations);
 
-  const mapsUrl = orderedRoute.length >= 2
-    ? `https://www.google.com/maps/dir/${orderedRoute.map((l) => encodeURIComponent(l.name + ", Leiden")).join("/")}`
-    : null;
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
-      </div>
-    );
-  }
-
-  if (!hasPaid) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center max-w-md mx-auto">
-          <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-navy-800 mx-auto mb-3" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0110 0v4" />
-          </svg>
-          <h2 className="text-lg font-bold text-navy-800 mb-2">Maak je eigen route</h2>
-          <p className="text-sm text-gray-600 mb-4">
-            Koop het Leiden pakket om je eigen route samen te stellen met al onze locaties.
-          </p>
-          <Link
-            href="/pricing"
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-          >
-            Bekijk de prijzen
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  const handleSave = () => {
+    if (orderedRoute.length < 2) return;
+    const name = routeName.trim() || `Mijn route (${orderedRoute.length} stops)`;
+    const saved = saveRoute(name, orderedRoute.map((l) => l.id));
+    router.push(`/my-routes/${saved.id}`);
+  };
 
   return (
     <div>
@@ -271,7 +244,7 @@ export function CustomRouteBuilder() {
                     <circle cx="12" cy="9" r="2.5" />
                   </svg>
                   <p className="text-sm text-gray-400">
-                    Kies minimaal 2 locaties om je route te zien
+                    Kies minimaal 2 locaties om je route te bewaren
                   </p>
                 </div>
               ) : (
@@ -314,29 +287,29 @@ export function CustomRouteBuilder() {
                     We hebben de slimste volgorde berekend zodat je zo min mogelijk heen en weer loopt.
                   </div>
 
-                  {mapsUrl && (
-                    <a
-                      href={mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <input
+                    type="text"
+                    placeholder="Geef je route een naam (optioneel)"
+                    value={routeName}
+                    onChange={(e) => setRouteName(e.target.value)}
+                    className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm mb-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
+                  />
+
+                  {orderedRoute.length >= 2 ? (
+                    <button
+                      onClick={handleSave}
                       className="block w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-center transition-colors text-sm"
                     >
-                      {t("showRoute")}
+                      Bewaar route
                       <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 inline-block ml-1">
                         <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                       </svg>
-                    </a>
-                  )}
-
-                  {orderedRoute.length === 1 && (
-                    <p className="text-xs text-orange-500 text-center mt-2 font-medium">
-                      Kies nog minimaal 1 locatie
+                    </button>
+                  ) : (
+                    <p className="text-xs text-orange-500 text-center font-medium">
+                      Kies nog minimaal {2 - orderedRoute.length} locatie{orderedRoute.length === 0 ? "s" : ""}
                     </p>
                   )}
-
-                  <p className="text-[10px] text-gray-400 text-center mt-2">
-                    Opent in Google Maps of Apple Maps
-                  </p>
                 </>
               )}
             </div>

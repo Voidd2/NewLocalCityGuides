@@ -1,21 +1,29 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
-import { locations } from "@/data/locations";
+import { locations, getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
+import { getSavedRoutes, deleteSavedRoute, type SavedRoute } from "@/lib/saved-routes";
 
 export function Dashboard() {
   const router = useRouter();
   const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
+  const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {
       router.push("/login");
     }
   }, [isLoading, isLoggedIn, router]);
+
+  useEffect(() => {
+    if (hasPaid) {
+      setSavedRoutes(getSavedRoutes());
+    }
+  }, [hasPaid]);
 
   function handleLogout() {
     logout();
@@ -81,6 +89,47 @@ export function Dashboard() {
               </Link>
             ))}
           </div>
+
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-navy-800">Mijn routes</h2>
+            <Link href="/my-routes" className="text-sm text-orange-500 font-medium hover:text-orange-600">
+              Bekijk alle
+            </Link>
+          </div>
+          {savedRoutes.length > 0 ? (
+            <div className="space-y-3 mb-8">
+              {savedRoutes.slice(0, 3).map((sr) => {
+                const locs = sr.locationIds.map(getLocationById).filter(Boolean);
+                const progress = sr.arrivedLocationIds.length;
+                const total = sr.locationIds.length;
+                const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
+                return (
+                  <Link
+                    key={sr.id}
+                    href={`/my-routes/${sr.id}`}
+                    className="block bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md transition-shadow"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-navy-800 text-sm">{sr.name}</h3>
+                      <span className="text-xs text-gray-400">{progress}/{total} bezocht</span>
+                    </div>
+                    <div className="w-full bg-gray-100 rounded-full h-1.5 mb-2">
+                      <div className="bg-orange-500 h-1.5 rounded-full transition-all" style={{ width: `${pct}%` }} />
+                    </div>
+                    <div className="flex gap-1.5">
+                      {locs.slice(0, 5).map((loc) => (
+                        <div key={loc!.id} className="w-8 h-8 rounded-md bg-gray-200 shrink-0 overflow-hidden">
+                          {loc!.image && <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />}
+                        </div>
+                      ))}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-400 mb-8">Nog geen eigen routes. Stel je eerste samen!</p>
+          )}
 
           <Link
             href="/routes/custom"
