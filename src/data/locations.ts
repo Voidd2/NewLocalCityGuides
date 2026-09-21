@@ -6,6 +6,7 @@ export interface LocationData {
   mainTheme: string;
   categories: string[];
   image: string | null;
+  coords: { lat: number; lng: number } | null;
 }
 
 export const locations: LocationData[] = [
@@ -17,6 +18,7 @@ export const locations: LocationData[] = [
     mainTheme: "Origins of the city",
     categories: ["origins", "fortification"],
     image: "/images/locations/10020-de-burcht-leiden.jpg",
+    coords: { lat: 52.1590, lng: 4.4926 },
   },
   {
     id: "L002",
@@ -26,6 +28,7 @@ export const locations: LocationData[] = [
     mainTheme: "Everyday work and food",
     categories: ["trade", "market"],
     image: "/images/locations/10021-vismarkt-leiden.jpg",
+    coords: { lat: 52.1583, lng: 4.4928 },
   },
   {
     id: "L003",
@@ -35,6 +38,7 @@ export const locations: LocationData[] = [
     mainTheme: "Grain and trade",
     categories: ["trade", "architecture"],
     image: "/images/locations/10022-koornbrug-leiden.jpg",
+    coords: { lat: 52.1581, lng: 4.4919 },
   },
   {
     id: "L004",
@@ -44,6 +48,7 @@ export const locations: LocationData[] = [
     mainTheme: "Medieval justice",
     categories: ["medieval", "justice"],
     image: null,
+    coords: { lat: 52.1585, lng: 4.4900 },
   },
   {
     id: "L005",
@@ -53,6 +58,7 @@ export const locations: LocationData[] = [
     mainTheme: "Justice and punishment",
     categories: ["justice", "power"],
     image: "/images/locations/10024-gravensteen-leiden.jpg",
+    coords: { lat: 52.1581, lng: 4.4869 },
   },
   {
     id: "L006",
@@ -62,6 +68,7 @@ export const locations: LocationData[] = [
     mainTheme: "Religion and civic memory",
     categories: ["religion", "burial"],
     image: "/images/locations/10025-pieterskerk-leiden.jpg",
+    coords: { lat: 52.1577, lng: 4.4886 },
   },
   {
     id: "L007",
@@ -71,6 +78,7 @@ export const locations: LocationData[] = [
     mainTheme: "The Pilgrims' eleven years in Leiden",
     categories: ["migration", "religion"],
     image: null,
+    coords: { lat: 52.1574, lng: 4.4873 },
   },
   {
     id: "L008",
@@ -80,6 +88,7 @@ export const locations: LocationData[] = [
     mainTheme: "Charity and community",
     categories: ["charity", "social-history"],
     image: "/images/locations/10027-jean-pesijnhofje.jpg",
+    coords: { lat: 52.1572, lng: 4.4873 },
   },
   {
     id: "L009",
@@ -89,6 +98,7 @@ export const locations: LocationData[] = [
     mainTheme: "A city centre erased in one second",
     categories: ["disaster"],
     image: null,
+    coords: { lat: 52.1553, lng: 4.4906 },
   },
   {
     id: "L010",
@@ -98,6 +108,7 @@ export const locations: LocationData[] = [
     mainTheme: "Plants, science and empire",
     categories: ["science", "botany"],
     image: "/images/locations/10029-hortus-botanicus-leiden.jpg",
+    coords: { lat: 52.1571, lng: 4.4845 },
   },
   {
     id: "L011",
@@ -107,6 +118,7 @@ export const locations: LocationData[] = [
     mainTheme: "Origins of a painter",
     categories: ["art", "rembrandt"],
     image: null,
+    coords: { lat: 52.1606, lng: 4.4823 },
   },
   {
     id: "L012",
@@ -116,6 +128,7 @@ export const locations: LocationData[] = [
     mainTheme: "Starvation turned into celebration",
     categories: ["siege", "tradition"],
     image: null,
+    coords: { lat: 52.1581, lng: 4.4942 },
   },
   {
     id: "L013",
@@ -125,6 +138,7 @@ export const locations: LocationData[] = [
     mainTheme: "Cloth industry at family scale",
     categories: ["textiles", "labour"],
     image: null,
+    coords: { lat: 52.1600, lng: 4.4983 },
   },
   {
     id: "L014",
@@ -134,6 +148,7 @@ export const locations: LocationData[] = [
     mainTheme: "One man, one lecture, one decision",
     categories: ["wwii", "resistance"],
     image: "/images/locations/10033-academiegebouw-leiden.jpg",
+    coords: { lat: 52.1569, lng: 4.4856 },
   },
 ];
 
