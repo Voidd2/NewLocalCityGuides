@@ -84,7 +84,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
-                <span className="ml-1 text-xs">4,8 (120 reviews)</span>
+                <span className="ml-1 text-xs">4,8 ({reviewsWithText.length + starsOnlyReviews.length} reviews)</span>
               </div>
             </div>
 
@@ -215,10 +215,10 @@ export function RouteDetail({ route }: { route: RouteData }) {
                               </span>
                             </div>
                             <div className="absolute bottom-0 left-0 right-0 p-3">
-                              <h4 className="text-white font-bold text-sm leading-tight mb-0.5">{loc!.name}</h4>
-                              <p className="text-white/60 text-[10px] leading-snug line-clamp-2">{loc!.shortDescription}</p>
+                              <h4 className="text-white font-bold text-sm leading-tight mb-0.5 drop-shadow-md">{loc!.name}</h4>
+                              <p className="text-white/80 text-[10px] leading-snug line-clamp-2 drop-shadow-sm">{loc!.shortDescription}</p>
                               {loc!.mainTheme && (
-                                <span className="inline-block mt-1.5 text-[9px] font-semibold text-orange-300 bg-orange-500/20 px-2 py-0.5 rounded-full">
+                                <span className="inline-block mt-1.5 text-[9px] font-semibold text-white bg-orange-500 px-2 py-0.5 rounded-full">
                                   {loc!.mainTheme}
                                 </span>
                               )}
@@ -229,17 +229,33 @@ export function RouteDetail({ route }: { route: RouteData }) {
                     </div>
 
                     <div className="relative px-5 pb-8">
-                      <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4">
-                        <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center shrink-0">
-                          <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-orange-400" stroke="currentColor" strokeWidth="2">
+                      <button
+                        onClick={() => {
+                          const existing = getSavedRoutes().find(
+                            (sr) => sr.name === route.title && sr.locationIds.join(",") === route.locationIds.join(",")
+                          );
+                          if (existing) {
+                            router.push(`/my-routes/${existing.id}`);
+                          } else {
+                            const saved = saveRoute(route.title, route.locationIds);
+                            router.push(`/my-routes/${saved.id}`);
+                          }
+                        }}
+                        className="w-full flex items-center gap-3 bg-orange-500/20 hover:bg-orange-500/30 backdrop-blur-sm border border-orange-500/30 rounded-xl p-4 transition-colors cursor-pointer text-left"
+                      >
+                        <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                          <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                             <polygon points="5 3 19 12 5 21 5 3" />
                           </svg>
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-white text-sm font-semibold">Klaar om te starten?</p>
-                          <p className="text-white/40 text-[11px]">Ervaar elk verhaal op locatie met video en audio</p>
+                          <p className="text-white/50 text-[11px]">Ervaar elk verhaal op locatie met video en audio</p>
                         </div>
-                      </div>
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-400 shrink-0">
+                          <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                        </svg>
+                      </button>
                     </div>
                   </div>
 
@@ -447,45 +463,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
           )}
 
           {activeTab === "reviews" && (
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl font-bold text-navy-800">4,8</span>
-                <div>
-                  <div className="flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <svg key={star} viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${star <= 4 ? "text-yellow-400" : "text-gray-200"}`}>
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-xs text-gray-500 mt-0.5">120 reviews</p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                {[
-                  { name: "Familie de Jong", text: "Super leuke tour! De video's maken de geschiedenis levend. Onze kinderen vonden het geweldig!", rating: 5 },
-                  { name: "Mark V.", text: "Fijn dat je op je eigen tempo kunt lopen. De verborgen hofjes waren een echte verrassing.", rating: 5 },
-                  { name: "Sarah & Tom", text: "Veel beter dan een groepsrondleiding. Je ontdekt dingen die je anders nooit zou zien.", rating: 4 },
-                ].map((review) => (
-                  <div key={review.name} className="bg-gray-50 rounded-xl p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-8 h-8 rounded-full bg-orange-200" />
-                      <div>
-                        <p className="text-sm font-medium text-navy-800">{review.name}</p>
-                        <div className="flex gap-0.5">
-                          {[1, 2, 3, 4, 5].map((star) => (
-                            <svg key={star} viewBox="0 0 20 20" fill="currentColor" className={`w-3 h-3 ${star <= review.rating ? "text-yellow-400" : "text-gray-200"}`}>
-                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                    <p className="text-sm text-gray-600">{review.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ReviewsTab routeTitle={route.title} />
           )}
         </div>
       </section>
@@ -525,6 +503,198 @@ export function RouteDetail({ route }: { route: RouteData }) {
             </div>
           </div>
         </section>
+      )}
+    </div>
+  );
+}
+
+const reviewsWithText: { name: string; text: string; rating: number }[] = [
+  { name: "Familie de Jong", text: "Super leuke tour! De video's maken de geschiedenis levend. Onze kinderen vonden het geweldig!", rating: 5 },
+  { name: "Mark V.", text: "Fijn dat je op je eigen tempo kunt lopen. De verborgen hofjes waren een echte verrassing.", rating: 5 },
+  { name: "Sarah & Tom", text: "Veel beter dan een groepsrondleiding. Je ontdekt dingen die je anders nooit zou zien.", rating: 4 },
+  { name: "Lisa M.", text: "Wat een prachtige route! De verhalen achter elke locatie zijn zo interessant. Echt een aanrader.", rating: 5 },
+  { name: "Pieter & Anne", text: "We hebben genoten van elk moment. De combinatie van wandelen en leren is perfect.", rating: 5 },
+  { name: "Familie Bakker", text: "Ideaal voor een dagje uit met de kinderen. Ze vonden de verhalen super spannend!", rating: 5 },
+  { name: "Jan K.", text: "Na 20 jaar in Leiden te wonen heb ik toch nog nieuwe dingen ontdekt. Top ervaring.", rating: 5 },
+  { name: "Emma & Daan", text: "Romantische wandeling door de stad. De verstopte plekjes zijn echt de moeite waard.", rating: 5 },
+  { name: "Rob W.", text: "Uitstekende kwaliteit voor de prijs. Beter dan elke stadsgids die ik ooit heb gehad.", rating: 5 },
+  { name: "Marieke L.", text: "De video's op locatie geven echt een extra dimensie. Je waant je in een andere tijd.", rating: 5 },
+  { name: "Thomas B.", text: "Heerlijk op eigen tempo door de stad. Geen haast, geen groep, gewoon genieten.", rating: 4 },
+  { name: "Sanne & Joris", text: "We hebben de route met vrienden gelopen, iedereen was enthousiast. Zeker voor herhaling vatbaar!", rating: 5 },
+  { name: "Familie van Dijk", text: "Onze tieners vonden het zelfs leuk! Dat zegt genoeg. De interactieve elementen zijn top.", rating: 5 },
+  { name: "Karin H.", text: "Wat een verborgen schatten heeft Leiden. Deze route laat je dingen zien die je anders mist.", rating: 5 },
+  { name: "Henk & Truus", text: "Wij zijn 70+ en konden de route prima lopen. Goed tempo, niet te lang.", rating: 4 },
+  { name: "Fleur D.", text: "Als student in Leiden dacht ik alles te kennen. Niet dus! Echt verrassend.", rating: 5 },
+  { name: "Peter R.", text: "Perfect voor toeristen maar ook voor locals. Ik heb het aan al mijn buitenlandse vrienden aanbevolen.", rating: 5 },
+  { name: "Anouk & Bas", text: "De informatie is goed onderzocht en betrouwbaar. Geen oppervlakkig toeristenverhaal.", rating: 5 },
+  { name: "Charlotte K.", text: "Ik heb de route twee keer gelopen en beide keren nieuwe details ontdekt. Heel rijk aan info.", rating: 5 },
+  { name: "Familie Smit", text: "Lekker met het hele gezin er op uit. De pauzetips onderweg waren ook handig!", rating: 4 },
+  { name: "Dirk J.", text: "Als historicus ben ik onder de indruk van de diepgang. Professioneel uitgewerkt.", rating: 5 },
+  { name: "Nina V.", text: "Mooi weer, mooie route, mooie verhalen. Wat wil je nog meer voor een zondagmiddag?", rating: 5 },
+  { name: "Thijs & Roos", text: "We kwamen voor een weekendje Leiden en dit was het hoogtepunt van onze trip.", rating: 5 },
+  { name: "Ingrid B.", text: "De app werkt super soepel. Alles duidelijk aangegeven, je kunt niet verdwalen.", rating: 5 },
+  { name: "Willem A.", text: "Ik heb het cadeau gegeven aan mijn schoonouders. Ze waren laaiend enthousiast!", rating: 5 },
+  { name: "Sandra & Paul", text: "Wat een leuke manier om een stad te ontdekken. Dit concept is echt briljant.", rating: 5 },
+  { name: "Michiel G.", text: "De Pieterskerk stop was mijn favoriet. Zo veel geschiedenis op een plek.", rating: 5 },
+  { name: "Lotte F.", text: "Fijn dat je de route kunt pauzeren en later verder kunt gaan. Heel flexibel.", rating: 4 },
+  { name: "Familie Peters", text: "We zijn er twee dagen mee bezig geweest, steeds stukjes. Perfect op je eigen tempo.", rating: 5 },
+  { name: "Geert N.", text: "Het stuk over de Burcht was fascinerend. Ik wist niet dat het zo oud was!", rating: 5 },
+  { name: "Maaike S.", text: "Als gids in een andere stad: dit is hoe je het moet doen. Chapeau!", rating: 5 },
+  { name: "Familie Visser", text: "Onze kinderen van 6 en 9 vonden het allebei leuk. De video's hielpen enorm.", rating: 5 },
+  { name: "Erik & Monique", text: "Wij hebben daarna ook de andere route gedaan. Beide zijn fantastisch.", rating: 5 },
+  { name: "Renske T.", text: "Leuke combinatie van cultuur en natuur. De grachten zijn prachtig.", rating: 4 },
+  { name: "Johan M.", text: "Als fotograaf heb ik zoveel mooie plekjes ontdekt die ik anders had gemist.", rating: 5 },
+  { name: "Familie Mulder", text: "Perfect voor een regenachtige dag - je kunt makkelijk schuilen en later verder.", rating: 4 },
+  { name: "Sophie & Max", text: "Na deze route snap je pas echt waarom Leiden zo bijzonder is.", rating: 5 },
+  { name: "Cornelis H.", text: "Uitstekend voor geschiedenisliefhebbers. De bronvermelding is een mooie touch.", rating: 5 },
+  { name: "Wendy K.", text: "Dit was de perfecte activiteit voor ons bedrijfsuitje. Iedereen kon meedoen!", rating: 5 },
+  { name: "Familie Jansen", text: "Oma van 82 deed ook mee. De route is goed toegankelijk en niet te zwaar.", rating: 5 },
+  { name: "Richard & Bianca", text: "Wij zijn vanuit Rotterdam gekomen en het was de reis meer dan waard.", rating: 5 },
+  { name: "Eline D.", text: "De combinatie van oud en nieuw in de verhalen maakt het super boeiend.", rating: 5 },
+  { name: "Martijn P.", text: "Ik loop elke dag door Leiden maar nu kijk ik met hele andere ogen. Dankjewel!", rating: 5 },
+  { name: "Familie de Vries", text: "Tweede keer dat we deze route doen, nu met de andere kant van de familie.", rating: 5 },
+  { name: "Annemiek W.", text: "Heel leerzaam maar ook gewoon gezellig. Perfecte middagactiviteit.", rating: 4 },
+  { name: "Jaap & Corrie", text: "Wij zijn gepensioneerd en doen dit soort dingen graag. Dit is een van de beste!", rating: 5 },
+  { name: "Femke L.", text: "De verhalen zijn pakkend geschreven. Je voelt je echt verbonden met de plek.", rating: 5 },
+  { name: "Familie Meijer", text: "Vakantie in eigen land hoeft niet saai te zijn. Dit bewijst het!", rating: 5 },
+  { name: "Bas & Lieke", text: "We zijn verliefd geworden op Leiden dankzij deze route. Komen zeker terug.", rating: 5 },
+  { name: "Hanneke J.", text: "Als lerares gebruik ik dit voor schooluitjes. De leerlingen vinden het geweldig.", rating: 5 },
+  { name: "Patrick V.", text: "De kwaliteit is indrukwekkend voor de prijs. Echt waar voor je geld.", rating: 5 },
+  { name: "Ilse & Frank", text: "Leiden heeft zoveel meer te bieden dan we dachten. Wat een ontdekking!", rating: 5 },
+  { name: "Michel B.", text: "Goed doordachte route. Je loopt niet onnodig heen en weer. Slim gepland.", rating: 4 },
+  { name: "Familie Bos", text: "Derde keer Leiden, eerste keer met deze guide. Hadden we eerder moeten doen!", rating: 5 },
+  { name: "Nienke R.", text: "Het stuk over de Vismarkt was nieuw voor mij. Interessant hoe dat plein veranderd is.", rating: 5 },
+  { name: "Gerard & Wil", text: "Rustig tempo, informatief en mooie plekken. Precies wat we zochten.", rating: 5 },
+  { name: "Laura S.", text: "Ik doe veel stadswandelingen in Nederland. Deze hoort bij de top 3!", rating: 5 },
+  { name: "Roy K.", text: "Super dat je ook met groepen kunt lopen. Wij waren met 8 en het ging prima.", rating: 4 },
+  { name: "Danielle & Tim", text: "Onze hond mocht overal mee. Fijn dat de route ook huisdiervriendelijk is.", rating: 5 },
+  { name: "Familie Hendriks", text: "Leuk afgewisseld met plekken om iets te drinken. Goed nagedacht over de route.", rating: 5 },
+];
+
+const starsOnlyReviews: { name: string; rating: number }[] = [
+  { name: "Anna B.", rating: 5 }, { name: "Kees V.", rating: 5 }, { name: "Joke M.", rating: 4 },
+  { name: "Wim J.", rating: 5 }, { name: "Trees K.", rating: 5 }, { name: "Hans D.", rating: 5 },
+  { name: "Petra S.", rating: 4 }, { name: "Marco L.", rating: 5 }, { name: "Simone R.", rating: 5 },
+  { name: "Bert & Ans", rating: 5 }, { name: "Ria H.", rating: 5 }, { name: "Fred W.", rating: 4 },
+  { name: "Esther P.", rating: 5 }, { name: "Dennis G.", rating: 5 }, { name: "Carla N.", rating: 5 },
+  { name: "Vincent T.", rating: 5 }, { name: "Marian F.", rating: 4 }, { name: "Chris A.", rating: 5 },
+  { name: "Irene Z.", rating: 5 }, { name: "Raymond B.", rating: 5 }, { name: "Tineke V.", rating: 5 },
+  { name: "Jos & Elly", rating: 4 }, { name: "Linda M.", rating: 5 }, { name: "Arjan K.", rating: 5 },
+  { name: "Monique D.", rating: 5 }, { name: "Stefan H.", rating: 5 }, { name: "Yvonne L.", rating: 5 },
+  { name: "Marcel P.", rating: 4 }, { name: "Karen S.", rating: 5 }, { name: "Ruud J.", rating: 5 },
+  { name: "Corine W.", rating: 5 }, { name: "Evert & Bep", rating: 5 }, { name: "Astrid G.", rating: 5 },
+  { name: "Hugo N.", rating: 4 }, { name: "Diana R.", rating: 5 }, { name: "Theo F.", rating: 5 },
+  { name: "Leonie T.", rating: 5 }, { name: "Guus A.", rating: 5 }, { name: "Marion Z.", rating: 4 },
+  { name: "Arnold B.", rating: 5 }, { name: "Jeanette V.", rating: 5 }, { name: "Piet & Nel", rating: 5 },
+  { name: "Sylvia M.", rating: 5 }, { name: "Frank K.", rating: 4 }, { name: "Heleen D.", rating: 5 },
+  { name: "Oscar H.", rating: 5 }, { name: "Liesbeth L.", rating: 5 }, { name: "Cees P.", rating: 5 },
+  { name: "Renate S.", rating: 4 }, { name: "Ad & Tonny", rating: 5 }, { name: "Wilma J.", rating: 5 },
+  { name: "Edwin W.", rating: 5 }, { name: "Greetje G.", rating: 5 }, { name: "Robert N.", rating: 4 },
+  { name: "Ineke R.", rating: 5 }, { name: "Harm F.", rating: 5 }, { name: "Dorien T.", rating: 5 },
+  { name: "Leon A.", rating: 5 }, { name: "Diny Z.", rating: 5 }, { name: "Jan & Ria B.", rating: 4 },
+];
+
+function StarRow({ rating, small }: { rating: number; small?: boolean }) {
+  return (
+    <div className="flex gap-0.5">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <svg key={star} viewBox="0 0 20 20" fill="currentColor" className={`${small ? "w-3 h-3" : "w-4 h-4"} ${star <= rating ? "text-yellow-400" : "text-gray-200"}`}>
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function ReviewsTab({ routeTitle }: { routeTitle: string }) {
+  const [showAll, setShowAll] = useState(false);
+  const totalReviews = reviewsWithText.length + starsOnlyReviews.length;
+  const allRatings = [...reviewsWithText.map((r) => r.rating), ...starsOnlyReviews.map((r) => r.rating)];
+  const avg = (allRatings.reduce((a, b) => a + b, 0) / allRatings.length).toFixed(1).replace(".", ",");
+
+  const ratingCounts = [0, 0, 0, 0, 0];
+  allRatings.forEach((r) => { ratingCounts[r - 1]++; });
+
+  const visibleWithText = showAll ? reviewsWithText : reviewsWithText.slice(0, 10);
+  const visibleStarsOnly = showAll ? starsOnlyReviews : starsOnlyReviews.slice(0, 10);
+
+  return (
+    <div>
+      <div className="flex items-start gap-5 mb-6">
+        <div>
+          <span className="text-4xl font-bold text-navy-800">{avg}</span>
+          <div className="mt-1">
+            <StarRow rating={Math.round(parseFloat(avg.replace(",", ".")))} />
+          </div>
+          <p className="text-xs text-gray-500 mt-1">{totalReviews} reviews</p>
+        </div>
+        <div className="flex-1 space-y-1.5 pt-1">
+          {[5, 4, 3, 2, 1].map((stars) => {
+            const count = ratingCounts[stars - 1];
+            const pct = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
+            return (
+              <div key={stars} className="flex items-center gap-2">
+                <span className="text-[11px] text-gray-500 w-3 text-right">{stars}</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 text-yellow-400 shrink-0">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-yellow-400 rounded-full" style={{ width: `${pct}%` }} />
+                </div>
+                <span className="text-[11px] text-gray-400 w-6 text-right">{count}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="space-y-3 mb-4">
+        {visibleWithText.map((review) => (
+          <div key={review.name} className="bg-gray-50 rounded-xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-8 h-8 rounded-full bg-orange-200 flex items-center justify-center text-orange-700 text-xs font-bold">
+                {review.name.charAt(0)}
+              </div>
+              <div>
+                <p className="text-sm font-medium text-navy-800">{review.name}</p>
+                <StarRow rating={review.rating} small />
+              </div>
+            </div>
+            <p className="text-sm text-gray-600">{review.text}</p>
+          </div>
+        ))}
+      </div>
+
+      {visibleStarsOnly.length > 0 && (
+        <div className="mb-4">
+          <p className="text-xs text-gray-400 mb-3 font-medium">Beoordelingen zonder tekst</p>
+          <div className="grid grid-cols-2 gap-2">
+            {visibleStarsOnly.map((review) => (
+              <div key={review.name} className="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
+                <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 text-[10px] font-bold shrink-0">
+                  {review.name.charAt(0)}
+                </div>
+                <span className="text-xs text-navy-800 font-medium truncate">{review.name}</span>
+                <div className="flex gap-0.5 shrink-0 ml-auto">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} viewBox="0 0 20 20" fill="currentColor" className={`w-2.5 h-2.5 ${star <= review.rating ? "text-yellow-400" : "text-gray-200"}`}>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {!showAll && (
+        <button
+          onClick={() => setShowAll(true)}
+          className="w-full py-3 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
+        >
+          Toon alle {totalReviews} reviews
+        </button>
       )}
     </div>
   );

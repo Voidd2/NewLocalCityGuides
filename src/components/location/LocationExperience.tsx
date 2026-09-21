@@ -11,7 +11,7 @@ type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
 export function LocationExperience({ location }: { location: LocationData }) {
   const t = useTranslations("location");
   const { hasPaid, isLoading } = useAuth();
-  const [state, setState] = useState<ExperienceState>("preview");
+  const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
 
   if (isLoading) {
     return (
@@ -312,12 +312,21 @@ export function LocationExperience({ location }: { location: LocationData }) {
             </div>
           </div>
 
-          <Link
-            href="/map"
-            className="block w-full bg-navy-800 hover:bg-navy-900 text-white font-semibold py-3 rounded-full text-sm text-center mb-3 transition-colors"
+          <a
+            href={
+              location.coords
+                ? `https://www.google.com/maps/dir/?api=1&destination=${location.coords.lat},${location.coords.lng}`
+                : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.name + ", Leiden")}`
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full bg-navy-800 hover:bg-navy-900 text-white font-semibold py-3 rounded-full text-sm text-center mb-3 transition-colors"
           >
-            {t("showOnMap")}
-          </Link>
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
+            </svg>
+            Navigeer met Google Maps
+          </a>
 
           <button
             onClick={() => setState("arrived")}

@@ -270,7 +270,7 @@ export function Dashboard() {
           {mapPins.length > 0 && (
             <>
               <h2 className="text-lg font-bold text-navy-800 mb-4">Kaart van Leiden</h2>
-              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8">
+              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8 z-0">
                 <LeafletMap
                   pins={mapPins}
                   selectedId={selectedMapPin}
