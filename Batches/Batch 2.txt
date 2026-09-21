@@ -1,0 +1,424 @@
+Batch 2 — Restaurants & eetgelegenheden
+Oudt Leyden
+4,2RestaurantType: Restaurant
+Adres: Steenstraat 49, Leiden
+Coordinaten: 52.1622, 4.4846 Postcode Adresboek
+Website: oudtleyden.nl
+Telefoon: +31 71 513 3144
+Openingstijden:
+- Maandag: 11:30-21:30
+- Dinsdag: 11:30-21:30
+- Woensdag: 11:30-21:30
+- Donderdag: 11:30-21:30
+- Vrijdag: 11:30-21:30
+- Zaterdag: 11:30-21:30
+- Zondag: 11:30-21:30
+De openingstijden worden zowel op de eigen menukaart als actuele bedrijfsvermelding genoemd. Oudt Leyden
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €10,00-€25,00
+- Pannenkoek met stroop: €9,50
+- Pannenkoek spek: €11,50
+- Uitgebreidere pannenkoeken: €13,50-€17,50
+- Leidsche mosterdsoep: €7,00 [prijs afkomstig uit laatst beschikbare eigen restaurantkaart; controleer bij implementatie] Oudt Leyden
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; eventuele hutspot rond Leidens Ontzet is seizoensgebonden en niet als permanent gerecht bevestigd.
+Korte beschrijving (1-2 zinnen, Nederlands):
+Een klassiek Leids pannenkoekenrestaurant waar je traditionele Nederlandse pannenkoeken kunt eten, van simpel met stroop tot uitgebreide hartige varianten. Ook de Leidsche mosterdsoep geeft toeristen een lokale smaak.
+Korte beschrijving (1-2 zinnen, Engels):
+A classic Leiden pancake restaurant serving traditional Dutch pancakes, ranging from simple syrup pancakes to generous savoury versions. The Leiden mustard soup adds an extra local touch.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein klassisches Leidener Pfannkuchenrestaurant mit traditionellen niederländischen Pfannkuchen – von einfach mit Sirup bis zu herzhaften Varianten. Auch die Leidener Senfsuppe bietet einen regionalen Geschmack.
+Waarom moet een toerist hier naartoe?:
+Voor toeristen die één typisch Nederlandse maaltijd willen proberen, is dit een logische stop. De combinatie van pannenkoeken en Leidsche mosterdsoep maakt het bovendien relevanter voor Leiden dan een algemeen internationaal restaurant.
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Onbekend
+Gemiddelde bezoekduur: 45-90 minuten
+Tags: "pannenkoeken", "Hollands", "Leidsche mosterdsoep", "families", "traditioneel"
+Pannenkoekenhuis De Schaapsbel
+4,1CrêperieType: Restaurant
+Adres: Beestenmarkt 7, Leiden
+Coordinaten: 52.1624, 4.4851
+Website: schaapsbel.com
+Telefoon: +31 71 512 4650
+Openingstijden:
+- Maandag: 12:00-21:00
+- Dinsdag: 11:00-21:00
+- Woensdag: 11:00-21:00
+- Donderdag: 11:00-21:00
+- Vrijdag: 11:00-21:00
+- Zaterdag: 11:00-21:00
+- Zondag: 12:00-21:00
+Deze tijden worden actueel gepubliceerd door Visit Leiden en Liever in Leiden. Visit Leiden
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €10,00-€25,00
+- Kinderijsje: €3,95
+- Appeltaart: €3,75
+- Overige pannenkoekprijzen: [NIET VOLLEDIG ACTUEEL GEVERIFIEERD - controleer actuele menukaart] Het Menu
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond
+Korte beschrijving (1-2 zinnen, Nederlands):
+Traditioneel pannenkoekenhuis aan de Beestenmarkt dat sinds 1986 in Leiden zit. De pannenkoeken worden ambachtelijk in de open keuken gebakken en er zijn verse poffertjes van de plaat. De Schaapsbel
+Korte beschrijving (1-2 zinnen, Engels):
+A traditional pancake house on the Beestenmarkt, established here in 1986. Pancakes are prepared in the open kitchen and fresh Dutch poffertjes are cooked on the griddle.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein traditionelles Pfannkuchenhaus am Beestenmarkt, das seit 1986 in Leiden ansässig ist. Die Pfannkuchen werden in der offenen Küche gebacken, dazu gibt es frische niederländische Poffertjes.
+Waarom moet een toerist hier naartoe?:
+Pannenkoeken én verse poffertjes op één plek maken dit een zeer toegankelijke Nederlandse eetervaring voor buitenlandse bezoekers. Het zonnige terras aan de Beestenmarkt is bovendien praktisch met kinderen en ligt vlak bij De Valk en Leiden Centraal. De Schaapsbel
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Ja volgens de eigen bedrijfsinformatie. De Schaapsbel
+Gemiddelde bezoekduur: 45-90 minuten
+Tags: "pannenkoeken", "poffertjes", "Hollands", "families", "Beestenmarkt"
+Annie's
+3,7RestaurantType: Restaurant
+Adres: Hoogstraat 1A, Leiden
+Coordinaten: 52.1595, 4.4912 Postcode Adresboek
+Website: annies.nu
+Telefoon: +31 71 512 5737
+Openingstijden:
+- Maandag: 11:00-00:00
+- Dinsdag: 11:00-00:00
+- Woensdag: 11:00-00:00
+- Donderdag: 11:00-00:00
+- Vrijdag: 11:00-01:30
+- Zaterdag: 10:00-01:30
+- Zondag: 11:00-00:00 Annies
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €15,00-€35,00 [geschat op basis van lunch/dinerconcept; actuele kaart controleren]
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; het grote drijvende terras is vooral aantrekkelijk bij goed weer en in de winter worden speciale Winter Domes georganiseerd. Annies
+Korte beschrijving (1-2 zinnen, Nederlands):
+Annie's ligt precies waar de Oude Rijn en Nieuwe Rijn samenkomen en beschikt over een enorm drijvend terras. Je zit hier letterlijk tussen de Leidse grachten en voorbijvarende boten.
+Korte beschrijving (1-2 zinnen, Engels):
+Annie's sits exactly where the Oude Rijn and Nieuwe Rijn meet and features a large floating terrace. Visitors can eat and drink directly beside Leiden's canals while boats pass by.
+Korte beschrijving (1-2 zinnen, Duits):
+Annie's liegt genau dort, wo Oude Rijn und Nieuwe Rijn zusammentreffen, und besitzt eine große schwimmende Terrasse. Hier sitzt man direkt an den Leidener Grachten, während Boote vorbeifahren.
+Waarom moet een toerist hier naartoe?:
+De locatie is hier belangrijker dan één specifiek gerecht: dit is een van de meest karakteristieke plekken om de Leidse grachten te ervaren tijdens lunch, borrel of diner. Vooral bij zonnig weer is het drijvende terras een sterke toeristische stop. Annies
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Gedeeltelijk [NIET GEVERIFIEERD - controleer toegankelijkheid van drijvend terras/werfkelders]
+Gemiddelde bezoekduur: 1-2 uur
+Tags: "waterterras", "grachten", "drijvend terras", "lunch", "zonsondergang"
+Waag
+4,3RestaurantType: Restaurant
+Adres: Aalmarkt 21, Leiden
+Coordinaten: 52.1593, 4.4905 Postcode Adresboek
+Website: waagleiden.nl
+Telefoon: +31 71 740 0300
+Openingstijden:
+- Maandag: 09:00-22:00
+- Dinsdag: 09:00-22:00
+- Woensdag: 09:00-22:00
+- Donderdag: 09:00-00:00
+- Vrijdag: 09:00-01:00
+- Zaterdag: 09:00-01:00
+- Zondag: 09:00-22:00 waagleiden.nl
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €20,00-€40,00
+- High Tea: €26,50
+- High Tea Deluxe: €31,00
+- High Cocktail: €37,50 waagleiden.nl
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; terras aan het water vooral aantrekkelijk in voorjaar en zomer
+Korte beschrijving (1-2 zinnen, Nederlands):
+Restaurant in de monumentale Leidse Waag, midden aan de Aalmarkt. Je eet hier in een van de opvallendste historische gebouwen van het centrum, met daarnaast een terras aan het water.
+Korte beschrijving (1-2 zinnen, Engels):
+A restaurant inside Leiden's historic Weigh House on the Aalmarkt. Visitors dine in one of the city centre's most distinctive monuments, with a waterside terrace outside.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein Restaurant in der historischen Leidener Waag am Aalmarkt. Man speist in einem der markantesten historischen Gebäude der Innenstadt und kann draußen direkt am Wasser sitzen.
+Waarom moet een toerist hier naartoe?:
+De Waag combineert eten met een monument dat sowieso in veel historische wandelroutes thuishoort. Daardoor kan een bezoeker hier efficiënt een historische locatie én lunch, diner of borrel combineren. waagleiden.nl
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Gedeeltelijk [NIET GEVERIFIEERD - controleer specifieke ruimtes]
+Gemiddelde bezoekduur: 1-2 uur
+Tags: "historisch gebouw", "waterterras", "Aalmarkt", "monument", "centrum"
+In Den Bierbengel
+4,2RestaurantType: Restaurant
+Adres: Langebrug 71, Leiden
+Coordinaten: 52.1580, 4.4895 Wikimedia Commons
+Website: indenbierbengel.nl
+Telefoon: +31 71 514 8056
+Openingstijden:
+- Maandag: Vanaf 17:00
+- Dinsdag: Vanaf 17:00
+- Woensdag: Vanaf 17:00
+- Donderdag: Vanaf 17:00
+- Vrijdag: Vanaf 17:00
+- Zaterdag: Vanaf 17:00
+- Zondag: Gesloten
+Sluitingstijd: [NIET GEVERIFIEERD - restaurant publiceert alleen aanvangstijd]. Huiskamerrestaurant In Den Bierbengel
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €39,50-€55,00
+- Driegangenkeuzemenu: vanaf €39,50
+- High beer/high wine: €35,00 Huiskamerrestaurant In Den Bierbengel
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; hutspot specifiek rond 2 en 3 oktober
+Korte beschrijving (1-2 zinnen, Nederlands):
+Een klein huiskamerrestaurant in een historisch pand in het Pieterskwartier, met een monumentale schouw, oude kaarten en historische details. Rond Leidens Ontzet wordt hier traditioneel hutspot geserveerd. Huiskamerrestaurant In Den Bierbengel
+Korte beschrijving (1-2 zinnen, Engels):
+A cosy restaurant inside a historic building in Leiden's Pieterskwartier, featuring an old fireplace, maps and other period details. Around Leiden's Relief celebrations, traditional hutspot is served here.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein gemütliches Restaurant in einem historischen Gebäude im Pietersviertel mit altem Kamin, Karten und historischen Details. Rund um das Leidener Befreiungsfest wird hier traditioneller Hutspot serviert.
+Waarom moet een toerist hier naartoe?:
+Voor YourLocalCityGuide is deze vooral interessant vanwege de combinatie van historisch interieur en Leidens Ontzet. Wie rond 2 of 3 oktober in Leiden is en hutspot wil proberen, heeft hier een concreet restaurant waar dat gerecht daadwerkelijk wordt aangekondigd. Huiskamerrestaurant In Den Bierbengel
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Onbekend
+Gemiddelde bezoekduur: 1,5-2 uur
+Tags: "hutspot", "Leidens Ontzet", "historisch", "Pieterskwartier", "huiskamerrestaurant"
+Brasserie Rumour
+4,2RestaurantType: Restaurant
+Adres: Burgsteeg 13, Leiden
+Coordinaten: 52.1590, 4.4926 it.aroundus.com
+Website: brasserierumour.nl
+Telefoon: +31 71 512 1688
+Openingstijden:
+- Maandag: 11:00-00:00
+- Dinsdag: 11:00-00:00
+- Woensdag: 11:00-00:00
+- Donderdag: 11:00-00:00
+- Vrijdag: 11:00-01:00
+- Zaterdag: 10:00-01:00
+- Zondag: 10:00-23:00
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €18,50-€35,00
+- Smashburger: €18,50
+- Ravioli: €19,50
+- Kabeljauw: €24,50
+- Hutspot met sukade op 2 en 3 oktober 2026: €15,74 Brasserie Rumour
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; hutspot alleen rond Leidens Ontzet
+Korte beschrijving (1-2 zinnen, Nederlands):
+Moderne brasserie vlak naast de Burcht, geschikt voor lunch, diner en borrel. Tijdens Leidens Ontzet staat een speciale hutspot met sukade op het menu.
+Korte beschrijving (1-2 zinnen, Engels):
+A modern brasserie close to Leiden's Burcht, serving lunch, dinner and drinks. During the Leiden Relief celebrations it serves a special hutspot with slow-cooked beef.
+Korte beschrijving (1-2 zinnen, Duits):
+Eine moderne Brasserie direkt bei der Burcht, geeignet für Mittagessen, Abendessen und Drinks. Zum Leidener Befreiungsfest steht traditioneller Hutspot mit geschmortem Rindfleisch auf der Karte.
+Waarom moet een toerist hier naartoe?:
+De ligging naast de Burcht maakt Rumour handig als eetstop midden in een historische route. Op 2 en 3 oktober wordt het extra relevant omdat toeristen hier aantoonbaar Leidens traditionele hutspot kunnen bestellen. Brasserie Rumour
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Onbekend
+Gemiddelde bezoekduur: 1-2 uur
+Tags: "hutspot", "Burcht", "Leidens Ontzet", "brasserie", "centrum"
+Restaurant Scarlatti Leiden
+RestaurantType: Restaurant
+Adres: Stille Mare 4, Leiden
+Coordinaten: 52.1600, 4.4911 Postcode Adresboek
+Website: scarlatti-leiden.nl
+Telefoon: +31 71 512 2114
+Openingstijden:
+- Maandag: 11:30-21:30
+- Dinsdag: 10:30-21:30
+- Woensdag: 10:30-21:30
+- Donderdag: 10:30-21:30
+- Vrijdag: 10:30-21:30
+- Zaterdag: 10:30-21:30
+- Zondag: 10:30-21:30 Restaurant Scarlatti | Leiden
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €15,00-€37,00
+- Lunchkroketten: €11,75
+- Burger Scarlatti: €19,75
+- Ribeye: €27,50
+- Driegangenmenu bij arrangement: €36,50 Restaurant Scarlatti | Leiden
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; hutspot wordt rondom 2-3 oktober aangeboden
+Korte beschrijving (1-2 zinnen, Nederlands):
+Centraal gelegen restaurant aan de Stille Mare met een groot terras en een brede lunch- en dinerkaart. Rond 3 oktober wordt Scarlatti door Visit Leiden expliciet genoemd als plek voor hutspot. Visit Leiden
+Korte beschrijving (1-2 zinnen, Engels):
+A centrally located restaurant on the Stille Mare with a spacious terrace and broad lunch and dinner menu. Around 3 October, Scarlatti is one of the city-centre restaurants serving traditional hutspot.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein zentral gelegenes Restaurant an der Stille Mare mit großer Terrasse und umfangreicher Mittags- und Abendkarte. Rund um den 3. Oktober gehört Scarlatti zu den Restaurants, die traditionellen Hutspot anbieten.
+Waarom moet een toerist hier naartoe?:
+Vooral tijdens Leidens Ontzet is Scarlatti nuttig voor de app: Visit Leiden noemt het expliciet als hutspotlocatie. Buiten oktober is het vooral een makkelijk bereikbare lunch- en dinerstop midden in de binnenstad. Visit Leiden
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Gedeeltelijk; rolstoeltoegankelijke zitplaatsen worden vermeld, overige voorzieningen niet volledig geverifieerd. 
+Gemiddelde bezoekduur: 1-2 uur
+Tags: "hutspot", "terras", "Leidens Ontzet", "centrum", "lunch"
+Brasserie de Poort
+4,4BrasserieType: Restaurant
+Adres: Haven 100, Leiden
+Coordinaten: 52.1617, 4.5038 Wikimedia Commons
+Website: poort.nl
+Telefoon: +31 71 524 0933
+Openingstijden:
+- Maandag: Gesloten
+- Dinsdag: 10:00-22:30
+- Woensdag: 10:00-22:30
+- Donderdag: 10:00-22:30
+- Vrijdag: 10:00-23:30
+- Zaterdag: 10:00-23:30
+- Zondag: 10:00-22:30
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €20,00-€45,00
+- Fruits de mer: €42,50 per persoon, minimaal 2 personen en vooraf reserveren
+- Private dining/rondvaart-arrangement: vanaf €67,50 per persoon exclusief boothuur Brasserie de Poort
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond
+Korte beschrijving (1-2 zinnen, Nederlands):
+Brasserie bij de historische Zijlpoort, aan het water aan de oostkant van het centrum. De nadruk ligt op kleine gerechten om te delen, met vis, vlees en vegetarische opties.
+Korte beschrijving (1-2 zinnen, Engels):
+A waterside brasserie beside the historic Zijlpoort on the eastern edge of the city centre. The menu focuses on sharing dishes with seafood, meat and vegetarian choices.
+Korte beschrijving (1-2 zinnen, Duits):
+Eine Brasserie am Wasser direkt an der historischen Zijlpoort am östlichen Rand der Innenstadt. Die Karte konzentriert sich auf Gerichte zum Teilen mit Fisch, Fleisch und vegetarischen Optionen.
+Waarom moet een toerist hier naartoe?:
+Hier combineer je een van Leidens historische stadspoorten met eten aan het water. Vanuit De Poort worden bovendien rondvaarten en private-diningtochten door de Leidse grachten aangeboden, waardoor de plek extra geschikt is voor toeristen. Brasserie de Poort
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja; aparte kidskaart aanwezig. Brasserie de Poort
+Rolstoeltoegankelijk: [NIET GEVERIFIEERD - controleer dit]
+Gemiddelde bezoekduur: 1-2 uur
+Tags: "Zijlpoort", "water", "rondvaart", "vis", "historisch"
+Vooraf en Toe Eet- Drink- en Kunstlokaal
+4,3BistroType: Cafe
+Adres: Botermarkt 8, Leiden
+Coordinaten: 52.1575, 4.4921 Postcode Adresboek
+Website: voorafentoe.nl
+Telefoon: +31 71 512 6633
+Openingstijden:
+- Maandag: 08:00-17:00
+- Dinsdag: 08:00-17:00
+- Woensdag: 08:00-17:00
+- Donderdag: 08:00-23:00
+- Vrijdag: 08:00-23:00
+- Zaterdag: 08:00-23:00
+- Zondag: 08:00-23:00
+De keuken opent dagelijks vanaf 10:00. Voorafentoe
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €10,00-€25,00 [geschat; actuele kaart controleren]
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond; terrasboot vooral aantrekkelijk bij goed weer
+Korte beschrijving (1-2 zinnen, Nederlands):
+Informeel eet-, drink- en kunstlokaal aan de Botermarkt met een terrasboot aan de gracht. Geschikt voor ontbijt, koffie, lunch en later in de week ook een langere avond aan het water.
+Korte beschrijving (1-2 zinnen, Engels):
+An informal food, drink and art café on the Botermarkt with seating on a terrace boat. It works well for breakfast, coffee, lunch and, later in the week, a relaxed evening beside the canal.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein ungezwungenes Café für Essen, Getränke und Kunst am Botermarkt mit einer Terrassenplattform auf dem Wasser. Ideal für Frühstück, Kaffee, Mittagessen und später in der Woche auch für einen längeren Abend an der Gracht.
+Waarom moet een toerist hier naartoe?:
+Vooral de terrasboot maakt dit een leuke lokale stop zonder dat je meteen uitgebreid hoeft te dineren. Visit Leiden noemt Vooraf en Toe bovendien als een van de favoriete Leidse terrassen aan het water. Visit Leiden
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Onbekend
+Gemiddelde bezoekduur: 30 minuten-1,5 uur
+Tags: "terrasboot", "water", "lokaal", "kunst", "ontbijt"
+Einstein Leiden
+4,2RestaurantType: Restaurant
+Adres: Nieuwe Rijn 19, Leiden
+Coordinaten: 52.1583, 4.4920 LeukeTip
+Website: einstein.nu
+Telefoon: +31 71 512 5370
+Openingstijden:
+- Maandag: 10:00-01:00
+- Dinsdag: 10:00-01:00
+- Woensdag: 10:00-01:00
+- Donderdag: 10:00-01:00
+- Vrijdag: 10:00-02:00
+- Zaterdag: 10:00-02:00
+- Zondag: 10:00-00:00 Liever in Leiden
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €15,00-€30,00
+- Actie driegangenmenu zondag t/m donderdag: €21,50 vanaf 4 oktober 2026
+- Saté met friet op zondag/maandag vanaf 17:00: €13,50 Rebel Horeca
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond
+Korte beschrijving (1-2 zinnen, Nederlands):
+Leids eetcafé aan de Nieuwe Rijn dat sinds 1995 een bekende plek in de stad is. Vooral het zonnige grachtenterras direct aan het water maakt Einstein interessant voor bezoekers. Einstein Leiden
+Korte beschrijving (1-2 zinnen, Engels):
+A Leiden café-restaurant on the Nieuwe Rijn that has been a familiar city venue since 1995. Its sunny canal-side terrace is the main attraction for visitors.
+Korte beschrijving (1-2 zinnen, Duits):
+Ein Leidener Café-Restaurant an der Nieuwe Rijn, das seit 1995 zu den bekannten Treffpunkten der Stadt gehört. Besonders attraktiv ist die sonnige Terrasse direkt an der Gracht.
+Waarom moet een toerist hier naartoe?:
+Dit is een goede plek om niet alleen de stad te bekijken, maar echt aan de gracht tussen de Leidenaren te zitten. Het terras kijkt uit over passerende bootjes en ligt midden in het historische centrum. Visit Leiden
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Nee; Einstein vermeldt zelf dat de locatie geen mindervalidenvoorzieningen heeft. Einstein Leiden
+Gemiddelde bezoekduur: 1-2 uur
+Tags: "grachtenterras", "lokaal", "Nieuwe Rijn", "borrel", "water"
+Dapp Frietwinkel Leiden
+4,7SnackbarType: Restaurant
+Adres: Aalmarkt 14, Leiden
+Coordinaten: 52.1594, 4.4901 [NIET GEVERIFIEERD - controleer exacte pin voor app]
+Website: Dapp Frietwinkel Leiden
+Telefoon: +31 6 83415015
+Openingstijden:
+- Maandag: 11:30-20:00
+- Dinsdag: 11:30-20:00
+- Woensdag: 11:30-20:00
+- Donderdag: 11:30-20:00
+- Vrijdag: 11:30-20:00
+- Zaterdag: 11:30-20:00
+- Zondag: 11:30-20:00
+De eigen bestelomgeving publiceert deze tijden; een lokale bedrijvengids toont op donderdag t/m zaterdag één uur langer. Voor de app zou ik daarom de eigen site als leidend behandelen. Dapp Frietwinkel
+Kosten/Prijzen:
+- Entreeprijs volwassenen: Nvt
+- Entreeprijs kinderen (4-12): Nvt
+- Entreeprijs 65+/studenten: Nvt
+- Museumkaart geldig: Nvt
+- Gemiddelde uitgave per persoon: €4,25-€15,00
+- Kleine friet: €4,25
+- Middel friet: €5,20
+- Grote friet: €6,50
+- Frietmenu: €13,95
+- Friet stoofvlees: €13,95
+- Broodje kroket: €5,50 Dapp Frietwinkel
+Seizoensgebonden: Nee
+Seizoen/periode: Jaarrond
+Korte beschrijving (1-2 zinnen, Nederlands):
+Kleine frietwinkel aan de Aalmarkt waar de aardappelen dagelijks in de winkel worden gesneden en vers worden gebakken. Naast friet staan typisch Nederlandse snacks zoals kroketten, bitterballen en frikandellen op de kaart. Dapp Frietwinkel
+Korte beschrijving (1-2 zinnen, Engels):
+A small fries shop on the Aalmarkt where potatoes are cut and fried fresh in-store every day. The menu also includes Dutch snack-bar classics such as croquettes, bitterballen and frikandellen.
+Korte beschrijving (1-2 zinnen, Duits):
+Eine kleine Pommesbude am Aalmarkt, in der die Kartoffeln täglich frisch im Laden geschnitten und frittiert werden. Dazu gibt es niederländische Snackklassiker wie Kroketten, Bitterballen und Frikandellen.
+Waarom moet een toerist hier naartoe?:
+Voor iemand die geen volledig restaurantbezoek wil maar wel een typisch Nederlandse snackervaring zoekt, is Dapp een sterke budgetstop. De aardappelen worden zichtbaar ter plaatse gesneden en gebakken in plaats van alleen diepvriesfriet af te bakken. Dapp Frietwinkel
+Categorie voor in de app: Eten & Drinken
+Geschikt voor kinderen: Ja
+Rolstoeltoegankelijk: Onbekend
+Gemiddelde bezoekduur: 15-30 minuten
+Tags: "friet", "budget", "kroket", "Hollands", "snelle hap"
+Belangrijk voor hutspot in de app
+Hutspot moet je niet als jaarrond Leids restaurantgerecht presenteren. Het is sterk verbonden aan Leidens Ontzet op 2 en 3 oktober. Voor 2026 zijn onder andere Brasserie Rumour en In Den Bierbengel aantoonbaar hutspotlocaties; Visit Leiden noemt ook Restaurant Scarlatti Leiden. Daarnaast organiseert de 3 October Vereeniging op 2 oktober 2026 van 17:00-18:30 de Grote Hutspotmaaltijd op de Hooglandse Kerkgracht, maar daarvoor moet men lid zijn en vooraf inschrijven. Brasserie Rumour
+Batch 2 is hiermee afgerond. De volgende batch is Batch 3 — Visboeren & visrestaurants, met Schaap's Vishandel / familie Haasnoot als featured spot, plus de andere relevante viszaken zodat je app niet alleen één onderneming toont.
