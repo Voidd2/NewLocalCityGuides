@@ -26,7 +26,6 @@ export function Dashboard() {
   const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
   const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
   const [addToRouteFor, setAddToRouteFor] = useState<string | null>(null);
-  const [previewLoc, setPreviewLoc] = useState<LocationData | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [selectedMapPin, setSelectedMapPin] = useState<string | null>(null);
 
@@ -240,59 +239,119 @@ export function Dashboard() {
             <p className="text-sm text-gray-400 mb-8">Nog geen eigen routes. Stel je eerste samen!</p>
           )}
 
-          <Link
-            href="/routes/custom"
-            className="block bg-orange-50 border-2 border-orange-200 rounded-xl p-4 mb-8 hover:bg-orange-100 transition-colors"
-          >
-            <h3 className="font-bold text-orange-600 mb-1">Maak je eigen route</h3>
-            <p className="text-sm text-gray-600">Kies je eigen stops en wij plannen de slimste volgorde</p>
-          </Link>
+          <div className="grid grid-cols-2 gap-3 mb-8">
+            <Link
+              href="/routes/custom"
+              className="bg-orange-50 border-2 border-orange-200 rounded-xl p-4 hover:bg-orange-100 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mb-2">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-orange-600 text-sm mb-0.5">Maak je eigen route</h3>
+              <p className="text-xs text-gray-500">Kies je eigen stops</p>
+            </Link>
+            <Link
+              href="/activiteiten"
+              className="bg-navy-800/5 border-2 border-navy-800/20 rounded-xl p-4 hover:bg-navy-800/10 transition-colors"
+            >
+              <div className="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center mb-2">
+                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                  <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-navy-800 text-sm mb-0.5">Activiteiten boeken</h3>
+              <p className="text-xs text-gray-500">Tours en meer</p>
+            </Link>
+          </div>
 
           {mapPins.length > 0 && (
             <>
               <h2 className="text-lg font-bold text-navy-800 mb-4">Kaart van Leiden</h2>
-              <div className="h-56 rounded-xl overflow-hidden shadow-md mb-8">
+              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8">
                 <LeafletMap
                   pins={mapPins}
                   selectedId={selectedMapPin}
                   onSelectPin={(id) => setSelectedMapPin(id === selectedMapPin ? null : id)}
                 />
+                {selectedMapPin && (() => {
+                  const pin = locations.find((l) => l.id === selectedMapPin);
+                  if (!pin) return null;
+                  return (
+                    <div className="absolute bottom-3 left-3 right-3 z-[1000] bg-white rounded-xl shadow-xl border border-gray-200 p-3 flex items-center gap-3">
+                      <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                        {pin.image && <img src={pin.image} alt={pin.name} className="w-full h-full object-cover" />}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-bold text-navy-800 text-sm truncate">{pin.name}</h4>
+                        <p className="text-[10px] text-gray-500 line-clamp-1">{pin.shortDescription}</p>
+                      </div>
+                      <div className="flex gap-1.5 shrink-0">
+                        <button
+                          onClick={() => { setSelectedMapPin(null); setAddToRouteFor(pin.id); }}
+                          className="w-9 h-9 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center text-white transition-colors"
+                        >
+                          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                          </svg>
+                        </button>
+                        <Link
+                          href={`/locations/${pin.slug}`}
+                          className="w-9 h-9 rounded-full bg-navy-800 hover:bg-navy-900 flex items-center justify-center text-white transition-colors"
+                        >
+                          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </>
           )}
 
           <h2 className="text-lg font-bold text-navy-800 mb-2">Alle locaties</h2>
           <p className="text-xs text-gray-400 mb-4">Voeg locaties toe aan een route of bekijk alvast het verhaal</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
             {locations.map((loc) => (
               <div
                 key={loc.id}
                 className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <div className="h-24 bg-gray-200 overflow-hidden">
-                  {loc.image && (
+                <div className="aspect-square bg-gray-200 overflow-hidden">
+                  {loc.image ? (
                     <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-300" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                        <circle cx="12" cy="9" r="2.5" />
+                      </svg>
+                    </div>
                   )}
                 </div>
                 <div className="p-3">
-                  <h4 className="font-semibold text-navy-800 text-xs leading-tight">{loc.name}</h4>
-                  <p className="text-[10px] text-gray-500 mt-1 line-clamp-2">{loc.shortDescription}</p>
-                  <div className="mt-2 flex items-center gap-1.5">
+                  <h4 className="font-semibold text-navy-800 text-sm leading-tight">{loc.name}</h4>
+                  <p className="text-xs text-gray-500 mt-1 line-clamp-2">{loc.shortDescription}</p>
+                  <div className="mt-3 flex items-center gap-2">
                     <button
                       onClick={() => setAddToRouteFor(loc.id)}
-                      className="inline-flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white text-[9px] font-bold px-2 py-1 rounded-full transition-colors"
+                      className="inline-flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors"
                     >
                       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
                         <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                       </svg>
                       Route
                     </button>
-                    <button
-                      onClick={() => setPreviewLoc(loc)}
-                      className="inline-flex items-center gap-1 bg-navy-800 hover:bg-navy-900 text-white text-[9px] font-bold px-2 py-1 rounded-full transition-colors"
+                    <Link
+                      href={`/locations/${loc.slug}`}
+                      className="inline-flex items-center gap-1 bg-navy-800 hover:bg-navy-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors"
                     >
                       Verhaal
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -379,47 +438,6 @@ export function Dashboard() {
             </div>
           )}
 
-          {previewLoc && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setPreviewLoc(null)}>
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-              <div className="relative bg-white rounded-2xl shadow-xl w-[90%] max-w-md max-h-[80vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                {previewLoc.image && (
-                  <div className="h-40 bg-gray-200 overflow-hidden">
-                    <img src={previewLoc.image} alt={previewLoc.name} className="w-full h-full object-cover" />
-                  </div>
-                )}
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
-                      {previewLoc.mainTheme}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-navy-800 mb-2">{previewLoc.name}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">{previewLoc.shortDescription}</p>
-                  <p className="text-xs text-gray-400 italic mb-4">
-                    Volledig verhaal beschikbaar tijdens de route.
-                  </p>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => { setPreviewLoc(null); setAddToRouteFor(previewLoc.id); }}
-                      className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-sm transition-colors flex items-center justify-center gap-1.5"
-                    >
-                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                      </svg>
-                      Voeg toe aan route
-                    </button>
-                    <button
-                      onClick={() => setPreviewLoc(null)}
-                      className="flex-1 border border-gray-300 text-gray-700 font-semibold py-2.5 rounded-full text-sm hover:bg-gray-50 transition-colors"
-                    >
-                      Sluiten
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
         </>
       ) : (
         <>

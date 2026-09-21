@@ -27,6 +27,16 @@ const paidNavItems = [
     ),
   },
   {
+    key: "activiteiten",
+    href: "/activiteiten",
+    label: "Activiteiten",
+    icon: (active: boolean) => (
+      <svg viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 0 : 1.5}>
+        <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
     key: "map",
     href: "/map",
     icon: (active: boolean) => (
