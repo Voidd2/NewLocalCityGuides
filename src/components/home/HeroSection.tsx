@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function HeroSection() {
   const t = useTranslations("home");
+  const tHeader = useTranslations("header");
   const { hasPaid } = useAuth();
   const heroRef = useRef<HTMLElement>(null);
   const [parallaxY, setParallaxY] = useState(0);
@@ -32,7 +33,7 @@ export function HeroSection() {
       >
         <img
           src="/images/heroes/10001-leiden-canal-historic-buildings.jpg"
-          alt="Leiden binnenstad met grachten en historische gebouwen"
+          alt="Leiden"
           className="absolute inset-0 w-full h-full object-cover scale-110"
         />
       </div>
@@ -56,7 +57,7 @@ export function HeroSection() {
             LEIDEN
           </h1>
           <p className="animate-fade-in-up animate-delay-300 text-hand text-orange-300 text-xl md:text-2xl -rotate-1 mb-5">
-            More than a city. A story.
+            {tHeader("subtitle")}
           </p>
           <p className="animate-fade-in-up animate-delay-400 text-white/70 text-sm mb-10 max-w-sm leading-relaxed">
             {t("heroDescription")}
@@ -65,20 +66,20 @@ export function HeroSection() {
 
         {hasPaid ? (
           <div className="animate-fade-in-up animate-delay-500 grid grid-cols-3 gap-3 max-w-md mx-auto w-full">
-            <HeroButton href="/routes" label="Alle routes" sub="Kies een route">
+            <HeroButton href="/routes" label={t("allRoutes")} sub={t("pickRoute")}>
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                 <path d="M9 18l6-6-6-6" />
                 <path d="M4 4v16" strokeLinecap="round" />
                 <path d="M20 4v16" strokeLinecap="round" />
               </svg>
             </HeroButton>
-            <HeroButton href="/my-routes" label="Mijn routes" sub="Ga verder">
+            <HeroButton href="/my-routes" label={t("myRoutes")} sub={t("continueLabel")}>
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                 <circle cx="12" cy="9" r="2.5" />
               </svg>
             </HeroButton>
-            <HeroButton href="/map" label="Kaart" sub="Verken vrij">
+            <HeroButton href="/map" label={t("mapLabel")} sub={t("exploreFreely")}>
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                 <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
                 <line x1="8" y1="2" x2="8" y2="18" />
@@ -88,14 +89,14 @@ export function HeroSection() {
           </div>
         ) : (
           <div className="animate-fade-in-up animate-delay-500 grid grid-cols-2 gap-3 max-w-sm mx-auto w-full">
-            <HeroButton href="/routes" label="Bekijk routes" sub="Volg een verhaal">
+            <HeroButton href="/routes" label={t("viewRoutes")} sub={t("followStory")}>
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                 <path d="M9 18l6-6-6-6" />
                 <path d="M4 4v16" strokeLinecap="round" />
                 <path d="M20 4v16" strokeLinecap="round" />
               </svg>
             </HeroButton>
-            <HeroButton href="/pricing" label="Bekijk prijzen" sub="Vanaf 5,99">
+            <HeroButton href="/pricing" label={t("viewPricing")} sub={t("fromPrice")}>
               <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
               </svg>

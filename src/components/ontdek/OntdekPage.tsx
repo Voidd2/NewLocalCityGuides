@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import {
-  localSpots,
   getVisibleSpots,
   getFeaturedSpots,
   SPOT_CATEGORIES,
@@ -17,11 +16,6 @@ const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> 
   museum: (a) => (
     <svg viewBox="0 0 24 24" fill={a ? "currentColor" : "none"} className="w-4 h-4" stroke="currentColor" strokeWidth={a ? 0 : 1.5}>
       <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3" />
-    </svg>
-  ),
-  restaurant: (a) => (
-    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth={a ? 2.5 : 1.5}>
-      <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
     </svg>
   ),
   visboer: (a) => (
@@ -53,19 +47,14 @@ const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> 
       <line x1="3" y1="10" x2="21" y2="10" />
     </svg>
   ),
-  nachtleven: (a) => (
-    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth={a ? 2.5 : 1.5}>
-      <path d="M17 8l4-4M12 3v4M3 13h4M7.5 7.5L4.5 4.5M16.5 16.5l3 3M8 16a5 5 0 01-1-6l2-3h6l2 3a5 5 0 01-1 6M10 16v4a2 2 0 004 0v-4" />
-    </svg>
-  ),
 };
 
-function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
+function SpotCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+    <Link href={`/ontdek/${spot.id}`} className="block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex-1 min-w-0">
@@ -102,9 +91,7 @@ function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             {spot.priceRange && (
-              <span className="text-xs text-gray-400">
-                {spot.priceRange.includes("-") ? `${spot.priceRange}` : `${spot.priceRange}`}
-              </span>
+              <span className="text-xs text-gray-400">{spot.priceRange}</span>
             )}
             {spot.visitDuration && (
               <span className="flex items-center gap-1 text-xs text-gray-400">
@@ -115,40 +102,24 @@ function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
               </span>
             )}
           </div>
-          <div className="flex items-center gap-1.5">
-            {spot.kidFriendly === true && (
-              <span className="text-[10px] bg-green-50 text-green-600 px-1.5 py-0.5 rounded-full font-medium">
-                {lang === "de" ? "Kinderfreundlich" : lang === "en" ? "Kid-friendly" : "Kindvriendelijk"}
-              </span>
-            )}
-          </div>
+          {spot.kidFriendly === true && (
+            <span className="text-[10px] bg-green-50 text-green-600 px-1.5 py-0.5 rounded-full font-medium">
+              {t("kidFriendly")}
+            </span>
+          )}
         </div>
-
-        {spot.website && (
-          <a
-            href={spot.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-1 text-xs text-orange-600 font-semibold hover:text-orange-700 transition-colors"
-          >
-            {lang === "de" ? "Website besuchen" : lang === "en" ? "Visit website" : "Bezoek website"}
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-              <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
-            </svg>
-          </a>
-        )}
       </div>
-    </div>
+    </Link>
   );
 }
 
-function FeaturedCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
+function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
   const catLabel = SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[lang] || spot.category;
 
   return (
-    <div className="shrink-0 w-[260px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start">
+    <Link href={`/ontdek/${spot.id}`} className="shrink-0 w-[260px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block">
       <div className="p-4">
         <span className="text-[10px] font-semibold bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded-full">
           {catLabel}
@@ -168,27 +139,22 @@ function FeaturedCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
             <span className="text-[11px] text-white/50">{spot.priceRange}</span>
           )}
         </div>
-        {spot.website && (
-          <a
-            href={spot.website}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center gap-1 text-xs text-orange-400 font-semibold hover:text-orange-300 transition-colors"
-          >
-            {lang === "de" ? "Mehr erfahren" : lang === "en" ? "Learn more" : "Meer info"}
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-              <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-            </svg>
-          </a>
-        )}
+        <span className="mt-3 inline-flex items-center gap-1 text-xs text-orange-400 font-semibold">
+          {t("moreInfo")}
+          <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+          </svg>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
 
 export function OntdekPage() {
   const { hasPaid, isLoading } = useAuth();
   const locale = useLocale() as "nl" | "en" | "de";
+  const t = useTranslations("discover");
+  const tHome = useTranslations("home");
   const [activeCategory, setActiveCategory] = useState<SpotCategory | "alle">("alle");
 
   const visibleSpots = useMemo(() => getVisibleSpots(), []);
@@ -199,24 +165,10 @@ export function OntdekPage() {
     return visibleSpots.filter((s) => s.category === activeCategory);
   }, [activeCategory, visibleSpots]);
 
-  const heroText = {
-    nl: { title: "Ontdek Leiden", subtitle: "Alle lokale plekken, markten, evenementen en meer" },
-    en: { title: "Discover Leiden", subtitle: "All local spots, markets, events and more" },
-    de: { title: "Entdecke Leiden", subtitle: "Alle lokalen Orte, Märkte, Events und mehr" },
-  };
-
-  const featuredLabel = { nl: "Uitgelicht", en: "Featured", de: "Empfohlen" };
-  const resultsLabel = { nl: "resultaten", en: "results", de: "Ergebnisse" };
-  const noResultsLabel = {
-    nl: "Geen plekken gevonden in deze categorie.",
-    en: "No spots found in this category.",
-    de: "Keine Orte in dieser Kategorie gefunden.",
-  };
-
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tHome("loading")}</div>
       </div>
     );
   }
@@ -230,21 +182,13 @@ export function OntdekPage() {
             <path d="M7 11V7a5 5 0 0110 0v4" />
           </svg>
         </div>
-        <h2 className="text-lg font-bold text-navy-800 mb-2">
-          {locale === "de" ? "Entdecken freischalten" : locale === "en" ? "Unlock Discover" : "Ontdek ontgrendelen"}
-        </h2>
-        <p className="text-sm text-gray-500 mb-4">
-          {locale === "de"
-            ? "Kaufe das Leiden-Paket für Zugang zu allen lokalen Spots und persönliche Hilfe."
-            : locale === "en"
-            ? "Buy the Leiden package for access to all local spots and personal assistance."
-            : "Koop het Leiden pakket voor toegang tot alle lokale plekken en persoonlijke hulp."}
-        </p>
+        <h2 className="text-lg font-bold text-navy-800 mb-2">{t("unlock")}</h2>
+        <p className="text-sm text-gray-500 mb-4">{t("unlockDesc")}</p>
         <Link
           href="/pricing"
           className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
-          {locale === "de" ? "Pakete ansehen" : locale === "en" ? "View packages" : "Bekijk het Leiden pakket"}
+          {t("viewPackage")}
         </Link>
       </div>
     );
@@ -255,8 +199,8 @@ export function OntdekPage() {
       <section className="relative overflow-hidden">
         <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-8 pb-10">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">{heroText[locale].title}</h1>
-            <p className="text-white/70 text-sm">{heroText[locale].subtitle}</p>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">{t("title")}</h1>
+            <p className="text-white/70 text-sm">{t("subtitle")}</p>
           </div>
         </div>
       </section>
@@ -264,11 +208,11 @@ export function OntdekPage() {
       {featuredSpots.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 -mt-5 mb-6 relative z-10">
           <h2 className="text-xs font-semibold text-white/80 uppercase tracking-wider mb-3">
-            {featuredLabel[locale]}
+            {t("featured")}
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
             {featuredSpots.map((spot) => (
-              <FeaturedCard key={spot.id} spot={spot} locale={locale} />
+              <FeaturedCard key={spot.id} spot={spot} locale={locale} t={t} />
             ))}
           </div>
         </section>
@@ -298,21 +242,40 @@ export function OntdekPage() {
 
         <div className="flex items-center justify-between mb-4">
           <p className="text-xs text-gray-400">
-            {filtered.length} {resultsLabel[locale]}
+            {filtered.length} {t("results")}
           </p>
         </div>
 
         {filtered.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-sm text-gray-400">{noResultsLabel[locale]}</p>
+            <p className="text-sm text-gray-400">{t("noResults")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {filtered.map((spot) => (
-              <SpotCard key={spot.id} spot={spot} locale={locale} />
+              <SpotCard key={spot.id} spot={spot} locale={locale} t={t} />
             ))}
           </div>
         )}
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 mb-8">
+        <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-2 border-orange-200 rounded-2xl p-6 text-center">
+          <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-orange-500/20">
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </div>
+          <h3 className="font-bold text-navy-800 text-lg mb-1">{t("planDay")}</h3>
+          <p className="text-sm text-gray-600 mb-4">{t("planDayDesc")}</p>
+          <Link
+            href="/routes/custom"
+            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors shadow-lg shadow-orange-500/25"
+          >
+            {tHome("createRoute")}
+          </Link>
+        </div>
       </section>
 
       <div className="h-20" />
