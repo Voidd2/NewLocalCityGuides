@@ -1,0 +1,263 @@
+Hiervoor eerst, wil i kdat je weer opnieuw alle bestanden leest in de github met wat we aan het doen zijn dan wil ik dat je ook wat gaat opruimen en dan wil ik dat je een file maakt die jij altijd moet lezen elke keer weer omdat als de chat kleiner word gemaakt omdat de context te hoog word dan vergeet je heel veel hierin moet je actief zeggen wat je aan het doen bent en dit moet ook actief geupdate worden werk dit ook even netjes uit. 
+
+1. Ik wil dat je wat dingen aanpast alle batches die ik je heb gegeven in het bestand batches die heb je nu verwerkt op 1 pagina dat heet Activiteiten. Dit is niet wat mijn doel was, ik wil dat je filters hebt voor op de homepage op de kaart, of als iemand een eigen route planner aan het maken is dat ze ook een andere type stop kunnen toevoegen zoals museum bezoeken en daarvoor heb je al deze informatie of ergens eten daarvoor heb je al deze informatie en je moet de goede er uit zoeken de minder goede of met onduidelijke informatie mag je allemaal weggooien want we hoeven niet oneindigveel er op te hebben staan. 
+2. Ik wil dat je alles van de talen gaat fixen ik zit in het engels en ik zie nederlandse teksten in het duits ook etc.. het is niet goed georganiseerd en je moet hiervoor elke page aanpassen. 
+3. Discover leiden is dus wat ik al eerder zei een slechte page dit moet je helemaal ombouwen naar alleen deze dingen die je kan doen hierop kan ik dan comissies pakken de volgende dingen hou je en de volgende dingen haal je weg ik wil eerst dat je de layout VEEL mooier gaat maken want dit ziet er heel erg goedkoop uit vergeleken met de hele andere website. Ik wil vooral images gebruiken met een stukje tekst eronder:
+- de schaapsvishandel laat je staan, in de files staat ook iets over waar schaapsvishandel staat op de leidse markt op woensdag en zaterdag lees hier meer over en als iemand er op klikt moet er een unieke page openen over schaapsvis informatie over de geschiedenis uit 1938 etc dit geld voor alles op de discover page. 
+- Alle museums behouden 
+- Leidschekoek behouden 
+- Tony vergunst behouden 
+- kaas speciaalzaak behouden 
+- alle markten behouden BEHALVE DE MARKTEN DIE NIET IN DIE MAAND ER ZIJN! Daar was het belangrijk voor het zelfde met feesten/extra markten pride days etc.. dit moet je allemaal uit het bestand halen en ALLEEN Wanneer het er BIJNA is dan mag het op de discover pagina ik wil niet dat het op de pagina komt als het pas over 8 maanden is deze data is puur bedoeld voor als iemand er toevellig is die week dan weet hij oke 2/3 oktober zijn er feesten ik klik er op en dan moet die ene page openen waarover ik het had en dan en lap tekst met informatie hierover wat je kan doen waar je wat kan doen etc.. Dit moet samenvatten onder Events. 
+
+
+Alles wat ik hier bij 3. niet heb opgenoemd moet je allemaal weg halen 
+zorg ervoor dat hier dus nu ruimte voor images komen. Je moet het zo zien de page activiteiten en Discover moeten samen 1 categorie worden uiteindelijk. En ik wil dezelfde styling van de activiteiten pagina. En duidelijk zichtbaar over dat wij plannen jouw perfecte dag. 
+Wanneer je hiermee klaar bent wil ik ook dat je een bestand voor me gaat maken die je me aan het einde van je bericht geeft waarin je zegt op welke precieze page welke images je nog nodig hebt ook dus voor de activiteiten pagina dan wil ik images er op toevoegen localcityguide moet echt proffesioneel zijn en heel gedetailleerd. 
+
+Ik geef je ook alle bestanden zodat je de informatie teksten en alles kan invullen bij elke plek dit gaat van L001 tot de 50 ongeveer dit is allemaal informatie die je moet toevoegen aan alle plekken hier staat het direct in alle talen en misschien dat je nog wat aanpassingen moet doen maar het gaat ook vooral om de informatie. Van deze informatie die je bij de plekken gaat toevoegen als iemand een route loopt gaat uiteindelijk ook de audio worden en bij sommigen de video's. Lees al deze bestanden dus ook goed door. 
+Als ik op mijn account klik in de burgermenu dan open ik de homepage en niet /Account/
+
+Als je niet bent ingelogd en je komt om de main page van de website dan zie je bekijk route prijs etc.. daaronder staan 5 emoijis met interactieve videos hidden gems kid friendly etc.. dit is een drag balk en dat wil ik niet hebben want het ziet er lelijk uit. De traditionele groepsrondleiding is ongeveer 28 euro per persoon. 
+Ik wil dat je nog iets meer optimaliseerd op deze pagina om de klant over te halen want je hebt ook nog een page genaamd Over Leiden deze page moet gewoon op de homepage komen te staan hier is geen andere page voor nodig de homepage doen we alles er aan zodat de klant gaat kopen en ze kunnen niet eens makkelijk naar die andere site want de site /about/ is perfect met zo werkt het uitegelegd koop je stadpakket etc.. de praktische tips ook veelgestelde vragen ook geschiedenis in het kort ook etc... De preview video moet daarom ook op de homepage komen. En discover more of the netherlands hebben wij nog niet want we hebben momenteel alleen leiden dus dit mag nog even weg blijven dit is voor in de toekomst je kan hier evt wel dezelfde page maken net als achter de paywall met help ons met jouw dag plannen of dagen of dagje amsterdam? etc wij helpen je met alles zeggen we dan. 
+De page die we hadden behind de paywall waarin we affiliate worden om tours te verkopen tickets voor museums en dat soort dergelijke die kan je opzich wel publiek doen ook maar je moet hem wel apart maken want hierin wil ik niet de hidden gems zoals de viskraam of de stroopwafeltent of de evenementen die er binnekort aankomen. Uiteindelijk zijn wij letterlijk een localcityguide en helpen we iedereen met alles als ze een abbonement hebben en als ze dat niet hebben dan helpen wij ze ook maar alleen op de dingen waarop wij een commissie kunnen krijgen. 
+
+Ik stuur hier een lijst met alle dingen waarop wij comissies kunnen krijgen:
+LET OP... Alles wat bizar te duur is dat vind ik raar en wil ik er niet opzetten er zijn ook 10 verschillende boot tours maar ik wil ze niet allemaal er op zetten kies bijv 3 goedkopere 1 duurdere en de rest allemaal laten zitten.
+Zet eerst alles goed op en uiteindelijk gaan we met links werken dat als ze dan bijv klikken op hortus botanicus leiden entry ticket dan gaan ze direct naar getyourguide. Dus als ik eerder in deze chat ergens zei dat het een eigen page moet worden dan hoeft dat eigenlijk niet echt want getyourguide zorgt ervoor dat we het al verkopen. alleen moeten we kijken of we de widget van getyourguide willen gebruiken of dat we zelf gewoon als ze er op klikken er naartoe gaan naar de juiste link met de refferal code want we willen ook andere dingen toevoegen in diezelfdel ijst wat ik hier al eerder zei.
+
+Leiden: Stadsrondvaart met gids
+Ontdek Leiden vanaf het water met een begeleide grachtenrondvaart. Zie het historische stadscentrum en dwaal...
+
+Duur: 1 uur
+(989)
+Vanaf € 12,50
+Verdien € 2,00+
+
+Leiden: Rondvaart door de historische binnenstad met gids
+Verken de mooiste bezienswaardigheden van Leiden tijdens een rondleiding. Ervaar het stadscentrum met zijn schilderachtige...
+
+Duur: 50 minuten
+(738)
+Vanaf € 13,50
+Verdien € 2,16+
+
+Leiden: Elektrische Bootverhuur
+Wees je eigen kapitein en ontdek Leiden vanaf het water met 8 personen op deze...
+
+Duur: 2 uur
+(218)
+Vanaf € 120,00
+Verdien € 19,20+
+
+De mooiste stadswandeling met gids in Leiden
+Ontdek plaatsen die je niet in een reisgids vindt. Wandel door het historische centrum met...
+
+Duur: 2 uur
+(25)
+Vanaf € 24,00
+Verdien € 3,84+
+
+Leiden: Molen- en Plattelandsrondvaart bij Keukenhof
+Maak een schilderachtige molenrondvaart door het platteland bij Leiden, op slechts 10 minuten van de...
+
+Duur: 1 uur
+(240)
+Vanaf € 19,50
+Verdien € 3,12+
+
+Leiden: Elektrische boot huren (6 pers.)
+Vaar door het historische centrum van Leiden op onze comfortabele elektrische sloepen voor maximaal 6...
+
+Duur: 2 uur
+(22)
+Vanaf € 120,00
+Verdien € 19,20+
+
+Leiden: historische en leuke stadstour in het Duits, Engels of Nederlands
+De mooiste plekjes in de oude binnenstad van Leiden, de jeugd van de schilder Rembrandt...
+
+Duur: 2 uur
+(100)
+Vanaf € 24,00
+Verdien € 3,84+
+
+Ontdek Leiden: tocht langs verborgen plekken uit de Gouden Eeuw op basis van tips
+Ontdek verborgen verhalen over het prachtige Leiden tijdens een wandeltour op fooi. Duik in de...
+
+Duur: 1 uur 30 minuten
+(18)
+Vanaf € 5,00
+Verdien € 0,80+
+
+Noordwijk: toegangsbewijs voor de Space Expo
+Bij Space Expo ontdek je de wereld van de ruimtevaart in al zijn facetten. Van...
+
+Duur: -
+(90)
+Vanaf € 18,50
+Verdien € 2,96+
+
+Leiden: toegangsbewijs voor de Hortus Botanicus Leiden
+Ontdek de oudste botanische tuin van Nederland met dit toegangsbewijs. Wandel door de Hortus Botanicus...
+
+Duur: -
+(114)
+Vanaf € 14,00
+Verdien € 2,24+
+
+
+Leiden: privégrachtenrondvaart met drankjes en snacks
+Ontdek de charmante stad Leiden tijdens een privégrachtenrondvaart. Geniet van drankjes en hapjes terwijl je...
+
+Duur: 1 uur 30 minuten
+(4)
+Vanaf € 269,00
+Verdien € 43,04+
+
+Den Haag: privé-grachtenrondvaart met drankjes en snacks
+Een boottocht op de grachten door Den Haag, Leiden of Delft. De cruise duurt 3...
+
+Duur: 4 uur
+Vanaf € 80,00
+Verdien € 12,80+
+
+Leiden wandeltour: molens, pelgrims en geleerden
+Ontdek waarom dit charmante universiteitsstadje een van de meest invloedrijke steden van de Nederlandse Republiek...
+
+Duur: 2 uur 30 minuten
+Vanaf € 30,00
+Verdien € 4,80+
+
+Het beste van Leiden: privé wandeltour met een lokale bewoner
+Ontdek het hart van de stad tijdens onze meeslepende wandeltour. Verken iconische buurten, ontdek verborgen...
+
+Duur: 1 uur
+(12)
+Vanaf € 41,97
+Verdien € 6,72+
+
+Leiden: wandeltour voor pelgrims
+Wandel door de historische straten van Leiden tijdens een rondleiding. Leer meer over de pelgrims...
+
+Duur: 2 uur
+(6)
+Vanaf € 25,00
+Verdien € 4,00+
+
+Privé-ervaring: windmolens van Kinderdijk en Zuid-Holland
+Verken de Unesco-locatie Kinderdijk en de 19 windmolens aldaar. Kom te weten hoe deze historische...
+
+Duur: 8 uur
+(6)
+Vanaf € 650,00
+Verdien € 104,00+
+
+Leiden: Geheime Verhalen Wandeltour met gids
+Ontrafel de geheimen van Leiden samen met een lokale gids tijdens een wandeltour. Ontdek de...
+
+Duur: 2 uur
+(18)
+Vanaf € 27,00
+Verdien € 4,32+
+
+Leiden: Paddleboardverhuur om de Leidse grachten te verkennen
+Paddleboard je een weg door de historische stad Leiden. Deze unieke manier om deze prachtige...
+
+Duur: 2 uur
+(6)
+Vanaf € 25,00
+Verdien € 4,00+
+
+Historisch Leiden: privéstadswandeling met een lokale gids
+Vergeet Amsterdam. Als je de Nederlandse geschiedenis wilt zien en ervaren, ga dan naar Leiden!...
+
+Duur: 1 uur 30 minuten
+(5)
+Vanaf € 299,00
+Verdien € 47,84+
+
+Holland Four City Charm Tour
+Verken de steden Delft, Leiden, Den Haag en Haarlem allemaal op één dag tijdens deze...
+
+Duur: 8 uur
+(2)
+Vanaf € 320,00
+Verdien € 51,20+
+
+
+Privétour met gids in Nederland vanaf je hotel
+Ontdek de verborgen binnenplaatsen, windmolens en Nederlandse geheimen met een lokale expert, volledig afgestemd op...
+
+Duur: 8 uur
+(2)
+Vanaf € 215,00
+Verdien € 34,40+
+
+Amsterdam: Treintransfer Amsterdam van/naar Leiden
+Ontspan in een comfortabele trein met de nodige faciliteiten voor een transfer tussen Amsterdam Centraal...
+
+Duur: -
+(4)
+Vanaf € 13,80
+Verdien € 2,21+
+
+Hallo Leiden: privéstadswandeling van 2 uur met lokale gids
+Ontdek Leiden via haar verhalen, bezienswaardigheden en smaken tijdens deze wandeling met gids en lokale...
+
+Duur: 2 uur
+Vanaf € 124,00
+Verdien € 19,84+
+
+Steek vanuit Amsterdam de grens over naar België: een unieke dagtrip naar de grens!
+Bezoek twee landen op één dag! Doe mee aan onze dagtrip met gids van Amsterdam...
+
+Duur: 6 uur
+Vanaf € 220,00
+Verdien € 35,20+
+
+Leiden en Den Haag: Pilgrims, Rembrandt en koninklijke geschiedenis
+Twee historische Nederlandse steden in een halve dag: Leiden, geboorteplaats van Rembrandt en toevluchtsoord van...
+
+Duur: 4 uur 30 minuten
+(1)
+Vanaf € 250,00
+Verdien € 40,00+
+
+Leiden: Historische privétour met gids vanuit Amsterdam
+Een rondleiding met gids door de lokale gids door de mooiste stad van Nederland. De...
+
+Duur: 8 uur
+(2)
+Vanaf € 259,00
+Verdien € 41,44+
+
+Leiden en Delft: privétour van een halve dag inclusief transfer
+Twee historische Nederlandse steden in een halve dag: Leiden, waar Rembrandt werd geboren en de...
+
+Duur: 4 uur 30 minuten
+Vanaf € 250,00
+Verdien € 40,00+
+
+Leiden: wandeltour met gids en toegang tot Rembrandt Studio
+Dit is de enige stadswandeling in Leiden met een gids in Nederland die je kunt...
+
+Duur: 1 uur 30 minuten
+(1)
+Vanaf € 74,00
+Verdien € 11,84+
+
+Leiden en Delft: kunstgeschiedenisrondleiding met kaasproeverij
+Verken de historische steden Leiden en Delft tijdens een rondleiding. Bezoek een traditionele Nederlandse kaasboerderij,...
+
+Duur: 10 uur
+Vanaf € 300,00
+Verdien € 48,00+
+
+Leiden: rondleiding in het Frans met een gids
+Kom Leiden ontdekken en luister naar de kleine en grote verhalen. We praten over de...
+
+Duur: 2 uur
+(1)
+Vanaf € 40,00
+Verdien € 6,40+
