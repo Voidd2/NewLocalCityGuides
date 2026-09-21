@@ -39,7 +39,8 @@ Date: 2026-09-17
 - [ ] **PWA support**: Service worker, offline capability, app manifest
 - [ ] **Favicon and app icons**: Replace default Next.js favicon with brand icon
 - [ ] **Loading states**: Skeleton loaders for routes, locations, map
-- [ ] **Error pages**: Custom 404 and 500 pages matching design language
+- [x] **Error pages**: Custom 404 and 500 pages matching design language (`[locale]/not-found.tsx`,
+  `[locale]/error.tsx`, root `global-error.tsx`)
 - [ ] **Cookie consent**: GDPR-compliant cookie banner (NL/DE especially)
 
 ## Todo - Backend
