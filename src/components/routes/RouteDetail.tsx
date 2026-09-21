@@ -1,12 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 import { Link, useRouter } from "@/i18n/navigation";
 import type { RouteData } from "@/data/routes";
 import { getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
 import { saveRoute, getSavedRoutes } from "@/lib/saved-routes";
+
+const LeafletMap = dynamic(() => import("@/components/map/LeafletMap").then((m) => m.LeafletMap), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
+      <div className="text-center">
+        <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+        <p className="text-sm text-gray-400">Kaart laden...</p>
+      </div>
+    </div>
+  ),
+});
 
 const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
 
@@ -26,6 +39,15 @@ export function RouteDetail({ route }: { route: RouteData }) {
   const routeLocations = route.locationIds
     .map(getLocationById)
     .filter(Boolean);
+
+  const routePins = useMemo(() =>
+    routeLocations
+      .filter((loc) => loc && loc.coords !== null)
+      .map((loc) => ({ location: loc!, lat: loc!.coords!.lat, lng: loc!.coords!.lng })),
+    [routeLocations]
+  );
+
+  const [selectedPin, setSelectedPin] = useState<string | null>(null);
 
   if (isLoading) {
     return (
@@ -294,14 +316,24 @@ export function RouteDetail({ route }: { route: RouteData }) {
           {activeTab === "routeAndStops" && (
             <div>
               <h3 className="text-sm font-bold text-navy-800 mb-4">Route op de kaart</h3>
-              <div className="bg-gray-100 rounded-xl h-64 mb-6 flex flex-col items-center justify-center text-center px-4">
-                <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-300 mb-2" stroke="currentColor" strokeWidth="1.5">
-                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
-                  <line x1="8" y1="2" x2="8" y2="18" />
-                  <line x1="16" y1="6" x2="16" y2="22" />
-                </svg>
-                <p className="text-sm font-medium text-gray-500">Kaart wordt geladen...</p>
-              </div>
+              {routePins.length > 0 ? (
+                <div className="h-64 rounded-xl overflow-hidden shadow-md mb-6">
+                  <LeafletMap
+                    pins={routePins}
+                    selectedId={selectedPin}
+                    onSelectPin={(id) => setSelectedPin(id === selectedPin ? null : id)}
+                  />
+                </div>
+              ) : (
+                <div className="bg-gray-100 rounded-xl h-64 mb-6 flex flex-col items-center justify-center text-center px-4">
+                  <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-300 mb-2" stroke="currentColor" strokeWidth="1.5">
+                    <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+                    <line x1="8" y1="2" x2="8" y2="18" />
+                    <line x1="16" y1="6" x2="16" y2="22" />
+                  </svg>
+                  <p className="text-sm font-medium text-gray-500">Kaartgegevens worden aangevuld</p>
+                </div>
+              )}
 
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-sm font-bold text-navy-800">Alle {route.stops} stops</h3>
@@ -358,22 +390,38 @@ export function RouteDetail({ route }: { route: RouteData }) {
               </div>
 
               <div className="space-y-2 mb-6">
-                {routeLocations.map((loc, i) => (
-                  <div key={loc!.id} className="flex items-center gap-3 bg-white rounded-xl border border-gray-200 p-3">
-                    <span className="w-7 h-7 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center shrink-0">
-                      {i + 1}
-                    </span>
-                    <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-                      {loc!.image && (
-                        <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
-                      )}
+                {routeLocations.map((loc, i) => {
+                  const mapsUrl = loc!.coords
+                    ? `https://www.google.com/maps/dir/?api=1&destination=${loc!.coords.lat},${loc!.coords.lng}`
+                    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc!.name + ", Leiden")}`;
+                  return (
+                    <div key={loc!.id} className="flex items-center gap-3 bg-white rounded-xl border border-gray-200 p-3">
+                      <span className="w-7 h-7 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center shrink-0">
+                        {i + 1}
+                      </span>
+                      <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                        {loc!.image && (
+                          <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-navy-800 text-sm truncate">{loc!.name}</h4>
+                        <span className="text-[10px] text-orange-500 font-medium">{loc!.mainTheme}</span>
+                      </div>
+                      <a
+                        href={mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 hover:bg-blue-100 transition-colors"
+                        title="Open in Google Maps"
+                      >
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-blue-500">
+                          <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
+                        </svg>
+                      </a>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-navy-800 text-sm truncate">{loc!.name}</h4>
-                      <span className="text-[10px] text-orange-500 font-medium">{loc!.mainTheme}</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               <button

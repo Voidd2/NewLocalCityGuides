@@ -5,8 +5,9 @@ import { Link } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
 import { getSavedRouteById, markArrived, type SavedRoute } from "@/lib/saved-routes";
 import { getLocationById, type LocationData } from "@/data/locations";
+import { getSchaapsvisMessage, localRecommendations } from "@/data/local-recommendations";
 
-function VideoModal({ loc, onClose }: { loc: LocationData; onClose: () => void }) {
+function VideoModal({ loc, onClose, routeId }: { loc: LocationData; onClose: () => void; routeId: string }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
@@ -35,6 +36,24 @@ function VideoModal({ loc, onClose }: { loc: LocationData; onClose: () => void }
           <p className="text-white/50 text-sm">Video wordt geladen...</p>
           <p className="text-white/30 text-xs mt-2">Video-content wordt aangevuld na R02 verificatie</p>
         </div>
+      </div>
+      <div className="p-4 flex gap-3">
+        <Link
+          href={`/locations/${loc.slug}?back=/my-routes/${routeId}`}
+          className="flex-1 flex items-center justify-center gap-2 bg-white text-navy-800 font-semibold py-3 rounded-full text-sm transition-colors hover:bg-gray-100"
+        >
+          <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
+            <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+          </svg>
+          Lees meer
+        </Link>
+        <button
+          onClick={onClose}
+          className="flex-1 border border-white/20 text-white font-semibold py-3 rounded-full text-sm transition-colors hover:bg-white/10"
+        >
+          Sluiten
+        </button>
       </div>
     </div>
   );
@@ -228,12 +247,157 @@ function StopCard({
   );
 }
 
+function PauseBreakCard({ onDismiss }: { onDismiss: () => void }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const schaapsvis = getSchaapsvisMessage();
+  const others = localRecommendations.filter((r) => r.id !== "schaapsvis");
+
+  return (
+    <li className="flex gap-3">
+      <div className="flex flex-col items-center">
+        <div className="w-8 h-8 rounded-full bg-amber-400 text-white flex items-center justify-center shrink-0">
+          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+            <path fillRule="evenodd" d="M6.75 2a.75.75 0 000 1.5H7v1.054a3.73 3.73 0 00-3.235 2.196A3.75 3.75 0 006.375 12H7v5.25a.75.75 0 001.5 0V12h.375a3.75 3.75 0 002.61-5.25A3.73 3.73 0 008.5 4.554V3.5h.25a.75.75 0 000-1.5h-2zM7.375 6a2.25 2.25 0 100 4.5h.75a2.25 2.25 0 100-4.5h-.75zM13.5 6.5a.75.75 0 01.75.75v1h1a.75.75 0 010 1.5h-1v1a.75.75 0 01-1.5 0v-1h-1a.75.75 0 010-1.5h1v-1a.75.75 0 01.75-.75z" clipRule="evenodd" />
+          </svg>
+        </div>
+        <div className="w-0.5 flex-1 mt-1 bg-amber-200" />
+      </div>
+
+      <div className="pb-4 flex-1 min-w-0">
+        <div className="rounded-xl border-2 border-dashed border-amber-300 bg-amber-50 overflow-hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-full p-3 flex items-center gap-3 text-left"
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-bold text-amber-800">Pauze tussendoor?</p>
+              <p className="text-xs text-amber-600">Bezoek lokale ondernemers op je route</p>
+            </div>
+            <svg
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className={`w-4 h-4 text-amber-400 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+            >
+              <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+            </svg>
+          </button>
+
+          {isOpen && (
+            <div className="px-3 pb-3 space-y-3">
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(schaapsvis.mapsQuery)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white border border-orange-200 rounded-xl p-3 hover:border-orange-400 transition-colors"
+              >
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
+                    Aanbevolen
+                  </span>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 uppercase tracking-wide">
+                    Visboer
+                  </span>
+                </div>
+                <h4 className="font-bold text-navy-800 text-sm">Schaapsvishandel</h4>
+                <p className="text-xs text-gray-500 mt-0.5">{schaapsvis.location}</p>
+                <p className="text-xs text-gray-600 mt-1 leading-relaxed line-clamp-3">{schaapsvis.description}</p>
+                <div className="flex items-center gap-1.5 mt-2 text-blue-600">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                    <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-[10px] font-semibold">Open in Google Maps</span>
+                </div>
+              </a>
+
+              {others.map((rec) => (
+                <div
+                  key={rec.id}
+                  className="bg-white border border-gray-100 rounded-xl p-3"
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 capitalize">
+                      {rec.type}
+                    </span>
+                  </div>
+                  <h4 className="font-semibold text-navy-800 text-sm">{rec.name}</h4>
+                  <p className="text-xs text-gray-600 mt-0.5">{rec.description.nl}</p>
+                </div>
+              ))}
+
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  onDismiss();
+                }}
+                className="w-full text-center text-xs text-amber-600 font-medium py-1 hover:text-amber-800 transition-colors"
+              >
+                Nee bedankt, ik ga door met mijn route
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </li>
+  );
+}
+
+function RecommendedSection() {
+  const schaapsvis = getSchaapsvisMessage();
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(schaapsvis.mapsQuery)}`;
+
+  return (
+    <div className="mt-6 mb-4">
+      <div className="flex items-center gap-2 mb-3">
+        <div className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center">
+          <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-white">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        </div>
+        <h3 className="text-sm font-bold text-navy-800 uppercase tracking-wide">Aanbevolen - Voeg toe aan je route</h3>
+      </div>
+
+      <a
+        href={mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-2xl p-4 hover:border-orange-400 transition-colors"
+      >
+        <div className="flex items-start gap-3">
+          <div className="w-12 h-12 rounded-xl bg-orange-500 flex items-center justify-center shrink-0">
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <h4 className="font-bold text-navy-800">Schaapsvishandel</h4>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white">
+                Sinds 1938
+              </span>
+            </div>
+            <p className="text-xs text-orange-700 font-medium mb-1">{schaapsvis.location}</p>
+            <p className="text-xs text-gray-600 leading-relaxed">{schaapsvis.description}</p>
+            <div className="flex items-center gap-1.5 mt-2 text-blue-600">
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
+              </svg>
+              <span className="text-xs font-semibold">Navigeer hierheen via Google Maps</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  );
+}
+
 export function SavedRouteWalker() {
   const params = useParams();
   const routeId = params.id as string;
   const [route, setRoute] = useState<SavedRoute | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [videoLoc, setVideoLoc] = useState<LocationData | null>(null);
+  const [pauseDismissed, setPauseDismissed] = useState(false);
 
   useEffect(() => {
     const saved = getSavedRouteById(routeId);
@@ -284,7 +448,7 @@ export function SavedRouteWalker() {
 
   return (
     <>
-      {videoLoc && <VideoModal loc={videoLoc} onClose={() => setVideoLoc(null)} />}
+      {videoLoc && <VideoModal loc={videoLoc} onClose={() => setVideoLoc(null)} routeId={routeId} />}
 
       <div className="max-w-7xl mx-auto px-4 py-4 overflow-hidden">
         <div className="mb-6">
@@ -322,19 +486,28 @@ export function SavedRouteWalker() {
         )}
 
         <ol className="space-y-0">
-          {locs.map((loc, i) => (
-            <StopCard
-              key={loc.id}
-              loc={loc}
-              index={i}
-              isLast={i === locs.length - 1}
-              hasArrived={route.arrivedLocationIds.includes(loc.id)}
-              onArrive={() => handleArrive(loc.id)}
-              routeId={routeId}
-              onOpenVideo={() => setVideoLoc(loc)}
-            />
-          ))}
+          {locs.map((loc, i) => {
+            const pauseIndex = Math.floor(locs.length / 2);
+            return (
+              <span key={loc.id}>
+                {i === pauseIndex && !pauseDismissed && locs.length >= 3 && (
+                  <PauseBreakCard onDismiss={() => setPauseDismissed(true)} />
+                )}
+                <StopCard
+                  loc={loc}
+                  index={i}
+                  isLast={i === locs.length - 1}
+                  hasArrived={route.arrivedLocationIds.includes(loc.id)}
+                  onArrive={() => handleArrive(loc.id)}
+                  routeId={routeId}
+                  onOpenVideo={() => setVideoLoc(loc)}
+                />
+              </span>
+            );
+          })}
         </ol>
+
+        <RecommendedSection />
       </div>
     </>
   );

@@ -45,7 +45,7 @@ export function PopularRoutes() {
                     )}
                   </div>
                   <p className="text-xs text-gray-500 mt-0.5">{route.subtitle}</p>
-                  <p className="text-[11px] text-gray-400 mt-1">{route.stops} stops - {route.distance}</p>
+                  <p className="text-[11px] text-gray-400 mt-1">{route.distance} - {route.type === "walking" ? "Wandelen" : "Fietsen"}</p>
                 </div>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 group-hover:text-orange-500 group-hover:translate-x-1 transition-all">
                   <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />

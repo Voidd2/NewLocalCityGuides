@@ -13,7 +13,7 @@ function getParentPath(pathname: string, hasPaid: boolean, backParam: string | n
   if (backParam) return backParam;
   if (pathname.startsWith("/routes/custom")) return "/routes";
   if (pathname.startsWith("/routes/")) return "/routes";
-  if (pathname.startsWith("/locations/")) return "/map";
+  if (pathname.startsWith("/locations/")) return hasPaid ? "/dashboard" : "/";
   if (pathname.startsWith("/my-routes/")) return "/my-routes";
   if (pathname === "/my-routes") return "/dashboard";
   if (pathname === "/routes") return hasPaid ? "/dashboard" : "/";
