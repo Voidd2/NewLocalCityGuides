@@ -55,6 +55,37 @@ export function Dashboard() {
 
       {hasPaid ? (
         <>
+          {savedRoutes.some((sr) => sr.arrivedLocationIds.length > 0 && sr.arrivedLocationIds.length < sr.locationIds.length) && (() => {
+            const active = savedRoutes.find((sr) => sr.arrivedLocationIds.length > 0 && sr.arrivedLocationIds.length < sr.locationIds.length)!;
+            const progress = active.arrivedLocationIds.length;
+            const total = active.locationIds.length;
+            const pct = Math.round((progress / total) * 100);
+            return (
+              <Link
+                href={`/my-routes/${active.id}`}
+                className="block bg-orange-50 border-2 border-orange-300 rounded-xl p-4 mb-4 hover:bg-orange-100 transition-colors"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-white">
+                      <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold text-orange-800">Je bent bezig met een route</p>
+                    <p className="text-xs text-orange-600">{active.name} - {progress}/{total} stops bezocht</p>
+                  </div>
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-500 shrink-0">
+                    <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div className="w-full bg-orange-200 rounded-full h-1.5">
+                  <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: `${pct}%` }} />
+                </div>
+              </Link>
+            );
+          })()}
+
           <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-center gap-3">
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-green-600 shrink-0">
               <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />

@@ -38,7 +38,7 @@ const paidNavItems = [
   },
   {
     key: "account",
-    href: "/dashboard",
+    href: "/account",
     label: "Account",
     icon: (active: boolean) => (
       <svg viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 0 : 1.5}>

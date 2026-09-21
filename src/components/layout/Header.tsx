@@ -1,11 +1,26 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth-context";
 import type { Locale } from "@/i18n/config";
+
+function getParentPath(pathname: string, hasPaid: boolean, backParam: string | null): string | null {
+  if (pathname === "/" || pathname === "/dashboard") return null;
+  if (backParam) return backParam;
+  if (pathname.startsWith("/routes/custom")) return "/routes";
+  if (pathname.startsWith("/routes/")) return "/routes";
+  if (pathname.startsWith("/locations/")) return "/map";
+  if (pathname.startsWith("/my-routes/")) return "/my-routes";
+  if (pathname === "/my-routes") return "/dashboard";
+  if (pathname === "/routes") return hasPaid ? "/dashboard" : "/";
+  if (pathname === "/map") return "/dashboard";
+  if (pathname === "/account") return "/dashboard";
+  return hasPaid ? "/dashboard" : "/";
+}
 
 const localeLabels: Record<Locale, string> = {
   nl: "NL",
@@ -17,11 +32,15 @@ export function Header() {
   const t = useTranslations();
   const locale = useLocale() as Locale;
   const pathname = usePathname();
+  const router = useRouter();
   const { isLoggedIn, hasPaid, isLoading } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const showSolid = true;
+  const searchParams = useSearchParams();
+  const backParam = searchParams.get("back");
+  const parentPath = getParentPath(pathname, hasPaid, backParam);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -49,9 +68,9 @@ export function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          {pathname !== "/" && pathname !== "/dashboard" && (
+          {parentPath && (
             <button
-              onClick={() => window.history.back()}
+              onClick={() => router.push(parentPath)}
               className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors mr-1 shrink-0"
               aria-label="Terug"
             >
