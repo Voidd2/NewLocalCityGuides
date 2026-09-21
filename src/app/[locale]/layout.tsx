@@ -9,6 +9,7 @@ import "../globals.css";
 import { Header } from "@/components/layout/Header";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { AuthProvider } from "@/lib/auth-context";
+import { Footer } from "@/components/layout/Footer";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -101,6 +102,7 @@ export default async function LocaleLayout({
           <AuthProvider>
             <Header />
             <main className="pt-16 flex-1 bg-warm-50">{children}</main>
+            <Footer />
             <BottomNav />
           </AuthProvider>
         </NextIntlClientProvider>

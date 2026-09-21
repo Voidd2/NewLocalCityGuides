@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { CustomRouteBuilder } from "@/components/custom-route/CustomRouteBuilder";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
-import { Footer } from "@/components/layout/Footer";
 
 export default async function CustomRoutePage({
   params,
@@ -16,7 +15,6 @@ export default async function CustomRoutePage({
       <PaywallGuard>
         <CustomRouteBuilder />
       </PaywallGuard>
-      <Footer />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import { setRequestLocale } from "next-intl/server";
-import { Footer } from "@/components/layout/Footer";
 
 export default async function PrivacyPage({
   params,
@@ -49,7 +48,6 @@ export default async function PrivacyPage({
           <p className="text-xs text-gray-400 mt-8">Laatst bijgewerkt: september 2026</p>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

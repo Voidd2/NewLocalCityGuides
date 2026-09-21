@@ -22,14 +22,17 @@ const LeafletMap = dynamic(() => import("./LeafletMap").then((m) => m.LeafletMap
 
 const categories = [
   { key: "all", label: "Alles" },
-  { key: "macht", label: "Macht & Recht" },
-  { key: "handel", label: "Handel & Werk" },
-  { key: "geloof", label: "Geloof" },
-  { key: "cultuur", label: "Cultuur" },
+  { key: "museum", label: "Musea" },
+  { key: "architectuur", label: "Architectuur" },
   { key: "kunst", label: "Kunst" },
+  { key: "geloof", label: "Geloof" },
+  { key: "natuur", label: "Natuur & Parken" },
+  { key: "handel", label: "Handel & Werk" },
   { key: "wetenschap", label: "Wetenschap" },
-  { key: "rampen", label: "Rampen & Strijd" },
+  { key: "cultuur", label: "Cultuur" },
+  { key: "macht", label: "Macht & Recht" },
   { key: "dagelijks-leven", label: "Dagelijks leven" },
+  { key: "rampen", label: "Rampen & Strijd" },
 ];
 
 const TEASER_COUNT = 3;

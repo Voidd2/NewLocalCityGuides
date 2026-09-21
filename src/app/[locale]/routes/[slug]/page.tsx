@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { routes } from "@/data/routes";
 import { RouteDetail } from "@/components/routes/RouteDetail";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
-import { Footer } from "@/components/layout/Footer";
 
 export function generateStaticParams() {
   return routes.map((route) => ({ slug: route.slug }));
@@ -25,7 +24,6 @@ export default async function RouteDetailPage({
       <PaywallGuard>
         <RouteDetail route={route} />
       </PaywallGuard>
-      <Footer />
     </>
   );
 }

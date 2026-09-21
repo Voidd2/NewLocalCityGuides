@@ -1,6 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
 import { MapPage } from "@/components/map/MapPage";
-import { Footer } from "@/components/layout/Footer";
 
 export default async function Map({
   params,
@@ -13,7 +12,6 @@ export default async function Map({
   return (
     <>
       <MapPage />
-      <Footer />
     </>
   );
 }

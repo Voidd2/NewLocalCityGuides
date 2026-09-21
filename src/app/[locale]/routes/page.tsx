@@ -1,6 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
 import { RoutesOverview } from "@/components/routes/RoutesOverview";
-import { Footer } from "@/components/layout/Footer";
 
 export default async function RoutesPage({
   params,
@@ -13,7 +12,6 @@ export default async function RoutesPage({
   return (
     <>
       <RoutesOverview />
-      <Footer />
     </>
   );
 }

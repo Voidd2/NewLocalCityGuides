@@ -1,6 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
 import { AboutPage } from "@/components/about/AboutPage";
-import { Footer } from "@/components/layout/Footer";
 
 export default async function About({
   params,
@@ -13,7 +12,6 @@ export default async function About({
   return (
     <>
       <AboutPage />
-      <Footer />
     </>
   );
 }

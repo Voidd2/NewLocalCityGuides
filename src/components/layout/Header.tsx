@@ -21,8 +21,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const isHomePage = pathname === "/" || pathname === "/dashboard";
-  const showSolid = !isHomePage || scrolled;
+  const showSolid = true;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -50,7 +49,7 @@ export function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          {!isHomePage && (
+          {pathname !== "/" && pathname !== "/dashboard" && (
             <button
               onClick={() => window.history.back()}
               className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors mr-1 shrink-0"
