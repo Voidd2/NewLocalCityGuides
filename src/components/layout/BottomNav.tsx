@@ -27,12 +27,12 @@ const paidNavItems = [
     ),
   },
   {
-    key: "activiteiten",
-    href: "/activiteiten",
-    label: "Activiteiten",
+    key: "ontdek",
+    href: "/ontdek",
     icon: (active: boolean) => (
       <svg viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 0 : 1.5}>
-        <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <circle cx="11" cy="11" r="8" />
+        <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
       </svg>
     ),
   },
