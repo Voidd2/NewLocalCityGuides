@@ -91,7 +91,7 @@ export function HulpPage() {
   return (
     <div>
       <section className="relative overflow-hidden">
-        <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-10 pb-14">
+        <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-10 pb-16">
           <div className="max-w-3xl mx-auto text-center">
             <div className="w-16 h-16 rounded-full bg-orange-500/20 flex items-center justify-center mx-auto mb-5">
               <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-orange-400" stroke="currentColor" strokeWidth="1.5">
@@ -107,7 +107,7 @@ export function HulpPage() {
         </div>
       </section>
 
-      <section className="max-w-4xl mx-auto px-4 -mt-8 mb-8">
+      <section className="max-w-4xl mx-auto px-4 -mt-3 mb-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white rounded-2xl border border-gray-200 p-5 text-center shadow-sm">
             <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-3">
