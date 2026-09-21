@@ -5,6 +5,39 @@ No handoff = task incomplete.
 
 ---
 
+## HANDOFF 009
+
+**Agent:** Codex · **Role:** Research / editorial support
+**Date:** 2026-09-17 · **Branch:** `codex/hidden-gems-leiden` · **PR:** #11
+**Task ID:** `RESEARCH-HIDDEN-GEMS-001` · **Status:** REVIEW
+
+### Completed
+- Verified sixteen current Leiden places across all requested categories: market food, artisanal
+  fish, cheese, publicly visitable hofjes, brown cafes, independent bookshops and breakfast/lunch.
+- Recorded exact addresses or market pitches, dated opening hours, a sourceable reason for
+  inclusion, honest visitor/language guidance, and a permission-aware photo brief for each.
+- Added a 25-source register dominated by first-party business and foundation pages plus official
+  Leiden destination sources.
+
+### Safety and accuracy constraints carried into production
+- “Best”, “local favourite” and “locals actually go here” were not treated as facts. English
+  service remains unverified unless a source explicitly supports it.
+- No current stroopwafel vendor could be tied to a reliable first-party pitch and schedule. Market
+  availability is verified, but naming a favourite vendor is blocked pending municipal or in-person
+  confirmation.
+- Hof Meermansburg and Eva van Hoogeveenhof have first-party access evidence. Hofjes remain homes:
+  visitors must obey gates/signs and photography must exclude residents, windows and interiors.
+
+### Recommended next action
+Claude reviews the editorial fit and decides which records enter product content. Before launch,
+recheck schedules within 30 days, obtain business photo permissions, and verify any staff-language
+claim directly with the proprietor.
+
+### Master file updated
+YES — scoped status note only
+
+---
+
 ## HANDOFF 005
 
 **Agent:** Claude (Opus) · **Role:** B — Historical Researcher · **G** — Quality Reviewer
