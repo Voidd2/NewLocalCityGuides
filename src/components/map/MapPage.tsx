@@ -21,12 +21,15 @@ const LeafletMap = dynamic(() => import("./LeafletMap").then((m) => m.LeafletMap
 });
 
 const categories = [
-  { key: "all", label: "Alles", icon: null },
-  { key: "origins", label: "Geschiedenis", icon: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" },
-  { key: "art", label: "Kunst", icon: "M12 14l9-5-9-5-9 5 9 5z" },
-  { key: "science", label: "Wetenschap", icon: "M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
-  { key: "religion", label: "Religie", icon: "M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" },
-  { key: "trade", label: "Handel", icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" },
+  { key: "all", label: "Alles" },
+  { key: "macht", label: "Macht & Recht" },
+  { key: "handel", label: "Handel & Werk" },
+  { key: "geloof", label: "Geloof" },
+  { key: "cultuur", label: "Cultuur" },
+  { key: "kunst", label: "Kunst" },
+  { key: "wetenschap", label: "Wetenschap" },
+  { key: "rampen", label: "Rampen & Strijd" },
+  { key: "dagelijks-leven", label: "Dagelijks leven" },
 ];
 
 const TEASER_COUNT = 3;
@@ -52,12 +55,19 @@ export function MapPage() {
     }
   }, [toast]);
 
-  const filtered = useMemo(() =>
+  const mapFiltered = useMemo(() =>
+    locations.filter((l) => !searchQuery || l.name.toLowerCase().includes(searchQuery.toLowerCase())),
+    [searchQuery]
+  );
+
+  const listFiltered = useMemo(() =>
     locations
       .filter((l) => activeCategory === "all" || l.categories.includes(activeCategory))
       .filter((l) => !searchQuery || l.name.toLowerCase().includes(searchQuery.toLowerCase())),
     [activeCategory, searchQuery]
   );
+
+  const filtered = view === "map" ? mapFiltered : listFiltered;
 
   const pins = useMemo(() =>
     filtered
@@ -145,8 +155,8 @@ export function MapPage() {
     );
   }
 
-  const teaserLocations = filtered.slice(0, TEASER_COUNT);
-  const lockedLocations = filtered.slice(TEASER_COUNT);
+  const teaserLocations = listFiltered.slice(0, TEASER_COUNT);
+  const lockedLocations = listFiltered.slice(TEASER_COUNT);
 
   return (
     <div className="pb-20">
@@ -171,29 +181,6 @@ export function MapPage() {
         </div>
       )}
 
-      <div className="bg-navy-800 text-white px-4 py-3">
-        <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-full whitespace-nowrap transition-all ${
-                activeCategory === cat.key
-                  ? "bg-orange-500 text-white shadow-lg shadow-orange-500/30"
-                  : "bg-white/10 text-white/70 hover:bg-white/20"
-              }`}
-            >
-              {cat.icon && (
-                <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="2">
-                  <path d={cat.icon} />
-                </svg>
-              )}
-              {cat.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           {hasPaid && (
@@ -211,7 +198,7 @@ export function MapPage() {
             </div>
           )}
           <span className="text-xs text-gray-400">
-            {hasPaid ? filtered.length : teaserLocations.length} locatie{(hasPaid ? filtered.length : teaserLocations.length) !== 1 ? "s" : ""}
+            {hasPaid ? mapFiltered.length : teaserLocations.length} locatie{(hasPaid ? mapFiltered.length : teaserLocations.length) !== 1 ? "s" : ""}
           </span>
         </div>
         <div className="flex gap-1 bg-gray-100 rounded-lg p-0.5">
@@ -442,8 +429,26 @@ export function MapPage() {
       ) : (
         <div className="max-w-7xl mx-auto px-4">
           {hasPaid && (
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-2 scrollbar-hide">
+              {categories.map((cat) => (
+                <button
+                  key={cat.key}
+                  onClick={() => setActiveCategory(cat.key)}
+                  className={`text-xs font-medium px-3.5 py-2 rounded-full whitespace-nowrap transition-all ${
+                    activeCategory === cat.key
+                      ? "bg-orange-500 text-white shadow-lg shadow-orange-500/30"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {hasPaid && (
             <p className="text-xs text-gray-400 mb-2">
-              {filtered.length} locatie{filtered.length !== 1 ? "s" : ""} gevonden
+              {listFiltered.length} locatie{listFiltered.length !== 1 ? "s" : ""} gevonden
             </p>
           )}
 
@@ -454,7 +459,7 @@ export function MapPage() {
           )}
 
           <div className="space-y-2 pb-4">
-            {(hasPaid ? filtered : teaserLocations).map((loc) => (
+            {(hasPaid ? listFiltered : teaserLocations).map((loc) => (
               <button
                 key={loc.id}
                 onClick={() => {
@@ -534,7 +539,7 @@ export function MapPage() {
               </div>
             )}
 
-            {hasPaid && filtered.length === 0 && (
+            {hasPaid && listFiltered.length === 0 && (
               <div className="text-center py-12">
                 <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-gray-300 mx-auto mb-3" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
