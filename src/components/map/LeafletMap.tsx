@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import type { LocationData } from "@/data/locations";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -11,8 +11,8 @@ interface MapPin {
   lng: number;
 }
 
-function createCustomIcon(isSelected: boolean, categoryColor?: string) {
-  const color = isSelected ? "#FF6B00" : (categoryColor || "#1B2A4A");
+function createCustomIcon(isSelected: boolean) {
+  const color = isSelected ? "#FF6B00" : "#1B2A4A";
   const size = isSelected ? 40 : 32;
   return L.divIcon({
     className: "custom-map-pin",
@@ -52,6 +52,8 @@ export function LeafletMap({
   const mapInstanceRef = useRef<L.Map | null>(null);
   const markersRef = useRef<Map<string, L.Marker>>(new Map());
   const [isReady, setIsReady] = useState(false);
+  const onSelectPinRef = useRef(onSelectPin);
+  onSelectPinRef.current = onSelectPin;
 
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
@@ -88,12 +90,11 @@ export function LeafletMap({
     markersRef.current.clear();
 
     pins.forEach((pin) => {
-      const isSelected = pin.location.id === selectedId;
-      const icon = createCustomIcon(isSelected);
+      const icon = createCustomIcon(pin.location.id === selectedId);
 
       const marker = L.marker([pin.lat, pin.lng], { icon })
         .addTo(map)
-        .on("click", () => onSelectPin(pin.location.id));
+        .on("click", () => onSelectPinRef.current(pin.location.id));
 
       markersRef.current.set(pin.location.id, marker);
     });
@@ -102,7 +103,18 @@ export function LeafletMap({
       const bounds = L.latLngBounds(pins.map((p) => [p.lat, p.lng]));
       map.fitBounds(bounds, { padding: [50, 50], maxZoom: 16 });
     }
-  }, [pins, selectedId, onSelectPin, isReady]);
+    // Only rebuild markers and fitBounds when the pins list changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pins, isReady]);
+
+  useEffect(() => {
+    if (!mapInstanceRef.current || !isReady) return;
+
+    markersRef.current.forEach((marker, id) => {
+      const isSelected = id === selectedId;
+      marker.setIcon(createCustomIcon(isSelected));
+    });
+  }, [selectedId, isReady]);
 
   useEffect(() => {
     if (!mapInstanceRef.current || !selectedId) return;

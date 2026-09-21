@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { Link } from "@/i18n/navigation";
 import { locations } from "@/data/locations";
+import { routes as standardRoutes } from "@/data/routes";
 import { useAuth } from "@/lib/auth-context";
+import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
 
 const LeafletMap = dynamic(() => import("./LeafletMap").then((m) => m.LeafletMap), {
   ssr: false,
@@ -35,6 +37,20 @@ export function MapPage() {
   const [view, setView] = useState<"map" | "list">("map");
   const [selectedPin, setSelectedPin] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [addToRouteFor, setAddToRouteFor] = useState<string | null>(null);
+  const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "warning" } | null>(null);
+
+  useEffect(() => {
+    setSavedRoutes(getSavedRoutes());
+  }, []);
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
 
   const filtered = useMemo(() =>
     locations
@@ -52,11 +68,74 @@ export function MapPage() {
 
   const handleSelectPin = useCallback((id: string) => {
     setSelectedPin((prev) => (prev === id ? null : id));
+    setAddToRouteFor(null);
   }, []);
 
   const selectedLocation = selectedPin
     ? locations.find((l) => l.id === selectedPin)
     : null;
+
+  const addToRouteLocation = addToRouteFor
+    ? locations.find((l) => l.id === addToRouteFor)
+    : null;
+
+  const standardRoutesAsSaved: SavedRoute[] = standardRoutes.map((r) => ({
+    id: r.id,
+    name: r.title,
+    locationIds: r.locationIds,
+    createdAt: "",
+    arrivedLocationIds: [],
+  }));
+
+  const allRoutesForPicker = [...standardRoutesAsSaved, ...savedRoutes];
+
+  const handleAddToExistingRoute = (routeId: string, locationId: string) => {
+    const isStandard = standardRoutes.find((r) => r.id === routeId);
+
+    if (isStandard) {
+      let existing = savedRoutes.find(
+        (sr) => sr.name === isStandard.title && sr.locationIds.join(",") === isStandard.locationIds.join(",")
+      );
+      if (!existing) {
+        existing = savedRoutes.find((sr) => sr.name === isStandard.title);
+      }
+      if (!existing) {
+        const saved = saveRoute(isStandard.title, [...isStandard.locationIds]);
+        const result = addLocationToRoute(saved.id, locationId);
+        if (result === "duplicate") {
+          setToast({ message: `${addToRouteLocation?.name} staat al in ${isStandard.title}`, type: "warning" });
+        } else {
+          setToast({ message: `Toegevoegd aan ${isStandard.title}`, type: "success" });
+        }
+      } else {
+        const result = addLocationToRoute(existing.id, locationId);
+        if (result === "duplicate") {
+          setToast({ message: `${addToRouteLocation?.name} staat al in ${existing.name}`, type: "warning" });
+        } else {
+          setToast({ message: `Toegevoegd aan ${existing.name}`, type: "success" });
+        }
+      }
+    } else {
+      const result = addLocationToRoute(routeId, locationId);
+      const route = savedRoutes.find((r) => r.id === routeId);
+      if (result === "duplicate") {
+        setToast({ message: `${addToRouteLocation?.name} staat al in ${route?.name || "deze route"}`, type: "warning" });
+      } else {
+        setToast({ message: `Toegevoegd aan ${route?.name || "je route"}`, type: "success" });
+      }
+    }
+
+    setSavedRoutes(getSavedRoutes());
+    setAddToRouteFor(null);
+  };
+
+  const handleCreateNewRoute = (locationId: string) => {
+    const loc = locations.find((l) => l.id === locationId);
+    const saved = saveRoute(`Route met ${loc?.name || "locatie"}`, [locationId]);
+    setSavedRoutes(getSavedRoutes());
+    setToast({ message: `Nieuwe route aangemaakt met ${loc?.name}`, type: "success" });
+    setAddToRouteFor(null);
+  };
 
   if (isLoading) {
     return (
@@ -71,6 +150,27 @@ export function MapPage() {
 
   return (
     <div className="pb-20">
+      {toast && (
+        <div className={`fixed top-20 left-4 right-4 z-[2000] flex justify-center pointer-events-none`}>
+          <div className={`pointer-events-auto px-4 py-3 rounded-xl shadow-xl text-sm font-medium flex items-center gap-2 max-w-sm ${
+            toast.type === "success"
+              ? "bg-green-600 text-white"
+              : "bg-orange-500 text-white"
+          }`}>
+            {toast.type === "success" ? (
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 shrink-0">
+                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 shrink-0">
+                <path fillRule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+              </svg>
+            )}
+            {toast.message}
+          </div>
+        </div>
+      )}
+
       <div className="bg-navy-800 text-white px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
           {categories.map((cat) => (
@@ -152,7 +252,7 @@ export function MapPage() {
                 />
               </div>
 
-              {selectedLocation && (
+              {selectedLocation && !addToRouteFor && (
                 <div className="absolute bottom-4 left-4 right-4 z-[1000]">
                   <div className="bg-white rounded-2xl shadow-xl p-4 max-w-sm mx-auto border border-gray-100">
                     <button
@@ -183,15 +283,138 @@ export function MapPage() {
                       </div>
                     </div>
                     <div className="flex gap-2 mt-3">
-                      <Link
-                        href={`/routes/custom`}
-                        className="flex-1 flex items-center justify-center gap-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-xs transition-colors"
+                      <button
+                        onClick={() => setAddToRouteFor(selectedLocation.id)}
+                        className="flex-1 flex items-center justify-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-xs transition-colors"
                       >
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                           <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                         </svg>
                         Voeg toe aan route
-                      </Link>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {addToRouteFor && addToRouteLocation && (
+                <div className="absolute bottom-4 left-2 right-2 z-[1000]">
+                  <div className="bg-white rounded-2xl shadow-xl max-w-md mx-auto border border-gray-100 overflow-hidden">
+                    <div className="bg-navy-800 px-4 py-3 flex items-center justify-between">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-white text-xs font-medium truncate">
+                          Voeg toe aan route:
+                        </p>
+                        <p className="text-orange-400 text-sm font-bold truncate">
+                          {addToRouteLocation.name}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => setAddToRouteFor(null)}
+                        className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-colors shrink-0 ml-2"
+                      >
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                          <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    <div className="max-h-[45vh] overflow-y-auto">
+                      {allRoutesForPicker.length > 0 && (
+                        <div className="px-4 pt-3 pb-1">
+                          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Kies een route</p>
+                        </div>
+                      )}
+
+                      <div className="px-3 pb-2 space-y-1">
+                        {standardRoutes.map((route) => {
+                          const alreadyIn = route.locationIds.includes(addToRouteFor!);
+                          const savedVersion = savedRoutes.find(
+                            (sr) => sr.name === route.title || sr.locationIds.join(",") === route.locationIds.join(",")
+                          );
+                          const inSaved = savedVersion?.locationIds.includes(addToRouteFor!);
+
+                          return (
+                            <button
+                              key={route.id}
+                              onClick={() => handleAddToExistingRoute(route.id, addToRouteFor!)}
+                              className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left group"
+                            >
+                              <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
+                                {route.image && (
+                                  <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-1.5">
+                                  <h4 className="font-semibold text-navy-800 text-sm truncate">{route.title}</h4>
+                                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-navy-800 text-white uppercase shrink-0">Standaard</span>
+                                </div>
+                                <p className="text-[11px] text-gray-400">{route.stops} stops</p>
+                              </div>
+                              {(alreadyIn || inSaved) ? (
+                                <span className="text-[10px] font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded-full shrink-0">
+                                  Al toegevoegd
+                                </span>
+                              ) : (
+                                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 group-hover:text-orange-500 shrink-0 transition-colors">
+                                  <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                                </svg>
+                              )}
+                            </button>
+                          );
+                        })}
+
+                        {savedRoutes.length > 0 && (
+                          <>
+                            <div className="px-1 pt-2 pb-1">
+                              <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Mijn routes</p>
+                            </div>
+                            {savedRoutes.map((route) => {
+                              const alreadyIn = route.locationIds.includes(addToRouteFor!);
+                              return (
+                                <button
+                                  key={route.id}
+                                  onClick={() => handleAddToExistingRoute(route.id, addToRouteFor!)}
+                                  className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left group"
+                                >
+                                  <div className="w-10 h-10 rounded-lg bg-orange-100 shrink-0 flex items-center justify-center">
+                                    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-orange-500" stroke="currentColor" strokeWidth="2">
+                                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                      <circle cx="12" cy="9" r="2.5" />
+                                    </svg>
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <h4 className="font-semibold text-navy-800 text-sm truncate">{route.name}</h4>
+                                    <p className="text-[11px] text-gray-400">{route.locationIds.length} stops</p>
+                                  </div>
+                                  {alreadyIn ? (
+                                    <span className="text-[10px] font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded-full shrink-0">
+                                      Al toegevoegd
+                                    </span>
+                                  ) : (
+                                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 group-hover:text-orange-500 shrink-0 transition-colors">
+                                      <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                                    </svg>
+                                  )}
+                                </button>
+                              );
+                            })}
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 px-4 py-3">
+                      <button
+                        onClick={() => handleCreateNewRoute(addToRouteFor!)}
+                        className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-orange-300 text-orange-500 hover:bg-orange-50 font-semibold py-2.5 rounded-xl text-sm transition-colors"
+                      >
+                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                          <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                        </svg>
+                        Nieuwe route maken
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -54,6 +54,17 @@ export function deleteSavedRoute(id: string): void {
   writeAll(readAll().filter((r) => r.id !== id));
 }
 
+export function addLocationToRoute(routeId: string, locationId: string): "added" | "duplicate" {
+  const all = readAll();
+  const route = all.find((r) => r.id === routeId);
+  if (!route) return "duplicate";
+  if (route.locationIds.includes(locationId)) return "duplicate";
+  route.locationIds.push(locationId);
+  route.name = route.name;
+  writeAll(all);
+  return "added";
+}
+
 export function markArrived(routeId: string, locationId: string): void {
   const all = readAll();
   const route = all.find((r) => r.id === routeId);
