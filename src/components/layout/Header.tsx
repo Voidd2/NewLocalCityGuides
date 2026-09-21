@@ -18,6 +18,7 @@ function getParentPath(pathname: string, hasPaid: boolean, backParam: string | n
   if (pathname === "/my-routes") return "/dashboard";
   if (pathname === "/routes") return hasPaid ? "/dashboard" : "/";
   if (pathname === "/map") return "/dashboard";
+  if (pathname === "/activiteiten/hulp") return "/activiteiten";
   if (pathname === "/activiteiten") return "/dashboard";
   if (pathname === "/account") return "/dashboard";
   return hasPaid ? "/dashboard" : "/";

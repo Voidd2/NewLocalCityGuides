@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
-import { useRouter } from "@/i18n/navigation";
 
 interface Activity {
   id: string;
@@ -15,7 +14,6 @@ interface Activity {
   reviewCount: number;
   image: string | null;
   affiliateUrl: string;
-  commission: string;
   category: "rondvaart" | "wandeltour" | "fietstour" | "museum" | "overig";
 }
 
@@ -30,7 +28,6 @@ const activities: Activity[] = [
     reviewCount: 989,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "2,00",
     category: "rondvaart",
   },
   {
@@ -43,7 +40,6 @@ const activities: Activity[] = [
     reviewCount: 738,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "2,16",
     category: "rondvaart",
   },
   {
@@ -56,7 +52,6 @@ const activities: Activity[] = [
     reviewCount: 218,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "19,20",
     category: "rondvaart",
   },
   {
@@ -69,7 +64,6 @@ const activities: Activity[] = [
     reviewCount: 25,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "3,84",
     category: "wandeltour",
   },
   {
@@ -82,7 +76,6 @@ const activities: Activity[] = [
     reviewCount: 240,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "3,12",
     category: "rondvaart",
   },
   {
@@ -95,7 +88,6 @@ const activities: Activity[] = [
     reviewCount: 114,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "2,24",
     category: "museum",
   },
   {
@@ -108,7 +100,6 @@ const activities: Activity[] = [
     reviewCount: 1,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "11,84",
     category: "wandeltour",
   },
   {
@@ -121,7 +112,6 @@ const activities: Activity[] = [
     reviewCount: 90,
     image: null,
     affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    commission: "2,96",
     category: "museum",
   },
 ];
@@ -152,163 +142,8 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
   );
 }
 
-function BookingHelpForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    date: "",
-    groupSize: "",
-    children: "",
-    elderly: "",
-    interests: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center">
-        <div className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-3">
-          <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-white" stroke="currentColor" strokeWidth="2">
-            <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <h3 className="text-lg font-bold text-green-800 mb-2">Aanvraag ontvangen!</h3>
-        <p className="text-sm text-green-600">
-          We gaan voor je aan de slag en nemen zo snel mogelijk contact op met de beste opties voor jouw groep.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Naam</label>
-          <input
-            type="text"
-            required
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-            placeholder="Je naam"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">E-mail</label>
-          <input
-            type="email"
-            required
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-            placeholder="je@email.nl"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Welke dag?</label>
-          <input
-            type="date"
-            required
-            value={form.date}
-            onChange={(e) => setForm({ ...form, date: e.target.value })}
-            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Groepsgrootte</label>
-          <input
-            type="number"
-            min="1"
-            required
-            value={form.groupSize}
-            onChange={(e) => setForm({ ...form, groupSize: e.target.value })}
-            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-            placeholder="Aantal personen"
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Kinderen (0-12)</label>
-          <input
-            type="number"
-            min="0"
-            value={form.children}
-            onChange={(e) => setForm({ ...form, children: e.target.value })}
-            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-            placeholder="0"
-          />
-        </div>
-        <div>
-          <label className="block text-xs font-medium text-gray-700 mb-1">Ouderen (65+)</label>
-          <input
-            type="number"
-            min="0"
-            value={form.elderly}
-            onChange={(e) => setForm({ ...form, elderly: e.target.value })}
-            className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-            placeholder="0"
-          />
-        </div>
-      </div>
-
-      <div>
-        <label className="block text-xs font-medium text-gray-700 mb-1">Wat willen jullie doen in Leiden?</label>
-        <select
-          value={form.interests}
-          onChange={(e) => setForm({ ...form, interests: e.target.value })}
-          className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
-        >
-          <option value="">Kies een activiteit...</option>
-          <option value="rondvaart">Rondvaart door de grachten</option>
-          <option value="wandeltour">Wandeltour met gids</option>
-          <option value="fietstour">Fietstour door de stad</option>
-          <option value="museum">Musea bezoeken</option>
-          <option value="boot-huren">Zelf een boot huren</option>
-          <option value="eten-drinken">Eten en drinken tips</option>
-          <option value="combinatie">Combinatie van alles</option>
-          <option value="anders">Iets anders</option>
-        </select>
-      </div>
-
-      <div>
-        <label className="block text-xs font-medium text-gray-700 mb-1">Extra wensen of vragen</label>
-        <textarea
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          rows={3}
-          className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 resize-none"
-          placeholder="Bijv. rolstoeltoegankelijk, speciale dieetwensen, tijdvoorkeur..."
-        />
-      </div>
-
-      <button
-        type="submit"
-        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-sm transition-colors flex items-center justify-center gap-2"
-      >
-        <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-          <path d="M3.105 2.289a.75.75 0 00-.826.95l1.414 4.925A1.5 1.5 0 005.135 9.25h6.115a.75.75 0 010 1.5H5.135a1.5 1.5 0 00-1.442 1.086l-1.414 4.926a.75.75 0 00.826.95 28.896 28.896 0 0015.293-7.154.75.75 0 000-1.115A28.897 28.897 0 003.105 2.289z" />
-        </svg>
-        Verstuur aanvraag
-      </button>
-    </form>
-  );
-}
-
 export function ActiviteitenPage() {
   const { hasPaid, isLoading } = useAuth();
-  const router = useRouter();
   const [activeCategory, setActiveCategory] = useState<string>("alle");
 
   if (isLoading) {
@@ -361,35 +196,37 @@ export function ActiviteitenPage() {
           <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Activiteiten in Leiden</h1>
             <p className="text-white/70 text-sm">
-              Boek de leukste tours en activiteiten, of laat ons persoonlijk helpen met jouw perfecte dag.
+              De leukste tours, rondvaarten en bezienswaardigheden op een rij.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 -mt-5">
-        <div className="bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-2xl p-5 mb-6">
+      <section className="max-w-7xl mx-auto px-4 -mt-5 mb-6">
+        <Link
+          href="/activiteiten/hulp"
+          className="block bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-2xl p-5 hover:border-orange-400 transition-colors"
+        >
           <div className="flex items-start gap-3">
             <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
               <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-navy-800 text-sm mb-1">Persoonlijke hulp bij het boeken</h3>
+              <h3 className="font-bold text-navy-800 text-sm mb-1">Weet je niet wat je wil doen?</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
-                Weet je niet welke tour het beste past bij jouw groep? Wij helpen je gratis!
-                Vertel ons wat je wilt doen en wij zoeken de perfecte activiteit voor je uit.
+                Laat ons je helpen! Van een dagje Leiden tot een trip naar Amsterdam - wij regelen alles persoonlijk voor je.
               </p>
-              <a href="#hulp-boeken" className="inline-flex items-center gap-1 mt-2 text-orange-600 text-xs font-semibold hover:text-orange-700">
-                Vraag hulp aan
+              <span className="inline-flex items-center gap-1 mt-2 text-orange-600 text-xs font-semibold">
+                Vraag persoonlijke hulp
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                  <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </span>
             </div>
           </div>
-        </div>
+        </Link>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 mb-6">
@@ -460,21 +297,22 @@ export function ActiviteitenPage() {
         </div>
       </section>
 
-      <section id="hulp-boeken" className="max-w-7xl mx-auto px-4 py-8 mb-8">
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-          <div className="text-center mb-6">
-            <div className="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-3">
-              <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-orange-500" stroke="currentColor" strokeWidth="2">
-                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
-              </svg>
-            </div>
-            <h2 className="text-lg font-bold text-navy-800 mb-1">Hulp bij het boeken?</h2>
-            <p className="text-sm text-gray-500">
-              Vertel ons over je groep en wat jullie willen doen. Wij zoeken de perfecte activiteit en helpen persoonlijk met boeken.
-            </p>
-          </div>
-
-          <BookingHelpForm />
+      <section className="bg-navy-800 text-white py-8 mb-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-hand text-orange-300 text-xl mb-2">Liever persoonlijke hulp?</p>
+          <h2 className="text-lg font-bold mb-2">Wij plannen jouw perfecte dag</h2>
+          <p className="text-white/60 text-sm mb-6">
+            Van vervoer tot verblijf, van Leiden tot Amsterdam - wij regelen het allemaal.
+          </p>
+          <Link
+            href="/activiteiten/hulp"
+            className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
+          >
+            Vraag hulp aan
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+              <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+            </svg>
+          </Link>
         </div>
       </section>
     </div>
