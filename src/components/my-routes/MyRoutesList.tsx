@@ -1,32 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Link } from "@/i18n/navigation";
-import { getSavedRoutes, deleteSavedRoute, type SavedRoute } from "@/lib/saved-routes";
+import { deleteSavedRoute, useSavedRoutes } from "@/lib/saved-routes";
 import { getLocationById } from "@/data/locations";
 import { routes as standardRoutes } from "@/data/routes";
 
 export function MyRoutesList() {
-  const [routes, setRoutes] = useState<SavedRoute[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setRoutes(getSavedRoutes());
-    setIsLoading(false);
-  }, []);
+  const routes = useSavedRoutes();
 
   const handleDelete = (id: string) => {
     deleteSavedRoute(id);
-    setRoutes(getSavedRoutes());
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">

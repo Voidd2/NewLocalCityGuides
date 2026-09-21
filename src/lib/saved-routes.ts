@@ -1,3 +1,5 @@
+import { useSyncExternalStore } from "react";
+
 const STORAGE_KEY = "ylcg_saved_routes";
 
 export interface SavedRoute {
@@ -8,24 +10,44 @@ export interface SavedRoute {
   arrivedLocationIds: string[];
 }
 
+const EMPTY_ROUTES: SavedRoute[] = [];
+const listeners = new Set<() => void>();
+let cache: SavedRoute[] | null = null;
+
 function readAll(): SavedRoute[] {
+  if (cache) return cache;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed;
+    const parsed = raw ? JSON.parse(raw) : [];
+    cache = Array.isArray(parsed) ? parsed : [];
   } catch {
-    return [];
+    cache = [];
   }
+  return cache;
 }
 
 function writeAll(routes: SavedRoute[]): void {
+  cache = routes;
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(routes));
   } catch {
     // ignore
   }
+  listeners.forEach((listener) => listener());
+}
+
+function subscribeSavedRoutes(callback: () => void): () => void {
+  listeners.add(callback);
+  return () => listeners.delete(callback);
+}
+
+function getSavedRoutesServerSnapshot(): SavedRoute[] {
+  return EMPTY_ROUTES;
+}
+
+/** Reactive read of the saved routes, kept in sync with writes from anywhere in the app. */
+export function useSavedRoutes(): SavedRoute[] {
+  return useSyncExternalStore(subscribeSavedRoutes, readAll, getSavedRoutesServerSnapshot);
 }
 
 export function getSavedRoutes(): SavedRoute[] {

@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useSyncExternalStore, useCallback, type ReactNode } from "react";
 import { validateLogin } from "./auth";
 
 interface User {
@@ -22,46 +22,70 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 const STORAGE_KEY = "ylcg_user";
+const listeners = new Set<() => void>();
+let cachedUser: User | null = null;
+let hasReadStorage = false;
+
+function readUserFromStorage(): User | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed?.email) return parsed;
+    }
+  } catch {
+    // ignore
+  }
+  return null;
+}
+
+function getSnapshot(): User | null {
+  if (!hasReadStorage) {
+    cachedUser = readUserFromStorage();
+    hasReadStorage = true;
+  }
+  return cachedUser;
+}
+
+function getServerSnapshot(): User | null {
+  return null;
+}
+
+function subscribe(callback: () => void): () => void {
+  listeners.add(callback);
+  return () => listeners.delete(callback);
+}
+
+function setStoredUser(user: User | null): void {
+  cachedUser = user;
+  hasReadStorage = true;
+  try {
+    if (user) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(user));
+    } else {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+  } catch {
+    // ignore
+  }
+  listeners.forEach((listener) => listener());
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed?.email) {
-          setUser(parsed);
-        }
-      }
-    } catch {
-      // ignore
-    }
-    setIsLoading(false);
-  }, []);
+  // useSyncExternalStore resolves the real client value (localStorage) before the
+  // browser paints, so no separate `isLoading` gate is needed for hydration safety.
+  const user = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const login = useCallback((email: string, password: string): User | null => {
     const result = validateLogin(email, password);
     if (result) {
-      setUser(result);
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(result));
-      } catch {
-        // ignore
-      }
+      setStoredUser(result);
     }
     return result;
   }, []);
 
   const logout = useCallback(() => {
-    setUser(null);
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-    } catch {
-      // ignore
-    }
+    setStoredUser(null);
   }, []);
 
   return (
@@ -69,7 +93,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       isLoggedIn: !!user,
       hasPaid: user?.hasPaid ?? false,
-      isLoading,
+      isLoading: false,
       login,
       logout,
     }}>

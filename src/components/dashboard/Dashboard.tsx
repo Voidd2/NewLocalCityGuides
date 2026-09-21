@@ -1,29 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
 import { locations, getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
-import { getSavedRoutes, deleteSavedRoute, type SavedRoute } from "@/lib/saved-routes";
+import { useSavedRoutes } from "@/lib/saved-routes";
 
 export function Dashboard() {
   const router = useRouter();
   const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
-  const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
+  const allSavedRoutes = useSavedRoutes();
+  const savedRoutes = hasPaid ? allSavedRoutes : [];
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {
       router.push("/login");
     }
   }, [isLoading, isLoggedIn, router]);
-
-  useEffect(() => {
-    if (hasPaid) {
-      setSavedRoutes(getSavedRoutes());
-    }
-  }, [hasPaid]);
 
   function handleLogout() {
     logout();

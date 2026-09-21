@@ -3,25 +3,18 @@
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { routes } from "@/data/routes";
-import { getSavedRoutes } from "@/lib/saved-routes";
+import { useSavedRoutes } from "@/lib/saved-routes";
 import { getLocationById } from "@/data/locations";
 import { FeaturesBar } from "./FeaturesBar";
 import { PriceComparison } from "./PriceComparison";
 import { PopularRoutes } from "./PopularRoutes";
 import { MoreCities } from "./MoreCities";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
-import { useEffect, useState } from "react";
-import type { SavedRoute } from "@/lib/saved-routes";
 
 export function HomeContent() {
   const { hasPaid, isLoading } = useAuth();
-  const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
-
-  useEffect(() => {
-    if (hasPaid) {
-      setSavedRoutes(getSavedRoutes());
-    }
-  }, [hasPaid]);
+  const allSavedRoutes = useSavedRoutes();
+  const savedRoutes = hasPaid ? allSavedRoutes : [];
 
   if (isLoading) {
     return (

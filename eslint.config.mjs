@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Legacy content pipeline, excluded from the TypeScript project in
+    // tsconfig.json (missing its "yaml" dependency, no wired-up test runner).
+    "src/content/**",
+    "tests/**",
   ]),
 ]);
 

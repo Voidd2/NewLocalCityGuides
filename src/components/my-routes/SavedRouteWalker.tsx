@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
-import { getSavedRouteById, markArrived, type SavedRoute } from "@/lib/saved-routes";
+import { markArrived, useSavedRoutes } from "@/lib/saved-routes";
 import { getLocationById, type LocationData } from "@/data/locations";
 
 function StopCard({
@@ -157,27 +157,12 @@ function StopCard({
 export function SavedRouteWalker() {
   const params = useParams();
   const routeId = params.id as string;
-  const [route, setRoute] = useState<SavedRoute | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const saved = getSavedRouteById(routeId);
-    setRoute(saved ?? null);
-    setIsLoading(false);
-  }, [routeId]);
+  const allRoutes = useSavedRoutes();
+  const route = allRoutes.find((r) => r.id === routeId) ?? null;
 
   const handleArrive = (locationId: string) => {
     markArrived(routeId, locationId);
-    setRoute(getSavedRouteById(routeId) ?? null);
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
-      </div>
-    );
-  }
 
   if (!route) {
     return (

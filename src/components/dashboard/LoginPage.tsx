@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { TEST_CREDENTIALS } from "@/lib/auth";
 import { useAuth } from "@/lib/auth-context";
@@ -13,8 +13,13 @@ export function LoginPage() {
   const [error, setError] = useState("");
   const [showCredentials, setShowCredentials] = useState(false);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.push("/dashboard");
+    }
+  }, [isLoggedIn, router]);
+
   if (isLoggedIn) {
-    router.push("/dashboard");
     return null;
   }
 
