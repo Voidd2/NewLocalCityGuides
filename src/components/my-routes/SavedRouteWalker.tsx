@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
 import { getSavedRouteById, markArrived, type SavedRoute } from "@/lib/saved-routes";
 import { getLocationById, type LocationData } from "@/data/locations";
-import { getSchaapsvisMessage, localRecommendations } from "@/data/local-recommendations";
+import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
 
 function VideoModal({ loc, onClose, routeId }: { loc: LocationData; onClose: () => void; routeId: string }) {
   useEffect(() => {
@@ -247,36 +247,71 @@ function StopCard({
   );
 }
 
-function PauseBreakCard({ onDismiss }: { onDismiss: () => void }) {
+function PauseBreakCard({
+  onDismiss,
+  distanceMeters,
+  contextMessage,
+}: {
+  onDismiss: () => void;
+  distanceMeters: number;
+  contextMessage: string;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const schaapsvis = getSchaapsvisMessage();
   const others = localRecommendations.filter((r) => r.id !== "schaapsvis");
+  const showDistance = distanceMeters > 0;
+  const isNearby = distanceMeters > 0 && distanceMeters <= 300;
 
   return (
     <li className="flex gap-3">
       <div className="flex flex-col items-center">
-        <div className="w-8 h-8 rounded-full bg-amber-400 text-white flex items-center justify-center shrink-0">
+        <div className={`w-8 h-8 rounded-full text-white flex items-center justify-center shrink-0 ${
+          isNearby ? "bg-orange-500" : "bg-amber-400"
+        }`}>
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-            <path fillRule="evenodd" d="M6.75 2a.75.75 0 000 1.5H7v1.054a3.73 3.73 0 00-3.235 2.196A3.75 3.75 0 006.375 12H7v5.25a.75.75 0 001.5 0V12h.375a3.75 3.75 0 002.61-5.25A3.73 3.73 0 008.5 4.554V3.5h.25a.75.75 0 000-1.5h-2zM7.375 6a2.25 2.25 0 100 4.5h.75a2.25 2.25 0 100-4.5h-.75zM13.5 6.5a.75.75 0 01.75.75v1h1a.75.75 0 010 1.5h-1v1a.75.75 0 01-1.5 0v-1h-1a.75.75 0 010-1.5h1v-1a.75.75 0 01.75-.75z" clipRule="evenodd" />
+            <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
           </svg>
         </div>
-        <div className="w-0.5 flex-1 mt-1 bg-amber-200" />
+        <div className={`w-0.5 flex-1 mt-1 ${isNearby ? "bg-orange-200" : "bg-amber-200"}`} />
       </div>
 
       <div className="pb-4 flex-1 min-w-0">
-        <div className="rounded-xl border-2 border-dashed border-amber-300 bg-amber-50 overflow-hidden">
+        <div className={`rounded-xl border-2 overflow-hidden ${
+          isNearby
+            ? "border-orange-300 bg-orange-50"
+            : "border-dashed border-amber-300 bg-amber-50"
+        }`}>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="w-full p-3 flex items-center gap-3 text-left"
           >
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-bold text-amber-800">Pauze tussendoor?</p>
-              <p className="text-xs text-amber-600">Bezoek lokale ondernemers op je route</p>
+              <div className="flex items-center gap-2 mb-0.5">
+                <p className={`text-sm font-bold ${isNearby ? "text-orange-800" : "text-amber-800"}`}>
+                  {isNearby ? "Schaapsvishandel vlakbij!" : "Pauze tussendoor?"}
+                </p>
+                {showDistance && (
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    isNearby
+                      ? "bg-orange-500 text-white"
+                      : distanceMeters <= 500
+                        ? "bg-amber-200 text-amber-800"
+                        : "bg-gray-200 text-gray-600"
+                  }`}>
+                    ~{distanceMeters}m
+                  </span>
+                )}
+              </div>
+              <p className={`text-xs ${isNearby ? "text-orange-600" : "text-amber-600"}`}>
+                {contextMessage}
+              </p>
             </div>
             <svg
               viewBox="0 0 20 20"
               fill="currentColor"
-              className={`w-4 h-4 text-amber-400 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
+              className={`w-4 h-4 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""} ${
+                isNearby ? "text-orange-400" : "text-amber-400"
+              }`}
             >
               <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
             </svg>
@@ -288,24 +323,31 @@ function PauseBreakCard({ onDismiss }: { onDismiss: () => void }) {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(schaapsvis.mapsQuery)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white border border-orange-200 rounded-xl p-3 hover:border-orange-400 transition-colors"
+                className={`block bg-white border rounded-xl p-3 transition-colors ${
+                  isNearby ? "border-orange-300 hover:border-orange-500" : "border-orange-200 hover:border-orange-400"
+                }`}
               >
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
                     Aanbevolen
                   </span>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 uppercase tracking-wide">
-                    Visboer
+                    Sinds 1938
                   </span>
+                  {showDistance && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
+                      {distanceMeters}m
+                    </span>
+                  )}
                 </div>
                 <h4 className="font-bold text-navy-800 text-sm">Schaapsvishandel</h4>
-                <p className="text-xs text-gray-500 mt-0.5">{schaapsvis.location}</p>
+                <p className="text-xs text-orange-600 font-medium mt-0.5">{schaapsvis.location}</p>
                 <p className="text-xs text-gray-600 mt-1 leading-relaxed line-clamp-3">{schaapsvis.description}</p>
                 <div className="flex items-center gap-1.5 mt-2 text-blue-600">
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                     <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-[10px] font-semibold">Open in Google Maps</span>
+                  <span className="text-[10px] font-semibold">Navigeer hierheen via Google Maps</span>
                 </div>
               </a>
 
@@ -486,12 +528,17 @@ export function SavedRouteWalker() {
         )}
 
         <ol className="space-y-0">
-          {locs.map((loc, i) => {
-            const pauseIndex = Math.floor(locs.length / 2);
-            return (
+          {(() => {
+            const { index: smartPauseIndex, distanceMeters } = getSmartPauseIndex(locs);
+            const pauseContextMessage = getSchaapsvisContextMessage(distanceMeters);
+            return locs.map((loc, i) => (
               <span key={loc.id}>
-                {i === pauseIndex && !pauseDismissed && locs.length >= 3 && (
-                  <PauseBreakCard onDismiss={() => setPauseDismissed(true)} />
+                {i === smartPauseIndex && !pauseDismissed && locs.length >= 3 && (
+                  <PauseBreakCard
+                    onDismiss={() => setPauseDismissed(true)}
+                    distanceMeters={distanceMeters}
+                    contextMessage={pauseContextMessage}
+                  />
                 )}
                 <StopCard
                   loc={loc}
@@ -503,8 +550,8 @@ export function SavedRouteWalker() {
                   onOpenVideo={() => setVideoLoc(loc)}
                 />
               </span>
-            );
-          })}
+            ));
+          })()}
         </ol>
 
         <RecommendedSection />
