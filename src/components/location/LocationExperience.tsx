@@ -358,15 +358,10 @@ export function LocationExperience({ location }: { location: LocationData }) {
                 <p className="text-hand text-orange-500 -rotate-1 mb-5">{t("theStory")}</p>
 
                 {titleSection.paragraphs[0] && (
-                  <p className="text-base text-gray-700 leading-relaxed font-medium mb-3">
+                  <p className="text-base text-gray-700 leading-relaxed font-medium mb-4">
                     {titleSection.paragraphs[0]}
                   </p>
                 )}
-                {titleSection.paragraphs.slice(1).map((p, i) => (
-                  <p key={`intro-${i}`} className="text-sm text-gray-600 leading-relaxed mb-3">
-                    {p}
-                  </p>
-                ))}
 
                 <StoryImagePlaceholder description={location.name} />
 
@@ -382,13 +377,13 @@ export function LocationExperience({ location }: { location: LocationData }) {
                       </div>
                     )}
 
-                    {section.paragraphs.map((p, pi) => (
-                      <p key={pi} className="text-sm text-gray-600 leading-relaxed mb-3">
-                        {p}
+                    {section.paragraphs[0] && (
+                      <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                        {section.paragraphs[0]}
                       </p>
-                    ))}
+                    )}
 
-                    {si % 2 === 0 && si < bodySections.length - 1 && (
+                    {si < bodySections.length - 1 && si % 2 === 0 && (
                       <StoryImagePlaceholder
                         description={bodySections[si + 1]?.heading || location.name}
                       />

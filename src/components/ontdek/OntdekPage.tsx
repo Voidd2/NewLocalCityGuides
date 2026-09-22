@@ -205,17 +205,17 @@ function ActivityCard({ activity, t }: { activity: Activity; t: (key: string) =>
       rel="noopener noreferrer"
       className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group"
     >
-      <div className="aspect-[16/10] bg-gray-200 overflow-hidden">
+      <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
         {activity.image ? (
           <img src={activity.image} alt={activity.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
-            {/* --HIER IMAGE VAN {activity.title}-- */}
-            <svg viewBox="0 0 24 24" fill="none" className="w-16 h-16 text-white/15" stroke="currentColor" strokeWidth="1">
+          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
+            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
               <rect x="2" y="2" width="20" height="20" rx="3" />
               <circle cx="8" cy="8" r="2" />
               <path d="M2 16l5-5 3 3 4-4 8 8" />
             </svg>
+            <p className="text-[10px] text-white/20 font-medium px-4 text-center">--HIER IMAGE VAN {activity.title}--</p>
           </div>
         )}
       </div>
@@ -500,6 +500,25 @@ export function OntdekPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 mb-6">
+        <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-2 border-orange-200 rounded-2xl p-6 text-center">
+          <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-orange-500/20">
+            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+              <circle cx="12" cy="9" r="2.5" />
+            </svg>
+          </div>
+          <h3 className="font-bold text-navy-800 text-lg mb-1">{t("planDay")}</h3>
+          <p className="text-sm text-gray-600 mb-4">{t("planDayDesc")}</p>
+          <Link
+            href="/routes/custom"
+            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors shadow-lg shadow-orange-500/25"
+          >
+            {tHome("createRoute")}
+          </Link>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 mb-8">
         <Link
           href="/activiteiten/hulp"
           className="block bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-2xl p-5 hover:border-orange-400 transition-colors"
@@ -524,25 +543,6 @@ export function OntdekPage() {
             </div>
           </div>
         </Link>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-4 mb-8">
-        <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-2 border-orange-200 rounded-2xl p-6 text-center">
-          <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-orange-500/20">
-            <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-              <circle cx="12" cy="9" r="2.5" />
-            </svg>
-          </div>
-          <h3 className="font-bold text-navy-800 text-lg mb-1">{t("planDay")}</h3>
-          <p className="text-sm text-gray-600 mb-4">{t("planDayDesc")}</p>
-          <Link
-            href="/routes/custom"
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors shadow-lg shadow-orange-500/25"
-          >
-            {tHome("createRoute")}
-          </Link>
-        </div>
       </section>
 
       <div className="h-20" />
