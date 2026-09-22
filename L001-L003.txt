@@ -1,0 +1,719 @@
+laat mij weten wat je wilt dat ik nu in deze chatgpt prompt zeg dit zei die net
+
+k heb ook meteen een paar zaken gecontroleerd die in de aangeleverde context bewust als onzeker stonden. Zo blijkt de Koornbrug volgens het Rijksmonumentenregister uit 1642 te stammen; de karakteristieke overkappingen zijn ontworpen door stadsarchitect Salomon van der Paauw en dateren uit 1825. De toeristische Leiden-site noemt op een andere pagina 1834, maar de Rijksdienst voor het Cultureel Erfgoed is hier de sterkere primaire monumentenbron, dus voor de app zou ik 1825 gebruiken. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Ook de Blauwe Steen moet iets worden gecorrigeerd. Dat veroordeelden daar aantoonbaar als een soort schandpaal werden “tentoongesteld” kan ik niet hard genoeg onderbouwen. Wel is de steen al in 1321 verbonden aan de Leidse rechtspraak en wordt verondersteld dat mensen er hun vonnis hoorden terwijl dit vanaf de Roepstoel bij het stadhuis werd afgeroepen. Dat onderscheid ga ik in het verhaal bewaren, zodat we geen legende als zekerheid presenteren. [Geschiedenis van Leiden](https://www.geschiedenisvanleiden.nl/plaatsen-van-herinnering/breestraat-de-blauwe-steen/?utm_source=chatgpt.com)
+Voor het Gravensteen is er juist een belangrijke actuele wijziging: het is niet meer simpelweg “een gebouw van de Universiteit Leiden”. De universiteit beëindigde het gebruik en het gebouw is eigendom van de gemeente Leiden. In 2026 gebruikt Erfgoed Leiden delen ervan tijdelijk, terwijl de Pieterskerk sinds zomer 2025 rondleidingen organiseert. [Kaderbrief](https://kaderbrief.leiden.nl/kaders-programma-s/stedelijke-ontwikkeling/financi%C3%ABle-ontwikkelingen?utm_source=chatgpt.com)
+En bij L002 gebruik ik voortaan de historisch correcte bedrijfsnaam Schaap's Vishandel. Gerrit Schaap begon de zaak in 1938; Cor Haasnoot nam haar in 1957 over en behield de naam Schaap. De zaak staat tegenwoordig woensdag en zaterdag op de Leidse markt. Dat is sterker dan “Vishandel Haasnoot”, omdat we daarmee een verhaal vertellen dat controleerbaar klopt. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+L001 – De Burcht van Leiden
+VOICE-OVER SCRIPT (NL)
+Kijk eens omhoog.
+Die heuvel waarop de Burcht staat? Die hoort hier eigenlijk niet.
+Hij is door mensen gemaakt. Laag voor laag. Aarde die naar deze plek werd gebracht en opgestapeld, totdat er midden tussen het water een veilige hoogte ontstond.
+En om te begrijpen waarom... moet je bijna alles wat je nu om je heen ziet wegdenken.
+Geen winkels. Geen terrassen. Geen universiteit. Geen stenen grachtenpanden. Zelfs Leiden als echte stad bestaat nog niet.
+Je staat in een nat landschap van rivieren, modder, riet en kleine nederzettingen. Juist hier komen belangrijke waterwegen bij elkaar. En ergens in de negende of tiende eeuw beginnen mensen deze heuvel op te werpen. Archeologisch onderzoek laat zien dat de motte volledig kunstmatig is. Rond het jaar 1000 stond hier waarschijnlijk al een houten bouwwerk en de heuvel werd uiteindelijk ongeveer tien meter boven zijn omgeving gebracht. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+Stel je voor dat er gevaar dreigt.
+Je pakt wat je kunt dragen. Misschien neem je vee mee. Je klimt omhoog, achter een houten palissade, en kijkt vanaf deze plek naar het vlakke land beneden.
+Later verandert hout in steen. Onder graaf Dirk VI wordt een stenen ringmuur aangelegd. De Burcht wordt een plaats van macht. Hier zetelen burggraven die rechten hebben waar gewone Leidenaren weinig tegen kunnen beginnen: belastingen innen, bestuurders benoemen, controle uitoefenen over grond en handel.
+Maar kijk goed naar de Burcht.
+Je ziet geen enorm kasteel met torens, slaapzalen en ridderzalen. Dat is belangrijk. Dit was geen sprookjeskasteel zoals je dat misschien voor je ziet wanneer je het woord “burcht” hoort. Het was een versterkte plek op een motte: een verdedigbaar punt dat boven de omgeving uitstak.
+En dan groeit Leiden.
+Huizen verschijnen. Straten ontstaan. Kerken steken boven de daken uit. Grachten vormen zich rondom de bebouwing. Langzaam gebeurt iets merkwaardigs: de vesting die ooit boven een kleine nederzetting lag, komt midden in een stad te liggen.
+Loop straks naar boven.
+Draai op de weergang langzaam een rondje.
+De Pieterskerk. De Hooglandse Kerk. De daken. De grachten.
+Bijna alles wat je ziet kwam ná deze heuvel.
+En misschien is dat het mooiste aan de Burcht: je kijkt hier niet alleen óver Leiden.
+Je kijkt vanaf een plek waar het verhaal van Leiden al begon voordat Leiden de stad werd die je nu ziet. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+VOICE-OVER SCRIPT (EN)
+Look up for a moment.
+That hill beneath the Burcht does not naturally belong here.
+People built it.
+Layer by layer, earth was carried to this spot and piled up until a defensive mound rose above a landscape dominated by water.
+Now try to remove modern Leiden from your view.
+No cafés. No university. No brick canal houses. No busy shopping streets. In fact, Leiden is not yet a city at all.
+Around you is a wet landscape of rivers, reeds, mud and scattered settlement. Several waterways meet nearby, making this a strategically important place. Archaeological research shows that the mound was entirely man-made and that its earliest phases date to roughly the ninth or tenth century. By around the year 1000 there was already a wooden structure here. Over time, the mound was raised until it stood roughly ten metres above its surroundings. [Visit Leiden](https://www.visitleiden.nl/en/locations/2380897422/de-burcht?utm_source=chatgpt.com)
+Imagine danger approaching.
+You take what you can carry. Livestock may be driven uphill with you. Behind a wooden palisade, this elevated ground offers something precious in a flat landscape: protection.
+Eventually, timber gives way to stone. Under Count Dirk VI a stone ring wall replaces an earlier wooden enclosure. The site also becomes a centre of local power. Medieval castellans based here possessed significant rights, including collecting taxes and influencing local administration.
+But do not picture a giant fairy-tale castle.
+There were no huge royal apartments or dramatic towers like those of later castles. This was a motte stronghold: a fortified position built around an artificial mound.
+Then Leiden began to grow around it.
+Houses multiplied. Streets formed. Churches rose above the rooftops. Waterways became part of an increasingly dense urban landscape.
+A fortress that had once stood above a small settlement slowly found itself surrounded by a city.
+When you climb to the top, walk around the circular wall.
+Look for the Pieterskerk.
+Find the Hooglandse Kerk.
+Follow the canals through the roofs below you.
+Almost everything in that panorama belongs to chapters that came later.
+And that may be the most powerful thing about standing here. The Burcht is not simply a viewpoint over Leiden.
+It is a viewpoint from almost before Leiden itself.
+People stood on this mound when the skyline around you did not yet exist. The city you see below grew around this place.
+So as you look out over modern Leiden, remember:
+you are standing on one of the places from which its story began. [Visit Leiden](https://www.visitleiden.nl/en/locations/2380897422/de-burcht?utm_source=chatgpt.com)
+VOICE-OVER SCRIPT (DE)
+Schauen Sie einmal nach oben.
+Dieser Hügel unter der Burcht ist nicht natürlich entstanden.
+Menschen haben ihn geschaffen.
+Schicht für Schicht wurde Erde herangeschafft und aufgeschüttet, bis sich mitten in einer wasserreichen Landschaft ein geschützter, erhöhter Ort befand.
+Versuchen Sie nun, das heutige Leiden gedanklich verschwinden zu lassen.
+Keine Cafés. Keine Universität. Keine prächtigen Grachtenhäuser. Keine Einkaufsstraßen. Leiden ist noch nicht einmal die Stadt, die wir heute kennen.
+Um Sie herum liegen Wasserläufe, Schilf, feuchter Boden und kleine Ansiedlungen. Gerade hier treffen wichtige Wasserwege aufeinander. Archäologische Untersuchungen zeigen, dass die Motte vollständig künstlich angelegt wurde und ihre ersten Bauphasen wahrscheinlich in das 9. oder 10. Jahrhundert zurückreichen. Um das Jahr 1000 befand sich bereits ein hölzernes Bauwerk auf dem Hügel. Später wurde er weiter erhöht – bis ungefähr zehn Meter über seine Umgebung. [Visit Leiden](https://www.visitleiden.nl/de/standorte/2380897422/de-burcht?utm_source=chatgpt.com)
+Stellen Sie sich vor, Gefahr nähert sich.
+Sie nehmen mit, was Sie tragen können. Vielleicht wird sogar das Vieh mit auf den Hügel getrieben. Hinter einer hölzernen Palisade bietet die Höhe Schutz.
+Später wird aus Holz Stein. Unter Graf Dirk VI entsteht eine steinerne Ringmauer. Gleichzeitig wird die Burcht zu einem Ort politischer Macht. Burggrafen besitzen hier wichtige Rechte, erheben Abgaben und haben Einfluss auf die Verwaltung der jungen Siedlung.
+Doch stellen Sie sich kein riesiges Märchenschloss vor.
+Die Burcht war vor allem eine befestigte Anlage auf einer Motte – ein strategisch erhöhter und verteidigbarer Punkt.
+Dann wächst Leiden.
+Häuser entstehen. Straßen entwickeln sich. Kirchen ragen über die Dächer. Wasserläufe werden Teil einer immer dichter bebauten Stadt.
+Die Befestigung, die einst über einer kleinen Siedlung lag, befindet sich plötzlich mitten in Leiden.
+Gehen Sie nachher hinauf und laufen Sie langsam über den Wehrgang.
+Suchen Sie die Pieterskerk.
+Die Hooglandse Kerk.
+Folgen Sie mit den Augen den Grachten.
+Fast alles, was Sie dort sehen, entstand später.
+Und genau darin liegt die besondere Wirkung dieses Ortes.
+Von hier oben sehen Sie nicht nur Leiden.
+Sie stehen an einem Ort, dessen Geschichte älter ist als ein großer Teil der Stadt unter Ihnen.
+Menschen haben hier hinuntergeblickt, als die heutige Skyline noch nicht existierte.
+Die Stadt ist gewissermaßen um diesen Hügel herumgewachsen. [Visit Leiden](https://www.visitleiden.nl/de/standorte/2380897422/de-burcht?utm_source=chatgpt.com)
+LEESTEKST (NL) – Uitgebreidere versie
+Een heuvel die mensen zelf maakten
+Het eerste wat je over de Burcht moet weten, is dat de heuvel zelf onderdeel van het monument is.
+Een motte is een kunstmatig aangelegde heuvel waarop een versterking kon worden gebouwd. Archeologisch onderzoek aan de Leidse Burcht wijst erop dat de eerste fasen van deze verhoging teruggaan tot de negende of tiende eeuw. Rond het jaar 1000 stond bovenop waarschijnlijk al een houten bouwwerk. In verschillende fasen werd steeds meer aarde aangebracht, totdat de heuvel ongeveer tien meter boven de omgeving uitstak. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+Dat klinkt tegenwoordig misschien niet spectaculair. Tien meter is niet hoog vergeleken met moderne gebouwen.
+Maar in een grotendeels vlak en waterrijk landschap maakte hoogte een enorm verschil.
+Vanaf hier kon je de omgeving overzien. Bij gevaar konden mensen en mogelijk vee bescherming zoeken binnen de versterking.
+Waarom precies hier?
+Leiden is gevormd door water.
+De Burcht ligt bij een strategisch punt in het systeem van Rijn, Mare en Vliet. Wie hier controle had over het landschap en de waterwegen, zat op een waardevolle positie.
+De nederzetting rond deze plek groeide langzaam. Het Leiden dat wij nu kennen – met zijn kerken, markten, universiteitsgebouwen en grachtenpanden – lag nog eeuwen in de toekomst.
+Daarom is de Burcht zo interessant als beginpunt voor een stadstour.
+Je begint niet met een beroemd schilderij, een rijk koopmanshuis of een groot kerkgebouw.
+Je begint met aarde.
+Van hout naar steen
+De eerste verdedigingswerken waren van hout. In de middeleeuwen werd de Burcht steviger uitgebouwd. Volgens de historische reconstructie die Visit Leiden gebruikt, liet graaf Dirk VI de houten omheining vervangen door een ringmuur van tufsteen.
+De plek kreeg behalve een defensieve ook een bestuurlijke betekenis. Burggraven van Leiden hadden hier hun zetel. Zij beschikten over rechten die diep ingrepen in het leven van de nederzetting, zoals het innen van bepaalde belastingen en invloed op het lokale bestuur. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+De machtsverhoudingen veranderden door de eeuwen heen. Tijdens de strijd rond gravin Ada van Holland in 1203 en 1204 liep de Burcht schade op. Daarna volgden reparaties en nieuwe bouwfasen. Rond 1275 werd de ringmuur opnieuw opgebouwd, mogelijk in opdracht van graaf Floris V. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+Dat woord “mogelijk” is belangrijk. Bij een monument met zo'n lange geschiedenis bestaat niet voor iedere bouwfase een perfect bewaard document waarin staat wie precies opdracht gaf en op welke dag het werk begon.
+De stad haalt de vesting in
+In de eeuwen daarna groeide Leiden.
+De Burcht verloor daarmee geleidelijk haar oorspronkelijke militaire betekenis. Wat ooit een verdedigbare hoogte boven een kleine nederzetting was, raakte omsloten door bebouwing.
+In 1651 kocht het Leidse stadsbestuur de Burcht. Er kwam een openbaar gebied van en in 1653 kreeg de toegang het monumentale smeedijzeren hek dat je tegenwoordig nog gebruikt wanneer je naar binnen loopt. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+Het is een mooie historische omkering.
+Een plek die ooit macht en afsluiting betekende, werd een plek waar inwoners juist konden komen wandelen.
+Kijk vanaf boven naar de rest van de route
+Loop de trap op en ga de weergang op.
+Daar wordt duidelijk waarom dit een uitstekend beginpunt voor YourLocalCityGuide is.
+Je ziet de torens en daken van een stad die in de eeuwen na het ontstaan van deze plek is gegroeid. De Pieterskerk vertelt later het verhaal van religie, de Pilgrims en de universiteit. De Hooglandse Kerk laat de groei van middeleeuws Leiden zien. Beneden liggen de waterwegen die handel mogelijk maakten.
+De Burcht hoeft daarom niet één spectaculair moment uit de geschiedenis te vertegenwoordigen.
+Het is interessanter dan dat.
+Het is een vaste plek waar omheen bijna duizend jaar verandering zichtbaar is geworden.
+Wanneer je weer naar beneden loopt, kijk dan nog één keer terug naar de heuvel.
+Hij lijkt tegenwoordig bijna vanzelfsprekend onderdeel van het centrum.
+Maar hij is door mensen gemaakt.
+En de stad om hem heen kwam pas daarna.
+LEESTEKST (EN)
+A hill built by people
+The first thing to understand about the Burcht is that the hill itself is part of the monument.
+This is a motte: an artificial mound created so that a defensible structure could be placed above the surrounding landscape. Archaeological research suggests that the earliest phases of Leiden's mound date to around the ninth or tenth century. By approximately the year 1000, a wooden structure already stood on it. More earth was added during successive building phases until the mound reached roughly ten metres above its surroundings. [Visit Leiden](https://www.visitleiden.nl/en/locations/2380897422/de-burcht?utm_source=chatgpt.com)
+Ten metres may not sound impressive today.
+In a flat, wet medieval landscape, however, height was a strategic advantage.
+From here, people could observe the surrounding area. During danger, the fortified mound provided a refuge.
+Why here?
+Water explains much of Leiden's history.
+The Burcht occupies a strategic position near waterways associated with the Rhine, Mare and Vliet. Long before modern roads or railways, rivers were transport routes, boundaries and economic arteries.
+The settlement around the mound was still small. The university, the monumental churches, the elegant canal houses and the busy markets familiar to visitors today belonged to a distant future.
+That makes the Burcht a useful place to begin understanding Leiden.
+The city's story does not begin with a grand palace.
+It begins with geography, water and a pile of earth.
+From timber to stone
+The earliest fortifications were wooden. During the medieval period, the site became more substantial. Historical research presented by Leiden's official visitor organisation states that, under Count Dirk VI, a tuff-stone ring wall replaced the earlier wooden enclosure.
+The Burcht was also connected with political authority. Medieval castellans held important rights and could influence taxation and local government. [Visit Leiden](https://www.visitleiden.nl/en/locations/2380897422/de-burcht?utm_source=chatgpt.com)
+This power did not remain stable forever.
+The fortress became involved in the conflict surrounding Ada of Holland in 1203–1204 and suffered serious damage. It was repaired, altered and rebuilt in later phases. Around 1275 the ring wall was reconstructed again, possibly under Count Floris V.
+The word “possibly” matters. Medieval buildings rarely come with a complete construction archive. Archaeology, later chronicles and documentary evidence have to be combined, and some details remain uncertain.
+The city grows around the fortress
+As Leiden expanded, the Burcht's military value declined.
+Streets, houses and churches gradually surrounded the mound. What had once stood above a relatively small settlement became enclosed by an increasingly dense town.
+The city government acquired the Burcht in 1651. Shortly afterwards the area was adapted for a new role, and the ornamental entrance gate dating from 1653 still forms part of the approach today. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2833555155/het-heerenlogement?utm_source=chatgpt.com)
+There is something almost symbolic about that transformation.
+A defensive site associated with control and exclusion eventually became a public place from which anyone could look across Leiden.
+Read the city from the top
+Walk up to the circular wall and look around slowly.
+You are effectively looking across later chapters of the city's history.
+The Pieterskerk connects Leiden with religion, scholarship and the Pilgrim community that lived here before crossing the Atlantic. The Hooglandse Kerk reflects the growth and wealth of the medieval town. Below, the waterways reveal why trade became so important.
+The Burcht is therefore more than a photogenic viewpoint.
+It is a chronological viewpoint.
+People stood on this artificial mound centuries before the skyline you now see existed.
+When you descend, look back once more.
+Today, the hill appears to belong naturally in the centre of Leiden.
+It does not.
+People created it.
+Then, slowly, Leiden created itself around it.
+LEESTEKST (DE)
+Ein von Menschen geschaffener Hügel
+Das Wichtigste zuerst: Nicht nur die Mauer, sondern auch der Hügel selbst gehört zur Geschichte der Burcht.
+Es handelt sich um eine sogenannte Motte – einen künstlich aufgeschütteten Hügel, auf dem eine befestigte Anlage errichtet werden konnte. Archäologische Untersuchungen datieren die frühesten Bauphasen wahrscheinlich in das 9. oder 10. Jahrhundert. Um das Jahr 1000 stand bereits ein hölzernes Bauwerk auf der Erhebung. In mehreren Phasen wurde weitere Erde aufgeschüttet, bis der Hügel ungefähr zehn Meter über der Umgebung lag. [Visit Leiden](https://www.visitleiden.nl/de/standorte/2380897422/de-burcht?utm_source=chatgpt.com)
+Aus heutiger Sicht erscheinen zehn Meter nicht besonders hoch.
+In einer flachen und wasserreichen mittelalterlichen Landschaft bedeutete diese Höhe jedoch einen erheblichen strategischen Vorteil.
+Von oben konnte man die Umgebung beobachten. Bei Gefahr bot die befestigte Erhebung Schutz.
+Warum gerade an dieser Stelle?
+Wer Leiden verstehen möchte, muss das Wasser verstehen.
+Die Burcht liegt an einem strategischen Punkt im System von Rhein, Mare und Vliet. Flüsse und Wasserwege waren Verkehrsachsen, Handelsrouten und natürliche Grenzen.
+Die Siedlung ringsum war damals noch klein.
+Keine Universität. Keine großen Kirchen in ihrer heutigen Form. Keine reichen Grachtenhäuser.
+Deshalb eignet sich die Burcht so gut als Beginn einer historischen Route.
+Die Geschichte Leidens beginnt hier nicht mit einem Palast.
+Sie beginnt mit Wasser, Landschaft und aufgeschütteter Erde.
+Von Holz zu Stein
+Die frühen Befestigungen bestanden aus Holz. Im Mittelalter wurde die Anlage ausgebaut. Unter Graf Dirk VI. ersetzte eine Ringmauer aus Tuffstein die frühere hölzerne Umfriedung.
+Mit der Burcht war auch politische Macht verbunden. Burggrafen verfügten über Rechte, erhoben Abgaben und hatten Einfluss auf das lokale Verwaltungswesen. [Visit Leiden](https://www.visitleiden.nl/de/standorte/2380897422/de-burcht?utm_source=chatgpt.com)
+Während der Auseinandersetzungen um Ada von Holland 1203 und 1204 wurde die Anlage schwer beschädigt. Weitere Reparaturen und Umbauten folgten. Um 1275 wurde die Ringmauer erneut errichtet, möglicherweise im Auftrag von Floris V.
+Solche Unsicherheiten gehören zur mittelalterlichen Geschichte. Nicht jede Bauphase lässt sich auf ein einziges Dokument oder ein exaktes Datum zurückführen.
+Die Stadt wächst um die Burcht
+Leiden wurde größer.
+Damit verlor die Anlage nach und nach ihre militärische Bedeutung. Wohnhäuser, Straßen und Kirchen rückten näher.
+Was ursprünglich über einer kleinen Siedlung lag, befand sich schließlich mitten in einer Stadt.
+1651 erwarb die Stadt Leiden die Burcht. Aus der ehemaligen Befestigung entwickelte sich ein öffentlich zugänglicher Ort. Das repräsentative Eingangstor stammt aus dem Jahr 1653. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2833555155/het-heerenlogement?utm_source=chatgpt.com)
+Leiden von oben lesen
+Gehen Sie auf den Wehrgang und drehen Sie sich langsam einmal um die eigene Achse.
+Die Gebäude unter Ihnen sind wie spätere Kapitel eines Buches.
+Die Pieterskerk erzählt von Religion, Wissenschaft und den Pilgervätern. Die Hooglandse Kerk steht für das Wachstum des mittelalterlichen Leiden. Die Wasserläufe erinnern an Handel und Verkehr.
+Die Burcht ist deshalb nicht nur ein Aussichtspunkt.
+Sie ist ein historischer Ausgangspunkt.
+Menschen standen hier bereits, als ein großer Teil dessen, was Sie heute sehen, noch nicht existierte.
+Wenn Sie anschließend wieder hinuntergehen, sehen Sie den Hügel vielleicht anders.
+Heute wirkt er wie ein selbstverständlicher Teil der Innenstadt.
+Doch zuerst kam der Hügel.
+Die Stadt kam später.
+AANVULLENDE FEITEN
+
+* Exacte bouwjaar/stichtingsjaar: geen enkel exact jaar. Eerste fasen motte waarschijnlijk 9e/10e eeuw; houten bebouwing rond 1000; latere stenen bouwfasen in de 12e/13e eeuw. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+* Architect/opdrachtgever: geen architect voor de oorspronkelijke aanleg bekend. Dirk VI wordt verbonden aan een stenen ringmuur; herbouw rond 1275 mogelijk onder Floris V.
+* Huidige functie: rijksmonument, openbaar historisch monument en uitzichtpunt.
+* Openbaar toegankelijk: ja, gratis. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+* Beste moment om te bezoeken: vroeg in de ochtend of tegen het einde van de middag; voor het verhaal vooral wanneer je rustig over de weergang kunt lopen.
+* Leuk weetje dat niet in het hoofdverhaal staat: de huidige toegang loopt door een sierlijk hek uit 1653. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+* Connectie met andere locaties in de route: L040 Oude Rijn/Nieuwe Rijn om te begrijpen waarom deze plek strategisch lag; daarna L019 Hooglandse Kerk of L002 Vismarkt om te zien hoe de nederzetting uitgroeide tot stad.
+
+BRONNEN
+Visit Leiden – uitgebreide historische beschrijving van De Burcht. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2380897422/de-burcht?utm_source=chatgpt.com)
+Visit Leiden – overzicht Leidse monumenten en archeologische datering. [Visit Leiden](https://www.visitleiden.nl/nl/cultuur/monumenten?utm_source=chatgpt.com)
+Visit Leiden – Heerenlogement en aankoop van de Burcht door het stadsbestuur. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2833555155/het-heerenlogement?utm_source=chatgpt.com)
+L002 – Vismarkt
+VOICE-OVER SCRIPT (NL)
+Luister eens naar de markt om je heen.
+Stemmen. Tassen. Fietsbellen. Een verkoper die iets roept. Misschien ruik je gebakken vis, brood of koffie.
+Het klinkt modern.
+Maar het idee achter deze plek is dat helemaal niet.
+Op en rond de Vismarkt komen Leidenaren al eeuwen samen om eten te kopen, nieuws uit te wisselen, prijzen te vergelijken en elkaar tegen te komen. De weekmarkt in dit deel van de stad heeft een geschiedenis van bijna negen eeuwen. En nog altijd verandert de omgeving iedere woensdag en zaterdag in een markt. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Kijk naar het water.
+Dat water was geen decoratie.
+Het was de snelweg.
+Vis, graan, groenten en andere goederen konden per schip de stad in worden gebracht. De nabijgelegen Visbrug was al in de middeleeuwen een cruciale oversteek. De eerste versie wordt in de twaalfde eeuw geplaatst en de ligging hielp van dit gebied een natuurlijk handelscentrum te maken. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Probeer je de plek nu voor te stellen zonder koelkasten, supermarkten of bestelbusjes.
+Vis is bederfelijk.
+Wat binnenkomt, moet verkocht worden. Mensen onderhandelen. Handelaren roepen. De geur is veel sterker dan nu. Afval en vuil verdwijnen niet netjes achter gesloten deuren.
+Dit is geen romantische schilderijmarkt.
+Dit is voedselvoorziening.
+Werk.
+Overleven.
+En het bijzondere is: de functie is niet verdwenen.
+Kom hier woensdag of zaterdag terug en er wordt nog steeds vis verkocht.
+Schaap's Vishandel staat tegenwoordig op beide Leidse marktdagen. De winkel werd in 1938 door Gerrit Schaap geopend; in 1957 nam Cor Haasnoot de zaak over en hield de naam Schaap in ere. De familie staat generaties later nog altijd achter de toonbank en op de markt. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+Dus als je hier een haring of warme kibbeling eet, doe je iets heel eenvoudigs.
+Maar juist daardoor past het zo goed bij deze plek.
+Je kijkt niet alleen naar geschiedenis.
+Je doet iets wat Leidenaren hier al generaties doen:
+naar de markt gaan...
+vis halen...
+en verderlopen door de stad.
+VOICE-OVER SCRIPT (EN)
+Stop for a moment and listen.
+Voices. Bicycle bells. Bags being filled. Traders speaking to customers. On market days you may smell fried fish, bread, fruit or coffee.
+It feels completely contemporary.
+And yet the basic function of this place is centuries old.
+The area around Leiden's Vismarkt has been associated with the weekly market for almost nine hundred years. Even today, every Wednesday and Saturday, the streets around the Nieuwe Rijn fill with stalls and shoppers. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Now look at the water.
+For medieval Leiden, this was infrastructure.
+Before lorries and refrigerated vans, waterways carried food and merchandise directly into the urban centre. Fish, grain and other goods arrived by boat. Nearby, the Visbrug was an important crossing over the Rhine and helped turn this area into a natural meeting point for traders, farmers and customers.
+Try to remove every modern convenience from the scene.
+No supermarkets.
+No refrigeration.
+No sealed plastic packaging.
+Fresh fish has to be sold quickly. Traders call out. Customers inspect the catch. Prices are negotiated.
+The smell would have been stronger than it is today. The market was not a picturesque attraction created for visitors.
+It was part of the city's food supply.
+This is where everyday urban life happened.
+And that is why the Vismarkt still works so well as a historical stop: the activity has never disappeared completely.
+Visit on Wednesday or Saturday and fish is still being sold in the centre of Leiden.
+One local example is Schaap's Vishandel. Gerrit Schaap opened the shop in 1938. Cor Haasnoot later worked there and took over the business in 1957, while preserving the Schaap name. Generations of the Haasnoot family have continued the business, and today it still trades on Leiden's Wednesday and Saturday markets as well as from its shop on Herenstraat. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+That creates an unusual opportunity.
+History here does not require you to imagine everything.
+You can participate.
+Buy a herring. Order some kibbeling. Stand beside the water and watch the market continue around you.
+Of course, today's hygiene, transport and commerce are completely different from those of medieval Leiden.
+But the basic human action has survived:
+people come into the centre...
+they meet a fishmonger...
+they choose their food...
+and they carry it home.
+The Vismarkt is therefore not merely a place where trade used to happen.
+On the right day of the week, it still does.
+VOICE-OVER SCRIPT (DE)
+Hören Sie einen Moment lang einfach zu.
+Stimmen. Fahrradklingeln. Einkaufstaschen. Händler, die mit ihren Kunden sprechen. An Markttagen vielleicht der Geruch von gebratenem Fisch, Brot oder Kaffee.
+Alles wirkt sehr gegenwärtig.
+Doch die Grundidee dieses Ortes ist viele Jahrhunderte alt.
+Im Bereich der Vismarkt findet seit fast neunhundert Jahren Markt statt. Noch heute verwandelt sich das Gebiet mittwochs und samstags in einen lebendigen Wochenmarkt. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Schauen Sie nun auf das Wasser.
+Für das mittelalterliche Leiden war es keine hübsche Kulisse.
+Es war Verkehrsweg.
+Bevor Lastwagen und Kühltransporter existierten, gelangten Waren über die Flüsse und Grachten direkt in die Stadt. Fisch, Getreide und andere Lebensmittel konnten mit Booten angeliefert werden. Die nahe Visbrug bildete eine wichtige Verbindung über den Rhein und trug dazu bei, dass sich hier früh ein Handelszentrum entwickelte.
+Versuchen Sie sich den Platz ohne moderne Technik vorzustellen.
+Keine Kühlschränke.
+Keine Supermärkte.
+Keine vakuumverpackte Ware.
+Frischer Fisch muss verkauft werden.
+Schnell.
+Händler rufen. Kunden prüfen die Ware. Preise werden ausgehandelt.
+Der Geruch dürfte wesentlich intensiver gewesen sein als heute.
+Dies war keine romantische Kulisse.
+Hier ging es um die Versorgung der Stadt.
+Und genau deshalb ist die Vismarkt bis heute interessant: Die ursprüngliche Funktion ist nicht vollständig verschwunden.
+Mittwochs und samstags wird im Zentrum noch immer Fisch verkauft.
+Zu den heutigen Händlern gehört Schaap's Vishandel. Gerrit Schaap gründete das Geschäft 1938. Cor Haasnoot übernahm es 1957 und behielt den Namen Schaap bei. Die Familie führt das Unternehmen über Generationen weiter und steht auch heute auf dem Leidener Markt. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+Wenn Sie also hier einen Hering oder Kibbeling essen, ist das zunächst nur eine kleine Mahlzeit.
+Doch an diesem Ort bekommt sie eine andere Bedeutung.
+Sie betrachten die Geschichte nicht ausschließlich.
+Sie nehmen für einen Moment an einer Tradition des alltäglichen Stadtlebens teil.
+Menschen kommen auf den Markt.
+Sie kaufen Fisch.
+Sie begegnen einander.
+Und anschließend gehen sie weiter durch Leiden.
+So wie Generationen vor ihnen.
+LEESTEKST (NL) – Uitgebreidere versie
+Een stad eet iedere dag
+Geschiedenis gaat vaak over burgemeesters, oorlogen, kerken en beroemde kunstenaars.
+Maar een stad moet ook iedere dag eten.
+Daarom is de Vismarkt misschien juist zo waardevol voor een stadstour. Hier kom je dicht bij het gewone leven van Leidenaren die geen standbeeld kregen en geen naam in de geschiedenisboeken achterlieten.
+Ze moesten boodschappen doen.
+De Vismarkt ligt tussen het Stadhuisplein en de Nieuwe Rijn. In dit gebied wordt volgens Visit Leiden al bijna negen eeuwen weekmarkt gehouden. De markttraditie leeft nog altijd voort op woensdag en zaterdag. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Het water was de aanvoerroute
+De locatie is logisch wanneer je naar het water kijkt.
+Tegenwoordig ervaren bezoekers de Nieuwe Rijn vooral als sfeervol. Er staan terrassen langs het water en boten varen door het centrum.
+Historisch gezien was dat water vooral praktisch.
+Goederen konden per schip rechtstreeks naar het hart van de stad worden gebracht. Daardoor ontstonden markten niet toevallig juist langs het water.
+Ook de Visbrug speelde daarin een rol. De vroegste versie wordt al in de twaalfde eeuw geplaatst. Volgens de Leidse toeristische geschiedschrijving vormde deze verbinding destijds de belangrijke oversteek over de Oude Rijn in de route tussen Utrecht en Katwijk. Handelaren, boeren en reizigers kwamen daardoor vanzelf langs dit gebied. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Waar mensen komen, ontstaat handel.
+Geen nostalgisch plaatje
+Het is verleidelijk om een historische markt als iets gezelligs voor te stellen.
+Houten kramen. Mensen in historische kleding. Een mand vol vis.
+De werkelijkheid was ruwer.
+Vis is extreem bederfelijk. Zonder moderne koeling moesten aanvoer, verkoop en consumptie veel directer op elkaar volgen.
+Daar kwamen geuren, afval en vuil bij die tegenwoordig grotendeels uit de voedselverkoop zijn verdwenen.
+Markt was bovendien geen toeristische activiteit.
+Voor veel inwoners was het een noodzakelijke schakel tussen producent en consument.
+Hier werd over prijs onderhandeld. Hier werd nieuws uitgewisseld. Hier ontmoette je bekenden.
+De markt was tegelijkertijd supermarkt, ontmoetingsplaats en economisch systeem.
+Een traditie die nog beweegt
+Het interessante van de Vismarkt is dat je niet volledig afhankelijk bent van je fantasie.
+Kom op woensdag of zaterdag en de markt bestaat nog steeds.
+Visit Leiden vermeldt voor de centrale markt momenteel woensdag en zaterdag van ongeveer 08.00 tot 17.00 uur rond de Nieuwe Rijn. [Visit Leiden](https://www.visitleiden.nl/nl/doen/winkelen?utm_source=chatgpt.com)
+Daarmee kan YourLocalCityGuide bezoekers iets aanbieden dat bij een historisch monument niet altijd mogelijk is: een activiteit die inhoudelijk bij het verhaal past.
+Eet iets.
+Praat met een marktkoopman.
+Kijk hoe mensen hun boodschappen doen.
+Schaap's Vishandel: een jongere laag in een veel ouder verhaal
+Een van de visbedrijven die deze markttraditie voortzetten is Schaap's Vishandel.
+De zaak begon in 1938 toen Gerrit Schaap een viswinkel opende. Cor Haasnoot kwam jong in de zaak werken en nam het bedrijf in 1957 over. De naam Schaap bleef bestaan als eerbetoon aan de oprichter. De familie Haasnoot heeft het bedrijf vervolgens over meerdere generaties voortgezet. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+De vaste winkel staat aan de Herenstraat 48. Op woensdag staat Schaap's op de Leidse markt bij Dille & Camille en op zaterdag op de Aalmarkt bij de Waag. De huidige gepubliceerde markttijden zijn 08.30–17.00 uur. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/bezoek-ons?utm_source=chatgpt.com)
+Voor een toerist is dat interessanter dan zomaar “een plek om iets te eten”.
+De ervaring verbindt een modern familiebedrijf aan een markttraditie die vele eeuwen ouder is.
+Een claim uit de oorspronkelijke briefing – dat Schaap's de enige visboer in Leiden zou zijn die verse traditionele kibbeling ter plekke bereidt – kan ik op basis van onafhankelijke bronnen niet betrouwbaar als exclusiviteitsclaim bewijzen. Die zou ik daarom niet als objectief historisch feit in de audiotour zetten zonder aanvullende documentatie. `[ONGECONTROLEERD]`
+Kijk daarna naar de Koornbrug
+Als je hier klaar bent, loop dan een paar meter verder naar de Koornbrug.
+Daar verandert het onderwerp.
+Bij de Vismarkt gaat het over vis en dagelijks voedsel.
+Op de Koornbrug gaat het over graan – een ander basisproduct waarvan een stad afhankelijk was.
+Samen laten de twee plekken iets zien wat monumentale kerken en stadhuizen gemakkelijk verbergen:
+een historische stad bestond niet alleen uit architectuur.
+Een stad moest iedere dag worden bevoorraad.
+En dat gebeurde hier, aan het water.
+LEESTEKST (EN)
+Every city has to eat
+History tours naturally focus on major events.
+Wars. Churches. Famous artists. Political leaders.
+But cities also have to eat every day.
+That is what makes Leiden's Vismarkt such a useful historical location. It brings you closer to the lives of ordinary residents whose names were never recorded in chronicles.
+They bought food.
+The Vismarkt lies between the present-day Stadhuisplein and Nieuwe Rijn. According to Leiden's official visitor information, the weekly market in this central area has a history stretching back almost nine centuries. Market stalls still return every Wednesday and Saturday. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+The canal was infrastructure
+Its location makes sense once you stop treating the water as scenery.
+Today, the Nieuwe Rijn looks picturesque. Boats pass beneath bridges, terraces face the canal and historic façades create one of the classic views of Leiden.
+Historically, however, waterways were working infrastructure.
+Goods could be transported into the centre by boat.
+This is one reason why markets developed along Leiden's waterways rather than exclusively on large open squares.
+Nearby, the Visbrug formed an important crossing. An early version existed in the twelfth century. Leiden's visitor organisation describes it as a key crossing on the route across the Rhine between Utrecht and the North Sea coast near Katwijk, helping attract traders and farmers to the area. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Traffic creates customers.
+Customers create markets.
+Fresh really meant fresh
+A historic fish market should not be romanticised too much.
+Without modern refrigeration, fish had to move quickly from catch to customer.
+There would have been stronger smells, more waste and far less separation between transport, preparation and sale than visitors are accustomed to today.
+The market was not primarily entertainment.
+It was part of the city's food system.
+Prices were negotiated here. News was exchanged. Customers met neighbours, merchants and farmers.
+It functioned simultaneously as a marketplace, social meeting point and distribution network.
+The market is still alive
+Unlike many historical sites, the Vismarkt does not require complete reconstruction in your imagination.
+Return on Wednesday or Saturday and the commercial tradition continues.
+Visit Leiden currently lists the central market around the Nieuwe Rijn on those two days, approximately 08:00–17:00. [Visit Leiden](https://www.visitleiden.nl/nl/doen/winkelen?utm_source=chatgpt.com)
+For a self-guided tour, this provides an excellent opportunity.
+Do not only read about market culture.
+Participate in it.
+Walk between the stalls. Listen to conversations. Buy something local.
+Schaap's Vishandel
+One modern business linking directly to this tradition is Schaap's Vishandel.
+Gerrit Schaap opened his fish business in 1938. A young Cor Haasnoot later joined the shop and took over in 1957. The original surname above the business remained, and the Haasnoot family continued the company across subsequent generations. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+Today the business has a permanent shop at Herenstraat 48. It also trades on Leiden's Wednesday market and on Saturday at the Aalmarkt near the Waag. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/bezoek-ons?utm_source=chatgpt.com)
+This does not make a twentieth-century family business “medieval”, of course.
+What it does provide is continuity.
+People still come into the centre of Leiden, find a fishmonger, buy herring or fried fish and continue their day.
+The surroundings have changed.
+The basic ritual has not.
+Continue to the Koornbrug
+From the Vismarkt, walk toward the nearby Koornbrug.
+There, the commodity changes from fish to grain.
+Together the two sites reveal a layer of Leiden that can easily disappear behind its monumental architecture.
+Historic cities were not only built.
+They had to be fed.
+And much of that happened right here, beside the water.
+LEESTEKST (DE)
+Eine Stadt muss jeden Tag essen
+Historische Stadtführungen handeln häufig von Kriegen, Kirchen, Politikern und berühmten Künstlern.
+Doch eine Stadt muss jeden Tag versorgt werden.
+Genau deshalb ist die Vismarkt so interessant.
+Hier kommt man dem Alltag jener Leidener nahe, deren Namen in keinem Geschichtsbuch stehen.
+Sie mussten Lebensmittel kaufen.
+Die Vismarkt liegt zwischen dem heutigen Stadhuisplein und der Nieuwe Rijn. Nach Angaben der offiziellen Leidener Besucherinformation wird in diesem Gebiet seit fast neunhundert Jahren Wochenmarkt gehalten. Noch heute kehrt der Markt jeden Mittwoch und Samstag zurück. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Das Wasser war Verkehrsweg
+Die Lage wird verständlich, sobald man die Nieuwe Rijn nicht nur als schöne Kulisse betrachtet.
+Heute befinden sich Terrassen am Wasser. Boote fahren vorbei und die historischen Häuserfassaden gehören zu den beliebtesten Stadtansichten.
+Früher war das Wasser vor allem Infrastruktur.
+Waren konnten per Schiff direkt in das Zentrum transportiert werden.
+Deshalb entstanden Märkte in Leiden häufig entlang der Wasserwege.
+Auch die nahe gelegene Visbrug war wichtig. Eine frühe Brücke wird bereits in das 12. Jahrhundert datiert. Die Verbindung führte Händler, Bauern und Reisende durch diesen Teil der Stadt.
+Wo viele Menschen vorbeikommen, entsteht Handel.
+Frischer Fisch ohne Kühlschrank
+Eine historische Fischmarkt-Szene sollte man nicht zu romantisch darstellen.
+Ohne moderne Kühlung musste Fisch schnell verkauft werden.
+Gerüche, Abfälle und die unmittelbare Verarbeitung von Lebensmitteln gehörten viel stärker zum Straßenbild als heute.
+Der Markt war keine touristische Attraktion.
+Er war Teil der Versorgung.
+Hier wurden Preise ausgehandelt. Nachrichten verbreiteten sich. Menschen begegneten Nachbarn und Händlern.
+Der Markt war Verkaufsort und sozialer Treffpunkt zugleich.
+Der Markt existiert noch
+Das Besondere an der Vismarkt ist, dass Sie sich nicht alles vorstellen müssen.
+Mittwochs und samstags findet weiterhin Markt statt. Die offizielle Besucherinformation nennt derzeit ungefähr 08.00 bis 17.00 Uhr für den zentralen Markt an der Nieuwe Rijn. [Visit Leiden](https://www.visitleiden.nl/nl/doen/winkelen?utm_source=chatgpt.com)
+Für eine historische Route bietet das eine seltene Möglichkeit:
+Man kann eine Tradition nicht nur betrachten.
+Man kann daran teilnehmen.
+Schaap's Vishandel
+Zu den Fischhändlern gehört heute Schaap's Vishandel.
+Gerrit Schaap eröffnete sein Geschäft 1938. Cor Haasnoot arbeitete bereits in jungen Jahren dort und übernahm die Firma 1957. Der Name Schaap blieb erhalten; die Familie Haasnoot führte den Betrieb über mehrere Generationen weiter. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+Heute befindet sich das feste Geschäft in der Herenstraat 48. Mittwochs und samstags ist Schaap's außerdem auf dem Leidener Markt vertreten. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/bezoek-ons?utm_source=chatgpt.com)
+Damit lässt sich eine relativ junge Familiengeschichte mit einer viel älteren Markttradition verbinden.
+Wenn Sie hier einen Hering oder Kibbeling kaufen, essen Sie natürlich nicht exakt so wie ein Einwohner des Mittelalters.
+Aber Sie tun etwas, das wesentlich zur Geschichte dieses Ortes gehört:
+Sie kaufen Fisch auf dem Markt.
+Weiter zur Koornbrug
+Nur wenige Schritte entfernt liegt die Koornbrug.
+Dort geht es nicht mehr um Fisch, sondern um Getreide.
+Zusammen zeigen die beiden Orte eine Seite der Stadtgeschichte, die hinter Kirchen und prachtvollen Fassaden leicht verschwindet.
+Eine Stadt musste nicht nur gebaut und regiert werden.
+Sie musste jeden Tag versorgt werden.
+Und dafür war das Wasser vor Ihnen von entscheidender Bedeutung.
+AANVULLENDE FEITEN
+
+* Exacte bouwjaar/stichtingsjaar: niet van toepassing als één bouwjaar; marktfunctie op deze plek gaat volgens Visit Leiden bijna 900 jaar terug. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+* Architect/opdrachtgever: n.v.t.
+* Huidige functie: openbare ruimte en onderdeel van het centrale Leidse marktgebied.
+* Openbaar toegankelijk: ja, gratis.
+* Beste moment om te bezoeken: woensdag of zaterdag tijdens de markt; volgens Visit Leiden circa 08.00–17.00. [Visit Leiden](https://www.visitleiden.nl/nl/doen/winkelen?utm_source=chatgpt.com)
+* Leuk weetje: de historische Visbrug naast de markt is een van de zeer oude Leidse rivierovergangen; een voorloper bestond al in de 12e eeuw. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+* Connectie: direct verder naar L003 Koornbrug voor het verhaal over graanhandel, of naar L040 Oude Rijn en Nieuwe Rijn voor de rol van water in de stad.
+
+BRONNEN
+Visit Leiden – Vismarkt en marktgeschiedenis. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/3900430686/vismarkt-1?utm_source=chatgpt.com)
+Visit Leiden – actuele weekmarkt. [Visit Leiden](https://www.visitleiden.nl/nl/doen/winkelen?utm_source=chatgpt.com)
+Schaap's Vishandel – bedrijfsgeschiedenis en huidige locaties. [Schaap's Vishandel](https://www.schaapsvishandel.nl/nl/blog/sinds-1938-de-geschiedenis-van-schaaps-vis?utm_source=chatgpt.com)
+L003 – Koornbrug
+VOICE-OVER SCRIPT (NL)
+Ga eens midden onder het dak van de Koornbrug staan.
+En kijk dan omhoog.
+Dat dak is hier niet neergezet omdat iemand de brug mooier wilde maken.
+Het was bedrijfsapparatuur.
+Eeuwenlang werd op deze plek graan verhandeld. Graan betekende brood. En brood betekende dat een stad kon eten.
+De stenen brug die je nu onder je voeten hebt, dateert uit 1642. Hij kreeg drie gemetselde bogen en werd opvallend breed uitgevoerd omdat dit niet alleen een plek was om het water over te steken.
+Hier moest gehandeld kunnen worden. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Maar handelaren hadden een probleem.
+Regen.
+Graan en vocht gaan slecht samen.
+Dus werd in 1825 boven de brug een houten galerijconstructie gebouwd, ontworpen door stadsarchitect Salomon van der Paauw. De overkapping hield koopwaar droog en bovenin kon voorraad worden opgeslagen. Ventilatieopeningen hielpen voorkomen dat het graan vochtig bleef. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Kijk nog eens omhoog.
+Je kijkt eigenlijk naar een negentiende-eeuwse oplossing voor een heel praktisch logistiek probleem.
+En dat verandert de brug.
+Dit is niet alleen infrastructuur.
+Het is een markthal boven een rivier.
+Stel je de brug vol zakken graan voor. Handelaren die kwaliteit controleren. Prijzen die worden afgesproken. Knechten die zware zakken verplaatsen. Schepen onder je. Voetgangers tussendoor.
+Geen rustige fotoplek.
+Een werkplek.
+Visit Leiden noemt de Koornbrug tegenwoordig de oudste overdekte brug van Nederland, maar één ding moeten we meteen corrigeren: ze is níét de enige overdekte brug van het land. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2666699515/koornbrug?utm_source=chatgpt.com)
+En misschien is een ander feit eigenlijk interessanter.
+De brug vertelt hoe afhankelijk Leiden van handel was.
+Vis een paar meter verderop.
+Graan hier.
+Water onder je.
+De hele stad draaide op goederen die moesten worden aangevoerd, opgeslagen, verkocht en gegeten.
+Dus wanneer je straks van de brug afloopt, kijk nog één keer naar het dak.
+Wat er elegant uitziet...
+begon met iets heel eenvoudigs:
+de noodzaak om het brood van een stad droog te houden.
+VOICE-OVER SCRIPT (EN)
+Stand beneath the roof of the Koornbrug and look up.
+That roof was not originally added simply to make the bridge attractive.
+It was commercial infrastructure.
+For centuries, grain was traded here.
+And grain meant bread.
+Bread meant that a city could eat.
+The stone bridge beneath your feet dates to 1642. It was built with three masonry arches and made unusually broad because this was more than a crossing over the Nieuwe Rijn.
+It also had to function as a marketplace. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+That created a practical problem.
+Rain.
+Grain and moisture are a poor combination.
+In 1825, a covered gallery designed by city architect Salomon van der Paauw was added above the bridge. The structure helped protect the merchandise from the weather. Grain could also be stored beneath the roof, while openings allowed ventilation. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Look upward again.
+You are looking at an early nineteenth-century answer to a logistics problem.
+That makes the Koornbrug much more interesting than an attractive historic bridge.
+It is effectively a market building constructed over a river.
+Now fill the bridge with activity.
+Sacks of grain.
+Merchants inspecting quality.
+Prices being negotiated.
+Workers carrying heavy loads.
+Boats passing beneath you.
+Customers and pedestrians moving through the same space.
+This would not have been the peaceful photo spot it often is today.
+It was a place of work.
+Leiden's visitor organisation describes the Koornbrug as the oldest covered bridge in the Netherlands, while explicitly correcting a persistent local claim: it is not the country's only covered bridge. [Visit Leiden](https://www.visitleiden.nl/en/locations/2666699515/koornbrug?utm_source=chatgpt.com)
+But perhaps its age record is not the most important part of the story.
+The bridge reveals how a city functioned.
+A few metres away, fish was sold.
+Here, grain changed hands.
+Below you, water connected Leiden with other places.
+Food did not magically appear in shops.
+It had to be transported, protected, stored, measured and sold.
+So before you leave, look once more at the elegant roof above your head.
+Something that now looks decorative was built for a very ordinary reason:
+to keep one of the city's most important foods dry.
+VOICE-OVER SCRIPT (DE)
+Stellen Sie sich unter das Dach der Koornbrug.
+Und schauen Sie nach oben.
+Diese Überdachung entstand nicht einfach deshalb, weil jemand die Brücke verschönern wollte.
+Sie erfüllte eine wirtschaftliche Funktion.
+Hier wurde über Jahrhunderte Getreide gehandelt.
+Getreide bedeutete Brot.
+Und Brot bedeutete Versorgung.
+Die steinerne Brücke unter Ihren Füßen stammt aus dem Jahr 1642. Sie besitzt drei gemauerte Bögen und wurde ungewöhnlich breit angelegt, denn sie sollte nicht nur Menschen über die Nieuwe Rijn bringen.
+Auf der Brücke musste Platz für Handel sein. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Dabei gab es ein praktisches Problem.
+Regen.
+Getreide darf nicht dauerhaft feucht werden.
+Deshalb erhielt die Brücke 1825 eine überdachte Galerie nach einem Entwurf des Stadtarchitekten Salomon van der Paauw. Die Konstruktion schützte die Ware vor dem Wetter. Unter dem Dach konnte außerdem Getreide gelagert werden; Öffnungen sorgten für Belüftung. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Schauen Sie noch einmal nach oben.
+Sie betrachten eine technische Lösung des frühen 19. Jahrhunderts für ein logistisches Problem.
+Und plötzlich ist diese Brücke mehr als eine Brücke.
+Sie ist eine Markthalle über einem Fluss.
+Stellen Sie sich Säcke voller Korn vor.
+Händler prüfen die Qualität.
+Preise werden ausgehandelt.
+Arbeiter tragen schwere Lasten.
+Unter Ihnen fahren Boote.
+Zwischen allem bewegen sich Fußgänger und Kunden.
+Heute ist dies ein beliebtes Fotomotiv.
+Damals war es vor allem ein Arbeitsplatz.
+Visit Leiden bezeichnet die Koornbrug als älteste überdachte Brücke der Niederlande und weist ausdrücklich darauf hin, dass sie nicht – wie manchmal behauptet – die einzige überdachte Brücke des Landes ist. [Visit Leiden](https://www.visitleiden.nl/de/standorte/2666699515/koornbrug?utm_source=chatgpt.com)
+Noch wichtiger ist aber, was sie über Leiden erzählt.
+Ein paar Meter weiter wurde Fisch verkauft.
+Hier Getreide.
+Darunter floss das Wasser, über das Waren in die Stadt gelangten.
+Bevor Sie weitergehen, schauen Sie deshalb noch einmal auf das elegante Dach.
+Sein Ursprung ist erstaunlich praktisch:
+Das Getreide für eine hungrige Stadt musste trocken bleiben.
+LEESTEKST (NL) – Uitgebreidere versie
+Niet zomaar een brug
+De Koornbrug is een goed voorbeeld van een monument waarvan de functie pas duidelijk wordt wanneer je letterlijk omhoog kijkt.
+Onder je ligt een stenen brug uit 1642.
+Boven je staat een constructie uit 1825.
+Samen vertellen ze één verhaal: handel.
+De Rijksdienst voor het Cultureel Erfgoed beschrijft de huidige stenen Koornbrug als een gemetselde brug met drie bogen uit 1642. De bekende houten galerijen daarboven zijn ontworpen door Salomon van der Paauw en dateren volgens het monumentenregister uit 1825. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Dat is relevant omdat verschillende moderne websites 1834 noemen. De Rijksdienst en historische monumentenliteratuur wijzen echter naar 1825. Voor YourLocalCityGuide zou ik daarom 1825 hanteren en 1834 niet overnemen. [DBNL](https://www.dbnl.org/tekst/sten009monu10_01/sten009monu10_01_0084.php?utm_source=chatgpt.com)
+Waarom graan op een brug?
+De naam geeft het al weg: hier werd koren verhandeld.
+Al vóór de huidige stenen brug vond in dit gebied graanhandel plaats. De brede brug bood een ideale centrale plek voor kooplieden.
+Dat klinkt misschien vreemd als je gewend bent aan een marktplein.
+Maar Leiden ontwikkelde zich rondom water. De handel zat juist langs de grachten en rivieren waar goederen konden worden aangevoerd.
+Een brede brug kon daarom tegelijkertijd verkeersruimte en handelsvloer zijn.
+Regen is een economisch probleem
+Graan moet droog blijven.
+Dat is de sleutel tot de merkwaardige architectuur boven je hoofd.
+In 1825 kreeg de brug twee overdekte galerijen. Salomon van der Paauw, stadsarchitect van Leiden, ontwierp de bovenbouw. De overkapping beschermde de koopwaar tegen neerslag. In en onder het dak konden voorraden worden opgeslagen en openingen zorgden voor ventilatie. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Het ontwerp is dus geen decoratief grapje.
+Het is logistiek.
+Eigenlijk kijk je naar een vroege vorm van gespecialiseerde markthuisvesting.
+Stel je een werkdag voor
+Op marktdagen zou deze plek weinig hebben geleken op het rustige monument dat je op een stille ochtend ziet.
+Graanzakken moesten worden aangevoerd.
+Gewogen.
+Gecontroleerd.
+Verkocht.
+En weer afgevoerd.
+Dat betekende handelaren, knechten, schippers en klanten.
+Wie brood at, was afhankelijk van een hele keten die ervoor zorgde dat graan uiteindelijk bij een bakker terechtkwam.
+De Koornbrug maakt die keten zichtbaar.
+Niet door een museumvitrine.
+Maar door de architectuur zelf.
+De “enige overdekte brug”
+Een hardnekkige beschrijving van de Koornbrug is dat dit de enige overdekte brug van Nederland zou zijn.
+Dat is niet juist.
+Zelfs Visit Leiden corrigeert die claim tegenwoordig en formuleert dat de Koornbrug volgens hun informatie wel de oudste overdekte brug van Nederland is, maar niet de enige. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2666699515/koornbrug?utm_source=chatgpt.com)
+Voor de app is dat een goed voorbeeld van waarom broncontrole belangrijk is.
+“Enige” klinkt aantrekkelijker in marketing.
+Maar een verhaal wordt juist geloofwaardiger wanneer het geen claim nodig heeft die niet klopt.
+De echte geschiedenis is interessant genoeg.
+Kijk daarna naar de Vismarkt
+De Koornbrug en Vismarkt horen inhoudelijk bij elkaar, maar vertellen twee verschillende verhalen.
+Bij de Vismarkt gaat het om dagelijkse voedselvoorziening en vis.
+Hier gaat het om graanhandel, opslag en logistiek.
+Als je beide achter elkaar bezoekt, ontstaat een completer beeld van historisch Leiden.
+Kerken en stadhuizen vertellen wie macht had.
+Markten vertellen hoe mensen leefden.
+En deze brug vertelt iets nog fundamentelers:
+hoe je ervoor zorgde dat een groeiende stad iedere ochtend opnieuw brood kon bakken.
+LEESTEKST (EN)
+More than a bridge
+The Koornbrug is one of those monuments whose purpose becomes clearer when you look upward.
+The stone structure beneath you dates to 1642.
+The covered galleries above it were added in 1825.
+Together they tell a story about trade.
+The Netherlands' Cultural Heritage Agency registers the Koornbrug as a three-arched masonry bridge dating from 1642. It identifies the upper wooden galleries as a design by Leiden city architect Salomon van der Paauw dating to 1825. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+This matters because some modern tourism pages state 1834 instead. The official national monument register and established architectural-history literature point to 1825, so that is the date best supported for the app. [DBNL](https://www.dbnl.org/tekst/sten009monu10_01/sten009monu10_01_0084.php?utm_source=chatgpt.com)
+Why sell grain on a bridge?
+The name Koornbrug literally refers to grain.
+Grain trading took place in this area long before visitors began photographing the structure.
+A broad bridge created valuable space in the middle of the commercial district.
+That may feel unusual if you expect a traditional market square.
+Leiden, however, developed around waterways. Goods arrived by boat, so commercial activity concentrated along rivers, quays and bridges.
+A sufficiently broad bridge could therefore serve two purposes at once:
+crossing the water and trading above it.
+Rain becomes an economic problem
+Grain and prolonged moisture do not mix.
+That simple fact explains the unusual architecture.
+In 1825, two covered gallery structures were erected above the bridge according to a design by Salomon van der Paauw. They protected merchandise from the weather. Grain could also be stored in the roof area, while ventilation openings helped air circulate. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+In other words, the roof is not merely decoration.
+It is logistics expressed in architecture.
+You are standing beneath a specialised piece of market infrastructure.
+Imagine a working day
+On a busy trading day, this place would have been far removed from the quiet historic monument visitors often encounter today.
+Sacks had to be delivered.
+Grain had to be inspected and sold.
+Workers carried loads.
+Merchants negotiated.
+Boats moved along the water beneath the bridge.
+Every loaf of bread depended on a much larger supply system linking agriculture, transport, commerce and baking.
+The Koornbrug makes one section of that system visible.
+Not through a display case.
+Through the building itself.
+Not the only covered bridge
+A persistent local claim says that the Koornbrug is the only covered bridge in the Netherlands.
+That is incorrect.
+Leiden's visitor organisation now explicitly says it is not the only one, although it describes it as the country's oldest covered bridge. [Visit Leiden](https://www.visitleiden.nl/en/locations/2666699515/koornbrug?utm_source=chatgpt.com)
+For a historical tour, that distinction is worth preserving.
+A monument does not need an exaggerated record to become interesting.
+Its actual function is compelling enough.
+Continue toward the Vismarkt
+The nearby Vismarkt and Koornbrug form a logical pair.
+The Vismarkt tells a story about fish and everyday food shopping.
+The Koornbrug explains grain, storage and distribution.
+Together they reveal a side of Leiden that monumental churches and elegant townhouses cannot show on their own.
+Those buildings tell us what a city looked like.
+Markets tell us how it survived.
+And this unusual roof above a bridge tells us something extremely basic:
+someone had to make sure the grain stayed dry.
+LEESTEKST (DE)
+Mehr als eine Brücke
+Bei der Koornbrug lohnt es sich, nicht nur auf das Wasser, sondern auch nach oben zu schauen.
+Die steinerne Brücke stammt aus dem Jahr 1642.
+Die überdachten Galerien darüber wurden 1825 hinzugefügt.
+Gemeinsam erzählen sie eine Geschichte des Handels.
+Die niederländische Denkmalbehörde beschreibt die Koornbrug als gemauerte Brücke mit drei Bögen aus dem Jahr 1642. Die hölzernen Galerien darüber werden dem Leidener Stadtarchitekten Salomon van der Paauw zugeschrieben und auf 1825 datiert. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Einige moderne Tourismus-Seiten nennen stattdessen 1834. Das nationale Denkmalregister und die kunsthistorische Fachliteratur stützen jedoch 1825. Für die App ist dieses Datum daher vorzuziehen. [DBNL](https://www.dbnl.org/tekst/sten009monu10_01/sten009monu10_01_0084.php?utm_source=chatgpt.com)
+Warum handelt man auf einer Brücke mit Getreide?
+Der Name erklärt bereits die Funktion.
+Hier wurde Korn gehandelt.
+Eine breite Brücke bot mitten im Handelsgebiet wertvolle Fläche.
+Für Besucher, die klassische Marktplätze gewohnt sind, wirkt das vielleicht ungewöhnlich. Leiden entwickelte sich jedoch entlang seiner Wasserwege. Waren gelangten mit Schiffen in die Stadt.
+Handel fand deshalb häufig direkt am Wasser statt.
+Eine breite Brücke konnte gleichzeitig Übergang und Marktplatz sein.
+Regen wird zum wirtschaftlichen Problem
+Getreide muss trocken bleiben.
+Aus diesem einfachen Grund entstand die ungewöhnliche Überdachung.
+1825 wurden nach einem Entwurf von Salomon van der Paauw überdachte Galerien gebaut. Sie schützten die Ware vor Regen. Im Dachbereich ließ sich Getreide lagern; Lüftungsöffnungen sorgten für Luftzirkulation. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Die Konstruktion ist daher nicht nur Schmuck.
+Sie ist funktionale Architektur.
+Ein Arbeitstag auf der Brücke
+Stellen Sie sich die Koornbrug voller Säcke vor.
+Lieferungen kommen an.
+Getreide wird geprüft.
+Händler verhandeln Preise.
+Arbeiter tragen schwere Lasten.
+Unter der Brücke bewegen sich Boote.
+Brot entsteht nicht einfach in einer Bäckerei. Dahinter stand eine lange Versorgungskette aus Landwirtschaft, Transport, Lagerung und Handel.
+Die Koornbrug macht einen Teil dieser Kette sichtbar.
+Nicht in einem Museum.
+Sondern unmittelbar in ihrer Bauform.
+Nicht die einzige überdachte Brücke
+Man liest gelegentlich, die Koornbrug sei die einzige überdachte Brücke der Niederlande.
+Das stimmt nicht.
+Auch Visit Leiden weist inzwischen ausdrücklich darauf hin. Dort wird sie zwar als älteste überdachte Brücke des Landes bezeichnet, aber nicht als einzige. [Visit Leiden](https://www.visitleiden.nl/de/standorte/2666699515/koornbrug?utm_source=chatgpt.com)
+Für eine historische Route ist diese Korrektur wichtig.
+Geschichte wird nicht interessanter, wenn man sie übertreibt.
+Die tatsächliche Funktion dieses Bauwerks ist ungewöhnlich genug.
+Verbindung zur Vismarkt
+Besuchen Sie anschließend die nahe Vismarkt.
+Dort steht Fisch im Mittelpunkt.
+Hier war es Getreide.
+Zusammen zeigen beide Orte, wie eine historische Stadt versorgt wurde.
+Kirchen erzählen von Glauben.
+Rathäuser von Macht.
+Märkte erzählen davon, wie Menschen ihren Alltag organisierten.
+Und das Dach über Ihnen erzählt eine überraschend grundlegende Geschichte:
+Eine Stadt konnte nur Brot backen, wenn ihr Getreide trocken blieb.
+AANVULLENDE FEITEN
+
+* Exacte bouwjaar/stichtingsjaar: huidige stenen brug 1642; overdekte galerijen 1825. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+* Architect/opdrachtgever: bovenbouw door stadsarchitect Salomon van der Paauw. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+* Huidige functie: openbare brug, rijksmonument en onderdeel van het marktgebied.
+* Openbaar toegankelijk: ja, gratis.
+* Beste moment om te bezoeken: woensdag/zaterdag tijdens de markt voor context; vroeg in de ochtend voor fotografie.
+* Leuk weetje: de ventilatieopeningen en opslagruimte onder het dak waren functioneel voor het opgeslagen graan.
+* Connectie: L002 Vismarkt ligt direct ernaast; daarna L023 De Waag voor handel, wegen en officiële controle van goederen.
+
+BRONNEN
+Rijksdienst voor het Cultureel Erfgoed – monumentenregister Koornbrug. [Monumentenregister](https://monumentenregister.cultureelerfgoed.nl/monumenten/25673?utm_source=chatgpt.com)
+Monumenten in Nederland: Zuid-Holland – bouwfasen Koornbrug. [DBNL](https://www.dbnl.org/tekst/sten009monu10_01/sten009monu10_01_0084.php?utm_source=chatgpt.com)
+Visit Leiden – graanhandel en correctie van de claim “enige overdekte brug”. [Visit Leiden](https://www.visitleiden.nl/nl/locaties/2666699515/koornbrug?utm_source=chatgpt.com)
+Dit is nu precies de methode die ik voor de overige 41 locaties aanhoud: eerst de briefing controleren, conflicterende data oplossen met de sterkste bron, historische onzekerheden expliciet laten staan en pas daarna het verhaal schrijven.
+Bij L004 De Blauwe Steen ga ik bijvoorbeeld nadrukkelijk onderscheid maken tussen wat vanaf 1321 aantoonbaar is en de latere aanname dat veroordeelden daadwerkelijk óp de steen stonden. Bij L005 Gravensteen neem ik de actuele situatie van 2026 mee: gemeente-eigendom, tijdelijk gebruik door Erfgoed Leiden en de rondleidingen die sinds 2025 mogelijk zijn. Daarna volgt de rest in dezelfde volgorde tot en met L044 Leids Weeshuis.
