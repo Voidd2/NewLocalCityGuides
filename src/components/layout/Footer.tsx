@@ -32,9 +32,9 @@ export function Footer() {
             </div>
 
             <nav className="grid grid-cols-2 gap-x-12 gap-y-2.5 text-sm">
-              <Link href="/about" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("mission")}</Link>
-              <Link href="/about" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("contact")}</Link>
-              <Link href="/about" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("collaborate")}</Link>
+              <Link href="/routes" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("routes")}</Link>
+              <Link href="/ontdek" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("discover")}</Link>
+              <a href="mailto:info@yourlocalcityguide.com" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("contact")}</a>
               <Link href="/privacy" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("privacy")}</Link>
               <Link href="/terms" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("terms")}</Link>
             </nav>

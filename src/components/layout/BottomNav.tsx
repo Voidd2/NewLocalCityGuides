@@ -80,13 +80,12 @@ const publicNavItems = [
     ),
   },
   {
-    key: "about",
-    href: "/about",
+    key: "ontdek",
+    href: "/ontdek",
     icon: (active: boolean) => (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 2.5 : 1.5}>
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" strokeLinecap="round" />
-        <circle cx="12" cy="8" r="0.5" fill="currentColor" />
+      <svg viewBox="0 0 24 24" fill={active ? "currentColor" : "none"} className="w-6 h-6" stroke="currentColor" strokeWidth={active ? 0 : 1.5}>
+        <circle cx="11" cy="11" r="8" />
+        <path d="M21 21l-4.35-4.35" strokeLinecap="round" />
       </svg>
     ),
   },

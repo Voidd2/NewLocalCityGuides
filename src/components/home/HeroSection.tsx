@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from "react";
 
 export function HeroSection() {
   const t = useTranslations("home");
-  const tHeader = useTranslations("header");
   const { hasPaid } = useAuth();
   const heroRef = useRef<HTMLElement>(null);
   const [parallaxY, setParallaxY] = useState(0);
@@ -53,11 +52,11 @@ export function HeroSection() {
           <p className="animate-fade-in-up animate-delay-100 text-white/50 text-xs tracking-[0.3em] uppercase mb-3 font-medium">
             YourLocalCityGuide
           </p>
-          <h1 className="animate-fade-in-up animate-delay-200 text-5xl md:text-6xl font-extrabold text-white leading-none mb-3 tracking-tight">
-            LEIDEN
+          <h1 className="animate-fade-in-up animate-delay-200 text-4xl md:text-5xl font-extrabold text-white leading-tight mb-3 tracking-tight">
+            {t("heroHeadline")}
           </h1>
           <p className="animate-fade-in-up animate-delay-300 text-hand text-orange-300 text-xl md:text-2xl -rotate-1 mb-5">
-            {tHeader("subtitle")}
+            {t("heroTagline")}
           </p>
           <p className="animate-fade-in-up animate-delay-400 text-white/70 text-sm mb-10 max-w-sm leading-relaxed">
             {t("heroDescription")}

@@ -98,16 +98,18 @@ public/images/
 ## PRIORITY 2: Code tasks (agent can do these now)
 
 ### 2.1 Homepage redesign for conversion
-- Move all content from `/about` page to the homepage (before paywall)
-- Remove the `/about` page and route
-- Create a catchy headline/title for YourLocalCityGuide on the hero
-- Reorder homepage sections:
+- [x] Move all content from `/about` page to the homepage (before paywall)
+- [x] Remove the `/about` page and route
+- [x] Create a catchy headline/title for YourLocalCityGuide on the hero
+- [x] Reorder homepage sections:
   1. Hero with catchy title
   2. Video preview ("Bekijk de preview video") -- ABOVE the "Over Leiden" block
   3. "Zo werkt het" (how it works)
   4. "Over Leiden" section
   5. Populaire routes
   6. "Maak je eigen route" card (clicking leads to blurred/paywall view)
+- [x] FAQ and practical tips sections added
+- [x] Updated navigation (header, footer, bottom nav) to remove about links
 - Focus on conversion: video tours, updated maps, best local spots, free booking help
 - Make it persuasive -- visitors should feel they NEED this app
 
