@@ -171,7 +171,7 @@ const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> 
   ),
 };
 
-function StarRating({ rating, count }: { rating: number; count: number }) {
+function StarRating({ rating, count }: { rating: number; count?: number }) {
   return (
     <div className="flex items-center gap-1.5">
       <div className="flex">
@@ -192,7 +192,8 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
           </svg>
         ))}
       </div>
-      <span className="text-xs text-gray-500">({count})</span>
+      {count != null && count > 0 && <span className="text-xs text-gray-500">({count})</span>}
+      <span className="text-xs font-medium text-gray-500">{rating}</span>
     </div>
   );
 }
@@ -251,60 +252,38 @@ function SpotCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (ke
   const desc = spot.description[lang] || spot.description.nl;
 
   return (
-    <Link href={`/ontdek/${spot.id}`} className="block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+    <Link href={`/ontdek/${spot.id}`} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
+      <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
+        {spot.image ? (
+          <img src={spot.image} alt={spot.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
+            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
+              <rect x="2" y="2" width="20" height="20" rx="3" />
+              <circle cx="8" cy="8" r="2" />
+              <path d="M2 16l5-5 3 3 4-4 8 8" />
+            </svg>
+            <p className="text-[10px] text-white/20 font-medium px-4 text-center">--HIER IMAGE VAN {spot.name}--</p>
+          </div>
+        )}
+      </div>
+
       <div className="p-4">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-navy-800 text-sm leading-tight line-clamp-1">
-              {spot.name}
-            </h3>
-            <p className="text-[11px] text-gray-400 mt-0.5">
-              {spot.address}
-            </p>
-          </div>
-          {spot.rating && (
-            <div className="flex items-center gap-1 shrink-0 bg-amber-50 px-2 py-0.5 rounded-full">
-              <svg viewBox="0 0 20 20" fill="#F59E0B" className="w-3.5 h-3.5">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span className="text-xs font-semibold text-amber-700">{spot.rating}</span>
-            </div>
-          )}
-        </div>
+        <h3 className="font-bold text-navy-800 text-base leading-tight mb-1">
+          {spot.name}
+        </h3>
 
-        <p className="text-xs text-gray-500 line-clamp-2 mb-3">{desc}</p>
+        <p className="text-sm text-gray-500 line-clamp-2 mb-3">{desc}</p>
 
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {spot.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="text-[10px] font-medium bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        {spot.priceRange && (
+          <p className="text-sm font-bold text-navy-800 mb-3">
+            &euro;{spot.priceRange}
+          </p>
+        )}
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {spot.priceRange && (
-              <span className="text-xs text-gray-400">{spot.priceRange}</span>
-            )}
-            {spot.visitDuration && (
-              <span className="flex items-center gap-1 text-xs text-gray-400">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
-                </svg>
-                {spot.visitDuration}
-              </span>
-            )}
-          </div>
-          {spot.kidFriendly === true && (
-            <span className="text-[10px] bg-green-50 text-green-600 px-1.5 py-0.5 rounded-full font-medium">
-              {t("kidFriendly")}
-            </span>
-          )}
-        </div>
+        {spot.rating && (
+          <StarRating rating={spot.rating} count={0} />
+        )}
       </div>
     </Link>
   );

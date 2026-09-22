@@ -18,6 +18,7 @@ export interface LocalSpot {
   website: string | null;
   phone: string | null;
   description: { nl: string; en: string; de: string };
+  image?: string | null;
   tags: string[];
   rating?: number;
   priceRange?: string;

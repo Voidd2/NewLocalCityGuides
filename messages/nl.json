@@ -180,7 +180,9 @@
     "startBuilding": "Start met samenstellen",
     "moreToDiscover": "Er is meer te ontdekken...",
     "discoverMoreNL": "Ontdek meer van Nederland",
-    "moreCitiesComingSoon": "Binnenkort ook andere steden beschikbaar..."
+    "moreCitiesComingSoon": "Binnenkort ook andere steden beschikbaar...",
+    "entryFrom": "Entree vanaf",
+    "orderTickets": "Tickets bestellen"
   },
   "location": {
     "startExperience": "Start de ervaring",

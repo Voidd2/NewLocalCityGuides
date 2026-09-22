@@ -373,6 +373,23 @@ export function RouteDetail({ route }: { route: RouteData }) {
                         <div className="flex-1">
                           <h4 className="font-semibold text-navy-800 text-sm">{loc!.name}</h4>
                           <p className="text-xs text-gray-500 mt-0.5">{loc!.shortDescription}</p>
+                          {loc!.entryFee && loc!.ticketUrl && (
+                            <div className="mt-2 bg-orange-50 border border-orange-200 rounded-lg p-2.5">
+                              <div className="flex items-center justify-between gap-2">
+                                <div>
+                                  <p className="text-xs font-bold text-navy-800">{t("entryFrom")} &euro;{loc!.entryFee}</p>
+                                </div>
+                                <a
+                                  href={loc!.ticketUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="shrink-0 bg-orange-500 hover:bg-orange-600 text-white text-[11px] font-semibold px-3 py-1.5 rounded-full transition-colors"
+                                >
+                                  {t("orderTickets")}
+                                </a>
+                              </div>
+                            </div>
+                          )}
                         </div>
                         <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                           {loc!.image && (

@@ -105,6 +105,171 @@ function StoryImagePlaceholder({ description }: { description: string }) {
 
 type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
 
+function StoryView({
+  location,
+  parsedStory,
+  locale,
+  t,
+  onNavigate,
+}: {
+  location: LocationData;
+  parsedStory: ParsedStory | null;
+  locale: "nl" | "en" | "de";
+  t: (key: string) => string;
+  onNavigate: (s: ExperienceState) => void;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-6">
+      {parsedStory && parsedStory.sections.length > 0 ? (() => {
+        const titleSection = parsedStory.sections[0];
+        const bodySections = parsedStory.sections.slice(1);
+
+        return (
+          <>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
+                {location.mainTheme}
+              </span>
+            </div>
+
+            {titleSection.heading && (
+              <h2 className="text-2xl font-extrabold text-navy-800 mb-1 leading-tight">
+                {titleSection.heading}
+              </h2>
+            )}
+            <p className="text-hand text-orange-500 -rotate-1 mb-5">
+              {locale === "de" ? "Die Geschichte" : locale === "en" ? "The story" : "Het verhaal"}
+            </p>
+
+            {titleSection.paragraphs[0] && (
+              <p className="text-base text-gray-700 leading-relaxed font-medium mb-4">
+                {titleSection.paragraphs[0]}
+              </p>
+            )}
+
+            {!expanded && (
+              <button
+                onClick={() => setExpanded(true)}
+                className="w-full bg-navy-800 hover:bg-navy-900 text-white font-semibold py-3 rounded-full text-sm transition-colors mb-6 flex items-center justify-center gap-2"
+              >
+                {locale === "de" ? "Vollstandige Geschichte lesen" : locale === "en" ? "Read full story" : "Lees het hele verhaal"}
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                </svg>
+              </button>
+            )}
+
+            {expanded && (
+              <>
+                {titleSection.paragraphs.slice(1).map((p, i) => (
+                  <p key={`intro-${i}`} className="text-sm text-gray-600 leading-relaxed mb-3">
+                    {p}
+                  </p>
+                ))}
+
+                <StoryImagePlaceholder description={`${location.name} - overzichtsfoto`} />
+
+                {bodySections.map((section, si) => (
+                  <div key={si}>
+                    {section.heading && (
+                      <h3 className="text-lg font-bold text-navy-800 mt-8 mb-3">
+                        {section.heading}
+                      </h3>
+                    )}
+
+                    <StoryImagePlaceholder
+                      description={section.heading || `${location.name} deel ${si + 2}`}
+                    />
+
+                    {section.paragraphs.map((p, pi) => (
+                      <p key={pi} className="text-sm text-gray-600 leading-relaxed mb-3">
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                ))}
+
+                {parsedStory.facts.length > 0 && (
+                  <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-6 mb-4">
+                    <h4 className="text-sm font-bold text-navy-800 mb-3">
+                      {locale === "de" ? "Wussten Sie das?" : locale === "en" ? "Did you know?" : "Wist je dat?"}
+                    </h4>
+                    <ul className="space-y-2">
+                      {parsedStory.facts.map((fact, i) => (
+                        <li key={i} className="text-xs text-gray-600 flex gap-2">
+                          <span className="text-orange-400 mt-0.5 shrink-0">&#8226;</span>
+                          <span>{fact}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {parsedStory.sources.length > 0 && (
+                  <div className="mb-6">
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-1">
+                      {locale === "de" ? "Quellen" : locale === "en" ? "Sources" : "Bronnen"}
+                    </p>
+                    {parsedStory.sources.map((source, i) => (
+                      <p key={i} className="text-[10px] text-gray-400">{source}</p>
+                    ))}
+                  </div>
+                )}
+
+                <button
+                  onClick={() => {
+                    setExpanded(false);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                  className="text-sm text-orange-500 font-semibold mb-4 flex items-center gap-1"
+                >
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+                    <path fillRule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clipRule="evenodd" />
+                  </svg>
+                  {locale === "de" ? "Weniger anzeigen" : locale === "en" ? "Show less" : "Minder lezen"}
+                </button>
+              </>
+            )}
+          </>
+        );
+      })() : (
+        <>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
+              {location.mainTheme}
+            </span>
+          </div>
+          <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
+          <p className="text-hand text-orange-500 -rotate-1 mb-4">
+            {locale === "de" ? "Die Geschichte" : locale === "en" ? "The story" : "Het verhaal"}
+          </p>
+          <div className="text-sm text-gray-700 mb-6">
+            <p>{location.shortDescription}</p>
+            <p className="text-gray-400 italic mt-4">{t("storyPendingVerification")}</p>
+          </div>
+        </>
+      )}
+
+      <div className="flex gap-2 mt-6">
+        <button
+          onClick={() => onNavigate("practical")}
+          className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-sm transition-colors"
+        >
+          {t("practicalInfo")}
+        </button>
+        <button
+          onClick={() => onNavigate("arrived")}
+          className="flex-1 border border-gray-300 text-gray-700 font-semibold py-3 rounded-full text-sm hover:bg-gray-50 transition-colors"
+        >
+          {t("back")}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function LocationExperience({ location }: { location: LocationData }) {
   const t = useTranslations("location");
   const tCommon = useTranslations("common");
@@ -337,119 +502,13 @@ export function LocationExperience({ location }: { location: LocationData }) {
       )}
 
       {state === "story" && (
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          {parsedStory && parsedStory.sections.length > 0 ? (() => {
-            const titleSection = parsedStory.sections[0];
-            const bodySections = parsedStory.sections.slice(1);
-
-            return (
-              <>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
-                    {location.mainTheme}
-                  </span>
-                </div>
-
-                {titleSection.heading && (
-                  <h2 className="text-2xl font-extrabold text-navy-800 mb-1 leading-tight">
-                    {titleSection.heading}
-                  </h2>
-                )}
-                <p className="text-hand text-orange-500 -rotate-1 mb-5">{t("theStory")}</p>
-
-                {titleSection.paragraphs[0] && (
-                  <p className="text-base text-gray-700 leading-relaxed font-medium mb-4">
-                    {titleSection.paragraphs[0]}
-                  </p>
-                )}
-
-                <StoryImagePlaceholder description={location.name} />
-
-                {bodySections.map((section, si) => (
-                  <div key={si}>
-                    {section.heading && (
-                      <div className="flex items-center gap-3 mt-6 mb-4">
-                        <div className="h-px flex-1 bg-orange-200" />
-                        <h3 className="text-base font-bold text-navy-800 shrink-0 text-center">
-                          {section.heading}
-                        </h3>
-                        <div className="h-px flex-1 bg-orange-200" />
-                      </div>
-                    )}
-
-                    {section.paragraphs[0] && (
-                      <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                        {section.paragraphs[0]}
-                      </p>
-                    )}
-
-                    {si < bodySections.length - 1 && si % 2 === 0 && (
-                      <StoryImagePlaceholder
-                        description={bodySections[si + 1]?.heading || location.name}
-                      />
-                    )}
-                  </div>
-                ))}
-
-                {parsedStory.facts.length > 0 && (
-                  <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-6 mb-4">
-                    <h4 className="text-sm font-bold text-navy-800 mb-3">
-                      {locale === "de" ? "Wussten Sie das?" : locale === "en" ? "Did you know?" : "Wist je dat?"}
-                    </h4>
-                    <ul className="space-y-2">
-                      {parsedStory.facts.map((fact, i) => (
-                        <li key={i} className="text-xs text-gray-600 flex gap-2">
-                          <span className="text-orange-400 mt-0.5 shrink-0">&#8226;</span>
-                          <span>{fact}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {parsedStory.sources.length > 0 && (
-                  <div className="mb-6">
-                    <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-1">
-                      {locale === "de" ? "Quellen" : locale === "en" ? "Sources" : "Bronnen"}
-                    </p>
-                    {parsedStory.sources.map((source, i) => (
-                      <p key={i} className="text-[10px] text-gray-400">{source}</p>
-                    ))}
-                  </div>
-                )}
-              </>
-            );
-          })() : (
-            <>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
-                  {location.mainTheme}
-                </span>
-              </div>
-              <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
-              <p className="text-hand text-orange-500 -rotate-1 mb-4">{t("theStory")}</p>
-              <div className="text-sm text-gray-700 mb-6">
-                <p>{location.shortDescription}</p>
-                <p className="text-gray-400 italic mt-4">{t("storyPendingVerification")}</p>
-              </div>
-            </>
-          )}
-
-          <div className="flex gap-2 mt-6">
-            <button
-              onClick={() => setState("practical")}
-              className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-sm transition-colors"
-            >
-              {t("practicalInfo")}
-            </button>
-            <button
-              onClick={() => setState("arrived")}
-              className="flex-1 border border-gray-300 text-gray-700 font-semibold py-3 rounded-full text-sm hover:bg-gray-50 transition-colors"
-            >
-              {t("back")}
-            </button>
-          </div>
-        </div>
+        <StoryView
+          location={location}
+          parsedStory={parsedStory}
+          locale={locale}
+          t={t}
+          onNavigate={setState}
+        />
       )}
 
       {state === "practical" && (

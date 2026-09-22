@@ -180,7 +180,9 @@
     "startBuilding": "Start building",
     "moreToDiscover": "There's more to discover...",
     "discoverMoreNL": "Discover more of the Netherlands",
-    "moreCitiesComingSoon": "More cities coming soon..."
+    "moreCitiesComingSoon": "More cities coming soon...",
+    "entryFrom": "Entry from",
+    "orderTickets": "Order tickets"
   },
   "location": {
     "startExperience": "Start experience",

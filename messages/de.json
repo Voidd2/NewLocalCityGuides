@@ -180,7 +180,9 @@
     "startBuilding": "Zusammenstellen starten",
     "moreToDiscover": "Es gibt noch mehr zu entdecken...",
     "discoverMoreNL": "Entdecke mehr von den Niederlanden",
-    "moreCitiesComingSoon": "Bald auch andere Stadte verfugbar..."
+    "moreCitiesComingSoon": "Bald auch andere Stadte verfugbar...",
+    "entryFrom": "Eintritt ab",
+    "orderTickets": "Tickets bestellen"
   },
   "location": {
     "startExperience": "Erlebnis starten",
