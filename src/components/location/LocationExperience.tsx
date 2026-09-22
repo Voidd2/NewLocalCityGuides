@@ -1,11 +1,107 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
 import { getLocationStory } from "@/data/stories";
+
+interface StorySection {
+  heading: string | null;
+  paragraphs: string[];
+}
+
+interface ParsedStory {
+  sections: StorySection[];
+  facts: string[];
+  sources: string[];
+}
+
+function isLikelyHeading(text: string): boolean {
+  if (text.length > 80) return false;
+  if (text.endsWith(".")) return false;
+  if (text.split(/\s+/).length >= 12) return false;
+  return true;
+}
+
+function parseStoryText(text: string): ParsedStory {
+  const blocks = text.split("\n\n").map((b) => b.trim()).filter(Boolean);
+  const sections: StorySection[] = [];
+  const facts: string[] = [];
+  const sources: string[] = [];
+  let mode: "main" | "facts" | "sources" = "main";
+  let currentSection: StorySection = { heading: null, paragraphs: [] };
+
+  for (const block of blocks) {
+    if (block.toUpperCase().startsWith("AANVULLENDE FEITEN")) {
+      if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
+        sections.push(currentSection);
+        currentSection = { heading: null, paragraphs: [] };
+      }
+      mode = "facts";
+      for (const line of block.split("\n").slice(1)) {
+        const c = line.replace(/^\*\s*/, "").trim();
+        if (c) facts.push(c);
+      }
+      continue;
+    }
+    if (block.toUpperCase().startsWith("BRONNEN")) {
+      if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
+        sections.push(currentSection);
+        currentSection = { heading: null, paragraphs: [] };
+      }
+      mode = "sources";
+      for (const line of block.split("\n").slice(1)) {
+        if (line.trim()) sources.push(line.trim());
+      }
+      continue;
+    }
+    if (mode === "facts") {
+      for (const line of block.split("\n")) {
+        const c = line.replace(/^\*\s*/, "").trim();
+        if (c) facts.push(c);
+      }
+      continue;
+    }
+    if (mode === "sources") {
+      for (const line of block.split("\n")) {
+        if (line.trim()) sources.push(line.trim());
+      }
+      continue;
+    }
+
+    if (isLikelyHeading(block)) {
+      if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
+        sections.push(currentSection);
+      }
+      currentSection = { heading: block, paragraphs: [] };
+    } else {
+      currentSection.paragraphs.push(block);
+    }
+  }
+
+  if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
+    sections.push(currentSection);
+  }
+
+  return { sections, facts, sources };
+}
+
+function StoryImagePlaceholder({ description }: { description: string }) {
+  return (
+    <div className="my-6 bg-gray-100 rounded-xl aspect-[16/9] flex flex-col items-center justify-center border-2 border-dashed border-gray-300">
+      <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-gray-400 mb-2" stroke="currentColor" strokeWidth="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+        <path d="M21 15l-5-5L5 21" />
+      </svg>
+      <p className="text-xs text-gray-400 font-medium px-4 text-center">
+        --HIER IMAGE VAN {description}--
+      </p>
+    </div>
+  );
+}
 
 type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
 
@@ -16,6 +112,10 @@ export function LocationExperience({ location }: { location: LocationData }) {
   const { hasPaid, isLoading } = useAuth();
   const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
   const story = getLocationStory(location.id);
+  const parsedStory = useMemo(
+    () => (story ? parseStoryText(story.readingText[locale]) : null),
+    [story, locale],
+  );
 
   if (isLoading) {
     return (
@@ -238,30 +338,109 @@ export function LocationExperience({ location }: { location: LocationData }) {
 
       {state === "story" && (
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
-              {location.mainTheme}
-            </span>
-          </div>
-          <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
-          <p className="text-hand text-orange-500 -rotate-1 mb-4">{t("theStory")}</p>
+          {parsedStory && parsedStory.sections.length > 0 ? (() => {
+            const titleSection = parsedStory.sections[0];
+            const bodySections = parsedStory.sections.slice(1);
 
-          {story ? (
-            <div className="prose prose-sm max-w-none text-gray-700 mb-6">
-              {story.readingText[locale].split("\n\n").map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </div>
-          ) : (
-            <div className="prose prose-sm max-w-none text-gray-700 mb-6">
-              <p>{location.shortDescription}</p>
-              <p className="text-gray-400 italic mt-4">
-                {t("storyPendingVerification")}
-              </p>
-            </div>
+            return (
+              <>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
+                    {location.mainTheme}
+                  </span>
+                </div>
+
+                {titleSection.heading && (
+                  <h2 className="text-2xl font-extrabold text-navy-800 mb-1 leading-tight">
+                    {titleSection.heading}
+                  </h2>
+                )}
+                <p className="text-hand text-orange-500 -rotate-1 mb-5">{t("theStory")}</p>
+
+                {titleSection.paragraphs[0] && (
+                  <p className="text-base text-gray-700 leading-relaxed font-medium mb-3">
+                    {titleSection.paragraphs[0]}
+                  </p>
+                )}
+                {titleSection.paragraphs.slice(1).map((p, i) => (
+                  <p key={`intro-${i}`} className="text-sm text-gray-600 leading-relaxed mb-3">
+                    {p}
+                  </p>
+                ))}
+
+                <StoryImagePlaceholder description={location.name} />
+
+                {bodySections.map((section, si) => (
+                  <div key={si}>
+                    {section.heading && (
+                      <div className="flex items-center gap-3 mt-6 mb-4">
+                        <div className="h-px flex-1 bg-orange-200" />
+                        <h3 className="text-base font-bold text-navy-800 shrink-0 text-center">
+                          {section.heading}
+                        </h3>
+                        <div className="h-px flex-1 bg-orange-200" />
+                      </div>
+                    )}
+
+                    {section.paragraphs.map((p, pi) => (
+                      <p key={pi} className="text-sm text-gray-600 leading-relaxed mb-3">
+                        {p}
+                      </p>
+                    ))}
+
+                    {si % 2 === 0 && si < bodySections.length - 1 && (
+                      <StoryImagePlaceholder
+                        description={bodySections[si + 1]?.heading || location.name}
+                      />
+                    )}
+                  </div>
+                ))}
+
+                {parsedStory.facts.length > 0 && (
+                  <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-6 mb-4">
+                    <h4 className="text-sm font-bold text-navy-800 mb-3">
+                      {locale === "de" ? "Wussten Sie das?" : locale === "en" ? "Did you know?" : "Wist je dat?"}
+                    </h4>
+                    <ul className="space-y-2">
+                      {parsedStory.facts.map((fact, i) => (
+                        <li key={i} className="text-xs text-gray-600 flex gap-2">
+                          <span className="text-orange-400 mt-0.5 shrink-0">&#8226;</span>
+                          <span>{fact}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {parsedStory.sources.length > 0 && (
+                  <div className="mb-6">
+                    <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-1">
+                      {locale === "de" ? "Quellen" : locale === "en" ? "Sources" : "Bronnen"}
+                    </p>
+                    {parsedStory.sources.map((source, i) => (
+                      <p key={i} className="text-[10px] text-gray-400">{source}</p>
+                    ))}
+                  </div>
+                )}
+              </>
+            );
+          })() : (
+            <>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-navy-800/10 text-navy-800">
+                  {location.mainTheme}
+                </span>
+              </div>
+              <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
+              <p className="text-hand text-orange-500 -rotate-1 mb-4">{t("theStory")}</p>
+              <div className="text-sm text-gray-700 mb-6">
+                <p>{location.shortDescription}</p>
+                <p className="text-gray-400 italic mt-4">{t("storyPendingVerification")}</p>
+              </div>
+            </>
           )}
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 mt-6">
             <button
               onClick={() => setState("practical")}
               className="flex-1 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full text-sm transition-colors"
