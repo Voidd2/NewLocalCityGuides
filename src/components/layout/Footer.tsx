@@ -61,7 +61,7 @@ export function Footer() {
         </AnimateOnScroll>
 
         <div className="mt-10 pt-6 border-t border-white/10 text-xs text-white/30 text-center">
-          &copy; 2026 YourLocalCityGuide. Alle rechten voorbehouden.
+          &copy; 2026 YourLocalCityGuide. {t("allRightsReserved")}
         </div>
       </div>
     </footer>

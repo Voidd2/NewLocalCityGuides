@@ -23,15 +23,17 @@ const LeafletMap = dynamic(() => import("@/components/map/LeafletMap").then((m) 
 
 const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
 
-const tabLabels: Record<(typeof tabs)[number], string> = {
-  overview: "Overzicht",
-  routeAndStops: "Route & stops",
-  beginRoute: "Begin route",
-  reviews: "Reviews",
-};
-
 export function RouteDetail({ route }: { route: RouteData }) {
   const t = useTranslations("routes");
+  const tCommon = useTranslations("common");
+  const tLocation = useTranslations("location");
+
+  const tabLabels: Record<(typeof tabs)[number], string> = {
+    overview: t("overview"),
+    routeAndStops: t("routeAndStops"),
+    beginRoute: t("startRoute"),
+    reviews: t("reviews"),
+  };
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("overview");
   const { hasPaid, isLoading } = useAuth();
@@ -52,7 +54,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -69,7 +71,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   {route.popular && (
-                    <span className="bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Meest gekozen</span>
+                    <span className="bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">{t("mostChosen")}</span>
                   )}
                 </div>
                 <h1 className="text-2xl md:text-3xl font-bold">{route.title}</h1>
@@ -95,7 +97,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                   <circle cx="12" cy="9" r="2.5" />
                 </svg>
                 <p className="text-xs mt-1">{route.stops}</p>
-                <p className="text-[10px] text-white/50">stops</p>
+                <p className="text-[10px] text-white/50">{t("stops")}</p>
               </div>
               <div>
                 <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mx-auto text-white/60" stroke="currentColor" strokeWidth="1.5">
@@ -103,13 +105,13 @@ export function RouteDetail({ route }: { route: RouteData }) {
                   <path d="M7 17l4-8 4 4 4-8" />
                 </svg>
                 <p className="text-xs mt-1">{route.distance}</p>
-                <p className="text-[10px] text-white/50">afstand</p>
+                <p className="text-[10px] text-white/50">{t("distance")}</p>
               </div>
               <div>
                 <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mx-auto text-white/60" stroke="currentColor" strokeWidth="1.5">
                   <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                 </svg>
-                <p className="text-xs mt-1">{route.type === "walking" ? "Wandelen" : "Fietsen"}</p>
+                <p className="text-xs mt-1">{route.type === "walking" ? t("walking") : t("cycling")}</p>
               </div>
               {route.kidFriendly && (
                 <div>
@@ -119,8 +121,8 @@ export function RouteDetail({ route }: { route: RouteData }) {
                     <path d="M23 21v-2a4 4 0 00-3-3.87" />
                     <path d="M16 3.13a4 4 0 010 7.75" />
                   </svg>
-                  <p className="text-xs mt-1">Geschikt</p>
-                  <p className="text-[10px] text-white/50">voor iedereen</p>
+                  <p className="text-xs mt-1">{t("suitable")}</p>
+                  <p className="text-[10px] text-white/50">{t("suitableForEveryone")}</p>
                 </div>
               )}
               {route.kidFriendly && (
@@ -131,7 +133,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                     <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="3" strokeLinecap="round" />
                     <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="3" strokeLinecap="round" />
                   </svg>
-                  <p className="text-xs mt-1 text-orange-400 font-medium">Kindvriendelijk</p>
+                  <p className="text-xs mt-1 text-orange-400 font-medium">{t("kidFriendly")}</p>
                 </div>
               )}
             </div>
@@ -174,7 +176,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-orange-400">
                           <polygon points="10 1 12.5 7.5 19 7.5 14 12 16 19 10 15 4 19 6 12 1 7.5 7.5 7.5" />
                         </svg>
-                        <span className="text-[10px] font-semibold text-orange-300 uppercase tracking-wider">Jouw route preview</span>
+                        <span className="text-[10px] font-semibold text-orange-300 uppercase tracking-wider">{t("routePreview")}</span>
                       </div>
                       <h3 className="text-xl font-extrabold text-white mb-2 leading-tight">
                         Ontdek Leiden zoals je het<br />
@@ -249,7 +251,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                           </svg>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white text-sm font-semibold">Klaar om te starten?</p>
+                          <p className="text-white text-sm font-semibold">{t("readyToStart")}</p>
                           <p className="text-white/50 text-[11px]">Ervaar elk verhaal op locatie met video en audio</p>
                         </div>
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-400 shrink-0">
@@ -267,7 +269,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                         </svg>
                       </div>
                       <p className="text-xs font-bold text-navy-800">{route.duration || "60-90 min"}</p>
-                      <p className="text-[10px] text-gray-400">looptijd</p>
+                      <p className="text-[10px] text-gray-400">{t("walkTime")}</p>
                     </div>
                     <div className="bg-orange-50 rounded-xl p-3 text-center">
                       <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-1.5">
@@ -277,7 +279,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                         </svg>
                       </div>
                       <p className="text-xs font-bold text-navy-800">{route.stops} video&apos;s</p>
-                      <p className="text-[10px] text-gray-400">op locatie</p>
+                      <p className="text-[10px] text-gray-400">{t("onLocation")}</p>
                     </div>
                     <div className="bg-orange-50 rounded-xl p-3 text-center">
                       <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-1.5">
@@ -285,8 +287,8 @@ export function RouteDetail({ route }: { route: RouteData }) {
                           <path d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003z" />
                         </svg>
                       </div>
-                      <p className="text-xs font-bold text-navy-800">Op jouw tempo</p>
-                      <p className="text-[10px] text-gray-400">geen haast</p>
+                      <p className="text-xs font-bold text-navy-800">{t("atYourPace")}</p>
+                      <p className="text-[10px] text-gray-400">{t("noRush")}</p>
                     </div>
                   </div>
                 </div>
@@ -331,7 +333,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
 
           {activeTab === "routeAndStops" && (
             <div>
-              <h3 className="text-sm font-bold text-navy-800 mb-4">Route op de kaart</h3>
+              <h3 className="text-sm font-bold text-navy-800 mb-4">{t("routeOnMap")}</h3>
               {routePins.length > 0 ? (
                 <div className="h-64 rounded-xl overflow-hidden shadow-md mb-6">
                   <LeafletMap
@@ -347,12 +349,12 @@ export function RouteDetail({ route }: { route: RouteData }) {
                     <line x1="8" y1="2" x2="8" y2="18" />
                     <line x1="16" y1="6" x2="16" y2="22" />
                   </svg>
-                  <p className="text-sm font-medium text-gray-500">Kaartgegevens worden aangevuld</p>
+                  <p className="text-sm font-medium text-gray-500">{t("mapDataPending")}</p>
                 </div>
               )}
 
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-bold text-navy-800">Alle {route.stops} stops</h3>
+                <h3 className="text-sm font-bold text-navy-800">{t("allXStops", { count: route.stops })}</h3>
               </div>
 
               <ol className="space-y-3">
@@ -388,19 +390,19 @@ export function RouteDetail({ route }: { route: RouteData }) {
           {activeTab === "beginRoute" && (
             <div>
               <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mb-6">
-                <h4 className="font-bold text-navy-800 text-sm mb-2">Hoe werkt het?</h4>
+                <h4 className="font-bold text-navy-800 text-sm mb-2">{t("howDoesItWork")}</h4>
                 <ol className="space-y-2 text-xs text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">1</span>
-                    Klik op &quot;Start route&quot; om de route op te slaan in Mijn routes
+                    {t("step1Desc")}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">2</span>
-                    Loop naar de eerste locatie en druk op &quot;Ik ben aangekomen!&quot;
+                    {t("step2Desc")}
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-5 h-5 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">3</span>
-                    Bekijk de video en lees het verhaal op elke locatie
+                    {t("step3Desc")}
                   </li>
                 </ol>
               </div>
@@ -457,7 +459,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                   <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
                 </svg>
-                Start deze route
+                {t("startRoute")}
               </button>
             </div>
           )}
@@ -471,17 +473,17 @@ export function RouteDetail({ route }: { route: RouteData }) {
       {!hasPaid && (
         <section className="bg-orange-50 border-t border-orange-100">
           <div className="max-w-7xl mx-auto px-4 py-8">
-            <h3 className="text-sm font-bold text-navy-800 mb-1">Inbegrepen in het Leiden pakket</h3>
+            <h3 className="text-sm font-bold text-navy-800 mb-1">{t("includedInPackage")}</h3>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-600 mt-3 mb-4">
               {[
-                "Alle routes in Leiden",
-                "Interactieve video's op locatie",
-                "Maak je eigen route",
-                "Verborgen parels en lokale tips",
-                "Op eigen tempo",
-                "Levenslange toegang",
-                "Leuk met kinderen",
-                "Regelmatig nieuwe routes",
+                t("allRoutesInLeiden"),
+                t("interactiveVids"),
+                t("createOwnRouteIncluded"),
+                t("hiddenGemsAndTips"),
+                t("atYourPace"),
+                t("lifetimeAccess"),
+                t("kidFriendlyRoutes"),
+                t("regularNewRoutes"),
               ].map((item) => (
                 <span key={item} className="flex items-center gap-1">
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-600">
@@ -493,12 +495,12 @@ export function RouteDetail({ route }: { route: RouteData }) {
             </div>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-extrabold text-orange-500">&euro;5,99</span>
-              <span className="text-sm text-gray-500">per persoon</span>
+              <span className="text-sm text-gray-500">{t("perPerson")}</span>
               <Link
                 href="/pricing"
                 className="ml-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
               >
-                Bekijk prijzen
+                {t("viewPricing")}
               </Link>
             </div>
           </div>
@@ -607,6 +609,7 @@ function StarRow({ rating, small }: { rating: number; small?: boolean }) {
 }
 
 function ReviewsTab({ routeTitle }: { routeTitle: string }) {
+  const t = useTranslations("routes");
   const [showAll, setShowAll] = useState(false);
   const totalReviews = reviewsWithText.length + starsOnlyReviews.length;
   const allRatings = [...reviewsWithText.map((r) => r.rating), ...starsOnlyReviews.map((r) => r.rating)];
@@ -667,7 +670,7 @@ function ReviewsTab({ routeTitle }: { routeTitle: string }) {
 
       {visibleStarsOnly.length > 0 && (
         <div className="mb-4">
-          <p className="text-xs text-gray-400 mb-3 font-medium">Beoordelingen zonder tekst</p>
+          <p className="text-xs text-gray-400 mb-3 font-medium">{t("reviewsWithoutText")}</p>
           <div className="grid grid-cols-2 gap-2">
             {visibleStarsOnly.map((review) => (
               <div key={review.name} className="flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2">
@@ -693,7 +696,7 @@ function ReviewsTab({ routeTitle }: { routeTitle: string }) {
           onClick={() => setShowAll(true)}
           className="w-full py-3 text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors"
         >
-          Toon alle {totalReviews} reviews
+          {t("showAllReviews", { count: totalReviews })}
         </button>
       )}
     </div>

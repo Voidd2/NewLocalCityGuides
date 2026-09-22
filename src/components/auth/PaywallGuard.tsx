@@ -1,15 +1,18 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 
 export function PaywallGuard({ children }: { children: React.ReactNode }) {
   const { hasPaid, isLoggedIn, isLoading } = useAuth();
+  const t = useTranslations("paywall");
+  const tCommon = useTranslations("common");
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -23,18 +26,16 @@ export function PaywallGuard({ children }: { children: React.ReactNode }) {
             <path d="M7 11V7a5 5 0 0110 0v4" />
           </svg>
           <h2 className="text-lg font-bold text-navy-800 mb-2">
-            {!isLoggedIn ? "Log in om verder te gaan" : "Koop het Leiden pakket"}
+            {!isLoggedIn ? t("loginTitle") : t("buyTitle")}
           </h2>
           <p className="text-sm text-gray-600 mb-6">
-            {!isLoggedIn
-              ? "Je hebt een account nodig om deze pagina te bekijken."
-              : "Krijg toegang tot alle routes, interactieve video's en locaties in Leiden."}
+            {!isLoggedIn ? t("loginDesc") : t("buyDesc")}
           </p>
           <Link
             href={!isLoggedIn ? "/login" : "/pricing"}
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
           >
-            {!isLoggedIn ? "Inloggen" : "Bekijk prijzen"}
+            {!isLoggedIn ? t("loginButton") : tCommon("viewPricing")}
           </Link>
         </div>
       </div>

@@ -7,12 +7,13 @@ import { useAuth } from "@/lib/auth-context";
 
 export function RoutesOverview() {
   const t = useTranslations("routes");
+  const tCommon = useTranslations("common");
   const { hasPaid, isLoading } = useAuth();
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -27,27 +28,27 @@ export function RoutesOverview() {
         />
         <div className="relative bg-gradient-to-b from-navy-800/80 to-navy-900/90 text-white px-4 py-8 pb-12">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">Jouw Leiden pakket</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">{t("yourLeidenPackage")}</h1>
             <p className="text-white/70 text-sm mb-6">
-              Een pakket. Alle routes. Eindeloos ontdekken.
+              {t("packageTagline")}
             </p>
 
             {!hasPaid ? (
               <>
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 flex items-center justify-between">
                   <div>
-                    <p className="text-sm">Leiden pakket vanaf <span className="font-bold text-orange-400">&euro;5,99 p.p.</span></p>
+                    <p className="text-sm">{t("packageFrom")}</p>
                     <p className="text-xs text-white/60 mt-0.5">Toegang tot alle routes in Leiden, inclusief maak-je-eigen-route, interactieve video&apos;s en meer.</p>
                   </div>
                   <Link
                     href="/pricing"
                     className="shrink-0 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
                   >
-                    Bekijk prijzen
+                    {t("viewPricing")}
                   </Link>
                 </div>
                 <p className="text-hand text-orange-300 text-lg mt-4 -rotate-1">
-                  Alle routes inbegrepen!
+                  {t("allRoutesIncluded")}
                 </p>
               </>
             ) : (
@@ -56,7 +57,7 @@ export function RoutesOverview() {
                   <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                 </svg>
                 <div>
-                  <p className="text-sm font-medium">Leiden pakket actief</p>
+                  <p className="text-sm font-medium">{t("leidenPackageActive")}</p>
                   <p className="text-xs text-white/60 mt-0.5">Je hebt volledige toegang tot alle routes en locaties.</p>
                 </div>
               </div>
@@ -66,8 +67,8 @@ export function RoutesOverview() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 py-6">
-        <h2 className="text-lg font-bold text-navy-800 mb-1">Alle tours in Leiden (inbegrepen)</h2>
-        <p className="text-sm text-gray-500 mb-6">Kies een route en begin met ontdekken</p>
+        <h2 className="text-lg font-bold text-navy-800 mb-1">{t("allToursIncluded")}</h2>
+        <p className="text-sm text-gray-500 mb-6">{t("chooseRouteToDiscover")}</p>
 
         <div className="grid md:grid-cols-2 gap-4">
           {routes.map((route) => {
@@ -80,7 +81,7 @@ export function RoutesOverview() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   {route.popular && (
                     <span className="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
-                      Populair
+                      {t("popular")}
                     </span>
                   )}
                   <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -159,7 +160,7 @@ export function RoutesOverview() {
                     <path d="M7 11V7a5 5 0 0110 0v4" />
                   </svg>
                   <span className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors">
-                    Bekijk de prijzen
+                    {t("viewPricing")}
                   </span>
                 </Link>
               </div>
@@ -183,13 +184,13 @@ export function RoutesOverview() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-bold text-navy-800">Maak je eigen route</h3>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase">Inbegrepen</span>
+                  <h3 className="font-bold text-navy-800">{t("customRoute")}</h3>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase">{t("included")}</span>
                 </div>
                 <p className="text-sm text-gray-600">{t("customRouteDesc")}</p>
               </div>
               <span className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-3 rounded-full transition-colors text-sm shrink-0">
-                Start met samenstellen
+                {t("startBuilding")}
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                   <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                 </svg>
@@ -201,10 +202,10 @@ export function RoutesOverview() {
 
       <section className="bg-navy-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-hand text-orange-300 text-xl mb-2">Er is meer te ontdekken...</p>
-          <h2 className="text-lg font-bold mb-2">Ontdek meer van Nederland</h2>
+          <p className="text-hand text-orange-300 text-xl mb-2">{t("moreToDiscover")}</p>
+          <h2 className="text-lg font-bold mb-2">{t("discoverMoreNL")}</h2>
           <p className="text-white/60 text-sm mb-6">
-            Binnenkort ook andere steden beschikbaar. Dezelfde ervaring, nieuwe verhalen.
+            {t("moreCitiesComingSoon")}
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             {["Amsterdam", "Delft", "Haarlem", "Utrecht"].map((city) => (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 
@@ -144,12 +145,14 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
 
 export function ActiviteitenPage() {
   const { hasPaid, isLoading } = useAuth();
-  const [activeCategory, setActiveCategory] = useState<string>("alle");
+  const t = useTranslations("activities");
+  const tCommon = useTranslations("common");
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -163,7 +166,7 @@ export function ActiviteitenPage() {
             <path d="M7 11V7a5 5 0 0110 0v4" />
           </svg>
         </div>
-        <h2 className="text-lg font-bold text-navy-800 mb-2">Activiteiten ontgrendelen</h2>
+        <h2 className="text-lg font-bold text-navy-800 mb-2">{t("unlockTitle")}</h2>
         <p className="text-sm text-gray-500 mb-4">
           Koop het Leiden pakket voor toegang tot de beste activiteiten en persoonlijke hulp bij het boeken.
         </p>
@@ -171,21 +174,21 @@ export function ActiviteitenPage() {
           href="/pricing"
           className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
         >
-          Bekijk het Leiden pakket
+          {t("viewPackage")}
         </Link>
       </div>
     );
   }
 
   const categories = [
-    { key: "alle", label: "Alles" },
-    { key: "rondvaart", label: "Rondvaarten" },
-    { key: "wandeltour", label: "Wandeltours" },
-    { key: "museum", label: "Musea" },
-    { key: "overig", label: "Overig" },
+    { key: "all", label: t("all") },
+    { key: "rondvaart", label: t("boatTours") },
+    { key: "wandeltour", label: t("walkingTours") },
+    { key: "museum", label: t("museums") },
+    { key: "overig", label: t("other") },
   ];
 
-  const filtered = activeCategory === "alle"
+  const filtered = activeCategory === "all"
     ? activities
     : activities.filter((a) => a.category === activeCategory);
 
@@ -194,7 +197,7 @@ export function ActiviteitenPage() {
       <section className="relative overflow-hidden">
         <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-8 pb-10">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">Activiteiten in Leiden</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">{t("title")}</h1>
             <p className="text-white/70 text-sm">
               De leukste tours, rondvaarten en bezienswaardigheden op een rij.
             </p>
@@ -214,12 +217,12 @@ export function ActiviteitenPage() {
               </svg>
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-navy-800 text-sm mb-1">Weet je niet wat je wil doen?</h3>
+              <h3 className="font-bold text-navy-800 text-sm mb-1">{t("dontKnowWhat")}</h3>
               <p className="text-xs text-gray-600 leading-relaxed">
                 Laat ons je helpen! Van een dagje Leiden tot een trip naar Amsterdam - wij regelen alles persoonlijk voor je.
               </p>
               <span className="inline-flex items-center gap-1 mt-2 text-orange-600 text-xs font-semibold">
-                Vraag persoonlijke hulp
+                {t("askPersonalHelp")}
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                   <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                 </svg>
@@ -230,7 +233,7 @@ export function ActiviteitenPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 mb-6">
-        <h2 className="text-lg font-bold text-navy-800 mb-4">Topactiviteiten in Leiden</h2>
+        <h2 className="text-lg font-bold text-navy-800 mb-4">{t("topActivities")}</h2>
 
         <div className="flex gap-2 overflow-x-auto pb-3 mb-4 -mx-4 px-4 scrollbar-hide">
           {categories.map((cat) => (
@@ -280,14 +283,14 @@ export function ActiviteitenPage() {
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
                         </svg>
-                        Duur: {activity.duration}
+                        {t("duration")} {activity.duration}
                       </div>
                     )}
                   </div>
                   <div className="flex items-end justify-between">
                     <StarRating rating={activity.rating} count={activity.reviewCount} />
                     <div className="text-right">
-                      <p className="text-sm font-bold text-navy-800">Vanaf &euro;{activity.price}</p>
+                      <p className="text-sm font-bold text-navy-800">{t("from")} &euro;{activity.price}</p>
                     </div>
                   </div>
                 </div>
@@ -299,8 +302,8 @@ export function ActiviteitenPage() {
 
       <section className="bg-navy-800 text-white py-8 mb-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-hand text-orange-300 text-xl mb-2">Liever persoonlijke hulp?</p>
-          <h2 className="text-lg font-bold mb-2">Wij plannen jouw perfecte dag</h2>
+          <p className="text-hand text-orange-300 text-xl mb-2">{t("preferPersonalHelp")}</p>
+          <h2 className="text-lg font-bold mb-2">{t("wePlanYourDay")}</h2>
           <p className="text-white/60 text-sm mb-6">
             Van vervoer tot verblijf, van Leiden tot Amsterdam - wij regelen het allemaal.
           </p>
@@ -308,7 +311,7 @@ export function ActiviteitenPage() {
             href="/activiteiten/hulp"
             className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
           >
-            Vraag hulp aan
+            {t("askForHelp")}
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
             </svg>

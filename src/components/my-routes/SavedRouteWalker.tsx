@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
 import { getSavedRouteById, markArrived, type SavedRoute } from "@/lib/saved-routes";
@@ -8,6 +9,8 @@ import { getLocationById, type LocationData } from "@/data/locations";
 import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
 
 function VideoModal({ loc, onClose, routeId }: { loc: LocationData; onClose: () => void; routeId: string }) {
+  const t = useTranslations("walker");
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = ""; };
@@ -33,7 +36,7 @@ function VideoModal({ loc, onClose, routeId }: { loc: LocationData; onClose: () 
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
           </div>
-          <p className="text-white/50 text-sm">Video wordt geladen...</p>
+          <p className="text-white/50 text-sm">{t("loadingVideo")}</p>
           <p className="text-white/30 text-xs mt-2">Video-content wordt aangevuld na R02 verificatie</p>
         </div>
       </div>
@@ -46,13 +49,13 @@ function VideoModal({ loc, onClose, routeId }: { loc: LocationData; onClose: () 
             <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
           </svg>
-          Lees meer
+          {t("readMore")}
         </Link>
         <button
           onClick={onClose}
           className="flex-1 border border-white/20 text-white font-semibold py-3 rounded-full text-sm transition-colors hover:bg-white/10"
         >
-          Sluiten
+          {t("close")}
         </button>
       </div>
     </div>
@@ -76,6 +79,7 @@ function StopCard({
   routeId: string;
   onOpenVideo: () => void;
 }) {
+  const t = useTranslations("walker");
   const [isOpen, setIsOpen] = useState(false);
 
   const mapsUrl = loc.coords
@@ -123,7 +127,7 @@ function StopCard({
                 <h3 className="font-semibold text-navy-800 text-sm truncate">{loc.name}</h3>
                 {hasArrived && (
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-500 text-white shrink-0">
-                    Bezocht
+                    {t("visited")}
                   </span>
                 )}
               </div>
@@ -170,8 +174,8 @@ function StopCard({
                   </svg>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-semibold text-blue-800">Navigeer hierheen</p>
-                  <p className="text-[10px] text-blue-600">Open in Google Maps</p>
+                  <p className="text-xs font-semibold text-blue-800">{t("navigateHere")}</p>
+                  <p className="text-[10px] text-blue-600">{t("openInGoogleMaps")}</p>
                 </div>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-blue-400 shrink-0">
                   <path fillRule="evenodd" d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5zm7.25-.75a.75.75 0 01.75-.75h3.5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l5.47-5.47H12.25a.75.75 0 01-.75-.75z" clipRule="evenodd" />
@@ -193,7 +197,7 @@ function StopCard({
                       </svg>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold">Bekijk de video</p>
+                      <p className="text-sm font-semibold">{t("watchVideo")}</p>
                       <p className="text-[10px] text-white/50">Bekijk hoe het er vroeger uitzag</p>
                     </div>
                   </button>
@@ -210,7 +214,7 @@ function StopCard({
                       </svg>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-navy-800">Lees het verhaal</p>
+                      <p className="text-sm font-semibold text-navy-800">{t("readStory")}</p>
                       <p className="text-[10px] text-gray-500">Ontdek de geschiedenis van deze plek</p>
                     </div>
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-gray-400 shrink-0">
@@ -222,7 +226,7 @@ function StopCard({
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-green-600 shrink-0">
                       <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                     </svg>
-                    <p className="text-xs text-green-700 font-medium">Je hebt deze locatie bezocht</p>
+                    <p className="text-xs text-green-700 font-medium">{t("youVisitedThis")}</p>
                   </div>
                 </div>
               ) : (
@@ -236,7 +240,7 @@ function StopCard({
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                     <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
                   </svg>
-                  Ik ben aangekomen!
+                  {t("iArrived")}
                 </button>
               )}
             </div>
@@ -256,6 +260,7 @@ function PauseBreakCard({
   distanceMeters: number;
   contextMessage: string;
 }) {
+  const t = useTranslations("walker");
   const [isOpen, setIsOpen] = useState(false);
   const schaapsvis = getSchaapsvisMessage();
   const others = localRecommendations.filter((r) => r.id !== "schaapsvis");
@@ -288,7 +293,7 @@ function PauseBreakCard({
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-0.5">
                 <p className={`text-sm font-bold ${isNearby ? "text-orange-800" : "text-amber-800"}`}>
-                  {isNearby ? "Schaapsvishandel vlakbij!" : "Pauze tussendoor?"}
+                  {isNearby ? t("schaapsvisNearby") : t("pauseBreak")}
                 </p>
                 {showDistance && (
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
@@ -329,10 +334,10 @@ function PauseBreakCard({
               >
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
-                    Aanbevolen
+                    {t("recommended")}
                   </span>
                   <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 uppercase tracking-wide">
-                    Sinds 1938
+                    {t("since1938")}
                   </span>
                   {showDistance && (
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
@@ -373,7 +378,7 @@ function PauseBreakCard({
                 }}
                 className="w-full text-center text-xs text-amber-600 font-medium py-1 hover:text-amber-800 transition-colors"
               >
-                Nee bedankt, ik ga door met mijn route
+                {t("noThanks")}
               </button>
             </div>
           )}
@@ -384,6 +389,7 @@ function PauseBreakCard({
 }
 
 function RecommendedSection() {
+  const t = useTranslations("walker");
   const schaapsvis = getSchaapsvisMessage();
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(schaapsvis.mapsQuery)}`;
 
@@ -395,7 +401,7 @@ function RecommendedSection() {
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         </div>
-        <h3 className="text-sm font-bold text-navy-800 uppercase tracking-wide">Aanbevolen - Voeg toe aan je route</h3>
+        <h3 className="text-sm font-bold text-navy-800 uppercase tracking-wide">{t("recommended")} - Voeg toe aan je route</h3>
       </div>
 
       <a
@@ -415,7 +421,7 @@ function RecommendedSection() {
             <div className="flex items-center gap-2 mb-1">
               <h4 className="font-bold text-navy-800">Schaapsvishandel</h4>
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white">
-                Sinds 1938
+                {t("since1938")}
               </span>
             </div>
             <p className="text-xs text-orange-700 font-medium mb-1">{schaapsvis.location}</p>
@@ -434,6 +440,8 @@ function RecommendedSection() {
 }
 
 export function SavedRouteWalker() {
+  const t = useTranslations("walker");
+  const tCommon = useTranslations("common");
   const params = useParams();
   const routeId = params.id as string;
   const [route, setRoute] = useState<SavedRoute | null>(null);
@@ -455,7 +463,7 @@ export function SavedRouteWalker() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -467,13 +475,13 @@ export function SavedRouteWalker() {
           <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
           <circle cx="12" cy="9" r="2.5" />
         </svg>
-        <h2 className="font-bold text-navy-800 mb-2">Route niet gevonden</h2>
-        <p className="text-sm text-gray-500 mb-4">Deze route bestaat niet meer.</p>
+        <h2 className="font-bold text-navy-800 mb-2">{t("routeNotFound")}</h2>
+        <p className="text-sm text-gray-500 mb-4">{t("routeNotFoundDesc")}</p>
         <Link
           href="/my-routes"
           className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
         >
-          Terug naar mijn routes
+          {t("backToMyRoutes")}
         </Link>
       </div>
     );
@@ -497,11 +505,11 @@ export function SavedRouteWalker() {
           <h1 className="text-xl font-bold text-navy-800 mb-1">{route.name}</h1>
           <div className="flex items-center gap-3">
             <p className="text-sm text-gray-500">
-              {progress}/{total} stops bezocht
+              {progress}/{total} {t("stopsVisited")}
             </p>
             {isComplete && (
               <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-green-500 text-white">
-                Voltooid
+                {t("completed")}
               </span>
             )}
           </div>
@@ -520,7 +528,7 @@ export function SavedRouteWalker() {
                 <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h2 className="text-lg font-bold text-green-800 mb-1">Route voltooid!</h2>
+            <h2 className="text-lg font-bold text-green-800 mb-1">{t("routeCompleted")}</h2>
             <p className="text-sm text-green-600">
               Je hebt alle {total} locaties bezocht. Goed gedaan!
             </p>

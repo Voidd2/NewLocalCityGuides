@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { TEST_CREDENTIALS } from "@/lib/auth";
 import { useAuth } from "@/lib/auth-context";
@@ -8,6 +9,7 @@ import { useAuth } from "@/lib/auth-context";
 export function LoginPage() {
   const router = useRouter();
   const { login, isLoggedIn } = useAuth();
+  const t = useTranslations("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,7 +28,7 @@ export function LoginPage() {
     if (result) {
       router.push("/dashboard");
     } else {
-      setError("Onjuiste inloggegevens. Gebruik het testaccount hieronder.");
+      setError(t("errorMessage"));
     }
   }
 
@@ -40,8 +42,8 @@ export function LoginPage() {
               <circle cx="12" cy="9" r="2.5" />
             </svg>
           </div>
-          <h1 className="text-2xl font-bold text-navy-800">Inloggen</h1>
-          <p className="text-sm text-gray-500 mt-1">Bekijk je gekochte stadspakket</p>
+          <h1 className="text-2xl font-bold text-navy-800">{t("title")}</h1>
+          <p className="text-sm text-gray-500 mt-1">{t("subtitle")}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 p-6 mb-4">
@@ -53,7 +55,7 @@ export function LoginPage() {
 
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-navy-800 mb-1">
-              E-mailadres
+              {t("email")}
             </label>
             <input
               id="email"
@@ -61,14 +63,14 @@ export function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none"
-              placeholder="je@email.com"
+              placeholder={t("emailPlaceholder")}
               required
             />
           </div>
 
           <div className="mb-6">
             <label htmlFor="password" className="block text-sm font-medium text-navy-800 mb-1">
-              Wachtwoord
+              {t("password")}
             </label>
             <input
               id="password"
@@ -76,7 +78,7 @@ export function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none"
-              placeholder="Wachtwoord"
+              placeholder={t("passwordPlaceholder")}
               required
             />
           </div>
@@ -85,7 +87,7 @@ export function LoginPage() {
             type="submit"
             className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full transition-colors text-sm"
           >
-            Inloggen
+            {t("loginButton")}
           </button>
         </form>
 
@@ -94,7 +96,7 @@ export function LoginPage() {
             onClick={() => setShowCredentials(!showCredentials)}
             className="flex items-center justify-between w-full text-sm font-medium text-orange-700"
           >
-            Testaccounts (voor demo)
+            {t("testAccounts")}
             <svg viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 transition-transform ${showCredentials ? "rotate-180" : ""}`}>
               <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
             </svg>
@@ -103,27 +105,27 @@ export function LoginPage() {
           {showCredentials && (
             <div className="mt-3 space-y-3 text-xs">
               <div className="bg-white rounded-lg p-3">
-                <p className="font-bold text-green-700 mb-1">Betaald account (volledige toegang):</p>
+                <p className="font-bold text-green-700 mb-1">{t("paidAccount")}</p>
                 <p className="text-gray-600">Email: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.paid.email}</code></p>
-                <p className="text-gray-600">Wachtwoord: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.paid.password}</code></p>
+                <p className="text-gray-600">{t("password")}: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.paid.password}</code></p>
                 <button
                   type="button"
                   onClick={() => { setEmail(TEST_CREDENTIALS.paid.email); setPassword(TEST_CREDENTIALS.paid.password); }}
                   className="text-orange-500 font-semibold mt-1 hover:underline"
                 >
-                  Vul in
+                  {t("fillIn")}
                 </button>
               </div>
               <div className="bg-white rounded-lg p-3">
-                <p className="font-bold text-gray-500 mb-1">Gratis account (beperkte toegang):</p>
+                <p className="font-bold text-gray-500 mb-1">{t("freeAccount")}</p>
                 <p className="text-gray-600">Email: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.free.email}</code></p>
-                <p className="text-gray-600">Wachtwoord: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.free.password}</code></p>
+                <p className="text-gray-600">{t("password")}: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.free.password}</code></p>
                 <button
                   type="button"
                   onClick={() => { setEmail(TEST_CREDENTIALS.free.email); setPassword(TEST_CREDENTIALS.free.password); }}
                   className="text-orange-500 font-semibold mt-1 hover:underline"
                 >
-                  Vul in
+                  {t("fillIn")}
                 </button>
               </div>
             </div>

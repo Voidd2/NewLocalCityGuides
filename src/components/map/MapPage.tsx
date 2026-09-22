@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { locations } from "@/data/locations";
 import { routes as standardRoutes } from "@/data/routes";
@@ -14,31 +15,33 @@ const LeafletMap = dynamic(() => import("./LeafletMap").then((m) => m.LeafletMap
     <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
       <div className="text-center">
         <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
-        <p className="text-sm text-gray-400">Kaart laden...</p>
+        <p className="text-sm text-gray-400">Loading...</p>
       </div>
     </div>
   ),
 });
 
-const categories = [
-  { key: "all", label: "Alles" },
-  { key: "museum", label: "Musea" },
-  { key: "architectuur", label: "Architectuur" },
-  { key: "kunst", label: "Kunst" },
-  { key: "geloof", label: "Geloof" },
-  { key: "natuur", label: "Natuur & Parken" },
-  { key: "handel", label: "Handel & Werk" },
-  { key: "wetenschap", label: "Wetenschap" },
-  { key: "cultuur", label: "Cultuur" },
-  { key: "macht", label: "Macht & Recht" },
-  { key: "dagelijks-leven", label: "Dagelijks leven" },
-  { key: "rampen", label: "Rampen & Strijd" },
-];
-
 const TEASER_COUNT = 3;
 
 export function MapPage() {
+  const t = useTranslations("map");
+  const tCommon = useTranslations("common");
   const { hasPaid, isLoading } = useAuth();
+
+  const categories = [
+    { key: "all", label: t("all") },
+    { key: "museum", label: t("museums") },
+    { key: "architectuur", label: t("architecture") },
+    { key: "kunst", label: t("art") },
+    { key: "geloof", label: t("faith") },
+    { key: "natuur", label: t("natureAndParks") },
+    { key: "handel", label: t("tradeAndWork") },
+    { key: "wetenschap", label: t("science") },
+    { key: "cultuur", label: t("culture") },
+    { key: "macht", label: t("powerAndLaw") },
+    { key: "dagelijks-leven", label: t("dailyLife") },
+    { key: "rampen", label: t("disastersAndStrife") },
+  ];
   const [activeCategory, setActiveCategory] = useState("all");
   const [view, setView] = useState<"map" | "list">("map");
   const [selectedPin, setSelectedPin] = useState<string | null>(null);
@@ -116,25 +119,25 @@ export function MapPage() {
         const saved = saveRoute(isStandard.title, [...isStandard.locationIds]);
         const result = addLocationToRoute(saved.id, locationId);
         if (result === "duplicate") {
-          setToast({ message: `${addToRouteLocation?.name} staat al in ${isStandard.title}`, type: "warning" });
+          setToast({ message: t("alreadyInRoute", { name: addToRouteLocation?.name ?? "", routeName: isStandard.title }), type: "warning" });
         } else {
-          setToast({ message: `Toegevoegd aan ${isStandard.title}`, type: "success" });
+          setToast({ message: t("addedToRoute", { name: addToRouteLocation?.name ?? "", routeName: isStandard.title }), type: "success" });
         }
       } else {
         const result = addLocationToRoute(existing.id, locationId);
         if (result === "duplicate") {
-          setToast({ message: `${addToRouteLocation?.name} staat al in ${existing.name}`, type: "warning" });
+          setToast({ message: t("alreadyInRoute", { name: addToRouteLocation?.name ?? "", routeName: existing.name }), type: "warning" });
         } else {
-          setToast({ message: `Toegevoegd aan ${existing.name}`, type: "success" });
+          setToast({ message: t("addedToRoute", { name: addToRouteLocation?.name ?? "", routeName: existing.name }), type: "success" });
         }
       }
     } else {
       const result = addLocationToRoute(routeId, locationId);
       const route = savedRoutes.find((r) => r.id === routeId);
       if (result === "duplicate") {
-        setToast({ message: `${addToRouteLocation?.name} staat al in ${route?.name || "deze route"}`, type: "warning" });
+        setToast({ message: t("alreadyInRoute", { name: addToRouteLocation?.name ?? "", routeName: route?.name || "route" }), type: "warning" });
       } else {
-        setToast({ message: `Toegevoegd aan ${route?.name || "je route"}`, type: "success" });
+        setToast({ message: t("addedToRoute", { name: addToRouteLocation?.name ?? "", routeName: route?.name || "route" }), type: "success" });
       }
     }
 
@@ -144,16 +147,16 @@ export function MapPage() {
 
   const handleCreateNewRoute = (locationId: string) => {
     const loc = locations.find((l) => l.id === locationId);
-    const saved = saveRoute(`Route met ${loc?.name || "locatie"}`, [locationId]);
+    const saved = saveRoute(t("routeWithName", { name: loc?.name || "locatie" }), [locationId]);
     setSavedRoutes(getSavedRoutes());
-    setToast({ message: `Nieuwe route aangemaakt met ${loc?.name}`, type: "success" });
+    setToast({ message: t("routeCreatedWith", { name: loc?.name ?? "" }), type: "success" });
     setAddToRouteFor(null);
   };
 
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -193,7 +196,7 @@ export function MapPage() {
               </svg>
               <input
                 type="text"
-                placeholder="Zoek..."
+                placeholder={t("search")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9 pr-3 py-1.5 rounded-lg border border-gray-200 text-sm w-40 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none"
@@ -201,7 +204,7 @@ export function MapPage() {
             </div>
           )}
           <span className="text-xs text-gray-400">
-            {hasPaid ? mapFiltered.length : teaserLocations.length} locatie{(hasPaid ? mapFiltered.length : teaserLocations.length) !== 1 ? "s" : ""}
+            {hasPaid ? mapFiltered.length : teaserLocations.length} {t("locations")}
           </span>
         </div>
         <div className="flex gap-1 bg-gray-100 rounded-lg p-0.5">
@@ -214,7 +217,7 @@ export function MapPage() {
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
               <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
             </svg>
-            Kaart
+            {t("mapView")}
           </button>
           <button
             onClick={() => setView("list")}
@@ -225,7 +228,7 @@ export function MapPage() {
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
               <path fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z" clipRule="evenodd" />
             </svg>
-            Lijst
+            {t("listView")}
           </button>
         </div>
       </div>
@@ -280,7 +283,7 @@ export function MapPage() {
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                           <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                         </svg>
-                        Voeg toe aan route
+                        {t("addToRoute")}
                       </button>
                     </div>
                   </div>
@@ -293,7 +296,7 @@ export function MapPage() {
                     <div className="bg-navy-800 px-4 py-3 flex items-center justify-between">
                       <div className="flex-1 min-w-0">
                         <p className="text-white text-xs font-medium truncate">
-                          Voeg toe aan route:
+                          {t("addToRouteLabel")}
                         </p>
                         <p className="text-orange-400 text-sm font-bold truncate">
                           {addToRouteLocation.name}
@@ -312,7 +315,7 @@ export function MapPage() {
                     <div className="max-h-[45vh] overflow-y-auto">
                       {allRoutesForPicker.length > 0 && (
                         <div className="px-4 pt-3 pb-1">
-                          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">Kies een route</p>
+                          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-2">{t("chooseRoute")}</p>
                         </div>
                       )}
 
@@ -338,13 +341,13 @@ export function MapPage() {
                               <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-1.5">
                                   <h4 className="font-semibold text-navy-800 text-sm truncate">{route.title}</h4>
-                                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-navy-800 text-white uppercase shrink-0">Standaard</span>
+                                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-navy-800 text-white uppercase shrink-0">{t("defaultRoute")}</span>
                                 </div>
                                 <p className="text-[11px] text-gray-400">{route.stops} stops</p>
                               </div>
                               {(alreadyIn || inSaved) ? (
                                 <span className="text-[10px] font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded-full shrink-0">
-                                  Al toegevoegd
+                                  {t("alreadyAdded")}
                                 </span>
                               ) : (
                                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 group-hover:text-orange-500 shrink-0 transition-colors">
@@ -358,7 +361,7 @@ export function MapPage() {
                         {savedRoutes.length > 0 && (
                           <>
                             <div className="px-1 pt-2 pb-1">
-                              <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Mijn routes</p>
+                              <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">{t("myRoutes")}</p>
                             </div>
                             {savedRoutes.map((route) => {
                               const alreadyIn = route.locationIds.includes(addToRouteFor!);
@@ -380,7 +383,7 @@ export function MapPage() {
                                   </div>
                                   {alreadyIn ? (
                                     <span className="text-[10px] font-medium text-orange-500 bg-orange-50 px-2 py-1 rounded-full shrink-0">
-                                      Al toegevoegd
+                                      {t("alreadyAdded")}
                                     </span>
                                   ) : (
                                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 group-hover:text-orange-500 shrink-0 transition-colors">
@@ -403,7 +406,7 @@ export function MapPage() {
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                           <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                         </svg>
-                        Nieuwe route maken
+                        {t("newRoute")}
                       </button>
                     </div>
                   </div>
@@ -417,13 +420,13 @@ export function MapPage() {
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                   <path d="M7 11V7a5 5 0 0110 0v4" />
                 </svg>
-                <h3 className="font-bold text-navy-800 text-base mb-1">Kaart beschikbaar na aankoop</h3>
-                <p className="text-xs text-gray-500 mb-4">Bekijk alle {locations.length} locaties op de interactieve kaart met het Leiden pakket.</p>
+                <h3 className="font-bold text-navy-800 text-base mb-1">{t("mapAfterPurchase")}</h3>
+                <p className="text-xs text-gray-500 mb-4">{t("mapDesc", { count: locations.length })}</p>
                 <Link
                   href="/pricing"
                   className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
                 >
-                  Bekijk prijzen
+                  {tCommon("viewPricing")}
                 </Link>
               </div>
             </div>
@@ -451,13 +454,13 @@ export function MapPage() {
 
           {hasPaid && (
             <p className="text-xs text-gray-400 mb-2">
-              {listFiltered.length} locatie{listFiltered.length !== 1 ? "s" : ""} gevonden
+              {t("locationsFound", { count: listFiltered.length })}
             </p>
           )}
 
           {!hasPaid && (
             <p className="text-xs text-gray-400 mb-2">
-              {TEASER_COUNT} van {locations.length} locaties (preview)
+              {t("previewCount", { count: TEASER_COUNT, total: locations.length })}
             </p>
           )}
 
@@ -492,7 +495,7 @@ export function MapPage() {
                 </div>
                 {hasPaid ? (
                   <div className="flex items-center gap-1 text-orange-500 shrink-0">
-                    <span className="text-[10px] font-medium">Op kaart</span>
+                    <span className="text-[10px] font-medium">{t("onMap")}</span>
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                       <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                     </svg>
@@ -527,15 +530,15 @@ export function MapPage() {
                       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                       <path d="M7 11V7a5 5 0 0110 0v4" />
                     </svg>
-                    <h3 className="font-bold text-navy-800 mb-1">Nog {lockedLocations.length} locaties</h3>
+                    <h3 className="font-bold text-navy-800 mb-1">{t("remainingLocations", { count: lockedLocations.length })}</h3>
                     <p className="text-xs text-gray-500 mb-3">
-                      Ontgrendel alle {locations.length} locaties met het Leiden pakket.
+                      {t("unlockAll")}
                     </p>
                     <Link
                       href="/pricing"
                       className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
                     >
-                      Bekijk prijzen
+                      {tCommon("viewPricing")}
                     </Link>
                   </div>
                 </div>
@@ -548,12 +551,12 @@ export function MapPage() {
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                   <circle cx="12" cy="9" r="2.5" />
                 </svg>
-                <p className="text-sm text-gray-500">Geen locaties gevonden</p>
+                <p className="text-sm text-gray-500">{t("noLocationsFound")}</p>
                 <button
                   onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
                   className="text-sm text-orange-500 font-medium mt-2 hover:text-orange-600"
                 >
-                  Filters wissen
+                  {t("clearFilters")}
                 </button>
               </div>
             )}

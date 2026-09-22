@@ -10,6 +10,7 @@ type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
 
 export function LocationExperience({ location }: { location: LocationData }) {
   const t = useTranslations("location");
+  const tCommon = useTranslations("common");
   const { hasPaid, isLoading } = useAuth();
   const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
 
@@ -52,15 +53,15 @@ export function LocationExperience({ location }: { location: LocationData }) {
                     <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-navy-800 text-lg mb-1">Premium content</h3>
+                <h3 className="font-bold text-navy-800 text-lg mb-1">{t("premiumContent")}</h3>
                 <p className="text-sm text-gray-500 text-center max-w-xs mb-4">
-                  Koop het Leiden pakket om alle locaties, video&apos;s en verhalen te ontgrendelen.
+                  {t("premiumDesc")}
                 </p>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition-colors text-sm"
                 >
-                  Bekijk prijzen
+                  {t("viewPricing")}
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                     <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
                   </svg>
@@ -72,7 +73,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               onClick={() => hasPaid && setState("arrived")}
               className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 rounded-full transition-colors text-base ${!hasPaid ? "blur-sm pointer-events-none" : ""}`}
             >
-              Start de ervaring
+              {t("startExperience")}
               <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 inline-block ml-2">
                 <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
               </svg>
@@ -89,7 +90,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
                       <polygon points="5 3 19 12 5 21 5 3" />
                     </svg>
                   </div>
-                  <span className="text-[11px] font-medium text-navy-800">Video</span>
+                  <span className="text-[11px] font-medium text-navy-800">{t("video")}</span>
                 </button>
                 <button
                   onClick={() => setState("story")}
@@ -101,7 +102,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
                       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
                     </svg>
                   </div>
-                  <span className="text-[11px] font-medium text-navy-800">Verhaal</span>
+                  <span className="text-[11px] font-medium text-navy-800">{t("story")}</span>
                 </button>
                 <button
                   onClick={() => setState("practical")}
@@ -113,7 +114,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
                       <path d="M12 16v-4M12 8h.01" />
                     </svg>
                   </div>
-                  <span className="text-[11px] font-medium text-navy-800">Info</span>
+                  <span className="text-[11px] font-medium text-navy-800">{t("info")}</span>
                 </button>
               </div>
             )}
@@ -124,8 +125,8 @@ export function LocationExperience({ location }: { location: LocationData }) {
       {state === "arrived" && (
         <div className="max-w-7xl mx-auto px-4 py-6">
           <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
-          <p className="text-hand text-orange-500 text-lg -rotate-1 mb-4">Je bent er!</p>
-          <p className="text-sm text-gray-500 mb-6">Wat wil je doen?</p>
+          <p className="text-hand text-orange-500 text-lg -rotate-1 mb-4">{t("youAreHere")}</p>
+          <p className="text-sm text-gray-500 mb-6">{t("whatDoYouWant")}</p>
 
           <div className="space-y-3">
             <button
@@ -139,7 +140,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </div>
               <div>
                 <h3 className="font-semibold text-navy-800">{t("watchVideo")}</h3>
-                <p className="text-xs text-gray-500">Bekijk hoe het er vroeger uitzag</p>
+                <p className="text-xs text-gray-500">{t("watchVideoDesc")}</p>
               </div>
               <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 ml-auto">
                 <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
@@ -158,7 +159,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </div>
               <div>
                 <h3 className="font-semibold text-navy-800">{t("readStory")}</h3>
-                <p className="text-xs text-gray-500">Lees het volledige verhaal</p>
+                <p className="text-xs text-gray-500">{t("readStoryDesc")}</p>
               </div>
               <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 ml-auto">
                 <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
@@ -177,7 +178,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </div>
               <div>
                 <h3 className="font-semibold text-navy-800">{t("practicalInfo")}</h3>
-                <p className="text-xs text-gray-500">Openingstijden, toegankelijkheid, tips</p>
+                <p className="text-xs text-gray-500">{t("practicalInfoDesc")}</p>
               </div>
               <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 ml-auto">
                 <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
@@ -192,7 +193,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
             </svg>
-            Terug naar overzicht
+            {t("backToOverview")}
           </button>
         </div>
       )}
@@ -201,18 +202,18 @@ export function LocationExperience({ location }: { location: LocationData }) {
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="relative bg-navy-900 rounded-2xl overflow-hidden aspect-video mb-4">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-              <p className="text-hand text-orange-300 text-lg mb-2">Leiden, historisch</p>
+              <p className="text-hand text-orange-300 text-lg mb-2">{t("leidenHistorical")}</p>
               <h3 className="text-xl font-bold mb-4">{location.name}</h3>
               <button className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-white ml-1">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               </button>
-              <p className="text-xs text-white/50 mt-4">Video wordt geladen...</p>
+              <p className="text-xs text-white/50 mt-4">{t("loadingVideo")}</p>
             </div>
           </div>
           <p className="text-[11px] text-gray-400 text-center mb-6">
-            Deze video bevat AI-geassisteerde reconstructies ter illustratie. Zie bronvermelding voor details.
+            {t("videoDisclaimer")}
           </p>
 
           <div className="flex gap-2">
@@ -220,13 +221,13 @@ export function LocationExperience({ location }: { location: LocationData }) {
               onClick={() => setState("story")}
               className="flex-1 bg-navy-800 hover:bg-navy-900 text-white font-semibold py-3 rounded-full text-sm transition-colors"
             >
-              Lees het verhaal
+              {t("readStory")}
             </button>
             <button
               onClick={() => setState("arrived")}
               className="flex-1 border border-gray-300 text-gray-700 font-semibold py-3 rounded-full text-sm hover:bg-gray-50 transition-colors"
             >
-              Terug
+              {t("back")}
             </button>
           </div>
         </div>
@@ -240,12 +241,12 @@ export function LocationExperience({ location }: { location: LocationData }) {
             </span>
           </div>
           <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
-          <p className="text-hand text-orange-500 -rotate-1 mb-4">Het verhaal</p>
+          <p className="text-hand text-orange-500 -rotate-1 mb-4">{t("theStory")}</p>
 
           <div className="prose prose-sm max-w-none text-gray-700 mb-6">
             <p>{location.shortDescription}</p>
             <p className="text-gray-400 italic mt-4">
-              Volledig verhaal wordt aangevuld na content-verificatie (R02). De tekst die hier komt is gebaseerd op grondig brononderzoek.
+              {t("storyPendingVerification")}
             </p>
           </div>
 
@@ -260,7 +261,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               onClick={() => setState("arrived")}
               className="flex-1 border border-gray-300 text-gray-700 font-semibold py-3 rounded-full text-sm hover:bg-gray-50 transition-colors"
             >
-              Terug
+              {t("back")}
             </button>
           </div>
         </div>
@@ -277,7 +278,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </svg>
               <div>
                 <p className="text-sm font-medium text-navy-800">{t("address")}</p>
-                <p className="text-sm text-gray-500">Leiden (exact adres wordt aangevuld)</p>
+                <p className="text-sm text-gray-500">{t("addressPending")}</p>
               </div>
             </div>
 
@@ -287,7 +288,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </svg>
               <div>
                 <p className="text-sm font-medium text-navy-800">{t("openingHours")}</p>
-                <p className="text-sm text-gray-500">Wordt aangevuld na verificatie</p>
+                <p className="text-sm text-gray-500">{t("pendingVerification")}</p>
               </div>
             </div>
 
@@ -307,7 +308,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </svg>
               <div>
                 <p className="text-sm font-medium text-navy-800">{t("accessibility")}</p>
-                <p className="text-sm text-gray-500">Wordt aangevuld na verificatie</p>
+                <p className="text-sm text-gray-500">{t("pendingVerification")}</p>
               </div>
             </div>
           </div>
@@ -325,14 +326,14 @@ export function LocationExperience({ location }: { location: LocationData }) {
             <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
               <path fillRule="evenodd" d="M8.157 2.175a1.5 1.5 0 00-1.147 0l-4.084 1.69A1.5 1.5 0 002 5.251v10.877a1.5 1.5 0 002.074 1.386l3.51-1.453 4.26 1.763a1.5 1.5 0 001.146 0l4.083-1.69A1.5 1.5 0 0018 14.748V3.873a1.5 1.5 0 00-2.073-1.386l-3.51 1.452-4.26-1.763z" clipRule="evenodd" />
             </svg>
-            Navigeer met Google Maps
+            {t("navigateWithGoogleMaps")}
           </a>
 
           <button
             onClick={() => setState("arrived")}
             className="w-full border border-gray-300 text-gray-700 font-semibold py-3 rounded-full text-sm hover:bg-gray-50 transition-colors"
           >
-            Terug naar keuzes
+            {t("backToChoices")}
           </button>
         </div>
       )}

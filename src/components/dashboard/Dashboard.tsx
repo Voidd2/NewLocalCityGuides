@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo, useCallback } from "react";
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
@@ -15,13 +16,15 @@ const LeafletMap = dynamic(() => import("@/components/map/LeafletMap").then((m) 
     <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
       <div className="text-center">
         <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
-        <p className="text-sm text-gray-400">Kaart laden...</p>
+        <p className="text-sm text-gray-400">Loading...</p>
       </div>
     </div>
   ),
 });
 
 export function Dashboard() {
+  const t = useTranslations("dashboard");
+  const tCommon = useTranslations("common");
   const router = useRouter();
   const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
   const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
@@ -57,15 +60,15 @@ export function Dashboard() {
       if (!existing) {
         const saved = saveRoute(isStandard.title, [...isStandard.locationIds]);
         const result = addLocationToRoute(saved.id, locationId);
-        setToast(result === "duplicate" ? `${loc?.name} staat al in ${isStandard.title}` : `Toegevoegd aan ${isStandard.title}`);
+        setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: isStandard.title }) : t("addedToRoute", { name: loc?.name ?? "", routeName: isStandard.title }));
       } else {
         const result = addLocationToRoute(existing.id, locationId);
-        setToast(result === "duplicate" ? `${loc?.name} staat al in ${existing.name}` : `Toegevoegd aan ${existing.name}`);
+        setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: existing.name }) : t("addedToRoute", { name: loc?.name ?? "", routeName: existing.name }));
       }
     } else {
       const result = addLocationToRoute(routeId, locationId);
       const route = getSavedRoutes().find((r) => r.id === routeId);
-      setToast(result === "duplicate" ? `${loc?.name} staat al in ${route?.name || "deze route"}` : `Toegevoegd aan ${route?.name || "je route"}`);
+      setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: route?.name || "route" }) : t("addedToRoute", { name: loc?.name ?? "", routeName: route?.name || "route" }));
     }
 
     setSavedRoutes(getSavedRoutes());
@@ -74,9 +77,9 @@ export function Dashboard() {
 
   const handleCreateNewRoute = useCallback((locationId: string) => {
     const loc = locations.find((l) => l.id === locationId);
-    saveRoute(`Route met ${loc?.name || "locatie"}`, [locationId]);
+    saveRoute(t("routeWithName", { name: loc?.name || "locatie" }), [locationId]);
     setSavedRoutes(getSavedRoutes());
-    setToast(`Nieuwe route aangemaakt met ${loc?.name}`);
+    setToast(t("routeCreatedWith", { name: loc?.name ?? "" }));
     setAddToRouteFor(null);
   }, []);
 
@@ -100,7 +103,7 @@ export function Dashboard() {
   if (isLoading || !user) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -119,14 +122,14 @@ export function Dashboard() {
       )}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-xl font-bold text-navy-800">Welkom, {user.name}</h1>
+          <h1 className="text-xl font-bold text-navy-800">{t("welcome", { name: user.name })}</h1>
           <p className="text-sm text-gray-500">{user.email}</p>
         </div>
         <button
           onClick={handleLogout}
           className="text-sm text-gray-500 hover:text-gray-700"
         >
-          Uitloggen
+          {tCommon("logout")}
         </button>
       </div>
 
@@ -149,8 +152,8 @@ export function Dashboard() {
                     </svg>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-orange-800">Je bent bezig met een route</p>
-                    <p className="text-xs text-orange-600">{active.name} - {progress}/{total} stops bezocht</p>
+                    <p className="text-sm font-bold text-orange-800">{t("activeRoute")}</p>
+                    <p className="text-xs text-orange-600">{active.name} - {progress}/{total} {t("stopsVisited")}</p>
                   </div>
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-500 shrink-0">
                     <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
@@ -168,12 +171,12 @@ export function Dashboard() {
               <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
             </svg>
             <div>
-              <p className="text-sm font-medium text-green-800">Leiden pakket actief</p>
+              <p className="text-sm font-medium text-green-800">{t("packageActive")}</p>
               <p className="text-xs text-green-600">Volledige toegang tot alle routes, video&apos;s en locaties</p>
             </div>
           </div>
 
-          <h2 className="text-lg font-bold text-navy-800 mb-4">Jouw routes</h2>
+          <h2 className="text-lg font-bold text-navy-800 mb-4">{t("yourRoutes")}</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {routes.slice(0, 2).map((route) => (
               <Link
@@ -199,9 +202,9 @@ export function Dashboard() {
           </div>
 
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-navy-800">Mijn routes</h2>
+            <h2 className="text-lg font-bold text-navy-800">{t("myRoutes")}</h2>
             <Link href="/my-routes" className="text-sm text-orange-500 font-medium hover:text-orange-600">
-              Bekijk alle
+              {t("viewAll")}
             </Link>
           </div>
           {savedRoutes.length > 0 ? (
@@ -219,7 +222,7 @@ export function Dashboard() {
                   >
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="font-semibold text-navy-800 text-sm">{sr.name}</h3>
-                      <span className="text-xs text-gray-400">{progress}/{total} bezocht</span>
+                      <span className="text-xs text-gray-400">{progress}/{total} {t("visited")}</span>
                     </div>
                     <div className="w-full bg-gray-100 rounded-full h-1.5 mb-2">
                       <div className="bg-orange-500 h-1.5 rounded-full transition-all" style={{ width: `${pct}%` }} />
@@ -236,7 +239,7 @@ export function Dashboard() {
               })}
             </div>
           ) : (
-            <p className="text-sm text-gray-400 mb-8">Nog geen eigen routes. Stel je eerste samen!</p>
+            <p className="text-sm text-gray-400 mb-8">{t("noRoutes")}</p>
           )}
 
           <div className="grid grid-cols-2 gap-3 mb-8">
@@ -250,8 +253,8 @@ export function Dashboard() {
                   <circle cx="12" cy="9" r="2.5" />
                 </svg>
               </div>
-              <h3 className="font-bold text-orange-600 text-sm mb-0.5">Maak je eigen route</h3>
-              <p className="text-xs text-gray-500">Kies je eigen stops</p>
+              <h3 className="font-bold text-orange-600 text-sm mb-0.5">{t("createOwnRoute")}</h3>
+              <p className="text-xs text-gray-500">{t("chooseYourStops")}</p>
             </Link>
             <Link
               href="/activiteiten"
@@ -262,14 +265,14 @@ export function Dashboard() {
                   <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="font-bold text-navy-800 text-sm mb-0.5">Activiteiten boeken</h3>
-              <p className="text-xs text-gray-500">Tours en meer</p>
+              <h3 className="font-bold text-navy-800 text-sm mb-0.5">{t("bookActivities")}</h3>
+              <p className="text-xs text-gray-500">{t("toursAndMore")}</p>
             </Link>
           </div>
 
           {mapPins.length > 0 && (
             <>
-              <h2 className="text-lg font-bold text-navy-800 mb-4">Kaart van Leiden</h2>
+              <h2 className="text-lg font-bold text-navy-800 mb-4">{t("mapOfLeiden")}</h2>
               <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8 z-0">
                 <LeafletMap
                   pins={mapPins}
@@ -313,7 +316,7 @@ export function Dashboard() {
             </>
           )}
 
-          <h2 className="text-lg font-bold text-navy-800 mb-2">Alle locaties</h2>
+          <h2 className="text-lg font-bold text-navy-800 mb-2">{t("allLocations")}</h2>
           <p className="text-xs text-gray-400 mb-4">Voeg locaties toe aan een route of bekijk alvast het verhaal</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
             {locations.map((loc) => (
@@ -344,13 +347,13 @@ export function Dashboard() {
                       <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
                         <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                       </svg>
-                      Route
+                      {t("route")}
                     </button>
                     <Link
                       href={`/locations/${loc.slug}`}
                       className="inline-flex items-center gap-1 bg-navy-800 hover:bg-navy-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors"
                     >
-                      Verhaal
+                      {t("story")}
                     </Link>
                   </div>
                 </div>
@@ -364,7 +367,7 @@ export function Dashboard() {
               <div className="relative bg-white rounded-t-2xl shadow-xl w-full max-w-md max-h-[70vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
                 <div className="bg-navy-800 px-4 py-3 flex items-center justify-between">
                   <div className="flex-1 min-w-0">
-                    <p className="text-white text-xs font-medium">Voeg toe aan route:</p>
+                    <p className="text-white text-xs font-medium">{t("addToRoute")}</p>
                     <p className="text-orange-400 text-sm font-bold truncate">
                       {locations.find((l) => l.id === addToRouteFor)?.name}
                     </p>
@@ -397,7 +400,7 @@ export function Dashboard() {
                   {savedRoutes.length > 0 && (
                     <>
                       <div className="px-1 pt-2 pb-1">
-                        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">Mijn routes</p>
+                        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">{t("myRoutes")}</p>
                       </div>
                       {savedRoutes.map((sr) => (
                         <button
@@ -431,7 +434,7 @@ export function Dashboard() {
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                       <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                     </svg>
-                    Nieuwe route maken
+                    {t("newRouteCreate")}
                   </button>
                 </div>
               </div>
@@ -442,7 +445,7 @@ export function Dashboard() {
       ) : (
         <>
           <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6 text-center">
-            <h2 className="text-lg font-bold text-navy-800 mb-2">Je hebt nog geen pakket</h2>
+            <h2 className="text-lg font-bold text-navy-800 mb-2">{t("noPackage")}</h2>
             <p className="text-sm text-gray-600 mb-4">
               Koop het Leiden pakket om toegang te krijgen tot alle routes, video&apos;s en verborgen parels.
             </p>
@@ -450,14 +453,14 @@ export function Dashboard() {
               href="/pricing"
               className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition-colors text-sm"
             >
-              Bekijk het Leiden pakket
+              {t("viewPackage")}
               <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                 <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
               </svg>
             </Link>
           </div>
 
-          <h2 className="text-lg font-bold text-navy-800 mb-4">Routes (preview)</h2>
+          <h2 className="text-lg font-bold text-navy-800 mb-4">{t("routesPreview")}</h2>
           <div className="space-y-3 mb-8">
             {routes.slice(0, 2).map((route) => (
               <div key={route.id} className="bg-white rounded-xl border border-gray-200 p-4 flex items-center gap-4 opacity-60">

@@ -46,6 +46,8 @@ function LocationCard({
   onToggleSelect: () => void;
   onToggleExpand: () => void;
 }) {
+  const tCustom = useTranslations("customRoute");
+
   return (
     <div
       className={`rounded-2xl border-2 transition-all overflow-hidden hover-lift ${
@@ -124,7 +126,7 @@ function LocationCard({
           onClick={onToggleExpand}
           className="flex items-center gap-1 text-xs font-medium text-orange-500 hover:text-orange-600 mt-1.5 transition-colors"
         >
-          {isExpanded ? "Minder lezen" : "Meer over deze plek"}
+          {isExpanded ? tCustom("readLess") : tCustom("moreAboutSpot")}
           <svg
             viewBox="0 0 20 20"
             fill="currentColor"
@@ -141,14 +143,14 @@ function LocationCard({
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-orange-500">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
-                <span className="text-[11px] font-medium text-gray-600">Video</span>
+                <span className="text-[11px] font-medium text-gray-600">{tCustom("video")}</span>
               </div>
               <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2.5 py-1.5">
                 <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 text-navy-800" stroke="currentColor" strokeWidth="2">
                   <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
                 </svg>
-                <span className="text-[11px] font-medium text-gray-600">Verhaal</span>
+                <span className="text-[11px] font-medium text-gray-600">{tCustom("story")}</span>
               </div>
               {loc.categories.map((cat) => (
                 <span key={cat} className="text-[11px] font-medium px-2.5 py-1.5 rounded-lg bg-orange-50 text-orange-600 border border-orange-100 capitalize">
@@ -173,14 +175,14 @@ function LocationCard({
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                     <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                   </svg>
-                  Toegevoegd aan route (stop {order})
+                  {tCustom("addedToRoute", { order: order ?? 0 })}
                 </span>
               ) : (
                 <span className="flex items-center justify-center gap-1.5">
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                     <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
                   </svg>
-                  Toevoegen aan mijn route
+                  {tCustom("addToMyRoute")}
                 </span>
               )}
             </button>
@@ -192,7 +194,9 @@ function LocationCard({
 }
 
 export function CustomRouteBuilder() {
-  const t = useTranslations("routes");
+  const tRoutes = useTranslations("routes");
+  const tCustom = useTranslations("customRoute");
+  const tCommon = useTranslations("common");
   const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -216,14 +220,14 @@ export function CustomRouteBuilder() {
 
   const handleSave = () => {
     if (orderedRoute.length < 2) return;
-    const name = routeName.trim() || `Mijn route (${orderedRoute.length} stops)`;
+    const name = routeName.trim() || `${tCustom("defaultRouteName")} (${orderedRoute.length} stops)`;
     const saved = saveRoute(name, orderedRoute.map((l) => l.id));
     router.push(`/my-routes/${saved.id}`);
   };
 
   const handleStartNow = () => {
     if (orderedRoute.length < 2) return;
-    const name = routeName.trim() || `Mijn route (${orderedRoute.length} stops)`;
+    const name = routeName.trim() || `${tCustom("defaultRouteName")} (${orderedRoute.length} stops)`;
     const saved = saveRoute(name, orderedRoute.map((l) => l.id));
     router.push(`/my-routes/${saved.id}`);
   };
@@ -232,17 +236,17 @@ export function CustomRouteBuilder() {
     <div>
       <section className="max-w-7xl mx-auto px-4 py-4">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-navy-800 mb-1">{t("customRoute")}</h1>
-          <p className="text-sm text-gray-500">{t("customRouteDesc")}</p>
+          <h1 className="text-2xl font-bold text-navy-800 mb-1">{tRoutes("customRoute")}</h1>
+          <p className="text-sm text-gray-500">{tRoutes("customRouteDesc")}</p>
         </div>
 
         <div className="grid md:grid-cols-[1fr,340px] gap-8">
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-base font-bold text-navy-800">
-                Alle locaties
+                {tCustom("allLocations")}
                 <span className="text-sm font-normal text-gray-400 ml-2">
-                  {selected.length > 0 && `${selected.length} gekozen`}
+                  {selected.length > 0 && tCustom("nChosen", { count: selected.length })}
                 </span>
               </h2>
             </div>
@@ -270,11 +274,11 @@ export function CustomRouteBuilder() {
 
           <div className="md:sticky md:top-20 self-start">
             <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
-              <h3 className="font-bold text-navy-800 text-lg mb-1">Jouw route</h3>
+              <h3 className="font-bold text-navy-800 text-lg mb-1">{tCustom("yourRoute")}</h3>
               <p className="text-xs text-gray-400 mb-4">
                 {orderedRoute.length === 0
-                  ? "Kies locaties om je route samen te stellen"
-                  : `${orderedRoute.length} stops - slimste volgorde berekend`
+                  ? tCustom("chooseLocations")
+                  : `${orderedRoute.length} ${tCustom("stopsSmartOrder")}`
                 }
               </p>
 
@@ -286,8 +290,8 @@ export function CustomRouteBuilder() {
                       <circle cx="12" cy="9" r="2.5" />
                     </svg>
                   </div>
-                  <p className="text-sm text-gray-400 mb-1">Nog geen locaties gekozen</p>
-                  <p className="text-xs text-gray-300">Kies minimaal 2 locaties</p>
+                  <p className="text-sm text-gray-400 mb-1">{tCustom("noLocationsChosen")}</p>
+                  <p className="text-xs text-gray-300">{tCustom("chooseMinTwo")}</p>
                 </div>
               ) : (
                 <>
@@ -330,12 +334,12 @@ export function CustomRouteBuilder() {
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-blue-400 shrink-0">
                       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
                     </svg>
-                    Slimste volgorde berekend
+                    {tCustom("smartOrderCalculated")}
                   </div>
 
                   <input
                     type="text"
-                    placeholder="Geef je route een naam (optioneel)"
+                    placeholder={tCustom("giveRouteName")}
                     value={routeName}
                     onChange={(e) => setRouteName(e.target.value)}
                     className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm mb-3 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"
@@ -350,7 +354,7 @@ export function CustomRouteBuilder() {
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                           <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
                         </svg>
-                        Start route nu
+                        {tCustom("startRouteNow")}
                       </button>
                       <button
                         onClick={handleSave}
@@ -359,12 +363,12 @@ export function CustomRouteBuilder() {
                         <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                           <path d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" />
                         </svg>
-                        Bewaar voor later
+                        {tCustom("saveForLater")}
                       </button>
                     </div>
                   ) : (
                     <p className="text-xs text-orange-500 text-center font-medium py-2">
-                      Kies nog {2 - orderedRoute.length} locatie{orderedRoute.length === 0 ? "s" : ""}
+                      {tCustom("chooseMoreLocations", { count: 2 - orderedRoute.length })}
                     </p>
                   )}
                 </>
@@ -384,11 +388,11 @@ export function CustomRouteBuilder() {
               <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
                 <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
               </svg>
-              Start route nu ({orderedRoute.length} stops)
+              {tCustom("startRouteNowCount", { count: orderedRoute.length })}
             </button>
           ) : (
             <div className="bg-white/90 backdrop-blur-sm rounded-full py-3 text-center text-sm font-medium text-orange-500 border border-orange-200 shadow-lg">
-              {selected.length} gekozen - kies nog {2 - orderedRoute.length}
+              {tCustom("nChosen", { count: selected.length })} - {tCustom("chooseMoreLocations", { count: 2 - orderedRoute.length })}
             </div>
           )}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getSavedRoutes, deleteSavedRoute, type SavedRoute } from "@/lib/saved-routes";
 import { getLocationById } from "@/data/locations";
@@ -9,6 +10,8 @@ import { routes as standardRoutes } from "@/data/routes";
 export function MyRoutesList() {
   const [routes, setRoutes] = useState<SavedRoute[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const t = useTranslations("myRoutes");
+  const tCommon = useTranslations("common");
 
   useEffect(() => {
     setRoutes(getSavedRoutes());
@@ -23,7 +26,7 @@ export function MyRoutesList() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">Laden...</div>
+        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
       </div>
     );
   }
@@ -32,14 +35,14 @@ export function MyRoutesList() {
     <div className="max-w-7xl mx-auto px-4 py-6">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-xl font-bold text-navy-800">Mijn routes</h1>
-          <p className="text-sm text-gray-500">Je zelf samengestelde routes</p>
+          <h1 className="text-xl font-bold text-navy-800">{t("title")}</h1>
+          <p className="text-sm text-gray-500">{t("subtitle")}</p>
         </div>
         <Link
           href="/routes/custom"
           className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-full text-sm transition-colors"
         >
-          + Nieuwe route
+          {t("newRoute")}
         </Link>
       </div>
 
@@ -49,13 +52,13 @@ export function MyRoutesList() {
             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
             <circle cx="12" cy="9" r="2.5" />
           </svg>
-          <h2 className="font-bold text-navy-800 mb-2">Nog geen routes</h2>
-          <p className="text-sm text-gray-500 mb-4">Stel je eerste route samen en bewaar hem hier.</p>
+          <h2 className="font-bold text-navy-800 mb-2">{t("noRoutes")}</h2>
+          <p className="text-sm text-gray-500 mb-4">{t("noRoutesDesc")}</p>
           <Link
             href="/routes/custom"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"
           >
-            Route samenstellen
+            {t("buildRoute")}
           </Link>
         </div>
       ) : (
@@ -76,7 +79,7 @@ export function MyRoutesList() {
                   <div>
                     <h3 className="font-bold text-navy-800 text-sm">{route.name}</h3>
                     <p className="text-xs text-gray-500 mt-0.5">
-                      {total} stops &middot; {progress}/{total} bezocht
+                      {total} {tCommon("stops")} &middot; {progress}/{total} {t("visited")}
                     </p>
                   </div>
                   <button
@@ -117,14 +120,14 @@ export function MyRoutesList() {
                       href={`/routes/${matchedRoute.slug}`}
                       className="flex-1 border-2 border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold py-2.5 rounded-full text-center text-sm transition-colors"
                     >
-                      Route info
+                      {t("routeInfo")}
                     </Link>
                   )}
                   <Link
                     href={`/my-routes/${route.id}`}
                     className={`${matchedRoute ? "flex-1" : "w-full"} bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-center text-sm transition-colors`}
                   >
-                    {progress > 0 && progress < total ? "Ga verder" : progress === total && total > 0 ? "Bekijk route" : "Start route"}
+                    {progress > 0 && progress < total ? t("continue") : progress === total && total > 0 ? t("viewRoute") : t("startRoute")}
                   </Link>
                 </div>
               </div>

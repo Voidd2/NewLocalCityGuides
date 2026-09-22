@@ -23,7 +23,7 @@ export function MoreCities() {
 
             <div className="relative z-10">
               <p className="text-hand text-orange-300 text-xl md:text-2xl mb-2 -rotate-1">
-                Er valt zoveel te ontdekken!
+                {t("soMuchToDiscover")}
               </p>
               <h2 className="text-xl md:text-2xl font-bold mb-2">{t("moreCities")}</h2>
               <p className="text-white/60 text-sm mb-8 max-w-md leading-relaxed">{t("moreCitiesDesc")}</p>
@@ -48,13 +48,13 @@ export function MoreCities() {
                     <div className="w-22 h-22 md:w-28 md:h-28 rounded-2xl bg-white/5 flex items-center justify-center ring-1 ring-white/10 group-hover:bg-white/10 transition-colors">
                       <span className="text-3xl text-white/30">?</span>
                     </div>
-                    <p className="text-xs text-center mt-2 text-white/40">Meer...</p>
+                    <p className="text-xs text-center mt-2 text-white/40">{t("moreEllipsis")}</p>
                   </div>
                 </div>
               </div>
 
               <p className="text-sm text-white/40 mt-6 italic">
-                Binnenkort beschikbaar
+                {t("comingSoon")}
               </p>
             </div>
           </div>
