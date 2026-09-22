@@ -47,6 +47,16 @@ const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> 
       <line x1="3" y1="10" x2="21" y2="10" />
     </svg>
   ),
+  restaurant: (a) => (
+    <svg viewBox="0 0 24 24" fill={a ? "currentColor" : "none"} className="w-4 h-4" stroke="currentColor" strokeWidth={a ? 0 : 1.5}>
+      <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
+    </svg>
+  ),
+  kroeg: (a) => (
+    <svg viewBox="0 0 24 24" fill={a ? "currentColor" : "none"} className="w-4 h-4" stroke="currentColor" strokeWidth={a ? 0 : 1.5}>
+      <path d="M8 2h8l-1 7H9L8 2zM12 9v8M8 21h8M12 17c-4 0-6-2-6-2M12 17c4 0 6-2 6-2" />
+    </svg>
+  ),
 };
 
 function SpotCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
