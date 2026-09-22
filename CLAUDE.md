@@ -1,1 +1,3 @@
 @AGENTS.md
+@PROJECT-GUIDE.md
+@TODOLIST.md

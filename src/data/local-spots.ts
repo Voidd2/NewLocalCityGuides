@@ -29,6 +29,7 @@ export interface LocalSpot {
   eventDates?: { start: string; end: string; showFrom: string; hideAfter: string };
   eventStatus?: "active" | "cancelled";
   hours?: string[];
+  ticketUrl?: string;
 }
 
 export const localSpots: LocalSpot[] = [
@@ -244,18 +245,19 @@ export const localSpots: LocalSpot[] = [
     website: "https://www.hortusleiden.nl/",
     phone: "+31 71 527 7249",
     description: {
-      nl: "De oudste botanische tuin van Nederland, opgericht in 1590 als universiteitstuin. Kassen, boomgaard en een historische kruidtuin.",
-      en: "The oldest botanical garden in the Netherlands, established in 1590 as a university garden. Greenhouses, an orchard and a historic herb garden.",
-      de: "Der älteste botanische Garten der Niederlande, 1590 als Universitätsgarten gegründet. Gewächshäuser, ein Obstgarten und ein historischer Kräutergarten.",
+      nl: "De Hortus botanicus Leiden is opgericht in 1590 en daarmee een van de oudste botanische tuinen ter wereld. De tuin werd aangelegd door Carolus Clusius, de beroemde botanicus die de eerste tulpenbollen naar Nederland bracht en daarmee de basis legde voor de wereldberoemde Nederlandse bloemenhandel.\n\n**Waarom bezoeken**\nDe Hortus is een levend museum van meer dan vier eeuwen plantkunde. Je wandelt tussen duizenden plantensoorten uit alle continenten, van tropische orchideeen in de historische kassen tot de reconstructie van Clusius' oorspronkelijke tuin uit 1594.\n\n**Wat maakt het bijzonder**\nNederland staat wereldwijd bekend om tulpen, bloembollen en de bloemenveiling. Die traditie begon hier, in deze tuin, toen Clusius zijn eerste tulpenbollen plantte. De Hortus vertelt dat verhaal aan de hand van levende planten.\n\n**Wat je ziet**\nDe tropische kassen met orchideeen, varens en vlinderplanten. De Clusiustuin met historische gewassen. De Japanse siertuin. De Victoriaserre met reuzenwaterlelies. Een boomgaard met oude Nederlandse fruitrassen. En het terras met uitzicht over het Rapenburg.\n\n**Praktisch**\nReken op minimaal anderhalf uur om alles rustig te bekijken. Een bezoek in februari ziet er compleet anders uit dan in mei -- elk seizoen biedt andere bloei. Gratis rolstoelen beschikbaar bij de ingang. Kinderen tot en met 3 jaar gratis.",
+      en: "The Hortus botanicus Leiden was founded in 1590, making it one of the world's oldest botanical gardens. It was laid out by Carolus Clusius, the celebrated botanist who brought the first tulip bulbs to the Netherlands and started the tradition that made Dutch flowers famous around the globe.\n\n**Why visit**\nThe Hortus is a living museum spanning more than four centuries of botanical science. You walk among thousands of plant species from every continent, from tropical orchids in the historic greenhouses to the reconstruction of Clusius' original 1594 garden.\n\n**What makes it special**\nThe Netherlands is known worldwide for tulips, flower bulbs and the flower auction. That tradition started right here, in this garden, when Clusius planted his first tulip bulbs. The Hortus tells that story through living plants.\n\n**What you will see**\nTropical greenhouses with orchids, ferns and butterfly plants. The Clusius Garden with historic crops. A Japanese ornamental garden. The Victoria greenhouse with giant water lilies. An orchard of heritage Dutch fruit varieties. And a terrace overlooking the Rapenburg canal.\n\n**Practical**\nAllow at least ninety minutes to see everything at a comfortable pace. A visit in February looks completely different from one in May -- every season brings different blooms. Free wheelchairs available at the entrance. Children aged 3 and under enter free.",
+      de: "Der Hortus botanicus Leiden wurde 1590 gegruendet und zaehlt damit zu den aeltesten botanischen Gaerten der Welt. Angelegt wurde er von Carolus Clusius, dem beruehmten Botaniker, der die ersten Tulpenzwiebeln in die Niederlande brachte und damit den Grundstein fuer den weltberuehmten niederlaendischen Blumenhandel legte.\n\n**Warum besuchen**\nDer Hortus ist ein lebendiges Museum mit ueber vier Jahrhunderten Botanikgeschichte. Man wandelt zwischen Tausenden Pflanzenarten aus allen Kontinenten, von tropischen Orchideen in den historischen Gewaechshaeusern bis zur Rekonstruktion von Clusius' Originalgarten von 1594.\n\n**Was macht ihn besonders**\nDie Niederlande sind weltweit bekannt fuer Tulpen, Blumenzwiebeln und die Blumenauktion. Diese Tradition begann genau hier, in diesem Garten, als Clusius seine ersten Tulpenzwiebeln pflanzte.\n\n**Was Sie sehen**\nTropische Gewaechshaeuser mit Orchideen, Farnen und Schmetterlingspflanzen. Den Clusiusgarten mit historischen Gewaechsen. Einen japanischen Ziergarten. Das Victoriahaus mit Riesenseerosen. Einen Obstgarten mit alten niederlaendischen Obstsorten. Und eine Terrasse mit Blick auf das Rapenburg.\n\n**Praktisch**\nPlanen Sie mindestens anderthalb Stunden ein. Ein Besuch im Februar sieht voellig anders aus als einer im Mai. Kostenlose Rollstuehle am Eingang. Kinder bis 3 Jahre frei.",
     },
-    tags: ["botanische tuin", "1590", "planten", "Rapenburg", "natuur"],
+    tags: ["botanische tuin", "1590", "planten", "Rapenburg", "natuur", "Clusius", "tulpen", "kassen"],
     rating: 4.5,
-    priceRange: "10,00",
-    visitDuration: "1-2 uur",
+    priceRange: "14,00",
+    visitDuration: "1,5-2,5 uur",
     seasonal: false,
     kidFriendly: true,
     featured: true,
     hours: ["Gesloten", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00"],
+    ticketUrl: "https://www.getyourguide.nl/leiden-l1275/leiden-toegangsbewijs-voor-de-hortus-botanicus-leiden-t416619/?partner_id=W9KB6MF&currency=EUR&travel_agent=1&cmp=share_to_earn",
   },
   {
     id: "S012",
@@ -319,28 +321,72 @@ export const localSpots: LocalSpot[] = [
     kidFriendly: true,
   },
 
-  // ── BATCH 3: Fish ──
+  // ── BATCH 3: Fish — Schaapsvishandel (3 locations, 1 family business) ──
   {
     id: "S030",
-    name: "Schaap's Vishandel",
+    name: "Schaapsvishandel - Viswinkel",
     category: "visboer",
     address: "Herenstraat 48, Leiden",
     coords: { lat: 52.1590, lng: 4.4893 },
     website: null,
     phone: null,
     description: {
-      nl: "Viswinkel en familiebedrijf sinds 1938. De winkel zit op de Herenstraat 48. Op woensdag staan ze op de markt tegenover ROOS, op zaterdag tegenover De Waag.",
-      en: "Fish shop and family business since 1938. The shop is at Herenstraat 48. On Wednesdays they're at the market opposite ROOS, Saturdays opposite De Waag.",
-      de: "Fischgeschaeft und Familienbetrieb seit 1938. Der Laden befindet sich in der Herenstraat 48. Mittwochs auf dem Markt gegenueber ROOS, samstags gegenueber De Waag.",
+      nl: "Schaapsvishandel is een Leids familiebedrijf sinds 1938 en de enige traditionele vishandel die echt uit Leiden komt. Waar andere viszaken vanuit omliggende plaatsen op de markt staan, is Schaapsvis geworteld in de stad zelf.\n\n**Waarom Schaapsvis**\nDe familie Schaap staat bekend om eerlijkheid en een scherpe prijs-kwaliteitverhouding. Hier krijg je geen oude vis voor toeristenprijzen. Wat je koopt is vers, eerlijk geprijsd en met liefde bereid. Dat is al bijna negentig jaar zo.\n\n**De viswinkel**\nDe vaste winkel aan de Herenstraat 48 is op doordeweekse dagen geopend. Je vindt hier verse vis, gebakken vis, salades, kibbeling en gerookte specialiteiten. De winkel is klein maar de kwaliteit is hoog -- dit is geen keten, dit is ambacht.\n\n**Tip**\nProbeer de kibbeling of de broodje haring. En als je op woensdag of zaterdag in Leiden bent, zoek dan de viskar op de markt op -- daar draait dezelfde familie hetzelfde ambacht, maar dan buiten.",
+      en: "Schaapsvishandel has been a Leiden family business since 1938 and is the only traditional fish shop that actually originates from Leiden. While other fish sellers come from surrounding towns, Schaapsvis is rooted in the city itself.\n\n**Why Schaapsvis**\nThe Schaap family is known for honesty and fair value. You will not be served old fish at tourist prices here. What you buy is fresh, honestly priced and prepared with care. It has been that way for almost ninety years.\n\n**The fish shop**\nThe permanent shop at Herenstraat 48 is open on regular weekdays. You will find fresh fish, fried fish, salads, kibbeling and smoked specialties. The shop is small but the quality is high -- this is not a chain, this is craft.\n\n**Tip**\nTry the kibbeling or the herring sandwich. And if you are in Leiden on Wednesday or Saturday, look for the fish cart at the market -- same family, same craft, just outdoors.",
+      de: "Schaapsvishandel ist ein Leidener Familienbetrieb seit 1938 und die einzige traditionelle Fischhandlung, die wirklich aus Leiden stammt. Waehrend andere Fischhaendler aus umliegenden Orten kommen, ist Schaapsvis in der Stadt selbst verwurzelt.\n\n**Warum Schaapsvis**\nDie Familie Schaap ist bekannt fuer Ehrlichkeit und ein faires Preis-Leistungs-Verhaeltnis. Hier bekommt man keinen alten Fisch zu Touristenpreisen. Was man kauft, ist frisch, ehrlich bepreist und mit Sorgfalt zubereitet.\n\n**Der Fischladen**\nDas Geschaeft in der Herenstraat 48 ist an regulaeren Wochentagen geoeffnet. Hier gibt es frischen Fisch, gebratenen Fisch, Salate, Kibbeling und geraeucherte Spezialitaeten.\n\n**Tipp**\nProbieren Sie den Kibbeling oder das Broodje Haring. Mittwochs und samstags steht der Fischkarren auf dem Markt.",
     },
-    tags: ["viswinkel", "visboer", "sinds 1938", "markt", "Herenstraat", "familie"],
+    tags: ["viswinkel", "visboer", "sinds 1938", "Herenstraat", "familie", "ambacht", "Leids"],
     rating: 4.8,
     priceRange: "5,00-25,00",
     visitDuration: "10-20 minuten",
     seasonal: false,
     kidFriendly: true,
     featured: true,
-    hours: ["Herenstraat", "Herenstraat", "Markt (ROOS)", "Herenstraat", "Herenstraat", "Markt (De Waag)", "Gesloten"],
+    hours: ["09:00-17:00", "09:00-17:00", "Gesloten (op de markt)", "09:00-17:00", "09:00-17:00", "Gesloten (op de markt)", "Gesloten"],
+  },
+  {
+    id: "S031",
+    name: "Schaapsvishandel - Woensdagmarkt",
+    category: "visboer",
+    address: "Nieuwe Rijn (tegenover ROOS), Leiden",
+    coords: { lat: 52.1591, lng: 4.4912 },
+    website: null,
+    phone: null,
+    description: {
+      nl: "Elke woensdag staat de viskar van Schaapsvishandel op de Leidse woensdagmarkt, tegenover ROOS aan de Nieuwe Rijn. Dezelfde familie, dezelfde kwaliteit als in de winkel -- maar dan in de buitenlucht tussen de andere marktkramen.\n\n**Alleen op woensdag**\nDeze locatie is alleen op woensdagen actief. De viskar staat er vanaf vroeg in de ochtend tot het einde van de markt. Vers gebakken kibbeling, haring, gebakken vis en visbroodjes -- alles bereid ter plekke.\n\n**Waarom hier**\nDe woensdagmarkt van Leiden slingert door het historische centrum en Schaapsvis is een van de vaste gezichten. Het is de perfecte stop voor een snelle hap tijdens het marktwandelen.",
+      en: "Every Wednesday the Schaapsvishandel fish cart is at Leiden's Wednesday market, opposite ROOS on the Nieuwe Rijn. Same family, same quality as the shop -- but outdoors among the market stalls.\n\n**Wednesdays only**\nThis location is active on Wednesdays only. The cart is there from early morning until the market closes. Freshly fried kibbeling, herring, fried fish and fish sandwiches -- everything prepared on the spot.\n\n**Why here**\nLeiden's Wednesday market winds through the historic centre and Schaapsvis is one of its fixtures. A perfect stop for a quick bite while exploring the market.",
+      de: "Jeden Mittwoch steht der Fischkarren von Schaapsvishandel auf dem Leidener Mittwochsmarkt, gegenueber ROOS an der Nieuwe Rijn. Dieselbe Familie, dieselbe Qualitaet wie im Laden -- nur unter freiem Himmel.\n\n**Nur mittwochs**\nDieser Standort ist nur mittwochs aktiv. Der Karren steht von frueh morgens bis zum Marktende. Frisch gebackener Kibbeling, Hering, gebratener Fisch und Fischbroetchen -- alles frisch zubereitet.",
+    },
+    tags: ["viskar", "woensdagmarkt", "sinds 1938", "Nieuwe Rijn", "markt", "kibbeling"],
+    rating: 4.8,
+    priceRange: "5,00-15,00",
+    visitDuration: "10-15 minuten",
+    seasonal: false,
+    kidFriendly: true,
+    featured: true,
+    hours: ["Gesloten", "Gesloten", "08:00-17:00", "Gesloten", "Gesloten", "Gesloten", "Gesloten"],
+  },
+  {
+    id: "S032",
+    name: "Schaapsvishandel - Zaterdagmarkt",
+    category: "visboer",
+    address: "Vismarkt (tegenover De Waag), Leiden",
+    coords: { lat: 52.1593, lng: 4.4905 },
+    website: null,
+    phone: null,
+    description: {
+      nl: "Elke zaterdag staat Schaapsvishandel met de viskar op de Leidse zaterdagmarkt, tegenover De Waag op de Vismarkt. Dit is de grootste marktdag van Leiden met circa 210 kramen, en Schaapsvis is er een vaste waarde.\n\n**Alleen op zaterdag**\nDeze locatie is alleen op zaterdagen actief. Je vindt hier verse vis, kibbeling, haring en gebakken visbroodjes -- allemaal bereid op de kar.\n\n**De perfecte marktdag**\nCombineer je bezoek aan Schaapsvis met de rest van de zaterdagmarkt. Loop door de kramen, pak een kibbeling bij Schaapsvis, ga daarna naar Tony Vergunst voor een versgebakken stroopwafel. Dat is Leiden op zijn best.",
+      en: "Every Saturday Schaapsvishandel sets up the fish cart at Leiden's Saturday market, opposite De Waag on the Vismarkt. This is Leiden's biggest market day with around 210 stalls, and Schaapsvis is a fixture.\n\n**Saturdays only**\nThis location is active on Saturdays only. You will find fresh fish, kibbeling, herring and fried fish sandwiches -- all prepared at the cart.\n\n**The perfect market day**\nCombine your visit to Schaapsvis with the rest of the Saturday market. Browse the stalls, grab a kibbeling at Schaapsvis, then head to Tony Vergunst for a freshly made stroopwafel. That is Leiden at its best.",
+      de: "Jeden Samstag steht Schaapsvishandel mit dem Fischkarren auf dem Leidener Samstagsmarkt, gegenueber De Waag auf dem Vismarkt. Dies ist der groesste Markttag Leidens mit rund 210 Staenden.\n\n**Nur samstags**\nDieser Standort ist nur samstags aktiv. Hier gibt es frischen Fisch, Kibbeling, Hering und Fischbroetchen -- alles frisch am Karren zubereitet.\n\n**Der perfekte Markttag**\nKombinieren Sie Schaapsvis mit dem Rest des Samstagsmarkts. Kibbeling bei Schaapsvis, danach eine frische Stroopwafel bei Tony Vergunst.",
+    },
+    tags: ["viskar", "zaterdagmarkt", "sinds 1938", "Vismarkt", "De Waag", "kibbeling"],
+    rating: 4.8,
+    priceRange: "5,00-15,00",
+    visitDuration: "10-15 minuten",
+    seasonal: false,
+    kidFriendly: true,
+    featured: true,
+    hours: ["Gesloten", "Gesloten", "Gesloten", "Gesloten", "Gesloten", "08:00-17:00", "Gesloten"],
   },
   // ── BATCH 4: Stroopwafels & Bakeries ──
   {
