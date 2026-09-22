@@ -10,12 +10,14 @@ import { Header } from "@/components/layout/Header";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { AuthProvider } from "@/lib/auth-context";
 import { Footer } from "@/components/layout/Footer";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "YourLocalCityGuide - Ontdek Leiden op jouw tempo",
     template: "%s | YourLocalCityGuide",

@@ -39,7 +39,7 @@ Date: 2026-09-17
 - [ ] **PWA support**: Service worker, offline capability, app manifest
 - [ ] **Favicon and app icons**: Replace default Next.js favicon with brand icon
 - [ ] **Loading states**: Skeleton loaders for routes, locations, map
-- [ ] **Error pages**: Custom 404 and 500 pages matching design language
+- [x] **Error pages**: Custom 404 page matching design language (localized within `[locale]` for invalid slugs; root-level fallback for unmatched URLs). 500 page still default.
 - [ ] **Cookie consent**: GDPR-compliant cookie banner (NL/DE especially)
 
 ## Todo - Backend
@@ -63,8 +63,8 @@ Date: 2026-09-17
 
 ## Todo - SEO & Marketing
 
-- [ ] **Sitemap.xml**: Auto-generated from routes
-- [ ] **robots.txt**: Proper crawl directives
+- [x] **Sitemap.xml**: Auto-generated from static pages, locations, and routes with hreflang alternates (`src/app/sitemap.ts`)
+- [x] **robots.txt**: Allows public pages, disallows login/account/dashboard/my-routes, references sitemap (`src/app/robots.ts`)
 - [ ] **Structured data**: JSON-LD for TouristAttraction, City, Route
 - [ ] **Page-level SEO titles**: Unique titles per page per language (currently using default)
 - [ ] **Internal linking**: Cross-link routes, locations, about page
@@ -75,7 +75,7 @@ Date: 2026-09-17
 ## Todo - Infrastructure
 
 - [ ] **Vercel deployment**: Configure for production
-- [ ] **Custom domain**: yourlocalcityguide.com or yourlocalcityguide.nl
+- [ ] **Custom domain**: yourlocalcityguide.com or yourlocalcityguide.nl (sitemap/robots/OG default to `.com` via `src/lib/site.ts`; override with `NEXT_PUBLIC_SITE_URL` once decided)
 - [ ] **CI/CD**: GitHub Actions for build verification
 - [ ] **Testing**: Vitest unit tests + Playwright E2E tests
 - [ ] **Performance**: Lighthouse audit, Core Web Vitals optimization

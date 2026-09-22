@@ -121,5 +121,11 @@
     "close": "Close",
     "free": "Free",
     "city": "Leiden"
+  },
+  "notFound": {
+    "title": "This place doesn't exist (yet)",
+    "description": "The page you're looking for has moved, was removed, or never existed. Discover what Leiden does have to offer instead.",
+    "homeCta": "Back to home",
+    "routesCta": "Browse routes"
   }
 }

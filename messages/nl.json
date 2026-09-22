@@ -121,5 +121,11 @@
     "close": "Sluiten",
     "free": "Gratis",
     "city": "Leiden"
+  },
+  "notFound": {
+    "title": "Deze plek bestaat niet (nog niet)",
+    "description": "De pagina die je zoekt is verplaatst, verwijderd, of nooit gemaakt. Ontdek in plaats daarvan wat Leiden wel te bieden heeft.",
+    "homeCta": "Terug naar home",
+    "routesCta": "Bekijk routes"
   }
 }

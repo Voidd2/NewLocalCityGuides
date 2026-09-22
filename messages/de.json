@@ -121,5 +121,11 @@
     "close": "Schliessen",
     "free": "Kostenlos",
     "city": "Leiden"
+  },
+  "notFound": {
+    "title": "Diesen Ort gibt es (noch) nicht",
+    "description": "Die gesuchte Seite wurde verschoben, entfernt oder existiert nicht. Entdecke stattdessen, was Leiden zu bieten hat.",
+    "homeCta": "Zuruck zur Startseite",
+    "routesCta": "Routen ansehen"
   }
 }
