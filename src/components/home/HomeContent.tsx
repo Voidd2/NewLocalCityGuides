@@ -12,6 +12,203 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { useEffect, useState } from "react";
 import type { SavedRoute } from "@/lib/saved-routes";
 
+function WhyNotGuideSection() {
+  const t = useTranslations("about");
+
+  const whyPoints = [
+    { text: t("whyPoint1", { price: "28" }), icon: "money" },
+    { text: t("whyPoint2"), icon: "clock" },
+    { text: t("whyPoint3"), icon: "eye" },
+    { text: t("whyPoint4"), icon: "group" },
+  ];
+
+  const withAppPoints = [
+    { text: t("withAppPoint1"), icon: "language" },
+    { text: t("withAppPoint2"), icon: "pause" },
+    { text: t("withAppPoint3"), icon: "kids" },
+    { text: t("withAppPoint4"), icon: "gem" },
+  ];
+
+  return (
+    <section className="max-w-7xl mx-auto px-4 py-10">
+      <AnimateOnScroll>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-red-400">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-navy-800">{t("whyTitle")}</h3>
+            </div>
+            <ul className="space-y-3">
+              {whyPoints.map((point, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-gray-500">
+                  <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 text-red-400">
+                      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  {point.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-500 rounded-2xl p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-green-600">
+                  <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-navy-800">{t("withAppTitle")}</h3>
+            </div>
+            <ul className="space-y-3">
+              {withAppPoints.map((point, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-gray-700">
+                  <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 text-green-600">
+                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  {point.text}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </AnimateOnScroll>
+    </section>
+  );
+}
+
+function AboutLeidenSection() {
+  const t = useTranslations("about");
+
+  return (
+    <section className="bg-white py-10">
+      <div className="max-w-7xl mx-auto px-4">
+        <AnimateOnScroll>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-navy-800 mb-3">{t("aboutLeiden")}</h2>
+            <p className="text-gray-600 max-w-lg mx-auto">{t("aboutLeidenDesc")}</p>
+          </div>
+        </AnimateOnScroll>
+
+        <div className="grid md:grid-cols-2 gap-6 items-center">
+          <AnimateOnScroll animation="slide-left">
+            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-200">
+              {/* --HIER IMAGE VAN Leiden grachten met historische gebouwen-- */}
+              <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
+                <div className="text-center text-white/30 text-xs p-4">
+                  --HIER IMAGE VAN Leiden grachten met historische gebouwen--
+                </div>
+              </div>
+            </div>
+          </AnimateOnScroll>
+          <AnimateOnScroll animation="slide-right">
+            <div className="space-y-4">
+              <p className="text-sm text-gray-600 leading-relaxed">{t("historyP1")}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">{t("historyP2")}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">{t("historyP3")}</p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HowItWorksSection() {
+  const t = useTranslations("about");
+
+  const steps = [
+    { step: "1", title: t("howStep1Title"), desc: t("howStep1Desc"), placeholder: "--HIER IMAGE VAN pricing pagina screenshot--" },
+    { step: "2", title: t("howStep2Title"), desc: t("howStep2Desc"), placeholder: "--HIER IMAGE VAN routes kiezen screenshot--" },
+    { step: "3", title: t("howStep3Title"), desc: t("howStep3Desc"), placeholder: "--HIER IMAGE VAN locatie ervaring screenshot--" },
+  ];
+
+  return (
+    <section className="bg-warm-100 py-12">
+      <div className="max-w-4xl mx-auto px-4">
+        <AnimateOnScroll>
+          <h2 className="text-xl font-bold text-navy-800 text-center mb-8">{t("howItWorks")}</h2>
+        </AnimateOnScroll>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {steps.map((item, i) => (
+            <AnimateOnScroll key={item.step} delay={i * 150}>
+              <div className="text-center">
+                <div className="w-48 h-80 mx-auto bg-white rounded-3xl shadow-lg overflow-hidden mb-4 border border-gray-100">
+                  <div className="w-full h-full bg-gray-50 flex items-center justify-center text-gray-300 text-xs p-4">
+                    {item.placeholder}
+                  </div>
+                </div>
+                <div className="w-8 h-8 rounded-full bg-orange-500 text-white font-bold text-sm flex items-center justify-center mx-auto mb-2">
+                  {item.step}
+                </div>
+                <h3 className="font-bold text-navy-800 text-sm mb-1">{item.title}</h3>
+                <p className="text-xs text-gray-500">{item.desc}</p>
+              </div>
+            </AnimateOnScroll>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PreviewVideoSection() {
+  const t = useTranslations("about");
+
+  return (
+    <section className="max-w-3xl mx-auto px-4 py-12">
+      <AnimateOnScroll>
+        <h2 className="text-xl font-bold text-navy-800 text-center mb-2">{t("previewVideo")}</h2>
+        <p className="text-sm text-gray-500 text-center mb-6">{t("previewVideoDesc")}</p>
+
+        <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-video max-w-2xl mx-auto">
+          {/* --HIER IMAGE VAN preview video thumbnail, app in gebruik op locatie-- */}
+          <div className="absolute inset-0 flex items-center justify-center bg-navy-800/20">
+            <button className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors shadow-xl">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-navy-800 ml-1">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </AnimateOnScroll>
+    </section>
+  );
+}
+
+function CtaSection() {
+  const t = useTranslations("about");
+
+  return (
+    <section className="bg-navy-800 text-white py-10">
+      <div className="max-w-3xl mx-auto px-4 text-center">
+        <AnimateOnScroll>
+          <p className="text-hand text-orange-300 text-2xl mb-2 -rotate-1">{t("sameStreets")}</p>
+          <h2 className="text-2xl font-bold mb-3">{t("aRicherStory")}</h2>
+          <p className="text-white/60 text-sm mb-6">{t("ctaDesc")}</p>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-full transition-colors shadow-lg shadow-orange-500/30"
+          >
+            {t("ctaButton")}
+            <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+              <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+            </svg>
+          </Link>
+        </AnimateOnScroll>
+      </div>
+    </section>
+  );
+}
+
 export function HomeContent() {
   const t = useTranslations("home");
   const tRoutes = useTranslations("routes");
@@ -156,7 +353,12 @@ export function HomeContent() {
   return (
     <>
       <PriceComparison />
+      <WhyNotGuideSection />
+      <AboutLeidenSection />
+      <HowItWorksSection />
       <PopularRoutes />
+      <PreviewVideoSection />
+      <CtaSection />
     </>
   );
 }

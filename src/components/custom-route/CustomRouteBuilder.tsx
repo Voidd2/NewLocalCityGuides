@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { locations, type LocationData } from "@/data/locations";
 import { saveRoute } from "@/lib/saved-routes";
+import { getLocationStory } from "@/data/stories";
 
 const MUST_SEE_IDS = ["L001", "L006", "L003", "L010"];
 
@@ -47,6 +48,11 @@ function LocationCard({
   onToggleExpand: () => void;
 }) {
   const tCustom = useTranslations("customRoute");
+  const locale = useLocale() as "nl" | "en" | "de";
+  const story = getLocationStory(loc.id);
+  const storyPreview = story
+    ? story.readingText[locale].split("\n\n").slice(0, 2).join("\n\n")
+    : null;
 
   return (
     <div
@@ -138,19 +144,27 @@ function LocationCard({
 
         {isExpanded && (
           <div className="mt-3 pt-3 border-t border-gray-100">
+            {storyPreview && (
+              <div className="mb-3 bg-warm-50 rounded-xl p-3 border border-gray-100">
+                <div className="flex items-center gap-1.5 mb-2">
+                  <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-navy-800" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                  </svg>
+                  <span className="text-xs font-semibold text-navy-800">{tCustom("story")}</span>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed line-clamp-4">
+                  {storyPreview}
+                </p>
+              </div>
+            )}
+
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2.5 py-1.5">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5 text-orange-500">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
                 <span className="text-[11px] font-medium text-gray-600">{tCustom("video")}</span>
-              </div>
-              <div className="flex items-center gap-1 bg-gray-100 rounded-lg px-2.5 py-1.5">
-                <svg viewBox="0 0 24 24" fill="none" className="w-3.5 h-3.5 text-navy-800" stroke="currentColor" strokeWidth="2">
-                  <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                </svg>
-                <span className="text-[11px] font-medium text-gray-600">{tCustom("story")}</span>
               </div>
               {loc.categories.map((cat) => (
                 <span key={cat} className="text-[11px] font-medium px-2.5 py-1.5 rounded-lg bg-orange-50 text-orange-600 border border-orange-100 capitalize">

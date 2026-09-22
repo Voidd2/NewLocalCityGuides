@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { ActiviteitenPage } from "@/components/activiteiten/ActiviteitenPage";
+import { OntdekPage } from "@/components/ontdek/OntdekPage";
 
 export default async function Activiteiten({
   params,
@@ -9,5 +9,5 @@ export default async function Activiteiten({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <ActiviteitenPage />;
+  return <OntdekPage />;
 }
