@@ -1,18 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
+import { getLocationStory } from "@/data/stories";
 
 type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
 
 export function LocationExperience({ location }: { location: LocationData }) {
   const t = useTranslations("location");
   const tCommon = useTranslations("common");
+  const locale = useLocale() as "nl" | "en" | "de";
   const { hasPaid, isLoading } = useAuth();
   const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
+  const story = getLocationStory(location.id);
 
   if (isLoading) {
     return (
@@ -243,12 +246,20 @@ export function LocationExperience({ location }: { location: LocationData }) {
           <h2 className="text-xl font-bold text-navy-800 mb-1">{location.name}</h2>
           <p className="text-hand text-orange-500 -rotate-1 mb-4">{t("theStory")}</p>
 
-          <div className="prose prose-sm max-w-none text-gray-700 mb-6">
-            <p>{location.shortDescription}</p>
-            <p className="text-gray-400 italic mt-4">
-              {t("storyPendingVerification")}
-            </p>
-          </div>
+          {story ? (
+            <div className="prose prose-sm max-w-none text-gray-700 mb-6">
+              {story.readingText[locale].split("\n\n").map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+          ) : (
+            <div className="prose prose-sm max-w-none text-gray-700 mb-6">
+              <p>{location.shortDescription}</p>
+              <p className="text-gray-400 italic mt-4">
+                {t("storyPendingVerification")}
+              </p>
+            </div>
+          )}
 
           <div className="flex gap-2">
             <button
