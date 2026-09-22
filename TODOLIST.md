@@ -116,7 +116,7 @@ public/images/
 ### 2.2 Affiliate link system (ticketUrl)
 - [x] Add `ticketUrl` field to `LocalSpot` interface in `src/data/local-spots.ts`
 - [x] Add GetYourGuide link to Hortus Botanicus (S011)
-- [ ] Add ticket CTAs in the Ontdek detail views when `ticketUrl` is present
+- [x] Add ticket CTAs in the Ontdek detail views when `ticketUrl` is present
 - [ ] Research and add GetYourGuide affiliate links for all museums with paid entry:
   - Museum De Lakenhal (S001)
   - Rijksmuseum van Oudheden (S002)

@@ -103,6 +103,7 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
       addToRouteTitle: "Voeg toe aan route:",
       myRoutes: "Mijn routes",
       newRoute: "Nieuwe route maken",
+      buyTickets: "Koop tickets",
     },
     en: {
       address: "Address",
@@ -123,6 +124,7 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
       addToRouteTitle: "Add to route:",
       myRoutes: "My routes",
       newRoute: "Create new route",
+      buyTickets: "Buy tickets",
     },
     de: {
       address: "Adresse",
@@ -143,6 +145,7 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
       addToRouteTitle: "Zur Route hinzufugen:",
       myRoutes: "Meine Routen",
       newRoute: "Neue Route erstellen",
+      buyTickets: "Tickets kaufen",
     },
   };
   const l = labels[locale];
@@ -223,6 +226,20 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
                 </span>
               ))}
             </div>
+
+            {spot.ticketUrl && (
+              <a
+                href={spot.ticketUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-3.5 rounded-xl transition-colors mb-3 shadow-md shadow-green-600/20"
+              >
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                  <path fillRule="evenodd" d="M13 3v1.27a.75.75 0 001.5 0V3h2.75A.75.75 0 0118 3.75v3.5a.75.75 0 01-.75.75 1.5 1.5 0 000 3c.414 0 .75.336.75.75v3.5a.75.75 0 01-.75.75H3.75a.75.75 0 01-.75-.75v-3.5c0-.414.336-.75.75-.75a1.5 1.5 0 000-3 .75.75 0 01-.75-.75v-3.5A.75.75 0 013.75 3H6.5v1.27a.75.75 0 001.5 0V3h5zm-6.5 5a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0V8zm-1.5 3a.75.75 0 011.5 0v.5a.75.75 0 01-1.5 0V11zm1.5 3a.75.75 0 00-1.5 0v.5a.75.75 0 001.5 0V14z" clipRule="evenodd" />
+                </svg>
+                {l.buyTickets}
+              </a>
+            )}
 
             <div className="flex gap-2 mb-5">
               {spot.website && (
