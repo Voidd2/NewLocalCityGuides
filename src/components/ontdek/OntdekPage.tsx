@@ -289,20 +289,55 @@ function SpotCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (ke
   );
 }
 
+function getTodayHours(hours?: string[]): string | null {
+  if (!hours || hours.length !== 7) return null;
+  const day = new Date().getDay();
+  const idx = day === 0 ? 6 : day - 1;
+  return hours[idx] || null;
+}
+
 function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
   const catLabel = SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[lang] || spot.category;
+  const todayHours = getTodayHours(spot.hours);
+  const isOpen = todayHours != null && todayHours !== "Gesloten";
+  const openLabel = lang === "de" ? "Heute" : lang === "en" ? "Today" : "Vandaag";
+  const closedLabel = lang === "de" ? "Heute geschlossen" : lang === "en" ? "Closed today" : "Vandaag gesloten";
 
   return (
-    <Link href={`/ontdek/${spot.id}`} className="shrink-0 w-[260px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block">
-      <div className="p-4">
-        <span className="text-[10px] font-semibold bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded-full">
+    <Link href={`/ontdek/${spot.id}`} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
+      <div className="aspect-[16/9] bg-gray-800 overflow-hidden relative">
+        {spot.image ? (
+          <img src={spot.image} alt={spot.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-navy-700 to-navy-900 flex flex-col items-center justify-center gap-1">
+            <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-white/10" stroke="currentColor" strokeWidth="1">
+              <rect x="2" y="2" width="20" height="20" rx="3" />
+              <circle cx="8" cy="8" r="2" />
+              <path d="M2 16l5-5 3 3 4-4 8 8" />
+            </svg>
+            <p className="text-[9px] text-white/15 font-medium px-3 text-center">--HIER IMAGE VAN {spot.name}--</p>
+          </div>
+        )}
+        <span className="absolute top-2 left-2 text-[10px] font-semibold bg-orange-500 text-white px-2 py-0.5 rounded-full">
           {catLabel}
         </span>
-        <h3 className="font-bold text-sm mt-2 leading-tight line-clamp-1">{spot.name}</h3>
+      </div>
+      <div className="p-3">
+        <h3 className="font-bold text-sm leading-tight line-clamp-1">{spot.name}</h3>
         <p className="text-[11px] text-white/60 mt-1 line-clamp-2">{desc}</p>
-        <div className="flex items-center gap-2 mt-3">
+
+        {todayHours != null && (
+          <div className="flex items-center gap-1.5 mt-2">
+            <div className={`w-1.5 h-1.5 rounded-full ${isOpen ? "bg-green-400" : "bg-red-400"}`} />
+            <span className={`text-[10px] font-medium ${isOpen ? "text-green-400" : "text-red-400"}`}>
+              {isOpen ? `${openLabel}: ${todayHours}` : closedLabel}
+            </span>
+          </div>
+        )}
+
+        <div className="flex items-center gap-2 mt-2">
           {spot.rating && (
             <div className="flex items-center gap-1">
               <svg viewBox="0 0 20 20" fill="#F59E0B" className="w-3.5 h-3.5">
@@ -312,10 +347,10 @@ function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t:
             </div>
           )}
           {spot.priceRange && (
-            <span className="text-[11px] text-white/50">{spot.priceRange}</span>
+            <span className="text-[11px] text-white/50">&euro;{spot.priceRange}</span>
           )}
         </div>
-        <span className="mt-3 inline-flex items-center gap-1 text-xs text-orange-400 font-semibold">
+        <span className="mt-2 inline-flex items-center gap-1 text-xs text-orange-400 font-semibold">
           {t("moreInfo")}
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
             <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />

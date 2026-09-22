@@ -482,7 +482,11 @@
     "routeCompleted": "Route completed!",
     "routeNotFound": "Route not found",
     "routeNotFoundDesc": "This route no longer exists.",
-    "backToMyRoutes": "Back to my routes"
+    "backToMyRoutes": "Back to my routes",
+    "entryFrom": "Entry from",
+    "orderTickets": "Order tickets",
+    "skipTickets": "Skip",
+    "ticketNotRequired": "Ticket is optional"
   },
   "activities": {
     "title": "Activities in Leiden",

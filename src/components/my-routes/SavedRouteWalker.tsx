@@ -161,6 +161,34 @@ function StopCard({
 
               <p className="text-xs text-gray-600 leading-relaxed mb-3">{loc.shortDescription}</p>
 
+              {loc.entryFee && loc.ticketUrl && (
+                <div className="bg-orange-50 border border-orange-200 rounded-xl p-3 mb-3">
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div>
+                      <p className="text-sm font-bold text-navy-800">{t("entryFrom")} &euro;{loc.entryFee}</p>
+                      <p className="text-[10px] text-gray-500">{t("ticketNotRequired")}</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <a
+                      href={loc.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex-1 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold py-2.5 rounded-full transition-colors text-center"
+                    >
+                      {t("orderTickets")}
+                    </a>
+                    <button
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex-1 border border-gray-300 text-gray-500 text-xs font-semibold py-2.5 rounded-full hover:bg-gray-50 transition-colors"
+                    >
+                      {t("skipTickets")}
+                    </button>
+                  </div>
+                </div>
+              )}
+
               <a
                 href={mapsUrl}
                 target="_blank"

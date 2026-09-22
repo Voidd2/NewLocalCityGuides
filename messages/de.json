@@ -482,7 +482,11 @@
     "routeCompleted": "Route abgeschlossen!",
     "routeNotFound": "Route nicht gefunden",
     "routeNotFoundDesc": "Diese Route existiert nicht mehr.",
-    "backToMyRoutes": "Zuruck zu meinen Routen"
+    "backToMyRoutes": "Zuruck zu meinen Routen",
+    "entryFrom": "Eintritt ab",
+    "orderTickets": "Tickets bestellen",
+    "skipTickets": "Uberspringen",
+    "ticketNotRequired": "Ticket ist optional"
   },
   "activities": {
     "title": "Aktivitaten in Leiden",

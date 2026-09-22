@@ -153,6 +153,7 @@ export const localSpots: LocalSpot[] = [
     seasonal: false,
     kidFriendly: true,
     featured: true,
+    hours: ["Gesloten", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00"],
   },
   {
     id: "S007",
@@ -254,6 +255,7 @@ export const localSpots: LocalSpot[] = [
     seasonal: false,
     kidFriendly: true,
     featured: true,
+    hours: ["Gesloten", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00", "10:00-17:00"],
   },
   {
     id: "S012",
@@ -327,17 +329,18 @@ export const localSpots: LocalSpot[] = [
     website: null,
     phone: null,
     description: {
-      nl: "Familiebedrijf sinds 1938. Woensdag op de markt tegenover ROOS, zaterdag tegenover De Waag, rest van de week op de Herenstraat.",
-      en: "Family business since 1938. Wednesdays at the market opposite ROOS, Saturdays opposite De Waag, other days at Herenstraat.",
-      de: "Familienbetrieb seit 1938. Mittwochs auf dem Markt gegenüber ROOS, samstags gegenüber De Waag, sonst in der Herenstraat.",
+      nl: "Viswinkel en familiebedrijf sinds 1938. De winkel zit op de Herenstraat 48. Op woensdag staan ze op de markt tegenover ROOS, op zaterdag tegenover De Waag.",
+      en: "Fish shop and family business since 1938. The shop is at Herenstraat 48. On Wednesdays they're at the market opposite ROOS, Saturdays opposite De Waag.",
+      de: "Fischgeschaeft und Familienbetrieb seit 1938. Der Laden befindet sich in der Herenstraat 48. Mittwochs auf dem Markt gegenueber ROOS, samstags gegenueber De Waag.",
     },
-    tags: ["visboer", "sinds 1938", "markt", "Herenstraat", "familie"],
+    tags: ["viswinkel", "visboer", "sinds 1938", "markt", "Herenstraat", "familie"],
     rating: 4.8,
     priceRange: "5,00-25,00",
     visitDuration: "10-20 minuten",
     seasonal: false,
     kidFriendly: true,
     featured: true,
+    hours: ["Herenstraat", "Herenstraat", "Markt (ROOS)", "Herenstraat", "Herenstraat", "Markt (De Waag)", "Gesloten"],
   },
   // ── BATCH 4: Stroopwafels & Bakeries ──
   {
@@ -361,6 +364,7 @@ export const localSpots: LocalSpot[] = [
     seasonal: false,
     kidFriendly: true,
     featured: true,
+    hours: ["Gesloten", "Gesloten", "Gesloten", "Gesloten", "Gesloten", "08:00-17:00", "Gesloten"],
   },
   {
     id: "S044",
