@@ -136,8 +136,7 @@ Every museum and attraction in `src/data/local-spots.ts` needs MUCH more text:
 - Explain WHY to visit, what makes it special
 - Include practical details (what to see, how long, tips)
 - Make descriptions persuasive for visitors
-- Currently done: S001-S011, S030/S031/S032
-- Still needed: S012 (CORPUS), S013 (Pieterskerk), S014 (Oude Sterrewacht)
+- [x] All museums expanded: S001-S014, S030/S031/S032
 
 ### 2.4 Route logic improvements
 - GPS-based starting point detection: detect user location and suggest nearest route start
