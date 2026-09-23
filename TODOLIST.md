@@ -110,6 +110,9 @@ public/images/
   6. "Maak je eigen route" card (clicking leads to blurred/paywall view)
 - [x] FAQ and practical tips sections added
 - [x] Updated navigation (header, footer, bottom nav) to remove about links
+- [x] Conversion polish (2026-09-23): one dominant hero CTA, supporting trust signals and clearer secondary route CTA
+- [x] Replaced visible homepage image/screenshot placeholders with real project imagery and product-style previews
+- [x] Made the preview card and popular route cards lead to relevant, browsable product pages
 - Focus on conversion: video tours, updated maps, best local spots, free booking help
 - Make it persuasive -- visitors should feel they NEED this app
 

@@ -11,27 +11,114 @@ import { PopularRoutes } from "./PopularRoutes";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { useEffect, useState } from "react";
 import type { SavedRoute } from "@/lib/saved-routes";
+import Image from "next/image";
 
 function PreviewVideoSection() {
   const t = useTranslations("home");
 
   return (
-    <section className="max-w-3xl mx-auto px-4 py-12">
+    <section className="max-w-5xl mx-auto px-4 py-14 md:py-20">
       <AnimateOnScroll>
-        <h2 className="text-xl font-bold text-navy-800 text-center mb-2">{t("previewVideo")}</h2>
-        <p className="text-sm text-gray-500 text-center mb-6">{t("previewVideoDesc")}</p>
+        <div className="text-center mb-7">
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-orange-600 mb-2">{t("previewEyebrow")}</p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-navy-800 mb-2">{t("previewVideo")}</h2>
+          <p className="text-sm md:text-base text-gray-500 max-w-xl mx-auto">{t("previewVideoDesc")}</p>
+        </div>
 
-        <div className="relative bg-gray-200 rounded-2xl overflow-hidden aspect-video max-w-2xl mx-auto">
-          <div className="absolute inset-0 flex items-center justify-center bg-navy-800/20">
-            <button className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors shadow-xl">
+        <Link
+          href="/routes"
+          aria-label={t("previewCta")}
+          className="group relative block rounded-[2rem] overflow-hidden aspect-video max-w-4xl mx-auto bg-navy-900 shadow-2xl shadow-navy-900/20 ring-1 ring-navy-900/10"
+        >
+          <Image
+            src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
+            alt={t("previewImageAlt")}
+            fill
+            sizes="(min-width: 1024px) 896px, 100vw"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/20 to-navy-900/10" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-2xl">
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-navy-800 ml-1">
                 <polygon points="5 3 19 12 5 21 5 3" />
               </svg>
-            </button>
+            </div>
           </div>
-        </div>
+          <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 flex items-end justify-between gap-4">
+            <div className="text-left">
+              <p className="text-white font-bold text-lg md:text-2xl">{t("previewLocation")}</p>
+              <p className="text-white/70 text-xs md:text-sm mt-1">{t("previewCta")}</p>
+            </div>
+            <span className="shrink-0 rounded-full bg-white/15 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/20">
+              {t("previewDuration")}
+            </span>
+          </div>
+        </Link>
       </AnimateOnScroll>
     </section>
+  );
+}
+
+function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
+  const t = useTranslations("home");
+
+  if (type === "package") {
+    return (
+      <div className="h-full bg-warm-50 p-4 text-left">
+        <div className="h-28 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-4 text-white shadow-lg shadow-orange-500/20">
+          <span className="text-[9px] font-bold uppercase tracking-widest text-white/70">{t("previewPackageCity")}</span>
+          <p className="mt-2 text-xl font-extrabold">€5,99</p>
+          <div className="mt-3 h-2 w-20 rounded-full bg-white/30" />
+        </div>
+        <div className="mt-4 space-y-2.5">
+          {["w-4/5", "w-full", "w-3/5"].map((width) => (
+            <div key={width} className="flex items-center gap-2">
+              <div className="h-4 w-4 rounded-full bg-green-100 ring-4 ring-green-50" />
+              <div className={`h-2 ${width} rounded-full bg-gray-200`} />
+            </div>
+          ))}
+        </div>
+        <div className="mt-5 h-10 rounded-full bg-navy-800" />
+      </div>
+    );
+  }
+
+  if (type === "route") {
+    return (
+      <div className="relative h-full overflow-hidden bg-[#e8e3d9]">
+        <svg viewBox="0 0 220 340" className="absolute inset-0 h-full w-full" aria-hidden="true">
+          <path d="M-10 74 C48 48 78 112 128 82 S194 45 238 70" fill="none" stroke="#fff" strokeWidth="18" opacity=".75" />
+          <path d="M20 290 C58 250 62 194 110 180 S183 168 218 112" fill="none" stroke="#fff" strokeWidth="13" opacity=".8" />
+          <path d="M25 300 C66 252 60 208 111 180 S177 168 215 112" fill="none" stroke="#FF6B00" strokeWidth="5" strokeLinecap="round" strokeDasharray="8 7" />
+          {["25,300", "74,230", "111,180", "166,158", "215,112"].map((point, index) => {
+            const [cx, cy] = point.split(",");
+            return <circle key={point} cx={cx} cy={cy} r="9" fill={index === 0 ? "#1B2A4A" : "#fff"} stroke="#FF6B00" strokeWidth="4" />;
+          })}
+        </svg>
+        <div className="absolute inset-x-3 bottom-3 rounded-2xl bg-white/95 p-3 shadow-xl backdrop-blur">
+          <p className="text-[9px] font-bold uppercase tracking-wider text-orange-600">{t("previewRouteTitle")}</p>
+          <div className="mt-2 flex justify-between text-[10px] font-semibold text-navy-800"><span>{t("previewRouteStops")}</span><span>3,5 km</span></div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative h-full overflow-hidden bg-navy-900 text-left">
+      <div className="absolute inset-x-0 top-0 h-2/3">
+        <Image src="/images/locations/10025-pieterskerk-leiden.jpg" alt="" fill sizes="192px" className="object-cover opacity-80" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/20 to-transparent" />
+      <div className="absolute inset-x-4 bottom-4 text-white">
+        <span className="inline-flex rounded-full bg-orange-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider">{t("previewStopBadge")}</span>
+        <p className="mt-2 text-lg font-extrabold">{t("previewLocationName")}</p>
+        <div className="mt-3 flex gap-2">
+          <div className="h-9 flex-1 rounded-full bg-white text-center text-[9px] font-bold leading-9 text-navy-800">{t("previewStoryButton")}</div>
+          <div className="h-9 w-9 rounded-full bg-white/15 ring-1 ring-white/20" />
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -39,25 +126,27 @@ function HowItWorksSection() {
   const t = useTranslations("home");
 
   const steps = [
-    { step: "1", title: t("howStep1Title"), desc: t("howStep1Desc"), placeholder: "--HIER IMAGE VAN pricing pagina screenshot--" },
-    { step: "2", title: t("howStep2Title"), desc: t("howStep2Desc"), placeholder: "--HIER IMAGE VAN routes kiezen screenshot--" },
-    { step: "3", title: t("howStep3Title"), desc: t("howStep3Desc"), placeholder: "--HIER IMAGE VAN locatie ervaring screenshot--" },
+    { step: "1", title: t("howStep1Title"), desc: t("howStep1Desc"), preview: "package" as const },
+    { step: "2", title: t("howStep2Title"), desc: t("howStep2Desc"), preview: "route" as const },
+    { step: "3", title: t("howStep3Title"), desc: t("howStep3Desc"), preview: "location" as const },
   ];
 
   return (
-    <section className="bg-warm-100 py-12">
+    <section className="bg-warm-100 py-14 md:py-20">
       <div className="max-w-4xl mx-auto px-4">
         <AnimateOnScroll>
-          <h2 className="text-xl font-bold text-navy-800 text-center mb-8">{t("howItWorks")}</h2>
+          <p className="text-xs font-bold tracking-[0.2em] uppercase text-orange-600 text-center mb-2">{t("howEyebrow")}</p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-navy-800 text-center mb-10">{t("howItWorks")}</h2>
         </AnimateOnScroll>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-8">
           {steps.map((item, i) => (
             <AnimateOnScroll key={item.step} delay={i * 150}>
               <div className="text-center">
-                <div className="w-48 h-80 mx-auto bg-white rounded-3xl shadow-lg overflow-hidden mb-4 border border-gray-100">
-                  <div className="w-full h-full bg-gray-50 flex items-center justify-center text-gray-300 text-xs p-4">
-                    {item.placeholder}
+                <div className="relative w-48 h-80 mx-auto bg-navy-900 rounded-[2rem] p-2 shadow-2xl shadow-navy-900/15 overflow-hidden mb-5 ring-1 ring-navy-900/10">
+                  <div className="absolute top-2 left-1/2 z-10 h-4 w-16 -translate-x-1/2 rounded-b-xl bg-navy-900" />
+                  <div className="w-full h-full rounded-[1.5rem] overflow-hidden bg-white">
+                    <ProductPreview type={item.preview} />
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-orange-500 text-white font-bold text-sm flex items-center justify-center mx-auto mb-2">
@@ -89,12 +178,14 @@ function AboutLeidenSection() {
 
         <div className="grid md:grid-cols-2 gap-6 items-center">
           <AnimateOnScroll animation="slide-left">
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-200">
-              <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
-                <div className="text-center text-white/30 text-xs p-4">
-                  --HIER IMAGE VAN Leiden grachten met historische gebouwen--
-                </div>
-              </div>
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gray-200 shadow-xl shadow-navy-900/10">
+              <Image
+                src="/images/heroes/10001-leiden-canal-historic-buildings.jpg"
+                alt="Historische grachten en gebouwen in Leiden"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="w-full h-full object-cover"
+              />
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll animation="slide-right">
@@ -326,8 +417,10 @@ export function HomeContent() {
 
   useEffect(() => {
     if (hasPaid) {
-      setSavedRoutes(getSavedRoutes());
+      const timeout = window.setTimeout(() => setSavedRoutes(getSavedRoutes()), 0);
+      return () => window.clearTimeout(timeout);
     }
+    return undefined;
   }, [hasPaid]);
 
   if (isLoading) {

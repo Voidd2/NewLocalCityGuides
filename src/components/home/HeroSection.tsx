@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 export function HeroSection() {
   const t = useTranslations("home");
@@ -30,9 +31,12 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-[120%] -top-[10%]"
         style={{ transform: `translateY(${parallaxY}px)` }}
       >
-        <img
+        <Image
           src="/images/heroes/10001-leiden-canal-historic-buildings.jpg"
           alt="Leiden"
+          fill
+          priority
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover scale-110"
         />
       </div>
@@ -87,19 +91,35 @@ export function HeroSection() {
             </HeroButton>
           </div>
         ) : (
-          <div className="animate-fade-in-up animate-delay-500 grid grid-cols-2 gap-3 max-w-sm mx-auto w-full">
-            <HeroButton href="/routes" label={t("viewRoutes")} sub={t("followStory")}>
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M9 18l6-6-6-6" />
-                <path d="M4 4v16" strokeLinecap="round" />
-                <path d="M20 4v16" strokeLinecap="round" />
-              </svg>
-            </HeroButton>
-            <HeroButton href="/pricing" label={t("viewPricing")} sub={t("fromPrice")}>
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
-              </svg>
-            </HeroButton>
+          <div className="animate-fade-in-up animate-delay-500 max-w-md mx-auto w-full">
+            <div className="grid grid-cols-[1.25fr_1fr] gap-3">
+              <Link
+                href="/pricing"
+                className="group flex items-center justify-center gap-3 rounded-2xl bg-orange-500 px-5 py-4 text-white shadow-xl shadow-orange-500/30 transition-all hover:bg-orange-600 hover:scale-[1.02]"
+              >
+                <span className="text-sm font-bold">{t("startExploring")}</span>
+                <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5 transition-transform group-hover:translate-x-1">
+                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                </svg>
+              </Link>
+              <Link
+                href="/routes"
+                className="flex items-center justify-center rounded-2xl bg-white/10 px-4 py-4 text-sm font-semibold text-white ring-1 ring-white/20 backdrop-blur-md transition-all hover:bg-white/20 hover:ring-white/30"
+              >
+                {t("viewRoutes")}
+              </Link>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[11px] font-medium text-white/70">
+              {[t("trustOneTime"), t("trustLanguages"), t("trustOwnPace")].map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5 text-orange-300">
+                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                  </svg>
+                  {item}
+                </span>
+              ))}
+            </div>
+            <p className="mt-3 text-center text-[11px] text-white/50">{t("fromPrice")}</p>
           </div>
         )}
       </div>

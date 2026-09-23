@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import Image from "next/image";
 
 export function PopularRoutes() {
   const t = useTranslations("home");
@@ -28,12 +29,12 @@ export function PopularRoutes() {
           {routes.map((route, i) => (
             <AnimateOnScroll key={route.id} delay={i * 120}>
               <Link
-                href="/pricing"
+                href="/routes"
                 className="flex items-center gap-4 bg-white rounded-2xl border border-gray-100 p-3.5 hover-lift hover-zoom-img group shadow-sm"
               >
-                <div className="w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
+                <div className="relative w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
                   {route.image && (
-                    <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                    <Image src={route.image} alt={route.title} fill sizes="64px" className="w-full h-full object-cover" />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
