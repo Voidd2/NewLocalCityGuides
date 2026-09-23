@@ -1,4 +1,10 @@
 import { setRequestLocale } from "next-intl/server";
+import { createPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return createPageMetadata(locale, "privacy", "/privacy", { index: false });
+}
 
 export default async function PrivacyPage({
   params,

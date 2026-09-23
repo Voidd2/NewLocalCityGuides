@@ -615,7 +615,8 @@
     "restaurantTips": "Restaurant-Tipps",
     "restaurantTipsDesc": "Die leckersten Orte",
     "eventPlanning": "Veranstaltungsplanung",
-    "eventPlanningDesc": "Hilfe bei der Organisation"
+    "eventPlanningDesc": "Hilfe bei der Organisation",
+    "loading": "Laden..."
   },
   "customRoute": {
     "moreAboutSpot": "Mehr uber diesen Ort",

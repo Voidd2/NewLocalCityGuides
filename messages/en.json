@@ -615,7 +615,8 @@
     "restaurantTips": "Restaurant tips",
     "restaurantTipsDesc": "The best dining spots",
     "eventPlanning": "Event planning",
-    "eventPlanningDesc": "Help with organising"
+    "eventPlanningDesc": "Help with organising",
+    "loading": "Loading..."
   },
   "customRoute": {
     "moreAboutSpot": "More about this spot",

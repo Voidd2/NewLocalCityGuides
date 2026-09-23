@@ -251,11 +251,11 @@ Save video briefs in: `content/video-briefs/`
 - Purchase flow for route access
 
 ### 4.4 SEO
-- Auto-generated sitemap.xml
-- Proper robots.txt
-- JSON-LD structured data (TouristAttraction, City, Route)
-- Unique titles per page per language
-- Blog/content pages for SEO landing pages
+- [x] Auto-generated sitemap.xml with localized alternates
+- [x] Proper robots.txt with sitemap reference and protected-route exclusions
+- [x] JSON-LD structured data (Organization, WebSite, City, FAQ, TouristAttraction, LocalBusiness, TouristTrip)
+- [x] Unique titles, descriptions, canonicals and hreflang per page and language
+- [ ] Blog/content pages for SEO landing pages
 
 ### 4.5 Performance and polish
 - Skeleton loaders for routes, locations, map

@@ -10,63 +10,41 @@ import { Header } from "@/components/layout/Header";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { AuthProvider } from "@/lib/auth-context";
 import { Footer } from "@/components/layout/Footer";
+import { createPageMetadata, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: {
-    default: "YourLocalCityGuide - Ontdek Leiden op jouw tempo",
-    template: "%s | YourLocalCityGuide",
-  },
-  description:
-    "Ontdek de verborgen verhalen van Leiden. Zelfgeleide stadstours met interactieve video's, verborgen parels en lokale geheimen. Vanaf 5,99 per persoon.",
-  keywords: [
-    "Leiden",
-    "stadstour",
-    "city guide",
-    "zelfgeleide tour",
-    "interactieve video",
-    "verborgen parels",
-    "hidden gems",
-    "Leiden wandeling",
-    "Leiden fietstour",
-    "Pilgrim Fathers Leiden",
-    "Pieterskerk",
-    "De Burcht",
-    "Leidens Ontzet",
-    "Rembrandt Leiden",
-    "Stadtfuhrer Leiden",
-    "Leiden Sehenswurdigkeiten",
-  ],
-  openGraph: {
-    title: "YourLocalCityGuide - Ontdek Leiden",
-    description:
-      "Zelfgeleide stadstours met interactieve video's en verborgen parels. Op jouw tempo, in je eigen taal.",
-    type: "website",
-    siteName: "YourLocalCityGuide",
-    locale: "nl_NL",
-    alternateLocale: ["en_US", "de_DE"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "YourLocalCityGuide - Ontdek Leiden",
-    description:
-      "Zelfgeleide stadstours met interactieve video's en verborgen parels. Vanaf 5,99 per persoon.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    languages: {
-      nl: "/nl",
-      en: "/en",
-      de: "/de",
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const base = createPageMetadata(locale, "home");
+  return {
+    ...base,
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: String(base.title),
+      template: "%s | YourLocalCityGuide",
     },
-  },
-};
+    applicationName: "YourLocalCityGuide",
+    creator: "YourLocalCityGuide",
+    publisher: "YourLocalCityGuide",
+    keywords: [
+      "Leiden",
+      "city guide Leiden",
+      "self-guided tour Leiden",
+      "stadstour Leiden",
+      "Stadtführung Leiden",
+      "walking route Leiden",
+      "Leiden museums",
+      "Leiden hidden gems",
+    ],
+  };
+}
 
 export default async function LocaleLayout({
   children,

@@ -615,7 +615,8 @@
     "restaurantTips": "Restaurant tips",
     "restaurantTipsDesc": "De lekkerste plekken",
     "eventPlanning": "Evenement plannen",
-    "eventPlanningDesc": "Hulp bij het organiseren"
+    "eventPlanningDesc": "Hulp bij het organiseren",
+    "loading": "Laden..."
   },
   "customRoute": {
     "moreAboutSpot": "Meer over deze plek",
