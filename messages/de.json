@@ -618,6 +618,17 @@
     "eventPlanningDesc": "Hilfe bei der Organisation",
     "loading": "Laden..."
   },
+  "errors": {
+    "lostEyebrow": "Kurz vom Weg abgekommen",
+    "notFoundTitle": "Diese Route existiert nicht",
+    "notFoundDescription": "Die gesuchte Seite wurde verschoben oder existiert nicht. Kehre nach Leiden zurück oder wähle eine unserer Routen.",
+    "errorEyebrow": "Unerwarteter Umweg",
+    "errorTitle": "Etwas ist schiefgegangen",
+    "errorDescription": "Wir konnten diese Seite nicht laden. Versuche es erneut oder kehre zur Startseite zurück.",
+    "backHome": "Zurück zur Startseite",
+    "viewRoutes": "Routen ansehen",
+    "tryAgain": "Erneut versuchen"
+  },
   "customRoute": {
     "moreAboutSpot": "Mehr uber diesen Ort",
     "readLess": "Weniger lesen",

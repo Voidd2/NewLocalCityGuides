@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
 import { getLocationStory } from "@/data/stories";
+import { LocationSkeleton } from "@/components/ui/PageSkeletons";
 
 interface StorySection {
   heading: string | null;
@@ -272,7 +273,6 @@ function StoryView({
 
 export function LocationExperience({ location }: { location: LocationData }) {
   const t = useTranslations("location");
-  const tCommon = useTranslations("common");
   const locale = useLocale() as "nl" | "en" | "de";
   const { hasPaid, isLoading } = useAuth();
   const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
@@ -283,11 +283,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
   );
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
+    return <LocationSkeleton />;
   }
 
   return (

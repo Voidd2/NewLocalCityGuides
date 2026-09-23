@@ -618,6 +618,17 @@
     "eventPlanningDesc": "Help with organising",
     "loading": "Loading..."
   },
+  "errors": {
+    "lostEyebrow": "A little off course",
+    "notFoundTitle": "This route does not exist",
+    "notFoundDescription": "The page you are looking for has moved or does not exist. Return to Leiden or choose one of our routes.",
+    "errorEyebrow": "Unexpected detour",
+    "errorTitle": "Something went wrong",
+    "errorDescription": "We could not load this page. Try again or return to the homepage.",
+    "backHome": "Back to home",
+    "viewRoutes": "View routes",
+    "tryAgain": "Try again"
+  },
   "customRoute": {
     "moreAboutSpot": "More about this spot",
     "readLess": "Read less",

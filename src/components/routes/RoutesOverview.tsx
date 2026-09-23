@@ -4,18 +4,14 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
 import { useAuth } from "@/lib/auth-context";
+import { RoutesSkeleton } from "@/components/ui/PageSkeletons";
 
 export function RoutesOverview() {
   const t = useTranslations("routes");
-  const tCommon = useTranslations("common");
   const { hasPaid, isLoading } = useAuth();
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
-      </div>
-    );
+    return <RoutesSkeleton />;
   }
 
   return (

@@ -8,6 +8,7 @@ import { locations } from "@/data/locations";
 import { routes as standardRoutes } from "@/data/routes";
 import { useAuth } from "@/lib/auth-context";
 import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
+import { MapSkeleton } from "@/components/ui/PageSkeletons";
 
 const LeafletMap = dynamic(() => import("./LeafletMap").then((m) => m.LeafletMap), {
   ssr: false,
@@ -51,7 +52,8 @@ export function MapPage() {
   const [toast, setToast] = useState<{ message: string; type: "success" | "warning" } | null>(null);
 
   useEffect(() => {
-    setSavedRoutes(getSavedRoutes());
+    const timer = window.setTimeout(() => setSavedRoutes(getSavedRoutes()), 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -147,18 +149,14 @@ export function MapPage() {
 
   const handleCreateNewRoute = (locationId: string) => {
     const loc = locations.find((l) => l.id === locationId);
-    const saved = saveRoute(t("routeWithName", { name: loc?.name || "locatie" }), [locationId]);
+    saveRoute(t("routeWithName", { name: loc?.name || "locatie" }), [locationId]);
     setSavedRoutes(getSavedRoutes());
     setToast({ message: t("routeCreatedWith", { name: loc?.name ?? "" }), type: "success" });
     setAddToRouteFor(null);
   };
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
-      </div>
-    );
+    return <MapSkeleton />;
   }
 
   const teaserLocations = listFiltered.slice(0, TEASER_COUNT);

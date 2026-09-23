@@ -618,6 +618,17 @@
     "eventPlanningDesc": "Hulp bij het organiseren",
     "loading": "Laden..."
   },
+  "errors": {
+    "lostEyebrow": "Even de weg kwijt",
+    "notFoundTitle": "Deze route bestaat niet",
+    "notFoundDescription": "De pagina die je zoekt is verplaatst of bestaat niet. Ga terug naar Leiden of kies een van onze routes.",
+    "errorEyebrow": "Onverwachte omweg",
+    "errorTitle": "Er ging iets mis",
+    "errorDescription": "We konden deze pagina niet laden. Probeer het opnieuw of ga terug naar de homepage.",
+    "backHome": "Terug naar home",
+    "viewRoutes": "Bekijk routes",
+    "tryAgain": "Opnieuw proberen"
+  },
   "customRoute": {
     "moreAboutSpot": "Meer over deze plek",
     "readLess": "Minder lezen",

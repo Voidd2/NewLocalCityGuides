@@ -258,8 +258,8 @@ Save video briefs in: `content/video-briefs/`
 - [ ] Blog/content pages for SEO landing pages
 
 ### 4.5 Performance and polish
-- Skeleton loaders for routes, locations, map
-- Custom 404 and 500 error pages
+- [x] Skeleton loaders for routes, locations, map
+- [x] Custom 404 and 500 error pages
 - Cookie consent banner (GDPR)
 - Favicon and app icons with brand design
 - Dark mode support
