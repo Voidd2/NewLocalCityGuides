@@ -11,6 +11,9 @@ import { BottomNav } from "@/components/layout/BottomNav";
 import { AuthProvider } from "@/lib/auth-context";
 import { Footer } from "@/components/layout/Footer";
 import { createPageMetadata, SITE_URL } from "@/lib/seo";
+import { CookieConsent } from "@/components/privacy/CookieConsent";
+import { OfflineBanner } from "@/components/pwa/OfflineBanner";
+import { ServiceWorkerRegistrar } from "@/components/pwa/ServiceWorkerRegistrar";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -78,10 +81,13 @@ export default async function LocaleLayout({
       <body className="flex flex-col min-h-screen bg-navy-900 pb-16 md:pb-0">
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
+            <ServiceWorkerRegistrar />
+            <OfflineBanner />
             <Suspense><Header /></Suspense>
             <main className="pt-16 flex-1 bg-warm-50">{children}</main>
             <Footer />
             <BottomNav />
+            <CookieConsent />
           </AuthProvider>
         </NextIntlClientProvider>
       </body>

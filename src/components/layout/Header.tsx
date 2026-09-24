@@ -38,18 +38,10 @@ export function Header() {
   const { isLoggedIn, hasPaid, isLoading } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const showSolid = true;
   const searchParams = useSearchParams();
   const backParam = searchParams.get("back");
   const parentPath = getParentPath(pathname, hasPaid, backParam);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (menuOpen) {

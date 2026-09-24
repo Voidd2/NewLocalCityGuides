@@ -392,6 +392,37 @@
     "routes": "Routes",
     "discover": "Ontdek"
   },
+  "privacyPage": {
+    "title": "Privacybeleid",
+    "intro": "YourLocalCityGuide respecteert je privacy. Hieronder staat welke gegevens op je apparaat worden gebruikt en wanneer externe diensten worden benaderd.",
+    "storedTitle": "Lokale gegevens op je apparaat",
+    "storedAccount": "De demo-inlogstatus wordt lokaal in je browser bewaard.",
+    "storedRoutes": "Opgeslagen routes en bezochte stops worden lokaal bewaard.",
+    "storedConsent": "Je privacykeuze wordt lokaal bewaard zodat de melding niet telkens terugkomt.",
+    "locationTitle": "GPS-locatie",
+    "locationText": "Je locatie wordt alleen opgevraagd nadat je daarvoor kiest. De positie wordt gebruikt om routes te rangschikken en wordt niet door de app opgeslagen of naar onze server gestuurd.",
+    "offlineTitle": "Offline opslag",
+    "offlineText": "Een service worker bewaart eerder geopende pagina's en lokale afbeeldingen tijdelijk op je apparaat. Je browser kan deze cache via de site-instellingen verwijderen.",
+    "servicesTitle": "Externe diensten",
+    "servicesMap": "De interactieve kaart haalt kaarttegels bij OpenFreeMap op. De provider ontvangt daarbij technische verbindingsgegevens, zoals je IP-adres.",
+    "servicesGoogle": "Google Maps wordt pas geopend wanneer je zelf op een navigatielink drukt.",
+    "cookiesTitle": "Cookies en analyse",
+    "cookiesText": "Er zijn momenteel geen advertentie- of analysecookies actief. Noodzakelijke browseropslag ondersteunt de kernfuncties van de app.",
+    "contactTitle": "Contact",
+    "contactText": "Vragen over dit privacybeleid? Neem contact met ons op via",
+    "updated": "Laatst bijgewerkt: september 2026"
+  },
+  "offline": {
+    "message": "Je bent offline. Eerder geopende routes blijven beschikbaar; nieuwe inhoud wordt geladen zodra je weer verbinding hebt."
+  },
+  "privacyConsent": {
+    "title": "Jouw privacykeuze",
+    "description": "We gebruiken noodzakelijke lokale opslag voor inloggen, opgeslagen routes, voortgang en offline gebruik.",
+    "optionalNote": "Er zijn momenteel geen advertentie- of analysecookies actief. Je keuze wordt lokaal op dit apparaat bewaard.",
+    "acceptAll": "Alles toestaan",
+    "essentialOnly": "Alleen noodzakelijk",
+    "privacyPolicy": "Privacybeleid"
+  },
   "common": {
     "learnMore": "Meer weten",
     "back": "Terug",

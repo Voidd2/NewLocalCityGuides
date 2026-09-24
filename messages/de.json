@@ -392,6 +392,37 @@
     "routes": "Routen",
     "discover": "Entdecken"
   },
+  "privacyPage": {
+    "title": "Datenschutzrichtlinie",
+    "intro": "YourLocalCityGuide respektiert deine Privatsphäre. Hier steht, welche Daten auf deinem Gerät verwendet werden und wann externe Dienste kontaktiert werden.",
+    "storedTitle": "Lokale Daten auf deinem Gerät",
+    "storedAccount": "Der Demo-Anmeldestatus wird lokal in deinem Browser gespeichert.",
+    "storedRoutes": "Gespeicherte Routen und besuchte Stationen werden lokal gespeichert.",
+    "storedConsent": "Deine Datenschutzauswahl wird lokal gespeichert, damit der Hinweis nicht jedes Mal erscheint.",
+    "locationTitle": "GPS-Standort",
+    "locationText": "Dein Standort wird nur nach deiner Entscheidung abgefragt. Er dient zur Sortierung von Routen und wird weder von der App gespeichert noch an unseren Server gesendet.",
+    "offlineTitle": "Offline-Speicherung",
+    "offlineText": "Ein Service Worker speichert zuvor geöffnete Seiten und lokale Bilder vorübergehend auf deinem Gerät. Du kannst diesen Cache in den Website-Einstellungen des Browsers entfernen.",
+    "servicesTitle": "Externe Dienste",
+    "servicesMap": "Die interaktive Karte lädt Kartenkacheln von OpenFreeMap. Der Anbieter erhält dabei technische Verbindungsdaten wie deine IP-Adresse.",
+    "servicesGoogle": "Google Maps wird nur geöffnet, wenn du selbst auf einen Navigationslink drückst.",
+    "cookiesTitle": "Cookies und Analyse",
+    "cookiesText": "Derzeit sind keine Werbe- oder Analyse-Cookies aktiv. Notwendiger Browserspeicher unterstützt die Kernfunktionen der App.",
+    "contactTitle": "Kontakt",
+    "contactText": "Fragen zu dieser Datenschutzrichtlinie? Kontaktiere uns unter",
+    "updated": "Zuletzt aktualisiert: September 2026"
+  },
+  "offline": {
+    "message": "Du bist offline. Zuvor geöffnete Routen bleiben verfügbar; neue Inhalte werden nach der Wiederverbindung geladen."
+  },
+  "privacyConsent": {
+    "title": "Deine Datenschutzauswahl",
+    "description": "Wir verwenden notwendigen lokalen Speicher für Anmeldung, gespeicherte Routen, Fortschritt und Offline-Nutzung.",
+    "optionalNote": "Derzeit sind keine Werbe- oder Analyse-Cookies aktiv. Deine Auswahl wird lokal auf diesem Gerät gespeichert.",
+    "acceptAll": "Alles erlauben",
+    "essentialOnly": "Nur notwendig",
+    "privacyPolicy": "Datenschutz"
+  },
   "common": {
     "learnMore": "Mehr erfahren",
     "back": "Zuruck",

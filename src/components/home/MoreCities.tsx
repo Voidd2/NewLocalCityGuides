@@ -29,7 +29,7 @@ export function MoreCities() {
               <p className="text-white/60 text-sm mb-8 max-w-md leading-relaxed">{t("moreCitiesDesc")}</p>
 
               <div className="flex gap-4 overflow-x-auto pb-2">
-                {upcomingCities.map((city, i) => (
+                {upcomingCities.map((city) => (
                   <div key={city.name} className="shrink-0 group">
                     <div className="w-22 h-22 md:w-28 md:h-28 rounded-2xl bg-white/10 overflow-hidden ring-1 ring-white/10 group-hover:ring-white/30 group-hover:scale-105 transition-all duration-300">
                       {city.image ? (

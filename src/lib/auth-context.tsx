@@ -28,18 +28,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed?.email) {
-          setUser(parsed);
+    const frame = requestAnimationFrame(() => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed?.email) {
+            setUser(parsed);
+          }
         }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
-    }
-    setIsLoading(false);
+      setIsLoading(false);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const login = useCallback((email: string, password: string): User | null => {

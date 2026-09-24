@@ -47,7 +47,9 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
-    if (hasPaid) setSavedRoutes(getSavedRoutes());
+    if (!hasPaid) return;
+    const frame = requestAnimationFrame(() => setSavedRoutes(getSavedRoutes()));
+    return () => cancelAnimationFrame(frame);
   }, [hasPaid]);
 
   useEffect(() => {

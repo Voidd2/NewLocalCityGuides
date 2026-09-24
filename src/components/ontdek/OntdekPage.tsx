@@ -247,7 +247,7 @@ function ActivityCard({ activity, t }: { activity: Activity; t: (key: string) =>
   );
 }
 
-function SpotCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
+function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
 
@@ -479,7 +479,7 @@ export function OntdekPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {filtered.map((spot) => (
-              <SpotCard key={spot.id} spot={spot} locale={locale} t={t} />
+              <SpotCard key={spot.id} spot={spot} locale={locale} />
             ))}
           </div>
         )}

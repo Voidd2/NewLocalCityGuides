@@ -14,8 +14,11 @@ export function MyRoutesList() {
   const tCommon = useTranslations("common");
 
   useEffect(() => {
-    setRoutes(getSavedRoutes());
-    setIsLoading(false);
+    const frame = requestAnimationFrame(() => {
+      setRoutes(getSavedRoutes());
+      setIsLoading(false);
+    });
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const handleDelete = (id: string) => {

@@ -6,9 +6,9 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
-import { locations, getLocationById, type LocationData } from "@/data/locations";
+import { locations, getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
-import { getSavedRoutes, deleteSavedRoute, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
+import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
 
 const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -77,7 +77,7 @@ export function Dashboard() {
 
     setSavedRoutes(getSavedRoutes());
     setAddToRouteFor(null);
-  }, []);
+  }, [t]);
 
   const handleCreateNewRoute = useCallback((locationId: string) => {
     const loc = locations.find((l) => l.id === locationId);
@@ -85,7 +85,7 @@ export function Dashboard() {
     setSavedRoutes(getSavedRoutes());
     setToast(t("routeCreatedWith", { name: loc?.name ?? "" }));
     setAddToRouteFor(null);
-  }, []);
+  }, [t]);
 
   useEffect(() => {
     if (!isLoading && !isLoggedIn) {
@@ -94,9 +94,9 @@ export function Dashboard() {
   }, [isLoading, isLoggedIn, router]);
 
   useEffect(() => {
-    if (hasPaid) {
-      setSavedRoutes(getSavedRoutes());
-    }
+    if (!hasPaid) return;
+    const frame = requestAnimationFrame(() => setSavedRoutes(getSavedRoutes()));
+    return () => cancelAnimationFrame(frame);
   }, [hasPaid]);
 
   function handleLogout() {

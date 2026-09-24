@@ -103,7 +103,7 @@ const publicNavItems = [
 export function BottomNav() {
   const t = useTranslations("nav");
   const pathname = usePathname();
-  const { hasPaid, isLoggedIn } = useAuth();
+  const { hasPaid } = useAuth();
 
   const navItems = hasPaid ? paidNavItems : publicNavItems;
 

@@ -239,9 +239,10 @@ Save video briefs in: `content/video-briefs/`
 ## PRIORITY 4: Technical improvements
 
 ### 4.1 PWA and offline support
-- Service worker for offline access
-- App manifest with brand colours
-- Cache walking routes for offline use
+- [x] Service worker for offline access
+- [x] App manifest with brand colours and generated app icons
+- [x] Cache previously opened walking routes and same-origin assets for offline use
+- [x] Offline status banner and automatic request recovery
 
 ### 4.2 Authentication
 - Replace localStorage test login with real auth (NextAuth.js)
@@ -262,8 +263,8 @@ Save video briefs in: `content/video-briefs/`
 ### 4.5 Performance and polish
 - [x] Skeleton loaders for routes, locations, map
 - [x] Custom 404 and 500 error pages
-- Cookie consent banner (GDPR)
-- Favicon and app icons with brand design
+- [x] Privacy/cookie choice banner and localized disclosure
+- [x] Favicon and app icons with brand design
 - Dark mode support
 - Page transition animations
 

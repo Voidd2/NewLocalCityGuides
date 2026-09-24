@@ -392,6 +392,37 @@
     "routes": "Routes",
     "discover": "Discover"
   },
+  "privacyPage": {
+    "title": "Privacy policy",
+    "intro": "YourLocalCityGuide respects your privacy. This page explains which data is used on your device and when external services are contacted.",
+    "storedTitle": "Local data on your device",
+    "storedAccount": "The demo sign-in status is stored locally in your browser.",
+    "storedRoutes": "Saved routes and visited stops are stored locally.",
+    "storedConsent": "Your privacy choice is stored locally so the notice does not reappear every time.",
+    "locationTitle": "GPS location",
+    "locationText": "Your location is requested only after you choose to share it. It is used to order routes and is not stored by the app or sent to our server.",
+    "offlineTitle": "Offline storage",
+    "offlineText": "A service worker temporarily stores previously opened pages and local images on your device. You can remove this cache in your browser's site settings.",
+    "servicesTitle": "External services",
+    "servicesMap": "The interactive map loads map tiles from OpenFreeMap. The provider receives technical connection data such as your IP address.",
+    "servicesGoogle": "Google Maps opens only when you press a navigation link yourself.",
+    "cookiesTitle": "Cookies and analytics",
+    "cookiesText": "No advertising or analytics cookies are currently active. Essential browser storage supports the app's core functions.",
+    "contactTitle": "Contact",
+    "contactText": "Questions about this privacy policy? Contact us at",
+    "updated": "Last updated: September 2026"
+  },
+  "offline": {
+    "message": "You are offline. Routes opened earlier remain available; new content will load when your connection returns."
+  },
+  "privacyConsent": {
+    "title": "Your privacy choice",
+    "description": "We use essential local storage for sign-in, saved routes, progress and offline use.",
+    "optionalNote": "No advertising or analytics cookies are currently active. Your choice is stored locally on this device.",
+    "acceptAll": "Allow all",
+    "essentialOnly": "Essential only",
+    "privacyPolicy": "Privacy policy"
+  },
   "common": {
     "learnMore": "Learn more",
     "back": "Back",
