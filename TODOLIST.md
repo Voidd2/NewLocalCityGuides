@@ -258,15 +258,17 @@ Save video briefs in: `content/video-briefs/`
 - [x] Proper robots.txt with sitemap reference and protected-route exclusions
 - [x] JSON-LD structured data (Organization, WebSite, City, FAQ, TouristAttraction, LocalBusiness, TouristTrip)
 - [x] Unique titles, descriptions, canonicals and hreflang per page and language
-- [ ] Blog/content pages for SEO landing pages
+- [x] Multilingual SEO landing pages for city guide and Leiden tours
+- [x] Multilingual blog hub with initial topic cluster and Article/FAQ structured data
+- [x] Blog maintenance and 12-week content plan in `docs/SEO-CONTENT-AND-NEWSLETTER.md`
 
 ### 4.5 Performance and polish
 - [x] Skeleton loaders for routes, locations, map
 - [x] Custom 404 and 500 error pages
 - [x] Privacy/cookie choice banner and localized disclosure
 - [x] Favicon and app icons with brand design
-- Dark mode support
-- Page transition animations
+- Dark mode support -- intentionally declined by the user
+- [x] Page transition animations with reduced-motion support
 
 ---
 
@@ -276,9 +278,9 @@ Save video briefs in: `content/video-briefs/`
 - Cycling routes (for locations outside walking distance: Matilo, Meelfabriek)
 - Date-aware routes (3 Oktober special route swapping Hortus for Ontzet festivities)
 - Time-conditional stops (C052 Nieuwe Rijn market on market days only)
-- Newsletter and email system
-- Real user reviews and ratings
-- Social sharing of custom routes
+- [x] Newsletter form and Resend audience integration (activation requires account environment variables)
+- [x] Review interface preview, clearly labelled until real user reviews exist
+- [x] Social sharing of curated and custom routes, including restorable custom route links
 
 ---
 

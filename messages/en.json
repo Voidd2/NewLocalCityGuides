@@ -16,7 +16,9 @@
     "myAccount": "My account",
     "login": "Log in",
     "dashboard": "Dashboard",
-    "aboutCity": "About Leiden"
+    "aboutCity": "About Leiden",
+    "cityGuide": "Leiden city guide",
+    "blog": "Blog"
   },
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
@@ -390,7 +392,10 @@
     "terms": "Terms of use",
     "allRightsReserved": "All rights reserved.",
     "routes": "Routes",
-    "discover": "Discover"
+    "discover": "Discover",
+    "cityGuide": "Leiden city guide",
+    "tours": "Leiden tours",
+    "blog": "Blog"
   },
   "privacyPage": {
     "title": "Privacy policy",
@@ -406,6 +411,7 @@
     "servicesTitle": "External services",
     "servicesMap": "The interactive map loads map tiles from OpenFreeMap. The provider receives technical connection data such as your IP address.",
     "servicesGoogle": "Google Maps opens only when you press a navigation link yourself.",
+    "servicesNewsletter": "When you subscribe to the newsletter, your email address is processed by Resend after consent. You can unsubscribe at any time.",
     "cookiesTitle": "Cookies and analytics",
     "cookiesText": "No advertising or analytics cookies are currently active. Essential browser storage supports the app's core functions.",
     "contactTitle": "Contact",
@@ -677,6 +683,30 @@
     "backHome": "Back to home",
     "viewRoutes": "View routes",
     "tryAgain": "Try again"
+  },
+  "newsletter": {
+    "eyebrow": "Leiden in your inbox",
+    "title": "New routes and local tips",
+    "description": "Receive an occasional new walk, market update or local story. No daily advertising.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "button": "Subscribe",
+    "submitting": "Subscribing...",
+    "consent": "I consent to receive email updates and can unsubscribe at any time.",
+    "success": "You are subscribed.",
+    "error": "Subscription is unavailable right now. Please try again later."
+  },
+  "sharing": {
+    "share": "Share route",
+    "copied": "Link copied"
+  },
+  "reviewPreview": {
+    "label": "Preview",
+    "title": "Reviews are coming soon",
+    "description": "The cards below show how ratings will look. They are not real customer reviews and are not included in an average rating.",
+    "one": "A clear route that is easy to follow at your own pace.",
+    "two": "The local stories give each place more meaning.",
+    "three": "Useful to continue from your current location after a break."
   },
   "customRoute": {
     "moreAboutSpot": "More about this spot",

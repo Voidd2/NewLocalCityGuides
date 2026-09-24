@@ -16,7 +16,9 @@
     "myAccount": "Mein Konto",
     "login": "Anmelden",
     "dashboard": "Dashboard",
-    "aboutCity": "Uber Leiden"
+    "aboutCity": "Über Leiden",
+    "cityGuide": "Leiden Reiseführer",
+    "blog": "Blog"
   },
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
@@ -390,7 +392,10 @@
     "terms": "Nutzungsbedingungen",
     "allRightsReserved": "Alle Rechte vorbehalten.",
     "routes": "Routen",
-    "discover": "Entdecken"
+    "discover": "Entdecken",
+    "cityGuide": "Leiden Reiseführer",
+    "tours": "Leiden Touren",
+    "blog": "Blog"
   },
   "privacyPage": {
     "title": "Datenschutzrichtlinie",
@@ -406,6 +411,7 @@
     "servicesTitle": "Externe Dienste",
     "servicesMap": "Die interaktive Karte lädt Kartenkacheln von OpenFreeMap. Der Anbieter erhält dabei technische Verbindungsdaten wie deine IP-Adresse.",
     "servicesGoogle": "Google Maps wird nur geöffnet, wenn du selbst auf einen Navigationslink drückst.",
+    "servicesNewsletter": "Wenn du den Newsletter abonnierst, wird deine E-Mail-Adresse nach deiner Einwilligung von Resend verarbeitet. Du kannst dich jederzeit abmelden.",
     "cookiesTitle": "Cookies und Analyse",
     "cookiesText": "Derzeit sind keine Werbe- oder Analyse-Cookies aktiv. Notwendiger Browserspeicher unterstützt die Kernfunktionen der App.",
     "contactTitle": "Kontakt",
@@ -677,6 +683,30 @@
     "backHome": "Zurück zur Startseite",
     "viewRoutes": "Routen ansehen",
     "tryAgain": "Erneut versuchen"
+  },
+  "newsletter": {
+    "eyebrow": "Leiden im Postfach",
+    "title": "Neue Routen und lokale Tipps",
+    "description": "Gelegentlich neue Spaziergänge, Marktupdates und lokale Geschichten. Keine tägliche Werbung.",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "du@beispiel.de",
+    "button": "Anmelden",
+    "submitting": "Wird angemeldet...",
+    "consent": "Ich stimme E-Mail-Updates zu und kann mich jederzeit abmelden.",
+    "success": "Deine Anmeldung war erfolgreich.",
+    "error": "Die Anmeldung ist derzeit nicht möglich. Bitte versuche es später erneut."
+  },
+  "sharing": {
+    "share": "Route teilen",
+    "copied": "Link kopiert"
+  },
+  "reviewPreview": {
+    "label": "Vorschau",
+    "title": "Bewertungen folgen in Kürze",
+    "description": "Die folgenden Karten zeigen die künftige Darstellung. Es sind keine echten Kundenbewertungen und sie fließen in keine Durchschnittswertung ein.",
+    "one": "Eine klare Route, die man gut im eigenen Tempo gehen kann.",
+    "two": "Die lokalen Geschichten geben den Orten mehr Bedeutung.",
+    "three": "Praktisch, nach einer Pause am aktuellen Standort fortzufahren."
   },
   "customRoute": {
     "moreAboutSpot": "Mehr uber diesen Ort",

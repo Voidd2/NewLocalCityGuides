@@ -201,6 +201,8 @@ export function Header() {
                   <MenuLink href="/" onClick={() => setMenuOpen(false)}>{t("nav.home")}</MenuLink>
                   <MenuLink href="/routes" onClick={() => setMenuOpen(false)}>{t("nav.routes")}</MenuLink>
                   <MenuLink href="/ontdek" onClick={() => setMenuOpen(false)}>{t("nav.ontdek")}</MenuLink>
+                  <MenuLink href="/city-guide-leiden" onClick={() => setMenuOpen(false)}>{t("nav.cityGuide")}</MenuLink>
+                  <MenuLink href="/blog" onClick={() => setMenuOpen(false)}>{t("nav.blog")}</MenuLink>
                   <MenuLink href="/pricing" onClick={() => setMenuOpen(false)}>{t("nav.pricing")}</MenuLink>
                   <div className="pt-3 mt-3 border-t border-white/10">
                     {!isLoading && (

@@ -16,7 +16,9 @@
     "myAccount": "Mijn account",
     "login": "Inloggen",
     "dashboard": "Dashboard",
-    "aboutCity": "Over Leiden"
+    "aboutCity": "Over Leiden",
+    "cityGuide": "Stadsgids Leiden",
+    "blog": "Blog"
   },
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
@@ -390,7 +392,10 @@
     "terms": "Gebruiksvoorwaarden",
     "allRightsReserved": "Alle rechten voorbehouden.",
     "routes": "Routes",
-    "discover": "Ontdek"
+    "discover": "Ontdek",
+    "cityGuide": "Stadsgids Leiden",
+    "tours": "Leiden tours",
+    "blog": "Blog"
   },
   "privacyPage": {
     "title": "Privacybeleid",
@@ -406,6 +411,7 @@
     "servicesTitle": "Externe diensten",
     "servicesMap": "De interactieve kaart haalt kaarttegels bij OpenFreeMap op. De provider ontvangt daarbij technische verbindingsgegevens, zoals je IP-adres.",
     "servicesGoogle": "Google Maps wordt pas geopend wanneer je zelf op een navigatielink drukt.",
+    "servicesNewsletter": "Wanneer je je inschrijft voor de nieuwsbrief, wordt je e-mailadres na toestemming verwerkt door Resend. Je kunt je altijd uitschrijven.",
     "cookiesTitle": "Cookies en analyse",
     "cookiesText": "Er zijn momenteel geen advertentie- of analysecookies actief. Noodzakelijke browseropslag ondersteunt de kernfuncties van de app.",
     "contactTitle": "Contact",
@@ -677,6 +683,30 @@
     "backHome": "Terug naar home",
     "viewRoutes": "Bekijk routes",
     "tryAgain": "Opnieuw proberen"
+  },
+  "newsletter": {
+    "eyebrow": "Leiden in je inbox",
+    "title": "Nieuwe routes en lokale tips",
+    "description": "Ontvang af en toe een nieuwe wandeling, marktupdate of lokaal verhaal. Geen dagelijkse reclame.",
+    "emailLabel": "E-mailadres",
+    "emailPlaceholder": "jij@voorbeeld.nl",
+    "button": "Inschrijven",
+    "submitting": "Bezig...",
+    "consent": "Ik geef toestemming om e-mailupdates te ontvangen en kan mij altijd uitschrijven.",
+    "success": "Je inschrijving is gelukt.",
+    "error": "Inschrijven lukt nu niet. Probeer het later opnieuw."
+  },
+  "sharing": {
+    "share": "Deel route",
+    "copied": "Link gekopieerd"
+  },
+  "reviewPreview": {
+    "label": "Voorbeeldweergave",
+    "title": "Reviews komen binnenkort",
+    "description": "Onderstaande kaarten tonen hoe beoordelingen straks worden weergegeven. Dit zijn geen echte klantreviews en tellen niet mee als waardering.",
+    "one": "Duidelijke route en prettig om in eigen tempo te lopen.",
+    "two": "De lokale verhalen geven de plekken meer betekenis.",
+    "three": "Handig dat je na een pauze vanaf je huidige locatie verder kunt."
   },
   "customRoute": {
     "moreAboutSpot": "Meer over deze plek",

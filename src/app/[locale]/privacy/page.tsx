@@ -40,6 +40,7 @@ export default async function PrivacyPage({
           <ul className="list-disc pl-5 space-y-1">
             <li>{t("servicesMap")}</li>
             <li>{t("servicesGoogle")}</li>
+            <li>{t("servicesNewsletter")}</li>
           </ul>
 
           <h2 className="text-lg font-bold text-navy-800 mt-6">{t("cookiesTitle")}</h2>

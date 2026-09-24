@@ -8,6 +8,7 @@ import { saveRoute } from "@/lib/saved-routes";
 import { getLocationStory } from "@/data/stories";
 import { optimizeRouteOrder } from "@/lib/route-engine";
 import { useGeolocation } from "@/lib/use-geolocation";
+import { ShareButton } from "@/components/sharing/ShareButton";
 
 const MUST_SEE_IDS = ["L001", "L006", "L003", "L010"];
 
@@ -188,13 +189,14 @@ function LocationCard({
   );
 }
 
-export function CustomRouteBuilder() {
+export function CustomRouteBuilder({ initialStops = [], initialName = "" }: { initialStops?: string[]; initialName?: string }) {
   const tRoutes = useTranslations("routes");
   const tCustom = useTranslations("customRoute");
+  const locale = useLocale();
   const router = useRouter();
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>(initialStops);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [routeName, setRouteName] = useState("");
+  const [routeName, setRouteName] = useState(initialName);
   const gps = useGeolocation();
 
   const toggle = useCallback((id: string) => {
@@ -376,6 +378,12 @@ export function CustomRouteBuilder() {
                         </svg>
                         {tCustom("saveForLater")}
                       </button>
+                      <ShareButton
+                        title={routeName.trim() || tCustom("defaultRouteName")}
+                        text={tRoutes("customRouteDesc")}
+                        url={`/${locale}/routes/custom?stops=${orderedRoute.map((location) => location.id).join(",")}&name=${encodeURIComponent(routeName.trim() || tCustom("defaultRouteName"))}`}
+                        className="w-full border-navy-800/30 text-navy-800 hover:bg-navy-800/5"
+                      />
                     </div>
                   ) : (
                     <p className="text-xs text-orange-500 text-center font-medium py-2">

@@ -11,6 +11,7 @@ import { saveRoute, getSavedRoutes } from "@/lib/saved-routes";
 import { getSchaapsvisRouteCopy, type SupportedLocale } from "@/data/schaapsvis";
 import type { MapPin } from "@/components/map/MapLibreMap";
 import { insertAtSmallestDetour } from "@/lib/route-engine";
+import { ShareButton } from "@/components/sharing/ShareButton";
 
 const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -29,6 +30,7 @@ const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
 export function RouteDetail({ route }: { route: RouteData }) {
   const t = useTranslations("routes");
   const tCommon = useTranslations("common");
+  const tReview = useTranslations("reviewPreview");
   const locale = useLocale() as SupportedLocale;
 
   const tabLabels: Record<(typeof tabs)[number], string> = {
@@ -116,15 +118,9 @@ export function RouteDetail({ route }: { route: RouteData }) {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 mt-3 text-sm text-white/80">
-              <div className="flex items-center gap-0.5">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 ${star <= 4 ? "text-yellow-400" : "text-white/30"}`}>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-                <span className="ml-1 text-xs">4,8 ({reviewsWithText.length + starsOnlyReviews.length} reviews)</span>
-              </div>
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-white/80">
+              <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs">{tReview("title")}</span>
+              <ShareButton title={route.title} text={route.subtitle} className="border-white/30 text-white hover:bg-white/10" />
             </div>
 
             <div className="flex items-center gap-6 mt-5 text-center">
@@ -556,6 +552,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
   );
 }
 
+/* Legacy placeholder review dataset retained only in history; excluded from the compiled application.
 const reviewsWithText: { name: string; text: string; rating: number }[] = [
   { name: "Familie de Jong", text: "Super leuke tour! De video's maken de geschiedenis levend. Onze kinderen vonden het geweldig!", rating: 5 },
   { name: "Mark V.", text: "Fijn dat je op je eigen tempo kunt lopen. De verborgen hofjes waren een echte verrassing.", rating: 5 },
@@ -656,45 +653,23 @@ function StarRow({ rating, small }: { rating: number; small?: boolean }) {
 
 function ReviewsTab() {
   const t = useTranslations("routes");
-  const [showAll, setShowAll] = useState(false);
+  const tReview = useTranslations("reviewPreview");
+  const [showAll, setShowAll] = useState(true);
   const totalReviews = reviewsWithText.length + starsOnlyReviews.length;
-  const allRatings = [...reviewsWithText.map((r) => r.rating), ...starsOnlyReviews.map((r) => r.rating)];
-  const avg = (allRatings.reduce((a, b) => a + b, 0) / allRatings.length).toFixed(1).replace(".", ",");
 
-  const ratingCounts = [0, 0, 0, 0, 0];
-  allRatings.forEach((r) => { ratingCounts[r - 1]++; });
-
-  const visibleWithText = showAll ? reviewsWithText : reviewsWithText.slice(0, 10);
-  const visibleStarsOnly = showAll ? starsOnlyReviews : starsOnlyReviews.slice(0, 10);
+  const visibleWithText = ["one", "two", "three"].map((key, index) => ({
+    name: `${tReview("label")} ${index + 1}`,
+    text: tReview(key),
+    rating: 5,
+  }));
+  const visibleStarsOnly = starsOnlyReviews.slice(0, 0);
 
   return (
     <div>
-      <div className="flex items-start gap-5 mb-6">
-        <div>
-          <span className="text-4xl font-bold text-navy-800">{avg}</span>
-          <div className="mt-1">
-            <StarRow rating={Math.round(parseFloat(avg.replace(",", ".")))} />
-          </div>
-          <p className="text-xs text-gray-500 mt-1">{totalReviews} reviews</p>
-        </div>
-        <div className="flex-1 space-y-1.5 pt-1">
-          {[5, 4, 3, 2, 1].map((stars) => {
-            const count = ratingCounts[stars - 1];
-            const pct = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
-            return (
-              <div key={stars} className="flex items-center gap-2">
-                <span className="text-[11px] text-gray-500 w-3 text-right">{stars}</span>
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 text-yellow-400 shrink-0">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-yellow-400 rounded-full" style={{ width: `${pct}%` }} />
-                </div>
-                <span className="text-[11px] text-gray-400 w-6 text-right">{count}</span>
-              </div>
-            );
-          })}
-        </div>
+      <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-700">{tReview("label")}</p>
+        <h3 className="mt-1 text-lg font-extrabold text-navy-800">{tReview("title")}</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-600">{tReview("description")}</p>
       </div>
 
       <div className="space-y-3 mb-4">
@@ -745,6 +720,48 @@ function ReviewsTab() {
           {t("showAllReviews", { count: totalReviews })}
         </button>
       )}
+    </div>
+  );
+}
+*/
+
+function PreviewStarRow() {
+  return (
+    <div className="flex gap-0.5" aria-hidden="true">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <svg key={star} viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3 text-gray-300">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function ReviewsTab() {
+  const tReview = useTranslations("reviewPreview");
+  const examples = ["one", "two", "three"] as const;
+
+  return (
+    <div>
+      <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-700">{tReview("label")}</p>
+        <h3 className="mt-1 text-lg font-extrabold text-navy-800">{tReview("title")}</h3>
+        <p className="mt-2 text-sm leading-6 text-slate-600">{tReview("description")}</p>
+      </div>
+      <div className="space-y-3">
+        {examples.map((key, index) => (
+          <div key={key} className="rounded-xl bg-gray-50 p-4">
+            <div className="mb-2 flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-100 text-xs font-bold text-orange-700">{index + 1}</div>
+              <div>
+                <p className="text-sm font-medium text-navy-800">{tReview("label")} {index + 1}</p>
+                <PreviewStarRow />
+              </div>
+            </div>
+            <p className="text-sm text-gray-600">{tReview(key)}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
