@@ -17,6 +17,8 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - Burcht, Vismarkt, Koornbrug, Blauwe Steen, Gravensteen en Pieterskerk.
 - Pilgrims/Brewster, Jean Pesijnhofje, Buskruitramp/Van der Werffpark.
 - Hortus, Weddesteeg, Leidens Ontzet, Wevershuis en Academiegebouw.
+- [ ] Maak per belangrijke locatie een actuele foto en een historisch beeld voor de vroeger/nu-slider.
+- AI-impressies moeten als impressie worden gelabeld; L014 gebruikt uitsluitend rechtenvrij archiefmateriaal. Alle beeldbriefings en de werkwijze staan in `docs/STORY-IMAGES-AND-SLIDERS.md`.
 
 ### Lokale plekken en marketing
 
@@ -87,6 +89,9 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 - [x] Homepage herbouwd voor conversie en bestaande about-content samengevoegd.
 - [x] GPS-start, hervatten, route-optimalisatie en MapLibre-kaart toegevoegd.
+- [x] MapLibre-worker voor Next.js/Turbopack gerepareerd en een zichtbare kaartfallback toegevoegd.
+- [x] Lange locatieverhalen opgedeeld in samenvatting, hoofdstukken en inklapbare verdiepingen.
+- [x] Vroeger/nu-beeldslider en concrete `{ IMAGE: ... }`-briefings toegevoegd.
 - [x] Schaapsvishandel schakelt tussen woensdagmarkt, zaterdagmarkt en Herenstraat 48.
 - [x] Op 3 oktober vervangt de route Singels & Stad de Hortus door Leidens Ontzet.
 - [x] C052 Nieuwe Rijn-markt verschijnt alleen woensdag en zaterdag van 08:00 tot 17:00 Leidse tijd.
@@ -95,4 +100,4 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] PWA-basis, foutpagina's, cookie-uitleg, nieuwsbriefkoppeling en route-sharing toegevoegd.
 - [x] Donkere modus bewust afgewezen door de gebruiker.
 
-Onderhoudsinformatie staat in `docs/GPS-ROUTES-AND-MAPS.md`, `docs/SEO-AI-CONTENT-GUIDE.md` en `docs/SEO-CONTENT-AND-NEWSLETTER.md`.
+Onderhoudsinformatie staat in `docs/GPS-ROUTES-AND-MAPS.md`, `docs/STORY-IMAGES-AND-SLIDERS.md`, `docs/SEO-AI-CONTENT-GUIDE.md` en `docs/SEO-CONTENT-AND-NEWSLETTER.md`.

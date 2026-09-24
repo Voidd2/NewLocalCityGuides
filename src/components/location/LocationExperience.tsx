@@ -6,103 +6,10 @@ import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
 import { getLocationStory } from "@/data/stories";
+import { getStoryMedia } from "@/data/story-media";
+import { buildStorySummary, parseStoryText, type ParsedStory } from "@/lib/story-format";
 import { LocationSkeleton } from "@/components/ui/PageSkeletons";
-
-interface StorySection {
-  heading: string | null;
-  paragraphs: string[];
-}
-
-interface ParsedStory {
-  sections: StorySection[];
-  facts: string[];
-  sources: string[];
-}
-
-function isLikelyHeading(text: string): boolean {
-  if (text.length > 80) return false;
-  if (text.endsWith(".")) return false;
-  if (text.split(/\s+/).length >= 12) return false;
-  return true;
-}
-
-function parseStoryText(text: string): ParsedStory {
-  const blocks = text.split("\n\n").map((b) => b.trim()).filter(Boolean);
-  const sections: StorySection[] = [];
-  const facts: string[] = [];
-  const sources: string[] = [];
-  let mode: "main" | "facts" | "sources" = "main";
-  let currentSection: StorySection = { heading: null, paragraphs: [] };
-
-  for (const block of blocks) {
-    if (block.toUpperCase().startsWith("AANVULLENDE FEITEN")) {
-      if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
-        sections.push(currentSection);
-        currentSection = { heading: null, paragraphs: [] };
-      }
-      mode = "facts";
-      for (const line of block.split("\n").slice(1)) {
-        const c = line.replace(/^\*\s*/, "").trim();
-        if (c) facts.push(c);
-      }
-      continue;
-    }
-    if (block.toUpperCase().startsWith("BRONNEN")) {
-      if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
-        sections.push(currentSection);
-        currentSection = { heading: null, paragraphs: [] };
-      }
-      mode = "sources";
-      for (const line of block.split("\n").slice(1)) {
-        if (line.trim()) sources.push(line.trim());
-      }
-      continue;
-    }
-    if (mode === "facts") {
-      for (const line of block.split("\n")) {
-        const c = line.replace(/^\*\s*/, "").trim();
-        if (c) facts.push(c);
-      }
-      continue;
-    }
-    if (mode === "sources") {
-      for (const line of block.split("\n")) {
-        if (line.trim()) sources.push(line.trim());
-      }
-      continue;
-    }
-
-    if (isLikelyHeading(block)) {
-      if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
-        sections.push(currentSection);
-      }
-      currentSection = { heading: block, paragraphs: [] };
-    } else {
-      currentSection.paragraphs.push(block);
-    }
-  }
-
-  if (currentSection.heading !== null || currentSection.paragraphs.length > 0) {
-    sections.push(currentSection);
-  }
-
-  return { sections, facts, sources };
-}
-
-function StoryImagePlaceholder({ description }: { description: string }) {
-  return (
-    <div className="my-6 bg-gray-100 rounded-xl aspect-[16/9] flex flex-col items-center justify-center border-2 border-dashed border-gray-300">
-      <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-gray-400 mb-2" stroke="currentColor" strokeWidth="1.5">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <circle cx="8.5" cy="8.5" r="1.5" />
-        <path d="M21 15l-5-5L5 21" />
-      </svg>
-      <p className="text-xs text-gray-400 font-medium px-4 text-center">
-        --HIER IMAGE VAN {description}--
-      </p>
-    </div>
-  );
-}
+import { BeforeAfterSlider } from "@/components/story/BeforeAfterSlider";
 
 type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
 
@@ -119,7 +26,13 @@ function StoryView({
   t: (key: string) => string;
   onNavigate: (s: ExperienceState) => void;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const media = getStoryMedia(location.id, location.name);
+  const summary = parsedStory ? buildStorySummary(parsedStory) : [];
+  const copy = locale === "de"
+    ? { story: "Die Geschichte", summary: "Kurz zusammengefasst", continue: "Diesen Teil weiterlesen", part: "Teil" }
+    : locale === "en"
+      ? { story: "The story", summary: "In brief", continue: "Continue reading this section", part: "Part" }
+      : { story: "Het verhaal", summary: "Kort samengevat", continue: "Lees dit deel verder", part: "Deel" };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
@@ -141,97 +54,98 @@ function StoryView({
               </h2>
             )}
             <p className="text-hand text-orange-500 -rotate-1 mb-5">
-              {locale === "de" ? "Die Geschichte" : locale === "en" ? "The story" : "Het verhaal"}
+              {copy.story}
             </p>
 
-            {titleSection.paragraphs[0] && (
-              <p className="text-base text-gray-700 leading-relaxed font-medium mb-4">
-                {titleSection.paragraphs[0]}
-              </p>
+            {summary.length > 0 && (
+              <section className="mb-5 rounded-2xl border border-orange-200 bg-orange-50 p-4">
+                <h3 className="mb-2 text-sm font-extrabold text-navy-800">{copy.summary}</h3>
+                <ul className="space-y-2">
+                  {summary.map((item) => (
+                    <li key={item} className="flex gap-2 text-sm leading-relaxed text-gray-700">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             )}
 
-            {!expanded && (
-              <button
-                onClick={() => setExpanded(true)}
-                className="w-full bg-navy-800 hover:bg-navy-900 text-white font-semibold py-3 rounded-full text-sm transition-colors mb-6 flex items-center justify-center gap-2"
-              >
-                {locale === "de" ? "Vollstandige Geschichte lesen" : locale === "en" ? "Read full story" : "Lees het hele verhaal"}
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-                </svg>
-              </button>
-            )}
+            <BeforeAfterSlider
+              current={media.current}
+              historical={media.historical}
+              locale={locale}
+              historicalIsAiAllowed={media.historicalIsAiAllowed}
+            />
 
-            {expanded && (
-              <>
-                {titleSection.paragraphs.slice(1).map((p, i) => (
-                  <p key={`intro-${i}`} className="text-sm text-gray-600 leading-relaxed mb-3">
-                    {p}
-                  </p>
-                ))}
-
-                <StoryImagePlaceholder description={`${location.name} - overzichtsfoto`} />
-
-                {bodySections.map((section, si) => (
-                  <div key={si}>
-                    {section.heading && (
-                      <h3 className="text-lg font-bold text-navy-800 mt-8 mb-3">
-                        {section.heading}
-                      </h3>
-                    )}
-
-                    <StoryImagePlaceholder
-                      description={section.heading || `${location.name} deel ${si + 2}`}
-                    />
-
-                    {section.paragraphs.map((p, pi) => (
-                      <p key={pi} className="text-sm text-gray-600 leading-relaxed mb-3">
-                        {p}
-                      </p>
-                    ))}
-                  </div>
-                ))}
-
-                {parsedStory.facts.length > 0 && (
-                  <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-6 mb-4">
-                    <h4 className="text-sm font-bold text-navy-800 mb-3">
-                      {locale === "de" ? "Wussten Sie das?" : locale === "en" ? "Did you know?" : "Wist je dat?"}
-                    </h4>
-                    <ul className="space-y-2">
-                      {parsedStory.facts.map((fact, i) => (
-                        <li key={i} className="text-xs text-gray-600 flex gap-2">
-                          <span className="text-orange-400 mt-0.5 shrink-0">&#8226;</span>
-                          <span>{fact}</span>
-                        </li>
+            {titleSection.paragraphs.length > 0 && (
+              <section className="mb-4 rounded-2xl border border-gray-200 bg-white p-5">
+                <p className="text-sm font-medium leading-relaxed text-gray-700">{titleSection.paragraphs[0]}</p>
+                {titleSection.paragraphs.length > 1 && (
+                  <details className="group mt-3">
+                    <summary className="cursor-pointer list-none text-sm font-bold text-orange-600">
+                      {copy.continue}
+                    </summary>
+                    <div className="mt-4 space-y-3 border-t border-gray-100 pt-4">
+                      {titleSection.paragraphs.slice(1).map((paragraph, index) => (
+                        <p key={index} className="text-sm leading-relaxed text-gray-600">{paragraph}</p>
                       ))}
-                    </ul>
-                  </div>
+                    </div>
+                  </details>
                 )}
+              </section>
+            )}
 
-                {parsedStory.sources.length > 0 && (
-                  <div className="mb-6">
-                    <p className="text-[10px] uppercase tracking-wide text-gray-400 mb-1">
-                      {locale === "de" ? "Quellen" : locale === "en" ? "Sources" : "Bronnen"}
-                    </p>
-                    {parsedStory.sources.map((source, i) => (
-                      <p key={i} className="text-[10px] text-gray-400">{source}</p>
-                    ))}
-                  </div>
-                )}
+            <div className="space-y-4">
+              {bodySections.map((section, sectionIndex) => (
+                <section key={`${section.heading}-${sectionIndex}`} className="rounded-2xl border border-gray-200 bg-white p-5">
+                  <h3 className="mb-3 text-lg font-extrabold leading-snug text-navy-800">
+                    {section.heading || `${copy.part} ${sectionIndex + 2}`}
+                  </h3>
+                  {section.paragraphs[0] && (
+                    <p className="text-sm leading-relaxed text-gray-700">{section.paragraphs[0]}</p>
+                  )}
+                  {section.paragraphs.length > 1 && (
+                    <details className="mt-3">
+                      <summary className="cursor-pointer list-none text-sm font-bold text-orange-600">{copy.continue}</summary>
+                      <div className="mt-4 space-y-3 border-t border-gray-100 pt-4">
+                        {section.paragraphs.slice(1).map((paragraph, paragraphIndex) => (
+                          <p key={paragraphIndex} className="text-sm leading-relaxed text-gray-600">{paragraph}</p>
+                        ))}
+                      </div>
+                    </details>
+                  )}
+                </section>
+              ))}
+            </div>
 
-                <button
-                  onClick={() => {
-                    setExpanded(false);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  className="text-sm text-orange-500 font-semibold mb-4 flex items-center gap-1"
-                >
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                    <path fillRule="evenodd" d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z" clipRule="evenodd" />
-                  </svg>
-                  {locale === "de" ? "Weniger anzeigen" : locale === "en" ? "Show less" : "Minder lezen"}
-                </button>
-              </>
+            {parsedStory.facts.length > 0 && (
+              <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-6 mb-4">
+                <h4 className="text-sm font-bold text-navy-800 mb-3">
+                  {locale === "de" ? "Wussten Sie das?" : locale === "en" ? "Did you know?" : "Wist je dat?"}
+                </h4>
+                <ul className="space-y-2">
+                  {parsedStory.facts.map((fact, i) => (
+                    <li key={i} className="text-xs text-gray-600 flex gap-2">
+                      <span className="text-orange-400 mt-0.5 shrink-0">&#8226;</span>
+                      <span>{fact}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {parsedStory.sources.length > 0 && (
+              <details className="my-6 rounded-xl bg-gray-50 p-4">
+                <summary className="cursor-pointer text-xs font-bold uppercase tracking-wide text-gray-500">
+                  {locale === "de" ? "Quellen" : locale === "en" ? "Sources" : "Bronnen"}
+                </summary>
+                <div className="mt-3 space-y-1">
+                  {parsedStory.sources.map((source, i) => (
+                    <p key={i} className="text-[11px] leading-relaxed text-gray-500">{source}</p>
+                  ))}
+                </div>
+              </details>
             )}
           </>
         );

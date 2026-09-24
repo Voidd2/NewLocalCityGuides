@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import * as maplibregl from "maplibre-gl";
 import type { GeoJSONSource, Map as MapLibreInstance } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -19,6 +20,10 @@ const PIN_SOURCE = "ylcg-pins";
 const ROUTE_SOURCE = "ylcg-route";
 const USER_SOURCE = "ylcg-user";
 
+// Turbopack cannot currently serve MapLibre's split worker bundle reliably.
+// The predev/prebuild script copies both worker modules to this stable URL.
+maplibregl.setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
+
 export function MapLibreMap({
   pins,
   selectedId,
@@ -32,9 +37,11 @@ export function MapLibreMap({
   routeCoordinates?: GeoPoint[];
   userLocation?: GeoPoint | null;
 }) {
+  const t = useTranslations("common");
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapLibreInstance | null>(null);
   const selectRef = useRef(onSelectPin);
+  const [mapStatus, setMapStatus] = useState<"loading" | "ready" | "error">("loading");
 
   useEffect(() => {
     selectRef.current = onSelectPin;
@@ -89,7 +96,12 @@ export function MapLibreMap({
     map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "bottom-right");
     map.addControl(new maplibregl.GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true }), "bottom-right");
 
+    map.on("error", () => {
+      if (!map.loaded()) setMapStatus("error");
+    });
+
     map.on("load", () => {
+      setMapStatus("ready");
       map.addSource(PIN_SOURCE, { type: "geojson", data: pointData, cluster: true, clusterMaxZoom: 15, clusterRadius: 45 });
       map.addLayer({
         id: "ylcg-clusters",
@@ -210,5 +222,30 @@ export function MapLibreMap({
     if (pin) mapRef.current?.easeTo({ center: [pin.lng, pin.lat], zoom: Math.max(mapRef.current.getZoom(), 16) });
   }, [pins, selectedId]);
 
-  return <div ref={containerRef} className="h-full w-full overflow-hidden rounded-xl" aria-label="Interactive map" />;
+  return (
+    <div className="relative h-full w-full overflow-hidden rounded-xl bg-gray-100">
+      <div ref={containerRef} className="h-full w-full" aria-label={t("interactiveMapLabel")} />
+
+      {mapStatus === "loading" && (
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gray-100 text-sm font-medium text-gray-500">
+          {t("loadingMap")}
+        </div>
+      )}
+
+      {mapStatus === "error" && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-white p-6 text-center">
+          <p className="font-bold text-navy-800">{t("mapLoadError")}</p>
+          <p className="max-w-sm text-sm text-gray-500">{t("mapLoadErrorDesc")}</p>
+          <a
+            href="https://www.openstreetmap.org/#map=15/52.1596/4.4909"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-navy-800 px-5 py-2.5 text-sm font-semibold text-white"
+          >
+            {t("openFallbackMap")}
+          </a>
+        </div>
+      )}
+    </div>
+  );
 }
