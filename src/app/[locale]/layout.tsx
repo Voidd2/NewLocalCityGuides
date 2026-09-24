@@ -76,6 +76,7 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        <link rel="alternate" type="application/rss+xml" title="YourLocalCityGuide Blog" href="/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
       <body className="flex flex-col min-h-screen bg-navy-900 pb-16 md:pb-0">

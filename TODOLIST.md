@@ -261,6 +261,10 @@ Save video briefs in: `content/video-briefs/`
 - [x] Multilingual SEO landing pages for city guide and Leiden tours
 - [x] Multilingual blog hub with initial topic cluster and Article/FAQ structured data
 - [x] Blog maintenance and 12-week content plan in `docs/SEO-CONTENT-AND-NEWSLETTER.md`
+- [x] Central Leiden SEO hub and multilingual "things to do" landing page
+- [x] Dedicated multilingual Schaapsvishandel entity page with market-day and shop information
+- [x] AI crawler guidance, `llms.txt`, RSS feed, breadcrumbs and improved internal links
+- [x] Public-versus-premium content rules documented in `docs/SEO-AI-CONTENT-GUIDE.md`
 
 ### 4.5 Performance and polish
 - [x] Skeleton loaders for routes, locations, map

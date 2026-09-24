@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { blogPosts, getBlogPost } from "@/data/seo-content";
 import { locales } from "@/i18n/config";
 import { asLocale, createDynamicMetadata, localizedUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
@@ -30,7 +31,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   const url = localizedUrl(locale, `/blog/${post.slug}`);
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: post.title[locale], description: post.description[locale], image: `${SITE_URL}${post.image}`, datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: locale, mainEntityOfPage: url, author: { "@type": "Organization", name: SITE_NAME }, publisher: { "@type": "Organization", name: SITE_NAME } }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title[locale], description: post.description[locale], image: `${SITE_URL}${post.image}`, datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: locale, mainEntityOfPage: url, author: { "@type": "Organization", name: SITE_NAME }, publisher: { "@type": "Organization", name: SITE_NAME } }} />
       <article>
         <header className="bg-navy-900 px-4 py-10 text-white md:py-16">
           <div className="mx-auto max-w-4xl">
@@ -45,8 +46,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <Image src={post.image} alt="" fill priority sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover" />
         </div>
         <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
+          <Breadcrumbs locale={locale} items={[{ label: labels.back, href: "/blog" }, { label: post.title[locale] }]} />
           {post.sections.map((section, index) => (
-            <section key={section.heading[locale]} className={index ? "mt-12" : ""}>
+            <section key={section.heading[locale]} className={index ? "mt-12" : "mt-10"}>
               <h2 className="text-2xl font-extrabold text-navy-800 md:text-3xl">{section.heading[locale]}</h2>
               <div className="mt-5 space-y-5 text-base leading-8 text-slate-600">{section.paragraphs[locale].map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
               {section.bullets && <ul className="mt-6 space-y-3 rounded-2xl bg-orange-50 p-5">{section.bullets[locale].map((item) => <li key={item} className="flex gap-3 text-sm font-semibold text-navy-800"><span className="text-orange-500">✓</span>{item}</li>)}</ul>}
@@ -56,6 +58,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <Link href="/city-guide-leiden" className="rounded-full bg-navy-800 px-5 py-3 text-center text-sm font-bold text-white hover:bg-navy-900">City guide Leiden</Link>
             <Link href="/leiden-tours" className="rounded-full bg-orange-500 px-5 py-3 text-center text-sm font-bold text-white hover:bg-orange-600">Leiden tours</Link>
           </div>
+          <section className="mt-12 border-t border-warm-200 pt-8">
+            <h2 className="text-2xl font-extrabold text-navy-800">{locale === "nl" ? "Lees ook" : locale === "de" ? "Auch lesen" : "Read next"}</h2>
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              {blogPosts.filter((item) => item.slug !== post.slug).slice(0, 2).map((item) => (
+                <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-2xl border border-warm-200 p-5 font-bold text-navy-800 hover:border-orange-300 hover:text-orange-600">{item.title[locale]}</Link>
+              ))}
+            </div>
+          </section>
         </div>
       </article>
     </>

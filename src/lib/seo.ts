@@ -155,8 +155,15 @@ export function createDynamicMetadata({
       description,
       url: canonical,
       siteName: SITE_NAME,
+      locale: locale === "nl" ? "nl_NL" : locale === "en" ? "en_GB" : "de_DE",
       type: "website",
       images: [{ url: `${SITE_URL}${image ?? DEFAULT_IMAGE}`, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${SITE_URL}${image ?? DEFAULT_IMAGE}`],
     },
     robots: index ? { index: true, follow: true } : { index: false, follow: false },
   };

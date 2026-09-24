@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/config";
 import type { SeoLanding } from "@/data/seo-content";
+import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 export function SeoLandingPage({ page, locale }: { page: SeoLanding; locale: Locale }) {
   return (
@@ -27,8 +28,9 @@ export function SeoLandingPage({ page, locale }: { page: SeoLanding; locale: Loc
       </section>
 
       <article className="mx-auto max-w-4xl px-4 py-14 md:py-20">
+        <Breadcrumbs locale={locale} items={[{ label: "Leiden", href: "/leiden" }, { label: page.title[locale] }]} />
         {page.sections.map((section, index) => (
-          <section key={section.heading[locale]} className={index === 0 ? "" : "mt-14 border-t border-warm-200 pt-14"}>
+          <section key={section.heading[locale]} className={index === 0 ? "mt-10" : "mt-14 border-t border-warm-200 pt-14"}>
             <h2 className="text-2xl font-extrabold text-navy-800 md:text-3xl">{section.heading[locale]}</h2>
             <div className="mt-5 space-y-4 text-base leading-8 text-slate-600">
               {section.paragraphs[locale].map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -57,6 +59,12 @@ export function SeoLandingPage({ page, locale }: { page: SeoLanding; locale: Loc
             ))}
           </div>
         </section>
+
+        <nav aria-label={locale === "nl" ? "Meer over Leiden" : locale === "de" ? "Mehr über Leiden" : "More about Leiden"} className="mt-10 grid gap-3 sm:grid-cols-3">
+          <Link href="/leiden" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">Leiden</Link>
+          <Link href="/leiden/things-to-do" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">{locale === "nl" ? "Wat te doen" : locale === "de" ? "Aktivitäten" : "Things to do"}</Link>
+          <Link href="/leiden/schaapsvishandel" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">Schaapsvishandel</Link>
+        </nav>
       </article>
 
     </>
