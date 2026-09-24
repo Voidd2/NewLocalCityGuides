@@ -15,6 +15,9 @@ export interface RouteData {
   locationIds: string[];
   isLoop?: boolean;
   featuredLocalStop?: "schaapsvis-daily";
+  dateVariant?: "leidens-ontzet";
+  conditionalStops?: Array<"nieuwe-rijn-market">;
+  activeVariant?: "leidens-ontzet";
 }
 
 export const routes: RouteData[] = [
@@ -35,6 +38,7 @@ export const routes: RouteData[] = [
     locationIds: ["L001", "L012", "L002", "L003", "L004", "L006", "L005", "L007", "L008", "L011"],
     isLoop: true,
     featuredLocalStop: "schaapsvis-daily",
+    conditionalStops: ["nieuwe-rijn-market"],
   },
   {
     id: "buiten-de-stad",
@@ -52,6 +56,7 @@ export const routes: RouteData[] = [
     image: "/images/routes/10004-leiden-singel-cyclist.jpg",
     locationIds: ["L011", "L010", "L014", "L006", "L009", "L002", "L001", "L013"],
     isLoop: true,
+    dateVariant: "leidens-ontzet",
   },
   {
     id: "markt-en-ambacht",
@@ -70,6 +75,7 @@ export const routes: RouteData[] = [
     locationIds: ["L001", "L012", "L002", "L003", "L004", "L006", "L005", "L013"],
     isLoop: true,
     featuredLocalStop: "schaapsvis-daily",
+    conditionalStops: ["nieuwe-rijn-market"],
   },
 ];
 

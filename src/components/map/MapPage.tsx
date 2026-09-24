@@ -11,6 +11,7 @@ import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "
 import { MapSkeleton } from "@/components/ui/PageSkeletons";
 import { getVisibleSpots } from "@/data/local-spots";
 import type { SupportedLocale } from "@/data/schaapsvis";
+import { applyDateAwareRoute } from "@/data/route-conditions";
 
 const MapLibreMap = dynamic(() => import("./MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -126,18 +127,21 @@ export function MapPage() {
     ? locations.find((l) => l.id === addToRouteFor)
     : null;
 
-  const standardRoutesAsSaved: SavedRoute[] = standardRoutes.map((r) => ({
-    id: r.id,
-    name: r.title,
-    locationIds: r.locationIds,
+  const standardRoutesAsSaved: SavedRoute[] = standardRoutes.map((baseRoute) => {
+    const route = applyDateAwareRoute(baseRoute);
+    return {
+    id: route.id,
+    name: route.title,
+    locationIds: route.locationIds,
     createdAt: "",
     arrivedLocationIds: [],
-  }));
+  }; });
 
   const allRoutesForPicker = [...standardRoutesAsSaved, ...savedRoutes];
 
   const handleAddToExistingRoute = (routeId: string, locationId: string) => {
-    const isStandard = standardRoutes.find((r) => r.id === routeId);
+    const standardRoute = standardRoutes.find((r) => r.id === routeId);
+    const isStandard = standardRoute ? applyDateAwareRoute(standardRoute) : undefined;
 
     if (isStandard) {
       let existing = savedRoutes.find(

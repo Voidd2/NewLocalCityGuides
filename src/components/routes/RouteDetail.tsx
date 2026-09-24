@@ -12,6 +12,7 @@ import { getSchaapsvisRouteCopy, type SupportedLocale } from "@/data/schaapsvis"
 import type { MapPin } from "@/components/map/MapLibreMap";
 import { insertAtSmallestDetour } from "@/lib/route-engine";
 import { ShareButton } from "@/components/sharing/ShareButton";
+import { applyDateAwareRoute, getConditionalRouteStops } from "@/data/route-conditions";
 
 const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -27,7 +28,7 @@ const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m
 
 const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
 
-export function RouteDetail({ route }: { route: RouteData }) {
+export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
   const t = useTranslations("routes");
   const tCommon = useTranslations("common");
   const tReview = useTranslations("reviewPreview");
@@ -42,6 +43,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("overview");
   const { hasPaid, isLoading } = useAuth();
+  const route = useMemo(() => applyDateAwareRoute(baseRoute), [baseRoute]);
 
   const routeLocations = useMemo(
     () => route.locationIds.map(getLocationById).filter(Boolean),
@@ -52,6 +54,10 @@ export function RouteDetail({ route }: { route: RouteData }) {
     () => route.featuredLocalStop ? getSchaapsvisRouteCopy(locale) : null,
     [locale, route.featuredLocalStop],
   );
+  const conditionalStops = useMemo(
+    () => getConditionalRouteStops(route, locale),
+    [locale, route],
+  );
   const routePins = useMemo(() => {
     const pins: MapPin[] = routeLocations
       .filter((loc) => loc && loc.coords !== null)
@@ -59,23 +65,24 @@ export function RouteDetail({ route }: { route: RouteData }) {
     if (dailySchaapsvis?.spot.coords) {
       pins.push({ id: dailySchaapsvis.spot.id, name: dailySchaapsvis.spot.name, category: "Schaapsvishandel", kind: "spot", lat: dailySchaapsvis.spot.coords.lat, lng: dailySchaapsvis.spot.coords.lng });
     }
+    conditionalStops.forEach((stop) => pins.push({ id: stop.id, name: stop.name, category: stop.category, kind: "spot", lat: stop.coords.lat, lng: stop.coords.lng }));
     return pins;
-  }, [dailySchaapsvis, routeLocations]);
+  }, [conditionalStops, dailySchaapsvis, routeLocations]);
   const routeCoordinates = useMemo(() => {
     const base = routeLocations
       .filter((loc) => loc?.coords)
       .map((loc) => ({ id: loc!.id, coords: loc!.coords }));
-    const ordered = dailySchaapsvis?.spot.coords
-      ? insertAtSmallestDetour(base, { id: dailySchaapsvis.spot.id, coords: dailySchaapsvis.spot.coords })
-      : base;
+    let ordered = base;
+    if (dailySchaapsvis?.spot.coords) ordered = insertAtSmallestDetour(ordered, { id: dailySchaapsvis.spot.id, coords: dailySchaapsvis.spot.coords });
+    conditionalStops.forEach((stop) => { ordered = insertAtSmallestDetour(ordered, { id: stop.id, coords: stop.coords }); });
     return ordered.flatMap((item) => item.coords ? [item.coords] : []);
-  }, [dailySchaapsvis, routeLocations]);
+  }, [conditionalStops, dailySchaapsvis, routeLocations]);
 
   const [selectedPin, setSelectedPin] = useState<string | null>(null);
 
   const startRoute = () => {
     const existing = getSavedRoutes().find(
-      (savedRoute) => savedRoute.sourceRouteId === route.id ||
+      (savedRoute) => (savedRoute.sourceRouteId === route.id && savedRoute.locationIds.join(",") === route.locationIds.join(",")) ||
         (savedRoute.name === route.title && savedRoute.locationIds.join(",") === route.locationIds.join(",")),
     );
     if (existing) {
@@ -111,6 +118,9 @@ export function RouteDetail({ route }: { route: RouteData }) {
                 <div className="flex items-center gap-2 mb-1">
                   {route.popular && (
                     <span className="bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">{t("mostChosen")}</span>
+                  )}
+                  {route.activeVariant === "leidens-ontzet" && (
+                    <span className="bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">3 Oktober</span>
                   )}
                 </div>
                 <h1 className="text-2xl md:text-3xl font-bold">{route.title}</h1>
@@ -493,6 +503,17 @@ export function RouteDetail({ route }: { route: RouteData }) {
                   <p className="mt-1 text-sm leading-6 text-gray-600">{dailySchaapsvis.description}</p>
                 </Link>
               )}
+
+              {conditionalStops.map((stop) => (
+                <div key={stop.id} className="mb-5 rounded-2xl border-2 border-blue-200 bg-blue-50 p-4">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="rounded-full bg-blue-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">{locale === "nl" ? "Nu geopend" : locale === "de" ? "Jetzt geöffnet" : "Open now"}</span>
+                    <span className="text-xs font-semibold text-blue-700">08:00–17:00</span>
+                  </div>
+                  <h3 className="font-bold text-navy-800">{stop.name}</h3>
+                  <p className="mt-1 text-sm leading-6 text-gray-600">{stop.description}</p>
+                </div>
+              ))}
 
               <button
                 onClick={startRoute}

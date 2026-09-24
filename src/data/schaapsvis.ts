@@ -1,4 +1,5 @@
-import { localSpots, type LocalSpot } from "@/data/local-spots";
+import { localSpots, type LocalSpot } from "./local-spots";
+import { getLeidenTimeParts } from "./route-conditions";
 
 export type SupportedLocale = "nl" | "en" | "de";
 
@@ -9,9 +10,9 @@ const spotById = (id: string): LocalSpot => {
 };
 
 export function getActiveSchaapsvisSpot(now: Date = new Date()): LocalSpot {
-  const day = now.getDay();
-  if (day === 3) return spotById("S031");
-  if (day === 6) return spotById("S032");
+  const { weekday } = getLeidenTimeParts(now);
+  if (weekday === "Wed") return spotById("S031");
+  if (weekday === "Sat") return spotById("S032");
   return spotById("S030");
 }
 

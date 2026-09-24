@@ -1,308 +1,98 @@
-# YourLocalCityGuide - Task List
+# YourLocalCityGuide — openstaande taken
 
-Single prioritized list for any AI agent continuing this project.
-Read PROJECT-GUIDE.md first for architecture, design system and content rules.
+Lees voor werkzaamheden eerst `PROJECT-GUIDE.md`. Dit bestand bevat alleen nog openstaand werk en een korte samenvatting van wat al af is.
 
----
+## 1. Foto's van de gebruiker
 
-## PRIORITY 1: Images from the user
+Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever bij voorkeur liggende JPG- of WebP-bestanden van minimaal 1200 px breed en maximaal ongeveer 500 KB.
 
-The app uses placeholder codes (10001-10059). The user must deliver real photographs.
-Place all images in: `public/images/` with subdirectories below.
+### Eerst nodig
 
-### Folder structure
+- `public/images/spots/schaapsvis-winkel.jpg` — winkel aan Herenstraat 48.
+- `public/images/spots/schaapsvis-markt.jpg` — viskar op een Leidse marktdag.
+- Voeg één van deze later toe aan het Schaapsvishandel-blog en de bedrijfspagina; gebruik tot die tijd geen nep- of stockfoto alsof die van de zaak is.
 
-```
-public/images/
-  hero/           -- Homepage hero, tours hero
-  locations/      -- L001-L014 historical location photos
-  spots/          -- Local spots (museums, shops, markets, restaurants)
-  routes/         -- Route thumbnail/cover images
-  reviews/        -- Reviewer avatars (or remove avatar system)
-  cities/         -- Future city previews (Delft, Utrecht, Amsterdam, Den Haag)
-  app/            -- App preview screenshots for marketing sections
-```
+### Historische locaties
 
-### Images needed - Historical locations
+- Burcht, Vismarkt, Koornbrug, Blauwe Steen, Gravensteen en Pieterskerk.
+- Pilgrims/Brewster, Jean Pesijnhofje, Buskruitramp/Van der Werffpark.
+- Hortus, Weddesteeg, Leidens Ontzet, Wevershuis en Academiegebouw.
 
-| Code  | File name              | What to photograph                                       |
-|-------|------------------------|----------------------------------------------------------|
-| 10020 | locations/burcht.jpg   | De Burcht motteheuvel with stairs and city view          |
-| 10021 | locations/vismarkt.jpg | Vismarkt square, ideally on market day                   |
-| 10022 | locations/koornbrug.jpg| Koornbrug with covered gallery and canal                 |
-| 10023 | locations/blauwesteen.jpg | De Blauwe Steen in the pavement on Breestraat         |
-| 10024 | locations/gravensteen.jpg | Gravensteen facade from square                        |
-| 10025 | locations/pieterskerk.jpg | Pieterskerk exterior or interior                      |
-| 10026 | locations/pilgrims.jpg | Engelse Poort / William Brewster alley                   |
-| 10027 | locations/pesijnhofje.jpg | Jean Pesijnhofje courtyard from gate (respect privacy)|
-| 10028 | locations/buskruitramp.jpg | Van der Werffpark (explosion site)                   |
-| 10029 | locations/hortus.jpg   | Hortus Botanicus garden, greenhouses                     |
-| 10030 | locations/weddesteeg.jpg | Weddesteeg with Rembrandt mural                        |
-| 10031 | locations/ontzet.jpg   | 3 Oktober festivities or herring and white bread         |
-| 10032 | locations/wevershuis.jpg | Wevershuis interior with loom                          |
-| 10033 | locations/academiegebouw.jpg | Academiegebouw Leiden exterior                     |
+### Lokale plekken en marketing
 
-### Images needed - Local spots
+- Museum De Lakenhal, RMO, Boerhaave, Wereldmuseum, SieboldHuis en Naturalis.
+- Pilgrim Museum, Young Rembrandt Studio, Molenmuseum De Valk, CORPUS en Oude Sterrewacht.
+- Homepagebeelden, routecovers, app-screenshots en toekomstige stadsbeelden.
 
-| Spot                  | File name                    | What to photograph                        |
-|-----------------------|------------------------------|-------------------------------------------|
-| Schaapsvis Viswinkel  | spots/schaapsvis-winkel.jpg  | The fish shop at Herenstraat 48           |
-| Schaapsvis Viskar     | spots/schaapsvis-markt.jpg   | The fish cart on market day               |
-| Museum De Lakenhal    | spots/lakenhal.jpg           | Building exterior or main hall            |
-| Rijksmuseum v Oudheden| spots/rmo.jpg                | Egyptian temple or facade                 |
-| Boerhaave             | spots/boerhaave.jpg          | Anatomisch theater or entrance            |
-| Wereldmuseum          | spots/wereldmuseum.jpg       | Building or collection highlight          |
-| SieboldHuis           | spots/sieboldhuis.jpg        | Rapenburg facade or Japanese interior     |
-| Naturalis             | spots/naturalis.jpg          | T. rex or building exterior               |
-| Pilgrim Museum        | spots/pilgrim-museum.jpg     | Beschuitsteeg entrance                    |
-| Young Rembrandt       | spots/young-rembrandt.jpg    | Studio reconstruction                    |
-| Molenmuseum De Valk   | spots/devalk.jpg             | Windmill exterior                         |
-| Het Leids Wevershuis  | spots/wevershuis-spot.jpg    | Loom or facade                            |
-| Hortus Botanicus      | spots/hortus.jpg             | Garden panorama or greenhouse             |
-| CORPUS                | spots/corpus.jpg             | Building exterior                         |
-| Pieterskerk           | spots/pieterskerk-spot.jpg   | Interior or Robinson grave                |
-| Oude Sterrewacht      | spots/sterrewacht.jpg        | Observatory dome                          |
+## 2. Openstaande code en integraties
 
-### Images needed - Homepage and marketing
+### Affiliate-links
 
-| Code  | File name            | What to photograph                                |
-|-------|----------------------|---------------------------------------------------|
-| 10001 | hero/leiden-hero.jpg | Leiden canals with historic buildings (main hero)  |
-| 10002 | hero/gracht.jpg      | Canal with Pieterskerk in background               |
-| 10003 | hero/straat.jpg      | Atmospheric narrow street in centre                |
-| 10004 | hero/fietser.jpg     | Cyclist along Singel with trees                    |
-| 10005 | hero/hofje.jpg       | Hidden hofje with flowers                          |
-| 10006 | hero/pesijnhofje.jpg | Jean Pesijnhofje courtyard                         |
-| 10007 | hero/gezin.jpg       | Family walking along Leiden canal                  |
-| 10008 | hero/tours-hero.jpg  | Leiden canal panorama for tours page               |
+- [ ] Controleer en voeg geldige GetYourGuide-affiliate-links toe voor betaalde musea en attracties.
+- [ ] Laat iedere activiteit handmatig controleren voordat de link wordt gepubliceerd.
+- Partner-ID: `W9KB6MF`.
 
-### Images needed - Future cities
+### Video
 
-| Code  | File name              | What it shows                |
-|-------|------------------------|------------------------------|
-| 10010 | cities/delft.jpg       | Delft centre with Nieuwe Kerk|
-| 10011 | cities/utrecht.jpg     | Oudegracht Utrecht           |
-| 10012 | cities/amsterdam.jpg   | Amsterdam canals             |
-| 10013 | cities/denhaag.jpg     | Binnenhof Den Haag           |
+- [ ] Cloudflare Stream koppelen zodra accountgegevens en video-ID's beschikbaar zijn.
+- [ ] Video pas afspelen na de actie "Ik ben er"; geen autoplay.
+- [ ] Echte marketing-preview op de homepage plaatsen zodra videomateriaal beschikbaar is.
 
-### How to deliver images
+### Accounts en betalen
 
-1. Name files exactly as listed above (or ask the agent to rename)
-2. Minimum resolution: 1200px wide, landscape orientation preferred
-3. JPG or WebP format, keep file size under 500KB (compress if needed)
-4. Place in the correct subfolder under `public/images/`
-5. After adding images, tell the agent to update the placeholder codes in components
+- [ ] Testlogin vervangen door echte authenticatie.
+- [ ] Accounts, aankopen en route-toegang server-side opslaan.
+- [ ] Mollie of Stripe kiezen en iDEAL, kaart en wallets integreren.
+- [ ] Productievoorwaarden, privacy en herstel van aankopen testen.
 
----
+### Technische verbetering
 
-## PRIORITY 2: Code tasks (agent can do these now)
+- [ ] Bestaande `<img>`-elementen stapsgewijs vervangen door geoptimaliseerde Next.js-afbeeldingen.
+- [ ] Verouderde Next.js `middleware`-conventie migreren naar `proxy`.
+- [ ] Offline caching opnieuw beoordelen wanneer echte premium media wordt toegevoegd.
 
-### 2.1 Homepage redesign for conversion
-- [x] Move all content from `/about` page to the homepage (before paywall)
-- [x] Remove the `/about` page and route
-- [x] Create a catchy headline/title for YourLocalCityGuide on the hero
-- [x] Reorder homepage sections:
-  1. Hero with catchy title
-  2. Video preview ("Bekijk de preview video") -- ABOVE the "Over Leiden" block
-  3. "Zo werkt het" (how it works)
-  4. "Over Leiden" section
-  5. Populaire routes
-  6. "Maak je eigen route" card (clicking leads to blurred/paywall view)
-- [x] FAQ and practical tips sections added
-- [x] Updated navigation (header, footer, bottom nav) to remove about links
-- [x] Conversion polish (2026-09-23): one dominant hero CTA, supporting trust signals and clearer secondary route CTA
-- [x] Replaced visible homepage image/screenshot placeholders with real project imagery and product-style previews
-- [x] Made the preview card and popular route cards lead to relevant, browsable product pages
-- Focus on conversion: video tours, updated maps, best local spots, free booking help
-- Make it persuasive -- visitors should feel they NEED this app
+## 3. Contentproductie
 
-### 2.2 Affiliate link system (ticketUrl)
-- [x] Add `ticketUrl` field to `LocalSpot` interface in `src/data/local-spots.ts`
-- [x] Add GetYourGuide link to Hortus Botanicus (S011)
-- [x] Add ticket CTAs in the Ontdek detail views when `ticketUrl` is present
-- [ ] Research and add GetYourGuide affiliate links for all museums with paid entry:
-  - Museum De Lakenhal (S001)
-  - Rijksmuseum van Oudheden (S002)
-  - Rijksmuseum Boerhaave (S003)
-  - Wereldmuseum Leiden (S004)
-  - Japanmuseum SieboldHuis (S005)
-  - Naturalis (S006)
-  - Pilgrim Museum (S007)
-  - Young Rembrandt Studio (S008)
-  - Molenmuseum De Valk (S009)
-  - CORPUS (S012)
-  - Pieterskerk (S013)
-  - Oude Sterrewacht (S014)
-- Partner link format: `https://www.getyourguide.nl/leiden-l1275/[activity]/?partner_id=W9KB6MF&currency=EUR&travel_agent=1&cmp=share_to_earn`
+### Audio
 
-### 2.3 Expand museum/attraction descriptions
-Every museum and attraction in `src/data/local-spots.ts` needs MUCH more text:
-- Use bold subtitles to structure the description
-- Explain WHY to visit, what makes it special
-- Include practical details (what to see, how long, tips)
-- Make descriptions persuasive for visitors
-- [x] All museums expanded: S001-S014, S030/S031/S032
+- [ ] TTS-scripts in NL, EN en DE schrijven voor L001–L014.
+- Doel: 60–90 seconden per taal en locatie.
+- Opslaan in `content/audio-scripts/`.
 
-### 2.4 Route logic improvements
-- [x] GPS-based starting point detection: detect user location and suggest nearest route start
-- [x] Start route from current location instead of fixed start point
-- [x] Resume any route from any point the user is at
-- [x] Smart ordering: reorder unvisited stops based on where the user currently is
-- [x] Optimized standard route order and added the Markt & Ambacht route
-- [x] Day-aware Schaapsvishandel stop: market cart on Wednesday/Saturday, shop on other days
-- [x] Maintenance guide: `docs/GPS-ROUTES-AND-MAPS.md`
+### Video-briefs
 
-### 2.5 MapLibre GL JS integration
-- [x] Replace Leaflet/placeholder maps with an interactive MapLibre map
-- [x] Use real coordinates from locations.ts and local-spots.ts
-- [x] Category filters on map
-- [x] Cluster markers when zoomed out
-- [x] Click marker to see location card
-- [x] Walking route overlay and user position in walker mode
+- [ ] Briefs maken voor De Burcht, Koornbrug, Pieterskerk, Buskruitramp en Hortus.
+- [ ] Overige MVP-locaties blijven voorlopig audio-only.
+- Opslaan in `content/video-briefs/`.
 
-### 2.6 Video integration
-- Connect Cloudflare Stream for location videos
-- No autoplay -- only play after "Ik ben er" confirmation
-- Video player in location experience page
-- Video preview on homepage (marketing)
+### SEO-content — bewust gepauzeerd
 
----
+- [ ] Nieuwe artikelen over Leiden met kinderen, slecht weer, gratis activiteiten, weekenden en musea.
+- Eerst wachten op verdere instructie van de gebruiker.
+- Het bestaande Schaapsvishandel-artikel bevat wel adres, marktdagen, bezoekreden en een link naar de locatiepagina.
 
-## PRIORITY 3: Content creation (agent writes, user records/produces)
+### Reviews
 
-### 3.1 Audio tour scripts (TTS)
-Write text-to-speech scripts for each of the 14 MVP locations.
-Each script needs NL, EN, and DE versions.
-Save in: `content/audio-scripts/`
+- [ ] Echte beoordelingen verzamelen en pas daarna score- of Review-schema publiceren.
+- De huidige interface blijft duidelijk als voorbeeldweergave gemarkeerd.
 
-Scripts needed:
-- `content/audio-scripts/L001-burcht.md` -- De Burcht
-- `content/audio-scripts/L002-vismarkt.md` -- Vismarkt
-- `content/audio-scripts/L003-koornbrug.md` -- Koornbrug
-- `content/audio-scripts/L004-blauwesteen.md` -- De Blauwe Steen
-- `content/audio-scripts/L005-gravensteen.md` -- Gravensteen
-- `content/audio-scripts/L006-pieterskerk.md` -- Pieterskerk
-- `content/audio-scripts/L007-pilgrims.md` -- Pilgrims' quarter
-- `content/audio-scripts/L008-pesijnhofje.md` -- Jean Pesijnhofje
-- `content/audio-scripts/L009-buskruitramp.md` -- Buskruitramp 1807
-- `content/audio-scripts/L010-hortus.md` -- Hortus Botanicus
-- `content/audio-scripts/L011-weddesteeg.md` -- Weddesteeg / Rembrandt
-- `content/audio-scripts/L012-ontzet.md` -- Leidens Ontzet
-- `content/audio-scripts/L013-wevershuis.md` -- Het Leids Wevershuis
-- `content/audio-scripts/L014-cleveringa.md` -- Cleveringa / Academiegebouw
+## 4. Later
 
-Format per file:
-```
-# [Location Name] - Audio Tour Script
+- [ ] Meer steden: Delft, Utrecht, Amsterdam en Den Haag.
+- [ ] Fiets- en buitengebiedroutes voor onder andere Matilo en Meelfabriek.
+- [ ] Nieuwsbriefproductie activeren met echte Resend-omgevingsvariabelen.
+- [ ] Handmatige mobiele, toegankelijkheids- en linkcontrole door de gebruiker; voorlopig geen extra automatische QA-uitbreiding.
 
-## Nederlands (60-90 seconds)
-[Script text here]
+## Recent afgerond
 
-## English (60-90 seconds)
-[Script text here]
+- [x] Homepage herbouwd voor conversie en bestaande about-content samengevoegd.
+- [x] GPS-start, hervatten, route-optimalisatie en MapLibre-kaart toegevoegd.
+- [x] Schaapsvishandel schakelt tussen woensdagmarkt, zaterdagmarkt en Herenstraat 48.
+- [x] Op 3 oktober vervangt de route Singels & Stad de Hortus door Leidens Ontzet.
+- [x] C052 Nieuwe Rijn-markt verschijnt alleen woensdag en zaterdag van 08:00 tot 17:00 Leidse tijd.
+- [x] Meertalige Leiden-hub, SEO-landingspagina's, blog, sitemap, RSS, `llms.txt` en structured data toegevoegd.
+- [x] Publieke SEO-samenvattingen gescheiden van premium verhalen, media en routebeleving.
+- [x] PWA-basis, foutpagina's, cookie-uitleg, nieuwsbriefkoppeling en route-sharing toegevoegd.
+- [x] Donkere modus bewust afgewezen door de gebruiker.
 
-## Deutsch (60-90 seconds)
-[Script text here]
-```
-
-Content rules apply:
-- DEC-013: No superlatives unless verified
-- DEC-011: No AI reconstruction imagery references for L014
-- DEC-016: L014 must include what happened to Leiden's Jewish citizens
-- DEC-010: Only use verified facts from R01/R02 research
-
-### 3.2 Video brief scripts
-Determine which locations get video tours vs audio only.
-
-Video locations (most visited, most visual):
-- L001 De Burcht (panoramic view from top)
-- L003 Koornbrug (architectural details, ventilation holes)
-- L006 Pieterskerk (interior, Robinson grave)
-- L009 Buskruitramp (then-vs-now with archival prints)
-- L010 Hortus Botanicus (gardens, greenhouses, Clusius garden)
-
-Audio-only locations:
-- L002 Vismarkt
-- L004 De Blauwe Steen
-- L005 Gravensteen
-- L007 Pilgrims' quarter
-- L008 Jean Pesijnhofje
-- L011 Weddesteeg
-- L012 Leidens Ontzet
-- L013 Het Leids Wevershuis
-- L014 Cleveringa (no reconstruction imagery per DEC-011)
-
-Save video briefs in: `content/video-briefs/`
-
----
-
-## PRIORITY 4: Technical improvements
-
-### 4.1 PWA and offline support
-- [x] Service worker for offline access
-- [x] App manifest with brand colours and generated app icons
-- [x] Cache previously opened walking routes and same-origin assets for offline use
-- [x] Offline status banner and automatic request recovery
-
-### 4.2 Authentication
-- Replace localStorage test login with real auth (NextAuth.js)
-- User accounts, purchases, saved routes
-
-### 4.3 Payment integration
-- Stripe or Mollie for Dutch payments
-- iDEAL, credit card, Apple Pay, Google Pay
-- Purchase flow for route access
-
-### 4.4 SEO
-- [x] Auto-generated sitemap.xml with localized alternates
-- [x] Proper robots.txt with sitemap reference and protected-route exclusions
-- [x] JSON-LD structured data (Organization, WebSite, City, FAQ, TouristAttraction, LocalBusiness, TouristTrip)
-- [x] Unique titles, descriptions, canonicals and hreflang per page and language
-- [x] Multilingual SEO landing pages for city guide and Leiden tours
-- [x] Multilingual blog hub with initial topic cluster and Article/FAQ structured data
-- [x] Blog maintenance and 12-week content plan in `docs/SEO-CONTENT-AND-NEWSLETTER.md`
-- [x] Central Leiden SEO hub and multilingual "things to do" landing page
-- [x] Dedicated multilingual Schaapsvishandel entity page with market-day and shop information
-- [x] AI crawler guidance, `llms.txt`, RSS feed, breadcrumbs and improved internal links
-- [x] Public-versus-premium content rules documented in `docs/SEO-AI-CONTENT-GUIDE.md`
-
-### 4.5 Performance and polish
-- [x] Skeleton loaders for routes, locations, map
-- [x] Custom 404 and 500 error pages
-- [x] Privacy/cookie choice banner and localized disclosure
-- [x] Favicon and app icons with brand design
-- Dark mode support -- intentionally declined by the user
-- [x] Page transition animations with reduced-motion support
-
----
-
-## PRIORITY 5: Future features
-
-- More cities: Delft, Utrecht, Amsterdam, Den Haag
-- Cycling routes (for locations outside walking distance: Matilo, Meelfabriek)
-- Date-aware routes (3 Oktober special route swapping Hortus for Ontzet festivities)
-- Time-conditional stops (C052 Nieuwe Rijn market on market days only)
-- [x] Newsletter form and Resend audience integration (activation requires account environment variables)
-- [x] Review interface preview, clearly labelled until real user reviews exist
-- [x] Social sharing of curated and custom routes, including restorable custom route links
-
----
-
-## Completed tasks
-
-- [x] PROJECT-GUIDE.md created (consolidated agent reference)
-- [x] Schaapsvis split into 3 entries (S030 Viswinkel, S031 Woensdag markt, S032 Zaterdag markt)
-- [x] Hortus Botanicus description expanded with subtitles
-- [x] ticketUrl field added to LocalSpot interface
-- [x] GetYourGuide affiliate link added to Hortus
-- [x] Old planning files cleaned up (MASTER_V1, CLAUDE_TAKEN, CHATGPT_TASKS, etc.)
-- [x] CLAUDE.md updated to reference PROJECT-GUIDE.md
-- [x] 14 MVP locations selected and approved (L001-L014)
-- [x] 40+ local spots data created
-- [x] 6 walking routes created
-- [x] All pages built and compiling in NL/EN/DE
-- [x] Three-language routing with next-intl
-- [x] Design system implemented
-- [x] Test login system (demo)
-- [x] Location experience page with "Ik ben er" flow
-- [x] Custom route builder with coordinate-based nearest-neighbour and 2-opt ordering
+Onderhoudsinformatie staat in `docs/GPS-ROUTES-AND-MAPS.md`, `docs/SEO-AI-CONTENT-GUIDE.md` en `docs/SEO-CONTENT-AND-NEWSLETTER.md`.

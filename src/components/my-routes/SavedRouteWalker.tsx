@@ -10,8 +10,9 @@ import { getLocationById, type LocationData } from "@/data/locations";
 import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
 import { getActiveSchaapsvisSpot, type SupportedLocale } from "@/data/schaapsvis";
 import { routes } from "@/data/routes";
-import { haversineMeters, optimizeRouteOrder, rotateLoopFromNearest } from "@/lib/route-engine";
+import { haversineMeters, insertAtSmallestDetour, optimizeRouteOrder, rotateLoopFromNearest } from "@/lib/route-engine";
 import { useGeolocation } from "@/lib/use-geolocation";
+import { getConditionalRouteStops } from "@/data/route-conditions";
 
 const MapLibreMap = dynamic(
   () => import("@/components/map/MapLibreMap").then((module) => module.MapLibreMap),
@@ -545,6 +546,7 @@ export function SavedRouteWalker() {
   const isLoop = route.isLoop ?? sourceRoute?.isLoop ?? false;
   const featuredLocalStop = route.featuredLocalStop ?? sourceRoute?.featuredLocalStop;
   const activeSchaapsvis = featuredLocalStop ? getActiveSchaapsvisSpot() : null;
+  const conditionalStops = getConditionalRouteStops(sourceRoute, locale);
   const unvisited = locs.filter((loc) => !route.arrivedLocationIds.includes(loc.id));
   const nextStop = unvisited[0] ?? null;
   const nextDistance = gps.position && nextStop?.coords
@@ -568,14 +570,19 @@ export function SavedRouteWalker() {
       lat: activeSchaapsvis.coords!.lat,
       lng: activeSchaapsvis.coords!.lng,
     }] : []),
+    ...conditionalStops.map((stop) => ({
+      id: stop.id,
+      name: stop.name,
+      category: stop.category,
+      kind: "spot" as const,
+      lat: stop.coords.lat,
+      lng: stop.coords.lng,
+    })),
   ];
-  const routeCoordinates = locs.flatMap((loc, index) => {
-    const locationCoordinates = loc.coords ? [loc.coords] : [];
-    if (activeSchaapsvis?.coords && index === pauseInfo.index) {
-      return [activeSchaapsvis.coords, ...locationCoordinates];
-    }
-    return locationCoordinates;
-  });
+  let orderedRoutePoints = locs.filter((loc) => loc.coords).map((loc) => ({ id: loc.id, coords: loc.coords }));
+  if (activeSchaapsvis?.coords) orderedRoutePoints = insertAtSmallestDetour(orderedRoutePoints, { id: activeSchaapsvis.id, coords: activeSchaapsvis.coords });
+  conditionalStops.forEach((stop) => { orderedRoutePoints = insertAtSmallestDetour(orderedRoutePoints, { id: stop.id, coords: stop.coords }); });
+  const routeCoordinates = orderedRoutePoints.flatMap((point) => point.coords ? [point.coords] : []);
 
   const handleOptimizeFromPosition = () => {
     if (!gps.position || unvisited.length < 1) return;
@@ -657,12 +664,20 @@ export function SavedRouteWalker() {
           <div className="h-64 overflow-hidden rounded-2xl border border-gray-200">
             <MapLibreMap
               pins={mapPins}
-              selectedId={nextStop?.id ?? activeSchaapsvis?.id ?? null}
+              selectedId={nextStop?.id ?? conditionalStops[0]?.id ?? activeSchaapsvis?.id ?? null}
               onSelectPin={() => undefined}
               routeCoordinates={routeCoordinates}
               userLocation={gps.position}
             />
           </div>
+
+          {conditionalStops.map((stop) => (
+            <div key={stop.id} className="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-blue-700">{locale === "nl" ? "Tijdelijke marktstop · nu geopend" : locale === "de" ? "Zeitabhängiger Marktstopp · jetzt geöffnet" : "Timed market stop · open now"}</p>
+              <p className="mt-1 font-bold text-navy-800">{stop.name}</p>
+              <p className="mt-1 text-xs leading-5 text-gray-600">{stop.description}</p>
+            </div>
+          ))}
         </section>
 
         {isComplete && (

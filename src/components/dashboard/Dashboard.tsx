@@ -9,6 +9,7 @@ import { routes } from "@/data/routes";
 import { locations, getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
 import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
+import { applyDateAwareRoute } from "@/data/route-conditions";
 
 const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -48,7 +49,8 @@ export function Dashboard() {
 
   const handleAddToRoute = useCallback((routeId: string, locationId: string) => {
     const loc = locations.find((l) => l.id === locationId);
-    const isStandard = routes.find((r) => r.id === routeId);
+    const standardRoute = routes.find((r) => r.id === routeId);
+    const isStandard = standardRoute ? applyDateAwareRoute(standardRoute) : undefined;
 
     if (isStandard) {
       let existing = getSavedRoutes().find(

@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
 import { useAuth } from "@/lib/auth-context";
 import { RoutesSkeleton } from "@/components/ui/PageSkeletons";
+import { applyDateAwareRoute } from "@/data/route-conditions";
 
 export function RoutesOverview() {
   const t = useTranslations("routes");
@@ -67,7 +68,8 @@ export function RoutesOverview() {
         <p className="text-sm text-gray-500 mb-6">{t("chooseRouteToDiscover")}</p>
 
         <div className="grid md:grid-cols-2 gap-4">
-          {routes.map((route) => {
+          {routes.map((baseRoute) => {
+            const route = applyDateAwareRoute(baseRoute);
             const card = (
               <div className="group flex flex-col bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
                 <div className="relative h-40 bg-gray-200">
@@ -79,6 +81,9 @@ export function RoutesOverview() {
                     <span className="absolute top-3 left-3 bg-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
                       {t("popular")}
                     </span>
+                  )}
+                  {route.activeVariant === "leidens-ontzet" && (
+                    <span className="absolute bottom-3 left-3 rounded-full bg-red-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">3 Oktober</span>
                   )}
                   <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
