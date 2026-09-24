@@ -144,19 +144,21 @@ Every museum and attraction in `src/data/local-spots.ts` needs MUCH more text:
 - [x] All museums expanded: S001-S014, S030/S031/S032
 
 ### 2.4 Route logic improvements
-- GPS-based starting point detection: detect user location and suggest nearest route start
-- Start route from current location instead of fixed start point
-- Resume any route from any point the user is at
-- Smart ordering: reorder stops based on where the user currently is
-- Implementation in: `src/app/[locale]/mijn-routes/` and route detail pages
+- [x] GPS-based starting point detection: detect user location and suggest nearest route start
+- [x] Start route from current location instead of fixed start point
+- [x] Resume any route from any point the user is at
+- [x] Smart ordering: reorder unvisited stops based on where the user currently is
+- [x] Optimized standard route order and added the Markt & Ambacht route
+- [x] Day-aware Schaapsvishandel stop: market cart on Wednesday/Saturday, shop on other days
+- [x] Maintenance guide: `docs/GPS-ROUTES-AND-MAPS.md`
 
 ### 2.5 MapLibre GL JS integration
-- Replace placeholder map with interactive MapLibre map
-- Use real coordinates from locations.ts and local-spots.ts
-- Category filters on map
-- Cluster markers when zoomed out
-- Click marker to see location card
-- Walking route overlay when in walker mode
+- [x] Replace Leaflet/placeholder maps with an interactive MapLibre map
+- [x] Use real coordinates from locations.ts and local-spots.ts
+- [x] Category filters on map
+- [x] Cluster markers when zoomed out
+- [x] Click marker to see location card
+- [x] Walking route overlay and user position in walker mode
 
 ### 2.6 Video integration
 - Connect Cloudflare Stream for location videos
@@ -296,4 +298,4 @@ Save video briefs in: `content/video-briefs/`
 - [x] Design system implemented
 - [x] Test login system (demo)
 - [x] Location experience page with "Ik ben er" flow
-- [x] Custom route builder with zone-based ordering
+- [x] Custom route builder with coordinate-based nearest-neighbour and 2-opt ordering

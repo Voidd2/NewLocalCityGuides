@@ -2,33 +2,14 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { locations, type LocationData } from "@/data/locations";
 import { saveRoute } from "@/lib/saved-routes";
 import { getLocationStory } from "@/data/stories";
+import { optimizeRouteOrder } from "@/lib/route-engine";
+import { useGeolocation } from "@/lib/use-geolocation";
 
 const MUST_SEE_IDS = ["L001", "L006", "L003", "L010"];
-
-function optimizeOrder(selected: LocationData[]): LocationData[] {
-  if (selected.length <= 2) return selected;
-
-  const cityCenter = ["L001", "L002", "L003", "L004", "L005"];
-  const pieterskerkArea = ["L006", "L007", "L008"];
-  const outer = ["L009", "L010", "L011", "L012", "L013", "L014"];
-
-  const zones = [cityCenter, pieterskerkArea, outer];
-  const ordered: LocationData[] = [];
-
-  for (const zone of zones) {
-    const inZone = selected.filter((l) => zone.includes(l.id));
-    ordered.push(...inZone);
-  }
-
-  const remaining = selected.filter((l) => !ordered.find((o) => o.id === l.id));
-  ordered.push(...remaining);
-
-  return ordered;
-}
 
 function LocationCard({
   loc,
@@ -210,11 +191,11 @@ function LocationCard({
 export function CustomRouteBuilder() {
   const tRoutes = useTranslations("routes");
   const tCustom = useTranslations("customRoute");
-  const tCommon = useTranslations("common");
   const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [routeName, setRouteName] = useState("");
+  const gps = useGeolocation();
 
   const toggle = useCallback((id: string) => {
     setSelected((prev) =>
@@ -230,19 +211,19 @@ export function CustomRouteBuilder() {
     .map((id) => locations.find((l) => l.id === id))
     .filter(Boolean) as LocationData[];
 
-  const orderedRoute = optimizeOrder(selectedLocations);
+  const orderedRoute = optimizeRouteOrder(selectedLocations, gps.position ?? undefined);
 
   const handleSave = () => {
     if (orderedRoute.length < 2) return;
     const name = routeName.trim() || `${tCustom("defaultRouteName")} (${orderedRoute.length} stops)`;
-    const saved = saveRoute(name, orderedRoute.map((l) => l.id));
+    const saved = saveRoute(name, orderedRoute.map((l) => l.id), { isLoop: false });
     router.push(`/my-routes/${saved.id}`);
   };
 
   const handleStartNow = () => {
     if (orderedRoute.length < 2) return;
     const name = routeName.trim() || `${tCustom("defaultRouteName")} (${orderedRoute.length} stops)`;
-    const saved = saveRoute(name, orderedRoute.map((l) => l.id));
+    const saved = saveRoute(name, orderedRoute.map((l) => l.id), { isLoop: false });
     router.push(`/my-routes/${saved.id}`);
   };
 
@@ -295,6 +276,22 @@ export function CustomRouteBuilder() {
                   : `${orderedRoute.length} ${tCustom("stopsSmartOrder")}`
                 }
               </p>
+
+              <button
+                type="button"
+                onClick={gps.requestLocation}
+                disabled={gps.status === "requesting"}
+                className="mb-4 w-full rounded-xl border border-blue-200 bg-blue-50 px-3 py-2.5 text-xs font-semibold text-blue-700 transition-colors hover:bg-blue-100 disabled:opacity-60"
+              >
+                {gps.status === "requesting"
+                  ? tCustom("locating")
+                  : gps.status === "granted"
+                    ? tCustom("locationUsed")
+                    : tCustom("useMyLocation")}
+              </button>
+              {(gps.status === "denied" || gps.status === "error" || gps.status === "unavailable") && (
+                <p className="-mt-2 mb-4 text-xs text-amber-700">{tCustom("locationUnavailable")}</p>
+              )}
 
               {orderedRoute.length === 0 ? (
                 <div className="py-6 text-center">

@@ -10,7 +10,7 @@ import { locations, getLocationById, type LocationData } from "@/data/locations"
 import { useAuth } from "@/lib/auth-context";
 import { getSavedRoutes, deleteSavedRoute, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
 
-const LeafletMap = dynamic(() => import("@/components/map/LeafletMap").then((m) => m.LeafletMap), {
+const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
@@ -35,7 +35,7 @@ export function Dashboard() {
   const mapPins = useMemo(() =>
     locations
       .filter((l) => l.coords !== null)
-      .map((l) => ({ location: l, lat: l.coords!.lat, lng: l.coords!.lng })),
+      .map((l) => ({ id: l.id, name: l.name, category: l.mainTheme, kind: "location" as const, lat: l.coords!.lat, lng: l.coords!.lng })),
     []
   );
 
@@ -58,7 +58,11 @@ export function Dashboard() {
         existing = getSavedRoutes().find((sr) => sr.name === isStandard.title);
       }
       if (!existing) {
-        const saved = saveRoute(isStandard.title, [...isStandard.locationIds]);
+        const saved = saveRoute(isStandard.title, [...isStandard.locationIds], {
+          sourceRouteId: isStandard.id,
+          isLoop: isStandard.isLoop,
+          featuredLocalStop: isStandard.featuredLocalStop,
+        });
         const result = addLocationToRoute(saved.id, locationId);
         setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: isStandard.title }) : t("addedToRoute", { name: loc?.name ?? "", routeName: isStandard.title }));
       } else {
@@ -274,7 +278,7 @@ export function Dashboard() {
             <>
               <h2 className="text-lg font-bold text-navy-800 mb-4">{t("mapOfLeiden")}</h2>
               <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8 z-0">
-                <LeafletMap
+                <MapLibreMap
                   pins={mapPins}
                   selectedId={selectedMapPin}
                   onSelectPin={(id) => setSelectedMapPin(id === selectedMapPin ? null : id)}

@@ -1,15 +1,18 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { Link, useRouter } from "@/i18n/navigation";
 import type { RouteData } from "@/data/routes";
 import { getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
 import { saveRoute, getSavedRoutes } from "@/lib/saved-routes";
+import { getSchaapsvisRouteCopy, type SupportedLocale } from "@/data/schaapsvis";
+import type { MapPin } from "@/components/map/MapLibreMap";
+import { insertAtSmallestDetour } from "@/lib/route-engine";
 
-const LeafletMap = dynamic(() => import("@/components/map/LeafletMap").then((m) => m.LeafletMap), {
+const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
@@ -26,7 +29,7 @@ const tabs = ["overview", "routeAndStops", "beginRoute", "reviews"] as const;
 export function RouteDetail({ route }: { route: RouteData }) {
   const t = useTranslations("routes");
   const tCommon = useTranslations("common");
-  const tLocation = useTranslations("location");
+  const locale = useLocale() as SupportedLocale;
 
   const tabLabels: Record<(typeof tabs)[number], string> = {
     overview: t("overview"),
@@ -38,18 +41,52 @@ export function RouteDetail({ route }: { route: RouteData }) {
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>("overview");
   const { hasPaid, isLoading } = useAuth();
 
-  const routeLocations = route.locationIds
-    .map(getLocationById)
-    .filter(Boolean);
-
-  const routePins = useMemo(() =>
-    routeLocations
-      .filter((loc) => loc && loc.coords !== null)
-      .map((loc) => ({ location: loc!, lat: loc!.coords!.lat, lng: loc!.coords!.lng })),
-    [routeLocations]
+  const routeLocations = useMemo(
+    () => route.locationIds.map(getLocationById).filter(Boolean),
+    [route.locationIds],
   );
 
+  const dailySchaapsvis = useMemo(
+    () => route.featuredLocalStop ? getSchaapsvisRouteCopy(locale) : null,
+    [locale, route.featuredLocalStop],
+  );
+  const routePins = useMemo(() => {
+    const pins: MapPin[] = routeLocations
+      .filter((loc) => loc && loc.coords !== null)
+      .map((loc) => ({ id: loc!.id, name: loc!.name, category: loc!.mainTheme, kind: "location" as const, lat: loc!.coords!.lat, lng: loc!.coords!.lng }));
+    if (dailySchaapsvis?.spot.coords) {
+      pins.push({ id: dailySchaapsvis.spot.id, name: dailySchaapsvis.spot.name, category: "Schaapsvishandel", kind: "spot", lat: dailySchaapsvis.spot.coords.lat, lng: dailySchaapsvis.spot.coords.lng });
+    }
+    return pins;
+  }, [dailySchaapsvis, routeLocations]);
+  const routeCoordinates = useMemo(() => {
+    const base = routeLocations
+      .filter((loc) => loc?.coords)
+      .map((loc) => ({ id: loc!.id, coords: loc!.coords }));
+    const ordered = dailySchaapsvis?.spot.coords
+      ? insertAtSmallestDetour(base, { id: dailySchaapsvis.spot.id, coords: dailySchaapsvis.spot.coords })
+      : base;
+    return ordered.flatMap((item) => item.coords ? [item.coords] : []);
+  }, [dailySchaapsvis, routeLocations]);
+
   const [selectedPin, setSelectedPin] = useState<string | null>(null);
+
+  const startRoute = () => {
+    const existing = getSavedRoutes().find(
+      (savedRoute) => savedRoute.sourceRouteId === route.id ||
+        (savedRoute.name === route.title && savedRoute.locationIds.join(",") === route.locationIds.join(",")),
+    );
+    if (existing) {
+      router.push(`/my-routes/${existing.id}`);
+      return;
+    }
+    const saved = saveRoute(route.title, route.locationIds, {
+      sourceRouteId: route.id,
+      isLoop: route.isLoop,
+      featuredLocalStop: route.featuredLocalStop,
+    });
+    router.push(`/my-routes/${saved.id}`);
+  };
 
   if (isLoading) {
     return (
@@ -232,17 +269,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
 
                     <div className="relative px-5 pb-8">
                       <button
-                        onClick={() => {
-                          const existing = getSavedRoutes().find(
-                            (sr) => sr.name === route.title && sr.locationIds.join(",") === route.locationIds.join(",")
-                          );
-                          if (existing) {
-                            router.push(`/my-routes/${existing.id}`);
-                          } else {
-                            const saved = saveRoute(route.title, route.locationIds);
-                            router.push(`/my-routes/${saved.id}`);
-                          }
-                        }}
+                        onClick={startRoute}
                         className="w-full flex items-center gap-3 bg-orange-500/20 hover:bg-orange-500/30 backdrop-blur-sm border border-orange-500/30 rounded-xl p-4 transition-colors cursor-pointer text-left"
                       >
                         <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
@@ -336,10 +363,11 @@ export function RouteDetail({ route }: { route: RouteData }) {
               <h3 className="text-sm font-bold text-navy-800 mb-4">{t("routeOnMap")}</h3>
               {routePins.length > 0 ? (
                 <div className="h-64 rounded-xl overflow-hidden shadow-md mb-6">
-                  <LeafletMap
+                  <MapLibreMap
                     pins={routePins}
                     selectedId={selectedPin}
                     onSelectPin={(id) => setSelectedPin(id === selectedPin ? null : id)}
+                    routeCoordinates={routeCoordinates}
                   />
                 </div>
               ) : (
@@ -459,18 +487,19 @@ export function RouteDetail({ route }: { route: RouteData }) {
                 })}
               </div>
 
+              {dailySchaapsvis && (
+                <Link href={`/ontdek/${dailySchaapsvis.spot.id}`} className="mb-5 block rounded-2xl border-2 border-orange-200 bg-orange-50 p-4 hover:border-orange-400">
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="rounded-full bg-orange-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white">{t("localStop")}</span>
+                    <span className="text-xs font-semibold text-orange-700">{t("familyBusinessSince")}</span>
+                  </div>
+                  <h3 className="font-bold text-navy-800">{dailySchaapsvis.spot.name}</h3>
+                  <p className="mt-1 text-sm leading-6 text-gray-600">{dailySchaapsvis.description}</p>
+                </Link>
+              )}
+
               <button
-                onClick={() => {
-                  const existing = getSavedRoutes().find(
-                    (sr) => sr.name === route.title && sr.locationIds.join(",") === route.locationIds.join(",")
-                  );
-                  if (existing) {
-                    router.push(`/my-routes/${existing.id}`);
-                  } else {
-                    const saved = saveRoute(route.title, route.locationIds);
-                    router.push(`/my-routes/${saved.id}`);
-                  }
-                }}
+                onClick={startRoute}
                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3.5 rounded-full text-sm transition-colors flex items-center justify-center gap-2"
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -482,7 +511,7 @@ export function RouteDetail({ route }: { route: RouteData }) {
           )}
 
           {activeTab === "reviews" && (
-            <ReviewsTab routeTitle={route.title} />
+            <ReviewsTab />
           )}
         </div>
       </section>
@@ -625,7 +654,7 @@ function StarRow({ rating, small }: { rating: number; small?: boolean }) {
   );
 }
 
-function ReviewsTab({ routeTitle }: { routeTitle: string }) {
+function ReviewsTab() {
   const t = useTranslations("routes");
   const [showAll, setShowAll] = useState(false);
   const totalReviews = reviewsWithText.length + starsOnlyReviews.length;

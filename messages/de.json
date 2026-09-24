@@ -242,7 +242,9 @@
     "discoverMoreNL": "Entdecke mehr von den Niederlanden",
     "moreCitiesComingSoon": "Bald auch andere Stadte verfugbar...",
     "entryFrom": "Eintritt ab",
-    "orderTickets": "Tickets bestellen"
+    "orderTickets": "Tickets bestellen",
+    "localStop": "Lokaler Stopp",
+    "familyBusinessSince": "Familienbetrieb seit 1938"
   },
   "location": {
     "startExperience": "Erlebnis starten",
@@ -487,6 +489,12 @@
     "powerAndLaw": "Macht & Recht",
     "dailyLife": "Alltagsleben",
     "disastersAndStrife": "Katastrophen & Kampf",
+    "fishShops": "Fischgeschafte",
+    "markets": "Markte",
+    "foodAndDrink": "Essen & Trinken",
+    "localFamilyBusiness": "Lokaler Familienbetrieb",
+    "localSpot": "Lokaler Ort",
+    "viewLocalSpot": "Diesen Ort ansehen",
     "mapDesc": "Alle {count} Standorte auf der interaktiven Karte mit dem Leiden-Paket ansehen.",
     "locationsFound": "{count} Standort(e) gefunden",
     "previewCount": "{count} von {total} Standorten (Vorschau)",
@@ -548,7 +556,17 @@
     "entryFrom": "Eintritt ab",
     "orderTickets": "Tickets bestellen",
     "skipTickets": "Uberspringen",
-    "ticketNotRequired": "Ticket ist optional"
+    "ticketNotRequired": "Ticket ist optional",
+    "liveRoute": "Live-Route",
+    "liveRouteDesc": "Nutze deinen Standort, um bei der gunstigsten nachsten Station weiterzugehen.",
+    "useMyLocation": "Meinen Standort verwenden",
+    "locating": "Standort wird gesucht...",
+    "resumeFromHere": "Von hier fortfahren",
+    "gpsDenied": "Der Standortzugriff wurde abgelehnt. Aktiviere ihn in den Browsereinstellungen, um GPS zu verwenden.",
+    "gpsUnavailable": "Dein Standort konnte nicht bestimmt werden. Die bestehende Reihenfolge bleibt verfugbar.",
+    "routeOptimized": "Die verbleibenden Stationen wurden ab deiner aktuellen Position neu geordnet.",
+    "nextStop": "Nachste Station",
+    "distanceAway": "ungefahr {distance} Meter"
   },
   "activities": {
     "title": "Aktivitaten in Leiden",
@@ -650,6 +668,10 @@
     "video": "Video",
     "story": "Geschichte",
     "startRouteNowCount": "Route jetzt starten ({count} Stopps)",
-    "chosenChooseMore": "{chosen} gewahlt - wahle noch {remaining}"
+    "chosenChooseMore": "{chosen} gewahlt - wahle noch {remaining}",
+    "useMyLocation": "Reihenfolge an meinem Standort starten",
+    "locating": "Standort wird gesucht...",
+    "locationUsed": "Mein Standort wird verwendet",
+    "locationUnavailable": "Standort nicht verfugbar; die Route wird ohne GPS optimiert."
   }
 }

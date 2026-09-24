@@ -242,7 +242,9 @@
     "discoverMoreNL": "Discover more of the Netherlands",
     "moreCitiesComingSoon": "More cities coming soon...",
     "entryFrom": "Entry from",
-    "orderTickets": "Order tickets"
+    "orderTickets": "Order tickets",
+    "localStop": "Local stop",
+    "familyBusinessSince": "Family business since 1938"
   },
   "location": {
     "startExperience": "Start experience",
@@ -487,6 +489,12 @@
     "powerAndLaw": "Power & Law",
     "dailyLife": "Daily life",
     "disastersAndStrife": "Disasters & Strife",
+    "fishShops": "Fish shops",
+    "markets": "Markets",
+    "foodAndDrink": "Food & drink",
+    "localFamilyBusiness": "Local family business",
+    "localSpot": "Local spot",
+    "viewLocalSpot": "View this spot",
     "mapDesc": "View all {count} locations on the interactive map with the Leiden package.",
     "locationsFound": "{count} location(s) found",
     "previewCount": "{count} of {total} locations (preview)",
@@ -548,7 +556,17 @@
     "entryFrom": "Entry from",
     "orderTickets": "Order tickets",
     "skipTickets": "Skip",
-    "ticketNotRequired": "Ticket is optional"
+    "ticketNotRequired": "Ticket is optional",
+    "liveRoute": "Live route",
+    "liveRouteDesc": "Use your location to continue from the most convenient next stop.",
+    "useMyLocation": "Use my location",
+    "locating": "Finding location...",
+    "resumeFromHere": "Continue from here",
+    "gpsDenied": "Location access was denied. Enable it in your browser settings to use GPS.",
+    "gpsUnavailable": "Your location could not be determined. The existing route order remains available.",
+    "routeOptimized": "The remaining stops have been reordered from your current position.",
+    "nextStop": "Next stop",
+    "distanceAway": "about {distance} metres"
   },
   "activities": {
     "title": "Activities in Leiden",
@@ -650,6 +668,10 @@
     "video": "Video",
     "story": "Story",
     "startRouteNowCount": "Start route now ({count} stops)",
-    "chosenChooseMore": "{chosen} chosen - choose {remaining} more"
+    "chosenChooseMore": "{chosen} chosen - choose {remaining} more",
+    "useMyLocation": "Start order from my location",
+    "locating": "Finding location...",
+    "locationUsed": "My location is being used",
+    "locationUnavailable": "Location is unavailable; the route will be optimised without GPS."
   }
 }

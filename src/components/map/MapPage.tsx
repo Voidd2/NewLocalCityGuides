@@ -2,15 +2,17 @@
 
 import { useState, useCallback, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { locations } from "@/data/locations";
 import { routes as standardRoutes } from "@/data/routes";
 import { useAuth } from "@/lib/auth-context";
 import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
 import { MapSkeleton } from "@/components/ui/PageSkeletons";
+import { getVisibleSpots } from "@/data/local-spots";
+import type { SupportedLocale } from "@/data/schaapsvis";
 
-const LeafletMap = dynamic(() => import("./LeafletMap").then((m) => m.LeafletMap), {
+const MapLibreMap = dynamic(() => import("./MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
@@ -27,11 +29,15 @@ const TEASER_COUNT = 3;
 export function MapPage() {
   const t = useTranslations("map");
   const tCommon = useTranslations("common");
+  const locale = useLocale() as SupportedLocale;
   const { hasPaid, isLoading } = useAuth();
 
   const categories = [
     { key: "all", label: t("all") },
     { key: "museum", label: t("museums") },
+    { key: "visboer", label: t("fishShops") },
+    { key: "markt", label: t("markets") },
+    { key: "restaurant", label: t("foodAndDrink") },
     { key: "architectuur", label: t("architecture") },
     { key: "kunst", label: t("art") },
     { key: "geloof", label: t("faith") },
@@ -63,9 +69,36 @@ export function MapPage() {
     }
   }, [toast]);
 
-  const mapFiltered = useMemo(() =>
-    locations.filter((l) => !searchQuery || l.name.toLowerCase().includes(searchQuery.toLowerCase())),
-    [searchQuery]
+  const mapItems = useMemo(() => {
+    const historical = locations
+      .filter((location) => location.coords)
+      .map((location) => ({
+        id: location.id,
+        name: location.name,
+        category: location.categories[0] ?? "cultuur",
+        categories: location.categories,
+        kind: "location" as const,
+        lat: location.coords!.lat,
+        lng: location.coords!.lng,
+      }));
+    const local = getVisibleSpots()
+      .filter((spot) => spot.coords)
+      .map((spot) => ({
+        id: spot.id,
+        name: spot.name,
+        category: spot.category,
+        categories: [spot.category],
+        kind: "spot" as const,
+        lat: spot.coords!.lat,
+        lng: spot.coords!.lng,
+      }));
+    return [...historical, ...local];
+  }, []);
+
+  const mapFiltered = useMemo(() => mapItems
+    .filter((item) => activeCategory === "all" || item.categories.some((category) => category === activeCategory))
+    .filter((item) => !searchQuery || item.name.toLowerCase().includes(searchQuery.toLowerCase())),
+    [activeCategory, mapItems, searchQuery],
   );
 
   const listFiltered = useMemo(() =>
@@ -75,14 +108,7 @@ export function MapPage() {
     [activeCategory, searchQuery]
   );
 
-  const filtered = view === "map" ? mapFiltered : listFiltered;
-
-  const pins = useMemo(() =>
-    filtered
-      .filter((l) => l.coords !== null)
-      .map((l) => ({ location: l, lat: l.coords!.lat, lng: l.coords!.lng })),
-    [filtered]
-  );
+  const pins = mapFiltered;
 
   const handleSelectPin = useCallback((id: string) => {
     setSelectedPin((prev) => (prev === id ? null : id));
@@ -91,6 +117,9 @@ export function MapPage() {
 
   const selectedLocation = selectedPin
     ? locations.find((l) => l.id === selectedPin)
+    : null;
+  const selectedSpot = selectedPin
+    ? getVisibleSpots().find((spot) => spot.id === selectedPin)
     : null;
 
   const addToRouteLocation = addToRouteFor
@@ -118,7 +147,11 @@ export function MapPage() {
         existing = savedRoutes.find((sr) => sr.name === isStandard.title);
       }
       if (!existing) {
-        const saved = saveRoute(isStandard.title, [...isStandard.locationIds]);
+        const saved = saveRoute(isStandard.title, [...isStandard.locationIds], {
+          sourceRouteId: isStandard.id,
+          isLoop: isStandard.isLoop,
+          featuredLocalStop: isStandard.featuredLocalStop,
+        });
         const result = addLocationToRoute(saved.id, locationId);
         if (result === "duplicate") {
           setToast({ message: t("alreadyInRoute", { name: addToRouteLocation?.name ?? "", routeName: isStandard.title }), type: "warning" });
@@ -236,7 +269,7 @@ export function MapPage() {
           {hasPaid ? (
             <>
               <div className="h-[65vh] rounded-xl overflow-hidden shadow-lg">
-                <LeafletMap
+                <MapLibreMap
                   pins={pins}
                   selectedId={selectedPin}
                   onSelectPin={handleSelectPin}
@@ -284,6 +317,35 @@ export function MapPage() {
                         {t("addToRoute")}
                       </button>
                     </div>
+                  </div>
+                </div>
+              )}
+
+              {selectedSpot && !addToRouteFor && (
+                <div className="absolute bottom-4 left-4 right-4 z-[1000]">
+                  <div className="relative mx-auto max-w-sm rounded-2xl border border-orange-100 bg-white p-4 shadow-xl">
+                    <button
+                      onClick={() => setSelectedPin(null)}
+                      className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-gray-400 transition-colors hover:bg-gray-200 hover:text-gray-600"
+                    >
+                      <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+                        <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
+                      </svg>
+                    </button>
+                    <span className="mb-2 inline-block rounded-full bg-orange-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-orange-600">
+                      {selectedSpot.category === "visboer" ? t("localFamilyBusiness") : t("localSpot")}
+                    </span>
+                    <h3 className="pr-8 text-sm font-bold text-navy-800">{selectedSpot.name}</h3>
+                    <p className="mt-1 text-xs font-medium text-orange-600">{selectedSpot.address}</p>
+                    <p className="mt-2 line-clamp-3 text-xs leading-5 text-gray-500">
+                      {selectedSpot.description[locale].split("\n\n")[0]}
+                    </p>
+                    <Link
+                      href={`/ontdek/${selectedSpot.id}`}
+                      className="mt-3 flex w-full items-center justify-center rounded-full bg-orange-500 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-orange-600"
+                    >
+                      {t("viewLocalSpot")}
+                    </Link>
                   </div>
                 </div>
               )}
@@ -419,7 +481,7 @@ export function MapPage() {
                   <path d="M7 11V7a5 5 0 0110 0v4" />
                 </svg>
                 <h3 className="font-bold text-navy-800 text-base mb-1">{t("mapAfterPurchase")}</h3>
-                <p className="text-xs text-gray-500 mb-4">{t("mapDesc", { count: locations.length })}</p>
+                <p className="text-xs text-gray-500 mb-4">{t("mapDesc", { count: mapItems.length })}</p>
                 <Link
                   href="/pricing"
                   className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2.5 rounded-full text-sm transition-colors"

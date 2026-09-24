@@ -1,12 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
-import { getSavedRouteById, markArrived, type SavedRoute } from "@/lib/saved-routes";
+import { getSavedRouteById, markArrived, updateRouteOrder, type SavedRoute } from "@/lib/saved-routes";
 import { getLocationById, type LocationData } from "@/data/locations";
 import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
+import { getActiveSchaapsvisSpot, type SupportedLocale } from "@/data/schaapsvis";
+import { routes } from "@/data/routes";
+import { haversineMeters, optimizeRouteOrder, rotateLoopFromNearest } from "@/lib/route-engine";
+import { useGeolocation } from "@/lib/use-geolocation";
+
+const MapLibreMap = dynamic(
+  () => import("@/components/map/MapLibreMap").then((module) => module.MapLibreMap),
+  { ssr: false, loading: () => <div className="h-64 animate-pulse rounded-2xl bg-gray-100" /> },
+);
 
 function VideoModal({ loc, onClose, routeId }: { loc: LocationData; onClose: () => void; routeId: string }) {
   const t = useTranslations("walker");
@@ -289,8 +299,9 @@ function PauseBreakCard({
   contextMessage: string;
 }) {
   const t = useTranslations("walker");
+  const locale = useLocale() as SupportedLocale;
   const [isOpen, setIsOpen] = useState(false);
-  const schaapsvis = getSchaapsvisMessage();
+  const schaapsvis = getSchaapsvisMessage(locale);
   const others = localRecommendations.filter((r) => r.id !== "schaapsvis");
   const showDistance = distanceMeters > 0;
   const isNearby = distanceMeters > 0 && distanceMeters <= 300;
@@ -418,7 +429,8 @@ function PauseBreakCard({
 
 function RecommendedSection() {
   const t = useTranslations("walker");
-  const schaapsvis = getSchaapsvisMessage();
+  const locale = useLocale() as SupportedLocale;
+  const schaapsvis = getSchaapsvisMessage(locale);
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(schaapsvis.mapsQuery)}`;
 
   return (
@@ -470,17 +482,23 @@ function RecommendedSection() {
 export function SavedRouteWalker() {
   const t = useTranslations("walker");
   const tCommon = useTranslations("common");
+  const locale = useLocale() as SupportedLocale;
   const params = useParams();
   const routeId = params.id as string;
   const [route, setRoute] = useState<SavedRoute | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [videoLoc, setVideoLoc] = useState<LocationData | null>(null);
   const [pauseDismissed, setPauseDismissed] = useState(false);
+  const [routeOptimized, setRouteOptimized] = useState(false);
+  const gps = useGeolocation();
 
   useEffect(() => {
-    const saved = getSavedRouteById(routeId);
-    setRoute(saved ?? null);
-    setIsLoading(false);
+    const frame = requestAnimationFrame(() => {
+      const saved = getSavedRouteById(routeId);
+      setRoute(saved ?? null);
+      setIsLoading(false);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [routeId]);
 
   const handleArrive = (locationId: string) => {
@@ -523,6 +541,54 @@ export function SavedRouteWalker() {
   const total = locs.length;
   const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
   const isComplete = progress === total && total > 0;
+  const sourceRoute = routes.find((item) => item.id === route.sourceRouteId || item.title === route.name);
+  const isLoop = route.isLoop ?? sourceRoute?.isLoop ?? false;
+  const featuredLocalStop = route.featuredLocalStop ?? sourceRoute?.featuredLocalStop;
+  const activeSchaapsvis = featuredLocalStop ? getActiveSchaapsvisSpot() : null;
+  const unvisited = locs.filter((loc) => !route.arrivedLocationIds.includes(loc.id));
+  const nextStop = unvisited[0] ?? null;
+  const nextDistance = gps.position && nextStop?.coords
+    ? Math.round(haversineMeters(gps.position, nextStop.coords))
+    : null;
+  const pauseInfo = getSmartPauseIndex(locs);
+  const mapPins = [
+    ...locs.filter((loc) => loc.coords).map((loc) => ({
+      id: loc.id,
+      name: loc.name,
+      category: loc.mainTheme,
+      kind: "location" as const,
+      lat: loc.coords!.lat,
+      lng: loc.coords!.lng,
+    })),
+    ...(activeSchaapsvis ? [{
+      id: activeSchaapsvis.id,
+      name: activeSchaapsvis.name,
+      category: activeSchaapsvis.category,
+      kind: "spot" as const,
+      lat: activeSchaapsvis.coords!.lat,
+      lng: activeSchaapsvis.coords!.lng,
+    }] : []),
+  ];
+  const routeCoordinates = locs.flatMap((loc, index) => {
+    const locationCoordinates = loc.coords ? [loc.coords] : [];
+    if (activeSchaapsvis?.coords && index === pauseInfo.index) {
+      return [activeSchaapsvis.coords, ...locationCoordinates];
+    }
+    return locationCoordinates;
+  });
+
+  const handleOptimizeFromPosition = () => {
+    if (!gps.position || unvisited.length < 1) return;
+    const visitedIds = route.locationIds.filter((id) => route.arrivedLocationIds.includes(id));
+    const ordered = isLoop
+      ? rotateLoopFromNearest(unvisited, gps.position)
+      : optimizeRouteOrder(unvisited, gps.position);
+    const updated = updateRouteOrder(routeId, [...visitedIds, ...ordered.map((loc) => loc.id)]);
+    if (updated) {
+      setRoute(updated);
+      setRouteOptimized(true);
+    }
+  };
 
   return (
     <>
@@ -549,6 +615,56 @@ export function SavedRouteWalker() {
           </div>
         </div>
 
+        <section className="mb-6 space-y-3" aria-labelledby="live-route-heading">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <h2 id="live-route-heading" className="font-bold text-navy-800">{t("liveRoute")}</h2>
+              <p className="text-xs text-gray-500">{t("liveRouteDesc")}</p>
+            </div>
+            {gps.status !== "granted" ? (
+              <button
+                type="button"
+                onClick={gps.requestLocation}
+                disabled={gps.status === "requesting"}
+                className="shrink-0 rounded-full bg-blue-600 px-4 py-2 text-xs font-semibold text-white disabled:opacity-60"
+              >
+                {gps.status === "requesting" ? t("locating") : t("useMyLocation")}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleOptimizeFromPosition}
+                className="shrink-0 rounded-full bg-orange-500 px-4 py-2 text-xs font-semibold text-white"
+              >
+                {t("resumeFromHere")}
+              </button>
+            )}
+          </div>
+
+          {(gps.status === "denied" || gps.status === "unavailable" || gps.status === "error") && (
+            <p className="rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
+              {gps.status === "denied" ? t("gpsDenied") : t("gpsUnavailable")}
+            </p>
+          )}
+          {routeOptimized && <p className="text-xs font-medium text-green-700">{t("routeOptimized")}</p>}
+          {nextStop && (
+            <p className="text-sm text-navy-800">
+              <span className="font-semibold">{t("nextStop")}:</span> {nextStop.name}
+              {nextDistance !== null && ` · ${t("distanceAway", { distance: nextDistance })}`}
+            </p>
+          )}
+
+          <div className="h-64 overflow-hidden rounded-2xl border border-gray-200">
+            <MapLibreMap
+              pins={mapPins}
+              selectedId={nextStop?.id ?? activeSchaapsvis?.id ?? null}
+              onSelectPin={() => undefined}
+              routeCoordinates={routeCoordinates}
+              userLocation={gps.position}
+            />
+          </div>
+        </section>
+
         {isComplete && (
           <div className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center mb-6">
             <div className="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center mx-auto mb-3">
@@ -565,8 +681,8 @@ export function SavedRouteWalker() {
 
         <ol className="space-y-0">
           {(() => {
-            const { index: smartPauseIndex, distanceMeters } = getSmartPauseIndex(locs);
-            const pauseContextMessage = getSchaapsvisContextMessage(distanceMeters);
+            const { index: smartPauseIndex, distanceMeters } = pauseInfo;
+            const pauseContextMessage = getSchaapsvisContextMessage(distanceMeters, locale);
             return locs.map((loc, i) => (
               <span key={loc.id}>
                 {i === smartPauseIndex && !pauseDismissed && locs.length >= 3 && (

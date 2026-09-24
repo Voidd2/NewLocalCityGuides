@@ -9,8 +9,8 @@ import { SPOT_CATEGORIES, type LocalSpot } from "@/data/local-spots";
 import { getSavedRoutes, saveRoute, addLocationToRoute } from "@/lib/saved-routes";
 import type { SavedRoute } from "@/lib/saved-routes";
 
-const LeafletMap = dynamic(
-  () => import("@/components/map/LeafletMap").then((m) => m.LeafletMap),
+const MapLibreMap = dynamic(
+  () => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap),
   {
     ssr: false,
     loading: () => (
@@ -80,7 +80,7 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
   }, [spot]);
 
   const mapPins = spot.coords
-    ? [{ location: { id: spot.id, slug: spot.id, name: spot.name, shortDescription: desc, mainTheme: catLabel, categories: [spot.category], image: null, coords: spot.coords }, lat: spot.coords.lat, lng: spot.coords.lng }]
+    ? [{ id: spot.id, name: spot.name, category: catLabel, kind: "spot" as const, lat: spot.coords.lat, lng: spot.coords.lng }]
     : [];
 
   const labels = {
@@ -353,7 +353,7 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
 
         {mapPins.length > 0 && (
           <div className="mt-6 rounded-2xl overflow-hidden shadow-md h-56 relative z-0">
-            <LeafletMap pins={mapPins} selectedId={null} onSelectPin={() => {}} />
+            <MapLibreMap pins={mapPins} selectedId={null} onSelectPin={() => {}} />
           </div>
         )}
       </div>

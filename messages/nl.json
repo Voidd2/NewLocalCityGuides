@@ -242,7 +242,9 @@
     "discoverMoreNL": "Ontdek meer van Nederland",
     "moreCitiesComingSoon": "Binnenkort ook andere steden beschikbaar...",
     "entryFrom": "Entree vanaf",
-    "orderTickets": "Tickets bestellen"
+    "orderTickets": "Tickets bestellen",
+    "localStop": "Lokale stop",
+    "familyBusinessSince": "Familiebedrijf sinds 1938"
   },
   "location": {
     "startExperience": "Start de ervaring",
@@ -487,6 +489,12 @@
     "powerAndLaw": "Macht & Recht",
     "dailyLife": "Dagelijks leven",
     "disastersAndStrife": "Rampen & Strijd",
+    "fishShops": "Viswinkels",
+    "markets": "Markten",
+    "foodAndDrink": "Eten & drinken",
+    "localFamilyBusiness": "Lokale familiezaak",
+    "localSpot": "Lokale plek",
+    "viewLocalSpot": "Bekijk deze plek",
     "mapDesc": "Bekijk alle {count} locaties op de interactieve kaart met het Leiden pakket.",
     "locationsFound": "{count} locatie(s) gevonden",
     "previewCount": "{count} van {total} locaties (preview)",
@@ -548,7 +556,17 @@
     "entryFrom": "Entree vanaf",
     "orderTickets": "Tickets bestellen",
     "skipTickets": "Overslaan",
-    "ticketNotRequired": "Ticket is optioneel"
+    "ticketNotRequired": "Ticket is optioneel",
+    "liveRoute": "Live route",
+    "liveRouteDesc": "Gebruik je locatie om vanaf de handigste volgende stop verder te gaan.",
+    "useMyLocation": "Gebruik mijn locatie",
+    "locating": "Locatie zoeken...",
+    "resumeFromHere": "Ga verder vanaf hier",
+    "gpsDenied": "Locatietoegang is geweigerd. Zet deze aan in je browserinstellingen om GPS te gebruiken.",
+    "gpsUnavailable": "Je locatie kon niet worden bepaald. De route blijft in de bestaande volgorde beschikbaar.",
+    "routeOptimized": "De resterende stops zijn opnieuw gerangschikt vanaf je huidige positie.",
+    "nextStop": "Volgende stop",
+    "distanceAway": "ongeveer {distance} meter"
   },
   "activities": {
     "title": "Activiteiten in Leiden",
@@ -650,6 +668,10 @@
     "video": "Video",
     "story": "Verhaal",
     "startRouteNowCount": "Start route nu ({count} stops)",
-    "chosenChooseMore": "{chosen} gekozen - kies nog {remaining}"
+    "chosenChooseMore": "{chosen} gekozen - kies nog {remaining}",
+    "useMyLocation": "Start volgorde vanaf mijn locatie",
+    "locating": "Locatie zoeken...",
+    "locationUsed": "Mijn locatie wordt gebruikt",
+    "locationUnavailable": "Locatie niet beschikbaar; de route wordt zonder GPS geoptimaliseerd."
   }
 }

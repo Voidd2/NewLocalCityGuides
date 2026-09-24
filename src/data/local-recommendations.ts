@@ -1,3 +1,6 @@
+import { getActiveSchaapsvisSpot, getSchaapsvisRouteCopy, type SupportedLocale } from "@/data/schaapsvis";
+import { haversineMeters } from "@/lib/route-engine";
+
 export interface LocalRecommendation {
   id: string;
   name: string;
@@ -17,62 +20,25 @@ export interface LocalRecommendation {
   featured: boolean;
 }
 
-const SCHAAPSVIS_LOCATIONS = {
-  herenstraat: { lat: 52.1590, lng: 4.4893 },
-  waag: { lat: 52.1610, lng: 4.4895 },
-  nieuweRijn: { lat: 52.1613, lng: 4.4930 },
-};
-
-function getDayOfWeek(): number {
-  return new Date().getDay();
-}
-
-export function haversineMeters(lat1: number, lng1: number, lat2: number, lng2: number): number {
-  const R = 6371000;
-  const toRad = (deg: number) => deg * Math.PI / 180;
-  const dLat = toRad(lat2 - lat1);
-  const dLng = toRad(lng2 - lng1);
-  const a = Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
-  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-}
-
-export function getSchaapsvisMessage(): { location: string; description: string; mapsQuery: string; coords: { lat: number; lng: number } } {
-  const day = getDayOfWeek();
-
-  if (day === 6) {
-    return {
-      location: "Leidse Markt (tegenover de Waag)",
-      description:
-        "Vishandel Schaapsvis staat vandaag op de zaterdagmarkt, tegenover de Waag. Dit is de enige visboer op de Leidse markt die hier al sinds 1938 staat. Probeer de verse kibbeling of een broodje haring!",
-      mapsQuery: "Waag+Leiden",
-      coords: SCHAAPSVIS_LOCATIONS.waag,
-    };
-  }
-
-  if (day === 3) {
-    return {
-      location: "Leidse Markt (tegenover Roos, donkerblauwe kar)",
-      description:
-        "Vishandel Schaapsvis staat vandaag op de woensdagmarkt. Zoek de donkerblauwe kar tegenover Roos. Dit is de enige visboer die hier al sinds 1938 staat. Gespecialiseerd in gebakken kibbeling, lekkerbekken en verse haring - de enige die toeristen niet zomaar oplichten.",
-      mapsQuery: "Nieuwe+Rijn+markt+Leiden",
-      coords: SCHAAPSVIS_LOCATIONS.nieuweRijn,
-    };
-  }
-
+export function getSchaapsvisMessage(locale: SupportedLocale = "nl", now: Date = new Date()): { location: string; description: string; mapsQuery: string; coords: { lat: number; lng: number }; spotId: string } {
+  const { spot, description } = getSchaapsvisRouteCopy(locale, now);
+  if (!spot.coords) throw new Error(`Schaapsvishandel spot ${spot.id} has no coordinates`);
   return {
-    location: "Viswinkel Schaapsvishandel, Herenstraat",
-    description:
-      "Bezoek de viswinkel van Schaapsvishandel op de Herenstraat. Een echt familiebedrijf sinds 1938, drie generaties vakmanschap. Probeer de verse kibbeling of een broodje haring - typisch Nederlands!",
-    mapsQuery: "Herenstraat+Leiden+viswinkel",
-    coords: SCHAAPSVIS_LOCATIONS.herenstraat,
+    location: spot.name,
+    description,
+    mapsQuery: spot.address,
+    coords: spot.coords,
+    spotId: spot.id,
   };
 }
 
 export function getSmartPauseIndex(
-  stops: Array<{ coords: { lat: number; lng: number } | null }>
+  stops: Array<{ coords: { lat: number; lng: number } | null }>,
+  now: Date = new Date(),
 ): { index: number; distanceMeters: number } {
-  const { coords: fishCoords } = getSchaapsvisMessage();
+  const spot = getActiveSchaapsvisSpot(now);
+  const fishCoords = spot.coords;
+  if (!fishCoords) return { index: Math.floor(stops.length / 2), distanceMeters: -1 };
 
   let closestIndex = Math.floor(stops.length / 2);
   let closestDistance = Infinity;
@@ -80,7 +46,7 @@ export function getSmartPauseIndex(
   for (let i = 0; i < stops.length; i++) {
     const stop = stops[i];
     if (!stop.coords) continue;
-    const dist = haversineMeters(stop.coords.lat, stop.coords.lng, fishCoords.lat, fishCoords.lng);
+    const dist = haversineMeters(stop.coords, fishCoords);
     if (dist < closestDistance) {
       closestDistance = dist;
       closestIndex = i;
@@ -95,34 +61,27 @@ export function getSmartPauseIndex(
   };
 }
 
-export function getSchaapsvisContextMessage(distanceMeters: number): string {
-  const day = getDayOfWeek();
+export function getSchaapsvisContextMessage(distanceMeters: number, locale: SupportedLocale = "nl", now: Date = new Date()): string {
+  const day = now.getDay();
   const dist = distanceMeters > 0 ? distanceMeters : null;
+  const nearby = dist !== null && dist <= 300;
+  const distance = dist !== null ? `${dist}m` : null;
 
   if (day === 3) {
-    if (dist !== null && dist <= 300) {
-      return "Je bent in de buurt van de viskraam die nu bij Roos staat op de woensdagmarkt";
-    }
-    return dist !== null
-      ? `De viskraam staat vandaag bij Roos op de woensdagmarkt (${dist}m verderop)`
-      : "De viskraam staat vandaag bij Roos op de woensdagmarkt";
+    if (locale === "en") return nearby ? "You are close to the Schaapsvis cart at Wednesday's market" : `The Schaapsvis cart is at Wednesday's market today${distance ? `, about ${distance} away` : ""}`;
+    if (locale === "de") return nearby ? "Du bist in der Nähe des Schaapsvis-Wagens auf dem Mittwochsmarkt" : `Der Schaapsvis-Wagen steht heute auf dem Mittwochsmarkt${distance ? `, etwa ${distance} entfernt` : ""}`;
+    return nearby ? "Je bent vlak bij de Schaapsvis-kar op de woensdagmarkt" : `De Schaapsvis-kar staat vandaag op de woensdagmarkt${distance ? `, ongeveer ${distance} verderop` : ""}`;
   }
 
   if (day === 6) {
-    if (dist !== null && dist <= 300) {
-      return "Je bent in de buurt van de viskraam op de zaterdagmarkt bij de Waag";
-    }
-    return dist !== null
-      ? `De viskraam staat vandaag op de zaterdagmarkt bij de Waag (${dist}m verderop)`
-      : "De viskraam staat vandaag op de zaterdagmarkt bij de Waag";
+    if (locale === "en") return nearby ? "You are close to the Schaapsvis cart at Saturday's market" : `The Schaapsvis cart is at Saturday's market today${distance ? `, about ${distance} away` : ""}`;
+    if (locale === "de") return nearby ? "Du bist in der Nähe des Schaapsvis-Wagens auf dem Samstagsmarkt" : `Der Schaapsvis-Wagen steht heute auf dem Samstagsmarkt${distance ? `, etwa ${distance} entfernt` : ""}`;
+    return nearby ? "Je bent vlak bij de Schaapsvis-kar op de zaterdagmarkt" : `De Schaapsvis-kar staat vandaag op de zaterdagmarkt${distance ? `, ongeveer ${distance} verderop` : ""}`;
   }
 
-  if (dist !== null && dist <= 300) {
-    return "Je bent in de buurt van de viswinkel op de Herenstraat";
-  }
-  return dist !== null
-    ? `De viswinkel is ${dist}m verderop op de Herenstraat`
-    : "Bezoek de viswinkel op de Herenstraat";
+  if (locale === "en") return nearby ? "You are close to the Schaapsvis shop on Herenstraat" : `The Schaapsvis shop is on Herenstraat${distance ? `, about ${distance} away` : ""}`;
+  if (locale === "de") return nearby ? "Du bist in der Nähe des Schaapsvis-Geschäfts in der Herenstraat" : `Das Schaapsvis-Geschäft liegt in der Herenstraat${distance ? `, etwa ${distance} entfernt` : ""}`;
+  return nearby ? "Je bent vlak bij de Schaapsvis-winkel aan de Herenstraat" : `De Schaapsvis-winkel ligt aan de Herenstraat${distance ? `, ongeveer ${distance} verderop` : ""}`;
 }
 
 export const localRecommendations: LocalRecommendation[] = [
@@ -131,9 +90,9 @@ export const localRecommendations: LocalRecommendation[] = [
     name: "Schaapsvishandel",
     type: "visboer",
     description: {
-      nl: "Familiebedrijf sinds 1938. Drie generaties vakmanschap. De beste verse kibbeling, lekkerbekken en haring van Leiden.",
-      en: "Family business since 1938. Three generations of craftsmanship. The best fresh kibbeling, fried fish and herring in Leiden.",
-      de: "Familienbetrieb seit 1938. Drei Generationen Handwerkskunst. Die besten frischen Kibbeling, gebratenen Fisch und Hering in Leiden.",
+      nl: "Leids familiebedrijf sinds 1938, met verse kibbeling, lekkerbekken, haring en visbroodjes.",
+      en: "A Leiden family business since 1938, serving fresh kibbeling, fried fish, herring and fish sandwiches.",
+      de: "Ein Leidener Familienbetrieb seit 1938 mit frischem Kibbeling, gebratenem Fisch, Hering und Fischbrötchen.",
     },
     featured: true,
     image: null,
@@ -153,9 +112,9 @@ export const localRecommendations: LocalRecommendation[] = [
   },
 ];
 
-export function getRecommendationsForRoute(): { schaapsvis: ReturnType<typeof getSchaapsvisMessage>; others: LocalRecommendation[] } {
+export function getRecommendationsForRoute(locale: SupportedLocale = "nl"): { schaapsvis: ReturnType<typeof getSchaapsvisMessage>; others: LocalRecommendation[] } {
   return {
-    schaapsvis: getSchaapsvisMessage(),
+    schaapsvis: getSchaapsvisMessage(locale),
     others: localRecommendations.filter((r) => r.id !== "schaapsvis"),
   };
 }

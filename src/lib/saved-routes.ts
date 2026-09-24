@@ -6,6 +6,10 @@ export interface SavedRoute {
   locationIds: string[];
   createdAt: string;
   arrivedLocationIds: string[];
+  sourceRouteId?: string;
+  isLoop?: boolean;
+  featuredLocalStop?: "schaapsvis-daily";
+  optimizedAt?: string;
 }
 
 function readAll(): SavedRoute[] {
@@ -36,13 +40,18 @@ export function getSavedRouteById(id: string): SavedRoute | undefined {
   return readAll().find((r) => r.id === id);
 }
 
-export function saveRoute(name: string, locationIds: string[]): SavedRoute {
+export function saveRoute(
+  name: string,
+  locationIds: string[],
+  options: Pick<SavedRoute, "sourceRouteId" | "isLoop" | "featuredLocalStop"> = {},
+): SavedRoute {
   const route: SavedRoute = {
     id: crypto.randomUUID(),
     name,
     locationIds,
     createdAt: new Date().toISOString(),
     arrivedLocationIds: [],
+    ...options,
   };
   const all = readAll();
   all.unshift(route);
@@ -73,4 +82,17 @@ export function markArrived(routeId: string, locationId: string): void {
     route.arrivedLocationIds.push(locationId);
     writeAll(all);
   }
+}
+
+export function updateRouteOrder(routeId: string, locationIds: string[]): SavedRoute | undefined {
+  const all = readAll();
+  const route = all.find((item) => item.id === routeId);
+  if (!route) return undefined;
+  const knownIds = new Set(route.locationIds);
+  const uniqueIds = [...new Set(locationIds)].filter((id) => knownIds.has(id));
+  if (uniqueIds.length !== knownIds.size) return undefined;
+  route.locationIds = uniqueIds;
+  route.optimizedAt = new Date().toISOString();
+  writeAll(all);
+  return route;
 }
