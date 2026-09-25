@@ -11,7 +11,7 @@ export function PopularRoutes() {
   const tRoutes = useTranslations("routes");
 
   return (
-    <section className="bg-white py-10">
+    <section className="bg-warm-100 py-14 md:py-16">
       <div className="max-w-7xl mx-auto px-4">
         <AnimateOnScroll>
           <div className="flex items-center justify-between mb-6">

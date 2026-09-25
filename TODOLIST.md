@@ -88,6 +88,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Homepage logisch heringedeeld: uitleg, appmogelijkheden, routes, prijs/voordelen en achtergrondinformatie volgen nu één duidelijke bezoekersreis; de dubbele videopreview is verwijderd.
 - [x] Homepage herbouwd voor conversie en bestaande about-content samengevoegd.
 - [x] Homepage-appuitleg uitgebreid met videoverhalen, lokale winkels en eetplekken, museumtickets en GPS-voordelen.
 - [x] Routeoverzicht aangevuld met een duidelijke kaart voor eigen routes, slimme volgorde en live GPS.

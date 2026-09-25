@@ -13,53 +13,6 @@ import { useEffect, useState } from "react";
 import type { SavedRoute } from "@/lib/saved-routes";
 import Image from "next/image";
 
-function PreviewVideoSection() {
-  const t = useTranslations("home");
-
-  return (
-    <section className="max-w-5xl mx-auto px-4 py-14 md:py-20">
-      <AnimateOnScroll>
-        <div className="text-center mb-7">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-orange-600 mb-2">{t("previewEyebrow")}</p>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-navy-800 mb-2">{t("previewVideo")}</h2>
-          <p className="text-sm md:text-base text-gray-500 max-w-xl mx-auto">{t("previewVideoDesc")}</p>
-        </div>
-
-        <Link
-          href="/routes"
-          aria-label={t("previewCta")}
-          className="group relative block rounded-[2rem] overflow-hidden aspect-video max-w-4xl mx-auto bg-navy-900 shadow-2xl shadow-navy-900/20 ring-1 ring-navy-900/10"
-        >
-          <Image
-            src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
-            alt={t("previewImageAlt")}
-            fill
-            sizes="(min-width: 1024px) 896px, 100vw"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/20 to-navy-900/10" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-2xl">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-navy-800 ml-1">
-                <polygon points="5 3 19 12 5 21 5 3" />
-              </svg>
-            </div>
-          </div>
-          <div className="absolute inset-x-0 bottom-0 p-5 md:p-8 flex items-end justify-between gap-4">
-            <div className="text-left">
-              <p className="text-white font-bold text-lg md:text-2xl">{t("previewLocation")}</p>
-              <p className="text-white/70 text-xs md:text-sm mt-1">{t("previewCta")}</p>
-            </div>
-            <span className="shrink-0 rounded-full bg-white/15 backdrop-blur-md px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/20">
-              {t("previewDuration")}
-            </span>
-          </div>
-        </Link>
-      </AnimateOnScroll>
-    </section>
-  );
-}
-
 function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
   const t = useTranslations("home");
 
@@ -166,8 +119,18 @@ function HowItWorksSection() {
             </AnimateOnScroll>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-16 overflow-hidden rounded-[2rem] bg-navy-900 p-4 shadow-2xl shadow-navy-900/15 sm:p-6 md:p-8">
+function AppHighlightsSection() {
+  const t = useTranslations("home");
+
+  return (
+    <section className="bg-white py-14 md:py-20">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="overflow-hidden rounded-[2rem] bg-navy-900 p-4 shadow-2xl shadow-navy-900/15 sm:p-6 md:p-8">
           <AnimateOnScroll>
             <div className="mb-6 max-w-2xl">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-orange-400">{t("appInsideEyebrow")}</p>
@@ -313,7 +276,7 @@ function AboutLeidenSection() {
   const t = useTranslations("home");
 
   return (
-    <section className="bg-white py-10">
+    <section className="bg-warm-100 py-14 md:py-16">
       <div className="max-w-7xl mx-auto px-4">
         <AnimateOnScroll>
           <div className="text-center mb-8">
@@ -700,13 +663,13 @@ export function HomeContent() {
 
   return (
     <>
-      <PreviewVideoSection />
       <HowItWorksSection />
-      <AboutLeidenSection />
-      <PriceComparison />
-      <WhyNotGuideSection />
+      <AppHighlightsSection />
       <PopularRoutes />
       <CustomRouteCta />
+      <PriceComparison />
+      <WhyNotGuideSection />
+      <AboutLeidenSection />
       <PracticalTipsSection />
       <FaqSection />
       <CtaSection />
