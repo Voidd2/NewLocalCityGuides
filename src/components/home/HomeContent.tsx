@@ -133,13 +133,14 @@ function HowItWorksSection() {
 
   return (
     <section className="bg-warm-100 py-14 md:py-20">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4">
         <AnimateOnScroll>
           <p className="text-xs font-bold tracking-[0.2em] uppercase text-orange-600 text-center mb-2">{t("howEyebrow")}</p>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-navy-800 text-center mb-10">{t("howItWorks")}</h2>
+          <h2 className="text-2xl md:text-4xl font-extrabold text-navy-800 text-center">{t("howItWorks")}</h2>
+          <p className="mx-auto mb-10 mt-3 max-w-2xl text-center text-sm leading-relaxed text-gray-500 md:text-base">{t("howIntro")}</p>
         </AnimateOnScroll>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
           {steps.map((item, i) => (
             <AnimateOnScroll key={item.step} delay={i * 150}>
               <div className="text-center">
@@ -157,6 +158,115 @@ function HowItWorksSection() {
               </div>
             </AnimateOnScroll>
           ))}
+        </div>
+
+        <div className="mt-16 overflow-hidden rounded-[2rem] bg-navy-900 p-4 shadow-2xl shadow-navy-900/15 sm:p-6 md:p-8">
+          <AnimateOnScroll>
+            <div className="mb-6 max-w-2xl">
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-orange-400">{t("appInsideEyebrow")}</p>
+              <h3 className="text-2xl font-extrabold text-white md:text-3xl">{t("appInsideTitle")}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/60 md:text-base">{t("appInsideDesc")}</p>
+            </div>
+          </AnimateOnScroll>
+
+          <div className="grid gap-4 lg:grid-cols-12">
+            <AnimateOnScroll className="lg:col-span-7">
+              <Link href="/routes" className="group relative block min-h-[330px] overflow-hidden rounded-3xl bg-black md:min-h-[390px]">
+                <Image
+                  src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
+                  alt={t("appVideoImageAlt")}
+                  fill
+                  sizes="(min-width: 1024px) 56vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-900/35 to-transparent" />
+                <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-bold text-navy-900 shadow-lg backdrop-blur">
+                  <span className="h-2 w-2 rounded-full bg-orange-500" />
+                  {t("appVideoBadge")}
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-white shadow-xl transition group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="ml-1 h-7 w-7" aria-hidden="true">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
+                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-300">{t("appVideoKicker")}</p>
+                  <h4 className="mt-2 max-w-lg text-2xl font-extrabold text-white md:text-3xl">{t("appVideoTitle")}</h4>
+                  <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/70">{t("appVideoDesc")}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-white">
+                    {t("appVideoCta")}
+                    <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+              </Link>
+            </AnimateOnScroll>
+
+            <div className="grid gap-4 lg:col-span-5">
+              <AnimateOnScroll delay={100}>
+                <Link href="/ontdek" className="group block rounded-3xl bg-white p-5 transition hover:-translate-y-1 md:p-6">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600">{t("appLocalKicker")}</p>
+                      <h4 className="mt-2 text-xl font-extrabold text-navy-800">{t("appLocalTitle")}</h4>
+                    </div>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-orange-100 text-orange-600">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6" aria-hidden="true">
+                        <path d="M4 10h16M5 10l1-5h12l1 5M6 10v9h12v-9M9 19v-5h6v5" />
+                      </svg>
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-gray-500">{t("appLocalDesc")}</p>
+                  <div className="mt-4 grid grid-cols-3 gap-2">
+                    {[t("appLocalFish"), t("appLocalFood"), t("appLocalMarket")].map((label, index) => (
+                      <div key={label} className="rounded-2xl bg-warm-100 px-2 py-3 text-center">
+                        <span className="mx-auto mb-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-xs font-extrabold text-orange-600 shadow-sm">{index + 1}</span>
+                        <p className="text-[10px] font-bold leading-tight text-navy-800">{label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-orange-600">
+                    {t("appLocalCta")} <span className="transition group-hover:translate-x-1" aria-hidden="true">→</span>
+                  </span>
+                </Link>
+              </AnimateOnScroll>
+
+              <AnimateOnScroll delay={200}>
+                <Link href="/activiteiten" className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 p-5 text-white transition hover:-translate-y-1 md:p-6">
+                  <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10" />
+                  <div className="relative flex items-start gap-4">
+                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/20">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-7 w-7" aria-hidden="true">
+                        <path d="M3 9h18M5 9V7l7-4 7 4v2M5 9v10M9 9v10M15 9v10M19 9v10M3 19h18M2 22h20" />
+                      </svg>
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/70">{t("appTicketsKicker")}</p>
+                      <h4 className="mt-1 text-xl font-extrabold">{t("appTicketsTitle")}</h4>
+                    </div>
+                  </div>
+                  <p className="relative mt-3 text-sm leading-relaxed text-white/80">{t("appTicketsDesc")}</p>
+                  <div className="relative mt-4 flex flex-wrap gap-2">
+                    {['Museum De Lakenhal', 'Naturalis', 'Rijksmuseum van Oudheden'].map((museum) => (
+                      <span key={museum} className="rounded-full bg-white/15 px-3 py-1.5 text-[10px] font-semibold ring-1 ring-white/15">{museum}</span>
+                    ))}
+                  </div>
+                  <span className="relative mt-4 inline-flex items-center gap-2 text-sm font-bold">
+                    {t("appTicketsCta")} <span className="transition group-hover:translate-x-1" aria-hidden="true">→</span>
+                  </span>
+                </Link>
+              </AnimateOnScroll>
+            </div>
+          </div>
+
+          <AnimateOnScroll delay={250}>
+            <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-4">
+              {[t("appBenefitGps"), t("appBenefitLanguages"), t("appBenefitPace"), t("appBenefitUpdates")].map((benefit) => (
+                <div key={benefit} className="bg-white/[0.06] px-3 py-4 text-center text-xs font-semibold text-white/80">{benefit}</div>
+              ))}
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>

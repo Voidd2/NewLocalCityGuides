@@ -88,6 +88,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 ## Recent afgerond
 
 - [x] Homepage herbouwd voor conversie en bestaande about-content samengevoegd.
+- [x] Homepage-appuitleg uitgebreid met videoverhalen, lokale winkels en eetplekken, museumtickets en GPS-voordelen.
 - [x] GPS-start, hervatten, route-optimalisatie en MapLibre-kaart toegevoegd.
 - [x] MapLibre-worker voor Next.js/Turbopack gerepareerd en een zichtbare kaartfallback toegevoegd.
 - [x] Locatieverhalen ingekort tot circa 2–3 minuten, met enkele duidelijke tussenkoppen en zonder uitklapbare tekstblokken.
