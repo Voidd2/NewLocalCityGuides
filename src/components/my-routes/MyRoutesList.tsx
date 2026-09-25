@@ -1,24 +1,33 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { getSavedRoutes, deleteSavedRoute, type SavedRoute } from "@/lib/saved-routes";
-import { getLocationById } from "@/data/locations";
+import { getSavedRoutes, deleteSavedRoute, getVisitedCount, ROUTES_CHANGED_EVENT, type SavedRoute } from "@/lib/saved-routes";
 import { routes as standardRoutes } from "@/data/routes";
+import { getRoutePlaceById } from "@/lib/route-places";
+import type { SupportedLocale } from "@/data/schaapsvis";
 
 export function MyRoutesList() {
   const [routes, setRoutes] = useState<SavedRoute[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations("myRoutes");
   const tCommon = useTranslations("common");
+  const locale = useLocale() as SupportedLocale;
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
+    const refresh = () => {
       setRoutes(getSavedRoutes());
       setIsLoading(false);
-    });
-    return () => cancelAnimationFrame(frame);
+    };
+    const frame = requestAnimationFrame(refresh);
+    window.addEventListener(ROUTES_CHANGED_EVENT, refresh);
+    window.addEventListener("focus", refresh);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener(ROUTES_CHANGED_EVENT, refresh);
+      window.removeEventListener("focus", refresh);
+    };
   }, []);
 
   const handleDelete = (id: string) => {
@@ -67,8 +76,8 @@ export function MyRoutesList() {
       ) : (
         <div className="space-y-4">
           {routes.map((route) => {
-            const locs = route.locationIds.map(getLocationById).filter(Boolean);
-            const progress = route.arrivedLocationIds.length;
+            const locs = route.locationIds.map((id) => getRoutePlaceById(id, locale)).filter(Boolean);
+            const progress = getVisitedCount(route);
             const total = route.locationIds.length;
             const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
 

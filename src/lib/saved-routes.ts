@@ -1,4 +1,5 @@
 const STORAGE_KEY = "ylcg_saved_routes";
+export const ROUTES_CHANGED_EVENT = "ylcg:routes-changed";
 
 export interface SavedRoute {
   id: string;
@@ -27,6 +28,9 @@ function readAll(): SavedRoute[] {
 function writeAll(routes: SavedRoute[]): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(routes));
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent(ROUTES_CHANGED_EVENT));
+    }
   } catch {
     // ignore
   }
@@ -82,6 +86,11 @@ export function markArrived(routeId: string, locationId: string): void {
     route.arrivedLocationIds.push(locationId);
     writeAll(all);
   }
+}
+
+export function getVisitedCount(route: SavedRoute): number {
+  const routeIds = new Set(route.locationIds);
+  return new Set(route.arrivedLocationIds.filter((id) => routeIds.has(id))).size;
 }
 
 export function updateRouteOrder(routeId: string, locationIds: string[]): SavedRoute | undefined {

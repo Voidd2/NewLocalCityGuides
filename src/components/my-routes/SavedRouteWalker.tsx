@@ -5,8 +5,9 @@ import dynamic from "next/dynamic";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useParams } from "next/navigation";
-import { getSavedRouteById, markArrived, updateRouteOrder, type SavedRoute } from "@/lib/saved-routes";
-import { getLocationById, type LocationData } from "@/data/locations";
+import { getSavedRouteById, getVisitedCount, markArrived, updateRouteOrder, type SavedRoute } from "@/lib/saved-routes";
+import type { LocationData } from "@/data/locations";
+import { getRoutePlaceById, type RoutePlace } from "@/lib/route-places";
 import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
 import { getActiveSchaapsvisSpot, type SupportedLocale } from "@/data/schaapsvis";
 import { routes } from "@/data/routes";
@@ -82,7 +83,7 @@ function StopCard({
   routeId,
   onOpenVideo,
 }: {
-  loc: LocationData;
+  loc: RoutePlace;
   index: number;
   isLast: boolean;
   hasArrived: boolean;
@@ -242,7 +243,7 @@ function StopCard({
                   </button>
 
                   <Link
-                    href={`/locations/${loc.slug}?back=/my-routes/${routeId}`}
+                    href={`${loc.detailHref}?back=/my-routes/${routeId}`}
                     onClick={(e) => e.stopPropagation()}
                     className="w-full flex items-center gap-3 bg-white border border-gray-200 hover:border-orange-300 hover:bg-orange-50 rounded-xl p-3 transition-colors text-left"
                   >
@@ -507,6 +508,24 @@ export function SavedRouteWalker() {
     setRoute(getSavedRouteById(routeId) ?? null);
   };
 
+  useEffect(() => {
+    if (!route || !gps.position) return;
+    const nearby = route.locationIds
+      .filter((id) => !route.arrivedLocationIds.includes(id))
+      .map((id) => getRoutePlaceById(id, locale))
+      .filter((place): place is RoutePlace => Boolean(place?.coords))
+      .map((place) => ({ place, distance: haversineMeters(gps.position!, place.coords!) }))
+      .sort((a, b) => a.distance - b.distance)[0];
+
+    if (nearby && nearby.distance <= 75) {
+      markArrived(routeId, nearby.place.id);
+      const frame = requestAnimationFrame(() => {
+        setRoute(getSavedRouteById(routeId) ?? null);
+      });
+      return () => cancelAnimationFrame(frame);
+    }
+  }, [gps.position, locale, route, routeId]);
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
@@ -535,10 +554,10 @@ export function SavedRouteWalker() {
   }
 
   const locs = route.locationIds
-    .map(getLocationById)
-    .filter(Boolean) as LocationData[];
+    .map((id) => getRoutePlaceById(id, locale))
+    .filter(Boolean) as RoutePlace[];
 
-  const progress = route.arrivedLocationIds.length;
+  const progress = getVisitedCount(route);
   const total = locs.length;
   const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
   const isComplete = progress === total && total > 0;

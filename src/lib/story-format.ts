@@ -102,3 +102,47 @@ export function buildStorySummary(parsedStory: ParsedStory): string[] {
 
   return summary;
 }
+
+function takeWholeSentences(text: string, wordBudget: number): string {
+  const sentences = text.match(/[^.!?]+[.!?]+|[^.!?]+$/g) ?? [text];
+  const selected: string[] = [];
+  let used = 0;
+
+  for (const sentence of sentences) {
+    const words = sentence.trim().split(/\s+/).filter(Boolean).length;
+    if (used + words > wordBudget && selected.length > 0) break;
+    selected.push(sentence.trim());
+    used += words;
+    if (used >= wordBudget) break;
+  }
+
+  return selected.join(" ");
+}
+
+export function condenseStorySections(
+  parsedStory: ParsedStory,
+  maxWords = 500,
+  maxSections = 6,
+): StorySection[] {
+  const selected: StorySection[] = [];
+  let remainingWords = maxWords;
+
+  for (const section of parsedStory.sections) {
+    if (selected.length >= maxSections || remainingWords <= 25) break;
+    const paragraphs: string[] = [];
+
+    for (const paragraph of section.paragraphs) {
+      if (remainingWords <= 25) break;
+      const shortened = takeWholeSentences(paragraph, remainingWords);
+      if (!shortened) continue;
+      paragraphs.push(shortened);
+      remainingWords -= shortened.split(/\s+/).filter(Boolean).length;
+    }
+
+    if (section.heading || paragraphs.length > 0) {
+      selected.push({ heading: section.heading, paragraphs });
+    }
+  }
+
+  return selected;
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildStorySummary, parseStoryText } from "../src/lib/story-format";
+import { buildStorySummary, condenseStorySections, parseStoryText } from "../src/lib/story-format";
 
 describe("story formatting", () => {
   it("recognises single-line titles and groups prose into readable paragraphs", () => {
@@ -27,5 +27,17 @@ Een betrouwbare bron`);
     expect(parsed.facts).toEqual(["Een controleerbaar feit"]);
     expect(parsed.sources).toEqual(["Een betrouwbare bron"]);
     expect(buildStorySummary(parsed)[0]).toContain("essentie");
+  });
+
+  it("keeps a story within a readable word and section limit without accordions", () => {
+    const parsed = parseStoryText(Array.from({ length: 8 }, (_, index) =>
+      `Hoofdstuk ${index + 1}\n${"Dit is historische uitleg met een volledige zin. ".repeat(20)}`,
+    ).join("\n"));
+    const condensed = condenseStorySections(parsed, 120, 3);
+    const wordCount = condensed.flatMap((section) => section.paragraphs).join(" ").split(/\s+/).filter(Boolean).length;
+
+    expect(condensed.length).toBeLessThanOrEqual(3);
+    expect(wordCount).toBeLessThanOrEqual(120);
+    expect(condensed.every((section) => Boolean(section.heading))).toBe(true);
   });
 });

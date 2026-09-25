@@ -7,7 +7,7 @@ import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
 import { getLocationStory } from "@/data/stories";
 import { getStoryMedia } from "@/data/story-media";
-import { buildStorySummary, parseStoryText, type ParsedStory } from "@/lib/story-format";
+import { condenseStorySections, parseStoryText, type ParsedStory } from "@/lib/story-format";
 import { LocationSkeleton } from "@/components/ui/PageSkeletons";
 import { BeforeAfterSlider } from "@/components/story/BeforeAfterSlider";
 
@@ -27,18 +27,18 @@ function StoryView({
   onNavigate: (s: ExperienceState) => void;
 }) {
   const media = getStoryMedia(location.id, location.name);
-  const summary = parsedStory ? buildStorySummary(parsedStory) : [];
+  const readableSections = parsedStory ? condenseStorySections(parsedStory, 500, 6) : [];
   const copy = locale === "de"
-    ? { story: "Die Geschichte", summary: "Kurz zusammengefasst", continue: "Diesen Teil weiterlesen", part: "Teil" }
+    ? { story: "Die Geschichte", part: "Teil" }
     : locale === "en"
-      ? { story: "The story", summary: "In brief", continue: "Continue reading this section", part: "Part" }
-      : { story: "Het verhaal", summary: "Kort samengevat", continue: "Lees dit deel verder", part: "Deel" };
+      ? { story: "The story", part: "Part" }
+      : { story: "Het verhaal", part: "Deel" };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       {parsedStory && parsedStory.sections.length > 0 ? (() => {
-        const titleSection = parsedStory.sections[0];
-        const bodySections = parsedStory.sections.slice(1);
+        const titleSection = readableSections[0] ?? parsedStory.sections[0];
+        const bodySections = readableSections.slice(1);
 
         return (
           <>
@@ -57,20 +57,6 @@ function StoryView({
               {copy.story}
             </p>
 
-            {summary.length > 0 && (
-              <section className="mb-5 rounded-2xl border border-orange-200 bg-orange-50 p-4">
-                <h3 className="mb-2 text-sm font-extrabold text-navy-800">{copy.summary}</h3>
-                <ul className="space-y-2">
-                  {summary.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm leading-relaxed text-gray-700">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
             <BeforeAfterSlider
               current={media.current}
               historical={media.historical}
@@ -78,46 +64,22 @@ function StoryView({
               historicalIsAiAllowed={media.historicalIsAiAllowed}
             />
 
-            {titleSection.paragraphs.length > 0 && (
-              <section className="mb-4 rounded-2xl border border-gray-200 bg-white p-5">
-                <p className="text-sm font-medium leading-relaxed text-gray-700">{titleSection.paragraphs[0]}</p>
-                {titleSection.paragraphs.length > 1 && (
-                  <details className="group mt-3">
-                    <summary className="cursor-pointer list-none text-sm font-bold text-orange-600">
-                      {copy.continue}
-                    </summary>
-                    <div className="mt-4 space-y-3 border-t border-gray-100 pt-4">
-                      {titleSection.paragraphs.slice(1).map((paragraph, index) => (
-                        <p key={index} className="text-sm leading-relaxed text-gray-600">{paragraph}</p>
-                      ))}
-                    </div>
-                  </details>
-                )}
-              </section>
-            )}
+            <article className="mx-auto max-w-3xl text-[15px] leading-7 text-gray-700">
+              {titleSection.paragraphs.map((paragraph, index) => (
+                <p key={`intro-${index}`} className="mb-4">{paragraph}</p>
+              ))}
 
-            <div className="space-y-4">
               {bodySections.map((section, sectionIndex) => (
-                <section key={`${section.heading}-${sectionIndex}`} className="rounded-2xl border border-gray-200 bg-white p-5">
-                  <h3 className="mb-3 text-lg font-extrabold leading-snug text-navy-800">
+                <section key={`${section.heading}-${sectionIndex}`} className="mt-7">
+                  <h3 className="mb-2 text-xl font-extrabold leading-snug text-navy-800">
                     {section.heading || `${copy.part} ${sectionIndex + 2}`}
                   </h3>
-                  {section.paragraphs[0] && (
-                    <p className="text-sm leading-relaxed text-gray-700">{section.paragraphs[0]}</p>
-                  )}
-                  {section.paragraphs.length > 1 && (
-                    <details className="mt-3">
-                      <summary className="cursor-pointer list-none text-sm font-bold text-orange-600">{copy.continue}</summary>
-                      <div className="mt-4 space-y-3 border-t border-gray-100 pt-4">
-                        {section.paragraphs.slice(1).map((paragraph, paragraphIndex) => (
-                          <p key={paragraphIndex} className="text-sm leading-relaxed text-gray-600">{paragraph}</p>
-                        ))}
-                      </div>
-                    </details>
-                  )}
+                  {section.paragraphs.map((paragraph, paragraphIndex) => (
+                    <p key={paragraphIndex} className="mb-4">{paragraph}</p>
+                  ))}
                 </section>
               ))}
-            </div>
+            </article>
 
             {parsedStory.facts.length > 0 && (
               <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 mt-6 mb-4">
@@ -125,7 +87,7 @@ function StoryView({
                   {locale === "de" ? "Wussten Sie das?" : locale === "en" ? "Did you know?" : "Wist je dat?"}
                 </h4>
                 <ul className="space-y-2">
-                  {parsedStory.facts.map((fact, i) => (
+                  {parsedStory.facts.slice(0, 3).map((fact, i) => (
                     <li key={i} className="text-xs text-gray-600 flex gap-2">
                       <span className="text-orange-400 mt-0.5 shrink-0">&#8226;</span>
                       <span>{fact}</span>

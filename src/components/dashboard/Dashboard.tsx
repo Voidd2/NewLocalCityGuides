@@ -2,14 +2,17 @@
 
 import { useEffect, useState, useMemo, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/data/routes";
 import { locations, getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
-import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
+import { getSavedRoutes, saveRoute, addLocationToRoute, getVisitedCount, ROUTES_CHANGED_EVENT, type SavedRoute } from "@/lib/saved-routes";
 import { applyDateAwareRoute } from "@/data/route-conditions";
+import { RoutePickerModal } from "@/components/routes/RoutePickerModal";
+import { getVisibleSpots } from "@/data/local-spots";
+import type { SupportedLocale } from "@/data/schaapsvis";
 
 const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -26,19 +29,34 @@ const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m
 export function Dashboard() {
   const t = useTranslations("dashboard");
   const tCommon = useTranslations("common");
+  const tMap = useTranslations("map");
+  const locale = useLocale() as SupportedLocale;
   const router = useRouter();
   const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
   const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
   const [addToRouteFor, setAddToRouteFor] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const [selectedMapPin, setSelectedMapPin] = useState<string | null>(null);
+  const [mapFilter, setMapFilter] = useState<"all" | "tour" | "museum" | "local">("all");
 
-  const mapPins = useMemo(() =>
-    locations
+  const mapPins = useMemo(() => {
+    const tourPins = locations
       .filter((l) => l.coords !== null)
-      .map((l) => ({ id: l.id, name: l.name, category: l.mainTheme, kind: "location" as const, lat: l.coords!.lat, lng: l.coords!.lng })),
-    []
-  );
+      .map((l) => ({ id: l.id, name: l.name, category: l.mainTheme, kind: "location" as const, lat: l.coords!.lat, lng: l.coords!.lng, icon: "\u{1F4D6}" }));
+    const spotPins = getVisibleSpots()
+      .filter((spot) => spot.coords)
+      .filter((spot) => mapFilter === "all" || mapFilter === "local" || (mapFilter === "museum" && spot.category === "museum"))
+      .map((spot) => ({
+        id: spot.id,
+        name: spot.name,
+        category: spot.category,
+        kind: "spot" as const,
+        lat: spot.coords!.lat,
+        lng: spot.coords!.lng,
+        icon: spot.category === "museum" ? "\u{1F3DB}\uFE0F" : spot.category === "visboer" ? "\u{1F41F}" : "\u{1F4CD}",
+      }));
+    return mapFilter === "tour" ? tourPins : mapFilter === "museum" || mapFilter === "local" ? spotPins : [...tourPins, ...spotPins];
+  }, [mapFilter]);
 
   useEffect(() => {
     if (toast) {
@@ -97,8 +115,15 @@ export function Dashboard() {
 
   useEffect(() => {
     if (!hasPaid) return;
-    const frame = requestAnimationFrame(() => setSavedRoutes(getSavedRoutes()));
-    return () => cancelAnimationFrame(frame);
+    const refresh = () => setSavedRoutes(getSavedRoutes());
+    const frame = requestAnimationFrame(refresh);
+    window.addEventListener(ROUTES_CHANGED_EVENT, refresh);
+    window.addEventListener("focus", refresh);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener(ROUTES_CHANGED_EVENT, refresh);
+      window.removeEventListener("focus", refresh);
+    };
   }, [hasPaid]);
 
   function handleLogout() {
@@ -141,9 +166,9 @@ export function Dashboard() {
 
       {hasPaid ? (
         <>
-          {savedRoutes.some((sr) => sr.arrivedLocationIds.length > 0 && sr.arrivedLocationIds.length < sr.locationIds.length) && (() => {
-            const active = savedRoutes.find((sr) => sr.arrivedLocationIds.length > 0 && sr.arrivedLocationIds.length < sr.locationIds.length)!;
-            const progress = active.arrivedLocationIds.length;
+          {savedRoutes.some((sr) => getVisitedCount(sr) > 0 && getVisitedCount(sr) < sr.locationIds.length) && (() => {
+            const active = savedRoutes.find((sr) => getVisitedCount(sr) > 0 && getVisitedCount(sr) < sr.locationIds.length)!;
+            const progress = getVisitedCount(active);
             const total = active.locationIds.length;
             const pct = Math.round((progress / total) * 100);
             return (
@@ -217,7 +242,7 @@ export function Dashboard() {
             <div className="space-y-3 mb-8">
               {savedRoutes.slice(0, 3).map((sr) => {
                 const locs = sr.locationIds.map(getLocationById).filter(Boolean);
-                const progress = sr.arrivedLocationIds.length;
+                const progress = getVisitedCount(sr);
                 const total = sr.locationIds.length;
                 const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
                 return (
@@ -278,7 +303,23 @@ export function Dashboard() {
 
           {mapPins.length > 0 && (
             <>
-              <h2 className="text-lg font-bold text-navy-800 mb-4">{t("mapOfLeiden")}</h2>
+              <h2 className="text-lg font-bold text-navy-800 mb-3">{t("mapOfLeiden")}</h2>
+              <div className="mb-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                {[
+                  { key: "all" as const, label: tMap("all"), icon: "\u{1F5FA}\uFE0F" },
+                  { key: "tour" as const, label: tMap("tourPlaces"), icon: "\u{1F4D6}" },
+                  { key: "museum" as const, label: tMap("museums"), icon: "\u{1F3DB}\uFE0F" },
+                  { key: "local" as const, label: tMap("localSpot"), icon: "\u{1F4CD}" },
+                ].map((filter) => (
+                  <button
+                    key={filter.key}
+                    onClick={() => { setMapFilter(filter.key); setSelectedMapPin(null); }}
+                    className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold ${mapFilter === filter.key ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-600"}`}
+                  >
+                    <span className="mr-1" aria-hidden="true">{filter.icon}</span>{filter.label}
+                  </button>
+                ))}
+              </div>
               <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8 z-0">
                 <MapLibreMap
                   pins={mapPins}
@@ -286,8 +327,12 @@ export function Dashboard() {
                   onSelectPin={(id) => setSelectedMapPin(id === selectedMapPin ? null : id)}
                 />
                 {selectedMapPin && (() => {
-                  const pin = locations.find((l) => l.id === selectedMapPin);
+                  const location = locations.find((item) => item.id === selectedMapPin);
+                  const spot = getVisibleSpots().find((item) => item.id === selectedMapPin);
+                  const pin = location ?? spot;
                   if (!pin) return null;
+                  const description = location?.shortDescription ?? spot?.description[locale].split("\n\n")[0] ?? "";
+                  const href = location ? `/locations/${location.slug}` : `/ontdek/${spot!.id}`;
                   return (
                     <div className="absolute bottom-3 left-3 right-3 z-[1000] bg-white rounded-xl shadow-xl border border-gray-200 p-3 flex items-center gap-3">
                       <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
@@ -295,7 +340,7 @@ export function Dashboard() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="font-bold text-navy-800 text-sm truncate">{pin.name}</h4>
-                        <p className="text-[10px] text-gray-500 line-clamp-1">{pin.shortDescription}</p>
+                        <p className="text-[10px] text-gray-500 line-clamp-1">{description}</p>
                       </div>
                       <div className="flex gap-1.5 shrink-0">
                         <button
@@ -307,7 +352,7 @@ export function Dashboard() {
                           </svg>
                         </button>
                         <Link
-                          href={`/locations/${pin.slug}`}
+                          href={href}
                           className="w-9 h-9 rounded-full bg-navy-800 hover:bg-navy-900 flex items-center justify-center text-white transition-colors"
                         >
                           <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
@@ -368,6 +413,15 @@ export function Dashboard() {
           </div>
 
           {addToRouteFor && (
+            <RoutePickerModal
+              placeId={addToRouteFor}
+              placeName={locations.find((location) => location.id === addToRouteFor)?.name ?? getVisibleSpots().find((spot) => spot.id === addToRouteFor)?.name ?? "Leiden"}
+              onClose={() => setAddToRouteFor(null)}
+              onResult={setToast}
+            />
+          )}
+
+          {false && addToRouteFor && (
             <div className="fixed inset-0 z-50 flex items-end justify-center" onClick={() => setAddToRouteFor(null)}>
               <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
               <div className="relative bg-white rounded-t-2xl shadow-xl w-full max-w-md max-h-[70vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
@@ -388,7 +442,7 @@ export function Dashboard() {
                   {routes.map((route) => (
                     <button
                       key={route.id}
-                      onClick={() => handleAddToRoute(route.id, addToRouteFor)}
+                      onClick={() => handleAddToRoute(route.id, addToRouteFor!)}
                       className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left"
                     >
                       <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
@@ -411,7 +465,7 @@ export function Dashboard() {
                       {savedRoutes.map((sr) => (
                         <button
                           key={sr.id}
-                          onClick={() => handleAddToRoute(sr.id, addToRouteFor)}
+                          onClick={() => handleAddToRoute(sr.id, addToRouteFor!)}
                           className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left"
                         >
                           <div className="w-10 h-10 rounded-lg bg-orange-100 shrink-0 flex items-center justify-center">
@@ -434,7 +488,7 @@ export function Dashboard() {
                 </div>
                 <div className="border-t border-gray-100 px-4 py-3">
                   <button
-                    onClick={() => handleCreateNewRoute(addToRouteFor)}
+                    onClick={() => handleCreateNewRoute(addToRouteFor!)}
                     className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-orange-300 text-orange-500 hover:bg-orange-50 font-semibold py-2.5 rounded-xl text-sm transition-colors"
                   >
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">

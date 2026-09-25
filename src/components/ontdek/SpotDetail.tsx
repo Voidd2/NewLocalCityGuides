@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import dynamic from "next/dynamic";
 import { Link } from "@/i18n/navigation";
-import { useAuth } from "@/lib/auth-context";
 import { SPOT_CATEGORIES, type LocalSpot } from "@/data/local-spots";
-import { getSavedRoutes, saveRoute, addLocationToRoute } from "@/lib/saved-routes";
-import type { SavedRoute } from "@/lib/saved-routes";
+import { RoutePickerModal } from "@/components/routes/RoutePickerModal";
+import { RichDescription } from "@/components/ui/RichDescription";
 
 const MapLibreMap = dynamic(
   () => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap),
@@ -37,20 +36,12 @@ function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string;
 
 export function SpotDetail({ spot }: { spot: LocalSpot }) {
   const locale = useLocale() as "nl" | "en" | "de";
-  const { hasPaid } = useAuth();
   const desc = spot.description[locale] || spot.description.nl;
   const catLabel =
     SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[locale] || spot.category;
 
   const [showRouteModal, setShowRouteModal] = useState(false);
-  const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
   const [toast, setToast] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!hasPaid) return;
-    const frame = requestAnimationFrame(() => setSavedRoutes(getSavedRoutes()));
-    return () => cancelAnimationFrame(frame);
-  }, [hasPaid]);
 
   useEffect(() => {
     if (toast) {
@@ -58,28 +49,6 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
       return () => clearTimeout(t);
     }
   }, [toast]);
-
-  const handleAddToRoute = useCallback(
-    (routeId: string) => {
-      const result = addLocationToRoute(routeId, spot.id);
-      const route = getSavedRoutes().find((r) => r.id === routeId);
-      setToast(
-        result === "duplicate"
-          ? `${spot.name} staat al in ${route?.name || "deze route"}`
-          : `${spot.name} toegevoegd aan ${route?.name || "je route"}`
-      );
-      setSavedRoutes(getSavedRoutes());
-      setShowRouteModal(false);
-    },
-    [spot]
-  );
-
-  const handleCreateNewRoute = useCallback(() => {
-    saveRoute(`Route met ${spot.name}`, [spot.id]);
-    setSavedRoutes(getSavedRoutes());
-    setToast(`Nieuwe route aangemaakt met ${spot.name}`);
-    setShowRouteModal(false);
-  }, [spot]);
 
   const mapPins = spot.coords
     ? [{ id: spot.id, name: spot.name, category: catLabel, kind: "spot" as const, lat: spot.coords.lat, lng: spot.coords.lng }]
@@ -219,7 +188,7 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
       <div className="max-w-3xl mx-auto px-4 -mt-5 relative z-10">
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
           <div className="p-5">
-            <p className="text-sm text-gray-700 leading-relaxed mb-4">{desc}</p>
+            <div className="mb-5"><RichDescription text={desc} /></div>
 
             <div className="flex flex-wrap gap-1.5 mb-5">
               {spot.tags.map((tag) => (
@@ -363,69 +332,12 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
       <div className="h-24" />
 
       {showRouteModal && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center" onClick={() => setShowRouteModal(false)}>
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="relative bg-white rounded-t-2xl shadow-xl w-full max-w-md max-h-[70vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className="bg-navy-800 px-4 py-3 flex items-center justify-between">
-              <div className="flex-1 min-w-0">
-                <p className="text-white text-xs font-medium">{l.addToRouteTitle}</p>
-                <p className="text-orange-400 text-sm font-bold truncate">{spot.name}</p>
-              </div>
-              <button onClick={() => setShowRouteModal(false)} className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-colors shrink-0 ml-2">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                </svg>
-              </button>
-            </div>
-            <div className="overflow-y-auto max-h-[50vh] px-3 py-3 space-y-1">
-              {savedRoutes.length > 0 ? (
-                <>
-                  <div className="px-1 pt-1 pb-1">
-                    <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">{l.myRoutes}</p>
-                  </div>
-                  {savedRoutes.map((sr) => (
-                    <button
-                      key={sr.id}
-                      onClick={() => handleAddToRoute(sr.id)}
-                      className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-orange-100 shrink-0 flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-orange-500" stroke="currentColor" strokeWidth="2">
-                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                          <circle cx="12" cy="9" r="2.5" />
-                        </svg>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-navy-800 text-sm truncate">{sr.name}</h4>
-                        <p className="text-[11px] text-gray-400">{sr.locationIds.length} stops</p>
-                      </div>
-                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0">
-                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                      </svg>
-                    </button>
-                  ))}
-                </>
-              ) : (
-                <div className="text-center py-6">
-                  <p className="text-sm text-gray-400">
-                    {locale === "de" ? "Noch keine Routen" : locale === "en" ? "No routes yet" : "Nog geen routes"}
-                  </p>
-                </div>
-              )}
-            </div>
-            <div className="border-t border-gray-100 px-4 py-3">
-              <button
-                onClick={handleCreateNewRoute}
-                className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-orange-300 text-orange-500 hover:bg-orange-50 font-semibold py-2.5 rounded-xl text-sm transition-colors"
-              >
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                </svg>
-                {l.newRoute}
-              </button>
-            </div>
-          </div>
-        </div>
+        <RoutePickerModal
+          placeId={spot.id}
+          placeName={spot.name}
+          onClose={() => setShowRouteModal(false)}
+          onResult={setToast}
+        />
       )}
     </div>
   );

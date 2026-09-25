@@ -12,6 +12,7 @@ import { MapSkeleton } from "@/components/ui/PageSkeletons";
 import { getVisibleSpots } from "@/data/local-spots";
 import type { SupportedLocale } from "@/data/schaapsvis";
 import { applyDateAwareRoute } from "@/data/route-conditions";
+import { RoutePickerModal } from "@/components/routes/RoutePickerModal";
 
 const MapLibreMap = dynamic(() => import("./MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -27,6 +28,16 @@ const MapLibreMap = dynamic(() => import("./MapLibreMap").then((m) => m.MapLibre
 
 const TEASER_COUNT = 3;
 
+function getPinIcon(kind: "location" | "spot", category: string): string {
+  if (kind === "location") return "\u{1F4D6}";
+  if (category === "museum") return "\u{1F3DB}\uFE0F";
+  if (category === "visboer") return "\u{1F41F}";
+  if (category === "markt") return "\u{1F6CD}\uFE0F";
+  if (category === "restaurant" || category === "kroeg") return "\u{1F37D}\uFE0F";
+  if (category === "bakker") return "\u{1F950}";
+  return "\u{1F4CD}";
+}
+
 export function MapPage() {
   const t = useTranslations("map");
   const tCommon = useTranslations("common");
@@ -34,21 +45,22 @@ export function MapPage() {
   const { hasPaid, isLoading } = useAuth();
 
   const categories = [
-    { key: "all", label: t("all") },
-    { key: "museum", label: t("museums") },
-    { key: "visboer", label: t("fishShops") },
-    { key: "markt", label: t("markets") },
-    { key: "restaurant", label: t("foodAndDrink") },
-    { key: "architectuur", label: t("architecture") },
-    { key: "kunst", label: t("art") },
-    { key: "geloof", label: t("faith") },
-    { key: "natuur", label: t("natureAndParks") },
-    { key: "handel", label: t("tradeAndWork") },
-    { key: "wetenschap", label: t("science") },
-    { key: "cultuur", label: t("culture") },
-    { key: "macht", label: t("powerAndLaw") },
-    { key: "dagelijks-leven", label: t("dailyLife") },
-    { key: "rampen", label: t("disastersAndStrife") },
+    { key: "all", label: t("all"), icon: "\u{1F5FA}\uFE0F" },
+    { key: "tour", label: t("tourPlaces"), icon: "\u{1F4D6}" },
+    { key: "museum", label: t("museums"), icon: "\u{1F3DB}\uFE0F" },
+    { key: "visboer", label: t("fishShops"), icon: "\u{1F41F}" },
+    { key: "markt", label: t("markets"), icon: "\u{1F6CD}\uFE0F" },
+    { key: "restaurant", label: t("foodAndDrink"), icon: "\u{1F37D}\uFE0F" },
+    { key: "architectuur", label: t("architecture"), icon: "" },
+    { key: "kunst", label: t("art"), icon: "" },
+    { key: "geloof", label: t("faith"), icon: "" },
+    { key: "natuur", label: t("natureAndParks"), icon: "" },
+    { key: "handel", label: t("tradeAndWork"), icon: "" },
+    { key: "wetenschap", label: t("science"), icon: "" },
+    { key: "cultuur", label: t("culture"), icon: "" },
+    { key: "macht", label: t("powerAndLaw"), icon: "" },
+    { key: "dagelijks-leven", label: t("dailyLife"), icon: "" },
+    { key: "rampen", label: t("disastersAndStrife"), icon: "" },
   ];
   const [activeCategory, setActiveCategory] = useState("all");
   const [view, setView] = useState<"map" | "list">("map");
@@ -79,6 +91,7 @@ export function MapPage() {
         category: location.categories[0] ?? "cultuur",
         categories: location.categories,
         kind: "location" as const,
+        icon: getPinIcon("location", location.categories[0] ?? "cultuur"),
         lat: location.coords!.lat,
         lng: location.coords!.lng,
       }));
@@ -90,6 +103,7 @@ export function MapPage() {
         category: spot.category,
         categories: [spot.category],
         kind: "spot" as const,
+        icon: getPinIcon("spot", spot.category),
         lat: spot.coords!.lat,
         lng: spot.coords!.lng,
       }));
@@ -97,14 +111,14 @@ export function MapPage() {
   }, []);
 
   const mapFiltered = useMemo(() => mapItems
-    .filter((item) => activeCategory === "all" || item.categories.some((category) => category === activeCategory))
+    .filter((item) => activeCategory === "all" || (activeCategory === "tour" ? item.kind === "location" : item.categories.some((category) => category === activeCategory)))
     .filter((item) => !searchQuery || item.name.toLowerCase().includes(searchQuery.toLowerCase())),
     [activeCategory, mapItems, searchQuery],
   );
 
   const listFiltered = useMemo(() =>
     locations
-      .filter((l) => activeCategory === "all" || l.categories.includes(activeCategory))
+      .filter((l) => activeCategory === "all" || activeCategory === "tour" || l.categories.includes(activeCategory))
       .filter((l) => !searchQuery || l.name.toLowerCase().includes(searchQuery.toLowerCase())),
     [activeCategory, searchQuery]
   );
@@ -126,6 +140,10 @@ export function MapPage() {
   const addToRouteLocation = addToRouteFor
     ? locations.find((l) => l.id === addToRouteFor)
     : null;
+  const routePickerSpot = addToRouteFor
+    ? getVisibleSpots().find((spot) => spot.id === addToRouteFor)
+    : null;
+  const routePickerName = addToRouteLocation?.name ?? routePickerSpot?.name;
 
   const standardRoutesAsSaved: SavedRoute[] = standardRoutes.map((baseRoute) => {
     const route = applyDateAwareRoute(baseRoute);
@@ -222,6 +240,18 @@ export function MapPage() {
         </div>
       )}
 
+      {addToRouteFor && routePickerName && (
+        <RoutePickerModal
+          placeId={addToRouteFor}
+          placeName={routePickerName}
+          onClose={() => setAddToRouteFor(null)}
+          onResult={(message) => {
+            setSavedRoutes(getSavedRoutes());
+            setToast({ message, type: "success" });
+          }}
+        />
+      )}
+
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           {hasPaid && (
@@ -267,6 +297,26 @@ export function MapPage() {
           </button>
         </div>
       </div>
+
+      {hasPaid && (
+        <div className="mx-auto mb-3 flex max-w-7xl gap-2 overflow-x-auto px-4 pb-1 scrollbar-hide">
+          {categories.map((category) => (
+            <button
+              key={category.key}
+              onClick={() => {
+                setActiveCategory(category.key);
+                setSelectedPin(null);
+              }}
+              className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
+                activeCategory === category.key ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              <span aria-hidden="true">{category.icon ?? ""}</span>
+              {category.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       {view === "map" ? (
         <div className="relative mx-4">
@@ -350,11 +400,17 @@ export function MapPage() {
                     >
                       {t("viewLocalSpot")}
                     </Link>
+                    <button
+                      onClick={() => setAddToRouteFor(selectedSpot.id)}
+                      className="mt-2 flex w-full items-center justify-center rounded-full border border-orange-300 py-2.5 text-xs font-semibold text-orange-600 transition-colors hover:bg-orange-50"
+                    >
+                      + {t("addToRoute")}
+                    </button>
                   </div>
                 </div>
               )}
 
-              {addToRouteFor && addToRouteLocation && (
+              {false && addToRouteFor && addToRouteLocation && (
                 <div className="absolute bottom-4 left-2 right-2 z-[1000]">
                   <div className="bg-white rounded-2xl shadow-xl max-w-md mx-auto border border-gray-100 overflow-hidden">
                     <div className="bg-navy-800 px-4 py-3 flex items-center justify-between">
@@ -363,7 +419,7 @@ export function MapPage() {
                           {t("addToRouteLabel")}
                         </p>
                         <p className="text-orange-400 text-sm font-bold truncate">
-                          {addToRouteLocation.name}
+                          {addToRouteLocation!.name}
                         </p>
                       </div>
                       <button
@@ -498,7 +554,7 @@ export function MapPage() {
         </div>
       ) : (
         <div className="max-w-7xl mx-auto px-4">
-          {hasPaid && (
+          {false && hasPaid && (
             <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-2 scrollbar-hide">
               {categories.map((cat) => (
                 <button

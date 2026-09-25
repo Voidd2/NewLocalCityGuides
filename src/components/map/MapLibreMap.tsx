@@ -14,6 +14,7 @@ export interface MapPin {
   kind: "location" | "spot";
   lat: number;
   lng: number;
+  icon?: string;
 }
 
 const PIN_SOURCE = "ylcg-pins";
@@ -58,6 +59,7 @@ export function MapLibreMap({
         category: pin.category,
         kind: pin.kind,
         selected: pin.id === selectedId ? 1 : 0,
+        icon: pin.icon ?? "",
       },
     })),
   }), [pins, selectedId]);
@@ -135,6 +137,18 @@ export function MapLibreMap({
           "circle-stroke-width": 3,
         },
       });
+      map.addLayer({
+        id: "ylcg-point-icons",
+        type: "symbol",
+        source: PIN_SOURCE,
+        filter: ["!", ["has", "point_count"]],
+        layout: {
+          "text-field": ["get", "icon"],
+          "text-size": 15,
+          "text-allow-overlap": true,
+          "text-ignore-placement": true,
+        },
+      });
       map.addSource(ROUTE_SOURCE, { type: "geojson", data: routeData });
       map.addLayer({
         id: "ylcg-route-outline",
@@ -177,7 +191,11 @@ export function MapLibreMap({
         const id = event.features?.[0]?.properties?.id;
         if (typeof id === "string") selectRef.current(id);
       });
-      for (const layer of ["ylcg-clusters", "ylcg-points"]) {
+      map.on("click", "ylcg-point-icons", (event) => {
+        const id = event.features?.[0]?.properties?.id;
+        if (typeof id === "string") selectRef.current(id);
+      });
+      for (const layer of ["ylcg-clusters", "ylcg-points", "ylcg-point-icons"]) {
         map.on("mouseenter", layer, () => { map.getCanvas().style.cursor = "pointer"; });
         map.on("mouseleave", layer, () => { map.getCanvas().style.cursor = ""; });
       }
