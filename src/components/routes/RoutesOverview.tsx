@@ -167,6 +167,54 @@ export function RoutesOverview() {
               </div>
             );
           })}
+
+          <Link
+            href={hasPaid ? "/routes/custom" : "/pricing"}
+            className="group relative min-h-[300px] overflow-hidden rounded-xl bg-gradient-to-br from-navy-800 via-navy-900 to-[#0d1830] p-6 text-white shadow-lg transition hover:-translate-y-1 hover:shadow-2xl"
+          >
+            <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full border-[36px] border-white/[0.04]" />
+            <svg viewBox="0 0 320 220" className="absolute inset-y-0 right-0 h-full w-3/5 opacity-60" aria-hidden="true">
+              <path d="M30 190 C75 160 72 118 125 108 S205 90 285 25" fill="none" stroke="#ffffff" strokeWidth="12" opacity=".08" />
+              <path d="M30 190 C75 160 72 118 125 108 S205 90 285 25" fill="none" stroke="#FF6B00" strokeWidth="4" strokeLinecap="round" strokeDasharray="8 9" />
+              {["30,190", "92,136", "146,104", "216,78", "285,25"].map((point, index) => {
+                const [cx, cy] = point.split(",");
+                return <circle key={point} cx={cx} cy={cy} r="8" fill={index === 0 ? "#FF6B00" : "#1B2A4A"} stroke="#ffffff" strokeWidth="3" />;
+              })}
+            </svg>
+
+            <div className="relative flex h-full max-w-md flex-col">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500 shadow-lg shadow-orange-500/25">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-6 w-6" aria-hidden="true">
+                    <path d="M12 2C8.7 2 6 4.7 6 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.3-2.7-6-6-6Z" />
+                    <circle cx="12" cy="8" r="2" />
+                    <path d="M4 21h16" />
+                  </svg>
+                </span>
+                <span className="rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-orange-300 ring-1 ring-white/10">
+                  {t("customPlannerEyebrow")}
+                </span>
+              </div>
+
+              <h3 className="max-w-sm text-2xl font-extrabold leading-tight">{t("customPlannerTitle")}</h3>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/65">{t("customPlannerDesc")}</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {[t("customPlannerStops"), t("customPlannerOrder"), t("customPlannerGps")].map((feature) => (
+                  <span key={feature} className="rounded-full bg-white/[0.08] px-3 py-1.5 text-[10px] font-semibold text-white/80 ring-1 ring-white/10">
+                    {feature}
+                  </span>
+                ))}
+              </div>
+
+              <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-bold text-white transition group-hover:bg-orange-600">
+                {hasPaid ? t("customPlannerCtaPaid") : t("customPlannerCtaFree")}
+                <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 transition group-hover:translate-x-1" aria-hidden="true">
+                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                </svg>
+              </span>
+            </div>
+          </Link>
         </div>
       </section>
 
