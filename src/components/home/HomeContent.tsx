@@ -113,9 +113,16 @@ function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
       <div className="absolute inset-x-4 bottom-4 text-white">
         <span className="inline-flex rounded-full bg-orange-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider">{t("previewStopBadge")}</span>
         <p className="mt-2 text-lg font-extrabold">{t("previewLocationName")}</p>
-        <div className="mt-3 flex gap-2">
-          <div className="h-9 flex-1 rounded-full bg-white text-center text-[9px] font-bold leading-9 text-navy-800">{t("previewStoryButton")}</div>
-          <div className="h-9 w-9 rounded-full bg-white/15 ring-1 ring-white/20" />
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <div className="flex h-9 items-center justify-center rounded-full bg-white px-2 text-center text-[8px] font-bold text-navy-800">
+            {t("previewStoryButton")}
+          </div>
+          <div className="flex h-9 items-center justify-center gap-1 rounded-full bg-orange-500 px-2 text-center text-[8px] font-bold text-white">
+            <svg viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3 shrink-0" aria-hidden="true">
+              <path d="M6 4v12l9-6z" />
+            </svg>
+            {t("previewWatchVideoButton")}
+          </div>
         </div>
       </div>
     </div>
