@@ -37,6 +37,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 ### Video
 
 - [ ] Cloudflare Stream koppelen zodra accountgegevens en video-ID's beschikbaar zijn.
+- [ ] Homepage-videokaarten een echte previewvideo laten openen zodra een videobestand of Stream-ID beschikbaar is.
 - [ ] Video pas afspelen na de actie "Ik ben er"; geen autoplay.
 - [ ] Echte marketing-preview op de homepage plaatsen zodra videomateriaal beschikbaar is.
 

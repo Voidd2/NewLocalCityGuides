@@ -205,7 +205,7 @@ function HowItWorksSection() {
 
             <div className="grid gap-4 lg:col-span-5">
               <AnimateOnScroll delay={100}>
-                <Link href="/ontdek" className="group block rounded-3xl bg-white p-5 transition hover:-translate-y-1 md:p-6">
+                <Link href="/pricing" className="group block rounded-3xl bg-white p-5 transition hover:-translate-y-1 md:p-6">
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-[0.16em] text-orange-600">{t("appLocalKicker")}</p>
@@ -233,7 +233,7 @@ function HowItWorksSection() {
               </AnimateOnScroll>
 
               <AnimateOnScroll delay={200}>
-                <Link href="/activiteiten" className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 p-5 text-white transition hover:-translate-y-1 md:p-6">
+                <Link href="/pricing" className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 p-5 text-white transition hover:-translate-y-1 md:p-6">
                   <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10" />
                   <div className="relative flex items-start gap-4">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/15 ring-1 ring-white/20">
@@ -259,6 +259,35 @@ function HowItWorksSection() {
               </AnimateOnScroll>
             </div>
           </div>
+
+          <AnimateOnScroll delay={225}>
+            <Link href="/pricing" className="group relative mt-4 grid min-h-56 overflow-hidden rounded-3xl bg-white md:grid-cols-[0.9fr_1.1fr]">
+              <div className="relative min-h-52 overflow-hidden md:min-h-full">
+                <Image
+                  src="/images/future-cities/10012-amsterdam-canals.jpg"
+                  alt={t("appTripImageAlt")}
+                  fill
+                  sizes="(min-width: 768px) 42vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/55 to-transparent md:bg-gradient-to-r" />
+                <span className="absolute bottom-4 left-4 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-bold text-navy-900 shadow-lg backdrop-blur">Amsterdam</span>
+              </div>
+              <div className="flex flex-col justify-center p-5 md:p-8">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-600">{t("appTripKicker")}</p>
+                <h4 className="mt-2 text-2xl font-extrabold text-navy-800">{t("appTripTitle")}</h4>
+                <p className="mt-3 text-sm leading-relaxed text-gray-500">{t("appTripDesc")}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {[t("appTripTrain"), t("appTripRoute"), t("appTripMuseums")].map((item) => (
+                    <span key={item} className="rounded-full bg-warm-100 px-3 py-1.5 text-[11px] font-semibold text-navy-800">{item}</span>
+                  ))}
+                </div>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-orange-600">
+                  {t("appTripCta")} <span className="transition group-hover:translate-x-1" aria-hidden="true">→</span>
+                </span>
+              </div>
+            </Link>
+          </AnimateOnScroll>
 
           <AnimateOnScroll delay={250}>
             <div className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-4">
