@@ -88,6 +88,10 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Dashboard opnieuw ingedeeld volgens de mobiele wireframe: actieve routes, standaardroutes, eigen route, ontdekken en kaart vormen nu een duidelijke volgorde.
+- [x] Kaartcategorie "Tourplekken" verduidelijkt naar "Verhalen & video's" en teruggebracht tot herkenbare bezoekerstypen zoals musea, vis, markt en eten.
+- [x] SEO/paywall-implementatiebrief toegevoegd en verwerkt in een veilige eerste fase met indexeerbare routepreviews en een afgescheiden premium route-ervaring.
+- [x] Routekaarten zijn openbaar leesbaar in plaats van geblurd; alleen volledige verhalen, exacte route-uitvoering, media, GPS en voortgang blijven betaald.
 - [x] Homepage logisch heringedeeld: uitleg, appmogelijkheden, routes, prijs/voordelen en achtergrondinformatie volgen nu één duidelijke bezoekersreis; de dubbele videopreview is verwijderd.
 - [x] Homepage herbouwd voor conversie en bestaande about-content samengevoegd.
 - [x] Homepage-appuitleg uitgebreid met videoverhalen, lokale winkels en eetplekken, museumtickets en GPS-voordelen.

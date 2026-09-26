@@ -51,16 +51,6 @@ export function MapPage() {
     { key: "visboer", label: t("fishShops"), icon: "\u{1F41F}" },
     { key: "markt", label: t("markets"), icon: "\u{1F6CD}\uFE0F" },
     { key: "restaurant", label: t("foodAndDrink"), icon: "\u{1F37D}\uFE0F" },
-    { key: "architectuur", label: t("architecture"), icon: "" },
-    { key: "kunst", label: t("art"), icon: "" },
-    { key: "geloof", label: t("faith"), icon: "" },
-    { key: "natuur", label: t("natureAndParks"), icon: "" },
-    { key: "handel", label: t("tradeAndWork"), icon: "" },
-    { key: "wetenschap", label: t("science"), icon: "" },
-    { key: "cultuur", label: t("culture"), icon: "" },
-    { key: "macht", label: t("powerAndLaw"), icon: "" },
-    { key: "dagelijks-leven", label: t("dailyLife"), icon: "" },
-    { key: "rampen", label: t("disastersAndStrife"), icon: "" },
   ];
   const [activeCategory, setActiveCategory] = useState("all");
   const [view, setView] = useState<"map" | "list">("map");
@@ -116,12 +106,27 @@ export function MapPage() {
     [activeCategory, mapItems, searchQuery],
   );
 
-  const listFiltered = useMemo(() =>
-    locations
-      .filter((l) => activeCategory === "all" || activeCategory === "tour" || l.categories.includes(activeCategory))
-      .filter((l) => !searchQuery || l.name.toLowerCase().includes(searchQuery.toLowerCase())),
-    [activeCategory, searchQuery]
-  );
+  const listCards: Array<{ id: string; name: string; image?: string | null; description: string; theme: string }> = mapFiltered.flatMap((item) => {
+    if (item.kind === "location") {
+      const location = locations.find((candidate) => candidate.id === item.id);
+      return location ? [{
+        id: location.id,
+        name: location.name,
+        image: location.image,
+        description: location.shortDescription,
+        theme: location.mainTheme,
+      }] : [];
+    }
+
+    const spot = getVisibleSpots().find((candidate) => candidate.id === item.id);
+    return spot ? [{
+      id: spot.id,
+      name: spot.name,
+      image: spot.image,
+      description: spot.description[locale].split("\n\n")[0],
+      theme: categories.find((category) => category.key === spot.category)?.label ?? t("localSpot"),
+    }] : [];
+  });
 
   const pins = mapFiltered;
 
@@ -214,8 +219,14 @@ export function MapPage() {
     return <MapSkeleton />;
   }
 
-  const teaserLocations = listFiltered.slice(0, TEASER_COUNT);
-  const lockedLocations = listFiltered.slice(TEASER_COUNT);
+  const teaserLocations = locations.slice(0, TEASER_COUNT).map((location) => ({
+    id: location.id,
+    name: location.name,
+    image: location.image,
+    description: location.shortDescription,
+    theme: location.mainTheme,
+  }));
+  const lockedLocations = locations.slice(TEASER_COUNT);
 
   return (
     <div className="pb-20">
@@ -299,22 +310,25 @@ export function MapPage() {
       </div>
 
       {hasPaid && (
-        <div className="mx-auto mb-3 flex max-w-7xl gap-2 overflow-x-auto px-4 pb-1 scrollbar-hide">
-          {categories.map((category) => (
-            <button
-              key={category.key}
-              onClick={() => {
-                setActiveCategory(category.key);
-                setSelectedPin(null);
-              }}
-              className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
-                activeCategory === category.key ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              <span aria-hidden="true">{category.icon ?? ""}</span>
-              {category.label}
-            </button>
-          ))}
+        <div className="mx-auto mb-3 max-w-7xl px-4">
+          <p className="mb-2 text-xs leading-relaxed text-gray-500">{t("filterIntro")}</p>
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+            {categories.map((category) => (
+              <button
+                key={category.key}
+                onClick={() => {
+                  setActiveCategory(category.key);
+                  setSelectedPin(null);
+                }}
+                className={`flex min-h-11 shrink-0 items-center gap-1.5 rounded-full px-4 text-xs font-semibold transition-colors ${
+                  activeCategory === category.key ? "bg-orange-500 text-white shadow-sm" : "border border-gray-200 bg-white text-gray-600 hover:bg-gray-100"
+                }`}
+              >
+                <span aria-hidden="true">{category.icon ?? ""}</span>
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
@@ -574,7 +588,7 @@ export function MapPage() {
 
           {hasPaid && (
             <p className="text-xs text-gray-400 mb-2">
-              {t("locationsFound", { count: listFiltered.length })}
+              {t("locationsFound", { count: listCards.length })}
             </p>
           )}
 
@@ -585,7 +599,7 @@ export function MapPage() {
           )}
 
           <div className="space-y-2 pb-4">
-            {(hasPaid ? listFiltered : teaserLocations).map((loc) => (
+            {(hasPaid ? listCards : teaserLocations).map((loc) => (
               <button
                 key={loc.id}
                 onClick={() => {
@@ -610,8 +624,8 @@ export function MapPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-navy-800 text-sm">{loc.name}</h3>
-                  <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{loc.shortDescription}</p>
-                  <span className="text-[10px] text-orange-500 font-medium mt-0.5 inline-block">{loc.mainTheme}</span>
+                  <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{loc.description}</p>
+                  <span className="text-[10px] text-orange-500 font-medium mt-0.5 inline-block">{loc.theme}</span>
                 </div>
                 {hasPaid ? (
                   <div className="flex items-center gap-1 text-orange-500 shrink-0">
@@ -665,7 +679,7 @@ export function MapPage() {
               </div>
             )}
 
-            {hasPaid && listFiltered.length === 0 && (
+            {hasPaid && listCards.length === 0 && (
               <div className="text-center py-12">
                 <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-gray-300 mx-auto mb-3" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />

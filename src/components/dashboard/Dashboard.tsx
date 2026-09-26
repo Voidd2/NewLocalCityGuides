@@ -1,51 +1,73 @@
 "use client";
 
-import { useEffect, useState, useMemo, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { useLocale, useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/navigation";
-import { Link } from "@/i18n/navigation";
-import { routes } from "@/data/routes";
-import { locations, getLocationById } from "@/data/locations";
-import { useAuth } from "@/lib/auth-context";
-import { getSavedRoutes, saveRoute, addLocationToRoute, getVisitedCount, ROUTES_CHANGED_EVENT, type SavedRoute } from "@/lib/saved-routes";
-import { applyDateAwareRoute } from "@/data/route-conditions";
-import { RoutePickerModal } from "@/components/routes/RoutePickerModal";
+import Image from "next/image";
+import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
+import { getLocationById, locations } from "@/data/locations";
 import { getVisibleSpots } from "@/data/local-spots";
-import type { SupportedLocale } from "@/data/schaapsvis";
+import { routes } from "@/data/routes";
+import { useAuth } from "@/lib/auth-context";
+import {
+  getSavedRoutes,
+  getVisitedCount,
+  ROUTES_CHANGED_EVENT,
+  type SavedRoute,
+} from "@/lib/saved-routes";
 
-const MapLibreMap = dynamic(() => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center">
-      <div className="text-center">
-        <div className="w-8 h-8 border-2 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
-        <p className="text-sm text-gray-400">Loading...</p>
+const MapLibreMap = dynamic(
+  () => import("@/components/map/MapLibreMap").then((module) => module.MapLibreMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center bg-blue-50">
+        <div className="h-7 w-7 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
       </div>
+    ),
+  },
+);
+
+function Chevron({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="currentColor" className={className} aria-hidden="true">
+      <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function PinPlaceholder({ compact = false }: { compact?: boolean }) {
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 text-gray-400">
+      <svg viewBox="0 0 24 24" fill="none" className={compact ? "h-5 w-5" : "h-8 w-8"} stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+        <circle cx="12" cy="9" r="2.5" />
+      </svg>
     </div>
-  ),
-});
+  );
+}
 
 export function Dashboard() {
   const t = useTranslations("dashboard");
   const tCommon = useTranslations("common");
-  const tMap = useTranslations("map");
-  const locale = useLocale() as SupportedLocale;
   const router = useRouter();
   const { user, isLoggedIn, isLoading, hasPaid, logout } = useAuth();
   const [savedRoutes, setSavedRoutes] = useState<SavedRoute[]>([]);
-  const [addToRouteFor, setAddToRouteFor] = useState<string | null>(null);
-  const [toast, setToast] = useState<string | null>(null);
-  const [selectedMapPin, setSelectedMapPin] = useState<string | null>(null);
-  const [mapFilter, setMapFilter] = useState<"all" | "tour" | "museum" | "local">("all");
 
   const mapPins = useMemo(() => {
-    const tourPins = locations
-      .filter((l) => l.coords !== null)
-      .map((l) => ({ id: l.id, name: l.name, category: l.mainTheme, kind: "location" as const, lat: l.coords!.lat, lng: l.coords!.lng, icon: "\u{1F4D6}" }));
-    const spotPins = getVisibleSpots()
+    const storyPins = locations
+      .filter((location) => location.coords)
+      .map((location) => ({
+        id: location.id,
+        name: location.name,
+        category: location.mainTheme,
+        kind: "location" as const,
+        lat: location.coords!.lat,
+        lng: location.coords!.lng,
+        icon: "\u{1F4D6}",
+      }));
+    const localPins = getVisibleSpots()
       .filter((spot) => spot.coords)
-      .filter((spot) => mapFilter === "all" || mapFilter === "local" || (mapFilter === "museum" && spot.category === "museum"))
       .map((spot) => ({
         id: spot.id,
         name: spot.name,
@@ -55,62 +77,16 @@ export function Dashboard() {
         lng: spot.coords!.lng,
         icon: spot.category === "museum" ? "\u{1F3DB}\uFE0F" : spot.category === "visboer" ? "\u{1F41F}" : "\u{1F4CD}",
       }));
-    return mapFilter === "tour" ? tourPins : mapFilter === "museum" || mapFilter === "local" ? spotPins : [...tourPins, ...spotPins];
-  }, [mapFilter]);
+    return [...storyPins, ...localPins];
+  }, []);
+
+  const discoverLocations = ["L001", "L002", "L006", "L010"].flatMap((id) => {
+    const location = getLocationById(id);
+    return location ? [location] : [];
+  });
 
   useEffect(() => {
-    if (toast) {
-      const timer = setTimeout(() => setToast(null), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [toast]);
-
-  const handleAddToRoute = useCallback((routeId: string, locationId: string) => {
-    const loc = locations.find((l) => l.id === locationId);
-    const standardRoute = routes.find((r) => r.id === routeId);
-    const isStandard = standardRoute ? applyDateAwareRoute(standardRoute) : undefined;
-
-    if (isStandard) {
-      let existing = getSavedRoutes().find(
-        (sr) => sr.name === isStandard.title && sr.locationIds.join(",") === isStandard.locationIds.join(",")
-      );
-      if (!existing) {
-        existing = getSavedRoutes().find((sr) => sr.name === isStandard.title);
-      }
-      if (!existing) {
-        const saved = saveRoute(isStandard.title, [...isStandard.locationIds], {
-          sourceRouteId: isStandard.id,
-          isLoop: isStandard.isLoop,
-          featuredLocalStop: isStandard.featuredLocalStop,
-        });
-        const result = addLocationToRoute(saved.id, locationId);
-        setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: isStandard.title }) : t("addedToRoute", { name: loc?.name ?? "", routeName: isStandard.title }));
-      } else {
-        const result = addLocationToRoute(existing.id, locationId);
-        setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: existing.name }) : t("addedToRoute", { name: loc?.name ?? "", routeName: existing.name }));
-      }
-    } else {
-      const result = addLocationToRoute(routeId, locationId);
-      const route = getSavedRoutes().find((r) => r.id === routeId);
-      setToast(result === "duplicate" ? t("alreadyInRoute", { name: loc?.name ?? "", routeName: route?.name || "route" }) : t("addedToRoute", { name: loc?.name ?? "", routeName: route?.name || "route" }));
-    }
-
-    setSavedRoutes(getSavedRoutes());
-    setAddToRouteFor(null);
-  }, [t]);
-
-  const handleCreateNewRoute = useCallback((locationId: string) => {
-    const loc = locations.find((l) => l.id === locationId);
-    saveRoute(t("routeWithName", { name: loc?.name || "locatie" }), [locationId]);
-    setSavedRoutes(getSavedRoutes());
-    setToast(t("routeCreatedWith", { name: loc?.name ?? "" }));
-    setAddToRouteFor(null);
-  }, [t]);
-
-  useEffect(() => {
-    if (!isLoading && !isLoggedIn) {
-      router.push("/login");
-    }
+    if (!isLoading && !isLoggedIn) router.push("/login");
   }, [isLoading, isLoggedIn, router]);
 
   useEffect(() => {
@@ -132,410 +108,173 @@ export function Dashboard() {
   }
 
   if (isLoading || !user) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
-      </div>
-    );
+    return <div className="flex min-h-[60vh] items-center justify-center text-gray-400">{tCommon("loading")}</div>;
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
-      {toast && (
-        <div className="fixed top-20 left-4 right-4 z-[2000] flex justify-center pointer-events-none">
-          <div className="pointer-events-auto px-4 py-3 rounded-xl shadow-xl text-sm font-medium flex items-center gap-2 max-w-sm bg-green-600 text-white">
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 shrink-0">
-              <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-            </svg>
-            {toast}
-          </div>
-        </div>
-      )}
-      <div className="flex items-center justify-between mb-6">
+    <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 md:py-10">
+      <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold text-navy-800">{t("welcome", { name: user.name })}</h1>
-          <p className="text-sm text-gray-500">{user.email}</p>
+          <h1 className="text-2xl font-extrabold tracking-tight text-navy-800 md:text-3xl">{t("welcome", { name: user.name })}</h1>
+          <p className="mt-1 text-sm text-gray-500">{user.email}</p>
         </div>
-        <button
-          onClick={handleLogout}
-          className="text-sm text-gray-500 hover:text-gray-700"
-        >
-          {tCommon("logout")}
-        </button>
+        <div className="flex items-center gap-3">
+          {hasPaid && (
+            <div className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 text-sm font-semibold text-green-700">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-600 text-white" aria-hidden="true">✓</span>
+              {t("packageActive")}
+            </div>
+          )}
+          <button onClick={handleLogout} className="min-h-11 rounded-xl px-3 text-sm font-medium text-gray-500 transition hover:bg-white hover:text-navy-800">
+            {tCommon("logout")}
+          </button>
+        </div>
       </div>
 
       {hasPaid ? (
-        <>
-          {savedRoutes.some((sr) => getVisitedCount(sr) > 0 && getVisitedCount(sr) < sr.locationIds.length) && (() => {
-            const active = savedRoutes.find((sr) => getVisitedCount(sr) > 0 && getVisitedCount(sr) < sr.locationIds.length)!;
+        <div className="space-y-10">
+          {savedRoutes.some((route) => getVisitedCount(route) > 0 && getVisitedCount(route) < route.locationIds.length) && (() => {
+            const active = savedRoutes.find((route) => getVisitedCount(route) > 0 && getVisitedCount(route) < route.locationIds.length)!;
             const progress = getVisitedCount(active);
             const total = active.locationIds.length;
-            const pct = Math.round((progress / total) * 100);
+            const percentage = Math.round((progress / total) * 100);
             return (
-              <Link
-                href={`/my-routes/${active.id}`}
-                className="block bg-orange-50 border-2 border-orange-300 rounded-xl p-4 mb-4 hover:bg-orange-100 transition-colors"
-              >
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-white">
-                      <path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" />
-                    </svg>
+              <Link href={`/my-routes/${active.id}`} className="group block rounded-2xl border border-orange-200 bg-gradient-to-r from-orange-50 to-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <div className="mb-3 flex items-center gap-3">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg shadow-orange-500/20">
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5" aria-hidden="true"><path fillRule="evenodd" d="M9.69 18.933l.003.001C9.89 19.02 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" clipRule="evenodd" /></svg>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-bold text-orange-800">{t("activeRoute")}</p>
-                    <p className="text-xs text-orange-600">{active.name} - {progress}/{total} {t("stopsVisited")}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-bold uppercase tracking-wider text-orange-600">{t("activeRoute")}</p>
+                    <p className="truncate font-bold text-navy-800">{active.name}</p>
                   </div>
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-500 shrink-0">
-                    <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                  </svg>
+                  <span className="text-xs font-semibold text-orange-600">{progress}/{total} {t("stopsVisited")}</span>
+                  <Chevron className="h-5 w-5 shrink-0 text-orange-500 transition group-hover:translate-x-1" />
                 </div>
-                <div className="w-full bg-orange-200 rounded-full h-1.5">
-                  <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: `${pct}%` }} />
-                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-orange-100"><div className="h-full rounded-full bg-orange-500" style={{ width: `${percentage}%` }} /></div>
               </Link>
             );
           })()}
 
-          <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-center gap-3">
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-green-600 shrink-0">
-              <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-            </svg>
-            <div>
-              <p className="text-sm font-medium text-green-800">{t("packageActive")}</p>
-              <p className="text-xs text-green-600">Volledige toegang tot alle routes, video&apos;s en locaties</p>
+          <section>
+            <div className="mb-4 flex items-end justify-between gap-4">
+              <div>
+                <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-orange-600">{t("includedInPackage")}</p>
+                <h2 className="text-xl font-extrabold text-navy-800 md:text-2xl">{t("yourRoutes")}</h2>
+              </div>
+              <Link href="/routes" className="inline-flex min-h-11 items-center gap-1 px-2 text-sm font-semibold text-orange-600 hover:text-orange-700">{t("viewAll")} <span aria-hidden="true">→</span></Link>
             </div>
-          </div>
-
-          <h2 className="text-lg font-bold text-navy-800 mb-4">{t("yourRoutes")}</h2>
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            {routes.slice(0, 2).map((route) => (
-              <Link
-                key={route.id}
-                href={`/routes/${route.slug}`}
-                className="bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md transition-shadow flex items-center gap-4"
-              >
-                <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-                  {route.image && (
-                    <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
-                  )}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-navy-800 text-sm">{route.title}</h3>
-                  <p className="text-xs text-gray-500">{route.subtitle}</p>
-                  <p className="text-xs text-gray-400 mt-1">{route.stops} stops - {route.distance}</p>
-                </div>
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-orange-500 shrink-0">
-                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                </svg>
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-navy-800">{t("myRoutes")}</h2>
-            <Link href="/my-routes" className="text-sm text-orange-500 font-medium hover:text-orange-600">
-              {t("viewAll")}
-            </Link>
-          </div>
-          {savedRoutes.length > 0 ? (
-            <div className="space-y-3 mb-8">
-              {savedRoutes.slice(0, 3).map((sr) => {
-                const locs = sr.locationIds.map(getLocationById).filter(Boolean);
-                const progress = getVisitedCount(sr);
-                const total = sr.locationIds.length;
-                const pct = total > 0 ? Math.round((progress / total) * 100) : 0;
-                return (
-                  <Link
-                    key={sr.id}
-                    href={`/my-routes/${sr.id}`}
-                    className="block bg-white rounded-xl border border-gray-200 p-4 hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-semibold text-navy-800 text-sm">{sr.name}</h3>
-                      <span className="text-xs text-gray-400">{progress}/{total} {t("visited")}</span>
+            <div className="grid gap-4 md:grid-cols-2">
+              {routes.slice(0, 2).map((route) => (
+                <Link key={route.id} href={`/routes/${route.slug}`} className="group flex min-h-28 items-center gap-4 rounded-2xl border border-gray-200 bg-white p-3 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-200 hover:shadow-lg">
+                  <div className="relative h-24 w-28 shrink-0 overflow-hidden rounded-xl bg-gray-100">
+                    {route.image ? <Image src={route.image} alt={route.title} fill sizes="112px" className="object-cover transition duration-500 group-hover:scale-105" /> : <PinPlaceholder />}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold text-navy-800">{route.title}</h3>
+                    <p className="mt-1 line-clamp-2 text-sm leading-snug text-gray-500">{route.subtitle}</p>
+                    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-medium text-gray-500">
+                      <span>{route.type === "walking" ? t("walking") : t("cycling")} · {route.stops} {t("stops")}</span>
+                      <span>⌖ {route.distance}</span>
                     </div>
-                    <div className="w-full bg-gray-100 rounded-full h-1.5 mb-2">
-                      <div className="bg-orange-500 h-1.5 rounded-full transition-all" style={{ width: `${pct}%` }} />
-                    </div>
-                    <div className="flex gap-1.5">
-                      {locs.slice(0, 5).map((loc) => (
-                        <div key={loc!.id} className="w-8 h-8 rounded-md bg-gray-200 shrink-0 overflow-hidden">
-                          {loc!.image && <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />}
+                  </div>
+                  <Chevron className="h-6 w-6 shrink-0 text-orange-500 transition group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <div className="mb-4 flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-extrabold text-navy-800 md:text-2xl">{t("myRoutes")}</h2>
+                <p className="mt-1 text-sm text-gray-500">{t("myRoutesIntro")}</p>
+              </div>
+              {savedRoutes.length > 0 && <Link href="/my-routes" className="inline-flex min-h-11 items-center px-2 text-sm font-semibold text-orange-600 hover:text-orange-700">{t("viewAll")} →</Link>}
+            </div>
+
+            {savedRoutes.length > 0 && (
+              <div className="mb-4 space-y-3">
+                {savedRoutes.slice(0, 2).map((savedRoute) => {
+                  const routeLocations = savedRoute.locationIds.map(getLocationById).filter(Boolean);
+                  const progress = getVisitedCount(savedRoute);
+                  const total = savedRoute.locationIds.length;
+                  const percentage = total > 0 ? Math.round((progress / total) * 100) : 0;
+                  return (
+                    <Link key={savedRoute.id} href={`/my-routes/${savedRoute.id}`} className="group block rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition hover:border-orange-200 hover:shadow-md">
+                      <div className="mb-2 flex items-center justify-between gap-4"><h3 className="truncate font-bold text-navy-800">{savedRoute.name}</h3><span className="shrink-0 text-xs text-gray-500">{progress}/{total} {t("visited")}</span></div>
+                      <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-gray-100"><div className="h-full rounded-full bg-orange-500" style={{ width: `${percentage}%` }} /></div>
+                      <div className="flex items-center justify-between">
+                        <div className="flex -space-x-2">
+                          {routeLocations.slice(0, 5).map((location) => (
+                            <div key={location!.id} className="relative h-9 w-9 overflow-hidden rounded-full border-2 border-white bg-gray-100">
+                              {location!.image ? <Image src={location!.image} alt="" fill sizes="36px" className="object-cover" /> : <PinPlaceholder compact />}
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="text-sm text-gray-400 mb-8">{t("noRoutes")}</p>
-          )}
+                        <span className="text-sm font-semibold text-orange-600 transition group-hover:translate-x-1" aria-hidden="true">→</span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
 
-          <div className="grid grid-cols-2 gap-3 mb-8">
-            <Link
-              href="/routes/custom"
-              className="bg-orange-50 border-2 border-orange-200 rounded-xl p-4 hover:bg-orange-100 transition-colors"
-            >
-              <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mb-2">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                  <circle cx="12" cy="9" r="2.5" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-orange-600 text-sm mb-0.5">{t("createOwnRoute")}</h3>
-              <p className="text-xs text-gray-500">{t("chooseYourStops")}</p>
-            </Link>
-            <Link
-              href="/activiteiten"
-              className="bg-navy-800/5 border-2 border-navy-800/20 rounded-xl p-4 hover:bg-navy-800/10 transition-colors"
-            >
-              <div className="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center mb-2">
-                <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                  <path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="font-bold text-navy-800 text-sm mb-0.5">{t("bookActivities")}</h3>
-              <p className="text-xs text-gray-500">{t("toursAndMore")}</p>
-            </Link>
-          </div>
+            <div className="grid gap-3 md:grid-cols-2">
+              <Link href="/routes/custom" className="group flex min-h-24 items-center gap-4 rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-white p-4 transition hover:border-orange-400 hover:shadow-md">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-500 text-3xl font-light text-white shadow-lg shadow-orange-500/20" aria-hidden="true">+</span>
+                <div className="min-w-0 flex-1"><h3 className="font-bold text-orange-600">{t("createOwnRoute")}</h3><p className="mt-0.5 text-sm text-gray-500">{t("smartRoutePlanning")}</p></div>
+                <span className="text-2xl text-orange-500 transition group-hover:translate-x-1" aria-hidden="true">›</span>
+              </Link>
+              <Link href="/activiteiten" className="group flex min-h-24 items-center gap-4 rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-white p-4 transition hover:border-navy-400 hover:shadow-md">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy-800 text-white" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" className="h-6 w-6" stroke="currentColor" strokeWidth="1.8"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 011 1v14H4V6a1 1 0 011-1z" /></svg></span>
+                <div className="min-w-0 flex-1"><h3 className="font-bold text-navy-800">{t("bookActivities")}</h3><p className="mt-0.5 text-sm text-gray-500">{t("activitiesDesc")}</p></div>
+                <span className="text-2xl text-navy-800 transition group-hover:translate-x-1" aria-hidden="true">›</span>
+              </Link>
+            </div>
+          </section>
+
+          <section>
+            <div className="mb-4 flex items-end justify-between gap-4">
+              <div><h2 className="text-xl font-extrabold text-navy-800 md:text-2xl">{t("discoverLeiden")}</h2><p className="mt-1 text-sm text-gray-500">{t("discoverIntro")}</p></div>
+              <Link href="/ontdek" className="inline-flex min-h-11 items-center gap-1 px-2 text-sm font-semibold text-orange-600 hover:text-orange-700">{t("viewAll")} <span aria-hidden="true">→</span></Link>
+            </div>
+            <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 scrollbar-hide sm:mx-0 sm:grid sm:grid-cols-4 sm:overflow-visible sm:px-0">
+              {discoverLocations.map((location) => (
+                <Link key={location.id} href={`/locations/${location.slug}`} className="group min-w-[168px] snap-start overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:min-w-0">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">{location.image ? <Image src={location.image} alt={location.name} fill sizes="(min-width: 640px) 220px, 168px" className="object-cover transition duration-500 group-hover:scale-105" /> : <PinPlaceholder />}</div>
+                  <div className="p-3"><h3 className="min-h-10 text-sm font-bold leading-tight text-navy-800">{location.name}</h3><p className="mt-2 flex items-center gap-1.5 text-xs text-gray-500"><span className="text-orange-500" aria-hidden="true">⌖</span>{location.id === "L002" ? t("localPlace") : location.id === "L010" ? t("naturePlace") : t("storyPlace")}</p></div>
+                </Link>
+              ))}
+            </div>
+          </section>
 
           {mapPins.length > 0 && (
-            <>
-              <h2 className="text-lg font-bold text-navy-800 mb-3">{t("mapOfLeiden")}</h2>
-              <div className="mb-3 flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
-                {[
-                  { key: "all" as const, label: tMap("all"), icon: "\u{1F5FA}\uFE0F" },
-                  { key: "tour" as const, label: tMap("tourPlaces"), icon: "\u{1F4D6}" },
-                  { key: "museum" as const, label: tMap("museums"), icon: "\u{1F3DB}\uFE0F" },
-                  { key: "local" as const, label: tMap("localSpot"), icon: "\u{1F4CD}" },
-                ].map((filter) => (
-                  <button
-                    key={filter.key}
-                    onClick={() => { setMapFilter(filter.key); setSelectedMapPin(null); }}
-                    className={`shrink-0 rounded-full px-3.5 py-2 text-xs font-semibold ${mapFilter === filter.key ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-600"}`}
-                  >
-                    <span className="mr-1" aria-hidden="true">{filter.icon}</span>{filter.label}
-                  </button>
-                ))}
-              </div>
-              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-md mb-8 z-0">
-                <MapLibreMap
-                  pins={mapPins}
-                  selectedId={selectedMapPin}
-                  onSelectPin={(id) => setSelectedMapPin(id === selectedMapPin ? null : id)}
-                />
-                {selectedMapPin && (() => {
-                  const location = locations.find((item) => item.id === selectedMapPin);
-                  const spot = getVisibleSpots().find((item) => item.id === selectedMapPin);
-                  const pin = location ?? spot;
-                  if (!pin) return null;
-                  const description = location?.shortDescription ?? spot?.description[locale].split("\n\n")[0] ?? "";
-                  const href = location ? `/locations/${location.slug}` : `/ontdek/${spot!.id}`;
-                  return (
-                    <div className="absolute bottom-3 left-3 right-3 z-[1000] bg-white rounded-xl shadow-xl border border-gray-200 p-3 flex items-center gap-3">
-                      <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-                        {pin.image && <img src={pin.image} alt={pin.name} className="w-full h-full object-cover" />}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-bold text-navy-800 text-sm truncate">{pin.name}</h4>
-                        <p className="text-[10px] text-gray-500 line-clamp-1">{description}</p>
-                      </div>
-                      <div className="flex gap-1.5 shrink-0">
-                        <button
-                          onClick={() => { setSelectedMapPin(null); setAddToRouteFor(pin.id); }}
-                          className="w-9 h-9 rounded-full bg-orange-500 hover:bg-orange-600 flex items-center justify-center text-white transition-colors"
-                        >
-                          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
-                        </button>
-                        <Link
-                          href={href}
-                          className="w-9 h-9 rounded-full bg-navy-800 hover:bg-navy-900 flex items-center justify-center text-white transition-colors"
-                        >
-                          <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-                          </svg>
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })()}
-              </div>
-            </>
+            <section>
+              <div className="mb-4"><h2 className="text-xl font-extrabold text-navy-800 md:text-2xl">{t("mapOfLeiden")}</h2><p className="mt-1 text-sm text-gray-500">{t("mapIntro")}</p></div>
+              <Link href="/map" className="group grid overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:border-orange-200 hover:shadow-lg md:grid-cols-[1.05fr_0.95fr]">
+                <div className="pointer-events-none relative h-48 overflow-hidden md:h-56" aria-hidden="true"><MapLibreMap pins={mapPins} selectedId={null} onSelectPin={() => undefined} /><div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/20" /></div>
+                <div className="flex items-center p-5 md:p-7"><div><p className="text-2xl font-extrabold text-navy-800">{t("locationsCount", { count: mapPins.length })}</p><p className="mt-2 max-w-sm text-sm leading-relaxed text-gray-500">{t("mapSummary")}</p><span className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-orange-500 px-5 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition group-hover:bg-orange-600">{t("viewFullMap")} <span aria-hidden="true">→</span></span></div></div>
+              </Link>
+            </section>
           )}
-
-          <h2 className="text-lg font-bold text-navy-800 mb-2">{t("allLocations")}</h2>
-          <p className="text-xs text-gray-400 mb-4">Voeg locaties toe aan een route of bekijk alvast het verhaal</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            {locations.map((loc) => (
-              <div
-                key={loc.id}
-                className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-              >
-                <div className="aspect-square bg-gray-200 overflow-hidden">
-                  {loc.image ? (
-                    <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-gray-300" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                        <circle cx="12" cy="9" r="2.5" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-                <div className="p-3">
-                  <h4 className="font-semibold text-navy-800 text-sm leading-tight">{loc.name}</h4>
-                  <p className="text-xs text-gray-500 mt-1 line-clamp-2">{loc.shortDescription}</p>
-                  <div className="mt-3 flex items-center gap-2">
-                    <button
-                      onClick={() => setAddToRouteFor(loc.id)}
-                      className="inline-flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors"
-                    >
-                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3">
-                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                      </svg>
-                      {t("route")}
-                    </button>
-                    <Link
-                      href={`/locations/${loc.slug}`}
-                      className="inline-flex items-center gap-1 bg-navy-800 hover:bg-navy-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-full transition-colors"
-                    >
-                      {t("story")}
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {addToRouteFor && (
-            <RoutePickerModal
-              placeId={addToRouteFor}
-              placeName={locations.find((location) => location.id === addToRouteFor)?.name ?? getVisibleSpots().find((spot) => spot.id === addToRouteFor)?.name ?? "Leiden"}
-              onClose={() => setAddToRouteFor(null)}
-              onResult={setToast}
-            />
-          )}
-
-          {false && addToRouteFor && (
-            <div className="fixed inset-0 z-50 flex items-end justify-center" onClick={() => setAddToRouteFor(null)}>
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-              <div className="relative bg-white rounded-t-2xl shadow-xl w-full max-w-md max-h-[70vh] overflow-hidden" onClick={(e) => e.stopPropagation()}>
-                <div className="bg-navy-800 px-4 py-3 flex items-center justify-between">
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white text-xs font-medium">{t("addToRoute")}</p>
-                    <p className="text-orange-400 text-sm font-bold truncate">
-                      {locations.find((l) => l.id === addToRouteFor)?.name}
-                    </p>
-                  </div>
-                  <button onClick={() => setAddToRouteFor(null)} className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-colors shrink-0 ml-2">
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                      <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                    </svg>
-                  </button>
-                </div>
-                <div className="overflow-y-auto max-h-[50vh] px-3 py-3 space-y-1">
-                  {routes.map((route) => (
-                    <button
-                      key={route.id}
-                      onClick={() => handleAddToRoute(route.id, addToRouteFor!)}
-                      className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-                        {route.image && <img src={route.image} alt={route.title} className="w-full h-full object-cover" />}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h4 className="font-semibold text-navy-800 text-sm truncate">{route.title}</h4>
-                        <p className="text-[11px] text-gray-400">{route.stops} stops</p>
-                      </div>
-                      <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0">
-                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                      </svg>
-                    </button>
-                  ))}
-                  {savedRoutes.length > 0 && (
-                    <>
-                      <div className="px-1 pt-2 pb-1">
-                        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">{t("myRoutes")}</p>
-                      </div>
-                      {savedRoutes.map((sr) => (
-                        <button
-                          key={sr.id}
-                          onClick={() => handleAddToRoute(sr.id, addToRouteFor!)}
-                          className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-orange-100 shrink-0 flex items-center justify-center">
-                            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-orange-500" stroke="currentColor" strokeWidth="2">
-                              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                              <circle cx="12" cy="9" r="2.5" />
-                            </svg>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-semibold text-navy-800 text-sm truncate">{sr.name}</h4>
-                            <p className="text-[11px] text-gray-400">{sr.locationIds.length} stops</p>
-                          </div>
-                          <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0">
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
-                        </button>
-                      ))}
-                    </>
-                  )}
-                </div>
-                <div className="border-t border-gray-100 px-4 py-3">
-                  <button
-                    onClick={() => handleCreateNewRoute(addToRouteFor!)}
-                    className="w-full flex items-center justify-center gap-2 border-2 border-dashed border-orange-300 text-orange-500 hover:bg-orange-50 font-semibold py-2.5 rounded-xl text-sm transition-colors"
-                  >
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                      <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                    </svg>
-                    {t("newRouteCreate")}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-
-        </>
+        </div>
       ) : (
-        <>
-          <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-6 text-center">
-            <h2 className="text-lg font-bold text-navy-800 mb-2">{t("noPackage")}</h2>
-            <p className="text-sm text-gray-600 mb-4">
-              Koop het Leiden pakket om toegang te krijgen tot alle routes, video&apos;s en verborgen parels.
-            </p>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full transition-colors text-sm"
-            >
-              {t("viewPackage")}
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-              </svg>
-            </Link>
+        <div className="space-y-8">
+          <div className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-50 to-white p-6 text-center shadow-sm">
+            <h2 className="text-xl font-bold text-navy-800">{t("noPackage")}</h2>
+            <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-gray-600">{t("noPackageDesc")}</p>
+            <Link href="/pricing" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-orange-500 px-6 text-sm font-bold text-white shadow-lg shadow-orange-500/20 transition hover:bg-orange-600">{t("viewPackage")} <span aria-hidden="true">→</span></Link>
           </div>
-
-          <h2 className="text-lg font-bold text-navy-800 mb-4">{t("routesPreview")}</h2>
-          <div className="space-y-3 mb-8">
-            {routes.slice(0, 2).map((route) => (
-              <div key={route.id} className="bg-white rounded-xl border border-gray-200 p-4 flex items-center gap-4 opacity-60">
-                <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0" />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-navy-800 text-sm">{route.title}</h3>
-                  <p className="text-xs text-gray-500">{route.subtitle}</p>
-                </div>
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0">
-                  <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clipRule="evenodd" />
-                </svg>
-              </div>
-            ))}
-          </div>
-        </>
+          <section>
+            <h2 className="mb-4 text-xl font-extrabold text-navy-800">{t("routesPreview")}</h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              {routes.slice(0, 2).map((route) => (
+                <div key={route.id} className="flex items-center gap-4 rounded-2xl border border-gray-200 bg-white p-4 opacity-70"><div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-gray-100"><PinPlaceholder /></div><div className="min-w-0 flex-1"><h3 className="font-bold text-navy-800">{route.title}</h3><p className="line-clamp-2 text-sm text-gray-500">{route.subtitle}</p></div><span className="text-gray-300" aria-hidden="true">🔒</span></div>
+              ))}
+            </div>
+          </section>
+        </div>
       )}
     </div>
   );

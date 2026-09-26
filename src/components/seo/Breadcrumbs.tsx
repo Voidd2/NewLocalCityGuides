@@ -5,7 +5,7 @@ import { localizedUrl } from "@/lib/seo";
 
 export type BreadcrumbItem = { label: string; href?: string };
 
-export function Breadcrumbs({ items, locale }: { items: BreadcrumbItem[]; locale: Locale }) {
+export function Breadcrumbs({ items, locale, className = "" }: { items: BreadcrumbItem[]; locale: Locale; className?: string }) {
   const home = locale === "nl" ? "Home" : locale === "de" ? "Startseite" : "Home";
   const allItems = [{ label: home, href: "/" }, ...items];
 
@@ -23,7 +23,7 @@ export function Breadcrumbs({ items, locale }: { items: BreadcrumbItem[]; locale
           })),
         }}
       />
-      <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
+      <nav aria-label="Breadcrumb" className={`text-sm text-slate-500 ${className}`}>
         <ol className="flex flex-wrap items-center gap-2">
           {allItems.map((item, index) => (
             <li key={`${item.label}-${index}`} className="flex items-center gap-2">

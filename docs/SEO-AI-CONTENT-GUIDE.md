@@ -25,7 +25,7 @@ Do not publish or add to structured data, `llms.txt`, RSS or the sitemap:
 - unpublished research notes;
 - ratings, reviews, awards, prices or opening hours that have not been verified.
 
-Premium route, location and story pages remain `noindex`. Robots rules also exclude account, login, dashboard, custom-route and API paths. Robots rules are not an authentication mechanism: protected data must never depend on `robots.txt` for security.
+Public route-preview pages may be indexed, but their paid execution layer remains protected. Premium location and story pages remain `noindex`. Robots rules also exclude account, login, dashboard, custom-route and API paths. Robots rules are not an authentication mechanism: protected data must never depend on `robots.txt` for security.
 
 ## Adding a public place
 
@@ -38,8 +38,8 @@ Premium route, location and story pages remain `noindex`. Robots rules also excl
 
 ## Adding a route
 
-1. Keep the operational route and full stop experience in the protected route data.
-2. On a public overview, describe the theme, approximate duration or distance only when verified, and a small selection of highlights.
+1. Keep the operational route and full stop experience in the protected route data. Public route copy belongs in `src/data/public-route-seo.ts` and must be written separately; never derive it by slicing paid text.
+2. On a public overview or route preview, describe the theme, approximate duration or distance only when verified, and a small selection of highlights.
 3. Do not expose all narrative text or premium media in public JSON-LD.
 4. Link the public overview to the protected route with a clear purchase or sign-in CTA.
 5. For day-dependent routes, keep selection logic in one helper. Schaapsvishandel currently uses `src/data/schaapsvis.ts`: Wednesday selects the Nieuwe Rijn stall, Saturday selects the Vismarkt stall, and other days select the Herenstraat 48 shop.
@@ -63,7 +63,7 @@ Premium route, location and story pages remain `noindex`. Robots rules also excl
 | Things to do in Leiden | `/[locale]/leiden/things-to-do` |
 | Schaapsvishandel Leiden | `/[locale]/leiden/schaapsvishandel` |
 | Market days and market walk | `/[locale]/blog/leiden-market-days-schaapsvishandel` |
-| Individual premium route | `/[locale]/routes/[slug]` (`noindex`) |
+| Individual route | `/[locale]/routes/[slug]` (indexable public preview; paid execution loads only after access check) |
 | Individual premium story/place | `/[locale]/locations/[slug]` and `/[locale]/ontdek/[id]` (`noindex`) |
 
 ## Release checklist

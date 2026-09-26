@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/config";
 import { localizedUrl } from "@/lib/seo";
 import { blogPosts } from "@/data/seo-content";
+import { publicRoutePreviews } from "@/data/public-route-seo";
 
 const publicPaths = [
   "",
@@ -16,6 +17,7 @@ const publicPaths = [
   "/leiden/things-to-do",
   "/leiden/schaapsvishandel",
   "/blog",
+  ...publicRoutePreviews.map((route) => `/routes/${route.slug}`),
   ...blogPosts.map((post) => `/blog/${post.slug}`),
 ];
 

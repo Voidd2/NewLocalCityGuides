@@ -1,44 +1,33 @@
-import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { routes } from "@/data/routes";
-import { RouteDetail } from "@/components/routes/RouteDetail";
-import { PaywallGuard } from "@/components/auth/PaywallGuard";
-import { createDynamicMetadata } from "@/lib/seo";
+import { setRequestLocale } from "next-intl/server";
+import { PublicRoutePreview } from "@/components/routes/PublicRoutePreview";
+import { getPublicRoutePreview, publicRoutePreviews } from "@/data/public-route-seo";
+import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
-  return routes.map((route) => ({ slug: route.slug }));
+  return publicRoutePreviews.map((route) => ({ slug: route.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  const { locale, slug } = await params;
-  const route = routes.find((item) => item.slug === slug);
+  const { locale: localeValue, slug } = await params;
+  const route = getPublicRoutePreview(slug);
   if (!route) return {};
+  const locale = asLocale(localeValue);
+  const copy = route.copy[locale];
   return createDynamicMetadata({
     locale,
-    title: route.title,
-    description: route.description,
+    title: copy.title,
+    description: copy.metaDescription,
     path: `/routes/${route.slug}`,
     image: route.image,
-    index: false,
+    index: true,
   });
 }
 
-export default async function RouteDetailPage({
-  params,
-}: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
-  const { locale, slug } = await params;
-  setRequestLocale(locale);
-
-  const route = routes.find((r) => r.slug === slug);
+export default async function RouteDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
+  const { locale: localeValue, slug } = await params;
+  setRequestLocale(localeValue);
+  const route = getPublicRoutePreview(slug);
   if (!route) notFound();
-
-  return (
-    <>
-      <PaywallGuard>
-        <RouteDetail route={route} />
-      </PaywallGuard>
-    </>
-  );
+  return <PublicRoutePreview route={route} locale={asLocale(localeValue)} />;
 }
