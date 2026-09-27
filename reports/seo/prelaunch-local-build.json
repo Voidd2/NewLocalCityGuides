@@ -1,0 +1,4236 @@
+{
+  "generatedAt": "2026-09-27T17:14:49.359Z",
+  "base": "http://localhost:3100/",
+  "sitemapUrlCount": 0,
+  "crawledPageCount": 110,
+  "truncated": false,
+  "issueCount": 8,
+  "issues": [
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/",
+      "issue": "Redirectketen van 1 stap(pen)"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/privacy",
+      "issue": "Pagina is noindex"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/terms",
+      "issue": "Pagina is noindex"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/login",
+      "issue": "Pagina is noindex"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/ontdek/S070",
+      "issue": "Pagina is noindex"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/ontdek/S079",
+      "issue": "Pagina is noindex"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/ontdek/S084",
+      "issue": "Pagina is noindex"
+    },
+    {
+      "severity": "warning",
+      "url": "http://localhost:3100/nl/routes/custom",
+      "issue": "Pagina is noindex"
+    }
+  ],
+  "pages": [
+    {
+      "url": "http://localhost:3100/",
+      "finalUrl": "http://localhost:3100/nl",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/",
+          "status": 307
+        },
+        {
+          "url": "http://localhost:3100/nl",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Ontdek Leiden op jouw tempo",
+      "description": "Zelfgeleide stadstours door Leiden met routes, interactieve verhalen, video&#x27;s en lokale tips. Ontdek de stad op jouw tempo.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 11
+    },
+    {
+      "url": "http://localhost:3100/nl/pricing",
+      "finalUrl": "http://localhost:3100/nl/pricing",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/pricing",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Prijzen voor de Leiden stadsgids | YourLocalCityGuide",
+      "description": "Bekijk de prijzen en inhoud van het Leiden-pakket van YourLocalCityGuide.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/pricing",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/pricing"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/pricing"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/pricing"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/pricing"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/routes",
+      "finalUrl": "http://localhost:3100/nl/routes",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/routes",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Wandel- en fietsroutes door Leiden | YourLocalCityGuide",
+      "description": "Bekijk samengestelde wandel- en fietsroutes door Leiden, van het historische centrum tot de groene singels.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/routes",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/routes"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/routes"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leiden ontdekken: routes, bezienswaardigheden en lokale verhalen | YourLocalCityGuide",
+      "description": "Plan een dag of weekend in Leiden met zelfgeleide routes, bezienswaardigheden, marktdagen en lokale tips.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 13
+    },
+    {
+      "url": "http://localhost:3100/nl/ontdek",
+      "finalUrl": "http://localhost:3100/nl/ontdek",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/ontdek",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Musea en lokale plekken in Leiden | YourLocalCityGuide",
+      "description": "Ontdek musea, winkels, markten, restaurants en verborgen parels in Leiden.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/ontdek"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/ontdek"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 63
+    },
+    {
+      "url": "http://localhost:3100/nl/city-guide-leiden",
+      "finalUrl": "http://localhost:3100/nl/city-guide-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/city-guide-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Stadsgids Leiden: ontdek de stad als een local | YourLocalCityGuide",
+      "description": "Complete stadsgids voor Leiden met bezienswaardigheden, wandelroutes, musea, marktdagen en lokale tips voor een dag of weekend in de stad.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/city-guide-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/city-guide-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/city-guide-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/city-guide-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/city-guide-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 14
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden-tours",
+      "finalUrl": "http://localhost:3100/nl/leiden-tours",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden-tours",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leiden tours: kies een stadswandeling die bij je past | YourLocalCityGuide",
+      "description": "Vergelijk zelfgeleide Leiden tours langs geschiedenis, markten, ambacht en groene singels. Start wanneer je wilt met GPS en lokale verhalen.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden-tours",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden-tours"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden-tours"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden-tours"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden-tours"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 14
+    },
+    {
+      "url": "http://localhost:3100/nl/blog",
+      "finalUrl": "http://localhost:3100/nl/blog",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/blog",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leiden blog: routes, tips en lokale verhalen | YourLocalCityGuide",
+      "description": "Praktische artikelen over Leiden, stadswandelingen, marktdagen, musea en lokale plekken.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/blog",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/blog"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/blog"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 13
+    },
+    {
+      "url": "http://localhost:3100/nl/privacy",
+      "finalUrl": "http://localhost:3100/nl/privacy",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/privacy",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Privacybeleid | YourLocalCityGuide",
+      "description": "Lees hoe YourLocalCityGuide met persoonsgegevens omgaat.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/privacy",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/privacy"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/privacy"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/privacy"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/privacy"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/terms",
+      "finalUrl": "http://localhost:3100/nl/terms",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/terms",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Gebruiksvoorwaarden | YourLocalCityGuide",
+      "description": "Lees de gebruiksvoorwaarden van YourLocalCityGuide.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/terms",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/terms"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/terms"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/terms"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/terms"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl",
+      "finalUrl": "http://localhost:3100/nl",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Ontdek Leiden op jouw tempo",
+      "description": "Zelfgeleide stadstours door Leiden met routes, interactieve verhalen, video&#x27;s en lokale tips. Ontdek de stad op jouw tempo.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 11
+    },
+    {
+      "url": "http://localhost:3100/nl/login",
+      "finalUrl": "http://localhost:3100/nl/login",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/login",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Inloggen | YourLocalCityGuide",
+      "description": "Log in op YourLocalCityGuide om je routes en stadspakket te openen.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/login",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/login"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/login"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/login"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/login"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/things-to-do",
+      "finalUrl": "http://localhost:3100/nl/leiden/things-to-do",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/things-to-do",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Wat te doen in Leiden: ideeën voor je bezoek | YourLocalCityGuide",
+      "description": "Ontdek wat je kunt doen in Leiden: historische plekken, musea, markten, wandelroutes en lokale stops voor één dag of weekend.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/things-to-do",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/things-to-do"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/things-to-do"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/things-to-do"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/things-to-do"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 13
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/schaapsvishandel",
+      "finalUrl": "http://localhost:3100/nl/leiden/schaapsvishandel",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/schaapsvishandel",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Schaapsvishandel Leiden: viswinkel en marktkraam | YourLocalCityGuide",
+      "description": "Bezoek Schaapsvishandel, een Leidse familiezaak sinds 1938. Vind de viskar op woensdag en zaterdag of de winkel aan Herenstraat 48.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/schaapsvishandel",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/schaapsvishandel"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/schaapsvishandel"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/schaapsvishandel"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/schaapsvishandel"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 11
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/naturalis",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/naturalis",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/naturalis",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Naturalis Biodiversity Center in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Naturalis Biodiversity Center in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/naturalis",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/naturalis"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/naturalis"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/naturalis"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/naturalis"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/hortus-botanicus-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/hortus-botanicus-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/hortus-botanicus-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Hortus botanicus Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Hortus botanicus Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/hortus-botanicus-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/hortus-botanicus-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/hortus-botanicus-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/hortus-botanicus-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/hortus-botanicus-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/tony-vergunst-stroopwafels",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/tony-vergunst-stroopwafels",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/tony-vergunst-stroopwafels",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Tony Vergunst Stroopwafels in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Tony Vergunst Stroopwafels in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/tony-vergunst-stroopwafels",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/tony-vergunst-stroopwafels"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/tony-vergunst-stroopwafels"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/tony-vergunst-stroopwafels"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/tony-vergunst-stroopwafels"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/leidsche-koek",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/leidsche-koek",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/leidsche-koek",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leidsche Koek in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Leidsche Koek in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/leidsche-koek",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/leidsche-koek"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/leidsche-koek"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/leidsche-koek"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/leidsche-koek"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/markets/leidse-woensdagmarkt",
+      "finalUrl": "http://localhost:3100/nl/leiden/markets/leidse-woensdagmarkt",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/markets/leidse-woensdagmarkt",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leidse Woensdagmarkt in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Leidse Woensdagmarkt in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/leidse-woensdagmarkt",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/leidse-woensdagmarkt"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/markets/leidse-woensdagmarkt"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/markets/leidse-woensdagmarkt"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/leidse-woensdagmarkt"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/markets/leidse-zaterdagmarkt",
+      "finalUrl": "http://localhost:3100/nl/leiden/markets/leidse-zaterdagmarkt",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/markets/leidse-zaterdagmarkt",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leidse Zaterdagmarkt in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Leidse Zaterdagmarkt in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/leidse-zaterdagmarkt",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/leidse-zaterdagmarkt"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/markets/leidse-zaterdagmarkt"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/markets/leidse-zaterdagmarkt"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/leidse-zaterdagmarkt"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/ontdek/S070",
+      "finalUrl": "http://localhost:3100/nl/ontdek/S070",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/ontdek/S070",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leidens Ontzet / 3 Oktober Feest | YourLocalCityGuide",
+      "description": "Leidens Ontzet herdenkt de bevrijding van 1574. Twee dagen kermis, optochten, muziek, hutspot, haring en wittebrood.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S070",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S070"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/ontdek/S070"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/ontdek/S070"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S070"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/museum-de-lakenhal",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/museum-de-lakenhal",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/museum-de-lakenhal",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Museum De Lakenhal in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Museum De Lakenhal in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/museum-de-lakenhal",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/museum-de-lakenhal"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/museum-de-lakenhal"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/museum-de-lakenhal"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/museum-de-lakenhal"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/rijksmuseum-van-oudheden",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/rijksmuseum-van-oudheden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/rijksmuseum-van-oudheden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Rijksmuseum van Oudheden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Rijksmuseum van Oudheden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/rijksmuseum-van-oudheden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/rijksmuseum-van-oudheden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/rijksmuseum-van-oudheden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/rijksmuseum-van-oudheden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/rijksmuseum-van-oudheden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/rijksmuseum-boerhaave",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/rijksmuseum-boerhaave",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/rijksmuseum-boerhaave",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Rijksmuseum Boerhaave in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Rijksmuseum Boerhaave in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/rijksmuseum-boerhaave",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/rijksmuseum-boerhaave"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/rijksmuseum-boerhaave"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/rijksmuseum-boerhaave"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/rijksmuseum-boerhaave"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/wereldmuseum-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/wereldmuseum-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/wereldmuseum-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Wereldmuseum Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Wereldmuseum Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/wereldmuseum-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/wereldmuseum-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/wereldmuseum-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/wereldmuseum-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/wereldmuseum-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/japanmuseum-sieboldhuis",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/japanmuseum-sieboldhuis",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/japanmuseum-sieboldhuis",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Japanmuseum SieboldHuis in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Japanmuseum SieboldHuis in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/japanmuseum-sieboldhuis",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/japanmuseum-sieboldhuis"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/japanmuseum-sieboldhuis"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/japanmuseum-sieboldhuis"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/japanmuseum-sieboldhuis"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/pilgrim-museum-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/pilgrim-museum-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/pilgrim-museum-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Pilgrim Museum Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Pilgrim Museum Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/pilgrim-museum-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/pilgrim-museum-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/pilgrim-museum-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/pilgrim-museum-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/pilgrim-museum-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/young-rembrandt-studio",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/young-rembrandt-studio",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/young-rembrandt-studio",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Young Rembrandt Studio in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Young Rembrandt Studio in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/young-rembrandt-studio",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/young-rembrandt-studio"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/young-rembrandt-studio"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/young-rembrandt-studio"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/young-rembrandt-studio"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/molenmuseum-de-valk",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/molenmuseum-de-valk",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/molenmuseum-de-valk",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Molenmuseum De Valk in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Molenmuseum De Valk in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/molenmuseum-de-valk",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/molenmuseum-de-valk"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/molenmuseum-de-valk"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/molenmuseum-de-valk"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/molenmuseum-de-valk"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/wevershuis",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/wevershuis",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/wevershuis",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Museum Het Leids Wevershuis in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Museum Het Leids Wevershuis in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/wevershuis",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/wevershuis"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/wevershuis"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/wevershuis"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/wevershuis"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/corpus",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/corpus",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/corpus",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "CORPUS in Leiden bezoeken | YourLocalCityGuide",
+      "description": "CORPUS in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/corpus",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/corpus"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/corpus"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/corpus"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/corpus"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/pieterskerk",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/pieterskerk",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/pieterskerk",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Pieterskerk in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Pieterskerk in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/pieterskerk",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/pieterskerk"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/pieterskerk"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/pieterskerk"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/pieterskerk"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/oude-sterrewacht-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/oude-sterrewacht-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/oude-sterrewacht-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Oude Sterrewacht Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Oude Sterrewacht Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/oude-sterrewacht-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/oude-sterrewacht-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/oude-sterrewacht-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/oude-sterrewacht-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/oude-sterrewacht-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/kaasspeciaalzaak-van-boheemen",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/kaasspeciaalzaak-van-boheemen",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/kaasspeciaalzaak-van-boheemen",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Kaasspeciaalzaak Van Boheemen in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Kaasspeciaalzaak Van Boheemen in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/kaasspeciaalzaak-van-boheemen",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/kaasspeciaalzaak-van-boheemen"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/kaasspeciaalzaak-van-boheemen"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/kaasspeciaalzaak-van-boheemen"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/kaasspeciaalzaak-van-boheemen"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/markets/feestelijke-warenmarkt-leidens-ontzet",
+      "finalUrl": "http://localhost:3100/nl/leiden/markets/feestelijke-warenmarkt-leidens-ontzet",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/markets/feestelijke-warenmarkt-leidens-ontzet",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Feestelijke Warenmarkt Leidens Ontzet in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Feestelijke Warenmarkt Leidens Ontzet in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/feestelijke-warenmarkt-leidens-ontzet",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/feestelijke-warenmarkt-leidens-ontzet"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/markets/feestelijke-warenmarkt-leidens-ontzet"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/markets/feestelijke-warenmarkt-leidens-ontzet"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/feestelijke-warenmarkt-leidens-ontzet"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/ontdek/S079",
+      "finalUrl": "http://localhost:3100/nl/ontdek/S079",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/ontdek/S079",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Kunstroute Leiden | YourLocalCityGuide",
+      "description": "Kunstenaars openen hun ateliers zodat bezoekers rechtstreeks kunnen zien waar kunst wordt gemaakt.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S079",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S079"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/ontdek/S079"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/ontdek/S079"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S079"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/ontdek/S084",
+      "finalUrl": "http://localhost:3100/nl/ontdek/S084",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/ontdek/S084",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "LIFF - Leiden International Film Festival | YourLocalCityGuide",
+      "description": "Internationaal filmfestival met premières, onafhankelijke films en internationale gasten.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S084",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S084"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/ontdek/S084"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/ontdek/S084"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/ontdek/S084"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/oudt-leyden",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/oudt-leyden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/oudt-leyden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Oudt Leyden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Oudt Leyden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/oudt-leyden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/oudt-leyden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/oudt-leyden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/oudt-leyden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/oudt-leyden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/pannenkoekenhuis-de-schaapsbel",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/pannenkoekenhuis-de-schaapsbel",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/pannenkoekenhuis-de-schaapsbel",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Pannenkoekenhuis De Schaapsbel in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Pannenkoekenhuis De Schaapsbel in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/pannenkoekenhuis-de-schaapsbel",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/pannenkoekenhuis-de-schaapsbel"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/pannenkoekenhuis-de-schaapsbel"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/pannenkoekenhuis-de-schaapsbel"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/pannenkoekenhuis-de-schaapsbel"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/annie-s",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/annie-s",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/annie-s",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Annie&#x27;s in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Annie&#x27;s in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/annie-s",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/annie-s"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/annie-s"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/annie-s"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/annie-s"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/waag",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/waag",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/waag",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Waag in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Waag in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/waag",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/waag"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/waag"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/waag"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/waag"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/in-den-bierbengel",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/in-den-bierbengel",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/in-den-bierbengel",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "In Den Bierbengel in Leiden bezoeken | YourLocalCityGuide",
+      "description": "In Den Bierbengel in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/in-den-bierbengel",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/in-den-bierbengel"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/in-den-bierbengel"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/in-den-bierbengel"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/in-den-bierbengel"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/brasserie-rumour",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/brasserie-rumour",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/brasserie-rumour",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Brasserie Rumour in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Brasserie Rumour in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/brasserie-rumour",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/brasserie-rumour"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/brasserie-rumour"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/brasserie-rumour"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/brasserie-rumour"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/restaurant-scarlatti-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/restaurant-scarlatti-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/restaurant-scarlatti-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Restaurant Scarlatti Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Restaurant Scarlatti Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/restaurant-scarlatti-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/restaurant-scarlatti-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/restaurant-scarlatti-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/restaurant-scarlatti-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/restaurant-scarlatti-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/brasserie-de-poort",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/brasserie-de-poort",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/brasserie-de-poort",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Brasserie de Poort in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Brasserie de Poort in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/brasserie-de-poort",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/brasserie-de-poort"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/brasserie-de-poort"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/brasserie-de-poort"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/brasserie-de-poort"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/vooraf-en-toe",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/vooraf-en-toe",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/vooraf-en-toe",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Vooraf en Toe in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Vooraf en Toe in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/vooraf-en-toe",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/vooraf-en-toe"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/vooraf-en-toe"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/vooraf-en-toe"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/vooraf-en-toe"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/einstein-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/einstein-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/einstein-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Einstein Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Einstein Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/einstein-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/einstein-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/einstein-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/einstein-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/einstein-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/dapp-frietwinkel-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/dapp-frietwinkel-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/dapp-frietwinkel-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Dapp Frietwinkel Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Dapp Frietwinkel Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/dapp-frietwinkel-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/dapp-frietwinkel-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/dapp-frietwinkel-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/dapp-frietwinkel-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/dapp-frietwinkel-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/cafe-de-bonte-koe",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/cafe-de-bonte-koe",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/cafe-de-bonte-koe",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Cafe De Bonte Koe in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Cafe De Bonte Koe in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-bonte-koe",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-bonte-koe"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/cafe-de-bonte-koe"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/cafe-de-bonte-koe"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-bonte-koe"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/cafe-de-vergulde-kruik",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/cafe-de-vergulde-kruik",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/cafe-de-vergulde-kruik",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Cafe De Vergulde Kruik in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Cafe De Vergulde Kruik in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-vergulde-kruik",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-vergulde-kruik"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/cafe-de-vergulde-kruik"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/cafe-de-vergulde-kruik"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-vergulde-kruik"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/cafe-barrera",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/cafe-barrera",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/cafe-barrera",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Cafe Barrera in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Cafe Barrera in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-barrera",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-barrera"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/cafe-barrera"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/cafe-barrera"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-barrera"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/north-end-english-pub",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/north-end-english-pub",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/north-end-english-pub",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "North End English Pub in Leiden bezoeken | YourLocalCityGuide",
+      "description": "North End English Pub in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/north-end-english-pub",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/north-end-english-pub"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/north-end-english-pub"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/north-end-english-pub"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/north-end-english-pub"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/vlot-grand-cafe",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/vlot-grand-cafe",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/vlot-grand-cafe",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Vlot Grand Cafe in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Vlot Grand Cafe in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/vlot-grand-cafe",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/vlot-grand-cafe"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/vlot-grand-cafe"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/vlot-grand-cafe"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/vlot-grand-cafe"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/bikini-bikini",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/bikini-bikini",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/bikini-bikini",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Bikini Bikini in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Bikini Bikini in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/bikini-bikini",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/bikini-bikini"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/bikini-bikini"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/bikini-bikini"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/bikini-bikini"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/cafe-de-uyl-van-hoogland",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/cafe-de-uyl-van-hoogland",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/cafe-de-uyl-van-hoogland",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Cafe De Uyl van Hoogland in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Cafe De Uyl van Hoogland in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-uyl-van-hoogland",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-uyl-van-hoogland"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/cafe-de-uyl-van-hoogland"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/cafe-de-uyl-van-hoogland"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-de-uyl-van-hoogland"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/het-stadsbrouwhuis",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/het-stadsbrouwhuis",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/het-stadsbrouwhuis",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Het Stadsbrouwhuis in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Het Stadsbrouwhuis in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/het-stadsbrouwhuis",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/het-stadsbrouwhuis"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/het-stadsbrouwhuis"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/het-stadsbrouwhuis"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/het-stadsbrouwhuis"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/lemmy-s-beer-and-whiskycafe",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/lemmy-s-beer-and-whiskycafe",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/lemmy-s-beer-and-whiskycafe",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Lemmy&#x27;s Beer and Whiskycafe in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Lemmy&#x27;s Beer and Whiskycafe in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/lemmy-s-beer-and-whiskycafe",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/lemmy-s-beer-and-whiskycafe"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/lemmy-s-beer-and-whiskycafe"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/lemmy-s-beer-and-whiskycafe"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/lemmy-s-beer-and-whiskycafe"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/proeflokaal-1574",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/proeflokaal-1574",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/proeflokaal-1574",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Proeflokaal 1574 in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Proeflokaal 1574 in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/proeflokaal-1574",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/proeflokaal-1574"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/proeflokaal-1574"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/proeflokaal-1574"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/proeflokaal-1574"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/rabaja",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/rabaja",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/rabaja",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Rabaja in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Rabaja in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/rabaja",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/rabaja"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/rabaja"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/rabaja"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/rabaja"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/ottovino-wines-en-bites",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/ottovino-wines-en-bites",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/ottovino-wines-en-bites",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Ottovino wines &amp; bites in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Ottovino wines &amp; bites in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/ottovino-wines-en-bites",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/ottovino-wines-en-bites"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/ottovino-wines-en-bites"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/ottovino-wines-en-bites"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/ottovino-wines-en-bites"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/cafe-frank",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/cafe-frank",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/cafe-frank",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Cafe Frank in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Cafe Frank in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-frank",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-frank"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/cafe-frank"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/cafe-frank"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/cafe-frank"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/tabu",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/tabu",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/tabu",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Tabu in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Tabu in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/tabu",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/tabu"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/tabu"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/tabu"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/tabu"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/local/de-twee-spieghels",
+      "finalUrl": "http://localhost:3100/nl/leiden/local/de-twee-spieghels",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/local/de-twee-spieghels",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "De Twee Spieghels in Leiden bezoeken | YourLocalCityGuide",
+      "description": "De Twee Spieghels in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/de-twee-spieghels",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/de-twee-spieghels"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/local/de-twee-spieghels"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/local/de-twee-spieghels"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/local/de-twee-spieghels"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/routes/custom",
+      "finalUrl": "http://localhost:3100/nl/routes/custom",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/routes/custom",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Maak je eigen route door Leiden | YourLocalCityGuide",
+      "description": "Kies locaties en stel een persoonlijke route door Leiden samen.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/routes/custom",
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes/custom"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/routes/custom"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/routes/custom"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes/custom"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 11
+    },
+    {
+      "url": "http://localhost:3100/nl/activiteiten/hulp",
+      "finalUrl": "http://localhost:3100/nl/activiteiten/hulp",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/activiteiten/hulp",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Hulp bij activiteiten in Leiden | YourLocalCityGuide",
+      "description": "Krijg hulp bij het plannen van activiteiten en een bezoek aan Leiden.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/activiteiten/hulp",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/activiteiten/hulp"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/activiteiten/hulp"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/activiteiten/hulp"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/activiteiten/hulp"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/places",
+      "finalUrl": "http://localhost:3100/nl/leiden/places",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/places",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Plekken in Leiden: musea, historie en lokale favorieten | YourLocalCityGuide",
+      "description": "Ontdek musea, historische plekken, markten en lokale adressen in Leiden. Elke plek heeft een gratis introductie en praktische informatie.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/places",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/places"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/places"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/places"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/places"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 94
+    },
+    {
+      "url": "http://localhost:3100/nl/map",
+      "finalUrl": "http://localhost:3100/nl/map",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/map",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Interactieve kaart van Leiden | YourLocalCityGuide",
+      "description": "Vind historische locaties, musea, markten en lokale plekken op de interactieve kaart van Leiden.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/map",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/map"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/map"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/map"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/map"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 10
+    },
+    {
+      "url": "http://localhost:3100/nl/blog/leiden-in-one-day",
+      "finalUrl": "http://localhost:3100/nl/blog/leiden-in-one-day",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/blog/leiden-in-one-day",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leiden in één dag: route, markt en musea | YourLocalCityGuide",
+      "description": "Plan één dag in Leiden met een logische wandelroute langs de Burcht, Vismarkt, Pieterskerk, Rapenburg en een museum.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/blog/leiden-in-one-day",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog/leiden-in-one-day"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/blog/leiden-in-one-day"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/blog/leiden-in-one-day"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog/leiden-in-one-day"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 12
+    },
+    {
+      "url": "http://localhost:3100/nl/blog/self-guided-walking-tour-leiden",
+      "finalUrl": "http://localhost:3100/nl/blog/self-guided-walking-tour-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/blog/self-guided-walking-tour-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Zelfgeleide stadswandeling Leiden: zo kies je een route | YourLocalCityGuide",
+      "description": "Alles over zelfgeleide stadswandelingen in Leiden: routekeuze, GPS, startpunten, pauzes en praktische voorbereiding.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/blog/self-guided-walking-tour-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog/self-guided-walking-tour-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/blog/self-guided-walking-tour-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/blog/self-guided-walking-tour-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog/self-guided-walking-tour-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 12
+    },
+    {
+      "url": "http://localhost:3100/nl/blog/leiden-market-days-schaapsvishandel",
+      "finalUrl": "http://localhost:3100/nl/blog/leiden-market-days-schaapsvishandel",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/blog/leiden-market-days-schaapsvishandel",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Marktdagen in Leiden: woensdag, zaterdag en Schaapsvishandel | YourLocalCityGuide",
+      "description": "Praktische gids voor de Leidse markt op woensdag en zaterdag, met route langs Vismarkt, Nieuwe Rijn en Schaapsvishandel.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/blog/leiden-market-days-schaapsvishandel",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog/leiden-market-days-schaapsvishandel"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/blog/leiden-market-days-schaapsvishandel"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/blog/leiden-market-days-schaapsvishandel"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/blog/leiden-market-days-schaapsvishandel"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 13
+    },
+    {
+      "url": "http://localhost:3100/nl/routes/markt-en-ambacht",
+      "finalUrl": "http://localhost:3100/nl/routes/markt-en-ambacht",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/routes/markt-en-ambacht",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Markt- en ambachtswandeling door Leiden | YourLocalCityGuide",
+      "description": "Bekijk de preview van Markt &amp; Ambacht: circa 3 km langs de Vismarkt, Koornbrug, Leidse handel en Schaapsvishandel sinds 1938.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/routes/markt-en-ambacht",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes/markt-en-ambacht"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/routes/markt-en-ambacht"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/routes/markt-en-ambacht"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes/markt-en-ambacht"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 13
+    },
+    {
+      "url": "http://localhost:3100/nl/routes/centrum-route",
+      "finalUrl": "http://localhost:3100/nl/routes/centrum-route",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/routes/centrum-route",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Historische centrumwandeling door Leiden | YourLocalCityGuide",
+      "description": "Bekijk de openbare preview van de Centrum Route door Leiden: circa 4 km langs De Burcht, Pieterskerk, Rembrandts buurt en lokale marktplekken.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/routes/centrum-route",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes/centrum-route"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/routes/centrum-route"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/routes/centrum-route"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/routes/centrum-route"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 14
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/weddesteeg",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/weddesteeg",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/weddesteeg",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Weddesteeg in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Weddesteeg in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/weddesteeg",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/weddesteeg"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/weddesteeg"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/weddesteeg"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/weddesteeg"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/hortus-botanicus",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/hortus-botanicus",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/hortus-botanicus",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Hortus Botanicus in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Hortus Botanicus in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/hortus-botanicus",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/hortus-botanicus"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/hortus-botanicus"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/hortus-botanicus"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/hortus-botanicus"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/cleveringa-1940",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/cleveringa-1940",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/cleveringa-1940",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Cleveringa 1940 in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Cleveringa 1940 in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/cleveringa-1940",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/cleveringa-1940"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/cleveringa-1940"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/cleveringa-1940"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/cleveringa-1940"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/de-burcht",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/de-burcht",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/de-burcht",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "De Burcht van Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "De Burcht van Leiden in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/de-burcht",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/de-burcht"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/de-burcht"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/de-burcht"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/de-burcht"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/markets/oranjemarkt-koningsdag",
+      "finalUrl": "http://localhost:3100/nl/leiden/markets/oranjemarkt-koningsdag",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/markets/oranjemarkt-koningsdag",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Oranjemarkt Koningsdag in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Oranjemarkt Koningsdag in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/oranjemarkt-koningsdag",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/oranjemarkt-koningsdag"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/markets/oranjemarkt-koningsdag"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/markets/oranjemarkt-koningsdag"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/oranjemarkt-koningsdag"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/gravensteen",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/gravensteen",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/gravensteen",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Gravensteen in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Gravensteen in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/gravensteen",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/gravensteen"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/gravensteen"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/gravensteen"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/gravensteen"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/pilgrims-quarter",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/pilgrims-quarter",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/pilgrims-quarter",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Pilgrimswijk &amp; Engelse Poort in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Pilgrimswijk &amp; Engelse Poort in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/pilgrims-quarter",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/pilgrims-quarter"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/pilgrims-quarter"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/pilgrims-quarter"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/pilgrims-quarter"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/jean-pesijnhofje",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/jean-pesijnhofje",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/jean-pesijnhofje",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Jean Pesijnhofje in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Jean Pesijnhofje in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/jean-pesijnhofje",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/jean-pesijnhofje"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/jean-pesijnhofje"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/jean-pesijnhofje"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/jean-pesijnhofje"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/blauwe-steen",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/blauwe-steen",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/blauwe-steen",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "De Blauwe Steen in Leiden bezoeken | YourLocalCityGuide",
+      "description": "De Blauwe Steen in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/blauwe-steen",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/blauwe-steen"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/blauwe-steen"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/blauwe-steen"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/blauwe-steen"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/leidens-ontzet",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/leidens-ontzet",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/leidens-ontzet",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leidens Ontzet in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Leidens Ontzet in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/leidens-ontzet",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/leidens-ontzet"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/leidens-ontzet"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/leidens-ontzet"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/leidens-ontzet"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/markets/nostalgische-leidse-kerstmarkt",
+      "finalUrl": "http://localhost:3100/nl/leiden/markets/nostalgische-leidse-kerstmarkt",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/markets/nostalgische-leidse-kerstmarkt",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Nostalgische Leidse Kerstmarkt in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Nostalgische Leidse Kerstmarkt in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/nostalgische-leidse-kerstmarkt",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/nostalgische-leidse-kerstmarkt"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/markets/nostalgische-leidse-kerstmarkt"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/markets/nostalgische-leidse-kerstmarkt"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/nostalgische-leidse-kerstmarkt"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/vismarkt",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/vismarkt",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/vismarkt",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Vismarkt in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Vismarkt in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/vismarkt",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/vismarkt"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/vismarkt"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/vismarkt"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/vismarkt"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/koornbrug",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/koornbrug",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/koornbrug",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Koornbrug in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Koornbrug in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/koornbrug",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/koornbrug"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/koornbrug"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/koornbrug"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/koornbrug"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/buskruitramp-1807",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/buskruitramp-1807",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/buskruitramp-1807",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Buskruitramp 1807 in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Buskruitramp 1807 in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/buskruitramp-1807",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/buskruitramp-1807"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/buskruitramp-1807"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/buskruitramp-1807"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/buskruitramp-1807"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/molen-de-put",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/molen-de-put",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/molen-de-put",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Molen De Put in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Molen De Put in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/molen-de-put",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/molen-de-put"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/molen-de-put"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/molen-de-put"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/molen-de-put"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/morspoort",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/morspoort",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/morspoort",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Morspoort in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Morspoort in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/morspoort",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/morspoort"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/morspoort"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/morspoort"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/morspoort"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/zijlpoort",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/zijlpoort",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/zijlpoort",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Zijlpoort in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Zijlpoort in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/zijlpoort",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/zijlpoort"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/zijlpoort"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/zijlpoort"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/zijlpoort"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/hooglandse-kerk",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/hooglandse-kerk",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/hooglandse-kerk",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Hooglandse Kerk in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Hooglandse Kerk in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/hooglandse-kerk",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/hooglandse-kerk"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/hooglandse-kerk"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/hooglandse-kerk"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/hooglandse-kerk"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/marekerk",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/marekerk",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/marekerk",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Marekerk in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Marekerk in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/marekerk",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/marekerk"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/marekerk"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/marekerk"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/marekerk"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/hartebrugkerk",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/hartebrugkerk",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/hartebrugkerk",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Hartebrugkerk in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Hartebrugkerk in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/hartebrugkerk",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/hartebrugkerk"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/hartebrugkerk"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/hartebrugkerk"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/hartebrugkerk"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/stadhuis-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/stadhuis-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/stadhuis-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Stadhuis van Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Stadhuis van Leiden in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/stadhuis-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/stadhuis-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/stadhuis-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/stadhuis-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/stadhuis-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/de-waag",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/de-waag",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/de-waag",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "De Waag in Leiden bezoeken | YourLocalCityGuide",
+      "description": "De Waag in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/de-waag",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/de-waag"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/de-waag"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/de-waag"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/de-waag"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/oude-sterrewacht",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/oude-sterrewacht",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/oude-sterrewacht",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Oude Sterrewacht in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Oude Sterrewacht in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/oude-sterrewacht",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/oude-sterrewacht"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/oude-sterrewacht"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/oude-sterrewacht"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/oude-sterrewacht"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/bibliotheca-thysiana",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/bibliotheca-thysiana",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/bibliotheca-thysiana",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Bibliotheca Thysiana in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Bibliotheca Thysiana in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/bibliotheca-thysiana",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/bibliotheca-thysiana"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/bibliotheca-thysiana"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/bibliotheca-thysiana"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/bibliotheca-thysiana"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/singelpark",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/singelpark",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/singelpark",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Singelpark in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Singelpark in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/singelpark",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/singelpark"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/singelpark"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/singelpark"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/singelpark"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/plantsoen",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/plantsoen",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/plantsoen",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Plantsoen in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Plantsoen in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/plantsoen",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/plantsoen"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/plantsoen"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/plantsoen"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/plantsoen"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/park-matilo",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/park-matilo",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/park-matilo",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Park Matilo in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Park Matilo in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/park-matilo",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/park-matilo"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/park-matilo"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/park-matilo"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/park-matilo"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/polderpark-cronesteyn",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/polderpark-cronesteyn",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/polderpark-cronesteyn",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Polderpark Cronesteyn in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Polderpark Cronesteyn in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/polderpark-cronesteyn",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/polderpark-cronesteyn"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/polderpark-cronesteyn"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/polderpark-cronesteyn"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/polderpark-cronesteyn"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/sint-annahofje",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/sint-annahofje",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/sint-annahofje",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Sint Annahofje in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Sint Annahofje in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/sint-annahofje",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/sint-annahofje"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/sint-annahofje"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/sint-annahofje"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/sint-annahofje"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/rapenburg",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/rapenburg",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/rapenburg",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Rapenburg in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Rapenburg in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/rapenburg",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/rapenburg"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/rapenburg"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/rapenburg"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/rapenburg"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/oude-rijn-nieuwe-rijn",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/oude-rijn-nieuwe-rijn",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/oude-rijn-nieuwe-rijn",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Oude Rijn en Nieuwe Rijn in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Oude Rijn en Nieuwe Rijn in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/oude-rijn-nieuwe-rijn",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/oude-rijn-nieuwe-rijn"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/oude-rijn-nieuwe-rijn"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/oude-rijn-nieuwe-rijn"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/oude-rijn-nieuwe-rijn"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/beestenmarkt",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/beestenmarkt",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/beestenmarkt",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Beestenmarkt in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Beestenmarkt in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/beestenmarkt",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/beestenmarkt"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/beestenmarkt"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/beestenmarkt"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/beestenmarkt"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/meelfabriek",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/meelfabriek",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/meelfabriek",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Meelfabriek in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Meelfabriek in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/meelfabriek",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/meelfabriek"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/meelfabriek"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/meelfabriek"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/meelfabriek"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/latijnse-school",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/latijnse-school",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/latijnse-school",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Latijnse School in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Latijnse School in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/latijnse-school",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/latijnse-school"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/latijnse-school"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/latijnse-school"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/latijnse-school"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/attractions/leids-weeshuis",
+      "finalUrl": "http://localhost:3100/nl/leiden/attractions/leids-weeshuis",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/attractions/leids-weeshuis",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leids Weeshuis in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Leids Weeshuis in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/leids-weeshuis",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/leids-weeshuis"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/attractions/leids-weeshuis"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/attractions/leids-weeshuis"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/attractions/leids-weeshuis"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/molen-de-valk",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/molen-de-valk",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/molen-de-valk",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Molen De Valk in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Molen De Valk in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op locatie beleeft.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/molen-de-valk",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/molen-de-valk"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/molen-de-valk"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/molen-de-valk"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/molen-de-valk"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/museums/pilgrim-museum",
+      "finalUrl": "http://localhost:3100/nl/leiden/museums/pilgrim-museum",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/museums/pilgrim-museum",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Leiden American Pilgrim Museum in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Leiden American Pilgrim Museum in Leiden bezoeken? Lees een korte introductie, bekijk praktische informatie en ontdek hoe je het volledige verhaal op.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/pilgrim-museum",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/pilgrim-museum"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/museums/pilgrim-museum"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/museums/pilgrim-museum"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/museums/pilgrim-museum"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    },
+    {
+      "url": "http://localhost:3100/nl/leiden/markets/swan-market-leiden",
+      "finalUrl": "http://localhost:3100/nl/leiden/markets/swan-market-leiden",
+      "status": 200,
+      "chain": [
+        {
+          "url": "http://localhost:3100/nl/leiden/markets/swan-market-leiden",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Swan Market Leiden in Leiden bezoeken | YourLocalCityGuide",
+      "description": "Swan Market Leiden in Leiden bezoeken? Bekijk de locatie, een korte introductie en praktische informatie voor je bezoek.",
+      "canonical": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/swan-market-leiden",
+      "noindex": false,
+      "robotsMeta": "index, follow",
+      "robotsHeader": "",
+      "hreflang": [
+        {
+          "lang": "nl",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/swan-market-leiden"
+        },
+        {
+          "lang": "en",
+          "href": "https://newlocalcityguide-fawn.vercel.app/en/leiden/markets/swan-market-leiden"
+        },
+        {
+          "lang": "de",
+          "href": "https://newlocalcityguide-fawn.vercel.app/de/leiden/markets/swan-market-leiden"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://newlocalcityguide-fawn.vercel.app/nl/leiden/markets/swan-market-leiden"
+        }
+      ],
+      "premiumMarkers": [],
+      "internalLinkCount": 16
+    }
+  ]
+}

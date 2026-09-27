@@ -42,6 +42,9 @@ export async function generateMetadata({
   return {
     ...base,
     metadataBase: new URL(SITE_URL),
+    verification: process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : undefined,
     title: {
       default: String(base.title),
       template: "%s | YourLocalCityGuide",

@@ -468,8 +468,8 @@ Het is een markthal boven een rivier.
 Stel je de brug vol zakken graan voor. Handelaren die kwaliteit controleren. Prijzen die worden afgesproken. Knechten die zware zakken verplaatsen. Schepen onder je. Voetgangers tussendoor.
 Geen rustige fotoplek.
 Een werkplek.
-Visit Leiden noemt de Koornbrug tegenwoordig de oudste overdekte brug van Nederland, maar één ding moeten we meteen corrigeren: ze is níét de enige overdekte brug van het land. 
-En misschien is een ander feit eigenlijk interessanter.
+De Koornbrug wordt soms de oudste overdekte brug van Nederland genoemd. Zolang die superlatief niet uit een gezaghebbende monumentenbron is bevestigd, gebruiken we hem hier niet als feit.
+Een ander gegeven is bovendien interessanter.
 De brug vertelt hoe afhankelijk Leiden van handel was.
 Vis een paar meter verderop.
 Graan hier.
@@ -504,8 +504,8 @@ Boats passing beneath you.
 Customers and pedestrians moving through the same space.
 This would not have been the peaceful photo spot it often is today.
 It was a place of work.
-Leiden's visitor organisation describes the Koornbrug as the oldest covered bridge in the Netherlands, while explicitly correcting a persistent local claim: it is not the country's only covered bridge. 
-But perhaps its age record is not the most important part of the story.
+The Koornbrug is sometimes described as the oldest covered bridge in the Netherlands. Until that superlative is confirmed by an authoritative monument source, this guide does not present it as fact.
+Its record age is not needed to make the story interesting.
 The bridge reveals how a city functioned.
 A few metres away, fish was sold.
 Here, grain changed hands.
@@ -540,8 +540,8 @@ Unter Ihnen fahren Boote.
 Zwischen allem bewegen sich Fußgänger und Kunden.
 Heute ist dies ein beliebtes Fotomotiv.
 Damals war es vor allem ein Arbeitsplatz.
-Visit Leiden bezeichnet die Koornbrug als älteste überdachte Brücke der Niederlande und weist ausdrücklich darauf hin, dass sie nicht – wie manchmal behauptet – die einzige überdachte Brücke des Landes ist. 
-Noch wichtiger ist aber, was sie über Leiden erzählt.
+Die Koornbrug wird gelegentlich als älteste überdachte Brücke der Niederlande bezeichnet. Solange diese Superlative nicht durch eine maßgebliche Denkmalquelle bestätigt ist, stellt dieser Guide sie nicht als Tatsache dar.
+Wichtiger ist ohnehin, was die Brücke über Leiden erzählt.
 Ein paar Meter weiter wurde Fisch verkauft.
 Hier Getreide.
 Darunter floss das Wasser, über das Waren in die Stadt gelangten.
@@ -582,13 +582,11 @@ Wie brood at, was afhankelijk van een hele keten die ervoor zorgde dat graan uit
 De Koornbrug maakt die keten zichtbaar.
 Niet door een museumvitrine.
 Maar door de architectuur zelf.
-De “enige overdekte brug”
-Een hardnekkige beschrijving van de Koornbrug is dat dit de enige overdekte brug van Nederland zou zijn.
-Dat is niet juist.
-Zelfs Visit Leiden corrigeert die claim tegenwoordig en formuleert dat de Koornbrug volgens hun informatie wel de oudste overdekte brug van Nederland is, maar niet de enige. 
+Geen superlatief nodig
+De Koornbrug wordt geregeld de enige of de oudste overdekte brug van Nederland genoemd.
+De claim dat zij de enige is, klopt niet. Voor de claim dat zij de oudste is, ontbreekt in dit onderzoek nog een gezaghebbende monumentenbron.
 Voor de app is dat een goed voorbeeld van waarom broncontrole belangrijk is.
-“Enige” klinkt aantrekkelijker in marketing.
-Maar een verhaal wordt juist geloofwaardiger wanneer het geen claim nodig heeft die niet klopt.
+“Enige” en “oudste” klinken aantrekkelijk in marketing, maar een verhaal wordt geloofwaardiger wanneer het geen onbevestigd record nodig heeft.
 De echte geschiedenis is interessant genoeg.
 Kijk daarna naar de Vismarkt
 De Koornbrug en Vismarkt horen inhoudelijk bij elkaar, maar vertellen twee verschillende verhalen.
@@ -632,12 +630,11 @@ Every loaf of bread depended on a much larger supply system linking agriculture,
 The Koornbrug makes one section of that system visible.
 Not through a display case.
 Through the building itself.
-Not the only covered bridge
-A persistent local claim says that the Koornbrug is the only covered bridge in the Netherlands.
-That is incorrect.
-Leiden's visitor organisation now explicitly says it is not the only one, although it describes it as the country's oldest covered bridge. 
-For a historical tour, that distinction is worth preserving.
-A monument does not need an exaggerated record to become interesting.
+No superlative needed
+The Koornbrug is often described as the only or the oldest covered bridge in the Netherlands.
+The claim that it is the only one is incorrect. This research has not yet found an authoritative monument source for the claim that it is the oldest.
+A historical guide should preserve that distinction.
+A monument does not need an unconfirmed record to become interesting.
 Its actual function is compelling enough.
 Continue toward the Vismarkt
 The nearby Vismarkt and Koornbrug form a logical pair.
@@ -679,11 +676,10 @@ Brot entsteht nicht einfach in einer Bäckerei. Dahinter stand eine lange Versor
 Die Koornbrug macht einen Teil dieser Kette sichtbar.
 Nicht in einem Museum.
 Sondern unmittelbar in ihrer Bauform.
-Nicht die einzige überdachte Brücke
-Man liest gelegentlich, die Koornbrug sei die einzige überdachte Brücke der Niederlande.
-Das stimmt nicht.
-Auch Visit Leiden weist inzwischen ausdrücklich darauf hin. Dort wird sie zwar als älteste überdachte Brücke des Landes bezeichnet, aber nicht als einzige. 
-Für eine historische Route ist diese Korrektur wichtig.
+Keine Superlative nötig
+Man liest gelegentlich, die Koornbrug sei die einzige oder die älteste überdachte Brücke der Niederlande.
+Die Behauptung, sie sei die einzige, stimmt nicht. Für die Behauptung, sie sei die älteste, fehlt in dieser Recherche noch eine maßgebliche Denkmalquelle.
+Für eine historische Route ist diese Unterscheidung wichtig.
 Geschichte wird nicht interessanter, wenn man sie übertreibt.
 Die tatsächliche Funktion dieses Bauwerks ist ungewöhnlich genug.
 Verbindung zur Vismarkt

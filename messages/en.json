@@ -811,7 +811,18 @@
     "description": "The cards below show how ratings will look. They are not real customer reviews and are not included in an average rating.",
     "one": "A clear route that is easy to follow at your own pace.",
     "two": "The local stories give each place more meaning.",
-    "three": "Useful to continue from your current location after a break."
+    "three": "Useful to continue from your current location after a break.",
+    "formTitle": "Did you actually walk this route?",
+    "formDescription": "Share your experience. Every submission is checked before it can be published with your permission.",
+    "name": "Name for publication",
+    "email": "Email address (not public)",
+    "rating": "Rating",
+    "comment": "Your experience",
+    "consent": "I consent to publication of my name, rating and text after moderation. My email address remains private.",
+    "submit": "Send review",
+    "sending": "Sending...",
+    "success": "Thank you. Your review was received and is awaiting moderation.",
+    "error": "Your review could not be sent. Please try again later."
   },
   "customRoute": {
     "moreAboutSpot": "More about this spot",

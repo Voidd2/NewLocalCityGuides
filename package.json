@@ -12,6 +12,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "media:check": "node scripts/check-media-assets.mjs",
+    "seo:crawl": "node scripts/seo-crawl.mjs",
     "check": "npm run typecheck && npm run lint && npm run media:check && npm test && npm run build"
   },
   "dependencies": {

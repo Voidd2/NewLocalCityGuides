@@ -60,11 +60,15 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] Crawlbare links naar de NL-, EN- en DE-versies van Schaapsvishandel.nl toegevoegd op relevante bedrijfs-, blog- en locatiepagina's.
 - [ ] Verwijder bij de lancering van Schaapsvishandel.nl de huidige `X-Robots-Tag: noindex, nofollow` van alle openbare taalpagina's.
 - [ ] Voeg na vaststelling van het definitieve YourLocalCityGuide-domein inhoudelijke teruglinks toe vanaf Schaapsvishandel.nl volgens `docs/SEO-CONTENT-AND-NEWSLETTER.md`.
-- [ ] Controleer daarna canonicals, redirects, indexeerbaarheid en beide domeinen in Google Search Console.
+- [x] Teruglinkcode in Schaapsvishandel klaargezet; deze verschijnt pas wanneer `CITYGUIDE_URL` het definitieve domein bevat.
+- [x] Herbruikbare volledige SEO-crawler toegevoegd en een nulmeting van beide huidige productiesites opgeslagen in `reports/seo/`.
+- [x] Google-verificatie via omgevingsvariabele voorbereid voor YourLocalCityGuide; Schaapsvishandel bevat al een verificatietoken.
+- [ ] Search Console afronden: de property `schaapsvishandel.nl` bestaat al, maar het ingelogde account heeft geen toegang; gebruik het eigenaaraccount of vraag toegang. Voeg daarna het definitieve cityguide-domein toe, verifieer DNS en dien beide sitemaps in.
+- [ ] Na de definitieve domeinkoppeling canonicals, redirects en indexeerbaarheid opnieuw controleren volgens `docs/SEO-LAUNCH-CHECKLIST.md`.
 
 ## 3. Contentproductie
 
-### Audio
+### Audio — bewust gepauzeerd
 
 - [ ] TTS-scripts in NL, EN en DE schrijven voor L001–L014.
 - Doel: 60–90 seconden per taal en locatie.
@@ -86,13 +90,16 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 - [ ] Echte beoordelingen verzamelen en pas daarna score- of Review-schema publiceren.
 - De huidige interface blijft duidelijk als voorbeeldweergave gemarkeerd.
+- [x] Meertalig reviewformulier met privé-e-mail, expliciete publicatietoestemming en moderatiestatus toegevoegd; activeer de echte inbox met `REVIEW_WEBHOOK_URL`.
 
 ## 4. Lancering en controle
 
 - [ ] Resterende historische claims uit de R01-onzekerheidsregisters verifiëren voordat ze in publieke tekst, audio of video worden gebruikt.
+- [x] R02-ronde 4 uitgevoerd met institutionele bronnen; veilige formuleringen en resterend archiefwerk staan in `docs/qa/R02-verification-round-4.md`.
 - [ ] Productieomgeving en eigen domein configureren, inclusief alle vereiste omgevingsvariabelen.
 - [ ] Privacyvriendelijke analytics kiezen en alleen na passende cookietoestemming activeren wanneer dat juridisch nodig is.
 - [ ] Vlak voor publicatie een volledige crawl uitvoeren op statuscodes, canonicals, hreflang, sitemap, interne links en mogelijke premium-contentlekken.
+- [x] Voorlopige volledige crawl uitgevoerd; daarbij drie kapotte evenementlinks gevonden en in de huidige code hersteld. De definitieve crawl blijft een releasegate na domeinkoppeling.
 - [ ] Lighthouse/Core Web Vitals en handmatige mobiele toegankelijkheid controleren met het definitieve beeld- en videomateriaal.
 - [ ] Transactionele e-mails voor aankoop, welkom en herstel van toegang toevoegen zodra accounts en betalingen server-side werken.
 
@@ -105,6 +112,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Search Console-verificatie, cross-site backlinkconfiguratie, echte-reviewinzendingen en een reproduceerbare SEO-launchchecklist voorbereid zonder de vergrendelde Schaapsvishandel-site voortijdig openbaar te zetten.
 - [x] Centraal media-manifest toegevoegd voor beeldrechten, historische briefings en video-statussen; geheime Stream-ID's blijven bewust server-side.
 - [x] Alle bestaande interfaceafbeeldingen gemigreerd naar `next/image`, Google Fonts via `next/font` geladen en Next.js `middleware` vervangen door `proxy`.
 - [x] Openbare SEO-pagina's toegevoegd voor alle vaste musea, historische plekken, markten en lokale favorieten, met menselijke URL's, gratis introducties, NL/EN/DE metadata, canonical/hreflang, sitemap, veilige structured data en interne links.

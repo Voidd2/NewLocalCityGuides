@@ -811,7 +811,18 @@
     "description": "Onderstaande kaarten tonen hoe beoordelingen straks worden weergegeven. Dit zijn geen echte klantreviews en tellen niet mee als waardering.",
     "one": "Duidelijke route en prettig om in eigen tempo te lopen.",
     "two": "De lokale verhalen geven de plekken meer betekenis.",
-    "three": "Handig dat je na een pauze vanaf je huidige locatie verder kunt."
+    "three": "Handig dat je na een pauze vanaf je huidige locatie verder kunt.",
+    "formTitle": "Heb je de route echt gelopen?",
+    "formDescription": "Deel je ervaring. Iedere inzending wordt eerst gecontroleerd en pas met jouw toestemming gepubliceerd.",
+    "name": "Naam voor publicatie",
+    "email": "E-mailadres (niet openbaar)",
+    "rating": "Beoordeling",
+    "comment": "Jouw ervaring",
+    "consent": "Ik geef toestemming om mijn naam, beoordeling en tekst na controle te publiceren. Mijn e-mailadres blijft privé.",
+    "submit": "Review versturen",
+    "sending": "Versturen...",
+    "success": "Bedankt. Je review is ontvangen en wacht op controle.",
+    "error": "Versturen lukt nu niet. Probeer het later opnieuw."
   },
   "customRoute": {
     "moreAboutSpot": "Meer over deze plek",

@@ -534,7 +534,7 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
           )}
 
           {activeTab === "reviews" && (
-            <ReviewsTab />
+            <ReviewsTab routeId={route.id} />
           )}
         </div>
       </section>
@@ -764,9 +764,39 @@ function PreviewStarRow() {
   );
 }
 
-function ReviewsTab() {
+function ReviewsTab({ routeId }: { routeId: string }) {
   const tReview = useTranslations("reviewPreview");
+  const locale = useLocale();
   const examples = ["one", "two", "three"] as const;
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  async function submitReview(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setStatus("sending");
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const response = await fetch("/api/reviews", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: data.get("name"),
+        email: data.get("email"),
+        rating: Number(data.get("rating")),
+        comment: data.get("comment"),
+        consent: data.get("consent") === "on",
+        website: data.get("website"),
+        routeId,
+        locale,
+      }),
+    }).catch(() => null);
+
+    if (response?.ok) {
+      form.reset();
+      setStatus("success");
+    } else {
+      setStatus("error");
+    }
+  }
 
   return (
     <div>
@@ -789,6 +819,40 @@ function ReviewsTab() {
           </div>
         ))}
       </div>
+      <form onSubmit={submitReview} className="mt-6 rounded-2xl border border-slate-200 bg-white p-5">
+        <h4 className="text-base font-extrabold text-navy-800">{tReview("formTitle")}</h4>
+        <p className="mt-1 text-sm leading-6 text-slate-600">{tReview("formDescription")}</p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <label className="text-sm font-semibold text-navy-800">
+            {tReview("name")}
+            <input name="name" required maxLength={80} className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 font-normal" />
+          </label>
+          <label className="text-sm font-semibold text-navy-800">
+            {tReview("email")}
+            <input name="email" type="email" required maxLength={160} className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 font-normal" />
+          </label>
+          <label className="text-sm font-semibold text-navy-800 sm:col-span-2">
+            {tReview("rating")}
+            <select name="rating" defaultValue="5" className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 font-normal">
+              {[5, 4, 3, 2, 1].map((rating) => <option key={rating} value={rating}>{rating}/5</option>)}
+            </select>
+          </label>
+          <label className="text-sm font-semibold text-navy-800 sm:col-span-2">
+            {tReview("comment")}
+            <textarea name="comment" required minLength={20} maxLength={1200} rows={5} className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2 font-normal" />
+          </label>
+          <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+          <label className="flex gap-2 text-xs leading-5 text-slate-600 sm:col-span-2">
+            <input name="consent" type="checkbox" required className="mt-1" />
+            <span>{tReview("consent")}</span>
+          </label>
+        </div>
+        <button disabled={status === "sending"} className="mt-4 rounded-full bg-orange-500 px-5 py-3 text-sm font-bold text-white disabled:opacity-60">
+          {status === "sending" ? tReview("sending") : tReview("submit")}
+        </button>
+        {status === "success" && <p role="status" className="mt-3 text-sm font-semibold text-emerald-700">{tReview("success")}</p>}
+        {status === "error" && <p role="alert" className="mt-3 text-sm font-semibold text-red-700">{tReview("error")}</p>}
+      </form>
     </div>
   );
 }

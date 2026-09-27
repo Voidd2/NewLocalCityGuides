@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-09-27T17:14:32.599Z",
+  "base": "https://www.schaapsvishandel.nl/",
+  "sitemapUrlCount": 0,
+  "crawledPageCount": 1,
+  "truncated": false,
+  "issueCount": 3,
+  "issues": [
+    {
+      "severity": "warning",
+      "url": "https://www.schaapsvishandel.nl/",
+      "issue": "Redirectketen van 1 stap(pen)"
+    },
+    {
+      "severity": "error",
+      "url": "https://www.schaapsvishandel.nl/",
+      "issue": "Canonical ontbreekt"
+    },
+    {
+      "severity": "warning",
+      "url": "https://www.schaapsvishandel.nl/",
+      "issue": "Pagina is noindex"
+    }
+  ],
+  "pages": [
+    {
+      "url": "https://www.schaapsvishandel.nl/",
+      "finalUrl": "https://www.schaapsvishandel.nl/nl",
+      "status": 200,
+      "chain": [
+        {
+          "url": "https://www.schaapsvishandel.nl/",
+          "status": 308
+        },
+        {
+          "url": "https://www.schaapsvishandel.nl/nl",
+          "status": 200
+        }
+      ],
+      "contentType": "text/html; charset=utf-8",
+      "title": "Binnenkort online — Schaap&#x27;s Vishandel Leiden",
+      "description": "We werken aan onze nieuwe website. Binnenkort: visrecepten, online bestellingen en informatie over de herkomst van onze vis. Schaap&#x27;s Vishandel, Herenstraat 48 Leiden.",
+      "canonical": null,
+      "noindex": true,
+      "robotsMeta": "noindex, nofollow",
+      "robotsHeader": "noindex, nofollow",
+      "hreflang": [],
+      "premiumMarkers": [],
+      "internalLinkCount": 0
+    }
+  ]
+}

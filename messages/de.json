@@ -811,7 +811,18 @@
     "description": "Die folgenden Karten zeigen die künftige Darstellung. Es sind keine echten Kundenbewertungen und sie fließen in keine Durchschnittswertung ein.",
     "one": "Eine klare Route, die man gut im eigenen Tempo gehen kann.",
     "two": "Die lokalen Geschichten geben den Orten mehr Bedeutung.",
-    "three": "Praktisch, nach einer Pause am aktuellen Standort fortzufahren."
+    "three": "Praktisch, nach einer Pause am aktuellen Standort fortzufahren.",
+    "formTitle": "Bist du diese Route wirklich gelaufen?",
+    "formDescription": "Teile deine Erfahrung. Jede Einsendung wird geprüft und nur mit deiner Zustimmung veröffentlicht.",
+    "name": "Name für die Veröffentlichung",
+    "email": "E-Mail-Adresse (nicht öffentlich)",
+    "rating": "Bewertung",
+    "comment": "Deine Erfahrung",
+    "consent": "Ich stimme zu, dass mein Name, meine Bewertung und mein Text nach Prüfung veröffentlicht werden. Meine E-Mail-Adresse bleibt privat.",
+    "submit": "Bewertung senden",
+    "sending": "Wird gesendet...",
+    "success": "Danke. Deine Bewertung ist eingegangen und wartet auf die Prüfung.",
+    "error": "Die Bewertung konnte nicht gesendet werden. Bitte versuche es später erneut."
   },
   "customRoute": {
     "moreAboutSpot": "Mehr uber diesen Ort",

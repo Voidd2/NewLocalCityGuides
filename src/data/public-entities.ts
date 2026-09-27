@@ -172,6 +172,9 @@ export function getPublicEntityForLocation(location: LocationData): PublicEntity
 
 export function publicPathForSpot(spot: LocalSpot): string {
   if (spot.name.toLowerCase().includes("schaapsvishandel")) return "/leiden/schaapsvishandel";
+  // Tijdelijke evenementen krijgen bewust geen blijvende SEO-entitypagina.
+  // Hun bestaande detailpagina is wel een geldige bestemming vanaf de kaart.
+  if (spot.category === "evenement") return `/ontdek/${spot.id}`;
   const matchingLocation = locations.find((location) => sameEntity(location, spot));
   if (matchingLocation) {
     const entity = getPublicEntityForLocation(matchingLocation);
