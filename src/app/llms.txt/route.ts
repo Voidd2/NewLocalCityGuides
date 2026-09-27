@@ -1,6 +1,12 @@
 import { SITE_URL } from "@/lib/seo";
+import { blogPosts } from "@/data/seo-content";
+
+export const dynamic = "force-static";
 
 export function GET() {
+  const articles = blogPosts
+    .map((post) => `- ${SITE_URL}/de/blog/${post.slug} — ${post.title.de}\n  - English: ${SITE_URL}/en/blog/${post.slug}\n  - Nederlands: ${SITE_URL}/nl/blog/${post.slug}`)
+    .join("\n");
   const body = `# YourLocalCityGuide
 
 > Multilingual self-guided city guide for Leiden, the Netherlands. Public pages provide practical travel planning and concise local context. Full stories, audio, video, GPS guidance and saved progress require access to the Leiden package.
@@ -12,6 +18,10 @@ export function GET() {
 - ${SITE_URL}/en/leiden/things-to-do — things to do in Leiden
 - ${SITE_URL}/en/leiden/schaapsvishandel — Schaapsvishandel family business and market-day information
 - ${SITE_URL}/en/blog — travel articles
+- ${SITE_URL}/llms-full.txt — expanded public content catalogue for retrieval systems
+
+## Current multilingual travel articles
+${articles}
 
 ## Languages
 - Dutch: ${SITE_URL}/nl/leiden

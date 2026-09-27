@@ -28,11 +28,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   setRequestLocale(locale);
   const post = getBlogPost(slug);
   if (!post) notFound();
-  const labels = locale === "nl" ? { back: "Alle artikelen", min: "minuten lezen", updated: "Bijgewerkt" } : locale === "de" ? { back: "Alle Artikel", min: "Minuten Lesezeit", updated: "Aktualisiert" } : { back: "All articles", min: "minute read", updated: "Updated" };
+  const labels = locale === "nl"
+    ? { back: "Alle artikelen", min: "minuten lezen", updated: "Bijgewerkt", faq: "Veelgestelde vragen", sources: "Controleer actuele informatie" }
+    : locale === "de"
+      ? { back: "Alle Artikel", min: "Minuten Lesezeit", updated: "Aktualisiert", faq: "Häufig gestellte Fragen", sources: "Aktuelle Informationen prüfen" }
+      : { back: "All articles", min: "minute read", updated: "Updated", faq: "Frequently asked questions", sources: "Check current information" };
   const url = localizedUrl(locale, `/blog/${post.slug}`);
   return (
     <>
       <JsonLd data={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title[locale], description: post.description[locale], image: `${SITE_URL}${post.image}`, datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: locale, mainEntityOfPage: url, author: { "@type": "Organization", name: SITE_NAME }, publisher: { "@type": "Organization", name: SITE_NAME } }} />
+      {post.faq && <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: post.faq.map((item) => ({ "@type": "Question", name: item.question[locale], acceptedAnswer: { "@type": "Answer", text: item.answer[locale] } })) }} />}
       <article>
         <header className="bg-navy-900 px-4 py-10 text-white md:py-16">
           <div className="mx-auto max-w-4xl">
@@ -66,6 +71,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
                   <span aria-hidden="true">↗</span>
                 </a>
               </div>
+            </aside>
+          )}
+          {post.faq && (
+            <section className="mt-12 rounded-3xl bg-navy-900 p-6 text-white md:p-8">
+              <h2 className="text-2xl font-extrabold md:text-3xl">{labels.faq}</h2>
+              <div className="mt-6 space-y-6">
+                {post.faq.map((item) => (
+                  <div key={item.question[locale]}>
+                    <h3 className="font-extrabold text-orange-300">{item.question[locale]}</h3>
+                    <p className="mt-2 leading-7 text-white/75">{item.answer[locale]}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+          {post.sources && (
+            <aside className="mt-8 rounded-2xl border border-warm-200 bg-warm-50 p-5">
+              <h2 className="font-extrabold text-navy-800">{labels.sources}</h2>
+              <ul className="mt-3 space-y-2 text-sm">
+                {post.sources.map((source) => (
+                  <li key={source.url}>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-orange-600 underline underline-offset-4 hover:text-orange-700">
+                      {source.label[locale]} <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </aside>
           )}
           <div className="mt-14 flex flex-col gap-3 border-t border-warm-200 pt-8 sm:flex-row">

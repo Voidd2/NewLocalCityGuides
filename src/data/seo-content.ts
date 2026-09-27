@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/config";
+import { seoExpansionBlogPosts } from "./seo-blog-expansion";
 
 export type LocalizedText = Record<Locale, string>;
 
@@ -34,6 +35,8 @@ export interface BlogPost {
   readingMinutes: number;
   image: string;
   sections: ContentSection[];
+  faq?: Array<{ question: LocalizedText; answer: LocalizedText }>;
+  sources?: Array<{ label: LocalizedText; url: string }>;
 }
 
 const lt = (nl: string, en: string, de: string): LocalizedText => ({ nl, en, de });
@@ -195,6 +198,7 @@ export const blogPosts: BlogPost[] = [
       { heading: lt("Een korte marktlooproute", "A short market walking route", "Eine kurze Markt-Wanderroute"), paragraphs: { nl: ["Start bij de Burcht voor uitzicht over het centrum en daal af richting Nieuwe Rijn. Loop langs de Koornbrug en Vismarkt en volg op marktdagen de kramen langs het water. Combineer dit met de Blauwe Steen en Pieterskerk voor een compacte wandeling door handel en stadsgeschiedenis."], en: ["Start at De Burcht for a view over the centre, then descend towards Nieuwe Rijn. Walk past Koornbrug and the historic fish market and, on market days, follow the stalls along the water. Add the Blue Stone and Pieterskerk for a compact walk through trade and city history."], de: ["Beginne an der Burcht mit Blick über das Zentrum und gehe hinunter zur Nieuwe Rijn. Die Route führt an Koornbrug und Fischmarkt vorbei und folgt an Markttagen den Ständen am Wasser. Mit Blauwe Steen und Pieterskerk entsteht ein kompakter Rundgang zu Handel und Stadtgeschichte."] }, bullets: { nl: ["Marktroute wordt automatisch aangepast aan de dag", "Woensdag en zaterdag: marktkraam", "Andere dagen: viswinkel aan Herenstraat 48"], en: ["The market route adapts automatically to the day", "Wednesday and Saturday: market stall", "Other days: shop at Herenstraat 48"], de: ["Die Marktroute passt sich automatisch dem Wochentag an", "Mittwoch und Samstag: Marktstand", "Andere Tage: Geschäft in der Herenstraat 48"] } },
     ],
   },
+  ...seoExpansionBlogPosts,
 ];
 
 export function getLanding(slug: string): SeoLanding | undefined {

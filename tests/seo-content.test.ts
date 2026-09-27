@@ -31,4 +31,27 @@ describe("multilingual SEO content", () => {
       expect(content).toContain("1938");
     }
   });
+
+  it("covers the priority trip-planning questions with visible multilingual answers", () => {
+    const expected = [
+      "leiden-with-children",
+      "leiden-rainy-day",
+      "free-things-to-do-leiden",
+      "weekend-in-leiden",
+      "best-museums-leiden",
+    ];
+
+    for (const slug of expected) {
+      const post = blogPosts.find((entry) => entry.slug === slug);
+      expect(post, slug).toBeDefined();
+      expect(post!.faq?.length, slug).toBeGreaterThanOrEqual(2);
+      expect(post!.sources?.length, slug).toBeGreaterThanOrEqual(1);
+      for (const locale of locales) {
+        for (const item of post!.faq ?? []) {
+          expect(item.question[locale].length).toBeGreaterThan(15);
+          expect(item.answer[locale].length).toBeGreaterThan(50);
+        }
+      }
+    }
+  });
 });

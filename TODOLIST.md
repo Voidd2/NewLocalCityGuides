@@ -80,11 +80,12 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] Overige MVP-locaties blijven voorlopig audio-only.
 - Opslaan in `content/video-briefs/`.
 
-### SEO-content — bewust gepauzeerd
+### SEO-content
 
-- [ ] Nieuwe artikelen over Leiden met kinderen, slecht weer, gratis activiteiten, weekenden en musea.
-- Eerst wachten op verdere instructie van de gebruiker.
-- Het bestaande Schaapsvishandel-artikel bevat wel adres, marktdagen, bezoekreden en een link naar de locatiepagina.
+- [x] Nieuwe meertalige artikelen toegevoegd over Leiden met kinderen, slecht weer, gratis activiteiten, weekenden en musea.
+- [x] Duitse vraaggerichte koppen en zichtbare FAQ-antwoorden toegevoegd, naast volledige Nederlandse en Engelse versies.
+- [x] Bronlinks, FAQ-schema, actuele wijzigingsdatums in de sitemap en een uitgebreid openbaar `llms-full.txt`-catalogusbestand toegevoegd.
+- Het bestaande Schaapsvishandel-artikel bevat adres, marktdagen, bezoekreden en een link naar de locatiepagina.
 
 ### Reviews
 
@@ -112,6 +113,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Vijf nieuwe NL/EN/DE SEO-artikelen en een veilige, machineleesbare openbare contentcatalogus toegevoegd voor zoekmachines en AI-retrieval, zonder premiumverhalen vrij te geven.
 - [x] Search Console-verificatie, cross-site backlinkconfiguratie, echte-reviewinzendingen en een reproduceerbare SEO-launchchecklist voorbereid zonder de vergrendelde Schaapsvishandel-site voortijdig openbaar te zetten.
 - [x] Centraal media-manifest toegevoegd voor beeldrechten, historische briefings en video-statussen; geheime Stream-ID's blijven bewust server-side.
 - [x] Alle bestaande interfaceafbeeldingen gemigreerd naar `next/image`, Google Fonts via `next/font` geladen en Next.js `middleware` vervangen door `proxy`.

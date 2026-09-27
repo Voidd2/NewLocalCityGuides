@@ -24,11 +24,13 @@ const publicPaths = [
   ...blogPosts.map((post) => `/blog/${post.slug}`),
 ];
 
+const blogModifiedDates = new Map(blogPosts.map((post) => [`/blog/${post.slug}`, post.updatedAt]));
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return publicPaths.flatMap((path) =>
     locales.map((locale) => ({
       url: localizedUrl(locale, path),
-      lastModified: path.startsWith("/blog/") ? new Date("2026-09-24") : undefined,
+      lastModified: blogModifiedDates.has(path) ? new Date(blogModifiedDates.get(path)!) : undefined,
       changeFrequency: path === "" || path === "/blog" ? "weekly" as const : "monthly" as const,
       priority: path === "" ? 1 : path === "/leiden" ? 0.9 : path === "/routes" || path === "/ontdek" || path === "/city-guide-leiden" || path === "/leiden-tours" || path === "/leiden/things-to-do" ? 0.8 : path.startsWith("/blog/") || path === "/leiden/schaapsvishandel" ? 0.7 : 0.6,
       alternates: {

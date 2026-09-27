@@ -63,6 +63,11 @@ Public route-preview pages may be indexed, but their paid execution layer remain
 | Things to do in Leiden | `/[locale]/leiden/things-to-do` |
 | Schaapsvishandel Leiden | `/[locale]/leiden/schaapsvishandel` |
 | Market days and market walk | `/[locale]/blog/leiden-market-days-schaapsvishandel` |
+| Leiden with children | `/[locale]/blog/leiden-with-children` |
+| Leiden in bad weather | `/[locale]/blog/leiden-rainy-day` |
+| Free things to do in Leiden | `/[locale]/blog/free-things-to-do-leiden` |
+| Weekend in Leiden | `/[locale]/blog/weekend-in-leiden` |
+| Choosing a Leiden museum | `/[locale]/blog/best-museums-leiden` |
 | Individual route | `/[locale]/routes/[slug]` (indexable public preview; paid execution loads only after access check) |
 | Individual premium story/place | `/[locale]/locations/[slug]` and `/[locale]/ontdek/[id]` (`noindex`) |
 
@@ -72,5 +77,6 @@ Public route-preview pages may be indexed, but their paid execution layer remain
 - Inspect canonical, hreflang, Open Graph and JSON-LD in the built page.
 - Confirm premium paths are absent from `sitemap.xml`, RSS and `llms.txt`.
 - Confirm public facts are visible in the page body, not only in schema.
+- Keep `llms.txt` concise and use `llms-full.txt` only for public summaries and canonical discovery; neither file may contain premium transcripts or media URLs.
 - Check mobile layout and links.
 - Commit with a descriptive message and push `main`.
