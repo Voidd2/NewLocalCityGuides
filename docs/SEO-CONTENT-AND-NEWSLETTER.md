@@ -32,6 +32,20 @@ The pages are useful first and keyword-focused second. Avoid repeating exact key
 - Give each page one clear search intent and one primary H1.
 - Keep title tags concise and descriptions useful; avoid keyword stuffing.
 
+## Cross-site links with Schaapsvishandel.nl
+
+YourLocalCityGuide links naturally to `https://www.schaapsvishandel.nl/` from the dedicated business page, the Leiden market article and the three shop/market location pages. The prominent links use `/nl`, `/en` or `/de` to match the visitor's language. These are normal crawlable links without `nofollow`; do not add the same link sitewide merely to increase the link count.
+
+When the final YourLocalCityGuide domain is live, add a small number of useful reciprocal links on Schaapsvishandel.nl:
+
+1. From a page about the Wednesday and Saturday markets, link to the public Markt & Ambacht route using anchor text such as "wandelroute over de Leidse markt".
+2. From a Leiden visitor-information or contact page, link to the public Schaapsvishandel cityguide page using anchor text such as "vind onze winkel en marktkraam tijdens je bezoek aan Leiden".
+3. If Schaapsvishandel publishes a news item about the family history, link to the relevant YourLocalCityGuide market article as an additional source for planning a visit.
+
+Use the final canonical production URLs rather than the temporary Vercel domain. Keep each link editorially relevant and helpful to visitors. Multiple links between the same two domains support entity association and referral traffic, but they do not equal backlinks from multiple independent websites.
+
+Before launching Schaapsvishandel.nl, remove the current `X-Robots-Tag: noindex, nofollow` response from all public language pages. Verify that `/nl`, `/en` and `/de` return indexable pages with self-referencing canonicals; otherwise backlinks from that site cannot contribute normally to search visibility.
+
 ## Suggested 12-week publishing queue
 
 1. Best things to do in Leiden in one day

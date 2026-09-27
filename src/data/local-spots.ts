@@ -1,3 +1,5 @@
+import { externalSites } from "./external-sites";
+
 export type SpotCategory =
   | "museum"
   | "visboer"
@@ -330,7 +332,7 @@ export const localSpots: LocalSpot[] = [
     category: "visboer",
     address: "Herenstraat 48, Leiden",
     coords: { lat: 52.1590, lng: 4.4893 },
-    website: null,
+    website: externalSites.schaapsvishandel,
     phone: null,
     description: {
       nl: "Schaapsvishandel is een Leids familiebedrijf sinds 1938 en de enige traditionele vishandel die echt uit Leiden komt. Waar andere viszaken vanuit omliggende plaatsen op de markt staan, is Schaapsvis geworteld in de stad zelf.\n\n**Waarom Schaapsvis**\nDe familie Schaap staat bekend om eerlijkheid en een scherpe prijs-kwaliteitverhouding. Hier krijg je geen oude vis voor toeristenprijzen. Wat je koopt is vers, eerlijk geprijsd en met liefde bereid. Dat is al bijna negentig jaar zo.\n\n**De viswinkel**\nDe vaste winkel aan de Herenstraat 48 is op doordeweekse dagen geopend. Je vindt hier verse vis, gebakken vis, salades, kibbeling en gerookte specialiteiten. De winkel is klein maar de kwaliteit is hoog -- dit is geen keten, dit is ambacht.\n\n**Tip**\nProbeer de kibbeling of de broodje haring. En als je op woensdag of zaterdag in Leiden bent, zoek dan de viskar op de markt op -- daar draait dezelfde familie hetzelfde ambacht, maar dan buiten.",
@@ -352,7 +354,7 @@ export const localSpots: LocalSpot[] = [
     category: "visboer",
     address: "Nieuwe Rijn, Leiden (woensdagmarkt)",
     coords: { lat: 52.1591, lng: 4.4912 },
-    website: null,
+    website: externalSites.schaapsvishandel,
     phone: null,
     description: {
       nl: "Elke woensdag staat de viskar van familie Schaap op de Leidse woensdagmarkt aan de Nieuwe Rijn. Er staan meerdere visboeren, dus gebruik de exacte kaartlocatie en herkenningsfoto om de juiste kar te vinden.\n\n**Alleen op woensdag**\nDeze locatie is alleen op woensdag actief. De viskar staat er vanaf vroeg in de ochtend tot het einde van de markt. Hier haal je versgebakken kibbeling, haring, gebakken vis en visbroodjes om direct op te eten. Andere viskramen richten zich vooral op verse vis voor thuis.\n\n**Zo herken je de juiste kar**\nZoek duidelijk naar de naam Schaapsvishandel of familie Schaap op de kar en controleer de locatie op de kaart. De herkenningsfoto wordt nog toegevoegd.",
@@ -374,7 +376,7 @@ export const localSpots: LocalSpot[] = [
     category: "visboer",
     address: "Vismarkt (tegenover De Waag), Leiden",
     coords: { lat: 52.1593, lng: 4.4905 },
-    website: null,
+    website: externalSites.schaapsvishandel,
     phone: null,
     description: {
       nl: "Elke zaterdag staat de viskar van familie Schaap op de Leidse zaterdagmarkt, tegenover De Waag op de Vismarkt. Er staan meerdere visboeren, dus gebruik de exacte kaartlocatie en herkenningsfoto om de juiste kar te vinden.\n\n**Alleen op zaterdag**\nDeze locatie is alleen op zaterdag actief. Hier haal je kibbeling, haring en gebakken visbroodjes om direct op te eten. Andere viskramen richten zich vooral op verse vis voor thuis.\n\n**Zo herken je de juiste kar**\nZoek duidelijk naar de naam Schaapsvishandel of familie Schaap op de kar en controleer of je tegenover De Waag staat. De herkenningsfoto wordt nog toegevoegd. Haal daarna eventueel een versgebakken stroopwafel bij Tony Vergunst.",

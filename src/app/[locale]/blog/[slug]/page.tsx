@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { blogPosts, getBlogPost } from "@/data/seo-content";
+import { getSchaapsvishandelUrl } from "@/data/external-sites";
 import { locales } from "@/i18n/config";
 import { asLocale, createDynamicMetadata, localizedUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -58,7 +59,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
             <aside className="mt-12 rounded-3xl bg-orange-50 p-6 md:p-8">
               <h2 className="text-2xl font-extrabold text-navy-800">Schaapsvishandel Leiden</h2>
               <p className="mt-3 leading-7 text-slate-600">{locale === "nl" ? "Bekijk de winkel- en marktlocaties bij elkaar, inclusief de juiste plek voor woensdag, zaterdag en de overige dagen." : locale === "de" ? "Sieh dir Geschäft und Marktstandorte zusammen an – mit dem passenden Ort für Mittwoch, Samstag und die übrigen Tage." : "See the shop and market locations together, including the right place for Wednesday, Saturday and all other days."}</p>
-              <Link href="/leiden/schaapsvishandel" className="mt-5 inline-flex rounded-full bg-orange-500 px-5 py-3 text-sm font-bold text-white hover:bg-orange-600">{locale === "nl" ? "Bekijk locaties en bezoekinformatie" : locale === "de" ? "Standorte und Besuchsinformationen" : "View locations and visitor information"}</Link>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <Link href="/leiden/schaapsvishandel" className="inline-flex justify-center rounded-full bg-orange-500 px-5 py-3 text-sm font-bold text-white hover:bg-orange-600">{locale === "nl" ? "Bekijk locaties en bezoekinformatie" : locale === "de" ? "Standorte und Besuchsinformationen" : "View locations and visitor information"}</Link>
+                <a href={getSchaapsvishandelUrl(locale)} target="_blank" rel="noopener" className="inline-flex items-center justify-center gap-2 rounded-full border border-navy-800 px-5 py-3 text-sm font-bold text-navy-800 hover:bg-white">
+                  {locale === "nl" ? "Officiële website Schaapsvishandel" : locale === "de" ? "Offizielle Website von Schaapsvishandel" : "Official Schaapsvishandel website"}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </aside>
           )}
           <div className="mt-14 flex flex-col gap-3 border-t border-warm-200 pt-8 sm:flex-row">

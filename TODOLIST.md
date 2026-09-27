@@ -55,6 +55,13 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] Verouderde Next.js `middleware`-conventie migreren naar `proxy`.
 - [ ] Offline caching opnieuw beoordelen wanneer echte premium media wordt toegevoegd.
 
+### Domeinen en cross-site SEO
+
+- [x] Crawlbare links naar de NL-, EN- en DE-versies van Schaapsvishandel.nl toegevoegd op relevante bedrijfs-, blog- en locatiepagina's.
+- [ ] Verwijder bij de lancering van Schaapsvishandel.nl de huidige `X-Robots-Tag: noindex, nofollow` van alle openbare taalpagina's.
+- [ ] Voeg na vaststelling van het definitieve YourLocalCityGuide-domein inhoudelijke teruglinks toe vanaf Schaapsvishandel.nl volgens `docs/SEO-CONTENT-AND-NEWSLETTER.md`.
+- [ ] Controleer daarna canonicals, redirects, indexeerbaarheid en beide domeinen in Google Search Console.
+
 ## 3. Contentproductie
 
 ### Audio

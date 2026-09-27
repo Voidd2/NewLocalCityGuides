@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { schaapsvisPage } from "@/data/city-pages";
+import { externalSites, getSchaapsvishandelUrl } from "@/data/external-sites";
 import { asLocale, createDynamicMetadata, localizedUrl, SITE_URL } from "@/lib/seo";
 
 const image = "/images/locations/10021-vismarkt-leiden.jpg";
@@ -40,10 +41,11 @@ export default async function SchaapsvishandelPage({ params }: { params: Promise
   const locale = asLocale(value);
   setRequestLocale(locale);
   const url = localizedUrl(locale, "/leiden/schaapsvishandel");
+  const officialWebsite = getSchaapsvishandelUrl(locale);
 
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "LocalBusiness", name: "Schaapsvishandel", description: schaapsvisPage.description[locale], url, image: `${SITE_URL}${image}`, foundingDate: "1938", address: { "@type": "PostalAddress", streetAddress: "Herenstraat 48", addressLocality: "Leiden", addressCountry: "NL" }, geo: { "@type": "GeoCoordinates", latitude: 52.159, longitude: 4.4893 }, knowsAbout: ["Fish", "Kibbeling", "Herring", "Leiden market"] }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "LocalBusiness", name: "Schaapsvishandel", description: schaapsvisPage.description[locale], url: externalSites.schaapsvishandel, mainEntityOfPage: url, sameAs: [externalSites.schaapsvishandel], image: `${SITE_URL}${image}`, foundingDate: "1938", address: { "@type": "PostalAddress", streetAddress: "Herenstraat 48", addressLocality: "Leiden", addressCountry: "NL" }, geo: { "@type": "GeoCoordinates", latitude: 52.159, longitude: 4.4893 }, knowsAbout: ["Fish", "Kibbeling", "Herring", "Leiden market"] }} />
       <header className="relative overflow-hidden bg-navy-900 text-white">
         <Image src={image} alt="" fill priority sizes="100vw" className="object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/90 to-navy-900/40" />
@@ -55,6 +57,16 @@ export default async function SchaapsvishandelPage({ params }: { params: Promise
       </header>
       <main className="mx-auto max-w-5xl px-4 py-12 md:py-16">
         <Breadcrumbs locale={locale} items={[{ label: "Leiden", href: "/leiden" }, { label: "Schaapsvishandel" }]} />
+        <aside className="mt-8 flex flex-col gap-5 rounded-3xl border border-orange-200 bg-orange-50 p-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-xl font-extrabold text-navy-800">{locale === "nl" ? "Meer over de familiezaak" : locale === "de" ? "Mehr über den Familienbetrieb" : "More about the family business"}</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">{locale === "nl" ? "Bekijk de officiële website voor het actuele aanbod, nieuws en contact met Schaapsvishandel." : locale === "de" ? "Auf der offiziellen Website findest du das aktuelle Angebot, Neuigkeiten und Kontaktdaten von Schaapsvishandel." : "Visit the official website for the current selection, news and contact details for Schaapsvishandel."}</p>
+          </div>
+          <a href={officialWebsite} target="_blank" rel="noopener" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-bold text-white hover:bg-orange-600">
+            {locale === "nl" ? "Bezoek Schaapsvishandel.nl" : locale === "de" ? "Schaapsvishandel.nl besuchen" : "Visit Schaapsvishandel.nl"}
+            <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           <section className="rounded-3xl bg-orange-50 p-6 md:col-span-3">
             <div className="grid items-center gap-6 md:grid-cols-[0.9fr_1.1fr]">
