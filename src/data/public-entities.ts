@@ -1,6 +1,7 @@
 import type { Locale } from "../i18n/config";
 import { locations, type LocationData } from "./locations";
 import { localSpots, type LocalSpot, type SpotCategory } from "./local-spots";
+import { isLocationVideoPlanned } from "./media-manifest";
 
 export type PublicEntitySection = "museums" | "attractions" | "markets" | "local";
 
@@ -25,8 +26,6 @@ export type PublicEntity = {
   whyVisit: LocalizedCopy;
   metaDescription: LocalizedCopy;
 };
-
-const videoLocationIds = new Set(["L001", "L003", "L006", "L009", "L010"]);
 
 export function entitySlug(value: string): string {
   return value
@@ -127,7 +126,7 @@ const locationEntities: PublicEntity[] = locations.map((location) => {
     sourceKind: "location",
     sourceId: location.id,
     premiumHref: `/locations/${location.slug}`,
-    videoPlanned: videoLocationIds.has(location.id),
+    videoPlanned: isLocationVideoPlanned(location.id),
     familyFriendly: matchingSpot?.kidFriendly,
     visitDuration: matchingSpot?.visitDuration,
     tags: matchingSpot?.tags.slice(0, 5) ?? location.categories.slice(0, 5),

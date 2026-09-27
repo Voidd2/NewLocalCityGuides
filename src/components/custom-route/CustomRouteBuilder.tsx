@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { locations, type LocationData } from "@/data/locations";
@@ -46,9 +47,12 @@ function LocationCard({
     >
       <div className="relative aspect-[16/10] bg-gray-200 overflow-hidden group">
         {loc.image ? (
-          <img
+          <Image
             src={loc.image}
             alt={loc.name}
+            width={640}
+            height={400}
+            sizes="(min-width: 768px) 33vw, 50vw"
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
@@ -322,7 +326,7 @@ export function CustomRouteBuilder({ initialStops = [], initialName = "" }: { in
                         <div className="flex items-center gap-2 flex-1 min-w-0">
                           <div className="w-8 h-8 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                             {loc.image ? (
-                              <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                              <Image src={loc.image} alt={loc.name} width={64} height={64} sizes="32px" className="h-full w-full object-cover" />
                             ) : (
                               <div className="w-full h-full bg-navy-800 flex items-center justify-center">
                                 <span className="text-[9px] text-white/40 font-bold">{i + 1}</span>

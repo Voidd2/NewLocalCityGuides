@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo, useEffect } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -360,7 +361,7 @@ export function MapPage() {
                     <div className="flex items-start gap-3">
                       <div className="w-20 h-20 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
                         {selectedLocation.image ? (
-                          <img src={selectedLocation.image} alt={selectedLocation.name} className="w-full h-full object-cover" />
+                          <Image src={selectedLocation.image} alt={selectedLocation.name} width={160} height={160} sizes="80px" className="h-full w-full object-cover" />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
                             <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-white/20" stroke="currentColor" strokeWidth="1.5">
@@ -479,7 +480,7 @@ export function MapPage() {
                             >
                               <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                                 {route.image && (
-                                  <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                                  <Image src={route.image} alt={route.title} width={80} height={80} sizes="40px" className="h-full w-full object-cover" />
                                 )}
                               </div>
                               <div className="flex-1 min-w-0">
@@ -622,7 +623,7 @@ export function MapPage() {
               >
                 <div className="w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
                   {loc.image ? (
-                    <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                    <Image src={loc.image} alt={loc.name} width={128} height={128} sizes="64px" className="h-full w-full object-cover" />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex items-center justify-center">
                       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white/20" stroke="currentColor" strokeWidth="1.5">

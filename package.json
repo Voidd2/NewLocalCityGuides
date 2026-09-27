@@ -11,7 +11,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm run lint && npm test && npm run build"
+    "media:check": "node scripts/check-media-assets.mjs",
+    "check": "npm run typecheck && npm run lint && npm run media:check && npm test && npm run build"
   },
   "dependencies": {
     "maplibre-gl": "^6.11.1",

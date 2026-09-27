@@ -1,5 +1,6 @@
 import { type ReactNode, Suspense } from "react";
 import type { Metadata } from "next";
+import { Caveat, Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -14,6 +15,18 @@ import { createPageMetadata, SITE_URL } from "@/lib/seo";
 import { CookieConsent } from "@/components/privacy/CookieConsent";
 import { OfflineBanner } from "@/components/pwa/OfflineBanner";
 import { ServiceWorkerRegistrar } from "@/components/pwa/ServiceWorkerRegistrar";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -66,20 +79,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         <link rel="alternate" type="application/rss+xml" title="YourLocalCityGuide Blog" href="/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className="flex flex-col min-h-screen bg-navy-900 pb-16 md:pb-0">
+      <body className={`${inter.variable} ${caveat.variable} flex min-h-screen flex-col bg-navy-900 pb-16 md:pb-0`}>
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <ServiceWorkerRegistrar />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -11,6 +12,7 @@ import { getRoutePlaceById, type RoutePlace } from "@/lib/route-places";
 import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
 import { getActiveSchaapsvisSpot, type SupportedLocale } from "@/data/schaapsvis";
 import { routes } from "@/data/routes";
+import { isLocationVideoPlanned } from "@/data/media-manifest";
 import { haversineMeters, insertAtSmallestDetour, optimizeRouteOrder, rotateLoopFromNearest } from "@/lib/route-engine";
 import { useGeolocation } from "@/lib/use-geolocation";
 import { getConditionalRouteStops } from "@/data/route-conditions";
@@ -93,6 +95,7 @@ function StopCard({
 }) {
   const t = useTranslations("walker");
   const [isOpen, setIsOpen] = useState(false);
+  const videoPlanned = isLocationVideoPlanned(loc.id);
 
   const mapsUrl = loc.coords
     ? `https://www.google.com/maps/dir/?api=1&destination=${loc.coords.lat},${loc.coords.lng}`
@@ -131,7 +134,7 @@ function StopCard({
           >
             <div className="w-14 h-14 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
               {loc.image && (
-                <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                <Image src={loc.image} alt={loc.name} width={112} height={112} sizes="56px" className="h-full w-full object-cover" />
               )}
             </div>
             <div className="flex-1 min-w-0">
@@ -161,7 +164,7 @@ function StopCard({
             <div className="px-3 pb-3">
               {loc.image && (
                 <div className="relative rounded-lg overflow-hidden mb-3 aspect-video bg-gray-200">
-                  <img src={loc.image} alt={loc.name} className="w-full h-full object-cover" />
+                  <Image src={loc.image} alt={loc.name} fill sizes="(min-width: 768px) 640px, 100vw" className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-2 left-2 flex items-center gap-2">
                     <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase tracking-wide">
@@ -224,23 +227,25 @@ function StopCard({
 
               {hasArrived ? (
                 <div className="space-y-2">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenVideo();
-                    }}
-                    className="w-full flex items-center gap-3 bg-navy-800 hover:bg-navy-900 text-white rounded-xl p-3 transition-colors text-left"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white ml-0.5">
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold">{t("watchVideo")}</p>
-                      <p className="text-[10px] text-white/50">Bekijk hoe het er vroeger uitzag</p>
-                    </div>
-                  </button>
+                  {videoPlanned && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenVideo();
+                      }}
+                      className="w-full flex items-center gap-3 bg-navy-800 hover:bg-navy-900 text-white rounded-xl p-3 transition-colors text-left"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white ml-0.5">
+                          <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold">{t("watchVideo")}</p>
+                        <p className="text-[10px] text-white/50">Bekijk hoe het er vroeger uitzag</p>
+                      </div>
+                    </button>
+                  )}
 
                   <Link
                     href={`${loc.detailHref}?back=/my-routes/${routeId}`}

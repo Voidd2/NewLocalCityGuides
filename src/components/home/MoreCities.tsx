@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 
 const upcomingCities = [
@@ -33,7 +34,7 @@ export function MoreCities() {
                   <div key={city.name} className="shrink-0 group">
                     <div className="w-22 h-22 md:w-28 md:h-28 rounded-2xl bg-white/10 overflow-hidden ring-1 ring-white/10 group-hover:ring-white/30 group-hover:scale-105 transition-all duration-300">
                       {city.image ? (
-                        <img src={city.image} alt={city.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <Image src={city.image} alt={city.name} width={224} height={224} sizes="(min-width: 768px) 112px, 88px" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
                       ) : (
                         <div className="w-full h-full bg-white/5 flex items-center justify-center">
                           <span className="text-white/20 text-2xl font-bold">{city.name[0]}</span>

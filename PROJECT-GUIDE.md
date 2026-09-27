@@ -18,7 +18,7 @@ practical city info and local business discovery.
 
 - **Framework:** Next.js 16.3.5 (Turbopack) with TypeScript
 - **Styling:** Tailwind CSS v4
-- **i18n:** next-intl with NL/EN/DE locales, middleware routing (`/nl/...`, `/en/...`, `/de/...`)
+- **i18n:** next-intl with NL/EN/DE locales, Next.js proxy routing (`/nl/...`, `/en/...`, `/de/...`)
 - **Fonts:** Inter (body) + Caveat (handwritten accents via `text-hand` class)
 - **Hosting:** Vercel
 - **Git branch:** `claude/affectionate-rubin-t48oom` (always push to BOTH this branch AND `main`)

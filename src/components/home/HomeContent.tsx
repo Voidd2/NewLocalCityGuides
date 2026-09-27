@@ -571,7 +571,7 @@ export function HomeContent() {
                 >
                   <div className="w-18 h-18 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
                     {route.image && (
-                      <img src={route.image} alt={route.title} className="w-full h-full object-cover" />
+                      <Image src={route.image} alt={route.title} width={144} height={144} sizes="72px" className="h-full w-full object-cover" />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -626,7 +626,7 @@ export function HomeContent() {
                         <div className="flex gap-1.5">
                           {locs.slice(0, 5).map((loc) => (
                             <div key={loc!.id} className="w-8 h-8 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
-                              {loc!.image && <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />}
+                              {loc!.image && <Image src={loc!.image} alt={loc!.name} width={64} height={64} sizes="32px" className="h-full w-full object-cover" />}
                             </div>
                           ))}
                         </div>

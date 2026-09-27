@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
@@ -263,7 +264,7 @@ export function ActiviteitenPage() {
               <div className="flex">
                 <div className="w-32 md:w-44 bg-gray-200 shrink-0 aspect-[4/3] flex items-center justify-center">
                   {activity.image ? (
-                    <img src={activity.image} alt={activity.title} className="w-full h-full object-cover" />
+                    <Image src={activity.image} alt={activity.title} width={352} height={264} sizes="(min-width: 768px) 176px, 128px" className="h-full w-full object-cover" />
                   ) : (
                     <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-gray-300" stroke="currentColor" strokeWidth="1.5">
                       <rect x="2" y="2" width="20" height="20" rx="3" />

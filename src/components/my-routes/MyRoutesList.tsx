@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getSavedRoutes, deleteSavedRoute, getVisitedCount, ROUTES_CHANGED_EVENT, type SavedRoute } from "@/lib/saved-routes";
@@ -115,7 +116,7 @@ export function MyRoutesList() {
                   {locs.slice(0, 6).map((loc) => (
                     <div key={loc!.id} className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                       {loc!.image && (
-                        <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
+                        <Image src={loc!.image} alt={loc!.name} width={80} height={80} sizes="40px" className="h-full w-full object-cover" />
                       )}
                     </div>
                   ))}

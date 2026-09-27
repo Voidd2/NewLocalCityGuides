@@ -50,8 +50,8 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ### Technische verbetering
 
-- [ ] Bestaande `<img>`-elementen stapsgewijs vervangen door geoptimaliseerde Next.js-afbeeldingen.
-- [ ] Verouderde Next.js `middleware`-conventie migreren naar `proxy`.
+- [x] Bestaande `<img>`-elementen vervangen door geoptimaliseerde Next.js-afbeeldingen.
+- [x] Verouderde Next.js `middleware`-conventie migreren naar `proxy`.
 - [ ] Offline caching opnieuw beoordelen wanneer echte premium media wordt toegevoegd.
 
 ## 3. Contentproductie
@@ -97,6 +97,8 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Centraal media-manifest toegevoegd voor beeldrechten, historische briefings en video-statussen; geheime Stream-ID's blijven bewust server-side.
+- [x] Alle bestaande interfaceafbeeldingen gemigreerd naar `next/image`, Google Fonts via `next/font` geladen en Next.js `middleware` vervangen door `proxy`.
 - [x] Openbare SEO-pagina's toegevoegd voor alle vaste musea, historische plekken, markten en lokale favorieten, met menselijke URL's, gratis introducties, NL/EN/DE metadata, canonical/hreflang, sitemap, veilige structured data en interne links.
 - [x] Een meertalige plekindex op `/leiden/places` toegevoegd, plus member-CTA's voor volledig verhaal en geplande video's zonder premiumtekst publiek te laden.
 - [x] Openbare routepreviews aangevuld met een globale kaartindruk zonder de betaalde stopvolgorde prijs te geven; de dubbele eigen-routekaart op `/routes` is verwijderd.

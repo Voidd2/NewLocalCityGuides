@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { createPortal } from "react-dom";
 import { useLocale } from "next-intl";
 import { routes } from "@/data/routes";
@@ -88,7 +89,7 @@ export function RoutePickerModal({
               return (
                 <button key={active.id} onClick={() => addToStandard(active.id)} className="flex w-full items-center gap-3 rounded-xl p-3 text-left hover:bg-orange-50">
                   <div className="h-11 w-11 shrink-0 overflow-hidden rounded-lg bg-gray-100">
-                    {active.image && <img src={active.image} alt="" className="h-full w-full object-cover" />}
+                    {active.image && <Image src={active.image} alt="" width={88} height={88} sizes="44px" className="h-full w-full object-cover" />}
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-bold text-navy-800">{active.title}</p>

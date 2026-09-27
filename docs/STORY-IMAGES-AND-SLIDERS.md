@@ -10,9 +10,10 @@ Deze tekst is bewust zichtbaar in de testomgeving: zo is exact duidelijk welk be
 
 1. Plaats het geoptimaliseerde bestand in `public/images/stories/<locatie-slug>/`.
 2. Gebruik bij voorkeur WebP of JPG, liggend 16:10 of 16:9, minimaal 1600 pixels breed en bij voorkeur maximaal 500 KB.
-3. Open `src/data/story-media.ts` en vervang bij de juiste locatie `src: null` door bijvoorbeeld `src: "/images/stories/de-burcht/nu.webp"`.
+3. Open `src/data/media-manifest.ts` en vervang bij de juiste locatie `current.src` of `historical.src` door bijvoorbeeld `src: "/images/stories/de-burcht/nu.webp"`.
 4. Controleer de alt-tekst en pas die aan als het beeld specifieke informatie toont.
-5. Test de slider op telefoonbreedte en controleer beide uiterste posities met muis, aanraking en toetsenbord.
+5. Vul `rights` in als `own`, `licensed`, `public-domain` of `ai-impression` en voeg bij extern materiaal een `sourceNote` toe.
+6. Test de slider op telefoonbreedte en controleer beide uiterste posities met muis, aanraking en toetsenbord.
 
 De actuele en historische foto werken het best wanneer plek, kijkrichting en belangrijkste gebouwvorm ongeveer gelijk zijn. Een perfecte match is niet verplicht, maar een totaal andere kijkhoek maakt de vergelijking minder bruikbaar.
 
@@ -27,9 +28,15 @@ De actuele en historische foto werken het best wanneer plek, kijkrichting en bel
 
 ## Nieuwe locatie toevoegen
 
-Zonder aparte configuratie maakt `getStoryMedia()` automatisch twee duidelijke placeholders voor een nieuwe locatie. Voeg voor een belangrijk verhaal daarna een eigen regel toe aan `historicalBriefs` in `src/data/story-media.ts`. Beschrijf periode, zichtbare situatie, gewenste stijl en wat nadrukkelijk niet mag worden verzonnen.
+Zonder aparte configuratie maakt `getStoryMedia()` automatisch twee duidelijke placeholders voor een nieuwe locatie. Voeg een MVP-locatie altijd expliciet toe aan `src/data/media-manifest.ts`. Beschrijf periode, zichtbare situatie, rechtenstatus, gewenste stijl en wat nadrukkelijk niet mag worden verzonnen.
 
-De presentatiecomponent staat in `src/components/story/BeforeAfterSlider.tsx`. De inhoud en beeldbriefings blijven daarvan gescheiden in `src/data/story-media.ts`, zodat nieuwe beelden geen aanpassing aan de slidercode vereisen.
+De presentatiecomponent staat in `src/components/story/BeforeAfterSlider.tsx`. `src/data/story-media.ts` vertaalt het centrale manifest naar de slider, zodat nieuwe beelden geen aanpassing aan de component vereisen.
+
+## Video en Cloudflare Stream
+
+Het openbare manifest bevat uitsluitend de productiestatus (`planned`, `filmed` of `published`) en nooit Stream-ID's of afspeel-URL's. Premium video-identifiers moeten later server-side worden opgeslagen en pas na account- en aankoopcontrole worden geleverd. Zet dus geen Cloudflare-ID in `src/data/media-manifest.ts`, vertaalbestanden, JSON-LD of openbare paginadata.
+
+Voer na het toevoegen of hernoemen van bestanden `npm run media:check` uit. Deze controle stopt met een fout wanneer code naar een ontbrekend bestand onder `public/images/` verwijst; dezelfde controle draait ook in `npm run check` en daarmee in GitHub Actions.
 
 ## Kaartworker bij builds
 

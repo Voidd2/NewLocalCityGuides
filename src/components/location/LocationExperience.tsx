@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
 import { getLocationStory } from "@/data/stories";
 import { getStoryMedia } from "@/data/story-media";
+import { isLocationVideoPlanned } from "@/data/media-manifest";
 import { condenseStorySections, parseStoryText, type ParsedStory } from "@/lib/story-format";
 import { LocationSkeleton } from "@/components/ui/PageSkeletons";
 import { BeforeAfterSlider } from "@/components/story/BeforeAfterSlider";
@@ -153,6 +155,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
   const { hasPaid, isLoading } = useAuth();
   const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
   const story = getLocationStory(location.id);
+  const videoPlanned = isLocationVideoPlanned(location.id);
   const parsedStory = useMemo(
     () => (story ? parseStoryText(story.readingText[locale]) : null),
     [story, locale],
@@ -168,7 +171,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
         <div>
           <div className="relative h-72 md:h-96 bg-gray-200">
             {location.image && (
-              <img src={location.image} alt={location.name} className="w-full h-full object-cover" />
+              <Image src={location.image} alt={location.name} fill priority sizes="100vw" className="object-cover" />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -230,23 +233,25 @@ export function LocationExperience({ location }: { location: LocationData }) {
           <p className="text-sm text-gray-500 mb-6">{t("whatDoYouWant")}</p>
 
           <div className="space-y-3">
-            <button
-              onClick={() => setState("video")}
-              className="w-full flex items-center gap-4 bg-white border border-gray-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all text-left"
-            >
-              <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white ml-0.5">
-                  <polygon points="5 3 19 12 5 21 5 3" />
+            {videoPlanned && (
+              <button
+                onClick={() => setState("video")}
+                className="w-full flex items-center gap-4 bg-white border border-gray-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all text-left"
+              >
+                <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white ml-0.5">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-navy-800">{t("watchVideo")}</h3>
+                  <p className="text-xs text-gray-500">{t("watchVideoDesc")}</p>
+                </div>
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 ml-auto">
+                  <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                 </svg>
-              </div>
-              <div>
-                <h3 className="font-semibold text-navy-800">{t("watchVideo")}</h3>
-                <p className="text-xs text-gray-500">{t("watchVideoDesc")}</p>
-              </div>
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 ml-auto">
-                <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-              </svg>
-            </button>
+              </button>
+            )}
 
             <button
               onClick={() => setState("story")}
@@ -299,7 +304,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
         </div>
       )}
 
-      {state === "video" && (
+      {state === "video" && videoPlanned && (
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="relative bg-navy-900 rounded-2xl overflow-hidden aspect-video mb-4">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { Link, useRouter } from "@/i18n/navigation";
@@ -109,7 +110,7 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
     <div>
       <section className="relative overflow-hidden">
         {route.image && (
-          <img src={route.image} alt={route.title} className="absolute inset-0 w-full h-full object-cover" />
+          <Image src={route.image} alt={route.title} fill priority sizes="100vw" className="object-cover" />
         )}
         <div className="relative bg-gradient-to-b from-navy-800/90 to-navy-900/95 text-white px-4 py-8">
           <div className="max-w-7xl mx-auto">
@@ -239,9 +240,12 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
                           >
                             <div className="aspect-[3/4] bg-gray-800">
                               {loc!.image ? (
-                                <img
+                                <Image
                                   src={loc!.image}
                                   alt={loc!.name}
+                                  width={480}
+                                  height={640}
+                                  sizes="(min-width: 768px) 25vw, 70vw"
                                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
                               ) : (
@@ -329,10 +333,12 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
                 <div className="mb-8">
                   <h3 className="text-sm font-bold text-navy-800 mb-3">Video preview - Stop 3: Pieterskerk</h3>
                   <div className="relative bg-gray-200 rounded-xl overflow-hidden aspect-video">
-                    <img
+                    <Image
                       src="/images/video-posters/10034-pieterskerk-interactive-video-poster.jpg"
                       alt="Pieterskerk interactieve video preview"
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(min-width: 768px) 768px, 100vw"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-navy-800/30">
                       <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
@@ -427,7 +433,7 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
                         </div>
                         <div className="w-16 h-16 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                           {loc!.image && (
-                            <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
+                            <Image src={loc!.image} alt={loc!.name} width={128} height={128} sizes="64px" className="h-full w-full object-cover" />
                           )}
                         </div>
                       </div>
@@ -470,7 +476,7 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
                       </span>
                       <div className="w-10 h-10 rounded-lg bg-gray-200 shrink-0 overflow-hidden">
                         {loc!.image && (
-                          <img src={loc!.image} alt={loc!.name} className="w-full h-full object-cover" />
+                          <Image src={loc!.image} alt={loc!.name} width={80} height={80} sizes="40px" className="h-full w-full object-cover" />
                         )}
                       </div>
                       <div className="flex-1 min-w-0">

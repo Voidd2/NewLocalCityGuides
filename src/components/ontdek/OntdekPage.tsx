@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { publicPathForSpot } from "@/data/public-entities";
@@ -206,9 +207,9 @@ function ActivityCard({ activity, t }: { activity: Activity; t: (key: string) =>
       rel="noopener noreferrer"
       className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group"
     >
-      <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
         {activity.image ? (
-          <img src={activity.image} alt={activity.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <Image src={activity.image} alt={activity.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
             <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
@@ -253,9 +254,9 @@ function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
 
   return (
     <Link href={publicPathForSpot(spot)} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
-      <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
         {spot.image ? (
-          <img src={spot.image} alt={spot.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <Image src={spot.image} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
             <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
@@ -309,7 +310,7 @@ function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t:
     <Link href={publicPathForSpot(spot)} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
       <div className="aspect-[16/9] bg-gray-800 overflow-hidden relative">
         {spot.image ? (
-          <img src={spot.image} alt={spot.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <Image src={spot.image} alt={spot.name} fill sizes="280px" className="object-cover transition-transform duration-500 group-hover:scale-105" />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-navy-700 to-navy-900 flex flex-col items-center justify-center gap-1">
             <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-white/10" stroke="currentColor" strokeWidth="1">
