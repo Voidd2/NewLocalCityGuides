@@ -26,6 +26,16 @@ De actuele en historische foto werken het best wanneer plek, kijkrichting en bel
 - Voor vervolging, verzet en burgerdoden gelden strengere regels. Voor L014 (Cleveringa en de Jodenvervolging) is AI-reconstructie niet toegestaan; gebruik alleen rechtenvrij archiefmateriaal of documenten. Voor L009 en L012 is in de huidige briefing eveneens gekozen voor historische kaarten of prenten in plaats van een verzonnen foto.
 - Een huidige foto van Schaapsvishandel moet een echte foto van de winkel of marktwagen zijn. Gebruik geen AI-beeld alsof dit de familiezaak in werkelijkheid is.
 
+## Herkenningsfoto's Schaapsvishandel
+
+De openbare bedrijfspagina heeft drie aparte beeldplekken voor de winkel, de woensdagmarkt en de zaterdagmarkt. Deze beelden zijn bedoeld als visuele routehulp, omdat op de Leidse markt meerdere viskramen kunnen staan. Gebruik daarom alleen eigen, actuele foto's van de juiste zaak:
+
+- Winkel: gevel aan Herenstraat 48, met naam en ingang herkenbaar.
+- Woensdag: viskar van familie Schaap aan de Nieuwe Rijn, met bedrijfsnaam en verkoopluik herkenbaar.
+- Zaterdag: viskar van familie Schaap tegenover De Waag, met bedrijfsnaam, verkoopluik en De Waag herkenbaar.
+
+Maak de foto's vanaf de looprichting van een bezoeker en zorg dat concurrerende viskramen niet het hoofdonderwerp zijn. Gebruik hiervoor nooit AI-gegenereerd beeld. De exacte tijdelijke opdrachten staan in `src/data/city-pages.ts`; vervang die bij levering door echte, geoptimaliseerde foto's en behoud de Google Maps-links als aanvullende navigatie.
+
 ## Nieuwe locatie toevoegen
 
 Zonder aparte configuratie maakt `getStoryMedia()` automatisch twee duidelijke placeholders voor een nieuwe locatie. Voeg een MVP-locatie altijd expliciet toe aan `src/data/media-manifest.ts`. Beschrijf periode, zichtbare situatie, rechtenstatus, gewenste stijl en wat nadrukkelijk niet mag worden verzonnen.

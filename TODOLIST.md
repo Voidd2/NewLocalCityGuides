@@ -8,9 +8,10 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ### Eerst nodig
 
-- `public/images/spots/schaapsvis-winkel.jpg` — winkel aan Herenstraat 48.
-- `public/images/spots/schaapsvis-markt.jpg` — viskar op een Leidse marktdag.
-- Voeg één van deze later toe aan het Schaapsvishandel-blog en de bedrijfspagina; gebruik tot die tijd geen nep- of stockfoto alsof die van de zaak is.
+- [ ] `public/images/spots/schaapsvis-winkel.jpg` — herkenbare winkelgevel aan Herenstraat 48, inclusief naam en ingang.
+- [ ] `public/images/spots/schaapsvis-woensdagmarkt.jpg` — exacte viskar van familie Schaap aan de Nieuwe Rijn, inclusief bedrijfsnaam en verkoopluik.
+- [ ] `public/images/spots/schaapsvis-zaterdagmarkt.jpg` — exacte viskar van familie Schaap tegenover De Waag, inclusief bedrijfsnaam, verkoopluik en De Waag als herkenningspunt.
+- Voeg alle drie later toe aan de Schaapsvishandel-pagina. Gebruik geen AI-, stock- of foto van een andere viskraam: de beelden dienen als herkenningshulp tussen meerdere visboeren op de markt.
 
 ### Historische locaties
 
