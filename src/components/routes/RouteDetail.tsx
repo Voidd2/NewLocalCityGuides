@@ -187,10 +187,14 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
 
       <section className="max-w-7xl mx-auto">
         <div className="border-b border-gray-200 px-4">
-          <nav className="flex gap-0 -mb-px overflow-x-auto">
+          <nav className="flex gap-0 -mb-px overflow-x-auto" role="tablist" aria-label={`${route.title}: ${t("overview")}`}>
             {tabs.map((tab) => (
               <button
                 key={tab}
+                id={`route-tab-${tab}`}
+                role="tab"
+                aria-selected={activeTab === tab}
+                aria-controls={`route-panel-${tab}`}
                 onClick={() => setActiveTab(tab)}
                 className={`px-4 py-3 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
                   activeTab === tab
@@ -204,7 +208,13 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
           </nav>
         </div>
 
-        <div className="px-4 py-6">
+        <div
+          id={`route-panel-${activeTab}`}
+          role="tabpanel"
+          aria-labelledby={`route-tab-${activeTab}`}
+          tabIndex={0}
+          className="px-4 py-6"
+        >
           {activeTab === "overview" && (
             <div>
               <p className="text-sm text-gray-700 leading-relaxed mb-6">{route.description}</p>

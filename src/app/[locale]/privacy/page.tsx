@@ -23,6 +23,9 @@ export default async function PrivacyPage({
         <div className="prose prose-sm max-w-none text-gray-700 space-y-4">
           <p>{t("intro")}</p>
 
+          <h2 className="text-lg font-bold text-navy-800 mt-6">{t("controllerTitle")}</h2>
+          <p>{t("controllerText")}</p>
+
           <h2 className="text-lg font-bold text-navy-800 mt-6">{t("storedTitle")}</h2>
           <ul className="list-disc pl-5 space-y-1">
             <li>{t("storedAccount")}</li>
@@ -41,7 +44,27 @@ export default async function PrivacyPage({
             <li>{t("servicesMap")}</li>
             <li>{t("servicesGoogle")}</li>
             <li>{t("servicesNewsletter")}</li>
+            <li>{t("servicesReviews")}</li>
           </ul>
+
+          <h2 className="text-lg font-bold text-navy-800 mt-6">{t("groundsTitle")}</h2>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>{t("groundsEssential")}</li>
+            <li>{t("groundsConsent")}</li>
+            <li>{t("groundsContract")}</li>
+          </ul>
+
+          <h2 className="text-lg font-bold text-navy-800 mt-6">{t("retentionTitle")}</h2>
+          <p>{t("retentionText")}</p>
+
+          <h2 className="text-lg font-bold text-navy-800 mt-6">{t("rightsTitle")}</h2>
+          <p>{t("rightsText")}</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>{t("rightsAccess")}</li>
+            <li>{t("rightsDelete")}</li>
+            <li>{t("rightsObject")}</li>
+          </ul>
+          <p>{t("complaintText")}</p>
 
           <h2 className="text-lg font-bold text-navy-800 mt-6">{t("cookiesTitle")}</h2>
           <p>{t("cookiesText")}</p>
@@ -49,8 +72,8 @@ export default async function PrivacyPage({
           <h2 className="text-lg font-bold text-navy-800 mt-6">{t("contactTitle")}</h2>
           <p>
             {t("contactText")}{" "}
-            <a href="mailto:info@yourlocalcityguide.com" className="text-orange-500 hover:text-orange-600">
-              info@yourlocalcityguide.com
+            <a href="mailto:privacy@yourlocalcityguide.com" className="text-orange-600 underline underline-offset-4 hover:text-orange-700">
+              privacy@yourlocalcityguide.com
             </a>
           </p>
 

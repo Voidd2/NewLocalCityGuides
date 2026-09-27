@@ -150,6 +150,17 @@ body {
   transform: scale(1.08);
 }
 
+:focus-visible {
+  outline: 3px solid #FF6B00;
+  outline-offset: 3px;
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline-color: Highlight;
+  }
+}
+
 @keyframes page-enter {
   from {
     opacity: 0;

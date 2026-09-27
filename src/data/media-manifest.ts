@@ -16,6 +16,11 @@ export type LocationMediaManifest = {
     status: "not-planned" | "planned" | "filmed" | "published";
     briefPath?: string;
     previewReady: boolean;
+    poster: string | null;
+    durationSeconds: number | null;
+    aspectRatio: "16:9";
+    delivery: "private-after-access-check";
+    captions: Record<"nl" | "en" | "de", "not-required" | "planned" | "ready">;
   };
 };
 
@@ -65,6 +70,15 @@ export const locationMediaManifest: LocationMediaManifest[] = seeds.map((seed) =
     status: seed.videoPlanned ? "planned" : "not-planned",
     briefPath: seed.videoPlanned ? "content/video-briefs/README.md" : undefined,
     previewReady: false,
+    poster: null,
+    durationSeconds: null,
+    aspectRatio: "16:9",
+    delivery: "private-after-access-check",
+    captions: {
+      nl: seed.videoPlanned ? "planned" : "not-required",
+      en: seed.videoPlanned ? "planned" : "not-required",
+      de: seed.videoPlanned ? "planned" : "not-required",
+    },
   },
 }));
 

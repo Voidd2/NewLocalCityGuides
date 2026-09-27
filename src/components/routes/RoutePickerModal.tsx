@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { useLocale } from "next-intl";
@@ -22,18 +22,49 @@ export function RoutePickerModal({
   onResult?: (message: string) => void;
 }) {
   const locale = useLocale() as Locale;
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const [savedRoutes] = useState<SavedRoute[]>(() => getSavedRoutes());
   const copy = locale === "de"
-    ? { title: "Zu einer Route hinzufügen", standard: "Standardrouten", mine: "Meine Routen", create: "Neue Route erstellen", stops: "Stopps", added: "hinzugefügt zu", duplicate: "ist bereits Teil von" }
+    ? { title: "Zu einer Route hinzufügen", standard: "Standardrouten", mine: "Meine Routen", create: "Neue Route erstellen", stops: "Stopps", added: "hinzugefügt zu", duplicate: "ist bereits Teil von", close: "Schließen" }
     : locale === "en"
-      ? { title: "Add to a route", standard: "Suggested routes", mine: "My routes", create: "Create new route", stops: "stops", added: "added to", duplicate: "is already part of" }
-      : { title: "Toevoegen aan route", standard: "Standaardroutes", mine: "Mijn routes", create: "Nieuwe route maken", stops: "stops", added: "toegevoegd aan", duplicate: "staat al in" };
+      ? { title: "Add to a route", standard: "Suggested routes", mine: "My routes", create: "Create new route", stops: "stops", added: "added to", duplicate: "is already part of", close: "Close" }
+      : { title: "Toevoegen aan route", standard: "Standaardroutes", mine: "Mijn routes", create: "Nieuwe route maken", stops: "stops", added: "toegevoegd aan", duplicate: "staat al in", close: "Sluiten" };
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = previousOverflow; };
-  }, []);
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab" || !modalRef.current) return;
+      const focusable = Array.from(modalRef.current.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      previousFocus?.focus();
+    };
+  }, [onClose]);
 
   const finish = (route: SavedRoute) => {
     const result = addLocationToRoute(route.id, placeId);
@@ -68,15 +99,15 @@ export function RoutePickerModal({
   const customRoutes = savedRoutes.filter((saved) => !saved.sourceRouteId);
 
   return createPortal(
-    <div className="fixed inset-0 z-[5000] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label={copy.title}>
-      <button className="absolute inset-0 bg-black/50" onClick={onClose} aria-label="Sluiten" />
-      <div className="relative z-10 flex max-h-[82vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
+    <div className="fixed inset-0 z-[5000] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="route-picker-title">
+      <button className="absolute inset-0 bg-black/50" onClick={onClose} aria-label={copy.close} />
+      <div ref={modalRef} className="relative z-10 flex max-h-[82vh] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl">
         <div className="flex items-center justify-between bg-navy-800 px-5 py-4">
           <div className="min-w-0">
-            <p className="text-xs font-medium text-white/70">{copy.title}</p>
+            <p id="route-picker-title" className="text-xs font-medium text-white/70">{copy.title}</p>
             <p className="truncate font-bold text-orange-400">{placeName}</p>
           </div>
-          <button onClick={onClose} className="ml-3 h-9 w-9 shrink-0 rounded-full bg-white/10 text-xl text-white" aria-label="Sluiten">×</button>
+          <button ref={closeButtonRef} onClick={onClose} className="ml-3 h-11 w-11 shrink-0 rounded-full bg-white/10 text-xl text-white" aria-label={copy.close}>×</button>
         </div>
 
         <div className="overflow-y-auto p-4">
@@ -123,7 +154,7 @@ export function RoutePickerModal({
         </div>
 
         <div className="border-t border-gray-100 p-4">
-          <button onClick={createNew} className="w-full rounded-xl border-2 border-dashed border-orange-300 py-3 text-sm font-bold text-orange-600 hover:bg-orange-50">
+          <button onClick={createNew} className="min-h-11 w-full rounded-xl border-2 border-dashed border-orange-300 py-3 text-sm font-bold text-orange-600 hover:bg-orange-50">
             + {copy.create}
           </button>
         </div>

@@ -41,6 +41,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [ ] Homepage-videokaarten een echte previewvideo laten openen zodra een videobestand of Stream-ID beschikbaar is.
 - [x] Video pas afspelen na de actie "Ik ben er"; geen autoplay.
 - [ ] Echte marketing-preview op de homepage plaatsen zodra videomateriaal beschikbaar is.
+- [x] Provider-onafhankelijk videomanifest uitgebreid met poster, duur, NL/EN/DE-ondertitels en private-deliverystatus; publicatiewerkwijze vastgelegd in `docs/VIDEO-PUBLISHING-WORKFLOW.md`.
 
 ### Accounts en betalen
 
@@ -54,6 +55,9 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] Bestaande `<img>`-elementen vervangen door geoptimaliseerde Next.js-afbeeldingen.
 - [x] Verouderde Next.js `middleware`-conventie migreren naar `proxy`.
 - [ ] Offline caching opnieuw beoordelen wanneer echte premium media wordt toegevoegd.
+- [x] Automatische premium-contentgrens toegevoegd: openbare datasets mogen geen volledige verhalen, exacte stopvolgorde of private playbackvelden bevatten.
+- [x] Media-check uitgebreid met een harde limiet van 2 MB per gerefereerde interfaceafbeelding.
+- [x] Acht bestaande zware JPG's teruggebracht van circa 2–4 MB naar circa 0,5–0,8 MB en een herhaalbaar optimalisatiescript toegevoegd.
 
 ### Domeinen en cross-site SEO
 
@@ -92,6 +96,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [ ] Echte beoordelingen verzamelen en pas daarna score- of Review-schema publiceren.
 - De huidige interface blijft duidelijk als voorbeeldweergave gemarkeerd.
 - [x] Meertalig reviewformulier met privé-e-mail, expliciete publicatietoestemming en moderatiestatus toegevoegd; activeer de echte inbox met `REVIEW_WEBHOOK_URL`.
+- [x] Moderatie-, privacy- en bewaarbeleid voor echte reviews voorbereid; reviewinzendingen krijgen een uniek ID, timeout en controledatum na 90 dagen.
 
 ## 4. Lancering en controle
 
@@ -103,6 +108,10 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] Voorlopige volledige crawl uitgevoerd; daarbij drie kapotte evenementlinks gevonden en in de huidige code hersteld. De definitieve crawl blijft een releasegate na domeinkoppeling.
 - [ ] Lighthouse/Core Web Vitals en handmatige mobiele toegankelijkheid controleren met het definitieve beeld- en videomateriaal.
 - [ ] Transactionele e-mails voor aankoop, welkom en herstel van toegang toevoegen zodra accounts en betalingen server-side werken.
+- [x] Concept privacybeleid en gebruiksvoorwaarden in NL/EN/DE uitgebreid met gegevensdoelen, grondslagen, bewaartermijnen, rechten, digitale inhoud en klachten. Definitieve bedrijfsgegevens en juridische controle blijven een releasegate.
+- [x] Misleidende optionele cookertoestemming verwijderd zolang alleen noodzakelijke browseropslag actief is.
+- [x] Eerste toegankelijkheidsronde uitgevoerd: zichtbare focus, kaartlandmark, semantische routetabs en focusbeheer/Escape voor de routekiezer.
+- [x] Herhaalbare pre-media QA-checklist toegevoegd in `docs/PRE-MEDIA-QA.md`; handmatige schermlezer-, device- en Lighthousecontrole blijft open voor de definitieve media.
 
 ## 5. Later
 
@@ -113,6 +122,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Pre-media launchvoorbereiding afgerond voor privacy/voorwaarden, reviewmoderatie, toegankelijkheid, veilige videometadata en automatische controle op publieke premium-contentlekken.
 - [x] Vijf nieuwe NL/EN/DE SEO-artikelen en een veilige, machineleesbare openbare contentcatalogus toegevoegd voor zoekmachines en AI-retrieval, zonder premiumverhalen vrij te geven.
 - [x] Search Console-verificatie, cross-site backlinkconfiguratie, echte-reviewinzendingen en een reproduceerbare SEO-launchchecklist voorbereid zonder de vergrendelde Schaapsvishandel-site voortijdig openbaar te zetten.
 - [x] Centraal media-manifest toegevoegd voor beeldrechten, historische briefings en video-statussen; geheime Stream-ID's blijven bewust server-side.

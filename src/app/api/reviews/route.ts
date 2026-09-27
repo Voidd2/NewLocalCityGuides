@@ -3,7 +3,22 @@ import { NextResponse } from "next/server";
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null) as Record<string, unknown> | null;
+  const declaredSize = Number(request.headers.get("content-length") ?? 0);
+  if (declaredSize > 20_000) {
+    return NextResponse.json({ message: "De inzending is te groot." }, { status: 413 });
+  }
+
+  const rawBody = await request.text().catch(() => "");
+  if (rawBody.length > 20_000) {
+    return NextResponse.json({ message: "De inzending is te groot." }, { status: 413 });
+  }
+  const body = (() => {
+    try {
+      return JSON.parse(rawBody) as Record<string, unknown>;
+    } catch {
+      return null;
+    }
+  })();
   const name = typeof body?.name === "string" ? body.name.trim() : "";
   const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
   const comment = typeof body?.comment === "string" ? body.comment.trim() : "";
@@ -25,6 +40,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Reviewinzendingen worden binnenkort geactiveerd." }, { status: 503 });
   }
 
+  const submittedAt = new Date();
+  const retentionReviewAt = new Date(submittedAt);
+  retentionReviewAt.setUTCDate(retentionReviewAt.getUTCDate() + 90);
+  const reviewId = crypto.randomUUID();
+
   const response = await fetch(webhookUrl, {
     method: "POST",
     headers: {
@@ -35,7 +55,9 @@ export async function POST(request: Request) {
     },
     body: JSON.stringify({
       type: "route-review-submission",
-      submittedAt: new Date().toISOString(),
+      reviewId,
+      submittedAt: submittedAt.toISOString(),
+      retentionReviewAt: retentionReviewAt.toISOString(),
       name,
       email,
       rating,
@@ -46,11 +68,12 @@ export async function POST(request: Request) {
       moderationStatus: "pending",
     }),
     cache: "no-store",
+    signal: AbortSignal.timeout(5_000),
   }).catch(() => null);
 
   if (!response?.ok) {
     return NextResponse.json({ message: "Versturen lukt nu niet. Probeer het later opnieuw." }, { status: 502 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, reviewId });
 }

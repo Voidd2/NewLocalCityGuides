@@ -26,6 +26,20 @@ describe("media manifest", () => {
       expect(entry.historical.rights).toBeTruthy();
       expect(entry.current.brief.length).toBeGreaterThan(30);
       expect(entry.historical.brief.length).toBeGreaterThan(30);
+      expect(entry.video.delivery).toBe("private-after-access-check");
+    }
+  });
+
+  it("requires complete metadata before a video can be published", () => {
+    for (const entry of locationMediaManifest) {
+      if (entry.video.status === "filmed" || entry.video.status === "published") {
+        expect(entry.video.poster).toMatch(/^\/images\//);
+        expect(entry.video.durationSeconds).toBeGreaterThan(0);
+      }
+      if (entry.video.status === "published") {
+        expect(entry.video.previewReady).toBe(true);
+        expect(Object.values(entry.video.captions)).toEqual(["ready", "ready", "ready"]);
+      }
     }
   });
 

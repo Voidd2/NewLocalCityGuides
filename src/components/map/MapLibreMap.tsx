@@ -242,7 +242,7 @@ export function MapLibreMap({
 
   return (
     <div className="relative h-full w-full overflow-hidden rounded-xl bg-gray-100">
-      <div ref={containerRef} className="h-full w-full" aria-label={t("interactiveMapLabel")} />
+      <div ref={containerRef} role="region" className="h-full w-full" aria-label={t("interactiveMapLabel")} />
 
       {mapStatus === "loading" && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gray-100 text-sm font-medium text-gray-500">
