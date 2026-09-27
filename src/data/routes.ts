@@ -27,7 +27,7 @@ export const routes: RouteData[] = [
     title: "Centrum Route",
     subtitle: "Wandeling door het hart van Leiden",
     description:
-      "Een compacte lus door het historische centrum, met handel, kerken, hofjes en Rembrandts geboorteplek. De route voegt automatisch Schaapsvishandel toe: op woensdag en zaterdag de viskar op de markt, op andere dagen de vaste viswinkel.",
+      "Een compacte lus door het historische centrum, met handel, kerken, hofjes en Rembrandts geboorteplek. Op marktdagen ontdek je een echte Leidse visboer; op andere dagen leidt de route naar de vaste viswinkel van Schaapsvishandel.",
     stops: 11,
     distance: "ca. 4 km",
     type: "walking",
@@ -64,7 +64,7 @@ export const routes: RouteData[] = [
     title: "Markt & Ambacht",
     subtitle: "Wandeling langs handel, eten en Leidse familieverhalen",
     description:
-      "Een wandelroute langs de Vismarkt, Koornbrug, historische handelsplekken en ambachtelijke verhalen. Schaapsvishandel is de aanbevolen eetstop: de viskar op woensdag en zaterdag, anders de vaste winkel aan de Herenstraat.",
+      "Een wandelroute langs de Vismarkt, Koornbrug en historische handelsplekken. Proef bij een echte Leidse visboer, haal een versgebakken stroopwafel en ontdek lokale kaas; buiten marktdagen bezoek je de vaste viswinkel van Schaapsvishandel.",
     stops: 9,
     distance: "ca. 3 km",
     type: "walking",

@@ -131,9 +131,9 @@ export const seoLandings: SeoLanding[] = [
       {
         heading: lt("Tours op marktdagen", "Tours on market days", "Touren an Markttagen"),
         paragraphs: {
-          nl: ["Op woensdag en zaterdag verandert de Markt & Ambacht-route automatisch mee. Je krijgt dan de marktkraam van Schaapsvishandel als aanbevolen stop. Buiten marktdagen leidt de route naar de viswinkel, zodat de lokale familiezaak onderdeel blijft van de ervaring."],
-          en: ["On Wednesday and Saturday, the Market & Craft route adapts automatically and recommends the Schaapsvishandel market stall. On other days it points to the fish shop, keeping the local family business part of the experience."],
-          de: ["Mittwochs und samstags passt sich die Route Markt & Handwerk automatisch an und empfiehlt den Marktstand von Schaapsvishandel. An anderen Tagen führt sie zum Fischgeschäft, sodass der lokale Familienbetrieb Teil des Erlebnisses bleibt."],
+          nl: ["Op woensdag en zaterdag past de Markt & Ambacht-route zich automatisch aan. Je ontdekt dan een echte Leidse visboer, een kraam met versgebakken stroopwafels en verkopers van lokale kaas. Buiten marktdagen leidt de route naar de vaste viswinkel van Schaapsvishandel, een Leidse familiezaak sinds 1938."],
+          en: ["On Wednesday and Saturday, the Market & Craft route adapts automatically. You can discover a true Leiden fishmonger, a stall serving freshly made stroopwafels and vendors selling local cheese. On other days, the route points to Schaapsvishandel's permanent fish shop, a Leiden family business since 1938."],
+          de: ["Mittwochs und samstags passt sich die Route Markt & Handwerk automatisch an. Du entdeckst einen echten Leidener Fischhändler, einen Stand mit frisch gebackenen Stroopwafeln und Händler mit regionalem Käse. An anderen Tagen führt die Route zum festen Fischgeschäft von Schaapsvishandel, einem Leidener Familienbetrieb seit 1938."],
         },
       },
     ],
