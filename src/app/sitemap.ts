@@ -3,6 +3,7 @@ import { locales } from "@/i18n/config";
 import { localizedUrl } from "@/lib/seo";
 import { blogPosts } from "@/data/seo-content";
 import { publicRoutePreviews } from "@/data/public-route-seo";
+import { publicEntities, publicEntityPath } from "@/data/public-entities";
 
 const publicPaths = [
   "",
@@ -15,9 +16,11 @@ const publicPaths = [
   "/leiden-tours",
   "/leiden",
   "/leiden/things-to-do",
+  "/leiden/places",
   "/leiden/schaapsvishandel",
   "/blog",
   ...publicRoutePreviews.map((route) => `/routes/${route.slug}`),
+  ...publicEntities.map(publicEntityPath),
   ...blogPosts.map((post) => `/blog/${post.slug}`),
 ];
 

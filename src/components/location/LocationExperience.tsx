@@ -219,45 +219,6 @@ export function LocationExperience({ location }: { location: LocationData }) {
               </svg>
             </button>
 
-            {hasPaid && (
-              <div className="grid grid-cols-3 gap-3 mt-4">
-                <button
-                  onClick={() => setState("video")}
-                  className="flex flex-col items-center gap-1.5 bg-gray-50 rounded-xl p-3 hover:bg-orange-50 transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-full bg-orange-500 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white ml-0.5">
-                      <polygon points="5 3 19 12 5 21 5 3" />
-                    </svg>
-                  </div>
-                  <span className="text-[11px] font-medium text-navy-800">{t("video")}</span>
-                </button>
-                <button
-                  onClick={() => setState("story")}
-                  className="flex flex-col items-center gap-1.5 bg-gray-50 rounded-xl p-3 hover:bg-orange-50 transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-full bg-navy-800 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-white" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                    </svg>
-                  </div>
-                  <span className="text-[11px] font-medium text-navy-800">{t("story")}</span>
-                </button>
-                <button
-                  onClick={() => setState("practical")}
-                  className="flex flex-col items-center gap-1.5 bg-gray-50 rounded-xl p-3 hover:bg-orange-50 transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-full bg-gray-300 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 text-gray-600" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 16v-4M12 8h.01" />
-                    </svg>
-                  </div>
-                  <span className="text-[11px] font-medium text-navy-800">{t("info")}</span>
-                </button>
-              </div>
-            )}
           </div>
         </div>
       )}
@@ -344,7 +305,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
               <p className="text-hand text-orange-300 text-lg mb-2">{t("leidenHistorical")}</p>
               <h3 className="text-xl font-bold mb-4">{location.name}</h3>
-              <button className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
+              <button type="button" className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-white ml-1">
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>

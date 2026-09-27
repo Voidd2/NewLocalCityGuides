@@ -7,6 +7,7 @@ import { PremiumRouteBoundary } from "./PremiumRouteBoundary";
 import { localizedUrl, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n/config";
 import type { PublicRoutePreviewData } from "@/data/public-route-seo";
+import { publicEntities, publicEntityPath } from "@/data/public-entities";
 
 export function PublicRoutePreview({ route, locale }: { route: PublicRoutePreviewData; locale: Locale }) {
   const t = useTranslations("routePreview");
@@ -60,17 +61,37 @@ export function PublicRoutePreview({ route, locale }: { route: PublicRoutePrevie
           </aside>
         </section>
 
+        <section className="grid overflow-hidden rounded-[2rem] border border-gray-200 bg-white md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative min-h-64 overflow-hidden bg-[#eee9df] p-6" aria-hidden="true">
+            <svg viewBox="0 0 600 330" className="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMid slice">
+              <path d="M-30 245C84 199 143 250 244 196S389 83 641 101" fill="none" stroke="#c9def7" strokeWidth="34" />
+              <path d="M36 72C147 111 191 83 270 127S424 232 566 194" fill="none" stroke="#d7d0c2" strokeWidth="8" />
+              <path d="M75 275C139 220 195 229 246 183S344 93 484 126" fill="none" stroke="#ff6500" strokeDasharray="10 12" strokeLinecap="round" strokeWidth="7" />
+              {[{ x: 76, y: 275 }, { x: 246, y: 183 }, { x: 484, y: 126 }].map((point) => <circle key={`${point.x}-${point.y}`} cx={point.x} cy={point.y} r="13" fill="white" stroke="#ff6500" strokeWidth="7" />)}
+            </svg>
+            <span className="relative inline-flex rounded-full bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-navy-800 shadow-sm">{t("indicativeMap")}</span>
+          </div>
+          <div className="flex flex-col justify-center p-6 md:p-9">
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-600">{t("mapEyebrow")}</p>
+            <h2 className="mt-2 text-2xl font-extrabold text-navy-800">{t("mapTitle")}</h2>
+            <p className="mt-4 text-sm leading-7 text-gray-600">{t("mapDescription")}</p>
+          </div>
+        </section>
+
         <section>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-600">{t("selectedPreview")}</p>
           <h2 className="mt-2 text-2xl font-extrabold text-navy-800">{t("highlights")}</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {copy.highlights.map((highlight, index) => (
-              <article key={highlight.name} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+            {copy.highlights.map((highlight, index) => {
+              const entity = highlight.entitySlug ? publicEntities.find((item) => item.slug === highlight.entitySlug) : undefined;
+              const content = <>
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-orange-100 text-sm font-extrabold text-orange-600">{index + 1}</span>
                 <h3 className="mt-4 font-bold text-navy-800">{highlight.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-gray-500">{highlight.summary}</p>
-              </article>
-            ))}
+                {entity && <span className="mt-4 inline-flex text-xs font-bold text-orange-600">{t("readPlacePreview")} →</span>}
+              </>;
+              return entity ? <Link key={highlight.name} href={publicEntityPath(entity)} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-orange-300 hover:shadow-md">{content}</Link> : <article key={highlight.name} className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">{content}</article>;
+            })}
           </div>
           <p className="mt-4 text-xs text-gray-500">{t("highlightsNote")}</p>
         </section>

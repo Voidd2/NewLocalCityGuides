@@ -60,8 +60,9 @@ export function SeoLandingPage({ page, locale }: { page: SeoLanding; locale: Loc
           </div>
         </section>
 
-        <nav aria-label={locale === "nl" ? "Meer over Leiden" : locale === "de" ? "Mehr über Leiden" : "More about Leiden"} className="mt-10 grid gap-3 sm:grid-cols-3">
+        <nav aria-label={locale === "nl" ? "Meer over Leiden" : locale === "de" ? "Mehr über Leiden" : "More about Leiden"} className="mt-10 grid gap-3 sm:grid-cols-4">
           <Link href="/leiden" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">Leiden</Link>
+          <Link href="/leiden/places" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">{locale === "nl" ? "Alle plekken" : locale === "de" ? "Alle Orte" : "All places"}</Link>
           <Link href="/leiden/things-to-do" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">{locale === "nl" ? "Wat te doen" : locale === "de" ? "Aktivitäten" : "Things to do"}</Link>
           <Link href="/leiden/schaapsvishandel" className="rounded-2xl border border-warm-200 p-4 text-center text-sm font-bold text-navy-800 hover:border-orange-300">Schaapsvishandel</Link>
         </nav>

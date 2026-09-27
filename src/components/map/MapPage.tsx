@@ -13,6 +13,7 @@ import { getVisibleSpots } from "@/data/local-spots";
 import type { SupportedLocale } from "@/data/schaapsvis";
 import { applyDateAwareRoute } from "@/data/route-conditions";
 import { RoutePickerModal } from "@/components/routes/RoutePickerModal";
+import { getPublicEntityForLocation, publicEntityPath, publicPathForSpot } from "@/data/public-entities";
 
 const MapLibreMap = dynamic(() => import("./MapLibreMap").then((m) => m.MapLibreMap), {
   ssr: false,
@@ -141,6 +142,7 @@ export function MapPage() {
   const selectedSpot = selectedPin
     ? getVisibleSpots().find((spot) => spot.id === selectedPin)
     : null;
+  const selectedLocationEntity = selectedLocation ? getPublicEntityForLocation(selectedLocation) : null;
 
   const addToRouteLocation = addToRouteFor
     ? locations.find((l) => l.id === addToRouteFor)
@@ -375,6 +377,14 @@ export function MapPage() {
                       </div>
                     </div>
                     <div className="flex gap-2 mt-3">
+                      {selectedLocationEntity && (
+                        <Link
+                          href={publicEntityPath(selectedLocationEntity)}
+                          className="flex-1 flex items-center justify-center rounded-full border border-orange-300 py-2.5 text-xs font-semibold text-orange-600 transition-colors hover:bg-orange-50"
+                        >
+                          {t("viewLocalSpot")}
+                        </Link>
+                      )}
                       <button
                         onClick={() => setAddToRouteFor(selectedLocation.id)}
                         className="flex-1 flex items-center justify-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 rounded-full text-xs transition-colors"
@@ -409,7 +419,7 @@ export function MapPage() {
                       {selectedSpot.description[locale].split("\n\n")[0]}
                     </p>
                     <Link
-                      href={`/ontdek/${selectedSpot.id}`}
+                      href={publicPathForSpot(selectedSpot)}
                       className="mt-3 flex w-full items-center justify-center rounded-full bg-orange-500 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-orange-600"
                     >
                       {t("viewLocalSpot")}

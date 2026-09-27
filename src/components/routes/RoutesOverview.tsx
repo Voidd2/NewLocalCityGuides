@@ -201,37 +201,6 @@ export function RoutesOverview() {
         </div>
       </section>
 
-      {hasPaid && (
-        <section className="max-w-7xl mx-auto px-4 py-6">
-          <Link
-            href="/routes/custom"
-            className="block"
-          >
-            <div className="bg-orange-50 border-2 border-orange-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-                <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                  <circle cx="12" cy="9" r="2.5" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-bold text-navy-800">{t("customRoute")}</h3>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase">{t("included")}</span>
-                </div>
-                <p className="text-sm text-gray-600">{t("customRouteDesc")}</p>
-              </div>
-              <span className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-3 rounded-full transition-colors text-sm shrink-0">
-                {t("startBuilding")}
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        </section>
-      )}
-
       <section className="bg-navy-800 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-hand text-orange-300 text-xl mb-2">{t("moreToDiscover")}</p>

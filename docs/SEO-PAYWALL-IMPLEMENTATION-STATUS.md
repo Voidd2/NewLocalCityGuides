@@ -14,6 +14,10 @@ De brief is volledig uitgelezen en visueel gecontroleerd. De implementatie volgt
 - De routes-overzichtspagina gebruikt alleen de expliciet openbare dataset uit `src/data/public-route-seo.ts`.
 - De volledige route wordt pas client-side geladen nadat de huidige toegangscontrole een actief pakket bevestigt.
 - Niet-betalende bezoekers zien een duidelijke koop- of inlogactie en geen onleesbare geblurde routekaarten.
+- Alle vaste musea, historische plekken, markten en lokale favorieten hebben een openbare entitypagina met een menselijke URL onder `/leiden/{type}/{slug}`.
+- De entitypagina's bevatten een korte gratis introductie, praktische context, een member-CTA, gerelateerde plekken en een relevante route, maar geen volledige premiumverhalen of media-URL's.
+- De openbare plekindex `/leiden/places` vormt het crawlbare beginpunt en iedere entitypagina heeft NL/EN/DE metadata, canonical/hreflang, sitemapvermelding en veilige structured data zonder reviewscore.
+- Schaapsvishandel behoudt de eigen uitgebreide openbare pagina op `/leiden/schaapsvishandel`; de winkel- en marktvarianten verwijzen naar die ene canonieke bestemming.
 
 ## Wat bewust premium blijft
 
@@ -37,8 +41,7 @@ Let op: de huidige demo-authenticatie en aankoopstatus zijn nog client-side. De 
 
 ## Vervolg vóór lancering
 
-- Maak openbare entitypagina's voor geselecteerde, waardevolle plekken met geverifieerde feiten en eigen zoekintentie.
 - Voeg alleen geverifieerde openingstijden, prijzen en ticketlinks toe; tijdgevoelige gegevens moeten een bron- en controledatum krijgen.
 - Voeg nooit verzonnen beoordelingen, `Review`- of `aggregateRating`-schema toe.
-- Verbind relevante blogartikelen, Leiden-landingspagina's, routepreviews en entitypagina's met gerichte interne links.
 - Voer vlak voor productie een crawl uit op canonicals, hreflang, sitemap, statuscodes, indexeerbaarheid en mogelijke premium-contentlekken.
+- Rond server-side authenticatie, aankoopcontrole en premium-datalevering af; de huidige demo-auth blijft nadrukkelijk geen productiebeveiliging.

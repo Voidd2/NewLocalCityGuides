@@ -8,6 +8,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import { getLocationById, locations } from "@/data/locations";
 import { getVisibleSpots } from "@/data/local-spots";
 import { routes } from "@/data/routes";
+import { getPublicEntityForLocation, publicEntityPath } from "@/data/public-entities";
 import { useAuth } from "@/lib/auth-context";
 import {
   getSavedRoutes,
@@ -240,12 +241,14 @@ export function Dashboard() {
               <Link href="/ontdek" className="inline-flex min-h-11 items-center gap-1 px-2 text-sm font-semibold text-orange-600 hover:text-orange-700">{t("viewAll")} <span aria-hidden="true">→</span></Link>
             </div>
             <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 scrollbar-hide sm:mx-0 sm:grid sm:grid-cols-4 sm:overflow-visible sm:px-0">
-              {discoverLocations.map((location) => (
-                <Link key={location.id} href={`/locations/${location.slug}`} className="group min-w-[168px] snap-start overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:min-w-0">
+              {discoverLocations.map((location) => {
+                const entity = getPublicEntityForLocation(location);
+                return (
+                <Link key={location.id} href={entity ? publicEntityPath(entity) : `/locations/${location.slug}`} className="group min-w-[168px] snap-start overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg sm:min-w-0">
                   <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">{location.image ? <Image src={location.image} alt={location.name} fill sizes="(min-width: 640px) 220px, 168px" className="object-cover transition duration-500 group-hover:scale-105" /> : <PinPlaceholder />}</div>
                   <div className="p-3"><h3 className="min-h-10 text-sm font-bold leading-tight text-navy-800">{location.name}</h3><p className="mt-2 flex items-center gap-1.5 text-xs text-gray-500"><span className="text-orange-500" aria-hidden="true">⌖</span>{location.id === "L002" ? t("localPlace") : location.id === "L010" ? t("naturePlace") : t("storyPlace")}</p></div>
                 </Link>
-              ))}
+              );})}
             </div>
           </section>
 

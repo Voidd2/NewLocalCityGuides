@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useAuth } from "@/lib/auth-context";
+import { publicPathForSpot } from "@/data/public-entities";
 import {
   getVisibleSpots,
   getFeaturedSpots,
@@ -252,7 +252,7 @@ function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
   const desc = spot.description[lang] || spot.description.nl;
 
   return (
-    <Link href={`/ontdek/${spot.id}`} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
+    <Link href={publicPathForSpot(spot)} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
       <div className="aspect-[4/3] bg-gray-200 overflow-hidden">
         {spot.image ? (
           <img src={spot.image} alt={spot.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -306,7 +306,7 @@ function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t:
   const closedLabel = lang === "de" ? "Heute geschlossen" : lang === "en" ? "Closed today" : "Vandaag gesloten";
 
   return (
-    <Link href={`/ontdek/${spot.id}`} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
+    <Link href={publicPathForSpot(spot)} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
       <div className="aspect-[16/9] bg-gray-800 overflow-hidden relative">
         {spot.image ? (
           <img src={spot.image} alt={spot.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -362,7 +362,6 @@ function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t:
 }
 
 export function OntdekPage() {
-  const { hasPaid, isLoading } = useAuth();
   const locale = useLocale() as "nl" | "en" | "de";
   const t = useTranslations("discover");
   const tAct = useTranslations("activities");
@@ -390,35 +389,6 @@ export function OntdekPage() {
     { key: "museum", label: tAct("museums") },
     { key: "overig", label: tAct("other") },
   ];
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">{tHome("loading")}</div>
-      </div>
-    );
-  }
-
-  if (!hasPaid) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-        <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-          <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-orange-500" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0110 0v4" />
-          </svg>
-        </div>
-        <h2 className="text-lg font-bold text-navy-800 mb-2">{t("unlock")}</h2>
-        <p className="text-sm text-gray-500 mb-4">{t("unlockDesc")}</p>
-        <Link
-          href="/pricing"
-          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-        >
-          {t("viewPackage")}
-        </Link>
-      </div>
-    );
-  }
 
   return (
     <div>

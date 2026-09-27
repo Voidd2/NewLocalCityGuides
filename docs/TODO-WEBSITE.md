@@ -1,4 +1,6 @@
-# Website TODO Overview
+# Website TODO Overview (archief)
+
+> Dit bestand is een historische momentopname van 17 september 2026 en bevat inmiddels afgeronde of bewust afgewezen punten. Gebruik uitsluitend [`../TODOLIST.md`](../TODOLIST.md) als actuele takenlijst. De oude checklist en beeldcodes blijven hieronder alleen bewaard als projecthistorie.
 
 Status: Front-end skeleton complete, all pages built and compiling in NL/EN/DE.
 Date: 2026-09-17

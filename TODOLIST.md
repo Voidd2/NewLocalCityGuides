@@ -38,7 +38,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 - [ ] Cloudflare Stream koppelen zodra accountgegevens en video-ID's beschikbaar zijn.
 - [ ] Homepage-videokaarten een echte previewvideo laten openen zodra een videobestand of Stream-ID beschikbaar is.
-- [ ] Video pas afspelen na de actie "Ik ben er"; geen autoplay.
+- [x] Video pas afspelen na de actie "Ik ben er"; geen autoplay.
 - [ ] Echte marketing-preview op de homepage plaatsen zodra videomateriaal beschikbaar is.
 
 ### Accounts en betalen
@@ -64,8 +64,8 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ### Video-briefs
 
-- [ ] Briefs maken voor De Burcht, Koornbrug, Pieterskerk, Buskruitramp en Hortus.
-- [ ] Overige MVP-locaties blijven voorlopig audio-only.
+- [x] Briefs maken voor De Burcht, Koornbrug, Pieterskerk, Buskruitramp en Hortus.
+- [x] Overige MVP-locaties blijven voorlopig audio-only.
 - Opslaan in `content/video-briefs/`.
 
 ### SEO-content — bewust gepauzeerd
@@ -79,7 +79,16 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [ ] Echte beoordelingen verzamelen en pas daarna score- of Review-schema publiceren.
 - De huidige interface blijft duidelijk als voorbeeldweergave gemarkeerd.
 
-## 4. Later
+## 4. Lancering en controle
+
+- [ ] Resterende historische claims uit de R01-onzekerheidsregisters verifiëren voordat ze in publieke tekst, audio of video worden gebruikt.
+- [ ] Productieomgeving en eigen domein configureren, inclusief alle vereiste omgevingsvariabelen.
+- [ ] Privacyvriendelijke analytics kiezen en alleen na passende cookietoestemming activeren wanneer dat juridisch nodig is.
+- [ ] Vlak voor publicatie een volledige crawl uitvoeren op statuscodes, canonicals, hreflang, sitemap, interne links en mogelijke premium-contentlekken.
+- [ ] Lighthouse/Core Web Vitals en handmatige mobiele toegankelijkheid controleren met het definitieve beeld- en videomateriaal.
+- [ ] Transactionele e-mails voor aankoop, welkom en herstel van toegang toevoegen zodra accounts en betalingen server-side werken.
+
+## 5. Later
 
 - [ ] Meer steden: Delft, Utrecht, Amsterdam en Den Haag.
 - [ ] Fiets- en buitengebiedroutes voor onder andere Matilo en Meelfabriek.
@@ -88,6 +97,10 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Openbare SEO-pagina's toegevoegd voor alle vaste musea, historische plekken, markten en lokale favorieten, met menselijke URL's, gratis introducties, NL/EN/DE metadata, canonical/hreflang, sitemap, veilige structured data en interne links.
+- [x] Een meertalige plekindex op `/leiden/places` toegevoegd, plus member-CTA's voor volledig verhaal en geplande video's zonder premiumtekst publiek te laden.
+- [x] Openbare routepreviews aangevuld met een globale kaartindruk zonder de betaalde stopvolgorde prijs te geven; de dubbele eigen-routekaart op `/routes` is verwijderd.
+- [x] Opnamebriefs voor De Burcht, Koornbrug, Pieterskerk, Buskruitramp en Hortus toegevoegd in `content/video-briefs/`.
 - [x] Dashboard opnieuw ingedeeld volgens de mobiele wireframe: actieve routes, standaardroutes, eigen route, ontdekken en kaart vormen nu een duidelijke volgorde.
 - [x] Kaartcategorie "Tourplekken" verduidelijkt naar "Verhalen & video's" en teruggebracht tot herkenbare bezoekerstypen zoals musea, vis, markt en eten.
 - [x] SEO/paywall-implementatiebrief toegevoegd en verwerkt in een veilige eerste fase met indexeerbare routepreviews en een afgescheiden premium route-ervaring.
