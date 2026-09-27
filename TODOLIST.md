@@ -34,6 +34,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [ ] Controleer en voeg geldige GetYourGuide-affiliate-links toe voor betaalde musea en attracties.
 - [ ] Laat iedere activiteit handmatig controleren voordat de link wordt gepubliceerd.
 - Partner-ID: `W9KB6MF`.
+- [x] Gecontroleerd importbestand, documentatie en automatische validator voorbereid; algemene stadlinks worden niet als exacte activiteiten geaccepteerd.
 
 ### Video
 
@@ -112,6 +113,8 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 - [x] Misleidende optionele cookertoestemming verwijderd zolang alleen noodzakelijke browseropslag actief is.
 - [x] Eerste toegankelijkheidsronde uitgevoerd: zichtbare focus, kaartlandmark, semantische routetabs en focusbeheer/Escape voor de routekiezer.
 - [x] Herhaalbare pre-media QA-checklist toegevoegd in `docs/PRE-MEDIA-QA.md`; handmatige schermlezer-, device- en Lighthousecontrole blijft open voor de definitieve media.
+- [x] Volledige environmentmatrix en veilige configuratievolgorde vastgelegd voor domein, reviews, nieuwsbrief, authenticatie, betalingen en Cloudflare.
+- [x] Pre-Cloudflare release-baseline gedocumenteerd en vastgezet met Git-tag `pre-cloudflare-2026-09-28`.
 
 ## 5. Later
 
@@ -122,6 +125,7 @@ Definitieve eigen foto's blijven de belangrijkste contentafhankelijkheid. Lever 
 
 ## Recent afgerond
 
+- [x] Verouderde README en PROJECT-GUIDE vervangen door actuele onboarding, routes, databoundaries en verwijzingen naar de enige geldige takenlijst.
 - [x] Pre-media launchvoorbereiding afgerond voor privacy/voorwaarden, reviewmoderatie, toegankelijkheid, veilige videometadata en automatische controle op publieke premium-contentlekken.
 - [x] Vijf nieuwe NL/EN/DE SEO-artikelen en een veilige, machineleesbare openbare contentcatalogus toegevoegd voor zoekmachines en AI-retrieval, zonder premiumverhalen vrij te geven.
 - [x] Search Console-verificatie, cross-site backlinkconfiguratie, echte-reviewinzendingen en een reproduceerbare SEO-launchchecklist voorbereid zonder de vergrendelde Schaapsvishandel-site voortijdig openbaar te zetten.
