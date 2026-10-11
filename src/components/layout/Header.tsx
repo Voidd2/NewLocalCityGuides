@@ -6,6 +6,7 @@ import { useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth-context";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import type { Locale } from "@/i18n/config";
 
 function getParentPath(pathname: string, hasPaid: boolean, backParam: string | null): string | null {
@@ -57,7 +58,7 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           showSolid || menuOpen
-            ? "bg-navy-900/95 backdrop-blur-xl shadow-lg shadow-black/10"
+            ? "bg-white/95 backdrop-blur-xl border-b border-warm-200 shadow-sm"
             : "bg-transparent"
         }`}
       >
@@ -65,50 +66,34 @@ export function Header() {
           {parentPath && (
             <button
               onClick={() => router.push(parentPath)}
-              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors mr-1 shrink-0"
+              className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-warm-100 transition-colors mr-1 shrink-0"
               aria-label={t("common.back")}
             >
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-white">
+              <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-navy-800">
                 <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
               </svg>
             </button>
           )}
-          <Link href={hasPaid ? "/dashboard" : "/"} className="flex items-center gap-2.5 group">
-            <div className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 ${
-              showSolid ? "bg-orange-500 shadow-lg shadow-orange-500/30" : "bg-white/15 backdrop-blur-sm"
-            }`}>
-              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-bold leading-tight tracking-wide text-white group-hover:text-orange-300 transition-colors">
-                YourLocal<span className="text-orange-500">City</span>Guide
-              </span>
-              <span className={`text-[9px] tracking-[0.2em] uppercase transition-opacity duration-300 ${
-                showSolid ? "text-white/50" : "text-white/70"
-              }`}>
-                {t("header.slogan")}
-              </span>
-            </div>
+          <Link href={hasPaid ? "/dashboard" : "/"} className="mr-auto flex items-center gap-2.5 group">
+            <BrandLogo priority className="w-[176px] sm:w-[218px] h-auto" />
           </Link>
 
           <div className="flex items-center gap-2">
+            <nav aria-label={t("nav.routes")} className="hidden lg:flex items-center gap-6 mr-5 text-sm font-semibold text-navy-800"><Link href="/routes">{t("nav.routes")}</Link><Link href="/ontdek">{t("nav.ontdek")}</Link><Link href="/blog">{t("nav.blog")}</Link><Link href={isLoggedIn ? "/dashboard" : "/login"}>{isLoggedIn ? t("nav.myAccount") : t("nav.login")}</Link></nav>
             <div className="relative">
               <button
                 onClick={() => { setLangOpen(!langOpen); setMenuOpen(false); }}
                 className={`text-xs font-semibold px-2.5 py-1.5 rounded-full transition-all duration-300 ${
                   showSolid
-                    ? "border border-white/20 text-white/80 hover:bg-white/10"
+                    ? "border border-warm-200 text-navy-800 hover:bg-warm-100"
                     : "border border-white/30 text-white hover:bg-white/15"
                 }`}
-                aria-label="Change language"
+                aria-label={t("header.changeLanguage")} aria-expanded={langOpen}
               >
                 {localeLabels[locale]}
               </button>
               {langOpen && (
-                <div className="absolute right-0 top-full mt-2 glass rounded-xl shadow-xl py-1.5 min-w-[120px] z-50 border border-white/20">
+                <div className="absolute right-0 top-full mt-2 glass rounded-xl shadow-xl py-1.5 min-w-[120px] z-50 border border-warm-200">
                   {(["nl", "en", "de"] as Locale[]).map((loc) => (
                     <Link
                       key={loc}
@@ -130,17 +115,17 @@ export function Header() {
 
             <button
               onClick={() => { setMenuOpen(!menuOpen); setLangOpen(false); }}
-              className="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-all duration-300"
-              aria-label="Menu"
+              className="relative w-10 h-10 flex items-center justify-center rounded-full hover:bg-warm-100 transition-all duration-300"
+              aria-label="Menu" aria-expanded={menuOpen} aria-controls="site-menu"
             >
               <div className="w-5 h-5 relative">
-                <span className={`absolute left-0 w-5 h-0.5 bg-white rounded-full transition-all duration-300 ${
+                <span className={`absolute left-0 w-5 h-0.5 bg-navy-800 rounded-full transition-all duration-300 ${
                   menuOpen ? "top-[9px] rotate-45" : "top-1"
                 }`} />
-                <span className={`absolute left-0 top-[9px] w-5 h-0.5 bg-white rounded-full transition-all duration-300 ${
+                <span className={`absolute left-0 top-[9px] w-5 h-0.5 bg-navy-800 rounded-full transition-all duration-300 ${
                   menuOpen ? "opacity-0 scale-0" : "opacity-100"
                 }`} />
-                <span className={`absolute left-0 w-5 h-0.5 bg-white rounded-full transition-all duration-300 ${
+                <span className={`absolute left-0 w-5 h-0.5 bg-navy-800 rounded-full transition-all duration-300 ${
                   menuOpen ? "top-[9px] -rotate-45" : "top-[17px]"
                 }`} />
               </div>
@@ -149,7 +134,7 @@ export function Header() {
         </div>
       </header>
 
-      <div className={`fixed inset-0 z-40 transition-all duration-500 ${
+      <div id="site-menu" inert={!menuOpen} className={`fixed inset-0 z-40 transition-all duration-500 ${
         menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}>
         <div className="absolute inset-0 bg-navy-900/60 backdrop-blur-sm" onClick={() => setMenuOpen(false)} />

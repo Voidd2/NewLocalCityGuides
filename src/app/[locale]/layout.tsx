@@ -33,12 +33,12 @@ export async function generateMetadata({
       ? { google: process.env.GOOGLE_SITE_VERIFICATION }
       : undefined,
     title: {
-      default: String(base.title),
-      template: "%s | YourLocalCityGuide",
+      default: `${String(base.title)} | CityWalkStories`,
+      template: "%s | CityWalkStories",
     },
-    applicationName: "YourLocalCityGuide",
-    creator: "YourLocalCityGuide",
-    publisher: "YourLocalCityGuide",
+    applicationName: "CityWalkStories",
+    creator: "CityWalkStories",
+    publisher: "CityWalkStories",
     keywords: [
       "Leiden",
       "city guide Leiden",
@@ -69,7 +69,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        <link rel="alternate" type="application/rss+xml" title="YourLocalCityGuide Blog" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="CityWalkStories Blog" href="/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
       <body className="flex min-h-screen flex-col bg-navy-900 pb-16 md:pb-0">

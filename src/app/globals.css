@@ -1,28 +1,33 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-orange-500: #FF6B00;
-  --color-orange-600: #E55E00;
-  --color-orange-700: #CC5200;
-  --color-orange-50: #FFF7F0;
-  --color-orange-100: #FFEDD5;
-  --color-navy-800: #1B2A4A;
-  --color-navy-900: #0F1D36;
-  --color-navy-700: #2A3F6B;
-  --color-warm-50: #FEFCF9;
-  --color-warm-100: #FDF8F0;
-  --color-warm-200: #F5EDE0;
-  --color-slate-600: #475569;
+  --color-orange-500: #F28C28;
+  --color-orange-600: #CF6910;
+  --color-orange-700: #9A4908;
+  --color-orange-50: #FFF5E8;
+  --color-orange-100: #FBE5C7;
+  --color-navy-800: #1D2F5F;
+  --color-navy-900: #122143;
+  --color-navy-700: #344B7A;
+  --color-warm-50: #FAF8F4;
+  --color-warm-100: #F3F0E9;
+  --color-warm-200: #E7E2D9;
   --color-green-600: #16A34A;
   --color-red-500: #EF4444;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-hand: Caveat, "Segoe Print", "Comic Sans MS", cursive;
+  --font-display: "Manrope", "Avenir Next", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-hand: var(--font-display);
+  --color-orange-400: #F5AA56;
+  --color-orange-300: #F8C589;
+  --color-navy-950: #0B1730;
+  --color-gray-500: #626B7C;
+  --color-slate-600: #4D596F;
+  --color-teal-600: #3C8D8D;
 }
 
 body {
-  background: #FEFCF9;
-  color: #1a1a1a;
+  background: #FAF8F4;
+  color: #2A3347;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -204,4 +209,20 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* CityWalkStories shared visual foundation. Existing utility names remain compatible. */
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.025em; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), select { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+::selection { background: #F8C589; color: #1D2F5F; }
+.cws-primary { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .75rem; border-radius: 999px; padding: .85rem 1.6rem; background: #F28C28; color: #122143; font-size: .9rem; font-weight: 750; transition: background .2s; }
+.cws-primary:hover { background: #F5AA56; }
+.cws-secondary { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; border: 1px solid currentColor; border-radius: 999px; padding: .85rem 1.6rem; font-size: .9rem; font-weight: 650; }
+.cws-secondary:hover { background: rgb(255 255 255 / .12); }
+/* Amber surfaces need navy foreground for readable labels at small sizes. */
+.bg-orange-500.text-white { color: #122143; }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hidden, [data-animate-scroll] { opacity: 1; transform: none; animation: none; }
 }

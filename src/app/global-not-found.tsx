@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Pagina niet gevonden | YourLocalCityGuide",
+  metadataBase: new URL(SITE_URL),
+  title: "Pagina niet gevonden | CityWalkStories",
   robots: { index: false, follow: false },
 };
 

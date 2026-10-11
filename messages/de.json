@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "YourLocalCityGuide - Entdecke Leiden",
+    "title": "CityWalkStories - Entdecke Leiden",
     "description": "Entdecke die verborgenen Geschichten von Leiden. Spaziere in deinem eigenen Tempo durch Jahrhunderte der Geschichte, mit interaktiven Videos und lokalen Geheimnissen."
   },
   "nav": {
@@ -23,12 +23,13 @@
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
     "subtitle": "Mehr als eine Stadt. Eine Geschichte.",
-    "slogan": "Wandern · Entdecken · Erleben"
+    "slogan": "Erkunde die Stadt. Höre ihre Geschichten.",
+    "changeLanguage": "Sprache ändern"
   },
   "home": {
     "heroTitle": "Entdecke Leiden",
     "heroSubtitle": "in deinem Tempo",
-    "heroDescription": "Geh durch dieselben Strassen, hore die Geschichten und entdecke Leiden wie nie zuvor.",
+    "heroDescription": "Entdecke Leiden mit selbstgeführten Stadtrundgängen, lokalen Geschichten und besonderen Orten. Wähle eine Route, nimm dein Smartphone mit und gehe in deinem Tempo.",
     "getStarted": "Los geht's",
     "exploreNearMe": "In der Nahe entdecken",
     "exploreNearMeDesc": "Schau was um dich herum ist",
@@ -38,7 +39,7 @@
     "openMapDesc": "Frei erkunden",
     "pricePerPerson": "pro Person",
     "priceCompare": "Ein Stadtfuhrer kostet schnell {price} pro Person",
-    "withApp": "Mit YourLocalCityGuide",
+    "withApp": "Mit CityWalkStories",
     "features": {
       "videos": "Interaktive Videos",
       "videosDesc": "Sieh wie es fruher aussah",
@@ -93,8 +94,8 @@
     "soMuchToDiscover": "Es gibt so viel zu entdecken!",
     "moreEllipsis": "Mehr...",
     "comingSoon": "Bald verfugbar",
-    "heroHeadline": "Steh dort, wo es geschah. Erlebe die Geschichte.",
-    "heroTagline": "Entdecke Leiden in deinem Tempo",
+    "heroHeadline": "Erkunde die Stadt. Höre ihre Geschichten.",
+    "heroTagline": "Erkunde die Stadt. Höre ihre Geschichten.",
     "previewEyebrow": "Ein Vorgeschmack auf das Erlebnis",
     "previewVideo": "Erlebe, wie Leiden lebendig wird",
     "previewVideoDesc": "Sieh, wie Geschichten, Video und der echte Ort bei deinem Spaziergang zusammenkommen.",
@@ -171,7 +172,7 @@
     "tip3": "Leiden Centraal ist gut an den Rest der Niederlande angebunden. Vom Bahnhof aus sind es 10 Minuten zu Fuss ins Zentrum.",
     "tip4": "Die meisten Sehenswurdigkeiten sind kostenlos zuganglich. Nur Museen erheben Eintritt.",
     "faqTitle": "Haufig gestellte Fragen",
-    "faq1Q": "Wie funktioniert YourLocalCityGuide?",
+    "faq1Q": "Wie funktioniert CityWalkStories?",
     "faq1A": "Nach dem Kauf des Leiden-Pakets erhaltst du Zugang zu allen Routen und Standorten. An jedem Standort kannst du interaktive Videos ansehen, Geschichten lesen und die Stadt in deinem eigenen Tempo entdecken.",
     "faq2Q": "Wie lange habe ich Zugang?",
     "faq2A": "Du hast lebenslangen Zugang zum Leiden-Paket. Alle zukunftigen Routen und Updates sind enthalten.",
@@ -182,11 +183,16 @@
     "sameStreets": "Dieselben Strassen.",
     "aRicherStory": "Eine reichere Geschichte.",
     "ctaDesc": "Ab 5,99 pro Person. Alle Routen, Videos und versteckte Juwelen. In deinem Tempo.",
-    "ctaButton": "Preise ansehen"
+    "ctaButton": "Preise ansehen",
+    "startTour": "Tour starten",
+    "heroImageAlt": "Grachten und historische Fassaden im Zentrum von Leiden",
+    "heroPhotoLabel": "Hier beginnen Geschichten",
+    "heroPhotoTitle": "Entlang der Leidener Grachten",
+    "heroPhotoLink": "Leiden entdecken"
   },
   "discover": {
-    "title": "Entdecke Leiden",
-    "subtitle": "Versteckte Juwelen, Markte und Veranstaltungen",
+    "title": "Entdecke Leiden hinter den Fassaden",
+    "subtitle": "Von Höfen und Museen bis zu kleinen Geschäften und dem Markt. Finde einen Ort für deinen nächsten Spaziergang.",
     "featured": "Empfohlen",
     "results": "Ergebnisse",
     "noResults": "Keine Orte in dieser Kategorie gefunden.",
@@ -368,7 +374,7 @@
     "pendingVerification": "Wird nach Verifizierung erganzt"
   },
   "about": {
-    "title": "Uber YourLocalCityGuide",
+    "title": "Uber CityWalkStories",
     "whyTitle": "Warum kein Stadtfuhrer?",
     "whyPoint1": "Ein Stadtfuhrer kostet schnell {price} pro Person",
     "whyPoint2": "Du kannst nicht anhalten wann du willst",
@@ -392,7 +398,7 @@
     "tip3": "Leiden Centraal ist gut an den Rest der Niederlande angebunden. Vom Bahnhof aus sind es 10 Minuten zu Fuss ins Zentrum.",
     "tip4": "Die meisten Sehenswurdigkeiten sind kostenlos zuganglich. Nur Museen erheben Eintritt.",
     "faqTitle": "Haufig gestellte Fragen",
-    "faq1Q": "Wie funktioniert YourLocalCityGuide?",
+    "faq1Q": "Wie funktioniert CityWalkStories?",
     "faq1A": "Nach dem Kauf des Leiden-Pakets erhaltst du Zugang zu allen Routen und Standorten. An jedem Standort kannst du interaktive Videos ansehen, Geschichten lesen und die Stadt in deinem eigenen Tempo entdecken.",
     "faq2Q": "Wie lange habe ich Zugang?",
     "faq2A": "Du hast lebenslangen Zugang zum Leiden-Paket. Alle zukunftigen Routen und Updates sind enthalten.",
@@ -476,13 +482,14 @@
     "discover": "Entdecken",
     "cityGuide": "Leiden Reiseführer",
     "tours": "Leiden Touren",
-    "blog": "Blog"
+    "blog": "Blog",
+    "brandDescription": "Selbstgeführte Stadtrundgänge und lokale Geschichten. Entdecke Leiden in deinem Tempo."
   },
   "privacyPage": {
     "title": "Datenschutzrichtlinie",
-    "intro": "YourLocalCityGuide respektiert deine Privatsphäre. Hier steht, welche Daten auf deinem Gerät verwendet werden und wann externe Dienste kontaktiert werden.",
+    "intro": "CityWalkStories respektiert deine Privatsphäre. Hier steht, welche Daten auf deinem Gerät verwendet werden und wann externe Dienste kontaktiert werden.",
     "controllerTitle": "Wer ist verantwortlich?",
-    "controllerText": "YourLocalCityGuide betreibt diese Website und entscheidet, wofür personenbezogene Daten verwendet werden. Der endgültige Firmenname, die Geschäftsanschrift und die Registrierungsdaten werden vor dem kostenpflichtigen Start ergänzt.",
+    "controllerText": "CityWalkStories betreibt diese Website und entscheidet, wofür personenbezogene Daten verwendet werden. Der endgültige Firmenname, die Geschäftsanschrift und die Registrierungsdaten werden vor dem kostenpflichtigen Start ergänzt.",
     "storedTitle": "Lokale Daten auf deinem Gerät",
     "storedAccount": "Der Demo-Anmeldestatus wird lokal in deinem Browser gespeichert.",
     "storedRoutes": "Gespeicherte Routen und besuchte Stationen werden lokal gespeichert.",
@@ -526,14 +533,14 @@
   },
   "termsPage": {
     "title": "Nutzungsbedingungen",
-    "intro": "Diese Bedingungen beschreiben die geplante Nutzung von YourLocalCityGuide und werden vor dem kostenpflichtigen Start endgültig festgelegt.",
+    "intro": "Diese Bedingungen beschreiben die geplante Nutzung von CityWalkStories und werden vor dem kostenpflichtigen Start endgültig festgelegt.",
     "launchNotice": "Der Checkout ist noch nicht aktiv. Der endgültige Anbieter, Preis, Zugangszeitraum, die Zahlungsmethode und das Stornierungsverfahren werden vor jedem Verkauf klar angezeigt. Diese Seite ist daher noch kein aktives Verkaufsangebot.",
     "accessTitle": "Zugang und Nutzung",
     "accessPersonal": "Der Zugang ist persönlich und darf nicht geteilt oder weiterverkauft werden.",
     "accessAvailability": "Funktionen können sich vor dem Kauf ändern. Die Produktinformationen und Bestätigung zum Kaufzeitpunkt bestimmen den Inhalt deines Pakets.",
     "accessRequirements": "Du benötigst ein kompatibles Telefon oder einen Browser und teilweise Internet- und GPS-Zugang. Offline-Einschränkungen werden in der App angezeigt.",
     "contentTitle": "Inhalte und geistiges Eigentum",
-    "contentLicence": "Du erhältst eine persönliche, nicht ausschließliche Lizenz zur privaten Nutzung. Rechte an Texten, Routen, Bildern und Videos verbleiben bei YourLocalCityGuide oder den jeweiligen Rechteinhabern.",
+    "contentLicence": "Du erhältst eine persönliche, nicht ausschließliche Lizenz zur privaten Nutzung. Rechte an Texten, Routen, Bildern und Videos verbleiben bei CityWalkStories oder den jeweiligen Rechteinhabern.",
     "contentNoCopy": "Du darfst Inhalte nicht kopieren, verbreiten, automatisiert auslesen oder Zugangssperren umgehen, außer soweit dies gesetzlich ausdrücklich erlaubt ist.",
     "contentAi": "KI-generierte Bilder werden als Illustrationen gekennzeichnet. Fakten und historische Aussagen werden soweit möglich geprüft, können aber später verbessert werden.",
     "purchaseTitle": "Kauf und digitale Inhalte",
@@ -698,18 +705,20 @@
     "loginButton": "Anmelden"
   },
   "login": {
-    "title": "Anmelden",
-    "subtitle": "Sieh dein gekauftes Stadtpaket ein",
+    "title": "Willkommen zurück",
+    "subtitle": "Melde dich an, um deine Touren, Routen und gespeicherten Fortschritte zu öffnen.",
     "email": "E-Mail-Adresse",
     "emailPlaceholder": "deine@email.com",
     "password": "Passwort",
     "passwordPlaceholder": "Passwort",
     "loginButton": "Anmelden",
-    "errorMessage": "Falsche Anmeldedaten. Verwende das Testkonto unten.",
+    "errorMessage": "Anmeldung fehlgeschlagen. Prüfe deine E-Mail-Adresse und dein Passwort.",
     "testAccounts": "Testkonten (fur Demo)",
     "paidAccount": "Bezahltes Konto (voller Zugang):",
     "freeAccount": "Kostenloses Konto (begrenzter Zugang):",
-    "fillIn": "Ausfullen"
+    "fillIn": "Ausfullen",
+    "brandIntro": "Deine nächste Geschichte beginnt in Leiden.",
+    "viewRoutes": "Routen ansehen"
   },
   "walker": {
     "loadingVideo": "Video wird geladen...",
@@ -890,7 +899,12 @@
     "locationUnavailable": "Standort nicht verfugbar; die Route wird ohne GPS optimiert."
   },
   "entityPage": {
-    "sections": { "museums": "Museen", "attractions": "Historische Orte", "markets": "Märkte", "local": "Lokale Favoriten" },
+    "sections": {
+      "museums": "Museen",
+      "attractions": "Historische Orte",
+      "markets": "Märkte",
+      "local": "Lokale Favoriten"
+    },
     "visitDuration": "Besuchsdauer",
     "familyFriendly": "Für Familien geeignet",
     "freeIntroduction": "Kostenlose Einführung",

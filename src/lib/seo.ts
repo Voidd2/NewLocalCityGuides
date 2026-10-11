@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://newlocalcityguide-fawn.vercel.app"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://newlocalcityguides.fancy-salad-1d1b.workers.dev"
 ).replace(/\/$/, "");
 
-export const SITE_NAME = "YourLocalCityGuide";
-export const DEFAULT_IMAGE = "/images/heroes/10001-leiden-canal-historic-buildings.jpg";
+export const SITE_NAME = "CityWalkStories";
+export const DEFAULT_IMAGE = "/opengraph-image";
 
 type PageKey =
   | "home"
@@ -32,14 +32,14 @@ const pageCopy: Record<Locale, Record<PageKey, { title: string; description: str
     discover: { title: "Musea en lokale plekken in Leiden", description: "Ontdek musea, winkels, markten, restaurants en verborgen parels in Leiden." },
     activities: { title: "Activiteiten en bezienswaardigheden in Leiden", description: "Bekijk activiteiten, musea, markten en bezienswaardigheden voor een dag in Leiden." },
     help: { title: "Hulp bij activiteiten in Leiden", description: "Krijg hulp bij het plannen van activiteiten en een bezoek aan Leiden." },
-    pricing: { title: "Prijzen voor de Leiden stadsgids", description: "Bekijk de prijzen en inhoud van het Leiden-pakket van YourLocalCityGuide." },
-    login: { title: "Inloggen", description: "Log in op YourLocalCityGuide om je routes en stadspakket te openen." },
-    account: { title: "Mijn account", description: "Beheer je YourLocalCityGuide-account en toegang." },
+    pricing: { title: "Prijzen voor de Leiden stadsgids", description: "Bekijk de prijzen en inhoud van het Leiden-pakket van CityWalkStories." },
+    login: { title: "Inloggen", description: "Log in op CityWalkStories om je routes en stadspakket te openen." },
+    account: { title: "Mijn account", description: "Beheer je CityWalkStories-account en toegang." },
     dashboard: { title: "Dashboard", description: "Open je routes, voortgang en stadspakket." },
     myRoutes: { title: "Mijn routes", description: "Bekijk en vervolg je opgeslagen routes door Leiden." },
     customRoute: { title: "Maak je eigen route door Leiden", description: "Kies locaties en stel een persoonlijke route door Leiden samen." },
-    privacy: { title: "Privacybeleid", description: "Lees hoe YourLocalCityGuide met persoonsgegevens omgaat." },
-    terms: { title: "Gebruiksvoorwaarden", description: "Lees de gebruiksvoorwaarden van YourLocalCityGuide." },
+    privacy: { title: "Privacybeleid", description: "Lees hoe CityWalkStories met persoonsgegevens omgaat." },
+    terms: { title: "Gebruiksvoorwaarden", description: "Lees de gebruiksvoorwaarden van CityWalkStories." },
   },
   en: {
     home: { title: "Discover Leiden at your own pace", description: "Self-guided city tours through Leiden with routes, interactive stories, videos and local tips. Explore the city at your own pace." },
@@ -48,14 +48,14 @@ const pageCopy: Record<Locale, Record<PageKey, { title: string; description: str
     discover: { title: "Museums and local places in Leiden", description: "Discover museums, shops, markets, restaurants and hidden gems in Leiden." },
     activities: { title: "Things to do in Leiden", description: "Find activities, museums, markets and sights for a day in Leiden." },
     help: { title: "Help planning activities in Leiden", description: "Get help planning activities and your visit to Leiden." },
-    pricing: { title: "Leiden city guide pricing", description: "View the price and contents of the YourLocalCityGuide Leiden package." },
-    login: { title: "Log in", description: "Log in to YourLocalCityGuide to access your routes and city package." },
-    account: { title: "My account", description: "Manage your YourLocalCityGuide account and access." },
+    pricing: { title: "Leiden city guide pricing", description: "View the price and contents of the CityWalkStories Leiden package." },
+    login: { title: "Log in", description: "Log in to CityWalkStories to access your routes and city package." },
+    account: { title: "My account", description: "Manage your CityWalkStories account and access." },
     dashboard: { title: "Dashboard", description: "Open your routes, progress and city package." },
     myRoutes: { title: "My routes", description: "View and continue your saved routes through Leiden." },
     customRoute: { title: "Build your own Leiden route", description: "Choose locations and create a personal route through Leiden." },
-    privacy: { title: "Privacy policy", description: "Learn how YourLocalCityGuide handles personal data." },
-    terms: { title: "Terms of use", description: "Read the YourLocalCityGuide terms of use." },
+    privacy: { title: "Privacy policy", description: "Learn how CityWalkStories handles personal data." },
+    terms: { title: "Terms of use", description: "Read the CityWalkStories terms of use." },
   },
   de: {
     home: { title: "Leiden im eigenen Tempo entdecken", description: "Selbstgeführte Stadttouren durch Leiden mit Routen, interaktiven Geschichten, Videos und lokalen Tipps." },
@@ -64,14 +64,14 @@ const pageCopy: Record<Locale, Record<PageKey, { title: string; description: str
     discover: { title: "Museen und lokale Orte in Leiden", description: "Entdecke Museen, Geschäfte, Märkte, Restaurants und versteckte Schätze in Leiden." },
     activities: { title: "Aktivitäten und Sehenswürdigkeiten in Leiden", description: "Finde Aktivitäten, Museen, Märkte und Sehenswürdigkeiten für einen Tag in Leiden." },
     help: { title: "Hilfe bei Aktivitäten in Leiden", description: "Erhalte Hilfe bei der Planung von Aktivitäten und deinem Besuch in Leiden." },
-    pricing: { title: "Preise für den Leiden-Stadtführer", description: "Preise und Inhalte des Leiden-Pakets von YourLocalCityGuide." },
+    pricing: { title: "Preise für den Leiden-Stadtführer", description: "Preise und Inhalte des Leiden-Pakets von CityWalkStories." },
     login: { title: "Anmelden", description: "Melde dich an, um deine Routen und dein Stadtpaket zu öffnen." },
-    account: { title: "Mein Konto", description: "Verwalte dein YourLocalCityGuide-Konto und deinen Zugang." },
+    account: { title: "Mein Konto", description: "Verwalte dein CityWalkStories-Konto und deinen Zugang." },
     dashboard: { title: "Übersicht", description: "Öffne deine Routen, deinen Fortschritt und dein Stadtpaket." },
     myRoutes: { title: "Meine Routen", description: "Sieh dir deine gespeicherten Routen durch Leiden an." },
     customRoute: { title: "Eigene Leiden-Route erstellen", description: "Wähle Orte und erstelle eine persönliche Route durch Leiden." },
-    privacy: { title: "Datenschutzerklärung", description: "Erfahre, wie YourLocalCityGuide personenbezogene Daten verarbeitet." },
-    terms: { title: "Nutzungsbedingungen", description: "Lies die Nutzungsbedingungen von YourLocalCityGuide." },
+    privacy: { title: "Datenschutzerklärung", description: "Erfahre, wie CityWalkStories personenbezogene Daten verarbeitet." },
+    terms: { title: "Nutzungsbedingungen", description: "Lies die Nutzungsbedingungen von CityWalkStories." },
   },
 };
 

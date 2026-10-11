@@ -1,12 +1,14 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { routes } from "@/data/routes";
+import { publicRoutePreviews } from "@/data/public-route-seo";
+import type { Locale } from "@/i18n/config";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import Image from "next/image";
 
 export function PopularRoutes() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("home");
   const tRoutes = useTranslations("routes");
 
@@ -25,28 +27,28 @@ export function PopularRoutes() {
           </div>
         </AnimateOnScroll>
 
-        <div className="space-y-3">
-          {routes.map((route, i) => (
-            <AnimateOnScroll key={route.id} delay={i * 120}>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {publicRoutePreviews.map((route, i) => (
+            <AnimateOnScroll key={route.slug} delay={i * 120}>
               <Link
-                href="/routes"
+                href={`/routes/${route.slug}`}
                 className="flex items-center gap-4 bg-white rounded-2xl border border-gray-100 p-3.5 hover-lift hover-zoom-img group shadow-sm"
               >
-                <div className="relative w-16 h-16 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
+                <div className="relative w-24 h-24 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
                   {route.image && (
-                    <Image src={route.image} alt={route.title} fill sizes="64px" className="w-full h-full object-cover" />
+                    <Image src={route.image} alt={route.copy[locale].title} fill sizes="96px" className="w-full h-full object-cover" />
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-navy-800 text-sm">{route.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="font-bold text-navy-800 text-sm">{route.copy[locale].title}</h3>
                     {route.popular && (
                       <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-orange-500 text-white uppercase shadow-sm">
                         {tRoutes("popular")}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs text-gray-500 mt-0.5">{route.subtitle}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{route.copy[locale].subtitle}</p>
                   <p className="text-[11px] text-gray-400 mt-1">{route.distance} - {route.type === "walking" ? tRoutes("walking") : tRoutes("cycling")}</p>
                 </div>
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 group-hover:text-orange-500 group-hover:translate-x-1 transition-all">

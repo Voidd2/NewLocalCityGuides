@@ -2,9 +2,10 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
+import { locations } from "@/data/locations";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { publicPathForSpot } from "@/data/public-entities";
+import { publicEntities, publicEntityPath, publicPathForSpot } from "@/data/public-entities";
 import {
   getVisibleSpots,
   getFeaturedSpots,
@@ -207,20 +208,7 @@ function ActivityCard({ activity, t }: { activity: Activity; t: (key: string) =>
       rel="noopener noreferrer"
       className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-        {activity.image ? (
-          <Image src={activity.image} alt={activity.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
-              <rect x="2" y="2" width="20" height="20" rx="3" />
-              <circle cx="8" cy="8" r="2" />
-              <path d="M2 16l5-5 3 3 4-4 8 8" />
-            </svg>
-            <p className="text-[10px] text-white/20 font-medium px-4 text-center">--HIER IMAGE VAN {activity.title}--</p>
-          </div>
-        )}
-      </div>
+      {activity.image && <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={activity.image} alt={activity.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" /></div>}
 
       <div className="p-4">
         <h3 className="font-bold text-navy-800 text-base leading-tight mb-2">
@@ -248,34 +236,35 @@ function ActivityCard({ activity, t }: { activity: Activity; t: (key: string) =>
   );
 }
 
+function spotImage(spot: LocalSpot) {
+  const entityImage = publicEntities.find(entity => publicEntityPath(entity) === publicPathForSpot(spot))?.image;
+  const namedPlace = locations.find(place =>
+    ["L001", "L003", "L006", "L010"].includes(place.id) &&
+    spot.name.toLowerCase().includes(place.name.toLowerCase().replace(" van leiden", "").replace("de burcht", "burcht").replace("hortus botanicus", "hortus")),
+  );
+  return spot.image || entityImage || namedPlace?.image;
+}
+
 function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
+  const photo = spotImage(spot);
+  const t = useTranslations("discover");
 
   return (
     <Link href={publicPathForSpot(spot)} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-        {spot.image ? (
-          <Image src={spot.image} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
-              <rect x="2" y="2" width="20" height="20" rx="3" />
-              <circle cx="8" cy="8" r="2" />
-              <path d="M2 16l5-5 3 3 4-4 8 8" />
-            </svg>
-            <p className="text-[10px] text-white/20 font-medium px-4 text-center">--HIER IMAGE VAN {spot.name}--</p>
-          </div>
-        )}
-      </div>
+      {photo && <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={photo} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>}
 
       <div className="p-4">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-orange-700">{SPOT_CATEGORIES.find(cat => cat.key === spot.category)?.label[lang]}</p>
         <h3 className="font-bold text-navy-800 text-base leading-tight mb-1">
           {spot.name}
         </h3>
 
         <p className="text-sm text-gray-500 line-clamp-2 mb-3">{desc}</p>
 
+        <p className="mb-3 text-xs text-gray-500">{spot.address}</p>
+        <span className="mb-3 inline-block text-sm font-bold text-orange-700">{t("moreInfo")} →</span>
         {spot.priceRange && (
           <p className="text-sm font-bold text-navy-800 mb-3">
             &euro;{spot.priceRange}
@@ -308,23 +297,8 @@ function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t:
 
   return (
     <Link href={publicPathForSpot(spot)} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
-      <div className="aspect-[16/9] bg-gray-800 overflow-hidden relative">
-        {spot.image ? (
-          <Image src={spot.image} alt={spot.name} fill sizes="280px" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-700 to-navy-900 flex flex-col items-center justify-center gap-1">
-            <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-white/10" stroke="currentColor" strokeWidth="1">
-              <rect x="2" y="2" width="20" height="20" rx="3" />
-              <circle cx="8" cy="8" r="2" />
-              <path d="M2 16l5-5 3 3 4-4 8 8" />
-            </svg>
-            <p className="text-[9px] text-white/15 font-medium px-3 text-center">--HIER IMAGE VAN {spot.name}--</p>
-          </div>
-        )}
-        <span className="absolute top-2 left-2 text-[10px] font-semibold bg-orange-500 text-white px-2 py-0.5 rounded-full">
-          {catLabel}
-        </span>
-      </div>
+      {spotImage(spot) && <div className="aspect-[16/9] overflow-hidden relative"><Image src={spotImage(spot)!} alt={spot.name} fill sizes="280px" className="object-cover" /></div>}
+      <span className="mx-4 mt-4 inline-block rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-navy-900">{catLabel}</span>
       <div className="p-3">
         <h3 className="font-bold text-sm leading-tight line-clamp-1">{spot.name}</h3>
         <p className="text-[11px] text-white/60 mt-1 line-clamp-2">{desc}</p>
@@ -394,7 +368,8 @@ export function OntdekPage() {
   return (
     <div>
       <section className="relative overflow-hidden">
-        <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-8 pb-10">
+        <Image src="/images/heroes/10008-leiden-canal-panorama.jpg" alt={tHome("heroImageAlt")} fill priority sizes="100vw" className="object-cover" />
+        <div className="relative bg-navy-900/80 text-white px-5 py-12 md:py-20">
           <div className="max-w-7xl mx-auto">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">{t("title")}</h1>
             <p className="text-white/70 text-sm">{t("subtitle")}</p>
@@ -403,8 +378,8 @@ export function OntdekPage() {
       </section>
 
       {featuredSpots.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 -mt-5 mb-6 relative z-10">
-          <h2 className="text-xs font-semibold text-white/80 uppercase tracking-wider mb-3">
+        <section className="max-w-7xl mx-auto px-4 mt-8 mb-8 relative z-10">
+          <h2 className="text-xs font-semibold text-navy-800 uppercase tracking-wider mb-3">
             {t("featured")}
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
@@ -424,6 +399,7 @@ export function OntdekPage() {
               <button
                 key={cat.key}
                 onClick={() => setActiveCategory(cat.key)}
+                aria-pressed={isActive}
                 className={`shrink-0 flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full transition-colors ${
                   isActive
                     ? "bg-navy-800 text-white"
@@ -448,7 +424,7 @@ export function OntdekPage() {
             <p className="text-sm text-gray-400">{t("noResults")}</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
             {filtered.map((spot) => (
               <SpotCard key={spot.id} spot={spot} locale={locale} />
             ))}
@@ -465,6 +441,7 @@ export function OntdekPage() {
               <button
                 key={cat.key}
                 onClick={() => setActiveActivityCat(cat.key)}
+                aria-pressed={activeActivityCat === cat.key}
                 className={`shrink-0 text-xs font-semibold px-4 py-2 rounded-full transition-colors ${
                   activeActivityCat === cat.key
                     ? "bg-navy-800 text-white"

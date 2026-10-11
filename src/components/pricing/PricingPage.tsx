@@ -42,7 +42,7 @@ export function PricingPage() {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-[1fr,380px] gap-8">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_380px] gap-8">
           <div>
             <h1 className="text-2xl font-bold text-navy-800 mb-1">{t("completeAdventure")}</h1>
             <p className="text-sm text-gray-500 mb-6">{t("directAccess")}</p>
@@ -83,17 +83,19 @@ export function PricingPage() {
               </div>
               <p className="text-xs text-gray-500 mb-4 ml-8">{t("extraDevicesDesc")}</p>
 
-              <div className="flex items-center justify-between ml-8">
+              <div className="flex flex-wrap gap-4 items-center justify-between sm:ml-8">
                 <div className="flex items-center gap-4">
                   <button
                     onClick={() => setExtraDevices(Math.max(0, extraDevices - 1))}
-                    className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-50"
+                    aria-label={t("extraDevicesLabel") + " −1"}
+                    className="w-11 h-11 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-50"
                   >
                     -
                   </button>
                   <span className="text-xl font-bold text-navy-800 w-8 text-center">{extraDevices}</span>
                   <button
                     onClick={() => setExtraDevices(extraDevices + 1)}
+                    aria-label={t("extraDevicesLabel") + " +1"}
                     className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-50"
                   >
                     +
@@ -159,7 +161,7 @@ export function PricingPage() {
                 </span>
               </div>
 
-              <div className="flex items-center justify-center gap-3 mt-5 pt-4 border-t border-gray-100">
+              <div className="flex flex-wrap items-center justify-center gap-3 mt-5 pt-4 border-t border-gray-100">
                 {["VISA", "Mastercard", "Apple Pay", "Google Pay", t("andMore")].map((method) => (
                   <div key={method} className="bg-gray-100 rounded px-2 py-1 text-[10px] text-gray-500 font-medium">
                     {method}

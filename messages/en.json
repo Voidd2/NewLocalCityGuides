@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "YourLocalCityGuide - Discover Leiden",
+    "title": "CityWalkStories - Discover Leiden",
     "description": "Discover the hidden stories of Leiden. Walk at your own pace through centuries of history, with interactive videos and local secrets."
   },
   "nav": {
@@ -23,12 +23,13 @@
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
     "subtitle": "More than a city. A story.",
-    "slogan": "Walk · Discover · Experience"
+    "slogan": "Walk the city. Hear the story.",
+    "changeLanguage": "Change language"
   },
   "home": {
     "heroTitle": "Discover Leiden",
     "heroSubtitle": "at your own pace",
-    "heroDescription": "Walk the same streets, hear the stories and discover Leiden like never before.",
+    "heroDescription": "Explore Leiden through self-guided city walks, local stories and remarkable places. Choose a route, bring your phone and walk at your own pace.",
     "getStarted": "Get started",
     "exploreNearMe": "Explore near me",
     "exploreNearMeDesc": "See what's around you",
@@ -38,7 +39,7 @@
     "openMapDesc": "Explore freely",
     "pricePerPerson": "per person",
     "priceCompare": "A city tour guide costs around {price} per person",
-    "withApp": "With YourLocalCityGuide",
+    "withApp": "With CityWalkStories",
     "features": {
       "videos": "Interactive videos",
       "videosDesc": "See how it looked in the past",
@@ -93,8 +94,8 @@
     "soMuchToDiscover": "There's so much to discover!",
     "moreEllipsis": "More...",
     "comingSoon": "Coming soon",
-    "heroHeadline": "Stand where it happened. See the story come alive.",
-    "heroTagline": "Discover Leiden at your own pace",
+    "heroHeadline": "Walk the city. Hear the story.",
+    "heroTagline": "Walk the city. Hear the story.",
     "previewEyebrow": "A taste of the experience",
     "previewVideo": "See Leiden come alive",
     "previewVideoDesc": "See how stories, video and the real location come together during your walk.",
@@ -171,7 +172,7 @@
     "tip3": "Leiden Centraal station is well connected to the rest of the Netherlands. From the station it's a 10-minute walk to the centre.",
     "tip4": "Most attractions are free to visit. Only museums charge admission.",
     "faqTitle": "Frequently asked questions",
-    "faq1Q": "How does YourLocalCityGuide work?",
+    "faq1Q": "How does CityWalkStories work?",
     "faq1A": "After purchasing the Leiden package, you get access to all routes and locations. At each location you can watch interactive videos, read stories and discover the city at your own pace.",
     "faq2Q": "How long do I have access?",
     "faq2A": "You have lifetime access to the Leiden package. All future routes and updates are included.",
@@ -182,11 +183,16 @@
     "sameStreets": "Same streets.",
     "aRicherStory": "A richer story.",
     "ctaDesc": "From 5.99 per person. All routes, videos and hidden gems. At your pace.",
-    "ctaButton": "View pricing"
+    "ctaButton": "View pricing",
+    "startTour": "Start your tour",
+    "heroImageAlt": "Canals and historic facades in the centre of Leiden",
+    "heroPhotoLabel": "Stories start here",
+    "heroPhotoTitle": "Along the canals of Leiden",
+    "heroPhotoLink": "Discover Leiden"
   },
   "discover": {
-    "title": "Discover Leiden",
-    "subtitle": "Hidden gems, markets and events",
+    "title": "Discover the stories behind Leiden",
+    "subtitle": "From courtyards and museums to independent shops and the market. Find a place for your next walk.",
     "featured": "Featured",
     "results": "results",
     "noResults": "No spots found in this category.",
@@ -368,7 +374,7 @@
     "pendingVerification": "To be added after verification"
   },
   "about": {
-    "title": "About YourLocalCityGuide",
+    "title": "About CityWalkStories",
     "whyTitle": "Why not a tour guide?",
     "whyPoint1": "A tour guide costs around {price} per person",
     "whyPoint2": "You can't stop when you want to",
@@ -392,7 +398,7 @@
     "tip3": "Leiden Centraal station is well connected to the rest of the Netherlands. From the station it's a 10-minute walk to the centre.",
     "tip4": "Most attractions are free to visit. Only museums charge admission.",
     "faqTitle": "Frequently asked questions",
-    "faq1Q": "How does YourLocalCityGuide work?",
+    "faq1Q": "How does CityWalkStories work?",
     "faq1A": "After purchasing the Leiden package, you get access to all routes and locations. At each location you can watch interactive videos, read stories and discover the city at your own pace.",
     "faq2Q": "How long do I have access?",
     "faq2A": "You have lifetime access to the Leiden package. All future routes and updates are included.",
@@ -476,13 +482,14 @@
     "discover": "Discover",
     "cityGuide": "Leiden city guide",
     "tours": "Leiden tours",
-    "blog": "Blog"
+    "blog": "Blog",
+    "brandDescription": "Self-guided city walks and local stories. Explore Leiden, at your own pace."
   },
   "privacyPage": {
     "title": "Privacy policy",
-    "intro": "YourLocalCityGuide respects your privacy. This page explains which data is used on your device and when external services are contacted.",
+    "intro": "CityWalkStories respects your privacy. This page explains which data is used on your device and when external services are contacted.",
     "controllerTitle": "Who is responsible?",
-    "controllerText": "YourLocalCityGuide operates this website and decides why personal data is used. The final legal name, business address and registration details will be added before the paid launch.",
+    "controllerText": "CityWalkStories operates this website and decides why personal data is used. The final legal name, business address and registration details will be added before the paid launch.",
     "storedTitle": "Local data on your device",
     "storedAccount": "The demo sign-in status is stored locally in your browser.",
     "storedRoutes": "Saved routes and visited stops are stored locally.",
@@ -526,14 +533,14 @@
   },
   "termsPage": {
     "title": "Terms of use",
-    "intro": "These terms describe the planned use of YourLocalCityGuide and will be finalised before the paid launch.",
+    "intro": "These terms describe the planned use of CityWalkStories and will be finalised before the paid launch.",
     "launchNotice": "Checkout is not active yet. The final provider, price, access period, payment method and cancellation process will be shown clearly before any sale. This page is therefore not an active sales offer.",
     "accessTitle": "Access and use",
     "accessPersonal": "Access is personal and may not be shared or resold.",
     "accessAvailability": "Features may change before purchase. The product information and confirmation at the time of purchase determine what your package includes.",
     "accessRequirements": "You need a compatible phone or browser and sometimes internet and GPS access. Offline limitations are shown in the app.",
     "contentTitle": "Content and intellectual property",
-    "contentLicence": "You receive a personal, non-exclusive licence for private use. Rights in text, routes, images and videos remain with YourLocalCityGuide or the relevant rights holder.",
+    "contentLicence": "You receive a personal, non-exclusive licence for private use. Rights in text, routes, images and videos remain with CityWalkStories or the relevant rights holder.",
     "contentNoCopy": "You may not copy, distribute, scrape or bypass access controls, except where expressly permitted by law.",
     "contentAi": "AI-generated images are labelled as illustrations. Facts and historical claims are checked where possible but may be improved later.",
     "purchaseTitle": "Purchase and digital content",
@@ -698,18 +705,20 @@
     "loginButton": "Log in"
   },
   "login": {
-    "title": "Log in",
-    "subtitle": "View your purchased city package",
+    "title": "Welcome back",
+    "subtitle": "Log in to open your tours, routes and saved progress.",
     "email": "Email address",
     "emailPlaceholder": "your@email.com",
     "password": "Password",
     "passwordPlaceholder": "Password",
     "loginButton": "Log in",
-    "errorMessage": "Incorrect credentials. Use the test account below.",
+    "errorMessage": "Unable to log in. Check your email address and password.",
     "testAccounts": "Test accounts (for demo)",
     "paidAccount": "Paid account (full access):",
     "freeAccount": "Free account (limited access):",
-    "fillIn": "Fill in"
+    "fillIn": "Fill in",
+    "brandIntro": "Your next story starts in Leiden.",
+    "viewRoutes": "View routes"
   },
   "walker": {
     "loadingVideo": "Loading video...",
@@ -890,7 +899,12 @@
     "locationUnavailable": "Location is unavailable; the route will be optimised without GPS."
   },
   "entityPage": {
-    "sections": { "museums": "Museums", "attractions": "Historic places", "markets": "Markets", "local": "Local favourites" },
+    "sections": {
+      "museums": "Museums",
+      "attractions": "Historic places",
+      "markets": "Markets",
+      "local": "Local favourites"
+    },
     "visitDuration": "Visit duration",
     "familyFriendly": "Family-friendly",
     "freeIntroduction": "Free introduction",

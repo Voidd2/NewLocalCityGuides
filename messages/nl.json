@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "YourLocalCityGuide - Ontdek Leiden",
+    "title": "CityWalkStories - Ontdek Leiden",
     "description": "Ontdek de verborgen verhalen van Leiden. Wandel op je eigen tempo door eeuwen geschiedenis, met interactieve video's en lokale geheimen."
   },
   "nav": {
@@ -23,12 +23,13 @@
   "header": {
     "tagline": "REAL PLACES. REAL STORIES.",
     "subtitle": "Meer dan een stad. Een verhaal.",
-    "slogan": "Wandelen · Ontdekken · Beleven"
+    "slogan": "Loop de stad. Hoor het verhaal.",
+    "changeLanguage": "Taal wijzigen"
   },
   "home": {
     "heroTitle": "Ontdek Leiden",
     "heroSubtitle": "op jouw tempo",
-    "heroDescription": "Loop door dezelfde straten, hoor de verhalen en ontdek Leiden zoals nooit tevoren.",
+    "heroDescription": "Ontdek Leiden met zelfstandige stadswandelingen, lokale verhalen en bijzondere plekken. Kies je route, neem je telefoon mee en wandel op jouw tempo.",
     "getStarted": "Aan de slag",
     "exploreNearMe": "Ontdek dichtbij",
     "exploreNearMeDesc": "Bekijk wat er om je heen is",
@@ -38,7 +39,7 @@
     "openMapDesc": "Verken vrij",
     "pricePerPerson": "per persoon",
     "priceCompare": "Een stadsgids kost al snel {price} per persoon",
-    "withApp": "Met YourLocalCityGuide",
+    "withApp": "Met CityWalkStories",
     "features": {
       "videos": "Interactieve video's",
       "videosDesc": "Zie hoe het er vroeger uitzag",
@@ -93,8 +94,8 @@
     "soMuchToDiscover": "Er valt zoveel te ontdekken!",
     "moreEllipsis": "Meer...",
     "comingSoon": "Binnenkort beschikbaar",
-    "heroHeadline": "Sta waar het gebeurde. Beleef het verhaal.",
-    "heroTagline": "Ontdek Leiden op jouw tempo",
+    "heroHeadline": "Loop de stad. Hoor het verhaal.",
+    "heroTagline": "Loop de stad. Hoor het verhaal.",
     "previewEyebrow": "Een voorproefje van de ervaring",
     "previewVideo": "Zie Leiden tot leven komen",
     "previewVideoDesc": "Bekijk hoe verhalen, video en de echte locatie samenkomen tijdens je wandeling.",
@@ -171,7 +172,7 @@
     "tip3": "Leiden Centraal station is goed verbonden met de rest van Nederland. Vanaf het station loop je in 10 minuten naar het centrum.",
     "tip4": "De meeste bezienswaardigheden zijn gratis toegankelijk. Alleen musea vragen entree.",
     "faqTitle": "Veelgestelde vragen",
-    "faq1Q": "Hoe werkt YourLocalCityGuide?",
+    "faq1Q": "Hoe werkt CityWalkStories?",
     "faq1A": "Na aankoop van het Leiden pakket krijg je toegang tot alle routes en locaties. Op elke locatie kun je interactieve video's bekijken, verhalen lezen en de stad ontdekken op jouw eigen tempo.",
     "faq2Q": "Hoelang heb ik toegang?",
     "faq2A": "Je hebt levenslange toegang tot het Leiden pakket. Alle toekomstige routes en updates zijn inbegrepen.",
@@ -182,11 +183,16 @@
     "sameStreets": "Dezelfde straten.",
     "aRicherStory": "Een rijker verhaal.",
     "ctaDesc": "Vanaf 5,99 per persoon. Alle routes, video's en verborgen parels. Op jouw tempo.",
-    "ctaButton": "Bekijk prijzen"
+    "ctaButton": "Bekijk prijzen",
+    "startTour": "Start je tour",
+    "heroImageAlt": "Grachten en historische gevels in het centrum van Leiden",
+    "heroPhotoLabel": "Verhalen beginnen hier",
+    "heroPhotoTitle": "Langs de Leidse grachten",
+    "heroPhotoLink": "Ontdek Leiden"
   },
   "discover": {
-    "title": "Ontdek Leiden",
-    "subtitle": "Verborgen parels, markten en evenementen",
+    "title": "Ontdek het Leiden achter de gevels",
+    "subtitle": "Van hofjes en musea tot lokale winkels en de markt. Vind een plek die bij jouw wandeling past.",
     "featured": "Uitgelicht",
     "results": "resultaten",
     "noResults": "Geen plekken gevonden in deze categorie.",
@@ -368,7 +374,7 @@
     "pendingVerification": "Wordt aangevuld na verificatie"
   },
   "about": {
-    "title": "Over YourLocalCityGuide",
+    "title": "Over CityWalkStories",
     "whyTitle": "Waarom geen stadsgids?",
     "whyPoint1": "Een stadsgids kost al snel {price} per persoon",
     "whyPoint2": "Je kunt niet stoppen wanneer jij dat wilt",
@@ -392,7 +398,7 @@
     "tip3": "Leiden Centraal station is goed verbonden met de rest van Nederland. Vanaf het station loop je in 10 minuten naar het centrum.",
     "tip4": "De meeste bezienswaardigheden zijn gratis toegankelijk. Alleen musea vragen entree.",
     "faqTitle": "Veelgestelde vragen",
-    "faq1Q": "Hoe werkt YourLocalCityGuide?",
+    "faq1Q": "Hoe werkt CityWalkStories?",
     "faq1A": "Na aankoop van het Leiden pakket krijg je toegang tot alle routes en locaties. Op elke locatie kun je interactieve video's bekijken, verhalen lezen en de stad ontdekken op jouw eigen tempo.",
     "faq2Q": "Hoelang heb ik toegang?",
     "faq2A": "Je hebt levenslange toegang tot het Leiden pakket. Alle toekomstige routes en updates zijn inbegrepen.",
@@ -476,13 +482,14 @@
     "discover": "Ontdek",
     "cityGuide": "Stadsgids Leiden",
     "tours": "Leiden tours",
-    "blog": "Blog"
+    "blog": "Blog",
+    "brandDescription": "Zelfstandige stadswandelingen en lokale verhalen. Ontdek Leiden, op jouw tempo."
   },
   "privacyPage": {
     "title": "Privacybeleid",
-    "intro": "YourLocalCityGuide respecteert je privacy. Hieronder staat welke gegevens op je apparaat worden gebruikt en wanneer externe diensten worden benaderd.",
+    "intro": "CityWalkStories respecteert je privacy. Hieronder staat welke gegevens op je apparaat worden gebruikt en wanneer externe diensten worden benaderd.",
     "controllerTitle": "Wie is verantwoordelijk?",
-    "controllerText": "YourLocalCityGuide beheert deze website en beslist waarvoor persoonsgegevens worden gebruikt. De definitieve handelsnaam, het vestigingsadres en de KvK-gegevens worden vóór de betaalde lancering toegevoegd.",
+    "controllerText": "CityWalkStories beheert deze website en beslist waarvoor persoonsgegevens worden gebruikt. De definitieve handelsnaam, het vestigingsadres en de KvK-gegevens worden vóór de betaalde lancering toegevoegd.",
     "storedTitle": "Lokale gegevens op je apparaat",
     "storedAccount": "De demo-inlogstatus wordt lokaal in je browser bewaard.",
     "storedRoutes": "Opgeslagen routes en bezochte stops worden lokaal bewaard.",
@@ -526,14 +533,14 @@
   },
   "termsPage": {
     "title": "Gebruiksvoorwaarden",
-    "intro": "Deze voorwaarden beschrijven het geplande gebruik van YourLocalCityGuide en worden vóór de betaalde lancering definitief gemaakt.",
+    "intro": "Deze voorwaarden beschrijven het geplande gebruik van CityWalkStories en worden vóór de betaalde lancering definitief gemaakt.",
     "launchNotice": "De checkout is nog niet actief. De definitieve aanbieder, prijs, toegangsduur, betaalmethode en annuleringsprocedure worden vóór verkoop duidelijk getoond. Deze pagina is daarom nog geen actief verkoopaanbod.",
     "accessTitle": "Toegang en gebruik",
     "accessPersonal": "Toegang is persoonlijk en mag niet met anderen worden gedeeld of doorverkocht.",
     "accessAvailability": "Functies kunnen vóór aankoop nog wijzigen. De productinformatie en bevestiging bij jouw aankoop bepalen wat jouw pakket bevat.",
     "accessRequirements": "Je hebt een geschikte telefoon of browser en soms een internet- en GPS-verbinding nodig. Offline beperkingen worden in de app aangegeven.",
     "contentTitle": "Content en intellectueel eigendom",
-    "contentLicence": "Je krijgt een persoonlijke, niet-exclusieve licentie voor privégebruik. Rechten op teksten, routes, beelden en video's blijven bij YourLocalCityGuide of de betreffende rechthebbende.",
+    "contentLicence": "Je krijgt een persoonlijke, niet-exclusieve licentie voor privégebruik. Rechten op teksten, routes, beelden en video's blijven bij CityWalkStories of de betreffende rechthebbende.",
     "contentNoCopy": "Je mag content niet kopiëren, verspreiden, geautomatiseerd uitlezen of de toegangsbeveiliging omzeilen, behalve waar de wet dat uitdrukkelijk toestaat.",
     "contentAi": "AI-beelden worden als illustratie gemarkeerd. Feiten en historische claims worden waar mogelijk gecontroleerd, maar kunnen later worden verbeterd.",
     "purchaseTitle": "Aankoop en digitale inhoud",
@@ -698,18 +705,20 @@
     "loginButton": "Inloggen"
   },
   "login": {
-    "title": "Inloggen",
-    "subtitle": "Bekijk je gekochte stadspakket",
+    "title": "Welkom terug",
+    "subtitle": "Log in om je tours, routes en opgeslagen voortgang te openen.",
     "email": "E-mailadres",
     "emailPlaceholder": "je@email.com",
     "password": "Wachtwoord",
     "passwordPlaceholder": "Wachtwoord",
     "loginButton": "Inloggen",
-    "errorMessage": "Onjuiste inloggegevens. Gebruik het testaccount hieronder.",
+    "errorMessage": "Inloggen lukt niet. Controleer je e-mailadres en wachtwoord.",
     "testAccounts": "Testaccounts (voor demo)",
     "paidAccount": "Betaald account (volledige toegang):",
     "freeAccount": "Gratis account (beperkte toegang):",
-    "fillIn": "Vul in"
+    "fillIn": "Vul in",
+    "brandIntro": "Jouw volgende verhaal begint in Leiden.",
+    "viewRoutes": "Bekijk routes"
   },
   "walker": {
     "loadingVideo": "Video wordt geladen...",
@@ -890,7 +899,12 @@
     "locationUnavailable": "Locatie niet beschikbaar; de route wordt zonder GPS geoptimaliseerd."
   },
   "entityPage": {
-    "sections": { "museums": "Musea", "attractions": "Historische plekken", "markets": "Markten", "local": "Lokale favorieten" },
+    "sections": {
+      "museums": "Musea",
+      "attractions": "Historische plekken",
+      "markets": "Markten",
+      "local": "Lokale favorieten"
+    },
     "visitDuration": "Bezoekduur",
     "familyFriendly": "Geschikt voor gezinnen",
     "freeIntroduction": "Gratis introductie",

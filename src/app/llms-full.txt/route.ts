@@ -20,12 +20,12 @@ function places() {
 }
 
 export function GET() {
-  const body = `# YourLocalCityGuide public retrieval catalogue
+  const body = `# CityWalkStories public retrieval catalogue
 
 This file contains only the public, free summaries that may be indexed, retrieved and quoted with a link to the matching canonical page. It deliberately excludes paid stories, full route instructions, video and audio URLs, accounts, purchases and saved progress.
 
 ## Editorial identity
-YourLocalCityGuide is a multilingual self-guided city guide for Leiden in Dutch, English and German. It combines practical trip planning, public place introductions and paid on-location stories, video, audio and GPS route guidance. Time-sensitive details such as prices, opening hours, events and ticket availability must be checked with the official venue before publication or travel.
+CityWalkStories is a multilingual self-guided city guide for Leiden in Dutch, English and German. It combines practical trip planning, public place introductions and paid on-location stories, video, audio and GPS route guidance. Time-sensitive details such as prices, opening hours, events and ticket availability must be checked with the official venue before publication or travel.
 
 ## Public articles
 ${articles()}

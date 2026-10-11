@@ -22,17 +22,12 @@ function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
         <div className="h-28 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-4 text-white shadow-lg shadow-orange-500/20">
           <span className="text-[9px] font-bold uppercase tracking-widest text-white/70">{t("previewPackageCity")}</span>
           <p className="mt-2 text-xl font-extrabold">€5,99</p>
-          <div className="mt-3 h-2 w-20 rounded-full bg-white/30" />
+          <p className="mt-3 text-xs font-semibold">{t("trustOneTime")}</p>
         </div>
         <div className="mt-4 space-y-2.5">
-          {["w-4/5", "w-full", "w-3/5"].map((width) => (
-            <div key={width} className="flex items-center gap-2">
-              <div className="h-4 w-4 rounded-full bg-green-100 ring-4 ring-green-50" />
-              <div className={`h-2 ${width} rounded-full bg-gray-200`} />
-            </div>
-          ))}
+          {[t("allRoutes"), t("trustLanguages"), t("trustOwnPace")].map(label => <p key={label} className="flex items-center gap-2 text-xs font-medium text-navy-800"><span className="text-teal-600">✓</span>{label}</p>)}
         </div>
-        <div className="mt-5 h-10 rounded-full bg-navy-800" />
+        <p className="mt-5 rounded-full bg-navy-800 px-3 py-3 text-center text-xs font-bold text-white">CityWalkStories</p>
       </div>
     );
   }
@@ -43,10 +38,10 @@ function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
         <svg viewBox="0 0 220 340" className="absolute inset-0 h-full w-full" aria-hidden="true">
           <path d="M-10 74 C48 48 78 112 128 82 S194 45 238 70" fill="none" stroke="#fff" strokeWidth="18" opacity=".75" />
           <path d="M20 290 C58 250 62 194 110 180 S183 168 218 112" fill="none" stroke="#fff" strokeWidth="13" opacity=".8" />
-          <path d="M25 300 C66 252 60 208 111 180 S177 168 215 112" fill="none" stroke="#FF6B00" strokeWidth="5" strokeLinecap="round" strokeDasharray="8 7" />
+          <path d="M25 300 C66 252 60 208 111 180 S177 168 215 112" fill="none" stroke="#F28C28" strokeWidth="5" strokeLinecap="round" strokeDasharray="8 7" />
           {["25,300", "74,230", "111,180", "166,158", "215,112"].map((point, index) => {
             const [cx, cy] = point.split(",");
-            return <circle key={point} cx={cx} cy={cy} r="9" fill={index === 0 ? "#1B2A4A" : "#fff"} stroke="#FF6B00" strokeWidth="4" />;
+            return <circle key={point} cx={cx} cy={cy} r="9" fill={index === 0 ? "#1D2F5F" : "#fff"} stroke="#F28C28" strokeWidth="4" />;
           })}
         </svg>
         <div className="absolute inset-x-3 bottom-3 rounded-2xl bg-white/95 p-3 shadow-xl backdrop-blur">

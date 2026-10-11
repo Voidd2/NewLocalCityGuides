@@ -8,5 +8,5 @@ export function proxy(request: Parameters<typeof intlProxy>[0]) {
 }
 
 export const config = {
-  matcher: ["/((?!api|pwa|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/((?!api|pwa|icon(?:/|$)|apple-icon(?:/|$)|opengraph-image(?:/|$)|_next|_vercel|.*\\..*).*)"],
 };

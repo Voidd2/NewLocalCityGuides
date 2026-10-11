@@ -1,6 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+import { BrandLogo } from "@/components/brand/BrandLogo";
+import { Link } from "@/i18n/navigation";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { TEST_CREDENTIALS } from "@/lib/auth";
@@ -15,10 +18,8 @@ export function LoginPage() {
   const [error, setError] = useState("");
   const [showCredentials, setShowCredentials] = useState(false);
 
-  if (isLoggedIn) {
-    router.push("/dashboard");
-    return null;
-  }
+  useEffect(() => { if (isLoggedIn) router.replace("/dashboard"); }, [isLoggedIn, router]);
+  if (isLoggedIn) return null;
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,22 +34,22 @@ export function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md">
+    <div className="mx-auto grid max-w-6xl gap-10 px-5 py-10 md:grid-cols-2 md:items-center md:py-16">
+      <aside className="relative hidden min-h-[610px] overflow-hidden rounded-[2rem] bg-navy-900 md:block">
+        <Image src="/images/locations/10022-koornbrug-leiden.jpg" alt="Koornbrug, Leiden" fill sizes="50vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 p-9 text-white"><p className="text-xs uppercase tracking-widest text-orange-300">CityWalkStories · Leiden</p><h2 className="mt-3 text-4xl font-bold leading-tight">{t("brandIntro")}</h2><p className="mt-5 text-sm text-white/70">Koornbrug · Leiden</p></div>
+      </aside>
+      <div className="mx-auto w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-full bg-navy-800 mx-auto flex items-center justify-center mb-4">
-            <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-white" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-              <circle cx="12" cy="9" r="2.5" />
-            </svg>
-          </div>
+          <BrandLogo className="mx-auto mb-8 h-auto w-72 max-w-full" />
           <h1 className="text-2xl font-bold text-navy-800">{t("title")}</h1>
           <p className="text-sm text-gray-500 mt-1">{t("subtitle")}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 p-6 mb-4">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3 mb-4">
+            <div role="alert" className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3 mb-4">
               {error}
             </div>
           )}
@@ -59,6 +60,7 @@ export function LoginPage() {
             </label>
             <input
               id="email"
+              autoComplete="username"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -74,6 +76,7 @@ export function LoginPage() {
             </label>
             <input
               id="password"
+              autoComplete="current-password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -91,7 +94,8 @@ export function LoginPage() {
           </button>
         </form>
 
-        <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
+        <Link href="/routes" className="mb-6 block text-center text-sm font-semibold text-navy-800 underline underline-offset-4">{t("viewRoutes")}</Link>
+        {process.env.NODE_ENV !== "production" && <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
           <button
             onClick={() => setShowCredentials(!showCredentials)}
             className="flex items-center justify-between w-full text-sm font-medium text-orange-700"
@@ -130,7 +134,7 @@ export function LoginPage() {
               </div>
             </div>
           )}
-        </div>
+        </div>}
       </div>
     </div>
   );

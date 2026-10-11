@@ -17,15 +17,15 @@ export default async function HomePage({
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "YourLocalCityGuide",
+      name: "CityWalkStories",
       url: SITE_URL,
-      logo: `${SITE_URL}/favicon.ico`,
+      logo: `${SITE_URL}/brand/citywalkstories-logo.svg`,
       email: "info@yourlocalcityguide.com",
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      name: "YourLocalCityGuide",
+      name: "CityWalkStories",
       url: localizedUrl(locale === "en" || locale === "de" ? locale : "nl"),
       inLanguage: locale,
     },
