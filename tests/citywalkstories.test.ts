@@ -60,5 +60,9 @@ describe("CityWalkStories rebrand", () => {
     expect(manifest().theme_color).toBe("#1D2F5F");
     expect(existsSync("public/brand/citywalkstories-logo.svg")).toBe(true);
     expect(readFileSync("src/app/favicon.ico").readUInt16LE(2)).toBe(1);
+    for (const file of ["src/app/icon.png", "src/app/apple-icon.png", "src/app/opengraph-image.png", "public/brand/app-icon-192.png", "public/brand/app-icon-512.png"]) {
+      expect(readFileSync(file).subarray(1, 4).toString()).toBe("PNG");
+    }
+    expect(manifest().icons?.every(icon => icon.src.startsWith("/brand/"))).toBe(true);
   });
 });

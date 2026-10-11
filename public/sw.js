@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ylcg-cws-v2";
+const CACHE_VERSION = "ylcg-cws-v3";
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
 const APP_SHELL = ["/nl", "/en", "/de", "/manifest.webmanifest", "/favicon.ico", "/pwa/icon/192", "/pwa/icon/512"];

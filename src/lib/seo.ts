@@ -6,7 +6,7 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "CityWalkStories";
-export const DEFAULT_IMAGE = "/opengraph-image";
+export const DEFAULT_IMAGE = "/opengraph-image.png";
 
 type PageKey =
   | "home"
