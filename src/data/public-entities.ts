@@ -63,6 +63,25 @@ function sectionForSpot(category: SpotCategory): PublicEntitySection {
 }
 
 function locationCopy(location: LocationData): Pick<PublicEntity, "intro" | "whyVisit" | "metaDescription"> {
+  if (location.id === "L001") {
+    return {
+      intro: {
+        nl: "De Burcht ligt op een door mensen opgeworpen heuvel in het hart van Leiden. Vanaf de ringmuur zie je de stad die er later omheen groeide.",
+        en: "De Burcht stands on a man-made mound in the heart of Leiden. From its ring wall, you can see the city that later grew around it.",
+        de: "De Burcht steht auf einem künstlich aufgeschütteten Hügel im Herzen Leidens. Von der Ringmauer sieht man die Stadt, die später darum herum wuchs.",
+      },
+      whyVisit: {
+        nl: "De Burcht maakt de vroege ligging van Leiden tastbaar: een verhoogde plek tussen waterwegen, nu midden in de binnenstad. Het uitzicht laat je de historische stad vanuit een ander perspectief bekijken. De complete begeleide vertelling blijft onderdeel van de gids.",
+        en: "De Burcht makes Leiden’s early setting tangible: raised ground between waterways, now surrounded by the city centre. Its view offers a different perspective on historic Leiden. The complete guided narrative belongs to the guide.",
+        de: "De Burcht macht Leidens frühe Lage greifbar: eine Anhöhe zwischen Wasserwegen, heute mitten in der Altstadt. Der Blick eröffnet eine andere Perspektive auf Leiden. Die vollständige geführte Erzählung gehört zum Guide.",
+      },
+      metaDescription: {
+        nl: "Ontdek De Burcht van Leiden: een kunstmatige heuvel en ringmuur met uitzicht over de stad. Lees een gratis introductie bij CityWalkStories.",
+        en: "Discover De Burcht in Leiden: a man-made mound and ring wall overlooking the city. Read a free introduction with CityWalkStories.",
+        de: "Entdecke De Burcht in Leiden: einen künstlichen Hügel mit Ringmauer und Blick über die Stadt. Kostenlose Einführung bei CityWalkStories.",
+      },
+    };
+  }
   const theme = cleanText(location.mainTheme);
   const intro = {
     nl: location.shortDescription,

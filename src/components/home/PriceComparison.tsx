@@ -1,90 +1,24 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { formatGuidePrice } from "@/lib/product";
+import type { Locale } from "@/i18n/config";
+
+const copy = {
+  nl: { eyebrow: "Twee manieren om Leiden te ontdekken", free: "Ontdek de stad gratis", freeDesc: "Bekijk historische plekken, musea en lokale adressen. Lees korte introducties en plan je bezoek.", guide: "De complete stadsgids", guideDesc: "Voor de samengestelde routes en volledige verhalen op locatie.", price: "Gidsprijs", caveat: "Online aankoop wordt nog ingericht.", freeCta: "Bekijk alle plekken", guideCta: "Bekijk gids en prijs" },
+  en: { eyebrow: "Two ways to explore Leiden", free: "Discover the city for free", freeDesc: "Browse historic places, museums and local addresses. Read short introductions and plan your visit.", guide: "The complete city guide", guideDesc: "For curated routes and full stories on location.", price: "Guide price", caveat: "Online checkout is being prepared.", freeCta: "Explore all places", guideCta: "Explore guide and price" },
+  de: { eyebrow: "Zwei Wege, Leiden zu entdecken", free: "Die Stadt kostenlos entdecken", freeDesc: "Entdecke historische Orte, Museen und lokale Adressen. Lies kurze Einführungen und plane deinen Besuch.", guide: "Der vollständige Stadtguide", guideDesc: "Für kuratierte Routen und vollständige Geschichten vor Ort.", price: "Guide-Preis", caveat: "Die Online-Bezahlung wird vorbereitet.", freeCta: "Alle Orte ansehen", guideCta: "Guide und Preis ansehen" },
+} satisfies Record<Locale, Record<string, string>>;
 
 export function PriceComparison() {
-  const t = useTranslations("home");
-
-  return (
-    <section className="max-w-7xl mx-auto px-4 py-10">
-      <div className="grid md:grid-cols-2 gap-5">
-        <AnimateOnScroll animation="slide-left">
-          <div className="relative bg-gradient-to-br from-orange-50 to-white border-2 border-orange-500 rounded-2xl p-6 shadow-lg shadow-orange-500/10 overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <p className="text-sm text-gray-600 font-medium mb-1">{t("packageFrom")}</p>
-            <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-5xl md:text-6xl font-extrabold text-orange-500">&euro;5,99</span>
-            </div>
-            <p className="text-sm text-gray-500 mb-5">{t("pricePerPerson")}</p>
-
-            <ul className="space-y-2.5 mb-6">
-              {[
-                t("accessRoutes"),
-                t("interactiveVids"),
-                t("customRoute"),
-                t("hiddenGems"),
-                t("lifetimeAccess"),
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-gray-700">
-                  <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 text-green-600">
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href="/pricing"
-              className="block w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3.5 rounded-full text-center transition-all text-sm shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98]"
-            >
-              {t("viewPricing")}
-              <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 inline-block ml-1">
-                <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-              </svg>
-            </Link>
-          </div>
-        </AnimateOnScroll>
-
-        <AnimateOnScroll animation="slide-right">
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gray-200/30 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <p className="text-sm text-gray-600 font-medium mb-1">{t("traditionalTour")}</p>
-            <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-5xl md:text-6xl font-extrabold text-gray-300">~&euro;28</span>
-            </div>
-            <p className="text-sm text-gray-500 mb-5">{t("pricePerPerson")}</p>
-
-            <ul className="space-y-2.5">
-              {[
-                t("fixedTime"),
-                t("largeGroups"),
-                t("noChoice"),
-                t("highlightsOnly"),
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-gray-500">
-                  <div className="w-5 h-5 rounded-full bg-red-50 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-3 h-3 text-red-400">
-                      <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </AnimateOnScroll>
-      </div>
-
-      <AnimateOnScroll delay={200}>
-        <p className="text-hand text-orange-600 text-xl md:text-2xl text-center mt-6 -rotate-1">
-          {t("priceTagline")}
-        </p>
-      </AnimateOnScroll>
-    </section>
-  );
+  const locale = useLocale() as Locale;
+  const t = copy[locale];
+  return <section className="mx-auto max-w-7xl px-4 py-14">
+    <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.2em] text-orange-700">{t.eyebrow}</p>
+    <div className="grid gap-5 md:grid-cols-2">
+      <div className="rounded-3xl border border-gray-200 bg-white p-7 md:p-9"><p className="text-sm font-semibold text-teal-700">CityWalkStories · Leiden</p><h2 className="mt-3 text-2xl font-bold text-navy-800">{t.free}</h2><p className="mt-4 max-w-lg text-sm leading-7 text-gray-600">{t.freeDesc}</p><Link href="/ontdek" className="mt-7 inline-flex min-h-11 items-center rounded-full border border-navy-800 px-6 text-sm font-bold text-navy-800 hover:bg-navy-800 hover:text-white">{t.freeCta} <span aria-hidden="true" className="ml-2">→</span></Link></div>
+      <div className="rounded-3xl bg-navy-900 p-7 text-white md:p-9"><p className="text-sm font-semibold text-orange-300">{t.price}</p><h2 className="mt-3 text-2xl font-bold">{t.guide}</h2><p className="mt-3 text-4xl font-extrabold text-orange-300">{formatGuidePrice(locale)}</p><p className="mt-4 max-w-lg text-sm leading-7 text-white/75">{t.guideDesc}</p><p className="mt-3 text-xs text-white/65">{t.caveat}</p><Link href="/pricing" className="cws-primary mt-7 inline-flex">{t.guideCta} <span aria-hidden="true" className="ml-2">→</span></Link></div>
+    </div>
+  </section>;
 }

@@ -11,8 +11,8 @@ import type { LocationData } from "@/data/locations";
 import { getRoutePlaceById, type RoutePlace } from "@/lib/route-places";
 import { getSchaapsvisMessage, getSmartPauseIndex, getSchaapsvisContextMessage, localRecommendations } from "@/data/local-recommendations";
 import { getActiveSchaapsvisSpot, type SupportedLocale } from "@/data/schaapsvis";
-import { routes } from "@/data/routes";
-import { isLocationVideoPlanned } from "@/data/media-manifest";
+import { usePremiumRoutes } from "@/lib/use-premium-routes";
+import { isLocationVideoPublished } from "@/data/media-manifest";
 import { haversineMeters, insertAtSmallestDetour, optimizeRouteOrder, rotateLoopFromNearest } from "@/lib/route-engine";
 import { useGeolocation } from "@/lib/use-geolocation";
 import { getConditionalRouteStops } from "@/data/route-conditions";
@@ -95,7 +95,7 @@ function StopCard({
 }) {
   const t = useTranslations("walker");
   const [isOpen, setIsOpen] = useState(false);
-  const videoPlanned = isLocationVideoPlanned(loc.id);
+  const videoPlanned = isLocationVideoPublished(loc.id);
 
   const mapsUrl = loc.coords
     ? `https://www.google.com/maps/dir/?api=1&destination=${loc.coords.lat},${loc.coords.lng}`
@@ -487,6 +487,7 @@ function RecommendedSection() {
 }
 
 export function SavedRouteWalker() {
+  const { routes } = usePremiumRoutes();
   const t = useTranslations("walker");
   const tCommon = useTranslations("common");
   const locale = useLocale() as SupportedLocale;

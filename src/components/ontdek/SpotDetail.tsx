@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { SPOT_CATEGORIES, type LocalSpot } from "@/data/local-spots";
 import { RoutePickerModal } from "@/components/routes/RoutePickerModal";
 import { RichDescription } from "@/components/ui/RichDescription";
+import { approvedTicketUrl } from "@/data/affiliate-offers";
 
 const MapLibreMap = dynamic(
   () => import("@/components/map/MapLibreMap").then((m) => m.MapLibreMap),
@@ -36,6 +37,7 @@ function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string;
 
 export function SpotDetail({ spot }: { spot: LocalSpot }) {
   const locale = useLocale() as "nl" | "en" | "de";
+  const ticketUrl = approvedTicketUrl(spot.ticketUrl);
   const desc = spot.description[locale] || spot.description.nl;
   const catLabel =
     SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[locale] || spot.category;
@@ -121,12 +123,6 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
   };
   const l = labels[locale];
 
-  const dayNames = {
-    nl: ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
-    en: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-    de: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
-  };
-
   return (
     <div>
       {toast && (
@@ -164,24 +160,6 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
           </div>
           <h1 className="text-2xl md:text-3xl font-bold mb-2">{spot.name}</h1>
           <p className="text-white/70 text-sm">{spot.address}</p>
-          {spot.rating && (
-            <div className="flex items-center gap-2 mt-3">
-              <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <svg key={star} viewBox="0 0 20 20" fill={star <= spot.rating! ? "#F59E0B" : star - 0.5 <= spot.rating! ? "url(#halfDetail)" : "#4B5563"} className="w-4 h-4">
-                    <defs>
-                      <linearGradient id="halfDetail">
-                        <stop offset="50%" stopColor="#F59E0B" />
-                        <stop offset="50%" stopColor="#4B5563" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-sm font-semibold text-white">{spot.rating}</span>
-            </div>
-          )}
         </div>
       </section>
 
@@ -198,11 +176,11 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
               ))}
             </div>
 
-            {spot.ticketUrl && (
+            {ticketUrl && (
               <a
-                href={spot.ticketUrl}
+                href={ticketUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="sponsored noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold py-3.5 rounded-xl transition-colors mb-3 shadow-md shadow-green-600/20"
               >
                 <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
@@ -248,18 +226,6 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
               label={l.address}
               value={spot.address}
             />
-            {spot.priceRange && (
-              <InfoRow
-                icon={
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                    <path d="M10.75 10.818v2.614A3.13 3.13 0 0011.888 13c.482-.315.612-.648.612-.875 0-.227-.13-.56-.612-.875a3.13 3.13 0 00-1.138-.432zM8.33 8.62c.053.055.115.11.184.164.208.16.46.284.736.363V6.603a2.45 2.45 0 00-.35.13c-.14.065-.27.143-.386.233-.377.292-.514.627-.514.909 0 .184.058.39.202.592.037.051.08.102.128.152z" />
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-6a.75.75 0 01.75.75v.316a3.78 3.78 0 011.653.713c.426.33.744.74.925 1.2a.75.75 0 01-1.395.55 1.35 1.35 0 00-.447-.563 2.187 2.187 0 00-.736-.363V9.3c.514.141.956.341 1.32.6.483.343.808.694.978 1.074.164.374.238.772.238 1.176 0 .527-.174 1.037-.548 1.456-.37.414-.886.713-1.489.878a.75.75 0 01-.75.75v-.316a3.78 3.78 0 01-1.653-.713 2.67 2.67 0 01-.925-1.2.75.75 0 011.395-.55c.12.3.277.508.447.563.256.121.532.196.736.363v-2.697a3.768 3.768 0 01-1.32-.6c-.483-.343-.808-.694-.978-1.074A2.555 2.555 0 017.5 7.15c0-.527.174-1.037.548-1.456.37-.414.886-.713 1.489-.878V4.75A.75.75 0 0110 4z" clipRule="evenodd" />
-                  </svg>
-                }
-                label={l.price}
-                value={`${spot.priceRange}`}
-              />
-            )}
             {spot.visitDuration && (
               <InfoRow
                 icon={
@@ -297,17 +263,6 @@ export function SpotDetail({ spot }: { spot: LocalSpot }) {
                   : l.no
               }
             />
-            {spot.hours && (
-              <InfoRow
-                icon={
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-                    <path fillRule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clipRule="evenodd" />
-                  </svg>
-                }
-                label={l.hours}
-                value={spot.hours.map((h, i) => `${dayNames[locale][i]} ${h}`).join(" | ")}
-              />
-            )}
             {spot.eventDates && (
               <InfoRow
                 icon={

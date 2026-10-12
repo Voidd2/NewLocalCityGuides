@@ -5,11 +5,12 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { getSavedRoutes, deleteSavedRoute, getVisitedCount, ROUTES_CHANGED_EVENT, type SavedRoute } from "@/lib/saved-routes";
-import { routes as standardRoutes } from "@/data/routes";
+import { usePremiumRoutes } from "@/lib/use-premium-routes";
 import { getRoutePlaceById } from "@/lib/route-places";
 import type { SupportedLocale } from "@/data/schaapsvis";
 
 export function MyRoutesList() {
+  const { routes: standardRoutes } = usePremiumRoutes();
   const [routes, setRoutes] = useState<SavedRoute[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const t = useTranslations("myRoutes");

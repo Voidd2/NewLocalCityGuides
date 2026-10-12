@@ -1,47 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { LEIDEN_GUIDE, formatGuidePrice } from "@/lib/product";
 
 export function PricingPage() {
   const t = useTranslations("pricing");
+  const locale = useLocale();
   const [extraDevices, setExtraDevices] = useState(0);
 
-  const steps = [
-    { num: 1, label: t("step1") },
-    { num: 2, label: t("step2") },
-    { num: 3, label: t("step3") },
-    { num: 4, label: t("step4") },
-  ];
-  const basePrice = 5.99;
-  const pricePerDevice = 1.0;
-  const total = basePrice + extraDevices * pricePerDevice;
+  const pricePerDevice = LEIDEN_GUIDE.extraDevicePriceCents;
+  const total = LEIDEN_GUIDE.basePriceCents + extraDevices * pricePerDevice;
 
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="flex items-center gap-2 mb-8 overflow-x-auto">
-          {steps.map((step, i) => (
-            <div key={step.num} className="flex items-center gap-2">
-              <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-                  step.num === 1
-                    ? "bg-orange-500 text-white"
-                    : "bg-gray-200 text-gray-400"
-                }`}
-              >
-                {step.num}
-              </div>
-              <span className={`text-xs whitespace-nowrap ${step.num === 1 ? "text-navy-800 font-medium" : "text-gray-400"}`}>
-                {step.label}
-              </span>
-              {i < steps.length - 1 && (
-                <div className="w-8 h-px bg-gray-200 shrink-0" />
-              )}
-            </div>
-          ))}
-        </div>
-
         <div className="grid lg:grid-cols-[minmax(0,1fr)_380px] gap-8">
           <div>
             <h1 className="text-2xl font-bold text-navy-800 mb-1">{t("completeAdventure")}</h1>
@@ -50,18 +23,15 @@ export function PricingPage() {
             <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
               <div className="flex items-center justify-between mb-1">
                 <h2 className="font-bold text-navy-800">{t("leidenPackage")}</h2>
-                <span className="text-2xl font-extrabold text-orange-500">&euro;5,99</span>
+                <span className="text-2xl font-extrabold text-orange-500">{formatGuidePrice(locale)}</span>
               </div>
               <p className="text-xs text-gray-500 mb-4">{t("onePersonFullAccess")}</p>
 
               <ul className="space-y-1.5 text-sm text-gray-700">
                 {[
                   t("allRoutesInLeiden"),
-                  t("interactiveVids"),
                   t("createOwnRouteIncluded"),
                   t("hiddenGemsAndTips"),
-                  t("lifetimeAccess"),
-                  t("regularNewRoutes"),
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-2">
                     <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-green-600 shrink-0">
@@ -103,8 +73,8 @@ export function PricingPage() {
                   <span className="text-sm text-gray-500">{t("extraDevicesLabel")}</span>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-navy-800">&euro;{(extraDevices * pricePerDevice).toFixed(2).replace(".", ",")}</p>
-                  <p className="text-[10px] text-gray-400">&euro;{pricePerDevice.toFixed(2).replace(".", ",")} {t("perDevice")}</p>
+                  <p className="font-bold text-navy-800">{formatGuidePrice(locale, extraDevices * pricePerDevice)}</p>
+                  <p className="text-[10px] text-gray-400">{formatGuidePrice(locale, pricePerDevice)} {t("perDevice")}</p>
                 </div>
               </div>
 
@@ -121,53 +91,11 @@ export function PricingPage() {
             <div className="bg-white rounded-2xl border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-100">
                 <span className="font-bold text-navy-800">{t("total")}</span>
-                <span className="text-3xl font-extrabold text-navy-800">&euro;{total.toFixed(2).replace(".", ",")}</span>
+                <span className="text-3xl font-extrabold text-navy-800">{formatGuidePrice(locale, total)}</span>
               </div>
 
-              <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3.5 rounded-full text-sm transition-colors mb-4">
-                {t("continueToDetails")}
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 inline-block ml-1">
-                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                </svg>
-              </button>
+              <p className="mb-4 rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm leading-6 text-navy-800" role="status">{t("checkoutUnavailable")}</p>
 
-              <div className="flex items-center justify-center gap-4 text-[10px] text-gray-400 mb-4">
-                <span className="flex items-center gap-1">
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-500">
-                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                  </svg>
-                  {t("instantAccess")}
-                </span>
-                <span className="flex items-center gap-1">
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-500">
-                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                  </svg>
-                  {t("unlimitedValidity")}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-center gap-4 text-[10px] text-gray-400">
-                <span className="flex items-center gap-1">
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-500">
-                    <path fillRule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clipRule="evenodd" />
-                  </svg>
-                  {t("securePayment")}
-                </span>
-                <span className="flex items-center gap-1">
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-500">
-                    <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                  </svg>
-                  {t("supportLocal")}
-                </span>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center gap-3 mt-5 pt-4 border-t border-gray-100">
-                {["VISA", "Mastercard", "Apple Pay", "Google Pay", t("andMore")].map((method) => (
-                  <div key={method} className="bg-gray-100 rounded px-2 py-1 text-[10px] text-gray-500 font-medium">
-                    {method}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>

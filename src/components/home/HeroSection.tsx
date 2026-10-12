@@ -25,7 +25,7 @@ export function HeroSection() {
           ) : (
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/routes" className="cws-primary">{t("viewRoutes")} <span aria-hidden="true">→</span></Link>
-              <Link href="/login" className="cws-secondary">{t("startTour")}</Link>
+              <Link href="/ontdek" className="cws-secondary">{t("startExploring")}</Link>
             </div>
           )}
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/80">

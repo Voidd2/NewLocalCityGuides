@@ -1,4 +1,4 @@
-const TEST_ACCOUNTS = [
+const TEST_ACCOUNTS = process.env.NODE_ENV === "production" ? [] : [
   {
     email: "test@yourlocalcityguide.com",
     password: "LeidenTest2026!",
@@ -16,6 +16,7 @@ const TEST_ACCOUNTS = [
 ];
 
 export function validateLogin(email: string, password: string) {
+  if (process.env.NODE_ENV === "production") return null;
   const account = TEST_ACCOUNTS.find(
     (a) => a.email === email && a.password === password
   );
@@ -27,8 +28,3 @@ export function validateLogin(email: string, password: string) {
     city: account.city,
   };
 }
-
-export const TEST_CREDENTIALS = {
-  paid: { email: "test@yourlocalcityguide.com", password: "LeidenTest2026!" },
-  free: { email: "free@yourlocalcityguide.com", password: "FreeUser2026!" },
-};

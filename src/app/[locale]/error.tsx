@@ -18,6 +18,7 @@ export default function Error({ error, retry }: { error: Error & { digest?: stri
       eyebrow={t("errorEyebrow")}
       title={t("errorTitle")}
       description={t("errorDescription")}
+      detail={error.digest ? `Foutcode: ${error.digest}` : undefined}
       actions={
         <>
           <button onClick={retry} className="rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-orange-600">

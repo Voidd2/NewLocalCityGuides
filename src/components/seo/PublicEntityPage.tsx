@@ -7,6 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { localizedUrl, SITE_URL } from "@/lib/seo";
 import { nearbyPublicEntities, publicEntityPath, type PublicEntity } from "@/data/public-entities";
 import type { Locale } from "@/i18n/config";
+import { formatGuidePrice } from "@/lib/product";
 
 function schemaType(entity: PublicEntity): string {
   if (entity.section === "museums") return "Museum";
@@ -20,6 +21,11 @@ export function PublicEntityPage({ entity, locale }: { entity: PublicEntity; loc
   const path = publicEntityPath(entity);
   const nearby = nearbyPublicEntities(entity);
   const routeSlug = entity.section === "markets" || entity.section === "local" ? "markt-en-ambacht" : "centrum-route";
+  const burchtCopy = entity.sourceId === "L001" ? {
+    nl: { eyebrow: "Gratis voorproefje", title: "Van heuvel naar stad", text: "Kijk vanaf de Burcht over Leiden en stel je voor hoe deze plek boven een veel kleiner landschap uitstak. De volledige vertelling neemt je verder mee langs de veranderingen in het stadsbeeld.", locked: "In de volledige gids: het ontstaan van de heuvel, de vesting en het uitzicht op de stad." },
+    en: { eyebrow: "Free preview", title: "From mound to city", text: "Look across Leiden from De Burcht and imagine this site rising above a much smaller settlement. The complete narration continues through the changing cityscape.", locked: "In the full guide: the mound, the stronghold and the city panorama." },
+    de: { eyebrow: "Kostenlose Vorschau", title: "Vom Hügel zur Stadt", text: "Blicke von De Burcht über Leiden und stelle dir vor, wie dieser Ort eine viel kleinere Siedlung überragte. Die vollständige Erzählung führt durch den Wandel der Stadt.", locked: "Im vollständigen Guide: der Hügel, die Festung und das Stadtpanorama." },
+  }[locale] : null;
 
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -88,7 +94,12 @@ export function PublicEntityPage({ entity, locale }: { entity: PublicEntity; loc
           </section>
         )}
 
-        <EntityMemberPanel premiumHref={entity.premiumHref} videoPlanned={entity.videoPlanned} />
+        {burchtCopy && <section className="grid gap-6 overflow-hidden rounded-3xl border border-orange-200 bg-[#FAF8F4] p-6 md:grid-cols-[1.1fr_0.9fr] md:p-9">
+          <div><p className="text-xs font-bold uppercase tracking-widest text-orange-700">{burchtCopy.eyebrow}</p><h2 className="mt-3 text-3xl font-bold text-navy-800">{burchtCopy.title}</h2><p className="mt-4 max-w-xl leading-7 text-gray-700">{burchtCopy.text}</p></div>
+          <div className="rounded-2xl bg-navy-900 p-6 text-white"><span className="text-xs font-bold uppercase tracking-wide text-orange-300">CityWalkStories · Leiden</span><p className="mt-3 text-2xl font-bold">{formatGuidePrice(locale)}</p><p className="mt-3 text-sm leading-6 text-white/75">{burchtCopy.locked}</p><Link href="/pricing" className="cws-primary mt-6 inline-flex">{locale === "nl" ? "Bekijk de gidsprijs" : locale === "de" ? "Guide-Preis ansehen" : "View guide price"} <span aria-hidden="true">→</span></Link></div>
+        </section>}
+
+        <EntityMemberPanel premiumHref={entity.premiumHref} videoPlanned={false} />
 
         <section className="rounded-3xl bg-warm-100 p-6 md:p-9">
           <h2 className="text-2xl font-extrabold text-navy-800">{t("includeInRoute")}</h2>

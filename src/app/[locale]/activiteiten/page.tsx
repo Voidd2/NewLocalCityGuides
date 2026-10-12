@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { OntdekPage } from "@/components/ontdek/OntdekPage";
+import { ActiviteitenPage } from "@/components/activiteiten/ActiviteitenPage";
 import { createPageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -15,5 +15,5 @@ export default async function Activiteiten({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <OntdekPage />;
+  return <ActiviteitenPage />;
 }

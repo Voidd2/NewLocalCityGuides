@@ -51,9 +51,10 @@ describe("CityWalkStories rebrand", () => {
     expect(validateLogin("free@yourlocalcityguide.com", "FreeUser2026!")?.hasPaid).toBe(false);
     expect(validateLogin("unknown@example.com", "invalid")).toBeNull();
   });
-  it("hides the demo-credential panel in production", () => {
+  it("does not render or bundle a demo-credential panel", () => {
     const source = readFileSync("src/components/dashboard/LoginPage.tsx", "utf8");
-    expect(source).toContain('process.env.NODE_ENV !== "production" &&');
+    expect(source).not.toContain("TEST_CREDENTIALS");
+    expect(source).not.toContain("LeidenTest2026!");
   });
   it("uses the new brand in the installable app and supplied logo files", () => {
     expect(manifest().name).toBe("CityWalkStories Leiden");

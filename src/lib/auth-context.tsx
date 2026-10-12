@@ -25,24 +25,47 @@ const STORAGE_KEY = "ylcg_user";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
+  const [serverHasPaid, setServerHasPaid] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => {
+    let cancelled = false;
+    async function loadSession() {
+      let storedUser: User | null = null;
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
-        if (raw) {
+        if (raw && process.env.NODE_ENV !== "production") {
           const parsed = JSON.parse(raw);
           if (parsed?.email) {
-            setUser(parsed);
+            storedUser = parsed;
           }
         }
       } catch {
         // ignore
       }
-      setIsLoading(false);
-    });
-    return () => cancelAnimationFrame(frame);
+      try {
+        const response = await fetch("/api/premium/status", { cache: "no-store", credentials: "same-origin" });
+        if (response.ok) {
+          const status = await response.json() as { hasPaid?: boolean; subject?: string };
+          if (status.hasPaid && status.subject) {
+            if (!cancelled) {
+              setServerHasPaid(true);
+              setUser({ email: status.subject, name: storedUser?.email === status.subject ? storedUser.name : status.subject, hasPaid: true, city: "leiden" });
+            }
+          } else if (!cancelled) {
+            setUser(storedUser);
+          }
+        } else if (!cancelled) {
+          setUser(storedUser);
+        }
+      } catch {
+        if (!cancelled) setUser(storedUser);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    }
+    void loadSession();
+    return () => { cancelled = true; };
   }, []);
 
   const login = useCallback((email: string, password: string): User | null => {
@@ -60,6 +83,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(() => {
     setUser(null);
+    setServerHasPaid(false);
+    void fetch("/api/premium/logout", { method: "POST", credentials: "same-origin" });
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch {
@@ -71,7 +96,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     <AuthContext.Provider value={{
       user,
       isLoggedIn: !!user,
-      hasPaid: user?.hasPaid ?? false,
+      hasPaid: serverHasPaid,
       isLoading,
       login,
       logout,

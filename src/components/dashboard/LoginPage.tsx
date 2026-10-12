@@ -6,7 +6,6 @@ import { Link } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { TEST_CREDENTIALS } from "@/lib/auth";
 import { useAuth } from "@/lib/auth-context";
 
 export function LoginPage() {
@@ -16,7 +15,6 @@ export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [showCredentials, setShowCredentials] = useState(false);
 
   useEffect(() => { if (isLoggedIn) router.replace("/dashboard"); }, [isLoggedIn, router]);
   if (isLoggedIn) return null;
@@ -29,7 +27,7 @@ export function LoginPage() {
     if (result) {
       router.push("/dashboard");
     } else {
-      setError(t("errorMessage"));
+      setError(t(process.env.NODE_ENV === "production" ? "accountUnavailable" : "errorMessage"));
     }
   }
 
@@ -95,46 +93,6 @@ export function LoginPage() {
         </form>
 
         <Link href="/routes" className="mb-6 block text-center text-sm font-semibold text-navy-800 underline underline-offset-4">{t("viewRoutes")}</Link>
-        {process.env.NODE_ENV !== "production" && <div className="bg-orange-50 border border-orange-200 rounded-xl p-4">
-          <button
-            onClick={() => setShowCredentials(!showCredentials)}
-            className="flex items-center justify-between w-full text-sm font-medium text-orange-700"
-          >
-            {t("testAccounts")}
-            <svg viewBox="0 0 20 20" fill="currentColor" className={`w-4 h-4 transition-transform ${showCredentials ? "rotate-180" : ""}`}>
-              <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
-            </svg>
-          </button>
-
-          {showCredentials && (
-            <div className="mt-3 space-y-3 text-xs">
-              <div className="bg-white rounded-lg p-3">
-                <p className="font-bold text-green-700 mb-1">{t("paidAccount")}</p>
-                <p className="text-gray-600">Email: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.paid.email}</code></p>
-                <p className="text-gray-600">{t("password")}: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.paid.password}</code></p>
-                <button
-                  type="button"
-                  onClick={() => { setEmail(TEST_CREDENTIALS.paid.email); setPassword(TEST_CREDENTIALS.paid.password); }}
-                  className="text-orange-500 font-semibold mt-1 hover:underline"
-                >
-                  {t("fillIn")}
-                </button>
-              </div>
-              <div className="bg-white rounded-lg p-3">
-                <p className="font-bold text-gray-500 mb-1">{t("freeAccount")}</p>
-                <p className="text-gray-600">Email: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.free.email}</code></p>
-                <p className="text-gray-600">{t("password")}: <code className="bg-gray-100 px-1 rounded">{TEST_CREDENTIALS.free.password}</code></p>
-                <button
-                  type="button"
-                  onClick={() => { setEmail(TEST_CREDENTIALS.free.email); setPassword(TEST_CREDENTIALS.free.password); }}
-                  className="text-orange-500 font-semibold mt-1 hover:underline"
-                >
-                  {t("fillIn")}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>}
       </div>
     </div>
   );

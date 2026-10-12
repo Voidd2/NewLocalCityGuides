@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { locations } from "@/data/locations";
-import { routes as standardRoutes } from "@/data/routes";
+import { usePremiumRoutes } from "@/lib/use-premium-routes";
 import { useAuth } from "@/lib/auth-context";
 import { getSavedRoutes, saveRoute, addLocationToRoute, type SavedRoute } from "@/lib/saved-routes";
 import { MapSkeleton } from "@/components/ui/PageSkeletons";
@@ -45,6 +45,7 @@ export function MapPage() {
   const tCommon = useTranslations("common");
   const locale = useLocale() as SupportedLocale;
   const { hasPaid, isLoading } = useAuth();
+  const { routes: standardRoutes } = usePremiumRoutes(hasPaid);
 
   const categories = [
     { key: "all", label: t("all"), icon: "\u{1F5FA}\uFE0F" },

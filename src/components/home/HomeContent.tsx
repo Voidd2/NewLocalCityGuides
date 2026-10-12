@@ -1,9 +1,9 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
-import { routes } from "@/data/routes";
+import { routeSummaries as routes } from "@/data/route-summaries";
 import { getSavedRoutes } from "@/lib/saved-routes";
 import { getLocationById } from "@/data/locations";
 import { PriceComparison } from "./PriceComparison";
@@ -12,16 +12,18 @@ import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { useEffect, useState } from "react";
 import type { SavedRoute } from "@/lib/saved-routes";
 import Image from "next/image";
+import { formatGuidePrice } from "@/lib/product";
 
 function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
   const t = useTranslations("home");
+  const locale = useLocale();
 
   if (type === "package") {
     return (
       <div className="h-full bg-warm-50 p-4 text-left">
         <div className="h-28 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 p-4 text-white shadow-lg shadow-orange-500/20">
           <span className="text-[9px] font-bold uppercase tracking-widest text-white/70">{t("previewPackageCity")}</span>
-          <p className="mt-2 text-xl font-extrabold">€5,99</p>
+          <p className="mt-2 text-xl font-extrabold">{formatGuidePrice(locale)}</p>
           <p className="mt-3 text-xs font-semibold">{t("trustOneTime")}</p>
         </div>
         <div className="mt-4 space-y-2.5">
@@ -61,15 +63,9 @@ function ProductPreview({ type }: { type: "package" | "route" | "location" }) {
       <div className="absolute inset-x-4 bottom-4 text-white">
         <span className="inline-flex rounded-full bg-orange-500 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider">{t("previewStopBadge")}</span>
         <p className="mt-2 text-lg font-extrabold">{t("previewLocationName")}</p>
-        <div className="mt-3 grid grid-cols-2 gap-2">
+        <div className="mt-3">
           <div className="flex h-9 items-center justify-center rounded-full bg-white px-2 text-center text-[8px] font-bold text-navy-800">
             {t("previewStoryButton")}
-          </div>
-          <div className="flex h-9 items-center justify-center gap-1 rounded-full bg-orange-500 px-2 text-center text-[8px] font-bold text-white">
-            <svg viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3 shrink-0" aria-hidden="true">
-              <path d="M6 4v12l9-6z" />
-            </svg>
-            {t("previewWatchVideoButton")}
           </div>
         </div>
       </div>
@@ -148,13 +144,6 @@ function AppHighlightsSection() {
                 <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-bold text-navy-900 shadow-lg backdrop-blur">
                   <span className="h-2 w-2 rounded-full bg-orange-500" />
                   {t("appVideoBadge")}
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-white shadow-xl transition group-hover:scale-110">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="ml-1 h-7 w-7" aria-hidden="true">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
                 </div>
                 <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
                   <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-300">{t("appVideoKicker")}</p>

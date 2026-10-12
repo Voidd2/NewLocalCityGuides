@@ -72,7 +72,7 @@ export const locations: LocationData[] = [
     image: "/images/locations/10025-pieterskerk-leiden.jpg",
     coords: { lat: 52.1577, lng: 4.4886 },
     entryFee: "7,50",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L007",
@@ -114,7 +114,7 @@ export const locations: LocationData[] = [
     image: "/images/locations/10029-hortus-botanicus-leiden.jpg",
     coords: { lat: 52.1571, lng: 4.4845 },
     entryFee: "14,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L011",
@@ -146,7 +146,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: { lat: 52.1600, lng: 4.4983 },
     entryFee: "5,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L014",
@@ -168,7 +168,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: null,
     entryFee: "5,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L016",
@@ -260,7 +260,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: null,
     entryFee: "14,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L025",
@@ -272,7 +272,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: null,
     entryFee: "16,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L026",
@@ -284,7 +284,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: null,
     entryFee: "16,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L027",
@@ -316,7 +316,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: null,
     entryFee: "17,00",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L030",
@@ -338,7 +338,7 @@ export const locations: LocationData[] = [
     image: null,
     coords: null,
     entryFee: "9,50",
-    ticketUrl: "https://www.getyourguide.com/leiden-l1076/",
+    ticketUrl: null,
   },
   {
     id: "L032",

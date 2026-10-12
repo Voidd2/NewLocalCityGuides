@@ -8,6 +8,7 @@ import { Link, useRouter } from "@/i18n/navigation";
 import type { RouteData } from "@/data/routes";
 import { getLocationById } from "@/data/locations";
 import { useAuth } from "@/lib/auth-context";
+import { formatGuidePrice } from "@/lib/product";
 import { saveRoute, getSavedRoutes } from "@/lib/saved-routes";
 import { getSchaapsvisRouteCopy, type SupportedLocale } from "@/data/schaapsvis";
 import type { MapPin } from "@/components/map/MapLibreMap";
@@ -556,13 +557,10 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-600 mt-3 mb-4">
               {[
                 t("allRoutesInLeiden"),
-                t("interactiveVids"),
                 t("createOwnRouteIncluded"),
                 t("hiddenGemsAndTips"),
                 t("atYourPace"),
-                t("lifetimeAccess"),
                 t("kidFriendlyRoutes"),
-                t("regularNewRoutes"),
               ].map((item) => (
                 <span key={item} className="flex items-center gap-1">
                   <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-green-600">
@@ -573,7 +571,7 @@ export function RouteDetail({ route: baseRoute }: { route: RouteData }) {
               ))}
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-3xl font-extrabold text-orange-500">&euro;5,99</span>
+              <span className="text-3xl font-extrabold text-orange-500">{formatGuidePrice(locale)}</span>
               <span className="text-sm text-gray-500">{t("perPerson")}</span>
               <Link
                 href="/pricing"

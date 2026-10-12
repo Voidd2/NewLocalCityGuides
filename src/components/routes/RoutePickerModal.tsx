@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { createPortal } from "react-dom";
 import { useLocale } from "next-intl";
-import { routes } from "@/data/routes";
+import { usePremiumRoutes } from "@/lib/use-premium-routes";
 import { applyDateAwareRoute } from "@/data/route-conditions";
 import { addLocationToRoute, getSavedRoutes, saveRoute, type SavedRoute } from "@/lib/saved-routes";
 
@@ -21,6 +21,7 @@ export function RoutePickerModal({
   onClose: () => void;
   onResult?: (message: string) => void;
 }) {
+  const { routes } = usePremiumRoutes();
   const locale = useLocale() as Locale;
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
