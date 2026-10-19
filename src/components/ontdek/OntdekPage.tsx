@@ -70,7 +70,17 @@ function spotImage(spot: LocalSpot) {
     ["L001", "L003", "L006", "L010"].includes(place.id) &&
     spot.name.toLowerCase().includes(place.name.toLowerCase().replace(" van leiden", "").replace("de burcht", "burcht").replace("hortus botanicus", "hortus")),
   );
-  return spot.image || entityImage || namedPlace?.image;
+  const fallbackByCategory: Record<SpotCategory, string> = {
+    museum: "/images/locations/10033-academiegebouw-leiden.jpg",
+    visboer: "/images/locations/10021-vismarkt-leiden.jpg",
+    bakker: "/images/routes/10003-leiden-narrow-street-centre.jpg",
+    winkel: "/images/locations/10022-koornbrug-leiden.jpg",
+    markt: "/images/locations/10021-vismarkt-leiden.jpg",
+    evenement: "/images/heroes/10001-leiden-canal-historic-buildings.jpg",
+    restaurant: "/images/locations/10020-de-burcht-leiden.jpg",
+    kroeg: "/images/heroes/10008-leiden-canal-panorama.jpg",
+  };
+  return spot.image || entityImage || namedPlace?.image || fallbackByCategory[spot.category];
 }
 
 function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
@@ -81,7 +91,7 @@ function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
 
   return (
     <Link href={publicPathForSpot(spot)} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
-      {photo && <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={photo} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>}
+      <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={photo} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/35 to-transparent" /></div>
 
       <div className="p-4">
         <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-orange-700">{SPOT_CATEGORIES.find(cat => cat.key === spot.category)?.label[lang]}</p>
@@ -104,7 +114,7 @@ function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t:
   const catLabel = SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[lang] || spot.category;
   return (
     <Link href={publicPathForSpot(spot)} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
-      {spotImage(spot) && <div className="aspect-[16/9] overflow-hidden relative"><Image src={spotImage(spot)!} alt={spot.name} fill sizes="280px" className="object-cover" /></div>}
+      <div className="aspect-[16/9] overflow-hidden relative"><Image src={spotImage(spot)} alt={spot.name} fill sizes="280px" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>
       <span className="mx-4 mt-4 inline-block rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-navy-900">{catLabel}</span>
       <div className="p-3">
         <h3 className="font-bold text-sm leading-tight line-clamp-1">{spot.name}</h3>
@@ -129,6 +139,16 @@ export function OntdekPage() {
   const [activeCategory, setActiveCategory] = useState<SpotCategory | "alle">("alle");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"editorial" | "name">("editorial");
+  const copy = locale === "nl" ? {
+    heroTag: "Gratis stadsgids · 49 plekken", heroCta: "Bekijk de complete gids", heroNote: "Routes met GPS, audio en verborgen verhalen",
+    guideTag: "Meer dan een lijst met plekken", guideTitle: "Wandel Leiden binnen met de complete gids", guideText: "Krijg drie samengestelde routes, navigatie van stop naar stop en de verhalen die je op straat niet ziet.", guideCta: "Bekijk gids en prijs", guideMeta: "Eenmalig · direct op je telefoon",
+  } : locale === "de" ? {
+    heroTag: "Kostenloser Stadtführer · 49 Orte", heroCta: "Kompletten Guide ansehen", heroNote: "Routen mit GPS, Audio und verborgenen Geschichten",
+    guideTag: "Mehr als eine Ortsliste", guideTitle: "Entdecke Leiden mit dem kompletten Guide", guideText: "Drei kuratierte Routen, Navigation von Stopp zu Stopp und Geschichten, die du auf der Straße nicht siehst.", guideCta: "Guide und Preis ansehen", guideMeta: "Einmalig · direkt auf deinem Telefon",
+  } : {
+    heroTag: "Free city guide · 49 places", heroCta: "Explore the complete guide", heroNote: "Routes with GPS, audio and hidden stories",
+    guideTag: "More than a list of places", guideTitle: "Step into Leiden with the complete guide", guideText: "Get three curated routes, turn-by-turn navigation and stories you will not see from the street.", guideCta: "View guide and price", guideMeta: "One-time purchase · on your phone instantly",
+  };
 
   useEffect(() => {
     const syncFilters = () => {
@@ -182,11 +202,11 @@ export function OntdekPage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden">
+      <section className="relative min-h-[500px] overflow-hidden md:min-h-[580px]">
         <Image src="/images/heroes/10008-leiden-canal-panorama.jpg" alt={tHome("heroImageAlt")} fill priority sizes="100vw" className="object-cover" />
-        <div className="relative bg-gradient-to-r from-navy-950/95 via-navy-900/80 to-navy-900/50 text-white px-5 py-14 md:py-24">
+        <div className="relative flex min-h-[500px] items-center bg-gradient-to-r from-navy-950/95 via-navy-900/80 to-navy-900/45 text-white px-5 py-14 md:min-h-[580px] md:py-24">
           <div className="max-w-7xl mx-auto">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">CityWalkStories · Leiden</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">{copy.heroTag}</p>
             <h1 className="mt-3 max-w-3xl text-4xl md:text-6xl font-bold leading-tight">{t("title")}</h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">{t("subtitle")}</p>
             <div className="mt-8 flex max-w-2xl items-center rounded-2xl border border-white/30 bg-white p-2 text-navy-800 shadow-xl">
@@ -194,6 +214,10 @@ export function OntdekPage() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="ml-3 h-5 w-5 shrink-0 text-gray-500"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
               <input id="discover-search" type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); updateQuery({ q: event.target.value }); }} placeholder={locale === "nl" ? "Zoek plekken, buurten of interesses" : locale === "de" ? "Orte, Viertel oder Interessen suchen" : "Search places, neighbourhoods or interests"} className="min-h-11 min-w-0 flex-1 px-3 text-sm outline-none" />
               <Link href="/map" className="shrink-0 rounded-xl bg-navy-800 px-4 py-3 text-sm font-semibold text-white hover:bg-navy-900">{locale === "nl" ? "Kaart" : locale === "de" ? "Karte" : "Map"}</Link>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link href="/pricing" className="inline-flex min-h-12 items-center rounded-full bg-orange-500 px-6 text-sm font-bold text-white shadow-lg shadow-orange-950/30 transition hover:bg-orange-400">{copy.heroCta} <span className="ml-2" aria-hidden="true">→</span></Link>
+              <p className="text-sm font-medium text-white/80">✓ {copy.heroNote}</p>
             </div>
           </div>
         </div>
@@ -211,6 +235,23 @@ export function OntdekPage() {
           </div>
         </section>
       )}
+
+      <section className="mx-auto max-w-7xl px-4 pb-10">
+        <div className="overflow-hidden rounded-3xl bg-navy-900 text-white shadow-xl">
+          <div className="grid md:grid-cols-[1.05fr_.95fr]">
+            <div className="p-7 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-300">{copy.guideTag}</p>
+              <h2 className="mt-3 max-w-xl text-3xl font-bold leading-tight">{copy.guideTitle}</h2>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-white/75">{copy.guideText}</p>
+              <div className="mt-7 flex flex-wrap items-center gap-4">
+                <Link href="/pricing" className="inline-flex min-h-12 items-center rounded-full bg-orange-500 px-6 text-sm font-bold text-white transition hover:bg-orange-400">{copy.guideCta} <span className="ml-2" aria-hidden="true">→</span></Link>
+                <span className="text-sm font-medium text-white/65">{copy.guideMeta}</span>
+              </div>
+            </div>
+            <div className="relative min-h-64"><Image src="/images/routes/10002-leiden-canal-pieterskerk.jpg" alt="Historische wandeling door Leiden" fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" /><div className="absolute bottom-5 left-5 rounded-2xl bg-white/95 px-4 py-3 text-navy-800 shadow-lg"><p className="text-xs font-bold text-orange-700">CityWalkStories</p><p className="mt-1 text-sm font-bold">{formatGuidePrice(locale)}</p></div></div>
+          </div>
+        </div>
+      </section>
 
       <section className="max-w-7xl mx-auto px-4 mb-6">
         <div className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide">
