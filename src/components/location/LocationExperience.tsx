@@ -17,10 +17,14 @@ type ExperienceState = "preview" | "arrived" | "audio" | "video" | "story" | "pr
 function AudioGuideView({
   location,
   transcript,
+  isLoading,
+  hasError,
   onNavigate,
 }: {
   location: LocationData;
-  transcript: string;
+  transcript: string | null;
+  isLoading: boolean;
+  hasError: boolean;
   onNavigate: (s: ExperienceState) => void;
 }) {
   const labels = {
@@ -56,9 +60,11 @@ function AudioGuideView({
       <details className="mt-5 rounded-xl bg-gray-50 p-4" open>
         <summary className="cursor-pointer font-semibold text-navy-800">{labels.transcript}</summary>
         <article className="mt-4 space-y-4 text-[15px] leading-7 text-gray-700">
-          {transcript.split(/\n\s*\n/).map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {isLoading && <p>Loading transcript…</p>}
+          {hasError && <p>We could not load the transcript. Please try again.</p>}
+          {transcript?.split(/\n\s*\n/).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
         </article>
       </details>
 
@@ -215,6 +221,9 @@ export function LocationExperience({ location }: { location: LocationData }) {
   const [storyError, setStoryError] = useState(false);
   const [storyLoading, setStoryLoading] = useState(false);
   const [storyAttempt, setStoryAttempt] = useState(0);
+  const [audioTranscript, setAudioTranscript] = useState<string | null>(null);
+  const [audioLoading, setAudioLoading] = useState(false);
+  const [audioError, setAudioError] = useState(false);
   const videoPlanned = isLocationVideoPublished(location.id);
   const parsedStory = useMemo(
     () => (storyText ? parseStoryText(storyText) : null),
@@ -234,6 +243,13 @@ export function LocationExperience({ location }: { location: LocationData }) {
     setStoryAttempt((attempt) => attempt + 1);
   }
 
+  function openAudio() {
+    setAudioTranscript(null);
+    setAudioError(false);
+    setAudioLoading(true);
+    setState("audio");
+  }
+
   useEffect(() => {
     if (state !== "story" || !hasPaid) return;
     const controller = new AbortController();
@@ -251,6 +267,24 @@ export function LocationExperience({ location }: { location: LocationData }) {
       .finally(() => { if (!controller.signal.aborted) setStoryLoading(false); });
     return () => controller.abort();
   }, [state, hasPaid, location.id, locale, storyAttempt]);
+
+  useEffect(() => {
+    if (state !== "audio" || !hasPaid || !location.audioGuide) return;
+    const controller = new AbortController();
+    fetch(`/api/premium/stories/${encodeURIComponent(location.id)}?locale=en`, {
+      cache: "no-store",
+      credentials: "same-origin",
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("audio_transcript_access_failed");
+        return response.json() as Promise<{ voiceOver: string }>;
+      })
+      .then(({ voiceOver }) => setAudioTranscript(voiceOver))
+      .catch(() => { if (!controller.signal.aborted) setAudioError(true); })
+      .finally(() => { if (!controller.signal.aborted) setAudioLoading(false); });
+    return () => controller.abort();
+  }, [state, hasPaid, location.id, location.audioGuide]);
 
   if (isLoading) {
     return <LocationSkeleton />;
@@ -324,9 +358,9 @@ export function LocationExperience({ location }: { location: LocationData }) {
           <p className="text-sm text-gray-500 mb-6">{t("whatDoYouWant")}</p>
 
           <div className="space-y-3">
-            {location.audioGuide && story && (
+            {location.audioGuide && (
               <button
-                onClick={() => setState("audio")}
+                onClick={openAudio}
                 className="w-full flex items-center gap-4 bg-white border border-orange-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all text-left"
               >
                 <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
@@ -416,10 +450,12 @@ export function LocationExperience({ location }: { location: LocationData }) {
         </div>
       )}
 
-      {state === "audio" && location.audioGuide && story && (
+      {state === "audio" && location.audioGuide && (
         <AudioGuideView
           location={location}
-          transcript={story.voiceOver.en}
+          transcript={audioTranscript}
+          isLoading={audioLoading}
+          hasError={audioError}
           onNavigate={setState}
         />
       )}
