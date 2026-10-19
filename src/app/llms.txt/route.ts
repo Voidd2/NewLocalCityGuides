@@ -7,7 +7,7 @@ export function GET() {
   const articles = blogPosts
     .map((post) => `- ${SITE_URL}/de/blog/${post.slug} — ${post.title.de}\n  - English: ${SITE_URL}/en/blog/${post.slug}\n  - Nederlands: ${SITE_URL}/nl/blog/${post.slug}`)
     .join("\n");
-  const body = `# YourLocalCityGuide
+  const body = `# CityWalkStories
 
 > Multilingual self-guided city guide for Leiden, the Netherlands. Public pages provide practical travel planning and concise local context. Full stories, audio, video, GPS guidance and saved progress require access to the Leiden package.
 

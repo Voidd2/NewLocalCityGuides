@@ -103,7 +103,7 @@ Het is een mooie historische omkering.
 Een plek die ooit macht en afsluiting betekende, werd een plek waar inwoners juist konden komen wandelen.
 Kijk vanaf boven naar de rest van de route
 Loop de trap op en ga de weergang op.
-Daar wordt duidelijk waarom dit een uitstekend beginpunt voor YourLocalCityGuide is.
+Daar wordt duidelijk waarom dit een uitstekend beginpunt voor CityWalkStories is.
 Je ziet de torens en daken van een stad die in de eeuwen na het ontstaan van deze plek is gegroeid. De Pieterskerk vertelt later het verhaal van religie, de Pilgrims en de universiteit. De Hooglandse Kerk laat de groei van middeleeuws Leiden zien. Beneden liggen de waterwegen die handel mogelijk maakten.
 De Burcht hoeft daarom niet één spectaculair moment uit de geschiedenis te vertegenwoordigen.
 Het is interessanter dan dat.
@@ -319,7 +319,7 @@ Een traditie die nog beweegt
 Het interessante van de Vismarkt is dat je niet volledig afhankelijk bent van je fantasie.
 Kom op woensdag of zaterdag en de markt bestaat nog steeds.
 Visit Leiden vermeldt voor de centrale markt momenteel woensdag en zaterdag van ongeveer 08.00 tot 17.00 uur rond de Nieuwe Rijn. 
-Daarmee kan YourLocalCityGuide bezoekers iets aanbieden dat bij een historisch monument niet altijd mogelijk is: een activiteit die inhoudelijk bij het verhaal past.
+Daarmee kan CityWalkStories bezoekers iets aanbieden dat bij een historisch monument niet altijd mogelijk is: een activiteit die inhoudelijk bij het verhaal past.
 Eet iets.
 Praat met een marktkoopman.
 Kijk hoe mensen hun boodschappen doen.
@@ -556,7 +556,7 @@ Onder je ligt een stenen brug uit 1642.
 Boven je staat een constructie uit 1825.
 Samen vertellen ze één verhaal: handel.
 De Rijksdienst voor het Cultureel Erfgoed beschrijft de huidige stenen Koornbrug als een gemetselde brug met drie bogen uit 1642. De bekende houten galerijen daarboven zijn ontworpen door Salomon van der Paauw en dateren volgens het monumentenregister uit 1825. 
-Dat is relevant omdat verschillende moderne websites 1834 noemen. De Rijksdienst en historische monumentenliteratuur wijzen echter naar 1825. Voor YourLocalCityGuide zou ik daarom 1825 hanteren en 1834 niet overnemen. 
+Dat is relevant omdat verschillende moderne websites 1834 noemen. De Rijksdienst en historische monumentenliteratuur wijzen echter naar 1825. Voor CityWalkStories zou ik daarom 1825 hanteren en 1834 niet overnemen. 
 Waarom graan op een brug?
 De naam geeft het al weg: hier werd koren verhandeld.
 Al vóór de huidige stenen brug vond in dit gebied graanhandel plaats. De brede brug bood een ideale centrale plek voor kooplieden.
@@ -833,7 +833,7 @@ Er bestaat een vaak verteld verhaal dat criminelen op de Blauwe Steen zouden zij
 Dat kunnen we op basis van de gevonden bronnen niet hard maken.
 Een lokaal historisch overzicht beschrijft het voorzichtiger: er wordt verondersteld dat verdachten op of bij de Blauwe Steen stonden wanneer zij hun straf te horen kregen. De uitspraak kon vanaf de zogenoemde Roepstoel bij het stadhuis worden afgeroepen. 
 Dat is iets anders dan zeggen dat we precies weten hoe zo'n gebeurtenis plaatsvond.
-Voor YourLocalCityGuide is dat onderscheid belangrijk.
+Voor CityWalkStories is dat onderscheid belangrijk.
 De werkelijkheid hoeft niet sensationeler te worden gemaakt.
 Alleen het feit dat rechtspraak hier midden in de openbare ruimte zichtbaar kon zijn, zegt al veel over de middeleeuwse stad.
 Recht moest gezien worden
@@ -1160,7 +1160,7 @@ Sinds eind 2025 gebruikt Erfgoed Leiden en Omstreken delen van het gebouw tijdel
 Je kunt eindelijk naar binnen
 Een interessante recente ontwikkeling is dat bezoekers sinds de zomer van 2025 tijdens georganiseerde rondleidingen delen van het Gravensteen kunnen bekijken.
 De Pieterskerk organiseert in 2026 in het weekend rondleidingen van ongeveer een uur. Daarbij bezoek je onder meer de middeleeuwse toren, cellen en de galerij. Het gebouw is door smalle doorgangen, ongelijke vloeren en steile trappen niet geschikt voor bezoekers die slecht ter been zijn of een rolstoel gebruiken. 
-Dat maakt het Gravensteen momenteel extra interessant voor YourLocalCityGuide.
+Dat maakt het Gravensteen momenteel extra interessant voor CityWalkStories.
 Je hoeft het verleden niet alleen vanaf de straat te bekijken.
 Op bepaalde momenten kun je letterlijk door dezelfde ruimten lopen.
 De route verder
@@ -1821,7 +1821,7 @@ Dat verhaal hoort niet volledig bij deze Leidse locatie.
 Maar het voorkomt dat we van vertrek automatisch een eenvoudig heldenverhaal maken.
 Wat Leiden betekende
 Er bestaan theorieën dat bepaalde gebruiken uit Leiden later invloed hadden in Plymouth — bijvoorbeeld burgerlijke huwelijken of elementen van lokaal bestuur. Ook wordt regelmatig een mogelijke verbinding gelegd tussen Leidens Ontzet en latere Thanksgivingtradities.
-Voor vooral die Thanksgivingclaim is de causaliteit niet hard genoeg om in YourLocalCityGuide als bewezen feit te presenteren. Visit Leiden formuleert het zelf voorzichtig als iets waarvan “men ervan uitgaat”.
+Voor vooral die Thanksgivingclaim is de causaliteit niet hard genoeg om in CityWalkStories als bewezen feit te presenteren. Visit Leiden formuleert het zelf voorzichtig als iets waarvan “men ervan uitgaat”.
 De sterkere waarheid is eenvoudiger.
 Bijna twaalf jaar lang leefden deze mensen in Leiden.
 Dat alleen al is genoeg.`,
@@ -2149,7 +2149,7 @@ Dat is een betekenisvolle menselijke achtergrond, maar ik zou hem in de app niet
 De betrouwbare kern staat wel vast:
 Jean Pesijn en Marie de Lannoy bestemden vermogen voor de huisvesting van arme, oudere Waalse mannen en vrouwen.
 Status motivatie door persoonlijk verdriet: [ONGECONTROLEERD / secundair overgeleverd].
-Dat is precies het soort detail waarbij YourLocalCityGuide beter voorzichtig kan zijn dan een mooi verhaal te hard als feit neer te zetten.
+Dat is precies het soort detail waarbij CityWalkStories beter voorzichtig kan zijn dan een mooi verhaal te hard als feit neer te zetten.
 Twaalf woningen rond een hof
 De schaal is belangrijk.
 Twaalf huizen klinkt klein.
@@ -2217,7 +2217,7 @@ One popular version gives the foundation a particularly emotional origin.
 The Leiden Hofjes Festival states that Jean and Marie lost their only daughter during the plague epidemic of 1655, and that this loss contributed to their decision to establish an almshouse.
 It is a plausible and meaningful tradition.
 However, the archival sources retrieved for this project establish the charitable foundation more securely than they establish grief as the exact motivation.
-For YourLocalCityGuide, I would therefore mark that motive as:
+For CityWalkStories, I would therefore mark that motive as:
 [UNVERIFIED — supported by a secondary local heritage source, not yet confirmed from a primary document].
 The story does not need to depend on it.
 The documented act of charity is powerful enough.
@@ -2471,7 +2471,7 @@ Aan het Steenschuur lag een schip van schipper Adam van Schie met ongeveer 37.00
 De ontploffing verwoestte het gebied aan beide zijden van het water.
 Ramen sprongen tot ver buiten de directe omgeving. Daken en gevels stortten in. Brand brak uit. Uit historische schadeoverzichten blijkt dat tientallen huizen volledig instortten en vele andere zo zwaar beschadigd raakten dat ze niet meer bewoonbaar waren.
 En onder dat puin lagen mensen.
-Voor YourLocalCityGuide zou ik 151 doden gebruiken. Dat getal wordt genoemd in gedetailleerde historische publicaties over de ramp; andere moderne publieksbronnen ronden het af naar ongeveer 160 of noemen 161. Ongeveer 2.000 mensen raakten gewond. Dat verschil tussen bronnen moet niet worden verstopt: de exacte telling varieert, maar de schaal van de ramp staat buiten discussie.
+Voor CityWalkStories zou ik 151 doden gebruiken. Dat getal wordt genoemd in gedetailleerde historische publicaties over de ramp; andere moderne publieksbronnen ronden het af naar ongeveer 160 of noemen 161. Ongeveer 2.000 mensen raakten gewond. Dat verschil tussen bronnen moet niet worden verstopt: de exacte telling varieert, maar de schaal van de ramp staat buiten discussie.
 Geen anoniem getal
 Een getal als 151 is bijna te groot om nog menselijk te voelen.
 Daarom helpt één naam.
@@ -2948,7 +2948,7 @@ De tuin die Clusius zelf aanlegde, bleef niet vier eeuwen ongewijzigd bestaan.
 In de twintigste eeuw werd geprobeerd het oorspronkelijke ontwerp opnieuw te creëren op basis van historische bronnen.
 In 2009 verhuisde de gereconstrueerde Clusiustuin terug naar ongeveer de oorspronkelijke locatie achter het Academiegebouw.
 De rechthoekige plantbedden, het paviljoentje en zelfs het hek rond de kostbare bollen zijn gebaseerd op oude afbeeldingen en beplantingsgegevens. 
-Dit is daarom een van de weinige locaties in YourLocalCityGuide waar een historische reconstructie juist heel goed werkt.
+Dit is daarom een van de weinige locaties in CityWalkStories waar een historische reconstructie juist heel goed werkt.
 Niet om een dramatische scène na te spelen.
 Maar om de bezoeker letterlijk door een wetenschappelijke tuin van rond 1600 te laten lopen.
 Levende geschiedenis
@@ -3033,7 +3033,7 @@ During the twentieth century it was reconstructed using historical planting list
 In 2009, the reconstructed garden was moved back to approximately its original position behind the Academy Building. 
 Its rectangular beds recreate the structure of a Renaissance garden.
 Even the small pavilion and fences are based on historical images.
-For YourLocalCityGuide, this makes the site especially suitable for augmented historical visualisation.
+For CityWalkStories, this makes the site especially suitable for augmented historical visualisation.
 A visitor can stand inside the modern reconstruction while a video overlays the 1610 plan.
 Living museum objects
 Some of the most remarkable historic objects here are alive.
@@ -3315,7 +3315,7 @@ Daarom is het onverstandig om een gebouw dat rond 1906 op foto's zichtbaar is zo
 De plek is historisch.
 Het huidige gebouw niet.
 Een reconstructie die wél verantwoord kan
-Voor deze locatie kan YourLocalCityGuide iets bijzonders doen.
+Voor deze locatie kan CityWalkStories iets bijzonders doen.
 Erfgoed Leiden heeft op basis van historische kaarten, archiefbronnen, bouwhistorisch en archeologisch onderzoek een digitale reconstructie gemaakt van Rembrandts woonomgeving. 
 Dat past exact bij het concept van de app.
 Laat de bezoeker eerst de moderne straat zien.
@@ -3385,7 +3385,7 @@ So photographs from around 1906 should not automatically be labelled “Rembrand
 The site is authentic.
 The building was not.
 Bringing the street back digitally
-This makes the location particularly suitable for YourLocalCityGuide.
+This makes the location particularly suitable for CityWalkStories.
 Heritage Leiden has already created a digital reconstruction of Rembrandt's birthplace and its surroundings, based on historical maps, archaeology, documentary evidence and building research. 
 Instead of constructing a fake house, the app can let the historical city temporarily appear over the modern one.
 Visitors remain aware that they are viewing a reconstruction.
@@ -3440,7 +3440,7 @@ Deshalb sollte eine historische Fotografie aus dem Jahr 1906 nicht als zweifelsf
 Authentisch ist vor allem der Ort.
 Digitale Rekonstruktion
 Erfgoed Leiden hat die historische Umgebung bereits auf Grundlage alter Karten, Archivalien, archäologischer und bauhistorischer Forschung digital rekonstruiert. 
-Für YourLocalCityGuide ist das ideal.
+Für CityWalkStories ist das ideal.
 Man muss kein künstliches „historisches Haus“ erfinden.
 Stattdessen kann man die belegte Rekonstruktion transparent über die heutige Umgebung legen.
 Rembrandt durch Leiden folgen
@@ -3771,7 +3771,7 @@ Maar Museum De Lakenhal bewaart een historische bron die een ander verhaal verte
 De bronzen ketel die traditioneel met het Ontzet verbonden is, draagt een inscriptie rond Gijsbert Cornelisz. Schaeck.
 Volgens die traditie was Schaeck degene die de verlaten Lammenschans binnenging, de vlucht van de tegenstander vaststelde en de kookpot meenam.
 Pas later verdween zijn naam uit het populaire geheugen en nam Cornelis Joppenszoon zijn plaats in. 
-Dat is fantastisch materiaal voor YourLocalCityGuide.
+Dat is fantastisch materiaal voor CityWalkStories.
 Niet zeggen:
 “Het verhaal is fout.”
 Maar:
@@ -4388,7 +4388,7 @@ Er zijn wisselende textielpresentaties en natuurlijk historische voorwerpen, maa
 Het monumentale weefgetouw uit ongeveer 1830 is daarbij een van de sterkste elementen.
 Vrijwilligers weven er nog regelmatig op. Ook staat er een kleiner modern getouw waarmee bezoekers soms zelf kennis kunnen maken met weven. 
 Van hier naar De Lakenhal
-Voor YourLocalCityGuide hoort deze locatie eigenlijk direct gekoppeld te worden aan L024 Museum De Lakenhal.
+Voor CityWalkStories hoort deze locatie eigenlijk direct gekoppeld te worden aan L024 Museum De Lakenhal.
 Bezoek eerst dit huis.
 Kijk hoe weinig ruimte een werkend gezin had.
 Ga daarna naar de grote voormalige keurhal waar de luxe Leidse stoffen werden gecontroleerd en verhandeld.
@@ -4484,7 +4484,7 @@ A large loom dating from around 1830 remains operational and volunteers frequent
 That sound changes the room.
 It reveals how much physical space and attention production required.
 Pair it with Museum De Lakenhal
-For YourLocalCityGuide, this stop should connect directly with L024 Museum De Lakenhal.
+For CityWalkStories, this stop should connect directly with L024 Museum De Lakenhal.
 Visit the worker's house first.
 Then visit the monumental hall where high-quality Leiden textiles were inspected and traded.
 The two buildings represent different positions in the same economy.
@@ -4912,7 +4912,7 @@ Geen “Joodse bevolking”.
 Een persoon.
 Voor het voormalige Joodse Weeshuis liggen inmiddels vele stenen voor kinderen en medewerkers. Het project wordt nog steeds uitgebreid. 
 Een goede route loopt daarom verder
-YourLocalCityGuide zou L014 niet moeten beëindigen bij het Academiegebouw.
+CityWalkStories zou L014 niet moeten beëindigen bij het Academiegebouw.
 Laat de gebruiker daarna één of meerdere Stolpersteine bezoeken.
 Of stuur hem naar de voormalige locatie van het Joodse Weeshuis.
 Of naar de synagoge aan het Levendaal.
@@ -5738,7 +5738,7 @@ Ein stehendes Zahnrad ist Technikgeschichte.
 Ein drehendes Zahnrad ist verständlich.
 Blick über Leiden
 Die Galerie liegt ungefähr 14 Meter über dem Boden. 
-Für YourLocalCityGuide wäre dies ein idealer AR-Punkt.
+Für CityWalkStories wäre dies ein idealer AR-Punkt.
 Zuerst sieht man die moderne Stadt.
 Dann erscheinen nach und nach die früheren Mühlen entlang der Befestigungsanlagen.
 De Valk wird damit nicht mehr als isoliertes Postkartenmotiv verstanden.
@@ -5931,7 +5931,7 @@ Und Jahrhunderte später bewusst wieder sichtbar gemacht werden.`,
     },
     readingText: {
       nl: `De historische molen die uit 1987 komt
-Molen De Put is een perfecte test voor hoe zorgvuldig YourLocalCityGuide met begrippen als “historisch” moet omgaan.
+Molen De Put is een perfecte test voor hoe zorgvuldig CityWalkStories met begrippen als “historisch” moet omgaan.
 De plek is historisch.
 De molengeschiedenis is historisch.
 Het type molen is historisch verantwoord gereconstrueerd.
@@ -6809,7 +6809,7 @@ Laat vervolgens in AR of video het dak verdwijnen en draai de camera naar een bo
 Dan verschijnt het parallellogram.
 Leg de stadswal en brug eroverheen.
 In vijf seconden begrijpt een toerist waarom het gebouw scheef staat.
-Dit is precies het soort detail waarvoor YourLocalCityGuide meerwaarde heeft boven alleen een tekstbordje.
+Dit is precies het soort detail waarvoor CityWalkStories meerwaarde heeft boven alleen een tekstbordje.
 Willem van der Helm
 Van der Helm werd in 1662 stadsarchitect van Leiden. 
 In de jaren daarna ontwierp hij verschillende nieuwe poorten voor de sterk gegroeide stad.
@@ -7089,7 +7089,7 @@ Heute kommen Reisende über das Wasser und betreten die Stadt freiwillig und ohn
 Besuch
 Außenansicht und Durchfahrt sind frei zugänglich.
 Die Zijlpoort ist kein täglich geöffnetes klassisches Museum.
-Für YourLocalCityGuide liegt die Hauptgeschichte deshalb direkt im öffentlichen Raum.
+Für CityWalkStories liegt die Hauptgeschichte deshalb direkt im öffentlichen Raum.
 AANVULLENDE FEITEN
 
 * Bouwjaar: 1667; eerste steen 9 april 1667. 
@@ -8725,7 +8725,7 @@ Daarmee valt de wederopbouw van het Stadhuis gedeeltelijk samen met de Tweede We
 
 ### Twee gezichten
 
-Voor YourLocalCityGuide moet de gebruiker daarom absoluut om het gebouw heen worden gestuurd.
+Voor CityWalkStories moet de gebruiker daarom absoluut om het gebouw heen worden gestuurd.
 
 Aan de **Breestraat** ziet hij de historische renaissancegevel.
 
@@ -8842,7 +8842,7 @@ Water from the firefighting froze across the ruins.
 
 Historic images preserved by Leiden's heritage collections show how extensive the destruction was.
 
-For YourLocalCityGuide, this is a location where documentary material should dominate the visual experience.
+For CityWalkStories, this is a location where documentary material should dominate the visual experience.
 
 Authentic film footage of the fire survives through Erfgoed Leiden.
 
@@ -10533,7 +10533,7 @@ It now preserved objects that carried cultural and historical value.
 
 ### Rembrandt
 
-One object is especially important for YourLocalCityGuide's Rembrandt narrative:
+One object is especially important for CityWalkStories's Rembrandt narrative:
 
 the **Spectacles Seller**, painted around **1624**.
 
@@ -11319,7 +11319,7 @@ het moderne museumgebouw werd aangepast om een oud gebouw binnen een ander gebou
 
 ### Gratis te zien
 
-Een nuttig detail voor YourLocalCityGuide:
+Een nuttig detail voor CityWalkStories:
 
 de **Tempelzaal is gratis toegankelijk**, ook zonder betaald museumticket.
 
@@ -12235,7 +12235,7 @@ observeren → meten → behandelen.
 
 ### Wetenschap is geen rechte lijn
 
-Voor YourLocalCityGuide moet L026 géén heldengalerij worden.
+Voor CityWalkStories moet L026 géén heldengalerij worden.
 
 Niet:
 
@@ -13224,7 +13224,7 @@ Tegelijk noemt zij expliciet de noodzaak kritisch naar haar eigen koloniale verl
 
 ### Een betere museumopdracht voor bezoekers
 
-YourLocalCityGuide kan hier iets doen wat een gewone audiotour misschien niet altijd doet.
+CityWalkStories kan hier iets doen wat een gewone audiotour misschien niet altijd doet.
 
 Geef de gebruiker deze opdracht:
 
@@ -14305,7 +14305,7 @@ Het museum stelde zelf vast dat de oude tentoonstelling sterk vanuit een **wit, 
 
 De nieuwe benadering besteedt onder andere meer aandacht aan Ine en aan **Orson**, een tot slaaf gemaakte persoon die op Java werd verhandeld en later als bezit van Siebold in Leiden terechtkwam.
 
-Dit is voor YourLocalCityGuide zeer relevant.
+Dit is voor CityWalkStories zeer relevant.
 
 De app moet Siebold niet demoniseren.
 
@@ -16613,7 +16613,7 @@ De historische koppeling met zijn leermeester is reëel.
 
 ### Maar is het gebouw zelf exact hetzelfde?
 
-Hier moet YourLocalCityGuide voorzichtiger zijn dan veel toeristische teksten.
+Hier moet CityWalkStories voorzichtiger zijn dan veel toeristische teksten.
 
 De huidige BAG-gerelateerde registratie dateert het pand op **1650**, terwijl historische bronnen Van Swanenburg hier al rond 1622 plaatsen.
 
@@ -19250,7 +19250,7 @@ Voor de app:
 
 Visit Leiden omschrijft het Singelpark ook als een ring van **zeven parkgebieden** langs de singel.
 
-Die losse identiteit moet in YourLocalCityGuide behouden blijven.
+Die losse identiteit moet in CityWalkStories behouden blijven.
 
 L034 is dus niet “één locatie” in dezelfde betekenis als een kerk.
 
@@ -19312,7 +19312,7 @@ Of vanaf Wereldmuseum.
 
 ### Beste manier om het te gebruiken
 
-Voor YourLocalCityGuide is L034 vooral een **route-infrastructuur** waarop veel andere locaties kunnen worden geprojecteerd.
+Voor CityWalkStories is L034 vooral een **route-infrastructuur** waarop veel andere locaties kunnen worden geprojecteerd.
 
 Een complete ronde kan ongeveer anderhalf uur lopen zijn zonder stops.
 
@@ -19435,7 +19435,7 @@ More accurate:
 
 **The continuous circuit opened in 2020; development continues.**
 
-### Best use in YourLocalCityGuide
+### Best use in CityWalkStories
 
 The Singelpark can act as a route layer connecting many existing locations:
 
@@ -21767,7 +21767,7 @@ Je vindt er onder meer:
 - volkstuinen;
 - recreatieve routes.
 
-Juist die afwisseling maakt het park geschikt voor een fiets- of natuurroute in YourLocalCityGuide.
+Juist die afwisseling maakt het park geschikt voor een fiets- of natuurroute in CityWalkStories.
 
 ### Oud polderlandschap
 
@@ -22711,7 +22711,7 @@ Niet voor ramen gaan staan fotograferen.
 
 Geen privéruimtes betreden.
 
-Dat zou YourLocalCityGuide vooraf moeten aangeven.
+Dat zou CityWalkStories vooraf moeten aangeven.
 
 ### Bezoekersinformatie 2026
 
@@ -26198,7 +26198,7 @@ Actueel projectmateriaal gebruikt voor enkele gebouwen dateringen als **1894 en 
 
 Het Rijksmonumentenregister identificeert echter het **Ketelhuis uit 1896** en **Silogebouw uit 1904** als oudste nog aanwezige beschermde bebouwing binnen zijn complexbeschrijving.
 
-Voor YourLocalCityGuide moet de **RCE-datering leidend** zijn voor monumentgegevens.
+Voor CityWalkStories moet de **RCE-datering leidend** zijn voor monumentgegevens.
 
 ### Een vroege betonfabriek
 

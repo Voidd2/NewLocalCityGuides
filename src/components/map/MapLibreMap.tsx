@@ -111,7 +111,7 @@ export function MapLibreMap({
         source: PIN_SOURCE,
         filter: ["has", "point_count"],
         paint: {
-          "circle-color": "#1B2A4A",
+          "circle-color": "#1D2F5F",
           "circle-radius": ["step", ["get", "point_count"], 18, 10, 24, 30, 30],
           "circle-stroke-color": "#ffffff",
           "circle-stroke-width": 3,
@@ -131,7 +131,7 @@ export function MapLibreMap({
         source: PIN_SOURCE,
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": ["case", ["==", ["get", "selected"], 1], "#FF6B00", ["==", ["get", "kind"], "spot"], "#E55E00", "#1B2A4A"],
+          "circle-color": ["case", ["==", ["get", "selected"], 1], "#F28C28", ["==", ["get", "kind"], "spot"], "#E55E00", "#1D2F5F"],
           "circle-radius": ["case", ["==", ["get", "selected"], 1], 11, 8],
           "circle-stroke-color": "#ffffff",
           "circle-stroke-width": 3,
@@ -162,7 +162,7 @@ export function MapLibreMap({
         type: "line",
         source: ROUTE_SOURCE,
         layout: { "line-cap": "round", "line-join": "round" },
-        paint: { "line-color": "#FF6B00", "line-width": 5, "line-opacity": 0.9 },
+        paint: { "line-color": "#F28C28", "line-width": 5, "line-opacity": 0.9 },
       });
       map.addSource(USER_SOURCE, { type: "geojson", data: userData });
       map.addLayer({

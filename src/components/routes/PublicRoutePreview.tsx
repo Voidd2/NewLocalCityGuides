@@ -23,7 +23,7 @@ export function PublicRoutePreview({ route, locale }: { route: PublicRoutePrevie
         url: localizedUrl(locale, `/routes/${route.slug}`),
         image: `${SITE_URL}${route.image}`,
         touristType: route.type === "walking" ? "Walking tour" : "Cycling tour",
-        provider: { "@type": "Organization", name: "YourLocalCityGuide" },
+        provider: { "@type": "Organization", name: "CityWalkStories" },
         inLanguage: locale,
       }} />
 

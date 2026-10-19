@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
+import { locations } from "@/data/locations";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { publicPathForSpot } from "@/data/public-entities";
+import { publicEntities, publicEntityPath, publicPathForSpot } from "@/data/public-entities";
+import { publicRoutePreviews } from "@/data/public-route-seo";
+import { affiliateOffers } from "@/data/affiliate-offers";
+import { formatGuidePrice } from "@/lib/product";
 import {
   getVisibleSpots,
   getFeaturedSpots,
@@ -12,118 +16,6 @@ import {
   type SpotCategory,
   type LocalSpot,
 } from "@/data/local-spots";
-
-interface Activity {
-  id: string;
-  title: string;
-  description: string;
-  duration: string;
-  price: string;
-  rating: number;
-  reviewCount: number;
-  image: string | null;
-  affiliateUrl: string;
-  category: "rondvaart" | "wandeltour" | "fietstour" | "museum" | "overig";
-}
-
-const activities: Activity[] = [
-  {
-    id: "stadsrondvaart",
-    title: "Leiden: Stadsrondvaart met gids",
-    description: "Ontdek Leiden vanaf het water met een begeleide grachtenrondvaart. Zie het historische stadscentrum en dwaal langs eeuwenoude grachten.",
-    duration: "1 uur",
-    price: "12,50",
-    rating: 4.5,
-    reviewCount: 989,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "historische-rondvaart",
-    title: "Leiden: Rondvaart door de historische binnenstad met gids",
-    description: "Verken de mooiste bezienswaardigheden van Leiden tijdens een rondleiding. Ervaar het stadscentrum met zijn schilderachtige grachten.",
-    duration: "50 minuten",
-    price: "13,50",
-    rating: 4.5,
-    reviewCount: 738,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "elektrische-boot",
-    title: "Leiden: Elektrische Bootverhuur",
-    description: "Wees je eigen kapitein en ontdek Leiden vanaf het water met 8 personen op een elektrische sloep. Geen vaarbewijs nodig.",
-    duration: "2 uur",
-    price: "120,00",
-    rating: 5,
-    reviewCount: 218,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "stadswandeling",
-    title: "De mooiste stadswandeling met gids in Leiden",
-    description: "Ontdek plaatsen die je niet in een reisgids vindt. Wandel door het historische centrum met een lokale gids.",
-    duration: "2 uur",
-    price: "24,00",
-    rating: 4.5,
-    reviewCount: 25,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "wandeltour",
-  },
-  {
-    id: "molen-rondvaart",
-    title: "Leiden: Molen- en Plattelandsrondvaart bij Keukenhof",
-    description: "Maak een schilderachtige molenrondvaart door het platteland van Leiden, op slechts 10 minuten van de Keukenhof.",
-    duration: "1 uur",
-    price: "19,50",
-    rating: 4.5,
-    reviewCount: 240,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "hortus-botanicus",
-    title: "Leiden: toegangsbewijs voor de Hortus Botanicus Leiden",
-    description: "Ontdek de oudste botanische tuin van Nederland met dit toegangsbewijs. Wandel door de Hortus Botanicus.",
-    duration: "-",
-    price: "14,00",
-    rating: 4,
-    reviewCount: 114,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "museum",
-  },
-  {
-    id: "rembrandt-wandeltour",
-    title: "Leiden: wandeltour met gids en toegang tot Rembrandt Studio",
-    description: "Dit is de enige stadswandeling in Leiden met een gids in Nederland die je kunt combineren met een bezoek aan het Rembrandt atelier.",
-    duration: "1 uur 30 minuten",
-    price: "74,00",
-    rating: 5,
-    reviewCount: 1,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "wandeltour",
-  },
-  {
-    id: "space-expo",
-    title: "Noordwijk: toegangsbewijs voor de Space Expo",
-    description: "Bij Space Expo ontdek je de wereld van de ruimtevaart in al zijn facetten. Perfect voor gezinnen.",
-    duration: "-",
-    price: "18,50",
-    rating: 4.5,
-    reviewCount: 90,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "museum",
-  },
-];
 
 const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> = {
   museum: (a) => (
@@ -172,185 +64,62 @@ const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> 
   ),
 };
 
-function StarRating({ rating, count }: { rating: number; count?: number }) {
-  return (
-    <div className="flex items-center gap-1.5">
-      <div className="flex">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <svg
-            key={star}
-            viewBox="0 0 20 20"
-            fill={star <= rating ? "#F59E0B" : star - 0.5 <= rating ? "url(#half)" : "#E5E7EB"}
-            className="w-4 h-4"
-          >
-            <defs>
-              <linearGradient id="half">
-                <stop offset="50%" stopColor="#F59E0B" />
-                <stop offset="50%" stopColor="#E5E7EB" />
-              </linearGradient>
-            </defs>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-      {count != null && count > 0 && <span className="text-xs text-gray-500">({count})</span>}
-      <span className="text-xs font-medium text-gray-500">{rating}</span>
-    </div>
+function spotImage(spot: LocalSpot) {
+  const entityImage = publicEntities.find(entity => publicEntityPath(entity) === publicPathForSpot(spot))?.image;
+  const namedPlace = locations.find(place =>
+    ["L001", "L003", "L006", "L010"].includes(place.id) &&
+    spot.name.toLowerCase().includes(place.name.toLowerCase().replace(" van leiden", "").replace("de burcht", "burcht").replace("hortus botanicus", "hortus")),
   );
-}
-
-function ActivityCard({ activity, t }: { activity: Activity; t: (key: string) => string }) {
-  return (
-    <a
-      href={activity.affiliateUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group"
-    >
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-        {activity.image ? (
-          <Image src={activity.image} alt={activity.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
-              <rect x="2" y="2" width="20" height="20" rx="3" />
-              <circle cx="8" cy="8" r="2" />
-              <path d="M2 16l5-5 3 3 4-4 8 8" />
-            </svg>
-            <p className="text-[10px] text-white/20 font-medium px-4 text-center">--HIER IMAGE VAN {activity.title}--</p>
-          </div>
-        )}
-      </div>
-
-      <div className="p-4">
-        <h3 className="font-bold text-navy-800 text-base leading-tight mb-2">
-          {activity.title}
-        </h3>
-        <p className="text-sm text-gray-500 line-clamp-2 mb-3">{activity.description}</p>
-
-        <StarRating rating={activity.rating} count={activity.reviewCount} />
-
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-          <div className="flex items-center gap-3">
-            {activity.duration !== "-" && (
-              <span className="flex items-center gap-1 text-xs text-gray-400">
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
-                </svg>
-                {activity.duration}
-              </span>
-            )}
-          </div>
-          <span className="text-sm font-bold text-navy-800">{t("from")} &euro;{activity.price}</span>
-        </div>
-      </div>
-    </a>
-  );
+  const fallbackByCategory: Record<SpotCategory, string> = {
+    museum: "/images/locations/10033-academiegebouw-leiden.jpg",
+    visboer: "/images/locations/10021-vismarkt-leiden.jpg",
+    bakker: "/images/routes/10003-leiden-narrow-street-centre.jpg",
+    winkel: "/images/locations/10022-koornbrug-leiden.jpg",
+    markt: "/images/locations/10021-vismarkt-leiden.jpg",
+    evenement: "/images/heroes/10001-leiden-canal-historic-buildings.jpg",
+    restaurant: "/images/locations/10020-de-burcht-leiden.jpg",
+    kroeg: "/images/heroes/10008-leiden-canal-panorama.jpg",
+  };
+  return spot.image || entityImage || namedPlace?.image || fallbackByCategory[spot.category];
 }
 
 function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
+  const photo = spotImage(spot);
+  const t = useTranslations("discover");
 
   return (
     <Link href={publicPathForSpot(spot)} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-200">
-        {spot.image ? (
-          <Image src={spot.image} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-800 to-navy-900 flex flex-col items-center justify-center gap-2">
-            <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12 text-white/15" stroke="currentColor" strokeWidth="1">
-              <rect x="2" y="2" width="20" height="20" rx="3" />
-              <circle cx="8" cy="8" r="2" />
-              <path d="M2 16l5-5 3 3 4-4 8 8" />
-            </svg>
-            <p className="text-[10px] text-white/20 font-medium px-4 text-center">--HIER IMAGE VAN {spot.name}--</p>
-          </div>
-        )}
-      </div>
+      <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={photo} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/35 to-transparent" /></div>
 
       <div className="p-4">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-orange-700">{SPOT_CATEGORIES.find(cat => cat.key === spot.category)?.label[lang]}</p>
         <h3 className="font-bold text-navy-800 text-base leading-tight mb-1">
           {spot.name}
         </h3>
 
         <p className="text-sm text-gray-500 line-clamp-2 mb-3">{desc}</p>
 
-        {spot.priceRange && (
-          <p className="text-sm font-bold text-navy-800 mb-3">
-            &euro;{spot.priceRange}
-          </p>
-        )}
-
-        {spot.rating && (
-          <StarRating rating={spot.rating} count={0} />
-        )}
+        <p className="mb-3 text-xs text-gray-500">{spot.address}</p>
+        <span className="mb-3 inline-block text-sm font-bold text-orange-700">{t("moreInfo")} →</span>
       </div>
     </Link>
   );
-}
-
-function getTodayHours(hours?: string[]): string | null {
-  if (!hours || hours.length !== 7) return null;
-  const day = new Date().getDay();
-  const idx = day === 0 ? 6 : day - 1;
-  return hours[idx] || null;
 }
 
 function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
   const catLabel = SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[lang] || spot.category;
-  const todayHours = getTodayHours(spot.hours);
-  const isOpen = todayHours != null && todayHours !== "Gesloten";
-  const openLabel = lang === "de" ? "Heute" : lang === "en" ? "Today" : "Vandaag";
-  const closedLabel = lang === "de" ? "Heute geschlossen" : lang === "en" ? "Closed today" : "Vandaag gesloten";
-
   return (
     <Link href={publicPathForSpot(spot)} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
-      <div className="aspect-[16/9] bg-gray-800 overflow-hidden relative">
-        {spot.image ? (
-          <Image src={spot.image} alt={spot.name} fill sizes="280px" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-navy-700 to-navy-900 flex flex-col items-center justify-center gap-1">
-            <svg viewBox="0 0 24 24" fill="none" className="w-10 h-10 text-white/10" stroke="currentColor" strokeWidth="1">
-              <rect x="2" y="2" width="20" height="20" rx="3" />
-              <circle cx="8" cy="8" r="2" />
-              <path d="M2 16l5-5 3 3 4-4 8 8" />
-            </svg>
-            <p className="text-[9px] text-white/15 font-medium px-3 text-center">--HIER IMAGE VAN {spot.name}--</p>
-          </div>
-        )}
-        <span className="absolute top-2 left-2 text-[10px] font-semibold bg-orange-500 text-white px-2 py-0.5 rounded-full">
-          {catLabel}
-        </span>
-      </div>
+      <div className="aspect-[16/9] overflow-hidden relative"><Image src={spotImage(spot)} alt={spot.name} fill sizes="280px" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>
+      <span className="mx-4 mt-4 inline-block rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-navy-900">{catLabel}</span>
       <div className="p-3">
         <h3 className="font-bold text-sm leading-tight line-clamp-1">{spot.name}</h3>
         <p className="text-[11px] text-white/60 mt-1 line-clamp-2">{desc}</p>
 
-        {todayHours != null && (
-          <div className="flex items-center gap-1.5 mt-2">
-            <div className={`w-1.5 h-1.5 rounded-full ${isOpen ? "bg-green-400" : "bg-red-400"}`} />
-            <span className={`text-[10px] font-medium ${isOpen ? "text-green-400" : "text-red-400"}`}>
-              {isOpen ? `${openLabel}: ${todayHours}` : closedLabel}
-            </span>
-          </div>
-        )}
-
-        <div className="flex items-center gap-2 mt-2">
-          {spot.rating && (
-            <div className="flex items-center gap-1">
-              <svg viewBox="0 0 20 20" fill="#F59E0B" className="w-3.5 h-3.5">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              <span className="text-xs font-semibold">{spot.rating}</span>
-            </div>
-          )}
-          {spot.priceRange && (
-            <span className="text-[11px] text-white/50">&euro;{spot.priceRange}</span>
-          )}
-        </div>
         <span className="mt-2 inline-flex items-center gap-1 text-xs text-orange-400 font-semibold">
           {t("moreInfo")}
           <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
@@ -368,43 +137,95 @@ export function OntdekPage() {
   const tAct = useTranslations("activities");
   const tHome = useTranslations("home");
   const [activeCategory, setActiveCategory] = useState<SpotCategory | "alle">("alle");
-  const [activeActivityCat, setActiveActivityCat] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState<"editorial" | "name">("editorial");
+  const copy = locale === "nl" ? {
+    heroTag: "Gratis stadsgids · 49 plekken", heroCta: "Bekijk de complete gids", heroNote: "Routes met GPS, audio en verborgen verhalen",
+    guideTag: "Meer dan een lijst met plekken", guideTitle: "Wandel Leiden binnen met de complete gids", guideText: "Krijg drie samengestelde routes, navigatie van stop naar stop en de verhalen die je op straat niet ziet.", guideCta: "Bekijk gids en prijs", guideMeta: "Eenmalig · direct op je telefoon",
+  } : locale === "de" ? {
+    heroTag: "Kostenloser Stadtführer · 49 Orte", heroCta: "Kompletten Guide ansehen", heroNote: "Routen mit GPS, Audio und verborgenen Geschichten",
+    guideTag: "Mehr als eine Ortsliste", guideTitle: "Entdecke Leiden mit dem kompletten Guide", guideText: "Drei kuratierte Routen, Navigation von Stopp zu Stopp und Geschichten, die du auf der Straße nicht siehst.", guideCta: "Guide und Preis ansehen", guideMeta: "Einmalig · direkt auf deinem Telefon",
+  } : {
+    heroTag: "Free city guide · 49 places", heroCta: "Explore the complete guide", heroNote: "Routes with GPS, audio and hidden stories",
+    guideTag: "More than a list of places", guideTitle: "Step into Leiden with the complete guide", guideText: "Get three curated routes, turn-by-turn navigation and stories you will not see from the street.", guideCta: "View guide and price", guideMeta: "One-time purchase · on your phone instantly",
+  };
+
+  useEffect(() => {
+    const syncFilters = () => {
+      const params = new URLSearchParams(window.location.search);
+      const category = params.get("category");
+      setActiveCategory(category && SPOT_CATEGORIES.some((item) => item.key === category) ? category as SpotCategory | "alle" : "alle");
+      setSearchQuery(params.get("q") ?? "");
+      setSortOrder(params.get("sort") === "name" ? "name" : "editorial");
+    };
+    syncFilters();
+    window.addEventListener("popstate", syncFilters);
+    return () => window.removeEventListener("popstate", syncFilters);
+  }, []);
+
+  const updateQuery = (changes: { category?: string; q?: string; sort?: string }) => {
+    const url = new URL(window.location.href);
+    for (const [key, value] of Object.entries(changes)) {
+      if (value && value !== "alle" && value !== "editorial") url.searchParams.set(key, value);
+      else url.searchParams.delete(key);
+    }
+    window.history.pushState(null, "", url);
+  };
 
   const visibleSpots = useMemo(() => getVisibleSpots(), []);
-  const featuredSpots = useMemo(() => getFeaturedSpots(), []);
+  const featuredSpots = useMemo(() => {
+    const candidates = getFeaturedSpots();
+    const selected: LocalSpot[] = [];
+    const categories = new Set<string>();
+    let fishShopShown = false;
+    for (const spot of candidates) {
+      if (spot.category === "visboer" && fishShopShown) continue;
+      if (categories.has(spot.category) && selected.length < 4) continue;
+      selected.push(spot);
+      categories.add(spot.category);
+      if (spot.category === "visboer") fishShopShown = true;
+      if (selected.length === 6) break;
+    }
+    return selected;
+  }, []);
 
   const filtered = useMemo(() => {
-    if (activeCategory === "alle") return visibleSpots;
-    return visibleSpots.filter((s) => s.category === activeCategory);
-  }, [activeCategory, visibleSpots]);
-
-  const filteredActivities = useMemo(() => {
-    if (activeActivityCat === "all") return activities;
-    return activities.filter((a) => a.category === activeActivityCat);
-  }, [activeActivityCat]);
-
-  const activityCategories = [
-    { key: "all", label: tAct("all") },
-    { key: "rondvaart", label: tAct("boatTours") },
-    { key: "wandeltour", label: tAct("walkingTours") },
-    { key: "museum", label: tAct("museums") },
-    { key: "overig", label: tAct("other") },
-  ];
+    const query = searchQuery.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    const matches = visibleSpots.filter((spot) => {
+      if (activeCategory !== "alle" && spot.category !== activeCategory) return false;
+      if (!query) return true;
+      const haystack = [spot.name, spot.address, spot.description[locale], ...spot.tags].join(" ").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      return haystack.includes(query);
+    });
+    return sortOrder === "name" ? matches.sort((a, b) => a.name.localeCompare(b.name, locale)) : matches;
+  }, [activeCategory, visibleSpots, searchQuery, sortOrder, locale]);
 
   return (
     <div>
-      <section className="relative overflow-hidden">
-        <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-8 pb-10">
+      <section className="relative min-h-[500px] overflow-hidden md:min-h-[580px]">
+        <Image src="/images/heroes/10008-leiden-canal-panorama.jpg" alt={tHome("heroImageAlt")} fill priority sizes="100vw" className="object-cover" />
+        <div className="relative flex min-h-[500px] items-center bg-gradient-to-r from-navy-950/95 via-navy-900/80 to-navy-900/45 text-white px-5 py-14 md:min-h-[580px] md:py-24">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">{t("title")}</h1>
-            <p className="text-white/70 text-sm">{t("subtitle")}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">{copy.heroTag}</p>
+            <h1 className="mt-3 max-w-3xl text-4xl md:text-6xl font-bold leading-tight">{t("title")}</h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">{t("subtitle")}</p>
+            <div className="mt-8 flex max-w-2xl items-center rounded-2xl border border-white/30 bg-white p-2 text-navy-800 shadow-xl">
+              <label htmlFor="discover-search" className="sr-only">{locale === "nl" ? "Zoek een plek in Leiden" : locale === "de" ? "Ort in Leiden suchen" : "Search places in Leiden"}</label>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="ml-3 h-5 w-5 shrink-0 text-gray-500"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+              <input id="discover-search" type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); updateQuery({ q: event.target.value }); }} placeholder={locale === "nl" ? "Zoek plekken, buurten of interesses" : locale === "de" ? "Orte, Viertel oder Interessen suchen" : "Search places, neighbourhoods or interests"} className="min-h-11 min-w-0 flex-1 px-3 text-sm outline-none" />
+              <Link href="/map" className="shrink-0 rounded-xl bg-navy-800 px-4 py-3 text-sm font-semibold text-white hover:bg-navy-900">{locale === "nl" ? "Kaart" : locale === "de" ? "Karte" : "Map"}</Link>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Link href="/pricing" className="inline-flex min-h-12 items-center rounded-full bg-orange-500 px-6 text-sm font-bold text-white shadow-lg shadow-orange-950/30 transition hover:bg-orange-400">{copy.heroCta} <span className="ml-2" aria-hidden="true">→</span></Link>
+              <p className="text-sm font-medium text-white/80">✓ {copy.heroNote}</p>
+            </div>
           </div>
         </div>
       </section>
 
       {featuredSpots.length > 0 && (
-        <section className="max-w-7xl mx-auto px-4 -mt-5 mb-6 relative z-10">
-          <h2 className="text-xs font-semibold text-white/80 uppercase tracking-wider mb-3">
+        <section className="max-w-7xl mx-auto px-4 mt-8 mb-8 relative z-10">
+          <h2 className="text-xs font-semibold text-navy-800 uppercase tracking-wider mb-3">
             {t("featured")}
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
@@ -415,6 +236,23 @@ export function OntdekPage() {
         </section>
       )}
 
+      <section className="mx-auto max-w-7xl px-4 pb-10">
+        <div className="overflow-hidden rounded-3xl bg-navy-900 text-white shadow-xl">
+          <div className="grid md:grid-cols-[1.05fr_.95fr]">
+            <div className="p-7 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-orange-300">{copy.guideTag}</p>
+              <h2 className="mt-3 max-w-xl text-3xl font-bold leading-tight">{copy.guideTitle}</h2>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-white/75">{copy.guideText}</p>
+              <div className="mt-7 flex flex-wrap items-center gap-4">
+                <Link href="/pricing" className="inline-flex min-h-12 items-center rounded-full bg-orange-500 px-6 text-sm font-bold text-white transition hover:bg-orange-400">{copy.guideCta} <span className="ml-2" aria-hidden="true">→</span></Link>
+                <span className="text-sm font-medium text-white/65">{copy.guideMeta}</span>
+              </div>
+            </div>
+            <div className="relative min-h-64"><Image src="/images/routes/10002-leiden-canal-pieterskerk.jpg" alt="Historische wandeling door Leiden" fill sizes="(min-width: 768px) 45vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 to-transparent" /><div className="absolute bottom-5 left-5 rounded-2xl bg-white/95 px-4 py-3 text-navy-800 shadow-lg"><p className="text-xs font-bold text-orange-700">CityWalkStories</p><p className="mt-1 text-sm font-bold">{formatGuidePrice(locale)}</p></div></div>
+          </div>
+        </div>
+      </section>
+
       <section className="max-w-7xl mx-auto px-4 mb-6">
         <div className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide">
           {SPOT_CATEGORIES.map((cat) => {
@@ -423,7 +261,8 @@ export function OntdekPage() {
             return (
               <button
                 key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
+                onClick={() => { setActiveCategory(cat.key); updateQuery({ category: cat.key }); }}
+                aria-pressed={isActive}
                 className={`shrink-0 flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-full transition-colors ${
                   isActive
                     ? "bg-navy-800 text-white"
@@ -438,17 +277,19 @@ export function OntdekPage() {
         </div>
 
         <div className="flex items-center justify-between mb-4">
-          <p className="text-xs text-gray-400">
+          <p className="text-sm text-gray-600" aria-live="polite">
             {filtered.length} {t("results")}
           </p>
+          <label className="text-sm text-gray-600">{locale === "nl" ? "Sorteer" : locale === "de" ? "Sortieren" : "Sort"} <select value={sortOrder} onChange={(event) => { const value = event.target.value as "editorial" | "name"; setSortOrder(value); updateQuery({ sort: value }); }} className="ml-2 rounded-lg border border-gray-300 bg-white px-2 py-2 text-navy-800"><option value="editorial">{locale === "nl" ? "Aanbevolen" : locale === "de" ? "Empfohlen" : "Recommended"}</option><option value="name">A–Z</option></select></label>
         </div>
 
         {filtered.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-sm text-gray-400">{t("noResults")}</p>
+            <button type="button" onClick={() => { setActiveCategory("alle"); setSearchQuery(""); setSortOrder("editorial"); updateQuery({ category: "", q: "", sort: "" }); }} className="mt-4 rounded-full border border-navy-800 px-5 py-2 text-sm font-semibold text-navy-800">{locale === "nl" ? "Wis filters" : locale === "de" ? "Filter zurücksetzen" : "Clear filters"}</button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
             {filtered.map((spot) => (
               <SpotCard key={spot.id} spot={spot} locale={locale} />
             ))}
@@ -456,33 +297,23 @@ export function OntdekPage() {
         )}
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 mb-6">
-        <div className="border-t border-gray-200 pt-8">
-          <h2 className="text-lg font-bold text-navy-800 mb-4">{tAct("topActivities")}</h2>
-
-          <div className="flex gap-2 overflow-x-auto pb-3 mb-4 -mx-4 px-4 scrollbar-hide">
-            {activityCategories.map((cat) => (
-              <button
-                key={cat.key}
-                onClick={() => setActiveActivityCat(cat.key)}
-                className={`shrink-0 text-xs font-semibold px-4 py-2 rounded-full transition-colors ${
-                  activeActivityCat === cat.key
-                    ? "bg-navy-800 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+      <section className="bg-navy-900 py-12 text-white md:py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">CityWalkStories-gids · Leiden</p>
+          <h2 className="mt-3 text-3xl font-bold">{locale === "nl" ? "Wandel verder met een verhaal" : locale === "de" ? "Entdecke die Stadt mit einer Geschichte" : "Take the story with you"}</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70">{locale === "nl" ? "Bekijk de openbare routevoorbeelden. De volledige begeleide verhalen en routevolgorde zijn onderdeel van de stadsgids." : locale === "de" ? "Sieh dir die öffentlichen Routenvorschauen an. Die vollständigen Geschichten und die geführte Route gehören zum Stadtguide." : "Explore public route previews. Complete stories and guided route details are part of the city guide."}</p>
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {publicRoutePreviews.map((route) => <Link key={route.slug} href={`/routes/${route.slug}`} className="group overflow-hidden rounded-2xl bg-white text-navy-800 shadow-lg"><div className="relative aspect-[3/2]"><Image src={route.image} alt={route.copy[locale].title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-5"><p className="text-xs font-bold uppercase tracking-wide text-orange-700">{route.type === "walking" ? (locale === "nl" ? "Wandeling" : locale === "de" ? "Spaziergang" : "Walking route") : (locale === "nl" ? "Fietsroute" : locale === "de" ? "Radtour" : "Cycling route")}</p><h3 className="mt-2 text-xl font-bold">{route.copy[locale].title}</h3><p className="mt-2 line-clamp-2 text-sm text-gray-600">{route.copy[locale].subtitle}</p><p className="mt-4 text-xs font-medium text-gray-500">{route.distance} · {route.duration[locale]}</p><span className="mt-5 inline-flex text-sm font-bold text-orange-700">{locale === "nl" ? "Bekijk routevoorbeeld" : locale === "de" ? "Routenvorschau ansehen" : "View route preview"} →</span></div></Link>)}
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredActivities.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity} t={tAct} />
-            ))}
-          </div>
+          <p className="mt-6 text-sm text-white/75">{locale === "nl" ? "Gidsprijs" : locale === "de" ? "Guide-Preis" : "Guide price"}: <strong className="text-orange-300">{formatGuidePrice(locale)}</strong></p>
         </div>
       </section>
+
+      {affiliateOffers.length > 0 && <section className="mx-auto max-w-7xl px-4 py-12">
+        <h2 className="text-2xl font-bold text-navy-800">{locale === "nl" ? "Boekbare activiteiten van partners" : locale === "de" ? "Buchbare Partneraktivitäten" : "Bookable partner activities"}</h2>
+        <p className="mt-2 max-w-2xl text-sm text-gray-600">{locale === "nl" ? "Sommige links verwijzen naar partners. Bij een boeking kunnen wij een vergoeding ontvangen." : locale === "de" ? "Einige Links führen zu Partnern. Bei einer Buchung können wir eine Vergütung erhalten." : "Some links lead to partners. We may receive a commission when you book through them."}</p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{affiliateOffers.map((offer) => <a key={offer.id} href={offer.destinationUrl} target="_blank" rel="sponsored noopener noreferrer" className="rounded-2xl border border-gray-200 bg-white p-5 hover:border-orange-300"><p className="text-xs text-gray-500">{offer.provider}</p><h3 className="mt-2 font-bold text-navy-800">{offer.title[locale]}</h3><span className="mt-4 inline-block text-sm font-bold text-orange-700">{locale === "nl" ? "Bekijk bij de aanbieder" : locale === "de" ? "Beim Anbieter ansehen" : "View with provider"} ↗</span></a>)}</div>
+      </section>}
 
       <section className="max-w-7xl mx-auto px-4 mb-6">
         <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-2 border-orange-200 rounded-2xl p-6 text-center">

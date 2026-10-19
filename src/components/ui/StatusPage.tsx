@@ -5,12 +5,14 @@ export function StatusPage({
   eyebrow,
   title,
   description,
+  detail,
   actions,
 }: {
   code: string;
   eyebrow: string;
   title: string;
   description: string;
+  detail?: string;
   actions: ReactNode;
 }) {
   return (
@@ -28,6 +30,7 @@ export function StatusPage({
         <p className="text-hand mb-1 text-2xl text-orange-500">{code}</p>
         <h1 className="mb-3 text-3xl font-extrabold text-navy-800 md:text-4xl">{title}</h1>
         <p className="mx-auto mb-8 max-w-md text-sm leading-6 text-gray-500 md:text-base">{description}</p>
+        {detail && <p className="mb-5 text-xs text-gray-500">{detail}</p>}
         <div className="flex flex-col justify-center gap-3 sm:flex-row">{actions}</div>
       </div>
     </section>

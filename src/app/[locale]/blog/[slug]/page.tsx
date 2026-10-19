@@ -3,6 +3,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { BlogPlaces } from "@/components/seo/BlogPlaces";
+import { getBlogPlaces } from "@/data/blog-places";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { blogPosts, getBlogPost } from "@/data/seo-content";
@@ -33,10 +35,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
     : locale === "de"
       ? { back: "Alle Artikel", min: "Minuten Lesezeit", updated: "Aktualisiert", faq: "Häufig gestellte Fragen", sources: "Aktuelle Informationen prüfen" }
       : { back: "All articles", min: "minute read", updated: "Updated", faq: "Frequently asked questions", sources: "Check current information" };
+  const places = getBlogPlaces(post.slug);
   const url = localizedUrl(locale, `/blog/${post.slug}`);
   return (
     <>
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title[locale], description: post.description[locale], image: `${SITE_URL}${post.image}`, datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: locale, mainEntityOfPage: url, author: { "@type": "Organization", name: SITE_NAME }, publisher: { "@type": "Organization", name: SITE_NAME } }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "BlogPosting", headline: post.title[locale], description: post.description[locale], image: `${SITE_URL}${post.image}`, datePublished: post.publishedAt, dateModified: post.updatedAt, inLanguage: locale, mainEntityOfPage: url, author: { "@type": "Organization", name: SITE_NAME }, publisher: { "@type": "Organization", name: SITE_NAME, logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/citywalkstories-logo.svg` } }, contentLocation: places.map(place => ({ "@type": "Place", name: place.name, geo: { "@type": "GeoCoordinates", latitude: place.coords.lat, longitude: place.coords.lng } })) }} />
       {post.faq && <JsonLd data={{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: post.faq.map((item) => ({ "@type": "Question", name: item.question[locale], acceptedAnswer: { "@type": "Answer", text: item.answer[locale] } })) }} />}
       <article>
         <header className="bg-navy-900 px-4 py-10 text-white md:py-16">
@@ -49,7 +52,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           </div>
         </header>
         <div className="relative mx-auto -mt-1 aspect-[21/9] max-w-6xl overflow-hidden md:rounded-b-3xl">
-          <Image src={post.image} alt="" fill priority sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover" />
+          <Image src={post.image} alt={post.title[locale] + " · Leiden"} fill priority sizes="(min-width: 1152px) 1152px, 100vw" className="object-cover" />
         </div>
         <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
           <Breadcrumbs locale={locale} items={[{ label: labels.back, href: "/blog" }, { label: post.title[locale] }]} />
@@ -73,6 +76,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
               </div>
             </aside>
           )}
+          <BlogPlaces slug={post.slug} locale={locale} />
           {post.faq && (
             <section className="mt-12 rounded-3xl bg-navy-900 p-6 text-white md:p-8">
               <h2 className="text-2xl font-extrabold md:text-3xl">{labels.faq}</h2>

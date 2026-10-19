@@ -1,14 +1,14 @@
-# YourLocalCityGuide — project reference
+# CityWalkStories — project reference
 
 Current operational reference for contributors and AI agents. `TODOLIST.md` is the only current task list; files marked as archives are context, not instructions.
 
 ## Product
 
-YourLocalCityGuide is a mobile-first city discovery platform for Leiden. Visitors combine curated routes, GPS guidance, maps, stories, video, practical information and selected local businesses.
+CityWalkStories is a mobile-first city discovery platform for Leiden. Visitors combine curated routes, GPS guidance, maps, stories, video, practical information and selected local businesses.
 
 Core promise: **Stand where history happened. See the story come alive.**
 
-Current preview: `https://newlocalcityguide-fawn.vercel.app`
+Production: `https://citywalkstories.com`
 
 Current phase: public product and pre-media preparation complete; real authentication, payments, Cloudflare Stream, final photographs and final launch configuration are next.
 

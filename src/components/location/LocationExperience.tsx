@@ -1,15 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/auth-context";
 import type { LocationData } from "@/data/locations";
-import { getLocationStory } from "@/data/stories";
 import { getStoryMedia } from "@/data/story-media";
-import { isLocationVideoPlanned } from "@/data/media-manifest";
-import { condenseStorySections, parseStoryText, type ParsedStory } from "@/lib/story-format";
+import { isLocationVideoPublished } from "@/data/media-manifest";
+import { parseStoryText, type ParsedStory } from "@/lib/story-format";
 import { LocationSkeleton } from "@/components/ui/PageSkeletons";
 import { BeforeAfterSlider } from "@/components/story/BeforeAfterSlider";
 
@@ -18,10 +17,14 @@ type ExperienceState = "preview" | "arrived" | "audio" | "video" | "story" | "pr
 function AudioGuideView({
   location,
   transcript,
+  isLoading,
+  hasError,
   onNavigate,
 }: {
   location: LocationData;
-  transcript: string;
+  transcript: string | null;
+  isLoading: boolean;
+  hasError: boolean;
   onNavigate: (s: ExperienceState) => void;
 }) {
   const labels = {
@@ -57,9 +60,11 @@ function AudioGuideView({
       <details className="mt-5 rounded-xl bg-gray-50 p-4" open>
         <summary className="cursor-pointer font-semibold text-navy-800">{labels.transcript}</summary>
         <article className="mt-4 space-y-4 text-[15px] leading-7 text-gray-700">
-          {transcript.split(/\n\s*\n/).map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {isLoading && <p>Loading transcript…</p>}
+          {hasError && <p>We could not load the transcript. Please try again.</p>}
+          {transcript?.split(/\n\s*\n/).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
         </article>
       </details>
 
@@ -87,7 +92,7 @@ function StoryView({
   onNavigate: (s: ExperienceState) => void;
 }) {
   const media = getStoryMedia(location.id, location.name);
-  const readableSections = parsedStory ? condenseStorySections(parsedStory, 500, 6) : [];
+  const readableSections = parsedStory?.sections ?? [];
   const copy = locale === "de"
     ? { story: "Die Geschichte", part: "Teil" }
     : locale === "en"
@@ -212,12 +217,74 @@ export function LocationExperience({ location }: { location: LocationData }) {
   const locale = useLocale() as "nl" | "en" | "de";
   const { hasPaid, isLoading } = useAuth();
   const [state, setState] = useState<ExperienceState>(hasPaid ? "arrived" : "preview");
-  const story = getLocationStory(location.id);
-  const videoPlanned = isLocationVideoPlanned(location.id);
+  const [storyText, setStoryText] = useState<string | null>(null);
+  const [storyError, setStoryError] = useState(false);
+  const [storyLoading, setStoryLoading] = useState(false);
+  const [storyAttempt, setStoryAttempt] = useState(0);
+  const [audioTranscript, setAudioTranscript] = useState<string | null>(null);
+  const [audioLoading, setAudioLoading] = useState(false);
+  const [audioError, setAudioError] = useState(false);
+  const videoPlanned = isLocationVideoPublished(location.id);
   const parsedStory = useMemo(
-    () => (story ? parseStoryText(story.readingText[locale]) : null),
-    [story, locale],
+    () => (storyText ? parseStoryText(storyText) : null),
+    [storyText],
   );
+
+  function openStory() {
+    setStoryText(null);
+    setStoryError(false);
+    setStoryLoading(true);
+    setState("story");
+  }
+
+  function retryStory() {
+    setStoryError(false);
+    setStoryLoading(true);
+    setStoryAttempt((attempt) => attempt + 1);
+  }
+
+  function openAudio() {
+    setAudioTranscript(null);
+    setAudioError(false);
+    setAudioLoading(true);
+    setState("audio");
+  }
+
+  useEffect(() => {
+    if (state !== "story" || !hasPaid) return;
+    const controller = new AbortController();
+    fetch(`/api/premium/stories/${encodeURIComponent(location.id)}?locale=${locale}`, {
+      cache: "no-store",
+      credentials: "same-origin",
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("story_access_failed");
+        return response.json() as Promise<{ readingText: string }>;
+      })
+      .then(({ readingText }) => setStoryText(readingText))
+      .catch(() => { if (!controller.signal.aborted) setStoryError(true); })
+      .finally(() => { if (!controller.signal.aborted) setStoryLoading(false); });
+    return () => controller.abort();
+  }, [state, hasPaid, location.id, locale, storyAttempt]);
+
+  useEffect(() => {
+    if (state !== "audio" || !hasPaid || !location.audioGuide) return;
+    const controller = new AbortController();
+    fetch(`/api/premium/stories/${encodeURIComponent(location.id)}?locale=en`, {
+      cache: "no-store",
+      credentials: "same-origin",
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("audio_transcript_access_failed");
+        return response.json() as Promise<{ voiceOver: string }>;
+      })
+      .then(({ voiceOver }) => setAudioTranscript(voiceOver))
+      .catch(() => { if (!controller.signal.aborted) setAudioError(true); })
+      .finally(() => { if (!controller.signal.aborted) setAudioLoading(false); });
+    return () => controller.abort();
+  }, [state, hasPaid, location.id, location.audioGuide]);
 
   if (isLoading) {
     return <LocationSkeleton />;
@@ -291,9 +358,9 @@ export function LocationExperience({ location }: { location: LocationData }) {
           <p className="text-sm text-gray-500 mb-6">{t("whatDoYouWant")}</p>
 
           <div className="space-y-3">
-            {location.audioGuide && story && (
+            {location.audioGuide && (
               <button
-                onClick={() => setState("audio")}
+                onClick={openAudio}
                 className="w-full flex items-center gap-4 bg-white border border-orange-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all text-left"
               >
                 <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
@@ -333,7 +400,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
             )}
 
             <button
-              onClick={() => setState("story")}
+              onClick={openStory}
               className="w-full flex items-center gap-4 bg-white border border-gray-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all text-left"
             >
               <div className="w-12 h-12 rounded-full bg-navy-800 flex items-center justify-center shrink-0">
@@ -383,10 +450,12 @@ export function LocationExperience({ location }: { location: LocationData }) {
         </div>
       )}
 
-      {state === "audio" && location.audioGuide && story && (
+      {state === "audio" && location.audioGuide && (
         <AudioGuideView
           location={location}
-          transcript={story.voiceOver.en}
+          transcript={audioTranscript}
+          isLoading={audioLoading}
+          hasError={audioError}
           onNavigate={setState}
         />
       )}
@@ -411,7 +480,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
 
           <div className="flex gap-2">
             <button
-              onClick={() => setState("story")}
+              onClick={openStory}
               className="flex-1 bg-navy-800 hover:bg-navy-900 text-white font-semibold py-3 rounded-full text-sm transition-colors"
             >
               {t("readStory")}
@@ -426,7 +495,15 @@ export function LocationExperience({ location }: { location: LocationData }) {
         </div>
       )}
 
-      {state === "story" && (
+      {state === "story" && (storyLoading ? (
+        <LocationSkeleton />
+      ) : storyError ? (
+        <section className="mx-auto max-w-2xl px-4 py-14 text-center" role="alert">
+          <h2 className="text-xl font-bold text-navy-800">{locale === "en" ? "Story unavailable" : locale === "de" ? "Geschichte nicht verfügbar" : "Verhaal niet beschikbaar"}</h2>
+          <p className="mt-3 text-sm text-gray-600">{locale === "en" ? "Please check your access and connection." : locale === "de" ? "Bitte prüfe deinen Zugang und deine Verbindung." : "Controleer je toegang en verbinding."}</p>
+          <button type="button" onClick={retryStory} className="mt-6 rounded-full bg-orange-500 px-5 py-3 font-semibold text-navy-900">{locale === "en" ? "Try again" : locale === "de" ? "Erneut versuchen" : "Opnieuw proberen"}</button>
+        </section>
+      ) : (
         <StoryView
           location={location}
           parsedStory={parsedStory}
@@ -434,7 +511,7 @@ export function LocationExperience({ location }: { location: LocationData }) {
           t={t}
           onNavigate={setState}
         />
-      )}
+      ))}
 
       {state === "practical" && (
         <div className="max-w-7xl mx-auto px-4 py-6">

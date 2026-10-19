@@ -21,10 +21,14 @@ export async function POST(request: Request) {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({ email, unsubscribed: false }),
-  });
+    cache: "no-store",
+    signal: AbortSignal.timeout(5_000),
+  }).catch(() => null);
 
-  if (!response.ok) {
-    return NextResponse.json({ message: "Inschrijven lukt nu niet. Probeer het later opnieuw." }, { status: 502 });
+  if (!response?.ok) {
+    const errorId = crypto.randomUUID();
+    console.error("newsletter_upstream_failed", { errorId, status: response?.status ?? "network", cfRay: request.headers.get("cf-ray") });
+    return NextResponse.json({ message: "Inschrijven lukt nu niet. Probeer het later opnieuw.", errorId }, { status: 502, headers: { "Cache-Control": "no-store" } });
   }
 
   return NextResponse.json({ ok: true });

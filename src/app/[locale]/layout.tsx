@@ -1,6 +1,5 @@
 import { type ReactNode, Suspense } from "react";
 import type { Metadata } from "next";
-import { Caveat, Inter } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -15,18 +14,6 @@ import { createPageMetadata, SITE_URL } from "@/lib/seo";
 import { CookieConsent } from "@/components/privacy/CookieConsent";
 import { OfflineBanner } from "@/components/pwa/OfflineBanner";
 import { ServiceWorkerRegistrar } from "@/components/pwa/ServiceWorkerRegistrar";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-caveat",
-  display: "swap",
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -46,12 +33,12 @@ export async function generateMetadata({
       ? { google: process.env.GOOGLE_SITE_VERIFICATION }
       : undefined,
     title: {
-      default: String(base.title),
-      template: "%s | YourLocalCityGuide",
+      default: `${String(base.title)} | CityWalkStories`,
+      template: "%s | CityWalkStories",
     },
-    applicationName: "YourLocalCityGuide",
-    creator: "YourLocalCityGuide",
-    publisher: "YourLocalCityGuide",
+    applicationName: "CityWalkStories",
+    creator: "CityWalkStories",
+    publisher: "CityWalkStories",
     keywords: [
       "Leiden",
       "city guide Leiden",
@@ -82,10 +69,10 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        <link rel="alternate" type="application/rss+xml" title="YourLocalCityGuide Blog" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="CityWalkStories Blog" href="/feed.xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </head>
-      <body className={`${inter.variable} ${caveat.variable} flex min-h-screen flex-col bg-navy-900 pb-16 md:pb-0`}>
+      <body className="flex min-h-screen flex-col bg-navy-900 pb-16 md:pb-0">
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
             <ServiceWorkerRegistrar />

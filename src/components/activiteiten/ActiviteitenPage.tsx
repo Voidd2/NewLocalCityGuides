@@ -1,324 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useAuth } from "@/lib/auth-context";
+import { affiliateOffers } from "@/data/affiliate-offers";
+import { publicEntities, publicEntityPath, type PublicEntitySection } from "@/data/public-entities";
+import type { Locale } from "@/i18n/config";
 
-interface Activity {
-  id: string;
-  title: string;
-  description: string;
-  duration: string;
-  price: string;
-  rating: number;
-  reviewCount: number;
-  image: string | null;
-  affiliateUrl: string;
-  category: "rondvaart" | "wandeltour" | "fietstour" | "museum" | "overig";
-}
-
-const activities: Activity[] = [
-  {
-    id: "stadsrondvaart",
-    title: "Leiden: Stadsrondvaart met gids",
-    description: "Ontdek Leiden vanaf het water met een begeleide grachtenrondvaart. Zie het historische stadscentrum en dwaal langs eeuwenoude grachten.",
-    duration: "1 uur",
-    price: "12,50",
-    rating: 4.5,
-    reviewCount: 989,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "historische-rondvaart",
-    title: "Leiden: Rondvaart door de historische binnenstad met gids",
-    description: "Verken de mooiste bezienswaardigheden van Leiden tijdens een rondleiding. Ervaar het stadscentrum met zijn schilderachtige grachten.",
-    duration: "50 minuten",
-    price: "13,50",
-    rating: 4.5,
-    reviewCount: 738,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "elektrische-boot",
-    title: "Leiden: Elektrische Bootverhuur",
-    description: "Wees je eigen kapitein en ontdek Leiden vanaf het water met 8 personen op een elektrische sloep. Geen vaarbewijs nodig.",
-    duration: "2 uur",
-    price: "120,00",
-    rating: 5,
-    reviewCount: 218,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "stadswandeling",
-    title: "De mooiste stadswandeling met gids in Leiden",
-    description: "Ontdek plaatsen die je niet in een reisgids vindt. Wandel door het historische centrum met een lokale gids.",
-    duration: "2 uur",
-    price: "24,00",
-    rating: 4.5,
-    reviewCount: 25,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "wandeltour",
-  },
-  {
-    id: "molen-rondvaart",
-    title: "Leiden: Molen- en Plattelandsrondvaart bij Keukenhof",
-    description: "Maak een schilderachtige molenrondvaart door het platteland van Leiden, op slechts 10 minuten van de Keukenhof.",
-    duration: "1 uur",
-    price: "19,50",
-    rating: 4.5,
-    reviewCount: 240,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "rondvaart",
-  },
-  {
-    id: "hortus-botanicus",
-    title: "Leiden: toegangsbewijs voor de Hortus Botanicus Leiden",
-    description: "Ontdek de oudste botanische tuin van Nederland met dit toegangsbewijs. Wandel door de Hortus Botanicus.",
-    duration: "-",
-    price: "14,00",
-    rating: 4,
-    reviewCount: 114,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "museum",
-  },
-  {
-    id: "rembrandt-wandeltour",
-    title: "Leiden: wandeltour met gids en toegang tot Rembrandt Studio",
-    description: "Dit is de enige stadswandeling in Leiden met een gids in Nederland die je kunt combineren met een bezoek aan het Rembrandt atelier.",
-    duration: "1 uur 30 minuten",
-    price: "74,00",
-    rating: 5,
-    reviewCount: 1,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "wandeltour",
-  },
-  {
-    id: "space-expo",
-    title: "Noordwijk: toegangsbewijs voor de Space Expo",
-    description: "Bij Space Expo ontdek je de wereld van de ruimtevaart in al zijn facetten. Perfect voor gezinnen.",
-    duration: "-",
-    price: "18,50",
-    rating: 4.5,
-    reviewCount: 90,
-    image: null,
-    affiliateUrl: "https://www.getyourguide.com/leiden-l1076/",
-    category: "museum",
-  },
-];
-
-function StarRating({ rating, count }: { rating: number; count: number }) {
-  return (
-    <div className="flex items-center gap-1">
-      <div className="flex">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <svg
-            key={star}
-            viewBox="0 0 20 20"
-            fill={star <= rating ? "#F59E0B" : star - 0.5 <= rating ? "url(#half)" : "#E5E7EB"}
-            className="w-4 h-4"
-          >
-            <defs>
-              <linearGradient id="half">
-                <stop offset="50%" stopColor="#F59E0B" />
-                <stop offset="50%" stopColor="#E5E7EB" />
-              </linearGradient>
-            </defs>
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-      <span className="text-xs text-gray-500">({count})</span>
-    </div>
-  );
-}
+const copy = {
+  nl: { title: "Activiteiten in Leiden", intro: "Ontdek bijzondere plekken op eigen tempo. Boekingen bij andere aanbieders staan los van de CityWalkStories-gids.", all: "Alle plekken", museums: "Musea", attractions: "Historische plekken", markets: "Markten", local: "Lokaal", read: "Ontdek deze plek", guide: "Bekijk onze stadsgids", partners: "Boekbare activiteiten van partners", disclosure: "Sommige links verwijzen naar partners. Als je via zo’n link boekt, kunnen wij een vergoeding ontvangen.", provider: "Bekijk bij de aanbieder" },
+  en: { title: "Things to do in Leiden", intro: "Explore places at your own pace. Bookings with other providers are separate from the CityWalkStories guide.", all: "All places", museums: "Museums", attractions: "Historic places", markets: "Markets", local: "Local", read: "Discover this place", guide: "Explore our city guide", partners: "Bookable partner activities", disclosure: "Some links lead to partners. We may receive a commission when you book through them.", provider: "View with the provider" },
+  de: { title: "Aktivitäten in Leiden", intro: "Entdecke besondere Orte in deinem Tempo. Buchungen bei anderen Anbietern sind vom CityWalkStories-Guide getrennt.", all: "Alle Orte", museums: "Museen", attractions: "Historische Orte", markets: "Märkte", local: "Lokal", read: "Ort entdecken", guide: "Unseren Stadtguide ansehen", partners: "Buchbare Partneraktivitäten", disclosure: "Einige Links führen zu Partnern. Bei einer Buchung können wir eine Vergütung erhalten.", provider: "Beim Anbieter ansehen" },
+} satisfies Record<Locale, Record<string, string>>;
 
 export function ActiviteitenPage() {
-  const { hasPaid, isLoading } = useAuth();
-  const t = useTranslations("activities");
-  const tCommon = useTranslations("common");
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-pulse text-gray-400">{tCommon("loading")}</div>
-      </div>
-    );
-  }
-
-  if (!hasPaid) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 py-12 text-center">
-        <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-          <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-orange-500" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-            <path d="M7 11V7a5 5 0 0110 0v4" />
-          </svg>
-        </div>
-        <h2 className="text-lg font-bold text-navy-800 mb-2">{t("unlockTitle")}</h2>
-        <p className="text-sm text-gray-500 mb-4">
-          Koop het Leiden pakket voor toegang tot de beste activiteiten en persoonlijke hulp bij het boeken.
-        </p>
-        <Link
-          href="/pricing"
-          className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-        >
-          {t("viewPackage")}
-        </Link>
-      </div>
-    );
-  }
-
-  const categories = [
-    { key: "all", label: t("all") },
-    { key: "rondvaart", label: t("boatTours") },
-    { key: "wandeltour", label: t("walkingTours") },
-    { key: "museum", label: t("museums") },
-    { key: "overig", label: t("other") },
+  const locale = useLocale() as Locale;
+  const text = copy[locale];
+  const [section, setSection] = useState<PublicEntitySection | "all">("all");
+  const entities = useMemo(() => publicEntities.filter((entity) => section === "all" || entity.section === section), [section]);
+  const filters: Array<{ key: PublicEntitySection | "all"; label: string }> = [
+    { key: "all", label: text.all },
+    { key: "attractions", label: text.attractions },
+    { key: "museums", label: text.museums },
+    { key: "markets", label: text.markets },
+    { key: "local", label: text.local },
   ];
 
-  const filtered = activeCategory === "all"
-    ? activities
-    : activities.filter((a) => a.category === activeCategory);
-
   return (
-    <div>
-      <section className="relative overflow-hidden">
-        <div className="bg-gradient-to-b from-navy-800 to-navy-900 text-white px-4 py-8 pb-10">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">{t("title")}</h1>
-            <p className="text-white/70 text-sm">
-              De leukste tours, rondvaarten en bezienswaardigheden op een rij.
-            </p>
-          </div>
+    <main className="pb-20">
+      <header className="bg-navy-900 px-5 py-14 text-white md:py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold uppercase tracking-widest text-orange-300">CityWalkStories · Leiden</p>
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold tracking-tight md:text-5xl">{text.title}</h1>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/75">{text.intro}</p>
+          <Link href="/routes" className="cws-primary mt-7 inline-flex">{text.guide} <span aria-hidden="true">→</span></Link>
+        </div>
+      </header>
+
+      <section className="mx-auto max-w-7xl px-5 py-10" aria-label={text.all}>
+        <div className="mb-7 flex gap-2 overflow-x-auto pb-2">
+          {filters.map((filter) => <button key={filter.key} type="button" aria-pressed={section === filter.key} onClick={() => setSection(filter.key)} className={`min-h-11 shrink-0 rounded-full px-5 text-sm font-semibold ${section === filter.key ? "bg-navy-800 text-white" : "bg-warm-100 text-navy-800 hover:bg-warm-200"}`}>{filter.label}</button>)}
+        </div>
+        <p className="mb-5 text-sm text-gray-600" aria-live="polite">{entities.length} {text.all.toLowerCase()}</p>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {entities.map((entity) => <Link key={entity.key} href={publicEntityPath(entity)} className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:shadow-lg">
+            <div className="relative aspect-[4/3] bg-warm-100">{entity.image && <Image src={entity.image} alt={entity.name} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />}</div>
+            <div className="p-5"><p className="text-xs font-bold uppercase tracking-wide text-orange-700">{text[entity.section]}</p><h2 className="mt-2 text-xl font-bold text-navy-800">{entity.name}</h2><p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-600">{entity.intro[locale]}</p><span className="mt-5 inline-flex text-sm font-bold text-orange-700">{text.read} <span aria-hidden="true">→</span></span></div>
+          </Link>)}
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 -mt-5 mb-6">
-        <Link
-          href="/activiteiten/hulp"
-          className="block bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200 rounded-2xl p-5 hover:border-orange-400 transition-colors"
-        >
-          <div className="flex items-start gap-3">
-            <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 text-white" stroke="currentColor" strokeWidth="2">
-                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
-              </svg>
-            </div>
-            <div className="flex-1">
-              <h3 className="font-bold text-navy-800 text-sm mb-1">{t("dontKnowWhat")}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                Laat ons je helpen! Van een dagje Leiden tot een trip naar Amsterdam - wij regelen alles persoonlijk voor je.
-              </p>
-              <span className="inline-flex items-center gap-1 mt-2 text-orange-600 text-xs font-semibold">
-                {t("askPersonalHelp")}
-                <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                  <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-                </svg>
-              </span>
-            </div>
-          </div>
-        </Link>
-      </section>
-
-      <section className="max-w-7xl mx-auto px-4 mb-6">
-        <h2 className="text-lg font-bold text-navy-800 mb-4">{t("topActivities")}</h2>
-
-        <div className="flex gap-2 overflow-x-auto pb-3 mb-4 -mx-4 px-4 scrollbar-hide">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`shrink-0 text-xs font-semibold px-4 py-2 rounded-full transition-colors ${
-                activeCategory === cat.key
-                  ? "bg-navy-800 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+      {affiliateOffers.length > 0 && <section className="mx-auto max-w-7xl border-t border-gray-200 px-5 py-10">
+        <h2 className="text-2xl font-bold text-navy-800">{text.partners}</h2>
+        <p className="mt-2 max-w-2xl text-sm text-gray-600">{text.disclosure}</p>
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {affiliateOffers.map((offer) => <a key={offer.id} href={offer.destinationUrl} target="_blank" rel="sponsored noopener noreferrer" className="rounded-2xl border border-gray-200 bg-white p-5 hover:border-orange-300"><p className="text-xs font-semibold text-gray-500">{offer.provider}</p><h3 className="mt-2 font-bold text-navy-800">{offer.title[locale]}</h3><span className="mt-4 inline-flex text-sm font-bold text-orange-700">{text.provider} ↗</span></a>)}
         </div>
-
-        <div className="space-y-3">
-          {filtered.map((activity) => (
-            <a
-              key={activity.id}
-              href={activity.affiliateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-            >
-              <div className="flex">
-                <div className="w-32 md:w-44 bg-gray-200 shrink-0 aspect-[4/3] flex items-center justify-center">
-                  {activity.image ? (
-                    <Image src={activity.image} alt={activity.title} width={352} height={264} sizes="(min-width: 768px) 176px, 128px" className="h-full w-full object-cover" />
-                  ) : (
-                    <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-gray-300" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="2" y="2" width="20" height="20" rx="3" />
-                      <circle cx="8" cy="8" r="2" />
-                      <path d="M2 16l5-5 3 3 4-4 8 8" />
-                    </svg>
-                  )}
-                </div>
-                <div className="flex-1 p-3 flex flex-col justify-between min-w-0">
-                  <div>
-                    <h3 className="font-bold text-navy-800 text-sm leading-tight mb-1 line-clamp-2">
-                      {activity.title}
-                    </h3>
-                    <p className="text-xs text-gray-500 line-clamp-2 mb-2">{activity.description}</p>
-                    {activity.duration !== "-" && (
-                      <div className="flex items-center gap-1 text-xs text-gray-400 mb-2">
-                        <svg viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
-                        </svg>
-                        {t("duration")} {activity.duration}
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex items-end justify-between">
-                    <StarRating rating={activity.rating} count={activity.reviewCount} />
-                    <div className="text-right">
-                      <p className="text-sm font-bold text-navy-800">{t("from")} &euro;{activity.price}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="bg-navy-800 text-white py-8 mb-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-hand text-orange-300 text-xl mb-2">{t("preferPersonalHelp")}</p>
-          <h2 className="text-lg font-bold mb-2">{t("wePlanYourDay")}</h2>
-          <p className="text-white/60 text-sm mb-6">
-            Van vervoer tot verblijf, van Leiden tot Amsterdam - wij regelen het allemaal.
-          </p>
-          <Link
-            href="/activiteiten/hulp"
-            className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-full text-sm transition-colors"
-          >
-            {t("askForHelp")}
-            <svg viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-              <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-            </svg>
-          </Link>
-        </div>
-      </section>
-    </div>
+      </section>}
+    </main>
   );
 }

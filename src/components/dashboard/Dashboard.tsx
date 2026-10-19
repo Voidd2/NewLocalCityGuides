@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { getLocationById, locations } from "@/data/locations";
 import { getVisibleSpots } from "@/data/local-spots";
-import { routes } from "@/data/routes";
+import { routeSummaries as routes } from "@/data/route-summaries";
 import { getPublicEntityForLocation, publicEntityPath } from "@/data/public-entities";
 import { useAuth } from "@/lib/auth-context";
 import {

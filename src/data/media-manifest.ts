@@ -90,3 +90,7 @@ export function isLocationVideoPlanned(locationId: string): boolean {
   const status = getLocationMediaManifest(locationId)?.video.status;
   return status === "planned" || status === "filmed" || status === "published";
 }
+
+export function isLocationVideoPublished(locationId: string): boolean {
+  return getLocationMediaManifest(locationId)?.video.status === "published";
+}

@@ -17,7 +17,7 @@ Date: 2026-09-17
 - [x] Custom route builder: pick locations, smart zone-based ordering, Google Maps/Apple Maps link
 - [x] Map page: category filters, list/map toggle, location list with search
 - [x] Location experience page: "Ik ben er" flow (preview -> choose -> video/story/practical)
-- [x] Test login: paid account (test@yourlocalcityguide.com / LeidenTest2026!) and free account
+- [x] Test login: paid account (test@citywalkstories.com / LeidenTest2026!) and free account
 - [x] Dashboard: paid view (all routes + locations) vs free view (locked preview)
 - [x] Header with language switcher, search, hamburger menu, login link
 - [x] Bottom navigation bar (mobile)
@@ -87,8 +87,8 @@ Date: 2026-09-17
 
 | Account | Email | Password | Access |
 |---------|-------|----------|--------|
-| Paid (full) | test@yourlocalcityguide.com | LeidenTest2026! | All routes, videos, locations |
-| Free (preview) | free@yourlocalcityguide.com | FreeUser2026! | Limited preview, locked content |
+| Paid (full) | test@citywalkstories.com | LeidenTest2026! | All routes, videos, locations |
+| Free (preview) | free@citywalkstories.com | FreeUser2026! | Limited preview, locked content |
 
 ## Image Placeholder Codes
 

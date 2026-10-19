@@ -158,10 +158,10 @@ export function RoutesOverview() {
             <div className="absolute -right-16 -top-20 h-64 w-64 rounded-full border-[36px] border-white/[0.04]" />
             <svg viewBox="0 0 320 220" className="absolute inset-y-0 right-0 h-full w-3/5 opacity-60" aria-hidden="true">
               <path d="M30 190 C75 160 72 118 125 108 S205 90 285 25" fill="none" stroke="#ffffff" strokeWidth="12" opacity=".08" />
-              <path d="M30 190 C75 160 72 118 125 108 S205 90 285 25" fill="none" stroke="#FF6B00" strokeWidth="4" strokeLinecap="round" strokeDasharray="8 9" />
+              <path d="M30 190 C75 160 72 118 125 108 S205 90 285 25" fill="none" stroke="#F28C28" strokeWidth="4" strokeLinecap="round" strokeDasharray="8 9" />
               {["30,190", "92,136", "146,104", "216,78", "285,25"].map((point, index) => {
                 const [cx, cy] = point.split(",");
-                return <circle key={point} cx={cx} cy={cy} r="8" fill={index === 0 ? "#FF6B00" : "#1B2A4A"} stroke="#ffffff" strokeWidth="3" />;
+                return <circle key={point} cx={cx} cy={cy} r="8" fill={index === 0 ? "#F28C28" : "#1D2F5F"} stroke="#ffffff" strokeWidth="3" />;
               })}
             </svg>
 

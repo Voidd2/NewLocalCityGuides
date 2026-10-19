@@ -53,6 +53,7 @@ export function AnimateOnScroll({
   return (
     <div
       ref={ref}
+      data-animate-scroll="true"
       className={`${animClass} ${className}`}
       style={delay > 0 && isVisible ? { animationDelay: `${delay}ms` } : undefined}
     >

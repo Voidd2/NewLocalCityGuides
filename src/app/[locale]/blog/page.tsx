@@ -24,20 +24,22 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
   const t = copy[locale];
   return (
     <>
-      <section className="bg-navy-900 px-4 py-16 text-white md:py-24">
+      <section className="relative isolate overflow-hidden bg-navy-900 px-4 py-16 text-white md:py-24">
+        <Image src="/images/locations/10022-koornbrug-leiden.jpg" alt="Koornbrug, Leiden" fill priority sizes="100vw" className="-z-20 object-cover" /><div className="absolute inset-0 -z-10 bg-navy-900/85" />
         <div className="mx-auto max-w-7xl animate-fade-in-up">
+          <p className="mb-4 text-xs font-semibold tracking-widest text-white/70">CITYWALKSTORIES JOURNAL</p>
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-orange-400">{t.eyebrow}</p>
           <h1 className="mt-3 max-w-3xl text-4xl font-extrabold leading-tight md:text-6xl">{t.title}</h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-white/70 md:text-lg">{t.intro}</p>
         </div>
       </section>
-      <main className="mx-auto max-w-7xl px-4 py-14 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 py-14 md:py-20">
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => (
             <article key={post.slug} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-gray-100 transition hover:-translate-y-1 hover:shadow-xl">
               <Link href={`/blog/${post.slug}`} className="block">
                 <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                  <Image src={post.image} alt="" fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image src={post.image} alt={post.title[locale] + " · Leiden"} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between gap-3 text-xs font-semibold text-orange-600"><span>{post.category[locale]}</span><span className="text-gray-400">{post.readingMinutes} {t.min}</span></div>
@@ -49,7 +51,7 @@ export default async function BlogPage({ params }: { params: Promise<{ locale: s
             </article>
           ))}
         </div>
-      </main>
+      </div>
     </>
   );
 }
