@@ -12,7 +12,8 @@ export async function POST(request: Request) {
     const token = await createSession(user.id);
     (await cookies()).set(sessionCookie(token));
     return Response.json({ user: { email: user.email, name: user.name, hasPaid: user.hasPaid, city: "leiden" } }, { headers: { "Cache-Control": "private, no-store" } });
-  } catch {
+  } catch (error) {
+    console.error("Authentication request failed", error);
     return Response.json({ error: "service_unavailable" }, { status: 503 });
   }
 }
