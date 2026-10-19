@@ -9,6 +9,10 @@ export interface LocationData {
   coords: { lat: number; lng: number } | null;
   entryFee?: string | null;
   ticketUrl?: string | null;
+  audioGuide?: {
+    src: string;
+    language: "en";
+  };
 }
 
 export const locations: LocationData[] = [
@@ -21,6 +25,10 @@ export const locations: LocationData[] = [
     categories: ["macht", "middeleeuwen"],
     image: "/images/locations/10020-de-burcht-leiden.jpg",
     coords: { lat: 52.1590, lng: 4.4926 },
+    audioGuide: {
+      src: "/audio/de-burcht-en.mp3",
+      language: "en",
+    },
   },
   {
     id: "L002",

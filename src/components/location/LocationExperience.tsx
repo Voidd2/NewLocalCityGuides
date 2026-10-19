@@ -13,7 +13,65 @@ import { condenseStorySections, parseStoryText, type ParsedStory } from "@/lib/s
 import { LocationSkeleton } from "@/components/ui/PageSkeletons";
 import { BeforeAfterSlider } from "@/components/story/BeforeAfterSlider";
 
-type ExperienceState = "preview" | "arrived" | "video" | "story" | "practical";
+type ExperienceState = "preview" | "arrived" | "audio" | "video" | "story" | "practical";
+
+function AudioGuideView({
+  location,
+  transcript,
+  onNavigate,
+}: {
+  location: LocationData;
+  transcript: string;
+  onNavigate: (s: ExperienceState) => void;
+}) {
+  const labels = {
+    title: "Listen to the Burcht story",
+    description: "English audio guide with a readable transcript.",
+    transcript: "Read the transcript",
+    back: "Back",
+  };
+
+  if (!location.audioGuide) return null;
+
+  return (
+    <div className="max-w-3xl mx-auto px-4 py-6">
+      <div className="rounded-2xl border border-orange-200 bg-orange-50 p-5">
+        <div className="mb-4 flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-orange-500 text-white" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5" stroke="currentColor" strokeWidth="2">
+              <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14" />
+            </svg>
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-navy-800">{labels.title}</h2>
+            <p className="text-sm text-gray-600">{labels.description}</p>
+          </div>
+        </div>
+        <audio className="w-full" controls preload="metadata">
+          <source src={location.audioGuide.src} type="audio/mpeg" />
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+
+      <details className="mt-5 rounded-xl bg-gray-50 p-4" open>
+        <summary className="cursor-pointer font-semibold text-navy-800">{labels.transcript}</summary>
+        <article className="mt-4 space-y-4 text-[15px] leading-7 text-gray-700">
+          {transcript.split(/\n\s*\n/).map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </article>
+      </details>
+
+      <button
+        onClick={() => onNavigate("arrived")}
+        className="mt-6 rounded-full border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+      >
+        {labels.back}
+      </button>
+    </div>
+  );
+}
 
 function StoryView({
   location,
@@ -233,6 +291,27 @@ export function LocationExperience({ location }: { location: LocationData }) {
           <p className="text-sm text-gray-500 mb-6">{t("whatDoYouWant")}</p>
 
           <div className="space-y-3">
+            {location.audioGuide && story && (
+              <button
+                onClick={() => setState("audio")}
+                className="w-full flex items-center gap-4 bg-white border border-orange-200 rounded-xl p-4 hover:border-orange-300 hover:bg-orange-50 transition-all text-left"
+              >
+                <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5 text-white" stroke="currentColor" strokeWidth="2">
+                    <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-navy-800">Listen in English</h3>
+                  <p className="text-xs text-gray-500">Audio guide with readable transcript</p>
+                </div>
+                <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-gray-300 shrink-0 ml-auto">
+                  <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+                </svg>
+              </button>
+            )}
+
             {videoPlanned && (
               <button
                 onClick={() => setState("video")}
@@ -302,6 +381,14 @@ export function LocationExperience({ location }: { location: LocationData }) {
             {t("backToOverview")}
           </button>
         </div>
+      )}
+
+      {state === "audio" && location.audioGuide && story && (
+        <AudioGuideView
+          location={location}
+          transcript={story.voiceOver.en}
+          onNavigate={setState}
+        />
       )}
 
       {state === "video" && videoPlanned && (
