@@ -44,11 +44,11 @@ describe("CityWalkStories rebrand", () => {
       }
     }
   });
-  it("preserves the existing account and saved-route storage contracts", () => {
-    expect(readFileSync("src/lib/auth-context.tsx", "utf8")).toContain('"ylcg_user"');
+  it("uses server-side sessions while preserving saved-route storage", () => {
+    expect(readFileSync("src/lib/auth-context.tsx", "utf8")).toContain('"/api/auth/status"');
     expect(readFileSync("src/lib/saved-routes.ts", "utf8")).toContain('"ylcg_saved_routes"');
-    expect(validateLogin("test@yourlocalcityguide.com", "LeidenTest2026!")?.hasPaid).toBe(true);
-    expect(validateLogin("free@yourlocalcityguide.com", "FreeUser2026!")?.hasPaid).toBe(false);
+    expect(validateLogin("test@citywalkstories.com", "LeidenTest2026!")?.hasPaid).toBe(true);
+    expect(validateLogin("free@citywalkstories.com", "FreeUser2026!")?.hasPaid).toBe(false);
     expect(validateLogin("unknown@example.com", "invalid")).toBeNull();
   });
   it("does not render or bundle a demo-credential panel", () => {

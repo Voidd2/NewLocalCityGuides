@@ -1,4 +1,4 @@
-# YourLocalCityGuide
+# CityWalkStories
 
 Mobile-first city guide for Leiden with public SEO pages, curated routes, local businesses, MapLibre maps and a member experience for on-location stories, video and GPS guidance.
 

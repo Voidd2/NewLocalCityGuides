@@ -72,8 +72,8 @@ export default async function PrivacyPage({
           <h2 className="text-lg font-bold text-navy-800 mt-6">{t("contactTitle")}</h2>
           <p>
             {t("contactText")}{" "}
-            <a href="mailto:privacy@yourlocalcityguide.com" className="text-orange-600 underline underline-offset-4 hover:text-orange-700">
-              privacy@yourlocalcityguide.com
+            <a href="mailto:privacy@citywalkstories.com" className="text-orange-600 underline underline-offset-4 hover:text-orange-700">
+              privacy@citywalkstories.com
             </a>
           </p>
 

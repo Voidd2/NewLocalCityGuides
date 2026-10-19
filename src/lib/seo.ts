@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { Locale } from "@/i18n/config";
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://newlocalcityguides.fancy-salad-1d1b.workers.dev"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://citywalkstories.com"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "CityWalkStories";

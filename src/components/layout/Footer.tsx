@@ -28,7 +28,7 @@ export function Footer() {
               <Link href="/city-guide-leiden" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("cityGuide")}</Link>
               <Link href="/leiden-tours" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("tours")}</Link>
               <Link href="/blog" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("blog")}</Link>
-              <a href="mailto:info@yourlocalcityguide.com" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("contact")}</a>
+              <a href="mailto:info@citywalkstories.com" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("contact")}</a>
               <Link href="/privacy" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("privacy")}</Link>
               <Link href="/terms" className="text-white/60 hover:text-orange-400 transition-colors duration-200">{t("terms")}</Link>
             </nav>

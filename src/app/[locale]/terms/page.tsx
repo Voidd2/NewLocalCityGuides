@@ -57,8 +57,8 @@ export default async function TermsPage({
           <h2 className="text-lg font-bold text-navy-800 mt-6">{t("contactTitle")}</h2>
           <p>
             {t("contactText")}{" "}
-            <a href="mailto:info@yourlocalcityguide.com" className="text-orange-600 underline underline-offset-4 hover:text-orange-700">
-              info@yourlocalcityguide.com
+            <a href="mailto:info@citywalkstories.com" className="text-orange-600 underline underline-offset-4 hover:text-orange-700">
+              info@citywalkstories.com
             </a>
           </p>
 

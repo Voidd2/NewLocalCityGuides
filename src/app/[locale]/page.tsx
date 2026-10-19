@@ -20,7 +20,7 @@ export default async function HomePage({
       name: "CityWalkStories",
       url: SITE_URL,
       logo: `${SITE_URL}/brand/citywalkstories-logo.svg`,
-      email: "info@yourlocalcityguide.com",
+      email: "info@citywalkstories.com",
     },
     {
       "@context": "https://schema.org",

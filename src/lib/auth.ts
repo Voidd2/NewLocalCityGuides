@@ -1,13 +1,13 @@
 const TEST_ACCOUNTS = process.env.NODE_ENV === "production" ? [] : [
   {
-    email: "test@yourlocalcityguide.com",
+    email: "test@citywalkstories.com",
     password: "LeidenTest2026!",
     name: "Test Gebruiker",
     hasPaid: true,
     city: "leiden",
   },
   {
-    email: "free@yourlocalcityguide.com",
+    email: "free@citywalkstories.com",
     password: "FreeUser2026!",
     name: "Gratis Gebruiker",
     hasPaid: false,
