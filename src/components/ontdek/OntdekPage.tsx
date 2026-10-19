@@ -64,23 +64,35 @@ const categoryIcons: Record<SpotCategory, (active: boolean) => React.ReactNode> 
   ),
 };
 
+const fallbackImagesByCategory: Record<SpotCategory, readonly string[]> = {
+  museum: [
+    "/images/locations/10033-academiegebouw-leiden.jpg",
+    "/images/locations/10025-pieterskerk-leiden.jpg",
+    "/images/locations/10029-hortus-botanicus-leiden.jpg",
+    "/images/locations/10024-gravensteen-leiden.jpg",
+  ],
+  visboer: ["/images/locations/10021-vismarkt-leiden.jpg", "/images/locations/10022-koornbrug-leiden.jpg"],
+  bakker: ["/images/routes/10003-leiden-narrow-street-centre.jpg", "/images/heroes/10001-leiden-canal-historic-buildings.jpg"],
+  winkel: ["/images/locations/10022-koornbrug-leiden.jpg", "/images/routes/10003-leiden-narrow-street-centre.jpg", "/images/locations/10027-jean-pesijnhofje.jpg"],
+  markt: ["/images/locations/10021-vismarkt-leiden.jpg", "/images/locations/10022-koornbrug-leiden.jpg", "/images/heroes/10001-leiden-canal-historic-buildings.jpg"],
+  evenement: ["/images/heroes/10001-leiden-canal-historic-buildings.jpg", "/images/heroes/10008-leiden-canal-panorama.jpg", "/images/routes/10004-leiden-singel-cyclist.jpg"],
+  restaurant: ["/images/locations/10020-de-burcht-leiden.jpg", "/images/routes/10003-leiden-narrow-street-centre.jpg", "/images/locations/10022-koornbrug-leiden.jpg"],
+  kroeg: ["/images/heroes/10008-leiden-canal-panorama.jpg", "/images/heroes/10001-leiden-canal-historic-buildings.jpg", "/images/routes/10002-leiden-canal-pieterskerk.jpg", "/images/locations/10024-gravensteen-leiden.jpg"],
+};
+
+function fallbackImage(spot: LocalSpot) {
+  const choices = fallbackImagesByCategory[spot.category];
+  const index = [...spot.id].reduce((sum, character) => sum + character.charCodeAt(0), 0) % choices.length;
+  return choices[index];
+}
+
 function spotImage(spot: LocalSpot) {
   const entityImage = publicEntities.find(entity => publicEntityPath(entity) === publicPathForSpot(spot))?.image;
   const namedPlace = locations.find(place =>
     ["L001", "L003", "L006", "L010"].includes(place.id) &&
     spot.name.toLowerCase().includes(place.name.toLowerCase().replace(" van leiden", "").replace("de burcht", "burcht").replace("hortus botanicus", "hortus")),
   );
-  const fallbackByCategory: Record<SpotCategory, string> = {
-    museum: "/images/locations/10033-academiegebouw-leiden.jpg",
-    visboer: "/images/locations/10021-vismarkt-leiden.jpg",
-    bakker: "/images/routes/10003-leiden-narrow-street-centre.jpg",
-    winkel: "/images/locations/10022-koornbrug-leiden.jpg",
-    markt: "/images/locations/10021-vismarkt-leiden.jpg",
-    evenement: "/images/heroes/10001-leiden-canal-historic-buildings.jpg",
-    restaurant: "/images/locations/10020-de-burcht-leiden.jpg",
-    kroeg: "/images/heroes/10008-leiden-canal-panorama.jpg",
-  };
-  return spot.image || entityImage || namedPlace?.image || fallbackByCategory[spot.category];
+  return spot.image || entityImage || namedPlace?.image || fallbackImage(spot);
 }
 
 function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
