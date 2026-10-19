@@ -9,6 +9,13 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "d1_databases": [
+    {
+      "binding": "CWS_AUTH_DB",
+      "database_name": "citywalkstories-auth",
+      "database_id": "1c87eda6-abb3-405e-9854-168a5b2fa029"
+    }
+  ],
   "observability": {
     "enabled": true
   }

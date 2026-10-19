@@ -720,7 +720,16 @@
     "fillIn": "Ausfullen",
     "brandIntro": "Deine nächste Geschichte beginnt in Leiden.",
     "viewRoutes": "Routen ansehen",
-    "accountUnavailable": "Die Anmeldung ist vorübergehend nicht verfügbar. Frühere Testkonten schalten den kostenpflichtigen Guide nicht frei."
+    "accountUnavailable": "Die Anmeldung ist vorübergehend nicht verfügbar. Frühere Testkonten schalten den kostenpflichtigen Guide nicht frei.",
+    "registerTitle": "Konto erstellen",
+    "registerSubtitle": "Speichere deine Touren und nutze dein Konto bei weiteren Besuchen.",
+    "name": "Name",
+    "registerButton": "Konto erstellen",
+    "createAccount": "Kostenloses Konto erstellen",
+    "backToLogin": "Bereits ein Konto? Anmelden",
+    "emailExists": "Für diese E-Mail-Adresse gibt es bereits ein Konto.",
+    "registerInvalid": "Nutze eine gültige E-Mail-Adresse, einen Namen und ein Passwort mit mindestens 10 Zeichen.",
+    "pleaseWait": "Bitte warten..."
   },
   "walker": {
     "loadingVideo": "Video wird geladen...",

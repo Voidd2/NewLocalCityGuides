@@ -10,24 +10,28 @@ import { useAuth } from "@/lib/auth-context";
 
 export function LoginPage() {
   const router = useRouter();
-  const { login, isLoggedIn } = useAuth();
+  const { login, register, isLoggedIn } = useAuth();
   const t = useTranslations("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [mode, setMode] = useState<"login" | "register">("login");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => { if (isLoggedIn) router.replace("/dashboard"); }, [isLoggedIn, router]);
   if (isLoggedIn) return null;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-
-    const result = login(email, password);
-    if (result) {
+    setIsSubmitting(true);
+    const result = mode === "login" ? await login(email, password) : await register(name, email, password);
+    setIsSubmitting(false);
+    if (result.user) {
       router.push("/dashboard");
     } else {
-      setError(t(process.env.NODE_ENV === "production" ? "accountUnavailable" : "errorMessage"));
+      setError(result.error === "email_exists" ? t("emailExists") : result.error === "invalid_input" ? t("registerInvalid") : t("errorMessage"));
     }
   }
 
@@ -41,14 +45,21 @@ export function LoginPage() {
       <div className="mx-auto w-full max-w-md">
         <div className="text-center mb-8">
           <BrandLogo className="mx-auto mb-8 h-auto w-72 max-w-full" />
-          <h1 className="text-2xl font-bold text-navy-800">{t("title")}</h1>
-          <p className="text-sm text-gray-500 mt-1">{t("subtitle")}</p>
+          <h1 className="text-2xl font-bold text-navy-800">{mode === "login" ? t("title") : t("registerTitle")}</h1>
+          <p className="text-sm text-gray-500 mt-1">{mode === "login" ? t("subtitle") : t("registerSubtitle")}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-200 p-6 mb-4">
           {error && (
             <div role="alert" className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg p-3 mb-4">
               {error}
+            </div>
+          )}
+
+          {mode === "register" && (
+            <div className="mb-4">
+              <label htmlFor="name" className="block text-sm font-medium text-navy-800 mb-1">{t("name")}</label>
+              <input id="name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} minLength={2} required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none" />
             </div>
           )}
 
@@ -80,17 +91,23 @@ export function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none"
               placeholder={t("passwordPlaceholder")}
+              minLength={mode === "register" ? 10 : undefined}
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-full transition-colors text-sm"
+            disabled={isSubmitting}
+            className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white font-semibold py-3 rounded-full transition-colors text-sm"
           >
-            {t("loginButton")}
+            {isSubmitting ? t("pleaseWait") : mode === "login" ? t("loginButton") : t("registerButton")}
           </button>
         </form>
+
+        <button type="button" onClick={() => { setMode(mode === "login" ? "register" : "login"); setError(""); }} className="mb-5 block w-full text-center text-sm font-semibold text-navy-800 underline underline-offset-4">
+          {mode === "login" ? t("createAccount") : t("backToLogin")}
+        </button>
 
         <Link href="/routes" className="mb-6 block text-center text-sm font-semibold text-navy-800 underline underline-offset-4">{t("viewRoutes")}</Link>
       </div>

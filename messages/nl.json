@@ -720,7 +720,16 @@
     "fillIn": "Vul in",
     "brandIntro": "Jouw volgende verhaal begint in Leiden.",
     "viewRoutes": "Bekijk routes",
-    "accountUnavailable": "Inloggen is tijdelijk niet beschikbaar. De eerdere testaccounts geven geen toegang tot de betaalde gids."
+    "accountUnavailable": "Inloggen is tijdelijk niet beschikbaar. De eerdere testaccounts geven geen toegang tot de betaalde gids.",
+    "registerTitle": "Maak je account aan",
+    "registerSubtitle": "Bewaar je tours en gebruik je account bij een volgend bezoek.",
+    "name": "Naam",
+    "registerButton": "Account aanmaken",
+    "createAccount": "Maak een gratis account aan",
+    "backToLogin": "Al een account? Log in",
+    "emailExists": "Er bestaat al een account met dit e-mailadres.",
+    "registerInvalid": "Gebruik een geldig e-mailadres, naam en wachtwoord van minimaal 10 tekens.",
+    "pleaseWait": "Even wachten..."
   },
   "walker": {
     "loadingVideo": "Video wordt geladen...",

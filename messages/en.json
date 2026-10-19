@@ -720,7 +720,16 @@
     "fillIn": "Fill in",
     "brandIntro": "Your next story starts in Leiden.",
     "viewRoutes": "View routes",
-    "accountUnavailable": "Sign-in is temporarily unavailable. Earlier demo accounts do not unlock the paid guide."
+    "accountUnavailable": "Sign-in is temporarily unavailable. Earlier demo accounts do not unlock the paid guide.",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Save your tours and access your account across visits.",
+    "name": "Name",
+    "registerButton": "Create account",
+    "createAccount": "Create a free account",
+    "backToLogin": "Already have an account? Log in",
+    "emailExists": "An account with this email address already exists.",
+    "registerInvalid": "Use a valid email address, a name and a password of at least 10 characters.",
+    "pleaseWait": "Please wait..."
   },
   "walker": {
     "loadingVideo": "Loading video...",
