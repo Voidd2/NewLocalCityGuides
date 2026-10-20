@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -8,10 +10,39 @@ import { localizedUrl, SITE_URL } from "@/lib/seo";
 import type { Locale } from "@/i18n/config";
 import type { PublicRoutePreviewData } from "@/data/public-route-seo";
 import { publicEntities, publicEntityPath } from "@/data/public-entities";
+import { useAuth } from "@/lib/auth-context";
 
 export function PublicRoutePreview({ route, locale }: { route: PublicRoutePreviewData; locale: Locale }) {
   const t = useTranslations("routePreview");
   const copy = route.copy[locale];
+  const { hasPaid, isLoggedIn, isLoading } = useAuth();
+
+  if (isLoading) {
+    return <div className="mx-auto min-h-[60vh] max-w-6xl animate-pulse px-4 py-12"><div className="h-80 rounded-3xl bg-gray-100" /></div>;
+  }
+
+  if (!hasPaid) {
+    return (
+      <div className="min-h-[70vh] bg-warm-50 py-12 md:py-20">
+        <section className="mx-auto max-w-2xl px-4 text-center">
+          <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-orange-500 text-white shadow-lg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" className="h-7 w-7" stroke="currentColor" strokeWidth="1.8"><rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 018 0v3" /></svg>
+          </span>
+          <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-orange-700">CityWalkStories-gids</p>
+          <h1 className="mt-3 text-3xl font-extrabold text-navy-800 md:text-4xl">{copy.title}</h1>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-gray-600">{t("unlockDesc")}</p>
+          <div className="mx-auto mt-8 grid max-w-md grid-cols-3 gap-2 text-left">
+            {[route.type === "walking" ? t("walking") : t("cycling"), route.distance, route.duration[locale]].map((fact) => <span key={fact} className="rounded-xl border border-gray-200 bg-white px-3 py-3 text-center text-xs font-semibold text-navy-800 shadow-sm">{fact}</span>)}
+          </div>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href={isLoggedIn ? "/pricing" : "/login"} className="inline-flex min-h-12 items-center justify-center rounded-full bg-orange-500 px-6 text-sm font-bold text-white transition hover:bg-orange-600">{isLoggedIn ? t("unlockCta") : t("loginCta")}</Link>
+            <Link href="/pricing" className="inline-flex min-h-12 items-center justify-center rounded-full border border-navy-200 bg-white px-6 text-sm font-bold text-navy-800 transition hover:border-orange-300">{t("pricingCta")}</Link>
+          </div>
+          <Link href="/routes" className="mt-8 inline-flex text-sm font-semibold text-navy-700 underline underline-offset-4">{t("routes")}</Link>
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className="pb-16">

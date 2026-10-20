@@ -140,11 +140,11 @@ export function RoutesOverview() {
             );
 
             return (
-              <Link key={route.slug} href={`/routes/${route.slug}`} className="group relative">
+              <Link key={route.slug} href={hasPaid ? `/routes/${route.slug}` : "/pricing"} className="group relative">
                 {card}
                 {!hasPaid && (
                   <span className="absolute bottom-4 right-4 rounded-full bg-navy-800 px-3 py-1.5 text-[10px] font-semibold text-white shadow-sm">
-                    {t("previewAvailable")}
+                    {t("previewAvailable")} · {t("viewPricing")}
                   </span>
                 )}
               </Link>

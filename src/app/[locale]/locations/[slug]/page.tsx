@@ -3,12 +3,13 @@ import { notFound } from "next/navigation";
 import { locations } from "@/data/locations";
 import { LocationExperience } from "@/components/location/LocationExperience";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
+import { locales } from "@/i18n/config";
 import { createDynamicMetadata } from "@/lib/seo";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return locations.map((loc) => ({ slug: loc.slug }));
+  return locales.flatMap((locale) => locations.map((loc) => ({ locale, slug: loc.slug })));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { locations } from "@/data/locations";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useAuth } from "@/lib/auth-context";
 import { publicEntities, publicEntityPath, publicPathForSpot } from "@/data/public-entities";
 import { publicRoutePreviews } from "@/data/public-route-seo";
 import { affiliateOffers } from "@/data/affiliate-offers";
@@ -95,14 +96,14 @@ function spotImage(spot: LocalSpot) {
   return spot.image || entityImage || namedPlace?.image || fallbackImage(spot);
 }
 
-function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
+function SpotCard({ spot, locale, href }: { spot: LocalSpot; locale: string; href: string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
   const photo = spotImage(spot);
   const t = useTranslations("discover");
 
   return (
-    <Link href={publicPathForSpot(spot)} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
+    <Link href={href} className="block bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow group">
       <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={photo} alt={spot.name} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" /><div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/35 to-transparent" /></div>
 
       <div className="p-4">
@@ -120,12 +121,21 @@ function SpotCard({ spot, locale }: { spot: LocalSpot; locale: string }) {
   );
 }
 
-function FeaturedCard({ spot, locale, t }: { spot: LocalSpot; locale: string; t: (key: string) => string }) {
+function LockedSpotCard({ spot }: { spot: LocalSpot }) {
+  return (
+    <div aria-hidden="true" className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+      <div className="relative aspect-[16/10] overflow-hidden bg-warm-100"><Image src={spotImage(spot)} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="scale-110 object-cover blur-md" /><div className="absolute inset-0 bg-navy-950/20" /></div>
+      <div className="space-y-3 p-4"><div className="h-3 w-20 rounded bg-orange-100" /><div className="h-5 w-4/5 rounded bg-gray-200" /><div className="h-4 w-full rounded bg-gray-100" /><div className="h-4 w-2/3 rounded bg-gray-100" /></div>
+    </div>
+  );
+}
+
+function FeaturedCard({ spot, locale, t, href }: { spot: LocalSpot; locale: string; t: (key: string) => string; href: string }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
   const catLabel = SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[lang] || spot.category;
   return (
-    <Link href={publicPathForSpot(spot)} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
+    <Link href={href} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
       <div className="aspect-[16/9] overflow-hidden relative"><Image src={spotImage(spot)} alt={spot.name} fill sizes="280px" className="object-cover transition-transform duration-500 group-hover:scale-105" /></div>
       <span className="mx-4 mt-4 inline-block rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-navy-900">{catLabel}</span>
       <div className="p-3">
@@ -148,6 +158,7 @@ export function OntdekPage() {
   const t = useTranslations("discover");
   const tAct = useTranslations("activities");
   const tHome = useTranslations("home");
+  const { hasPaid, isLoading } = useAuth();
   const [activeCategory, setActiveCategory] = useState<SpotCategory | "alle">("alle");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"editorial" | "name">("editorial");
@@ -211,6 +222,10 @@ export function OntdekPage() {
     });
     return sortOrder === "name" ? matches.sort((a, b) => a.name.localeCompare(b.name, locale)) : matches;
   }, [activeCategory, visibleSpots, searchQuery, sortOrder, locale]);
+  const publicPreviewCount = 6;
+  const visibleCards = hasPaid ? filtered : filtered.slice(0, publicPreviewCount);
+  const lockedCards = hasPaid ? [] : filtered.slice(publicPreviewCount, publicPreviewCount + 3);
+  const spotHref = (spot: LocalSpot) => hasPaid ? publicPathForSpot(spot) : "/pricing";
 
   return (
     <div>
@@ -221,12 +236,12 @@ export function OntdekPage() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-orange-300">{copy.heroTag}</p>
             <h1 className="mt-3 max-w-3xl text-4xl md:text-6xl font-bold leading-tight">{t("title")}</h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 md:text-lg">{t("subtitle")}</p>
-            <div className="mt-8 flex max-w-2xl items-center rounded-2xl border border-white/30 bg-white p-2 text-navy-800 shadow-xl">
+            {hasPaid && !isLoading ? <div className="mt-8 flex max-w-2xl items-center rounded-2xl border border-white/30 bg-white p-2 text-navy-800 shadow-xl">
               <label htmlFor="discover-search" className="sr-only">{locale === "nl" ? "Zoek een plek in Leiden" : locale === "de" ? "Ort in Leiden suchen" : "Search places in Leiden"}</label>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" className="ml-3 h-5 w-5 shrink-0 text-gray-500"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
               <input id="discover-search" type="search" value={searchQuery} onChange={(event) => { setSearchQuery(event.target.value); updateQuery({ q: event.target.value }); }} placeholder={locale === "nl" ? "Zoek plekken, buurten of interesses" : locale === "de" ? "Orte, Viertel oder Interessen suchen" : "Search places, neighbourhoods or interests"} className="min-h-11 min-w-0 flex-1 px-3 text-sm outline-none" />
               <Link href="/map" className="shrink-0 rounded-xl bg-navy-800 px-4 py-3 text-sm font-semibold text-white hover:bg-navy-900">{locale === "nl" ? "Kaart" : locale === "de" ? "Karte" : "Map"}</Link>
-            </div>
+            </div> : <div className="mt-8 max-w-2xl rounded-2xl border border-white/20 bg-white/10 p-5 text-sm leading-6 text-white/85 backdrop-blur-sm">{locale === "nl" ? "Bekijk zes zorgvuldig gekozen voorproefjes. Met de gids ontgrendel je alle plekken, volledige verhalen, audio en navigatie." : locale === "de" ? "Entdecke sechs sorgfältig ausgewählte Vorschauen. Der Guide schaltet alle Orte, vollständige Geschichten, Audio und Navigation frei." : "Discover six carefully chosen previews. The guide unlocks every place, complete stories, audio and navigation."}</div>}
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Link href="/pricing" className="inline-flex min-h-12 items-center rounded-full bg-orange-500 px-6 text-sm font-bold text-white shadow-lg shadow-orange-950/30 transition hover:bg-orange-400">{copy.heroCta} <span className="ml-2" aria-hidden="true">→</span></Link>
               <p className="text-sm font-medium text-white/80">✓ {copy.heroNote}</p>
@@ -242,7 +257,7 @@ export function OntdekPage() {
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
             {featuredSpots.map((spot) => (
-              <FeaturedCard key={spot.id} spot={spot} locale={locale} t={t} />
+              <FeaturedCard key={spot.id} spot={spot} locale={locale} t={t} href={spotHref(spot)} />
             ))}
           </div>
         </section>
@@ -266,7 +281,7 @@ export function OntdekPage() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 mb-6">
-        <div className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide">
+        {hasPaid && <div className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 scrollbar-hide">
           {SPOT_CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.key;
             const icon = cat.key !== "alle" ? categoryIcons[cat.key as SpotCategory] : null;
@@ -286,13 +301,13 @@ export function OntdekPage() {
               </button>
             );
           })}
-        </div>
+        </div>}
 
         <div className="flex items-center justify-between mb-4">
           <p className="text-sm text-gray-600" aria-live="polite">
-            {filtered.length} {t("results")}
+            {hasPaid ? filtered.length : `${Math.min(publicPreviewCount, filtered.length)} ${locale === "nl" ? "gratis voorproefjes" : locale === "de" ? "kostenlose Vorschauen" : "free previews"}`}
           </p>
-          <label className="text-sm text-gray-600">{locale === "nl" ? "Sorteer" : locale === "de" ? "Sortieren" : "Sort"} <select value={sortOrder} onChange={(event) => { const value = event.target.value as "editorial" | "name"; setSortOrder(value); updateQuery({ sort: value }); }} className="ml-2 rounded-lg border border-gray-300 bg-white px-2 py-2 text-navy-800"><option value="editorial">{locale === "nl" ? "Aanbevolen" : locale === "de" ? "Empfohlen" : "Recommended"}</option><option value="name">A–Z</option></select></label>
+          {hasPaid && <label className="text-sm text-gray-600">{locale === "nl" ? "Sorteer" : locale === "de" ? "Sortieren" : "Sort"} <select value={sortOrder} onChange={(event) => { const value = event.target.value as "editorial" | "name"; setSortOrder(value); updateQuery({ sort: value }); }} className="ml-2 rounded-lg border border-gray-300 bg-white px-2 py-2 text-navy-800"><option value="editorial">{locale === "nl" ? "Aanbevolen" : locale === "de" ? "Empfohlen" : "Recommended"}</option><option value="name">A–Z</option></select></label>}
         </div>
 
         {filtered.length === 0 ? (
@@ -302,11 +317,12 @@ export function OntdekPage() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
-            {filtered.map((spot) => (
-              <SpotCard key={spot.id} spot={spot} locale={locale} />
+            {visibleCards.map((spot) => (
+              <SpotCard key={spot.id} spot={spot} locale={locale} href={spotHref(spot)} />
             ))}
           </div>
         )}
+        {!hasPaid && lockedCards.length > 0 && <div className="relative mt-5"><div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">{lockedCards.map((spot) => <LockedSpotCard key={spot.id} spot={spot} />)}</div><div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-white/25 px-4 backdrop-blur-[1px]"><div className="max-w-sm rounded-2xl bg-navy-900 px-6 py-5 text-center text-white shadow-2xl"><p className="text-base font-extrabold">{locale === "nl" ? `Ontgrendel alle ${filtered.length} plekken` : locale === "de" ? `Alle ${filtered.length} Orte freischalten` : `Unlock all ${filtered.length} places`}</p><p className="mt-2 text-sm text-white/70">{locale === "nl" ? "Inclusief volledige verhalen, audio, GPS en samengestelde routes." : locale === "de" ? "Mit vollständigen Geschichten, Audio, GPS und kuratierten Routen." : "Including complete stories, audio, GPS and curated routes."}</p><Link href="/pricing" className="mt-4 inline-flex min-h-11 items-center rounded-full bg-orange-500 px-5 text-sm font-bold text-white hover:bg-orange-600">{copy.heroCta} →</Link></div></div></div>}
       </section>
 
       <section className="bg-navy-900 py-12 text-white md:py-16">
