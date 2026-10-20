@@ -1490,8 +1490,8 @@ export function getVisibleSpots(now: Date = new Date()): LocalSpot[] {
   });
 }
 
-export function getFeaturedSpots(): LocalSpot[] {
-  return localSpots.filter((s) => s.featured);
+export function getFeaturedSpots(now: Date = new Date()): LocalSpot[] {
+  return getVisibleSpots(now).filter((spot) => spot.featured);
 }
 
 export const SPOT_CATEGORIES: { key: SpotCategory | "alle"; label: { nl: string; en: string; de: string } }[] = [

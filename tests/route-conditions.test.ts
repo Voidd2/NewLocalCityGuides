@@ -19,6 +19,12 @@ describe("Leiden date-aware routes", () => {
     expect(applyDateAwareRoute(base, new Date("2026-10-04T10:00:00Z"))).toBe(base);
   });
 
+  it("does not include Leidens Ontzet in year-round routes", () => {
+    for (const route of routes.filter((item) => item.dateVariant !== "leidens-ontzet")) {
+      expect(route.locationIds).not.toContain("L012");
+    }
+  });
+
   it("shows the Nieuwe Rijn stop only during market hours", () => {
     const route = routes.find((item) => item.id === "markt-en-ambacht")!;
     const wednesdayOpen = new Date("2026-09-23T08:00:00Z");
