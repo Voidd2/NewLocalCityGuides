@@ -5,6 +5,8 @@ import { LocationExperience } from "@/components/location/LocationExperience";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
 import { createDynamicMetadata } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return locations.map((loc) => ({ slug: loc.slug }));
 }

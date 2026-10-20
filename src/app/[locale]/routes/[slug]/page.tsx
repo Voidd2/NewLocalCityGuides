@@ -4,6 +4,8 @@ import { PublicRoutePreview } from "@/components/routes/PublicRoutePreview";
 import { getPublicRoutePreview, publicRoutePreviews } from "@/data/public-route-seo";
 import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return publicRoutePreviews.map((route) => ({ slug: route.slug }));
 }

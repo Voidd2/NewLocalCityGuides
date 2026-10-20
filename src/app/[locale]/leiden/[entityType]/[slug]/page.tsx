@@ -4,6 +4,8 @@ import { PublicEntityPage } from "@/components/seo/PublicEntityPage";
 import { getPublicEntity, publicEntities, publicEntityPath } from "@/data/public-entities";
 import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return publicEntities.map((entity) => ({ entityType: entity.section, slug: entity.slug }));
 }

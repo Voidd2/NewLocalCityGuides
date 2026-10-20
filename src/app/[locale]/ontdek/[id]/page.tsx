@@ -5,6 +5,8 @@ import { SpotDetail } from "@/components/ontdek/SpotDetail";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
 import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return localSpots.map((spot) => ({ id: spot.id }));
 }

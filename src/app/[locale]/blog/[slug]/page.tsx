@@ -12,6 +12,8 @@ import { getSchaapsvishandelUrl } from "@/data/external-sites";
 import { locales } from "@/i18n/config";
 import { asLocale, createDynamicMetadata, localizedUrl, SITE_NAME, SITE_URL } from "@/lib/seo";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return locales.flatMap((locale) => blogPosts.map((post) => ({ locale, slug: post.slug })));
 }

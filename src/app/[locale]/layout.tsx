@@ -15,6 +15,9 @@ import { CookieConsent } from "@/components/privacy/CookieConsent";
 import { OfflineBanner } from "@/components/pwa/OfflineBanner";
 import { ServiceWorkerRegistrar } from "@/components/pwa/ServiceWorkerRegistrar";
 
+// Reject scanner paths before Next.js tries to render them as a locale.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
