@@ -3,13 +3,10 @@ import { notFound } from "next/navigation";
 import { localSpots } from "@/data/local-spots";
 import { SpotDetail } from "@/components/ontdek/SpotDetail";
 import { PaywallGuard } from "@/components/auth/PaywallGuard";
-import { locales } from "@/i18n/config";
 import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
-  return locales.flatMap((locale) => localSpots.map((spot) => ({ locale, id: spot.id })));
+  return localSpots.map((spot) => ({ id: spot.id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; id: string }> }) {

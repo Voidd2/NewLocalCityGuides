@@ -96,9 +96,10 @@ function spotImage(spot: LocalSpot) {
   return spot.image || entityImage || namedPlace?.image || fallbackImage(spot);
 }
 
-function SpotCard({ spot, locale, href }: { spot: LocalSpot; locale: string; href: string }) {
+function SpotCard({ spot, locale, href, preview = false }: { spot: LocalSpot; locale: string; href: string; preview?: boolean }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
+  const cardDescription = preview ? desc.replace(/\*\*/g, "").split("\n")[0].slice(0, 130) : desc;
   const photo = spotImage(spot);
   const t = useTranslations("discover");
 
@@ -112,10 +113,10 @@ function SpotCard({ spot, locale, href }: { spot: LocalSpot; locale: string; hre
           {spot.name}
         </h3>
 
-        <p className="text-sm text-gray-500 line-clamp-2 mb-3">{desc}</p>
+        <p className="text-sm text-gray-500 line-clamp-2 mb-3">{cardDescription}</p>
 
-        <p className="mb-3 text-xs text-gray-500">{spot.address}</p>
-        <span className="mb-3 inline-block text-sm font-bold text-orange-700">{t("moreInfo")} →</span>
+        {!preview && <p className="mb-3 text-xs text-gray-500">{spot.address}</p>}
+        <span className="mb-3 inline-block text-sm font-bold text-orange-700">{preview ? (locale === "nl" ? "Ontgrendel verhaal" : locale === "de" ? "Geschichte freischalten" : "Unlock story") : t("moreInfo")} →</span>
       </div>
     </Link>
   );
@@ -130,9 +131,10 @@ function LockedSpotCard({ spot }: { spot: LocalSpot }) {
   );
 }
 
-function FeaturedCard({ spot, locale, t, href }: { spot: LocalSpot; locale: string; t: (key: string) => string; href: string }) {
+function FeaturedCard({ spot, locale, t, href, preview = false }: { spot: LocalSpot; locale: string; t: (key: string) => string; href: string; preview?: boolean }) {
   const lang = locale as "nl" | "en" | "de";
   const desc = spot.description[lang] || spot.description.nl;
+  const cardDescription = preview ? desc.replace(/\*\*/g, "").split("\n")[0].slice(0, 105) : desc;
   const catLabel = SPOT_CATEGORIES.find((c) => c.key === spot.category)?.label[lang] || spot.category;
   return (
     <Link href={href} className="shrink-0 w-[280px] bg-gradient-to-br from-navy-800 to-navy-900 rounded-xl overflow-hidden text-white snap-start block group">
@@ -140,7 +142,7 @@ function FeaturedCard({ spot, locale, t, href }: { spot: LocalSpot; locale: stri
       <span className="mx-4 mt-4 inline-block rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-navy-900">{catLabel}</span>
       <div className="p-3">
         <h3 className="font-bold text-sm leading-tight line-clamp-1">{spot.name}</h3>
-        <p className="text-[11px] text-white/60 mt-1 line-clamp-2">{desc}</p>
+        <p className="text-[11px] text-white/60 mt-1 line-clamp-2">{cardDescription}</p>
 
         <span className="mt-2 inline-flex items-center gap-1 text-xs text-orange-400 font-semibold">
           {t("moreInfo")}
@@ -257,7 +259,7 @@ export function OntdekPage() {
           </h2>
           <div className="flex gap-3 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory scrollbar-hide">
             {featuredSpots.map((spot) => (
-              <FeaturedCard key={spot.id} spot={spot} locale={locale} t={t} href={spotHref(spot)} />
+              <FeaturedCard key={spot.id} spot={spot} locale={locale} t={t} href={spotHref(spot)} preview={!hasPaid} />
             ))}
           </div>
         </section>
@@ -318,7 +320,7 @@ export function OntdekPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
             {visibleCards.map((spot) => (
-              <SpotCard key={spot.id} spot={spot} locale={locale} href={spotHref(spot)} />
+              <SpotCard key={spot.id} spot={spot} locale={locale} href={spotHref(spot)} preview={!hasPaid} />
             ))}
           </div>
         )}
@@ -331,7 +333,7 @@ export function OntdekPage() {
           <h2 className="mt-3 text-3xl font-bold">{locale === "nl" ? "Wandel verder met een verhaal" : locale === "de" ? "Entdecke die Stadt mit einer Geschichte" : "Take the story with you"}</h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-white/70">{locale === "nl" ? "Bekijk de openbare routevoorbeelden. De volledige begeleide verhalen en routevolgorde zijn onderdeel van de stadsgids." : locale === "de" ? "Sieh dir die öffentlichen Routenvorschauen an. Die vollständigen Geschichten und die geführte Route gehören zum Stadtguide." : "Explore public route previews. Complete stories and guided route details are part of the city guide."}</p>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {publicRoutePreviews.map((route) => <Link key={route.slug} href={`/routes/${route.slug}`} className="group overflow-hidden rounded-2xl bg-white text-navy-800 shadow-lg"><div className="relative aspect-[3/2]"><Image src={route.image} alt={route.copy[locale].title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-5"><p className="text-xs font-bold uppercase tracking-wide text-orange-700">{route.type === "walking" ? (locale === "nl" ? "Wandeling" : locale === "de" ? "Spaziergang" : "Walking route") : (locale === "nl" ? "Fietsroute" : locale === "de" ? "Radtour" : "Cycling route")}</p><h3 className="mt-2 text-xl font-bold">{route.copy[locale].title}</h3><p className="mt-2 line-clamp-2 text-sm text-gray-600">{route.copy[locale].subtitle}</p><p className="mt-4 text-xs font-medium text-gray-500">{route.distance} · {route.duration[locale]}</p><span className="mt-5 inline-flex text-sm font-bold text-orange-700">{locale === "nl" ? "Bekijk routevoorbeeld" : locale === "de" ? "Routenvorschau ansehen" : "View route preview"} →</span></div></Link>)}
+            {publicRoutePreviews.map((route) => <Link key={route.slug} href={hasPaid ? `/routes/${route.slug}` : "/pricing"} className="group overflow-hidden rounded-2xl bg-white text-navy-800 shadow-lg"><div className="relative aspect-[3/2]"><Image src={route.image} alt={route.copy[locale].title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-5"><p className="text-xs font-bold uppercase tracking-wide text-orange-700">{route.type === "walking" ? (locale === "nl" ? "Wandeling" : locale === "de" ? "Spaziergang" : "Walking route") : (locale === "nl" ? "Fietsroute" : locale === "de" ? "Radtour" : "Cycling route")}</p><h3 className="mt-2 text-xl font-bold">{route.copy[locale].title}</h3><p className="mt-2 line-clamp-2 text-sm text-gray-600">{route.copy[locale].subtitle}</p><p className="mt-4 text-xs font-medium text-gray-500">{route.distance} · {route.duration[locale]}</p><span className="mt-5 inline-flex text-sm font-bold text-orange-700">{hasPaid ? (locale === "nl" ? "Open route" : locale === "de" ? "Route öffnen" : "Open route") : (locale === "nl" ? "Ontgrendel route" : locale === "de" ? "Route freischalten" : "Unlock route")} →</span></div></Link>)}
           </div>
           <p className="mt-6 text-sm text-white/75">{locale === "nl" ? "Gidsprijs" : locale === "de" ? "Guide-Preis" : "Guide price"}: <strong className="text-orange-300">{formatGuidePrice(locale)}</strong></p>
         </div>

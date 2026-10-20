@@ -2,13 +2,10 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { PublicEntityPage } from "@/components/seo/PublicEntityPage";
 import { getPublicEntity, publicEntities, publicEntityPath } from "@/data/public-entities";
-import { locales } from "@/i18n/config";
 import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
-  return locales.flatMap((locale) => publicEntities.map((entity) => ({ locale, entityType: entity.section, slug: entity.slug })));
+  return publicEntities.map((entity) => ({ entityType: entity.section, slug: entity.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; entityType: string; slug: string }> }) {

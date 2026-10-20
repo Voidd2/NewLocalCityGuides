@@ -2,13 +2,10 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { PublicRoutePreview } from "@/components/routes/PublicRoutePreview";
 import { getPublicRoutePreview, publicRoutePreviews } from "@/data/public-route-seo";
-import { locales } from "@/i18n/config";
 import { asLocale, createDynamicMetadata } from "@/lib/seo";
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
-  return locales.flatMap((locale) => publicRoutePreviews.map((route) => ({ locale, slug: route.slug })));
+  return publicRoutePreviews.map((route) => ({ slug: route.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }) {
