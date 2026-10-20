@@ -5,12 +5,14 @@ import { Link } from "@/i18n/navigation";
 import { publicRoutePreviews } from "@/data/public-route-seo";
 import type { Locale } from "@/i18n/config";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
+import { useAuth } from "@/lib/auth-context";
 import Image from "next/image";
 
 export function PopularRoutes() {
   const locale = useLocale() as Locale;
   const t = useTranslations("home");
   const tRoutes = useTranslations("routes");
+  const { hasPaid } = useAuth();
 
   return (
     <section className="bg-warm-100 py-14 md:py-16">
@@ -31,7 +33,7 @@ export function PopularRoutes() {
           {publicRoutePreviews.map((route, i) => (
             <AnimateOnScroll key={route.slug} delay={i * 120}>
               <Link
-                href={`/routes/${route.slug}`}
+                href={hasPaid ? `/routes/${route.slug}` : "/pricing"}
                 className="flex items-center gap-4 bg-white rounded-2xl border border-gray-100 p-3.5 hover-lift hover-zoom-img group shadow-sm"
               >
                 <div className="relative w-24 h-24 rounded-xl bg-gray-200 shrink-0 overflow-hidden">
